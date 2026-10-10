@@ -1,0 +1,46 @@
+GRAPH '<skill>client_var_types' SKILL_NODE_GRAPH (guid 1082130433)
+'<skill>client_var_types'/[1] Node Graph Starts (200042/2001) @(0,0)
+'<skill>client_var_types'/[2] Get Custom Variable (200016/40) variant=C<T:Bol> @(394,-266)
+'<skill>client_var_types'/[2] Get Custom Variable (200016/40) in#1 "Variable Name" = 'var_bool' : Str
+'<skill>client_var_types'/[3] Get Custom Variable (200016/41) variant=C<T:Int> @(427,-44)
+'<skill>client_var_types'/[3] Get Custom Variable (200016/41) in#1 "Variable Name" = 'var_int' : Str
+'<skill>client_var_types'/[4] Get Custom Variable (200016/42) variant=C<T:Flt> @(865,-280)
+'<skill>client_var_types'/[4] Get Custom Variable (200016/42) in#1 "Variable Name" = 'var_float' : Str
+'<skill>client_var_types'/[5] Get Custom Variable (200016/43) variant=C<T:Str> @(881,-60)
+'<skill>client_var_types'/[5] Get Custom Variable (200016/43) in#1 "Variable Name" = 'var_str' : Str
+'<skill>client_var_types'/[6] Get Custom Variable (200016/44) variant=C<T:Gid> @(1324,-281)
+'<skill>client_var_types'/[6] Get Custom Variable (200016/44) in#1 "Variable Name" = 'var_guid' : Str
+'<skill>client_var_types'/[7] Get Custom Variable (200016/45) variant=C<T:Ety> @(1372,-44)
+'<skill>client_var_types'/[7] Get Custom Variable (200016/45) in#1 "Variable Name" = 'var_entity' : Str
+'<skill>client_var_types'/[8] Get Custom Variable (200016/46) variant=C<T:Vec> @(410,218)
+'<skill>client_var_types'/[8] Get Custom Variable (200016/46) in#1 "Variable Name" = 'var_vector' : Str
+'<skill>client_var_types'/[9] Get Custom Variable (200016/47) variant=C<T:L<Int>> @(896,182)
+'<skill>client_var_types'/[9] Get Custom Variable (200016/47) in#1 "Variable Name" = 'var_int_list' : Str
+'<skill>client_var_types'/[10] Get Custom Variable (200016/48) variant=C<T:L<Str>> @(1374,176)
+'<skill>client_var_types'/[10] Get Custom Variable (200016/48) in#1 "Variable Name" = 'var_str_list' : Str
+'<skill>client_var_types'/[11] Get Custom Variable (200016/49) variant=C<T:L<Ety>> @(351,447)
+'<skill>client_var_types'/[11] Get Custom Variable (200016/49) in#1 "Variable Name" = 'var_entity_list' : Str
+'<skill>client_var_types'/[12] Get Custom Variable (200016/50) variant=C<T:L<Gid>> @(840,440)
+'<skill>client_var_types'/[12] Get Custom Variable (200016/50) in#1 "Variable Name" = 'var_guid_list' : Str
+'<skill>client_var_types'/[13] Get Custom Variable (200016/51) variant=C<T:L<Flt>> @(1276,427)
+'<skill>client_var_types'/[13] Get Custom Variable (200016/51) in#1 "Variable Name" = 'var_float_list' : Str
+'<skill>client_var_types'/[14] Get Custom Variable (200016/52) variant=C<T:L<Vec>> @(1758,431)
+'<skill>client_var_types'/[14] Get Custom Variable (200016/52) in#1 "Variable Name" = 'var_vector_list' : Str
+'<skill>client_var_types'/[15] Get Custom Variable (200016/53) variant=C<T:L<Bol>> @(1814,159)
+'<skill>client_var_types'/[15] Get Custom Variable (200016/53) in#1 "Variable Name" = 'var_bool_list' : Str
+'<skill>client_var_types'/[16] Get Custom Variable (200016/54) variant=C<T:Cfg> @(1799,-81)
+'<skill>client_var_types'/[16] Get Custom Variable (200016/54) in#1 "Variable Name" = 'var_config' : Str
+'<skill>client_var_types'/[17] Get Custom Variable (200016/55) variant=C<T:Pfb> @(1788,-303)
+'<skill>client_var_types'/[17] Get Custom Variable (200016/55) in#1 "Variable Name" = 'var_prefab' : Str
+'<skill>client_var_types'/[18] Get Custom Variable (200016/56) variant=C<T:L<Cfg>> @(2223,-318)
+'<skill>client_var_types'/[18] Get Custom Variable (200016/56) in#1 "Variable Name" = 'var_config_list' : Str
+'<skill>client_var_types'/[19] Get Custom Variable (200016/57) variant=C<T:L<Pfb>> @(2258,-83)
+'<skill>client_var_types'/[19] Get Custom Variable (200016/57) in#1 "Variable Name" = 'var_prefab_list' : Str
+'<skill>client_var_types'/[20] Get Custom Variable (200016/58) variant=C<T:Fct> @(2289,146)
+'<skill>client_var_types'/[20] Get Custom Variable (200016/58) in#1 "Variable Name" = 'var_faction' : Str
+'<skill>client_var_types'/[21] Get Custom Variable (200016/59) variant=C<T:L<Fct>> @(2303,397)
+'<skill>client_var_types'/[21] Get Custom Variable (200016/59) in#1 "Variable Name" = 'var_faction_list' : Str
+'<skill>client_var_types'/[22] Get Custom Variable (200016/1056) @(2778,-327)
+'<skill>client_var_types'/[22] Get Custom Variable (200016/1056) in#1 "Variable Name" = 'var_dict_prefab_to_factionlist' : Str
+'<skill>client_var_types'/[23] Get Custom Variable (200016) @(2806.8572,-98)
+'<skill>client_var_types'/[23] Get Custom Variable (200016) in#1 "Variable Name" = 'var_dict_generic' : Str

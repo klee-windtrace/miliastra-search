@@ -1,0 +1,8 @@
+# findings
+(no findings)
+
+# limits
+composites: 3/1000 declared
+
+top graphs by node count:
+'VAR_TEST': 11/3000 nodes

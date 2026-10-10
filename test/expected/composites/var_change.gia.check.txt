@@ -1,0 +1,2 @@
+== test/cases/composites/var_change.gia  gia  engine 7.1.0  mode beyond  resources 7 (0 not interpreted)
+   UNKNOWN FIELD AssetBundle.resources.graph_data.inner.graph.nodes.context_declaration #103 wire 2 ×1 e.g. 3 bytes 0x120101

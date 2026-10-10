@@ -1,0 +1,11 @@
+# findings
+(no findings)
+
+# limits
+PRESET_POINT: 1/2000
+ENVIRONMENT_CONFIGURATION: 1/50
+TERRAIN_ENTITY: 1/1200
+
+top graphs by node count:
+'New Node Graph': 2/3000 nodes
+'New Node Graph_1': 2/3000 nodes

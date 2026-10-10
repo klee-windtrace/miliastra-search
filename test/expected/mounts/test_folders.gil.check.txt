@@ -1,0 +1,10 @@
+== test/cases/mounts/test_folders.gil  gil  engine 7.1.0  mode beyond  resources 77 (46 not interpreted)
+   UNKNOWN FIELD GilFile.node_graphs.interfaces.interface.impl.listen_signal #4 wire 2 ×1 e.g. 17 bytes 0x08914e10a09c0118f1ab01288c83808006
+   UNKNOWN FIELD GilFile.node_graphs.interfaces.interface.impl.send_signal #4 wire 2 ×2 e.g. 17 bytes 0x08914e10a09c0118f1ab01288c83808006
+   UNKNOWN FIELD GilFile.node_graphs.interfaces.interface.impl #108 wire 2 ×1 e.g. 70 bytes 0x0a0b5369676e616c5f4e616d65121108914e10a09c0118f1…
+   UNKNOWN FIELD GilFile #1 wire 0 ×1 e.g. 1073741846
+   UNKNOWN FIELD GilFile #50 wire 2 ×1 e.g. 2 bytes 0x1001
+   UNKNOWN FIELD GilFile #52 wire 0 ×1 e.g. 1073741845
+   UNKNOWN FIELD GilFile #53 wire 0 ×1 e.g. 1790862588
+   uninterpreted level sections: root.3, root.6, root.8, root.14, root.16, root.17, root.19, root.20, root.21, root.22, root.23, root.25, root.27, root.29, root.35, root.36, root.37, root.38, root.39, root.40, root.41, root.45, root.46, root.48, root.49
+   uninterpreted fields inside listed resources: 68 kinds (1024 occurrences; see --json)

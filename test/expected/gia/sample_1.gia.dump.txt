@@ -1,0 +1,3 @@
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH guid='1073741825' nodes=7
+GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH guid='1610612737' nodes=1 role=dependency
+GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH guid='1610612738' nodes=7 role=dependency

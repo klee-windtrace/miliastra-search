@@ -1,0 +1,20 @@
+GRAPH 'Graph' ENTITY_NODE_GRAPH (guid 1073741832)
+'Graph'/VAR Graph_Var : Ety public=false = id:0
+'Graph'/COMMENT 'Comment' @(-193,-100)
+'Graph'/[1] When Entity Is Created (71) @(-219,48)
+'Graph'/[1] When Entity Is Created (71) out.flow#0 -> [4] Double Branch (2) in.flow#0
+'Graph'/[2] Get Self Entity (73) @(221.28572,-430.57144)
+'Graph'/[3] Equal (14/16) variant=C<T:Ety> @(107.57143,-232.42857)
+'Graph'/[3] Equal (14/16) in#0 "Input 1" <- [2] Get Self Entity (73) out#0 "Self Entity" : Ety
+'Graph'/[3] Equal (14/16) in#1 "Input 2" <- [1] When Entity Is Created (71) out#0 "Event Source Entity" : Ety
+'Graph'/[4] Double Branch (2) @(214.57143,48.57143)
+'Graph'/[4] Double Branch (2) out.flow#0 "Yes" -> [5] Print String (1) in.flow#0
+'Graph'/[4] Double Branch (2) out.flow#1 "No" -> [6] Destroy Entity (69) in.flow#0
+'Graph'/[4] Double Branch (2) in#0 "Condition" <- [3] Equal (14/16) out#0 "Result" : Bol
+'Graph'/[5] Print String (1) @(814,-200.84126)
+'Graph'/[5] Print String (1) in#0 "String" = 'Created' : Str
+'Graph'/[6] Destroy Entity (69) @(795.1111,250.26984)
+'Graph'/[6] Destroy Entity (69) in#0 "Target Entity" <- [8] Get Node Graph Variable (337) out#0 "Variable Value" : Ety
+'Graph'/[8] Get Node Graph Variable (337) @(769.55554,25.825397)
+'Graph'/[8] Get Node Graph Variable (337) in#0 "Variable Name" = 'Graph_Var' : Str
+'Graph'/[8] Get Node Graph Variable (337) out#0 "Variable Value" : Ety (no value, no wire)

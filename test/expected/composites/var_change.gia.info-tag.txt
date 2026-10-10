@@ -1,0 +1,25 @@
+# FILE test/cases/composites/var_change.gia
+format                 gia
+detected_by            header
+file_size              2369
+container_file_type    gia
+engine_version         7.1.0
+mode                   beyond
+export_name            var_change.gia
+node_db_version        7.1.0
+export_tag             909814789-1791036867-1073741847-\var_change.gia
+uid                    909814789
+time                   1791036867
+file_id                1073741847
+resources              7
+primary                1
+dependencies           6
+graphs                 4
+nodes                  11
+composite_bodies       3
+declarations           3
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=4
+CLASS COMPOSITE_NODE_DECL class=12 count=3

@@ -1,0 +1,4 @@
+== test/cases/resolution/test_All_Static.gia  gia  engine 7.1.0  mode beyond  resources 9 (0 not interpreted)
+   UNKNOWN FIELD AssetBundle.dependencies.interface_data.inner.interface.impl.listen_signal #4 wire 2 ×2 e.g. 17 bytes 0x08914e10a09c0118f1ab01288480808006
+   UNKNOWN FIELD AssetBundle.dependencies.interface_data.inner.interface.impl.send_signal #4 wire 2 ×4 e.g. 17 bytes 0x08914e10a09c0118f1ab01288480808006
+   UNKNOWN FIELD AssetBundle.dependencies.interface_data.inner.interface.impl #108 wire 2 ×2 e.g. 67 bytes 0x0a085374617469635f31121108914e10a09c0118f1ab0128…

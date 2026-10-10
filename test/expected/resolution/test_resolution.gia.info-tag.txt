@@ -1,0 +1,25 @@
+# FILE test/cases/resolution/test_resolution.gia
+format                 gia
+detected_by            header
+file_size              8947
+container_file_type    gia
+engine_version         7.1.0
+mode                   beyond
+export_name            test_resolution.gia
+node_db_version        7.1.0
+export_tag             909814789-1790600374-1073741838-\test_resolution.gia
+uid                    909814789
+time                   1790600374
+file_id                1073741838
+resources              7
+primary                5
+dependencies           2
+graphs                 5
+nodes                  71
+composite_bodies       2
+declarations           2
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=5
+CLASS COMPOSITE_NODE_DECL class=12 count=2

@@ -1,0 +1,5 @@
+composite        "VAR_TEST_1"                       1 call: ['VAR_TEST']
+composite        "VAR_TEST_2"                       1 call: ['VAR_TEST']
+composite        "VAR_TEST_3"                       1 call: ['VAR_TEST']
+custom_variable  "Var1" (Int)                       0 get: [], 0 set: [], 1 trigger: ['VAR_TEST'], 1 listen: ['VAR_TEST']
+custom_variable  "Var2" (Str)                       0 get: [], 0 set: [], 1 trigger: ['<composite>VAR_TEST_2'], 1 listen: ['<composite>VAR_TEST_3']

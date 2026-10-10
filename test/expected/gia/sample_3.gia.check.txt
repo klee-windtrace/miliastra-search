@@ -1,0 +1,3 @@
+== test/cases/gia/sample_3.gia  gia  engine 7.0.0  mode beyond  resources 21 (0 not interpreted)
+   schema census: OK (every field in the file is known to the schema)
+   opaque (known but uninterpreted) fields: typedef3.opaque_21×2, typedef3.opaque_35×2, typedef3.opaque_36×2

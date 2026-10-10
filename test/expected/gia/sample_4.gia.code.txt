@@ -1,0 +1,39 @@
+GRAPH 'Lists' ENTITY_NODE_GRAPH (guid 1073741830)
+'Lists'/[1] Clear List (107/111) variant=C<T:Flt> @(-446,-210)
+'Lists'/[1] Clear List (107/111) out.flow#0 -> [3] Concatenate List (100/101) in.flow#0
+'Lists'/[1] Clear List (107/111) in#0 "List" <- [2] Assembly List (169/173) out#0 "List" : L<Flt>
+'Lists'/[2] Assembly List (169/173) variant=C<T:Flt> @(-992,-180)
+'Lists'/[3] Concatenate List (100/101) variant=C<T:Str> @(-101,51)
+'Lists'/[3] Concatenate List (100/101) out.flow#0 -> [5] Clear Dictionary (1718/1777) in.flow#0
+'Lists'/[3] Concatenate List (100/101) in#0 "Target List" <- [4] Assembly List (169/170) out#0 "List" : L<Str>
+'Lists'/[3] Concatenate List (100/101) in#1 "Input List" <- [7] Get List of Values From Dictionary (1578/1583) out#0 "Value List" : L<Str>
+'Lists'/[4] Assembly List (169/170) variant=C<T:Str> @(-534,92)
+'Lists'/[4] Assembly List (169/170) in#0 "Count" = 2 : Int
+'Lists'/[4] Assembly List (169/170) in#1 "0" = '2' : Str
+'Lists'/[4] Assembly List (169/170) in#2 "1" = '3' : Str
+'Lists'/[5] Clear Dictionary (1718/1777) variant=C<K:Cfg,V:Pfb> @(398,324.7143)
+'Lists'/[5] Clear Dictionary (1718/1777) out.flow#0 -> [13] Insert Value Into List (135/139) in.flow#0
+'Lists'/[5] Clear Dictionary (1718/1777) in#0 "Dictionary" <- [6] Assembly Dictionary (1788/1897) out#0 "Dictionary" : Dict
+'Lists'/[6] Assembly Dictionary (1788/1897) variant=C<K:Cfg,V:Pfb> @(-142.85715,350.7143)
+'Lists'/[6] Assembly Dictionary (1788/1897) in#0 "Count" = 2 : Int
+'Lists'/[6] Assembly Dictionary (1788/1897) in#1 "Key 0" = id:10 : Cfg
+'Lists'/[6] Assembly Dictionary (1788/1897) in#2 "Value 0" = id:20 : Pfb
+'Lists'/[7] Get List of Values From Dictionary (1578/1583) variant=C<K:Ety,V:Str> @(-660,426.42856)
+'Lists'/[7] Get List of Values From Dictionary (1578/1583) in#0 "Dictionary" <- [8] Create Dictionary (1088/1093) out#0 "Dictionary" : Dict
+'Lists'/[8] Create Dictionary (1088/1093) variant=C<K:Ety,V:Str> @(-1057.1428,437.85715)
+'Lists'/[9] 3D Vector: Zero Vector (192) @(-1138.8572,802.1429)
+'Lists'/[10] Split 3D Vector (9) @(-822.8571,808.1429)
+'Lists'/[10] Split 3D Vector (9) in#0 "3D Vector" <- [9] 3D Vector: Zero Vector (192) out#0 "(0, 0, 0)" : Vec
+'Lists'/[11] Create 3D Vector (225) @(-262.85715,806.7143)
+'Lists'/[11] Create 3D Vector (225) in#0 "X-Component" <- [10] Split 3D Vector (9) out#0 "X-Component" : Flt
+'Lists'/[11] Create 3D Vector (225) in#1 "Y-Component" = 44 : Flt
+'Lists'/[11] Create 3D Vector (225) in#2 "Z-Component" = 55 : Flt
+'Lists'/[12] 3D Vector Dot Product (505) @(292.85715,812.4286)
+'Lists'/[12] 3D Vector Dot Product (505) in#0 "3D Vector 1" <- [11] Create 3D Vector (225) out#0 "3D Vector" : Vec
+'Lists'/[12] 3D Vector Dot Product (505) in#1 "3D Vector 2" <- [11] Create 3D Vector (225) out#0 "3D Vector" : Vec
+'Lists'/[13] Insert Value Into List (135/139) variant=C<T:Flt> @(1020,322.14285)
+'Lists'/[13] Insert Value Into List (135/139) in#0 "List" <- [2] Assembly List (169/173) out#0 "List" : L<Flt>
+'Lists'/[13] Insert Value Into List (135/139) in#1 "Insert ID" = 0 : Int
+'Lists'/[13] Insert Value Into List (135/139) in#2 "Insert Value" <- [12] 3D Vector Dot Product (505) out#0 "Result" : Flt
+'Lists'/[14] When Character Revives (281) @(-900.8571,-418.7143)
+'Lists'/[14] When Character Revives (281) out.flow#0 -> [1] Clear List (107/111) in.flow#0

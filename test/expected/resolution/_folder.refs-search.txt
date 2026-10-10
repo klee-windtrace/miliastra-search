@@ -1,0 +1,20 @@
+custom_variable  "* (listener for any name)"        1 listen: ['Dynamic']
+custom_variable  "Static_Var" (Flt)                 1 get: ['All_Static'], 1 set: ['All_Static'], 1 trigger: ['All_Static'], 1 listen: ['All_Static']
+custom_variable  "test" (Str)                       1 get: ['Dynamic'], 0 set: []
+custom_variable  "test1"                            1 get: ['Indirect'], 0 set: []
+custom_variable  "var1"                             0 get: [], 0 set: [], 2 listen: ['Dynamic'; 'Static']
+custom_variable  "var2"                             0 get: [], 0 set: [], 2 listen: ['Dynamic'; 'Static']
+custom_variable  "var3"                             0 get: [], 0 set: [], 2 listen: ['Dynamic'; 'Static']
+global_timer     "* (listener for any name)"        1 listen: ['Dynamic']
+global_timer     "Static_Global"                    1 start: ['All_Static'], 1 stop: ['All_Static'], 1 listen: ['All_Static']
+global_timer     "test3"                            1 get-time: ['Indirect']
+graph_variable   "Static_Graph" (L<Gid>)            ['All_Static']: 1 get, 1 set, 1 trigger, 1 listen
+graph_variable   "gvar1"                            ['Static']: 0 get, 0 set, 2 listen
+graph_variable   "gvar3"                            ['Static']: 0 get, 0 set, 1 listen
+graph_variable   "gvar4"                            ['Static']: 0 get, 0 set, 1 listen
+graph_variable   "name" (Str)                       ['Static']: 1 get, 0 set
+graph_variable   "* (listener for any name)"        1 listen: ['Dynamic']
+graph_variable   "gvar1"                            ['Dynamic']: 0 get, 0 set, 1 listen
+graph_variable   "name" (Str)                       ['Dynamic']: 1 get, 0 set
+graph_variable   "test2" (Str)                      ['Indirect']: 2 get, 0 set
+signal           "Static_1"                         1 listen: ['All_Static'], 1 send: ['All_Static']

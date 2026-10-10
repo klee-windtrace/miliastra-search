@@ -1,0 +1,68 @@
+DECL "Signal_1" SIGNAL_NODE_DECL guid='1610612781'
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH guid='1073741825' nodes=0
+GRAPH '<status>New Node Graph_1' STATUS_NODE_GRAPH guid='1073741826' nodes=0
+GRAPH '<class>New Node Graph_2' CLASS_NODE_GRAPH guid='1073741827' nodes=0
+GRAPH 'New Node Graph_3' ITEM_NODE_GRAPH guid='1073741828' nodes=0
+GRAPH '<skill>New Character Skill Node Graph' SKILL_NODE_GRAPH guid='1082130433' nodes=1
+GRAPH '<creation>New Creation Skill Node Graph' CREATION_SKILL_GRAPH guid='1082130434' nodes=1
+GRAPH '<creation>New Creation Status Node Graph' CREATION_STATUS_GRAPH guid='1082130435' nodes=1
+GRAPH '<creation>New Creation Status Decision Node Graph' CREATION_STATUS_DECISION_GRAPH guid='1082130436' nodes=1
+GRAPH '<skill>New Character Control Skill Node Graph' CHARACTER_CONTROL_SKILL_GRAPH guid='1082130437' nodes=1
+GRAPH '<filter>New Filter Node Graph' BOOLEAN_FILTER_GRAPH guid='1082130438' nodes=1
+GRAPH '<filter>New Filter Node Graph_1' INTEGER_FILTER_GRAPH guid='1082130439' nodes=1
+RESOURCE "Default Template" PLAYER_TEMPLATE guid='1086324737'
+RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE guid='1090519041'
+RESOURCE "Custom Class" CLASS guid='1090519041'
+RESOURCE "Custom Skill" SKILL guid='1098907649'
+RESOURCE "Control Skill" CONTROL_SKILL guid='1228931073'
+RESOURCE "Custom Creation Skill" CUSTOM_CREATION_SKILL guid='1191182337'
+RESOURCE "Skill Variable" SKILL_VARIABLE guid='1207959553'
+RESOURCE "New Skill Resource" SKILL_RESOURCE guid='1103101953'
+RESOURCE "New Status" UNIT_STATUS guid='1077936129'
+RESOURCE "Global Timer1" GLOBAL_TIMER guid='1073741825'
+RESOURCE "New Projectile" PROJECTILE guid='1077936134'
+RESOURCE "Custom Template" SHOP_TEMPLATE guid='1136656385'
+RESOURCE "New Item" ITEM guid='1107296257'
+RESOURCE "Unit Tags" UNIT_TAG guid='1073741825'
+RESOURCE "Scan Tag Template" SCAN_TAG guid='1161822209'
+RESOURCE "Entity Deployment Group" ENTITY_DEPLOYMENT_GROUP guid='1073741825'
+RESOURCE "Light Source" LIGHT_SOURCE guid='1182793729'
+RESOURCE "VFX Tool" VFX_TOOL guid='1199570945'
+RESOURCE "Custom Camera" CAMERA guid='1073741825'
+RESOURCE "Stone Functional Platform" OBJECT guid='1077936129' parent=(entities: 1)
+RESOURCE "Arrow Sign" OBJECT guid='1077936131' parent=(entities: 0)
+RESOURCE "Wooden Bridge" OBJECT guid='1077936132' parent=(entities: 0)
+RESOURCE "Challenge Coin Loot" OBJECT guid='1077936133' parent=(entities: 0)
+RESOURCE "Prefab Group" OBJECT guid='1077936130' parent=(entities: 1)
+RESOURCE "Pyro Hilichurl Shooter" CREATION guid='1082130433'
+RESOURCE "Cryo Abyss Mage" CREATION guid='1082130434'
+RESOURCE "Stone Functional Platform" OBJECT_ENTITY guid='1077936129' parent=(1077936129:"Stone Functional Platform")
+RESOURCE "Challenge Coin Loot" OBJECT_ENTITY guid='1077936136' parent=(10007002)
+RESOURCE "Prefab Group" OBJECT_ENTITY guid='1077936132' parent=(1077936130:"Prefab Group")
+RESOURCE "Pyro Slime" CREATION_ENTITY guid='1082130433'
+RESOURCE "Hydro Slime" CREATION_ENTITY guid='1082130434'
+RESOURCE "Fabric-Roof Hut" STATIC_ENTITY guid='1077936135' parent=(20001485)
+RESOURCE "Terrain01" TERRAIN_ENTITY guid='1073741825'
+RESOURCE "Default Layout" INTERFACE_LAYOUT guid='1073741825'
+RESOURCE "Environment Configuration" ENVIRONMENT_CONFIGURATION guid='1186988033'
+RESOURCE "Path" PATH guid='1073741825'
+RESOURCE "Shield" SHIELD guid='1157627905'
+RESOURCE "Create Preset Point" PRESET_POINT guid='1073741825'
+RESOURCE "" class#41 guid='1073741825'
+RESOURCE "New Scene Generation Template" SCENE_GENERATION_TEMPLATE_A guid='1073741825'
+RESOURCE "New Scene Generation Template" SCENE_GENERATION_TEMPLATE_B guid='1073741826'
+RESOURCE "New Scene Generation Template" SCENE_GENERATION_TEMPLATE_B guid='1073741827'
+RESOURCE "Mini-Map" UI_CONTROL guid='1073741826'
+RESOURCE "Skill Area" UI_CONTROL guid='1073741827'
+RESOURCE "Team Information" UI_CONTROL guid='1073741828'
+RESOURCE "Character HP Bar" UI_CONTROL guid='1073741829'
+RESOURCE "Joystick" UI_CONTROL guid='1073741830'
+RESOURCE "Creation HP Bar" UI_CONTROL guid='1073741831'
+RESOURCE "Exit Button" UI_CONTROL guid='1073741832'
+RESOURCE "Voice-Over" UI_CONTROL guid='1073741833'
+RESOURCE "Tab" UI_CONTROL guid='1073741834'
+RESOURCE "Chat Button" UI_CONTROL guid='1073741835'
+RESOURCE "Network Status" UI_CONTROL guid='1073741836'
+RESOURCE "Struggle Button" UI_CONTROL guid='1073741837'
+RESOURCE "Voice Chat Button" UI_CONTROL guid='1073741838'
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL guid='1073741839'

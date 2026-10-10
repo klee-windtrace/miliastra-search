@@ -1,0 +1,9 @@
+# findings
+INFO  catch-all-listener: [5] When Timer Is Triggered in graph 'Send' also runs code for every name: [4] Send Signal runs for every name (not a name switch)
+
+# limits
+signals: 2/100 declared
+
+top graphs by node count:
+'Both': 4/3000 nodes
+'Receive': 3/3000 nodes

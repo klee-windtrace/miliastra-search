@@ -1,0 +1,2 @@
+# findings
+INFO  signal-never-used: signal "Signal_1" is declared but never sent or listened to in the scanned graphs [sample_9.gia]

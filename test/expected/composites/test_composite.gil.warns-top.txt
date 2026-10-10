@@ -1,0 +1,15 @@
+# findings
+(no findings)
+
+# limits
+composites: 2/1000 declared
+prefabs (OBJECT): 1/1000
+dynamic entities (OBJECT_ENTITY): 1/3000
+PRESET_POINT: 1/2000
+ENVIRONMENT_CONFIGURATION: 1/50
+CLASS: 1/100
+SKILL: 1/100
+TERRAIN_ENTITY: 1/1200
+
+top graphs by node count:
+'New Node Graph': 17/3000 nodes

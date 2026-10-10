@@ -1,0 +1,222 @@
+GRAPH 'Dynamic' ENTITY_NODE_GRAPH (guid 1073741826)
+'Dynamic'/VAR name : Str public=false = 'gvar3'
+'Dynamic'/[1] When Custom Variable Changes (36) @(-527,-416)
+'Dynamic'/[1] When Custom Variable Changes (36) out.flow#0 -> [5] Multiple Branches (3/4) in.flow#0
+'Dynamic'/[1] When Custom Variable Changes (36) out#3 "Pre-Change Value" = 0 : Int
+'Dynamic'/[1] When Custom Variable Changes (36) out#4 "Post-Change Value" = 0 : Int
+'Dynamic'/[2] When Node Graph Variable Changes (351/356) variant=C<T:Str> @(-540,117)
+'Dynamic'/[2] When Node Graph Variable Changes (351/356) out.flow#0 -> [8] Double Branch (2) in.flow#0
+'Dynamic'/[2] When Node Graph Variable Changes (351/356) out#3 "Pre-Change Value" = '' : Str
+'Dynamic'/[2] When Node Graph Variable Changes (351/356) out#4 "Post-Change Value" = '' : Str
+'Dynamic'/[3] When Timer Is Triggered (83) @(1586,-498)
+'Dynamic'/[3] When Timer Is Triggered (83) out.flow#0 -> [19] Double Branch (2) in.flow#0
+'Dynamic'/[4] When Global Timer Is Triggered (315) @(1037.3334,-25.666666)
+'Dynamic'/[4] When Global Timer Is Triggered (315) out.flow#0 -> [22] Settle Stage (77) in.flow#0
+'Dynamic'/[5] Multiple Branches (3/4) variant=C<T:Str> @(-44,-414)
+'Dynamic'/[5] Multiple Branches (3/4) out.flow#0 "Default" -> [7] Multiple Branches (3/4) in.flow#0
+'Dynamic'/[5] Multiple Branches (3/4) out.flow#2 "var2" -> [6] Settle Stage (77) in.flow#0
+'Dynamic'/[5] Multiple Branches (3/4) in#0 "Control Expression" <- [1] When Custom Variable Changes (36) out#2 "Variable Name" : Str
+'Dynamic'/[5] Multiple Branches (3/4) in#0 "Control Expression" = '' : Str (also wired)
+'Dynamic'/[6] Settle Stage (77) @(508,-198)
+'Dynamic'/[7] Multiple Branches (3/4) variant=C<T:Str> @(756,-530)
+'Dynamic'/[7] Multiple Branches (3/4) out.flow#0 "Default" -> [21] Settle Stage (77) in.flow#0
+'Dynamic'/[7] Multiple Branches (3/4) in#0 "Control Expression" <- [1] When Custom Variable Changes (36) out#2 "Variable Name" : Str
+'Dynamic'/[7] Multiple Branches (3/4) in#0 "Control Expression" = '' : Str (also wired)
+'Dynamic'/[8] Double Branch (2) @(0,112)
+'Dynamic'/[8] Double Branch (2) out.flow#0 "Yes" -> [10] Settle Stage (77) in.flow#0
+'Dynamic'/[8] Double Branch (2) out.flow#1 "No" -> [11] Double Branch (2) in.flow#0
+'Dynamic'/[8] Double Branch (2) in#0 "Condition" <- [9] Equal (14) out#0 "Result" : Bol
+'Dynamic'/[9] Equal (14) @(-78,446)
+'Dynamic'/[9] Equal (14) in#0 "Input 1" <- [2] When Node Graph Variable Changes (351/356) out#2 "Variable Name" : Str
+'Dynamic'/[9] Equal (14) in#0 "Input 1" = '' : Str (also wired)
+'Dynamic'/[9] Equal (14) in#1 "Input 2" = 'gvar1' : Str
+'Dynamic'/[10] Settle Stage (77) @(402,32)
+'Dynamic'/[11] Double Branch (2) @(646,258)
+'Dynamic'/[11] Double Branch (2) out.flow#1 "No" -> [14] Multiple Branches (3/4) in.flow#0
+'Dynamic'/[11] Double Branch (2) in#0 "Condition" <- [12] Equal (14) out#0 "Result" : Bol
+'Dynamic'/[12] Equal (14) @(658,544)
+'Dynamic'/[12] Equal (14) in#0 "Input 1" <- [13] Get Local Variable (18/2656) out#1 "Value" : Str
+'Dynamic'/[12] Equal (14) in#0 "Input 1" = '' : Str (also wired)
+'Dynamic'/[12] Equal (14) in#1 "Input 2" <- [2] When Node Graph Variable Changes (351/356) out#4 "Post-Change Value" : Str
+'Dynamic'/[12] Equal (14) in#1 "Input 2" = '' : Str (also wired)
+'Dynamic'/[13] Get Local Variable (18/2656) variant=C<T:Str> @(222,756)
+'Dynamic'/[13] Get Local Variable (18/2656) in#0 "Initial Value" = 'gvar1' : Str
+'Dynamic'/[13] Get Local Variable (18/2656) out#1 "Value" = '' : Str
+'Dynamic'/[14] Multiple Branches (3/4) variant=C<T:Str> @(1414,504)
+'Dynamic'/[14] Multiple Branches (3/4) out.flow#0 "Default" -> [15] Double Branch (2) in.flow#0
+'Dynamic'/[14] Multiple Branches (3/4) in#0 "Control Expression" <- [2] When Node Graph Variable Changes (351/356) out#2 "Variable Name" : Str
+'Dynamic'/[14] Multiple Branches (3/4) in#0 "Control Expression" = '' : Str (also wired)
+'Dynamic'/[15] Double Branch (2) @(2096,540)
+'Dynamic'/[15] Double Branch (2) out.flow#0 "Yes" -> [28] Settle Stage (77) in.flow#0
+'Dynamic'/[15] Double Branch (2) out.flow#1 "No" -> [29] Double Branch (2) in.flow#0
+'Dynamic'/[15] Double Branch (2) in#0 "Condition" <- [16] Equal (14) out#0 "Result" : Bol
+'Dynamic'/[16] Equal (14) @(2128,842)
+'Dynamic'/[16] Equal (14) in#0 "Input 1" <- [17] Get Local Variable (18/2656) out#1 "Value" : Str
+'Dynamic'/[16] Equal (14) in#0 "Input 1" = '' : Str (also wired)
+'Dynamic'/[16] Equal (14) in#1 "Input 2" <- [18] Get Node Graph Variable (337/342) out#0 "Variable Value" : Str
+'Dynamic'/[16] Equal (14) in#1 "Input 2" = '' : Str (also wired)
+'Dynamic'/[17] Get Local Variable (18/2656) variant=C<T:Str> @(1159.5,865)
+'Dynamic'/[17] Get Local Variable (18/2656) in#0 "Initial Value" <- [2] When Node Graph Variable Changes (351/356) out#2 "Variable Name" : Str
+'Dynamic'/[17] Get Local Variable (18/2656) in#0 "Initial Value" = '' : Str (also wired)
+'Dynamic'/[17] Get Local Variable (18/2656) out#1 "Value" = '' : Str
+'Dynamic'/[18] Get Node Graph Variable (337/342) variant=C<T:Str> @(1659.5,1100)
+'Dynamic'/[18] Get Node Graph Variable (337/342) in#0 "Variable Name" = 'name' : Str
+'Dynamic'/[18] Get Node Graph Variable (337/342) out#0 "Variable Value" = '' : Str
+'Dynamic'/[19] Double Branch (2) @(2022.5,-473)
+'Dynamic'/[19] Double Branch (2) out.flow#0 "Yes" -> [26] Settle Stage (77) in.flow#0
+'Dynamic'/[19] Double Branch (2) in#0 "Condition" <- [20] Equal (14) out#0 "Result" : Bol
+'Dynamic'/[20] Equal (14) @(2310.8333,-266.33334)
+'Dynamic'/[20] Equal (14) in#0 "Input 1" <- [24] Create Composite Node (1610612737) out#0 "y" : Str
+'Dynamic'/[20] Equal (14) in#0 "Input 1" = '' : Str (also wired)
+'Dynamic'/[20] Equal (14) in#1 "Input 2" <- [3] When Timer Is Triggered (83) out#2 "Timer Name" : Str
+'Dynamic'/[20] Equal (14) in#1 "Input 2" = '' : Str (also wired)
+'Dynamic'/[21] Settle Stage (77) @(1272.6666,-391.66666)
+'Dynamic'/[22] Settle Stage (77) @(1432.6666,170)
+'Dynamic'/[23] Get Custom Variable (50/51) variant=C<T:Str> @(1541,-91.666664)
+'Dynamic'/[23] Get Custom Variable (50/51) in#0 "Target Entity" <- [3] When Timer Is Triggered (83) out#0 "Event Source Entity" : Ety
+'Dynamic'/[23] Get Custom Variable (50/51) in#1 "Variable Name" = 'test' : Str
+'Dynamic'/[23] Get Custom Variable (50/51) out#0 "Variable Value" = '' : Str
+'Dynamic'/[24] Create Composite Node (1610612737) user=COMPOSITE @(2110.8333,37)
+'Dynamic'/[24] Create Composite Node (1610612737) in#0 "x" <- [23] Get Custom Variable (50/51) out#0 "Variable Value" : Str
+'Dynamic'/[26] Settle Stage (77) @(2460.8333,-588)
+'Dynamic'/[28] Settle Stage (77) @(2457.5,378.66666)
+'Dynamic'/[29] Double Branch (2) @(2860.8333,622)
+'Dynamic'/[29] Double Branch (2) in#0 "Condition" <- [30] Equal (14) out#0 "Result" : Bol
+'Dynamic'/[30] Equal (14) @(3040.8333,1015.3333)
+'Dynamic'/[30] Equal (14) in#0 "Input 1" <- [31] Create Composite Node (1610612737) out#0 "y" : Str
+'Dynamic'/[30] Equal (14) in#0 "Input 1" = '' : Str (also wired)
+'Dynamic'/[30] Equal (14) in#1 "Input 2" <- [17] Get Local Variable (18/2656) out#1 "Value" : Str
+'Dynamic'/[30] Equal (14) in#1 "Input 2" = '' : Str (also wired)
+'Dynamic'/[31] Create Composite Node (1610612737) user=COMPOSITE @(2820.8333,1435.3334)
+'Dynamic'/[31] Create Composite Node (1610612737) in#0 "x" <- [35] Create Composite Node(1) (1610612738) out#0 "yy" : Str
+'Dynamic'/[35] Create Composite Node(1) (1610612738) user=COMPOSITE @(2337.5,1442)
+'Dynamic'/[35] Create Composite Node(1) (1610612738) in#0 "yy" = 'gvar4' : Str
+GRAPH 'Indirect' ENTITY_NODE_GRAPH (guid 1073741827)
+'Indirect'/VAR test2 : Str public=false = 'test4'
+'Indirect'/[1] Get Custom Variable (50) @(-14,-200)
+'Indirect'/[1] Get Custom Variable (50) in#0 "Target Entity" <- [10] Get Self Entity (73) out#0 "Self Entity" : Ety
+'Indirect'/[1] Get Custom Variable (50) in#1 "Variable Name" <- [2] Get Local Variable (18/2656) out#1 "Value" : Str
+'Indirect'/[2] Get Local Variable (18/2656) variant=C<T:Str> @(-442,-186)
+'Indirect'/[2] Get Local Variable (18/2656) in#0 "Initial Value" = 'test1' : Str
+'Indirect'/[2] Get Local Variable (18/2656) out#1 "Value" = '' : Str
+'Indirect'/[3] Get Node Graph Variable (337) @(8,39)
+'Indirect'/[3] Get Node Graph Variable (337) in#0 "Variable Name" <- [4] Create Composite Node (1610612737) out#0 "y" : Str
+'Indirect'/[4] Create Composite Node (1610612737) user=COMPOSITE @(-317,36)
+'Indirect'/[4] Create Composite Node (1610612737) in#0 "x" = 'test2' : Str
+'Indirect'/[5] Get Current Global Timer Time (310) @(555,89)
+'Indirect'/[5] Get Current Global Timer Time (310) in#0 "Target Entity" <- [10] Get Self Entity (73) out#0 "Self Entity" : Ety
+'Indirect'/[5] Get Current Global Timer Time (310) in#1 "Timer Name" <- [6] Create Composite Node(1) (1610612738) out#0 "yy" : Str
+'Indirect'/[6] Create Composite Node(1) (1610612738) user=COMPOSITE @(190,219)
+'Indirect'/[6] Create Composite Node(1) (1610612738) in#0 "yy" <- [7] Get Local Variable (18/2656) out#1 "Value" : Str
+'Indirect'/[7] Get Local Variable (18/2656) variant=C<T:Str> @(-211.25,207)
+'Indirect'/[7] Get Local Variable (18/2656) in#0 "Initial Value" = 'test3' : Str
+'Indirect'/[7] Get Local Variable (18/2656) out#1 "Value" = '' : Str
+'Indirect'/[9] Stop Timer (82) @(812.5,347)
+'Indirect'/[9] Stop Timer (82) in#0 "Target Entity" <- [10] Get Self Entity (73) out#0 "Self Entity" : Ety
+'Indirect'/[9] Stop Timer (82) in#1 "Timer Name" <- [11] Get Node Graph Variable (337/342) out#0 "Variable Value" : Str
+'Indirect'/[10] Get Self Entity (73) @(1022.5,-0.5)
+'Indirect'/[11] Get Node Graph Variable (337/342) variant=C<T:Str> @(391.25,449.5)
+'Indirect'/[11] Get Node Graph Variable (337/342) in#0 "Variable Name" = 'test2' : Str
+'Indirect'/[11] Get Node Graph Variable (337/342) out#0 "Variable Value" = '' : Str
+GRAPH 'Static' ENTITY_NODE_GRAPH (guid 1073741825)
+'Static'/VAR name : Str public=false = 'gvar3'
+'Static'/[1] When Custom Variable Changes (36) @(-527,-416)
+'Static'/[1] When Custom Variable Changes (36) out.flow#0 -> [5] Multiple Branches (3/4) in.flow#0
+'Static'/[1] When Custom Variable Changes (36) out#3 "Pre-Change Value" = 0 : Int
+'Static'/[1] When Custom Variable Changes (36) out#4 "Post-Change Value" = 0 : Int
+'Static'/[2] When Node Graph Variable Changes (351/356) variant=C<T:Str> @(-540,117)
+'Static'/[2] When Node Graph Variable Changes (351/356) out.flow#0 -> [8] Double Branch (2) in.flow#0
+'Static'/[2] When Node Graph Variable Changes (351/356) out#3 "Pre-Change Value" = '' : Str
+'Static'/[2] When Node Graph Variable Changes (351/356) out#4 "Post-Change Value" = '' : Str
+'Static'/[3] When Timer Is Triggered (83) @(1586,-498)
+'Static'/[3] When Timer Is Triggered (83) out.flow#0 -> [19] Double Branch (2) in.flow#0
+'Static'/[4] When Global Timer Is Triggered (315) @(1037.3334,-25.666666)
+'Static'/[5] Multiple Branches (3/4) variant=C<T:Str> @(-44,-414)
+'Static'/[5] Multiple Branches (3/4) out.flow#0 "Default" -> [7] Multiple Branches (3/4) in.flow#0
+'Static'/[5] Multiple Branches (3/4) out.flow#2 "var2" -> [6] Settle Stage (77) in.flow#0
+'Static'/[5] Multiple Branches (3/4) in#0 "Control Expression" <- [1] When Custom Variable Changes (36) out#2 "Variable Name" : Str
+'Static'/[5] Multiple Branches (3/4) in#0 "Control Expression" = '' : Str (also wired)
+'Static'/[6] Settle Stage (77) @(508,-198)
+'Static'/[7] Multiple Branches (3/4) variant=C<T:Str> @(756,-530)
+'Static'/[7] Multiple Branches (3/4) in#0 "Control Expression" <- [1] When Custom Variable Changes (36) out#2 "Variable Name" : Str
+'Static'/[7] Multiple Branches (3/4) in#0 "Control Expression" = '' : Str (also wired)
+'Static'/[8] Double Branch (2) @(0,112)
+'Static'/[8] Double Branch (2) out.flow#0 "Yes" -> [10] Settle Stage (77) in.flow#0
+'Static'/[8] Double Branch (2) out.flow#1 "No" -> [11] Double Branch (2) in.flow#0
+'Static'/[8] Double Branch (2) in#0 "Condition" <- [9] Equal (14) out#0 "Result" : Bol
+'Static'/[9] Equal (14) @(-78,446)
+'Static'/[9] Equal (14) in#0 "Input 1" <- [2] When Node Graph Variable Changes (351/356) out#2 "Variable Name" : Str
+'Static'/[9] Equal (14) in#0 "Input 1" = '' : Str (also wired)
+'Static'/[9] Equal (14) in#1 "Input 2" = 'gvar1' : Str
+'Static'/[10] Settle Stage (77) @(402,32)
+'Static'/[11] Double Branch (2) @(646,258)
+'Static'/[11] Double Branch (2) out.flow#1 "No" -> [14] Multiple Branches (3/4) in.flow#0
+'Static'/[11] Double Branch (2) in#0 "Condition" <- [12] Equal (14) out#0 "Result" : Bol
+'Static'/[12] Equal (14) @(658,544)
+'Static'/[12] Equal (14) in#0 "Input 1" <- [13] Get Local Variable (18/2656) out#1 "Value" : Str
+'Static'/[12] Equal (14) in#0 "Input 1" = '' : Str (also wired)
+'Static'/[12] Equal (14) in#1 "Input 2" <- [2] When Node Graph Variable Changes (351/356) out#2 "Variable Name" : Str
+'Static'/[12] Equal (14) in#1 "Input 2" = '' : Str (also wired)
+'Static'/[13] Get Local Variable (18/2656) variant=C<T:Str> @(222,756)
+'Static'/[13] Get Local Variable (18/2656) in#0 "Initial Value" = 'gvar1' : Str
+'Static'/[13] Get Local Variable (18/2656) out#1 "Value" = '' : Str
+'Static'/[14] Multiple Branches (3/4) variant=C<T:Str> @(1414,504)
+'Static'/[14] Multiple Branches (3/4) out.flow#0 "Default" -> [15] Double Branch (2) in.flow#0
+'Static'/[14] Multiple Branches (3/4) in#0 "Control Expression" <- [2] When Node Graph Variable Changes (351/356) out#2 "Variable Name" : Str
+'Static'/[14] Multiple Branches (3/4) in#0 "Control Expression" = '' : Str (also wired)
+'Static'/[15] Double Branch (2) @(2096,540)
+'Static'/[15] Double Branch (2) out.flow#0 "Yes" -> [28] Settle Stage (77) in.flow#0
+'Static'/[15] Double Branch (2) out.flow#1 "No" -> [29] Double Branch (2) in.flow#0
+'Static'/[15] Double Branch (2) in#0 "Condition" <- [16] Equal (14) out#0 "Result" : Bol
+'Static'/[16] Equal (14) @(2128,842)
+'Static'/[16] Equal (14) in#0 "Input 1" <- [17] Get Local Variable (18/2656) out#1 "Value" : Str
+'Static'/[16] Equal (14) in#0 "Input 1" = '' : Str (also wired)
+'Static'/[16] Equal (14) in#1 "Input 2" <- [18] Get Node Graph Variable (337/342) out#0 "Variable Value" : Str
+'Static'/[16] Equal (14) in#1 "Input 2" = '' : Str (also wired)
+'Static'/[17] Get Local Variable (18/2656) variant=C<T:Str> @(1159.5,865)
+'Static'/[17] Get Local Variable (18/2656) in#0 "Initial Value" <- [2] When Node Graph Variable Changes (351/356) out#2 "Variable Name" : Str
+'Static'/[17] Get Local Variable (18/2656) in#0 "Initial Value" = '' : Str (also wired)
+'Static'/[17] Get Local Variable (18/2656) out#1 "Value" = '' : Str
+'Static'/[18] Get Node Graph Variable (337/342) variant=C<T:Str> @(1659.5,1100)
+'Static'/[18] Get Node Graph Variable (337/342) in#0 "Variable Name" = 'name' : Str
+'Static'/[18] Get Node Graph Variable (337/342) out#0 "Variable Value" = '' : Str
+'Static'/[19] Double Branch (2) @(2022.5,-473)
+'Static'/[19] Double Branch (2) out.flow#0 "Yes" -> [26] Settle Stage (77) in.flow#0
+'Static'/[19] Double Branch (2) in#0 "Condition" <- [20] Equal (14) out#0 "Result" : Bol
+'Static'/[20] Equal (14) @(2310.8333,-266.33334)
+'Static'/[20] Equal (14) in#0 "Input 1" <- [24] Create Composite Node (1610612737) out#0 "y" : Str
+'Static'/[20] Equal (14) in#0 "Input 1" = '' : Str (also wired)
+'Static'/[20] Equal (14) in#1 "Input 2" <- [3] When Timer Is Triggered (83) out#2 "Timer Name" : Str
+'Static'/[20] Equal (14) in#1 "Input 2" = '' : Str (also wired)
+'Static'/[24] Create Composite Node (1610612737) user=COMPOSITE @(2110.8333,37)
+'Static'/[24] Create Composite Node (1610612737) in#0 "x" <- [25] Get Local Variable (18/2656) out#1 "Value" : Str
+'Static'/[25] Get Local Variable (18/2656) variant=C<T:Str> @(1635.8334,27)
+'Static'/[25] Get Local Variable (18/2656) in#0 "Initial Value" = 'tm' : Str
+'Static'/[25] Get Local Variable (18/2656) out#1 "Value" = '' : Str
+'Static'/[26] Settle Stage (77) @(2460.8333,-588)
+'Static'/[28] Settle Stage (77) @(2457.5,378.66666)
+'Static'/[29] Double Branch (2) @(2860.8333,622)
+'Static'/[29] Double Branch (2) in#0 "Condition" <- [30] Equal (14) out#0 "Result" : Bol
+'Static'/[30] Equal (14) @(3040.8333,1015.3333)
+'Static'/[30] Equal (14) in#0 "Input 1" <- [31] Create Composite Node (1610612737) out#0 "y" : Str
+'Static'/[30] Equal (14) in#0 "Input 1" = '' : Str (also wired)
+'Static'/[30] Equal (14) in#1 "Input 2" <- [17] Get Local Variable (18/2656) out#1 "Value" : Str
+'Static'/[30] Equal (14) in#1 "Input 2" = '' : Str (also wired)
+'Static'/[31] Create Composite Node (1610612737) user=COMPOSITE @(2820.8333,1435.3334)
+'Static'/[31] Create Composite Node (1610612737) in#0 "x" <- [35] Create Composite Node(1) (1610612738) out#0 "yy" : Str
+'Static'/[35] Create Composite Node(1) (1610612738) user=COMPOSITE @(2337.5,1442)
+'Static'/[35] Create Composite Node(1) (1610612738) in#0 "yy" = 'gvar4' : Str
+GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH (guid 1610612737, decl 1610612737) role=dependency
+'<composite>Create Composite Node'/PORTMAP ext.in#0 "x" -> [1] Get Local Variable (18/2656) in#0 "Initial Value"
+'<composite>Create Composite Node'/PORTMAP ext.out#0 "y" -> [21] Get Local Variable (18/2656) out#1 "Value"
+'<composite>Create Composite Node'/[1] Get Local Variable (18/2656) variant=C<T:Str> @(-27,-189)
+'<composite>Create Composite Node'/[1] Get Local Variable (18/2656) in#0 "Initial Value" = '' : Str
+'<composite>Create Composite Node'/[1] Get Local Variable (18/2656) out#1 "Value" = '' : Str
+'<composite>Create Composite Node'/[21] Get Local Variable (18/2656) variant=C<T:Str> @(1,5)
+'<composite>Create Composite Node'/[21] Get Local Variable (18/2656) in#0 "Initial Value" <- [1] Get Local Variable (18/2656) out#1 "Value" : Str
+'<composite>Create Composite Node'/[21] Get Local Variable (18/2656) in#0 "Initial Value" = '' : Str (also wired)
+'<composite>Create Composite Node'/[21] Get Local Variable (18/2656) out#1 "Value" = '' : Str
+GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH (guid 1610612738, decl 1610612738) role=dependency
+'<composite>Create Composite Node(1)'/PORTMAP ext.in#0 "yy" -> [32] Create Composite Node (1610612737) in#0 "x"
+'<composite>Create Composite Node(1)'/PORTMAP ext.out#0 "yy" -> [32] Create Composite Node (1610612737) out#0 "y"
+'<composite>Create Composite Node(1)'/[32] Create Composite Node (1610612737) user=COMPOSITE @(0,0)

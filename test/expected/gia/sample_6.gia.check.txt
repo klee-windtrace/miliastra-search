@@ -1,0 +1,2 @@
+== test/cases/gia/sample_6.gia  gia  engine 7.0.0  mode classic  resources 2 (0 not interpreted)
+   schema census: OK (every field in the file is known to the schema)

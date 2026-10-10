@@ -1,0 +1,8 @@
+# findings
+(no findings)
+
+# limits
+
+top graphs by node count:
+'<skill>New Character Skill Node Graph': 5/3000 nodes
+'<creation>New Creation Skill Node Graph': 3/3000 nodes

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>warns test_All_Composite.gia, test_composite.gia, test_composite.gil, var_change.gia</title>
+<style>
+:root{color-scheme:dark;--bg:#0C0C0C;--panel:#161616;--line:#2e2e2e;--fg:#CCCCCC;--muted:#767676;--accent:#61D6D6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1500px;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+h1,h2,h3,h4{line-height:1.25;color:#F2F2F2}
+h1{font-size:1.7rem;margin:.2rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.4rem;word-break:break-all}
+h2{font-size:1.25rem;margin:1.6rem 0 .6rem}
+h3{font-size:1.05rem;margin:1.2rem 0 .5rem}
+hr{border:0;border-top:1px solid var(--line);margin:1.8rem 0}
+code,pre,table,.lines{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:.88em}
+.guid{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em}
+code{background:#1c1c1c;border-radius:3px;padding:.05em .3em}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:.8rem 1rem;overflow:auto}
+.tablewrap{margin:.5rem 0 1rem}
+table{border-collapse:collapse;min-width:50%}
+th,td{border:1px solid var(--line);padding:.3rem .6rem;text-align:left;vertical-align:top}
+th{background:var(--panel);color:#F2F2F2;white-space:nowrap;position:sticky;top:-2px}
+tbody tr:nth-child(even){background:#111}
+tbody tr:hover{background:#1c1c1c}
+td.right,th.right{text-align:right}td.center,th.center{text-align:center}
+.lines>div{white-space:pre-wrap;word-break:break-word}
+.facts{display:grid;grid-template-columns:max-content 1fr;gap:.15rem 1rem;margin:.4rem 0 1rem}.facts dt{color:var(--muted)}.facts dd{margin:0}
+.note{border-left:3px solid var(--accent);background:var(--panel);padding:.5rem .9rem;margin:.6rem 0}.note.warn{border-color:#E74856}
+.toc{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:.6rem 1rem;margin:0 0 1.2rem;columns:3 20rem}
+.toc a{color:var(--accent);text-decoration:none;display:block;padding:.05rem 0;break-inside:avoid}.toc a:hover{text-decoration:underline}
+ul{padding-left:1.4rem}
+.q{color:var(--muted)}.muted{color:var(--muted)}
+pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pre-wrap;word-break:break-word}
+.title{font-weight:700;color:#F2F2F2}
+.section{color:#61D6D6}
+.heading{font-weight:700;color:#3A96DD}
+.fileName{color:#3A96DD}
+.metaKey{color:#767676}
+.className{color:#0037DA}
+.warn{color:#E74856}
+.info{color:#3B78FF}
+.findingType{color:#767676}
+.limitOk{color:#16C60C}
+.limitNear{color:#F9F1A5}
+.limitOver{color:#E74856}
+.graphName{color:#C19C00}
+.graphTag{color:#F9F1A5}
+.key{color:#16C60C}
+.folderName{color:#C50F1F}
+.declName{color:#16C60C}
+.varName{color:#16C60C}
+.pinName{color:#13A10E}
+.pinLabel{color:#3A96DD}
+.guid{color:#C19C00}
+.signalName{color:#C19C00}
+.structName{color:#16C60C}
+.keyword{color:#B4009E}
+.nodeIndex{color:#767676}
+.nodeName{font-weight:700}
+.nodeId{color:#767676}
+.coord{color:#767676}
+.arrow{color:#B4009E}
+.typeName{color:#B4009E}
+.flag{color:#767676}
+.string{color:#C19C00}
+.number{color:#3A96DD}
+.bool{color:#3A96DD}
+.enumValue{color:#61D6D6}
+.idValue{color:#13A10E}
+.vector{color:#3A96DD}
+.kind{color:#881798}
+.role{color:#3B78FF}
+.count{color:#F2F2F2}
+.mode{color:#767676}
+</style>
+</head>
+<body>
+<main>
+<h1>Warnings and limits</h1>
+<nav class="toc"><a href="#findings">Findings</a><a href="#limits">Limits</a><a href="#top-graphs-by-node-count">Top graphs by node count</a></nav>
+<p>Scanned 4 files:</p>
+<ul><li><span class="fileName">test/cases/composites/test_All_Composite.gia</span></li><li><span class="fileName">test/cases/composites/test_composite.gia</span></li><li><span class="fileName">test/cases/composites/test_composite.gil</span></li><li><span class="fileName">test/cases/composites/var_change.gia</span></li></ul>
+<h2 id="findings">Findings</h2>
+<div class="tablewrap"><table><thead><tr><th>Level</th><th>Type</th><th>Message</th><th>File</th></tr></thead><tbody><tr><td><span class="warn">WARN </span></td><td><span class="findingType">composite-definition-count-anomaly</span></td><td>composite "<span class="key">Create Composite Node</span>" has <span class="count">3</span> definition(s) in the scanned files (expected exactly 1) – guid=1610612745; guid=1610613134; guid=1610613134; this points to a structural bug in the GIL/GIA or in how this tool parsed it</td><td><span class="fileName">test_All_Composite.gia</span></td></tr><tr><td><span class="warn">WARN </span></td><td><span class="findingType">composite-definition-count-anomaly</span></td><td>composite "<span class="key">Create Composite Node(1)</span>" has <span class="count">3</span> definition(s) in the scanned files (expected exactly 1) – guid=1610612746; guid=1610613135; guid=1610613135; this points to a structural bug in the GIL/GIA or in how this tool parsed it</td><td><span class="fileName">test_All_Composite.gia</span></td></tr></tbody></table></div>
+<hr>
+<h2 id="limits">Limits</h2>
+<div class="tablewrap"><table><thead><tr><th>Resource</th><th class="right">Used / max</th></tr></thead><tbody><tr><td>composites (declared)</td><td class="right"><span class="limitOk">33/1000</span></td></tr><tr><td>signals (declared)</td><td class="right"><span class="limitOk">2/100</span></td></tr><tr><td>prefabs (OBJECT)</td><td class="right"><span class="limitOk">2/1000</span></td></tr><tr><td>dynamic entities (OBJECT_ENTITY)</td><td class="right"><span class="limitOk">2/3000</span></td></tr><tr><td>PRESET_POINT</td><td class="right"><span class="limitOk">1/2000</span></td></tr><tr><td>ENVIRONMENT_CONFIGURATION</td><td class="right"><span class="limitOk">1/50</span></td></tr><tr><td>CLASS</td><td class="right"><span class="limitOk">1/100</span></td></tr><tr><td>SKILL</td><td class="right"><span class="limitOk">2/100</span></td></tr><tr><td>TERRAIN_ENTITY</td><td class="right"><span class="limitOk">1/1200</span></td></tr></tbody></table></div>
+<hr>
+<h2 id="top-graphs-by-node-count">Top graphs by node count</h2>
+<div class="tablewrap"><table><thead><tr><th>Graph</th><th class="right">Effective nodes</th><th>File</th></tr></thead><tbody><tr><td>'<span class="graphName">All_Composite</span>'</td><td class="right"><span class="limitOk">52/3000</span></td><td><span class="fileName">test_All_Composite.gia</span></td></tr><tr><td>'<span class="graphName">New Node Graph</span>'</td><td class="right"><span class="limitOk">17/3000</span></td><td><span class="fileName">test_composite.gia</span></td></tr><tr><td>'<span class="graphName">New Node Graph</span>'</td><td class="right"><span class="limitOk">17/3000</span></td><td><span class="fileName">test_composite.gil</span></td></tr><tr><td>'<span class="graphName">VAR_TEST</span>'</td><td class="right"><span class="limitOk">11/3000</span></td><td><span class="fileName">var_change.gia</span></td></tr></tbody></table></div>
+</main>
+</body>
+</html>

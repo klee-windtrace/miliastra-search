@@ -1,0 +1,16 @@
+# findings
+(no findings)
+
+# limits
+prefabs (OBJECT): 5/1000
+dynamic entities (OBJECT_ENTITY): 5/3000
+PRESET_POINT: 1/2000
+ENVIRONMENT_CONFIGURATION: 1/50
+CLASS: 4/100
+UNIT_STATUS: 2/1000
+TERRAIN_ENTITY: 1/1200
+static entities: 3
+
+top graphs by node count:
+'Mounted_Character': 0/3000 nodes
+'Mounted_Creation': 0/3000 nodes

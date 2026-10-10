@@ -1,0 +1,2 @@
+== test/cases/gia/sample_2.gia  gia  engine 7.0.0  mode beyond  resources 9 (0 not interpreted)
+   schema census: OK (every field in the file is known to the schema)

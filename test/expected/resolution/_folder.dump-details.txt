@@ -1,0 +1,10 @@
+# FILE test/cases/resolution/test_All_Static.gia
+DECL "Static_1" SIGNAL_NODE_DECL class=14 guid='1610612737' category=SEND_SIGNAL role=dependency
+DECL "Static_2" SIGNAL_NODE_DECL class=14 guid='1610612741' category=SEND_SIGNAL role=dependency
+GRAPH 'All_Static' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=26
+# FILE test/cases/resolution/test_resolution.gia
+GRAPH 'Dynamic' ENTITY_NODE_GRAPH class=9 guid='1073741826' kind=21001 service=20000 nodes=30
+GRAPH 'Indirect' ENTITY_NODE_GRAPH class=9 guid='1073741827' kind=21001 service=20000 nodes=10
+GRAPH 'Static' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=28
+GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=2 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=1 role=dependency composite_body=true

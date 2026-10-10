@@ -1,0 +1,2 @@
+signal           "Signal_1"                         2 listen: ['Both'; 'Receive'], 2 send: ['Both'; 'Send']
+signal           "Signal_2"                         2 listen: ['Both'; 'Receive'], 2 send: ['Both'; 'Send']

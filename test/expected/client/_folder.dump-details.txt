@@ -1,0 +1,1 @@
+GRAPH '<skill>client_var_types' SKILL_NODE_GRAPH class=11 guid='1082130433' kind=21001 service=20002 nodes=23 entry_slot=1

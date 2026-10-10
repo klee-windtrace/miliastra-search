@@ -1,0 +1,26 @@
+# FILE test/cases/gia/sample_3.gia
+format                 gia
+detected_by            header
+file_size              8272
+container_file_type    gia
+engine_version         7.0.0
+mode                   beyond
+export_name            sample_3.gia
+node_db_version        7.1.0
+export_tag             658181221-1789913967-1073742390-\sample_3.gia
+uid                    658181221
+time                   1789913967
+file_id                1073742390
+resources              21
+primary                3
+dependencies           18
+graphs                 1
+nodes                  7
+composite_bodies       0
+declarations           18
+structs                2
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=1
+CLASS COMPOSITE_NODE_DECL class=12 count=18
+CLASS STRUCTURE class=29 count=2

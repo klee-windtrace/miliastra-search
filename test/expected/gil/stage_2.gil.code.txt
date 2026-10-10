@@ -1,0 +1,57 @@
+DECL "Signal_2" SIGNAL_NODE_DECL guid='1073741829'
+DECL/Signal_2 SEND_SIGNAL name='Signal_2' server_node=1073741828 client_node=1073741830
+DECL/Signal_2 in.flow#0 uid=30
+DECL/Signal_2 out.flow#0 uid=31
+DECL/Signal_2 in#0 "Parameter_1" : Int uid=42
+DECL/Signal_2 in#1 "Parameter_2" : Flt uid=43
+DECL/Signal_2 in#2 "Parameter_3" : Vec uid=44
+DECL/Signal_2 in#3 "Parameter_4" : Bol enum_family=1 uid=45
+DECL/Signal_2 in#4 "Parameter_5" : Gid uid=46
+DECL/Signal_2 in#5 "Parameter_6" : Ety uid=47
+DECL/Signal_2 in#6 "Parameter_7" : Pfb uid=48
+DECL/Signal_2 in#7 "Parameter_8" : Cfg uid=49
+DECL/Signal_2 in#8 "Parameter_9" : L<Int> uid=50
+DECL/Signal_2 in#9 "Parameter_10" : Str uid=72
+DECL/Signal_2 meta#0 "Signal Name" uid=32
+DECL "Signal_1" SIGNAL_NODE_DECL guid='1073741826'
+DECL/Signal_1 SEND_SIGNAL name='Signal_1' server_node=1073741825 client_node=1073741827
+DECL/Signal_1 in.flow#0 uid=18
+DECL/Signal_1 out.flow#0 uid=19
+DECL/Signal_1 meta#0 "Signal Name" uid=20
+GRAPH 'Both' ENTITY_NODE_GRAPH (guid 1073741827)
+'Both'/[2] Monitor Signal (1073741825) user=LISTEN_SIGNAL signal='Signal_1' @(-293,-150) sigver=1
+'Both'/[2] Monitor Signal (1073741825) out.flow#0 -> [4] Send Signal (1073741826) in.flow#0
+'Both'/[2] Monitor Signal (1073741825) meta.rpc#0 "Signal Name" = 'Signal_1'
+'Both'/[4] Send Signal (1073741826) user=SEND_SIGNAL signal='Signal_1' @(207,-148) sigver=1
+'Both'/[4] Send Signal (1073741826) out.flow#0 -> [6] Send Signal (1073741829) in.flow#0
+'Both'/[4] Send Signal (1073741826) meta.rpc#0 "Signal Name" = 'Signal_1'
+'Both'/[6] Send Signal (1073741829) user=SEND_SIGNAL signal='Signal_2' @(583,-153) sigver=3
+'Both'/[6] Send Signal (1073741829) in#8 "Parameter_9" <- [7] Monitor Signal (1073741828) out#11 "Parameter_9" : L<Int>
+'Both'/[6] Send Signal (1073741829) meta.rpc#0 "Signal Name" = 'Signal_2'
+'Both'/[7] Monitor Signal (1073741828) user=LISTEN_SIGNAL signal='Signal_2' @(102.85714,143.28572) sigver=3
+'Both'/[7] Monitor Signal (1073741828) out.flow#0 -> [6] Send Signal (1073741829) in.flow#0
+'Both'/[7] Monitor Signal (1073741828) meta.rpc#0 "Signal Name" = 'Signal_2'
+GRAPH 'Receive' ENTITY_NODE_GRAPH (guid 1073741825)
+'Receive'/[2] Monitor Signal (1073741825) user=LISTEN_SIGNAL signal='Signal_1' @(-286,-207) sigver=1
+'Receive'/[2] Monitor Signal (1073741825) meta.rpc#0 "Signal Name" = 'Signal_1'
+'Receive'/[5] Monitor Signal (1073741828) user=LISTEN_SIGNAL signal='Signal_2' @(-284,98) sigver=3
+'Receive'/[5] Monitor Signal (1073741828) out.flow#0 -> [6] Print String (1) in.flow#0
+'Receive'/[5] Monitor Signal (1073741828) meta.rpc#0 "Signal Name" = 'Signal_2'
+'Receive'/[6] Print String (1) @(223,96)
+'Receive'/[6] Print String (1) in#0 "String" <- [5] Monitor Signal (1073741828) out#12 "Parameter_10" : Str
+GRAPH 'Send' ENTITY_NODE_GRAPH (guid 1073741826)
+'Send'/[2] Send Signal (1073741826) user=SEND_SIGNAL signal='Signal_1' @(-172.85715,-372.7143) sigver=1
+'Send'/[2] Send Signal (1073741826) meta.rpc#0 "Signal Name" = 'Signal_1'
+'Send'/[4] Send Signal (1073741829) user=SEND_SIGNAL signal='Signal_2' @(-197,-101) sigver=3
+'Send'/[4] Send Signal (1073741829) in#0 "Parameter_1" <- [5] When Timer Is Triggered (83) out#3 "Timer Sequence ID" : Int
+'Send'/[4] Send Signal (1073741829) in#1 "Parameter_2" = 4 : Flt
+'Send'/[4] Send Signal (1073741829) in#2 "Parameter_3" = (1, 2, 3) : Vec
+'Send'/[4] Send Signal (1073741829) in#3 "Parameter_4" = Yes : Bol
+'Send'/[4] Send Signal (1073741829) in#4 "Parameter_5" <- [5] When Timer Is Triggered (83) out#1 "Event Source GUID" : Gid
+'Send'/[4] Send Signal (1073741829) in#5 "Parameter_6" <- [5] When Timer Is Triggered (83) out#0 "Event Source Entity" : Ety
+'Send'/[4] Send Signal (1073741829) in#6 "Parameter_7" = id:5 : Pfb
+'Send'/[4] Send Signal (1073741829) in#7 "Parameter_8" = id:6 : Cfg
+'Send'/[4] Send Signal (1073741829) in#9 "Parameter_10" <- [5] When Timer Is Triggered (83) out#2 "Timer Name" : Str
+'Send'/[4] Send Signal (1073741829) meta.rpc#0 "Signal Name" = 'Signal_2'
+'Send'/[5] When Timer Is Triggered (83) @(-582,-100)
+'Send'/[5] When Timer Is Triggered (83) out.flow#0 -> [4] Send Signal (1073741829) in.flow#0

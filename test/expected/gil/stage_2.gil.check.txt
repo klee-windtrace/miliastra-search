@@ -1,0 +1,4 @@
+== test/cases/gil/stage_2.gil  gil  engine 7.0.0  mode beyond  resources 48 (39 not interpreted)
+   schema census: OK (every field in the file is known to the schema)
+   uninterpreted level sections: root.3, root.6, root.8, root.14, root.16, root.17, root.19, root.20, root.21, root.22, root.23, root.25, root.27, root.29, root.35, root.36, root.37, root.38, root.39, root.40, root.41, root.45, root.46, root.48, root.49
+   uninterpreted fields inside listed resources: 60 kinds (851 occurrences; see --json)

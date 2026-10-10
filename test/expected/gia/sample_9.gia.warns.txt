@@ -1,0 +1,30 @@
+# findings
+INFO  signal-never-used: signal "Signal_1" is declared but never sent or listened to in the scanned graphs
+INFO  struct-never-used: struct "Structure" (guid=1077936129 fields=) is defined but never used in the scanned graphs
+
+# limits
+signals: 1/100 declared
+prefabs (OBJECT): 5/1000
+dynamic entities (OBJECT_ENTITY): 3/3000
+ENTITY_DEPLOYMENT_GROUP: 1/500
+PRESET_POINT: 1/2000
+ENVIRONMENT_CONFIGURATION: 1/50
+CLASS: 1/100
+UNIT_STATUS: 1/1000
+SKILL: 1/100
+TERRAIN_ENTITY: 1/1200
+GLOBAL_TIMER: 1/50
+static entities: 1
+
+top graphs by node count:
+'<skill>New Character Skill Node Graph': 1/3000 nodes
+'<creation>New Creation Skill Node Graph': 1/3000 nodes
+'<creation>New Creation Status Node Graph': 1/3000 nodes
+'<creation>New Creation Status Decision Node Graph': 1/3000 nodes
+'<skill>New Character Control Skill Node Graph': 1/3000 nodes
+'<filter>New Filter Node Graph': 1/3000 nodes
+'<filter>New Filter Node Graph_1': 1/3000 nodes
+'New Node Graph': 0/3000 nodes
+'<status>New Node Graph_1': 0/3000 nodes
+'<class>New Node Graph_2': 0/3000 nodes
+'New Node Graph_3': 0/3000 nodes

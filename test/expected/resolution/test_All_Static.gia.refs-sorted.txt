@@ -1,0 +1,6 @@
+custom_variable  "Static_Var" (Flt)                 1 get: ['All_Static'], 1 set: ['All_Static'], 1 trigger: ['All_Static'], 1 listen: ['All_Static']
+global_timer     "Static_Global"                    1 start: ['All_Static'], 1 stop: ['All_Static'], 1 listen: ['All_Static']
+graph_variable   "Static_Graph" (L<Gid>)            ['All_Static']: 1 get, 1 set, 1 trigger, 1 listen
+signal           "Static_1"                         1 listen: ['All_Static'], 1 send: ['All_Static']
+signal           "Static_2"                         1 listen: ['All_Static'], 1 send: ['All_Static']
+timer            "Static_Timer" (onetime)           1 start: ['All_Static'], 1 stop: ['All_Static'], 1 listen: ['All_Static']

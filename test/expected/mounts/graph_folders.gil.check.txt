@@ -1,0 +1,7 @@
+== test/cases/mounts/graph_folders.gil  gil  engine 7.1.0  mode beyond  resources 101 (65 not interpreted)
+   UNKNOWN FIELD GilFile #1 wire 0 ×1 e.g. 1073741848
+   UNKNOWN FIELD GilFile #50 wire 2 ×1 e.g. 2 bytes 0x1001
+   UNKNOWN FIELD GilFile #52 wire 0 ×1 e.g. 1073741847
+   UNKNOWN FIELD GilFile #53 wire 0 ×1 e.g. 1791033329
+   uninterpreted level sections: root.3, root.6, root.8, root.14, root.16, root.17, root.19, root.20, root.21, root.22, root.23, root.25, root.27, root.29, root.35, root.36, root.37, root.38, root.39, root.40, root.41, root.45, root.46, root.48, root.49
+   uninterpreted fields inside listed resources: 70 kinds (1083 occurrences; see --json)

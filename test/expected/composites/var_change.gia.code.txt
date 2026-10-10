@@ -1,0 +1,39 @@
+GRAPH 'VAR_TEST' ENTITY_NODE_GRAPH (guid 1073741841)
+'VAR_TEST'/[1] When Custom Variable Changes (36) @(-277,-215)
+'VAR_TEST'/[1] When Custom Variable Changes (36) out.flow#0 -> [2] Multiple Branches (3/4) in.flow#0
+'VAR_TEST'/[2] Multiple Branches (3/4) variant=C<T:Str> @(130,-200)
+'VAR_TEST'/[2] Multiple Branches (3/4) out.flow#1 "Var1" -> [14] Settle Stage (77) in.flow#0
+'VAR_TEST'/[2] Multiple Branches (3/4) in#0 "Control Expression" <- [1] When Custom Variable Changes (36) out#2 "Variable Name" : Str
+'VAR_TEST'/[3] When Entity Is Created (71) @(-208,314)
+'VAR_TEST'/[3] When Entity Is Created (71) out.flow#0 -> [9] VAR_TEST_1 (1610612743) in.flow#0
+'VAR_TEST'/[9] VAR_TEST_1 (1610612743) user=COMPOSITE @(200,314)
+'VAR_TEST'/[9] VAR_TEST_1 (1610612743) out.flow#0 -> [15] VAR_TEST_2 (1610612744) in.flow#0
+'VAR_TEST'/[9] VAR_TEST_1 (1610612743) in#0 "Target Entity" <- [3] When Entity Is Created (71) out#0 "Event Source Entity" : Ety
+'VAR_TEST'/[9] VAR_TEST_1 (1610612743) in#1 "Variable Name" = 'Var1' : Str
+'VAR_TEST'/[13] VAR_TEST_3 (1610612745) user=COMPOSITE @(814,-123)
+'VAR_TEST'/[13] VAR_TEST_3 (1610612745) out.flow#0 "1" -> [14] Settle Stage (77) in.flow#0
+'VAR_TEST'/[14] Settle Stage (77) @(1302,130)
+'VAR_TEST'/[15] VAR_TEST_2 (1610612744) user=COMPOSITE @(742,314)
+'VAR_TEST'/[15] VAR_TEST_2 (1610612744) out.flow#0 -> [14] Settle Stage (77) in.flow#0
+'VAR_TEST'/[15] VAR_TEST_2 (1610612744) in#0 "Target Entity" <- [3] When Entity Is Created (71) out#0 "Event Source Entity" : Ety
+GRAPH '<composite>VAR_TEST_1' ENTITY_NODE_GRAPH (guid 1610612743, decl 1610612743) role=dependency
+'<composite>VAR_TEST_1'/PORTMAP ext.in.flow#0 -> [4] Set Custom Variable (22) in.flow#0
+'<composite>VAR_TEST_1'/PORTMAP ext.out.flow#0 -> [4] Set Custom Variable (22) out.flow#0
+'<composite>VAR_TEST_1'/PORTMAP ext.in#0 "Target Entity" -> [4] Set Custom Variable (22) in#0 "Target Entity"
+'<composite>VAR_TEST_1'/PORTMAP ext.in#1 "Variable Name" -> [4] Set Custom Variable (22) in#1 "Variable Name"
+'<composite>VAR_TEST_1'/[4] Set Custom Variable (22) @(0,0)
+'<composite>VAR_TEST_1'/[4] Set Custom Variable (22) in#2 "Variable Value" = 1 : Int
+GRAPH '<composite>VAR_TEST_2' ENTITY_NODE_GRAPH (guid 1610612744, decl 1610612744) role=dependency
+'<composite>VAR_TEST_2'/PORTMAP ext.in.flow#0 -> [5] Set Custom Variable (22/23) in.flow#0
+'<composite>VAR_TEST_2'/PORTMAP ext.out.flow#0 -> [5] Set Custom Variable (22/23) out.flow#0
+'<composite>VAR_TEST_2'/PORTMAP ext.in#0 "Target Entity" -> [5] Set Custom Variable (22/23) in#0 "Target Entity"
+'<composite>VAR_TEST_2'/[5] Set Custom Variable (22/23) variant=C<T:Str> @(0,0)
+'<composite>VAR_TEST_2'/[5] Set Custom Variable (22/23) in#1 "Variable Name" = 'Var2' : Str
+'<composite>VAR_TEST_2'/[5] Set Custom Variable (22/23) in#2 "Variable Value" = '2' : Str
+GRAPH '<composite>VAR_TEST_3' ENTITY_NODE_GRAPH (guid 1610612745, decl 1610612745) role=dependency
+'<composite>VAR_TEST_3'/PORTMAP ext.out.flow#0 "1" -> [7] Multiple Branches (3/4) out.flow#1 "Var2"
+'<composite>VAR_TEST_3'/PORTMAP ext.out#0 "Post-Change Value" -> [6] When Custom Variable Changes (36/37) out#4 "Post-Change Value"
+'<composite>VAR_TEST_3'/[6] When Custom Variable Changes (36/37) variant=C<T:Str> @(-211.5,-0.5)
+'<composite>VAR_TEST_3'/[6] When Custom Variable Changes (36/37) out.flow#0 -> [7] Multiple Branches (3/4) in.flow#0
+'<composite>VAR_TEST_3'/[7] Multiple Branches (3/4) variant=C<T:Str> @(211.5,0.5)
+'<composite>VAR_TEST_3'/[7] Multiple Branches (3/4) in#0 "Control Expression" <- [6] When Custom Variable Changes (36/37) out#2 "Variable Name" : Str

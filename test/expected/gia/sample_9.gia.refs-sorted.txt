@@ -1,0 +1,2 @@
+signal           "Signal_1"                         0 listen: [], 0 send: []
+struct           "Structure"                        defined guid=1077936129 fields=

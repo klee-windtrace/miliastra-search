@@ -1,0 +1,1050 @@
+syntax = "proto3";
+
+// ========================================================================
+// 1. Top-Level Containers
+// ========================================================================
+
+// .gia file payload root
+message AssetBundle {
+  repeated ResourceEntry resources        = 1; // [MERGED] repeated: the game writes one entry per exported graph/asset
+  repeated ResourceEntry dependencies     = 2; // All generated stubs, structs, signals etc. (composite graphs, struct definitions, ...)
+  string                 export_tag       = 3; // Export metadata ({UID}-{TIME}-{FILE_ID}-\{EXPORT_FILE_NAME}.gia)
+  optional uint32        mode_flag        = 4; // [MERGED] 1 = classic mode, absent = Beyond mode
+  string                 engine_version   = 5; // Engine version (6.2.0)
+}
+
+// Physical container of a resource
+message ResourceEntry {
+  // Business type enum (decides what kind of "thing" this is)
+  enum ResourceClass {
+    UNKNOWN_TYPE              = 0; // Unknown type
+    OBJECT                    = 1; // Object prefab, drop prefab, prefab group
+    CREATION                  = 2; // Creation prefab
+    OBJECT_ENTITY             = 3; // Object entity, drop entity, entity group
+    CREATION_ENTITY           = 4; // Creation entity
+    TERRAIN_ENTITY            = 5; // Terrain entity
+    PRESET_POINT              = 6; // Preset point
+    UNIT_STATUS               = 7; // Unit status
+    SKILL                     = 8; // Skill
+    ENTITY_NODE_GRAPH         = 9; // Entity node graph
+    BOOLEAN_FILTER_GRAPH      = 10; // Boolean filter node graph
+    SKILL_NODE_GRAPH          = 11; // Skill node graph
+    COMPOSITE_NODE_DECL       = 12; // Composite node declaration (incl. listen-to-signal, modify/split/assemble struct)
+    CAMERA                    = 13; // Camera
+    SIGNAL_NODE_DECL          = 14; // Signal node declaration (send signal, send signal to server node graph)
+    UI_CONTROL                = 15; // UI control
+    SKILL_RESOURCE            = 16; // Skill resource
+    CLASS                     = 17; // Class
+    PLAYER_TEMPLATE           = 18; // Player template
+    CHARACTER_TEMPLATE        = 19; // Character template
+    INTERFACE_LAYOUT          = 20; // Interface layout
+    UI_CONTROL_GROUP          = 21; // UI control group (interactive controls)
+    STATUS_NODE_GRAPH         = 22; // Status node graph
+    CLASS_NODE_GRAPH          = 23; // Class node graph
+    GLOBAL_TIMER              = 24; // Global timer
+    PROJECTILE                = 25; // Projectile
+    ITEM                      = 26; // Item
+    DECORATION                = 28; // Decoration
+    STRUCTURE                 = 29; // Struct definition (advanced data structure)
+    SHOP_TEMPLATE             = 30; // Shop template
+    CURRENCY                  = 35; // Currency
+    LEVEL_STRUCTURE           = 37; // Level struct definition
+    PATH                      = 38; // Level path
+    SHIELD                    = 39; // Shield
+    ENTITY_DEPLOYMENT_GROUP   = 43; // Entity deployment group
+    UNIT_TAG                  = 44; // Unit tag
+    SCAN_TAG                  = 45; // Scan tag
+    ITEM_NODE_GRAPH           = 46; // Item node graph
+    INTEGER_FILTER_GRAPH      = 47; // Integer filter node graph
+    LIGHT_SOURCE              = 48; // Light source
+    ENVIRONMENT_CONFIGURATION = 49; // Environment configuration
+    // [MERGED] values observed in 7.0 samples
+    CREATION_STATUS_DECISION_GRAPH = 51;
+    CREATION_SKILL_GRAPH      = 52;
+    CREATION_STATUS_GRAPH     = 53;
+    CUSTOM_CREATION_SKILL     = 54;   // [observed sample_9, name only]
+    SCENE_GENERATION_TEMPLATE_A = 55; // [observed sample_9, name only]
+    SCENE_GENERATION_TEMPLATE_B = 56; // [observed sample_9, name only]
+    VFX_TOOL                  = 58;   // [observed sample_9, name only]
+    SKILL_VARIABLE            = 60;   // [observed sample_9, name only]
+    CHARACTER_CONTROL_SKILL_GRAPH = 64;
+    CONTROL_SKILL             = 65;   // [observed sample_9, name only]
+    // 27, 31-34, 36 and 40-42 are not assigned
+  };
+
+  ResourceLocator          identity       = 1; // Own ID
+  repeated ResourceLocator reference_list = 2; // Explicit reference table
+  string                   internal_name  = 3; // Internal debug name
+  ResourceClass            resource_class = 5; // Business class
+
+  // Actual data payload
+  oneof payload {
+    NodeGraphContainer           graph_data     = 13; // Which is Node Graph
+    NodeInterfaceContainer       interface_data = 14; // Which is Interface Definition
+    StructureDefinitionContainer struct_data    = 22; // Which is Structure Definition
+
+    // [MERGED] Payloads of resources that are not node graphs (11 prefab, 12 entity, 15 config, 16 terrain, 17 camera,
+    // 18 preset point, 19 UI, 20 global timer, 23 path, 26 unit tag, 27 deployment group, ...). Kept as opaque bytes on
+    // purpose: they are *known* (so they do not flood the unknown-field census) but not interpreted.
+    bytes opaque_11 = 11; bytes opaque_12 = 12; bytes opaque_15 = 15; bytes opaque_16 = 16;
+    bytes opaque_17 = 17; bytes opaque_18 = 18; bytes opaque_19 = 19; bytes opaque_20 = 20;
+    bytes opaque_23 = 23; bytes opaque_25 = 25; bytes opaque_26 = 26; bytes opaque_27 = 27;
+    bytes opaque_28 = 28; bytes opaque_29 = 29;
+  }
+}
+
+// ========================================================================
+// 2. Identifier System
+// ========================================================================
+
+// General resource identifier (formerly ResourceLocator, NodeProperty, ...)
+// This is the "identity card" of a resource throughout the system
+message ResourceLocator {
+
+  // Origin (source domain):
+  //   - Meaning: defines the "ownership" and "storage location" of the resource.
+  //   - USER_DEFINED: lives in the database generated dynamically by players/developers.
+  //   - SYSTEM_DEFINED: lives in the static read-only data of the game installation.
+  enum Origin {
+    UNKNOWN_ORIGIN = 0;
+    USER_DEFINED   = 10000; // User asset
+    SYSTEM_DEFINED = 10001; // Built into the system
+  }
+
+  // Category (service domain / subsystem):
+  //   - Meaning: defines which "engine module" is responsible for processing this resource.
+  //   - Example: SERVER_BASIC belongs to the backend logic engine, CLIENT_FILTER to the frontend presentation engine. It decides the dispatch path after loading.
+  enum Category {
+    UNKNOWN_CATEGORY = 0;
+
+    // Asset types
+    DEFAULT           = 1; // Resources of this category use kind to determine the concrete structure; otherwise kind is absent
+    SERVER_NODE_GRAPH = 5; // Server node graph
+    NODE_DECL         = 23; // Node interface declaration
+    GLOBAL_TIMER      = 24; // Global timer
+    CAMERA            = 25; // Camera
+
+    // Server Side Node Types
+    SERVER_BASIC  = 20000; // Backend: basic
+    SERVER_STATUS = 20003; // Backend: status
+    SERVER_CLASS  = 20004; // Backend: class
+    SERVER_ITEM   = 20005; // Backend: item
+
+    // Client Side Node Types
+    CLIENT_FILTER     = 20001; // Filter type (Bool by default)
+    CLIENT_SKILL      = 20002; // Skill node graph flow (client)
+    CLIENT_INT_FILTER = 20006; // Integer filter type
+    // [MERGED]
+    CLIENT_CREATION_STATUS_DECISION = 20007;
+    CLIENT_CREATION_SKILL           = 20008;
+    CLIENT_CREATION_STATUS          = 20009;
+    CLIENT_CHARACTER_CONTROL_SKILL  = 20010;
+  }
+
+  // AssetKind/Kind (prototype domain / data structure):
+  //   - Meaning: defines the physical structure of the data.
+  //   - It tells the parser whether this resource has a COMPOSITE_GRAPH structure or a STRUCTURE structure.
+  enum AssetKind {
+    // Asset types
+    BASIC                                     = 0; // Server node graph and other undefined ones (default value)
+    PREFAB                                    = 1; // Prefab (component), player template or character template, projectile
+    ENTITY                                    = 2; // Entity or creation
+    SERVER_CONFIGURATION_OR_CLIENT_NODE_GRAPH = 3; // Server configuration info, or client node graph
+    TERRAIN                                   = 5; // Terrain
+    UI                                        = 8; // Interface layout or interactive control
+    PRESET_POINT                              = 9; // Preset point
+    DECORATION                                = 14; // Decoration
+    STRUCTURE                                 = 15; // Struct
+    ENTITY_DEPLOYMENT_GROUP                   = 18; // Entity deployment group
+    PATH                                      = 19; // Path
+    UNIT_TAG                                  = 23; // Unit tag
+
+    // Node graph subtypes
+    CUSTOM_GRAPH    = 21001; // Ordinary node graph (NodeGraph)
+    COMPOSITE_GRAPH = 21002; // Composite graph (CompositeGraph)
+
+    // Node subtypes
+    SYS_CALL_STUB  = 22000; // System call stub (Kernel 2000/2001 etc.)
+    GENERATED_STUB = 22001; // Auto-generated stub (nodes generated from Struct/Signal definitions)
+  }
+
+  Origin    source_domain  = 1; // Developer vs. system
+  Category  service_domain = 2; // Backend logic vs. frontend presentation
+  AssetKind kind           = 3; // Physical data structure class
+
+  // ====== Optional ======
+
+  // [Field 4] Asset Database GUID
+  // Scope: resource management layer / file system
+  // Meaning: points to a concrete, serializable user asset file.
+  // Where it appears:
+  //   - In the dependency list of an AssetBundle (dependencies).
+  //   - In Entity/Prefab references (they correspond to concrete resource files).
+  //   - System built-in nodes (SYSTEM_DEFINED) usually do not have this field.
+  int64 asset_guid = 4;
+
+  // [Field 5] Runtime Definition ID
+  // Scope: logic execution layer / memory
+  // Meaning: points to a logic definition, an OpCode or an in-memory object handle.
+  // Where it appears:
+  //   - In shell_ref/kernel_ref of a NodeInstance.
+  //   - In the identity definition inside a graph.
+  //   - For user assets this value usually equals asset_guid.
+  //   - For system built-in nodes this is the only identifier (e.g. 1, 2000).
+  int64 runtime_id = 5;
+
+  // Rule of thumb: if the thing can be "spawned" in a game scene, it uses a guid; if it is just a piece of logic or a definition, it uses an id.
+}
+
+// ========================================================================
+// 3. Type & Value System
+// ========================================================================
+
+// ### Why are there two sets of type numbers?
+// This is a typical result of "technical debt" and "architectural isolation" working together.
+// Server side (ServerTypeId): judging by how irregular the numbering is (Int=3, IntList=8), the server code was probably written early and iterated continuously.
+//   - At first it probably supported only atomic types.
+//   - Later EntityList was needed, so it was appended at 13.
+//   - Later Struct and Dictionary were added, appended at 25, 27.
+//   - To keep old data compatible (a core principle of Protocol Buffers), old IDs cannot change, which left the ID distribution scattered.
+// Client side (ClientTypeId): judging by how regular the numbering is (Int=3, IntList=4), it is most likely the product of a later refactoring or independent development.
+//   - The client developers already knew which types had to be supported when defining them, so they used the more elegant Type / TypeList pairing.
+
+// Server-side logic type ID
+// Used for: data storage, backend logic computation, struct definitions, blackboard variables
+// Characteristics: contains complex reference types (Ref) and container types (Map/Struct)
+enum ServerTypeId {
+  SERVER_UNKNOWN = 0;
+
+  // --- Basic atomic types ---
+  S_ENTITY = 1; // Runtime entity object (pointer/handle)
+  S_GUID   = 2; // Globally unique ID (usually used to look up static configuration or persistent objects)
+  S_INT    = 3; // 32-bit integer
+  S_BOOL   = 4; // Boolean
+  S_FLOAT  = 5; // Floating-point number
+  S_STRING = 6; // String
+  S_VECTOR = 12; // 3D vector (x,y,z)
+
+  // --- Basic list types ---
+  // Note: the server-side List IDs are rather scattered, possibly because of historical iteration
+  S_GUID_LIST   = 7;
+  S_INT_LIST    = 8;
+  S_BOOL_LIST   = 9;
+  S_FLOAT_LIST  = 10;
+  S_STRING_LIST = 11;
+  S_ENTITY_LIST = 13;
+  S_VECTOR_LIST = 15;
+
+  // --- Game business types ---
+  S_ENUM_ITEM    = 14; // Generic enum item
+  S_FACTION      = 17; // Faction / camp
+  S_ENUM_LIST    = 18; // Enum list
+  S_CONFIG       = 20; // Config table reference
+  S_PREFAB       = 21; // Prefab reference (resource path or hash)
+  S_CONFIG_LIST  = 22;
+  S_PREFAB_LIST  = 23;
+  S_FACTION_LIST = 24;
+
+  // --- Complex structures and advanced features ---
+  S_STRUCT      = 25; // User-defined struct
+  S_STRUCT_LIST = 26; // Struct list
+  S_DICT        = 27; // Dictionary / hash table
+
+  // --- Runtime references (server only) ---
+  // Used for stack-memory references or snapshot rollback while a node graph executes
+  S_LOCAL_VAR_REF    = 16; // Reference to a local variable inside the current graph
+  S_VAR_SNAPSHOT_REF = 28; // Variable snapshot reference (used to access the original data when an entity is deleted)
+
+  // Reserved range: used for matching when connecting enums in the UI
+  // Starting From: 10001
+  // reserved 10000 to 10099;   // server enum types
+  // reserved 210000 to 210099; // client enum types
+}
+
+// ### Client presentation type ID
+// Used for: UI rendering, simple local prediction, packet parameters
+// Characteristics: list type IDs directly follow the base type, which is more compact, but Map/Struct are not supported
+enum ClientTypeId {
+  CLIENT_UNKNOWN = 0;
+
+  // --- Entity and list (appear in pairs) ---
+  C_ENTITY      = 1;
+  C_ENTITY_LIST = 2; // The client ID layout is more regular: List = Base + 1
+
+  // --- Basic values ---
+  C_INT      = 3;
+  C_INT_LIST = 4;
+
+  C_BOOL      = 5;
+  C_BOOL_LIST = 6;
+
+  C_FLOAT      = 7;
+  C_FLOAT_LIST = 8;
+
+  C_STRING      = 9;
+  C_STRING_LIST = 10;
+
+  C_VECTOR      = 11;
+  C_VECTOR_LIST = 12;
+
+ // --- Business types ---
+  C_ENUM_ITEM = 13;
+  C_ENUM_LIST = 17;
+
+  C_GUID      = 14;
+  C_GUID_LIST = 15;
+
+  C_FACTION = 16;
+
+  C_CONFIG      = 18;
+  C_PREFAB      = 19;
+  C_CONFIG_LIST = 20;
+
+  // Reserved range: used for matching when connecting enums in the UI
+  // Starting From: 10001
+  // reserved 10000 to 10099;   // server enum types
+  // reserved 210000 to 210099; // client enum types
+}
+
+// Detailed definition of a type (metadata)
+message TypeDefinition {
+  // Distinguishes the source system
+  enum Backend {
+    UNKNOWN = 0;
+    SERVER  = 1;
+    CLIENT  = 2;
+  }
+  message StructReference { int64 schema_id = 1; }
+  message MapKeyValueBinding {
+    ServerTypeId   key_type        = 1;
+    ServerTypeId   value_type      = 2;
+    optional int64 value_struct_id = 3;
+    optional int32 client_key_type   = 4; // [MERGED] ClientVarType
+    optional int32 client_value_type = 5; // [MERGED] ClientVarType
+  }
+
+  message ServerType {
+    enum Implementation {
+      PRIMITIVE = 0;
+      STRUCT    = 1;
+      PAIR      = 2;
+    }
+    ServerTypeId   type_tag = 1;
+    Implementation impl     = 2;
+    oneof schema {
+      StructReference    struct_ref  = 100;
+      MapKeyValueBinding map_binding = 101;
+    }
+  }
+
+  message ClientType {
+    ClientTypeId type_tag = 2;
+  }
+
+  Backend backend = 1;
+  oneof type_detail {
+    ServerType server_side = 100;
+    ClientType client_side = 101;
+  }
+}
+
+// Uniformly defined value object, corresponds to the former TypedValue
+message TypedValue {
+// Defines how a UI input box is displayed
+  enum WidgetType {
+    UNKNOWN       = 0;
+    ID_INPUT      = 1; // ID base, e.g. Prefab/GUID
+    NUMBER_INPUT  = 2; // Integer
+    DROPDOWN      = 3; // Selector with options
+    DECIMAL_INPUT = 4; // Floating-point number
+    TEXT_INPUT    = 5; // String
+    ENUM_PICKER   = 6; // Enum, e.g. bool, enum
+    VECTOR_GROUP  = 7; // 3D vector group
+
+    TYPE_SELECTOR = 10000; // Polymorphic type selector
+    STRUCT_BLOCK  = 10001; // Struct block
+    LIST_GROUP    = 10002; // Array/list
+    MAP_GROUP     = 10003; // Dictionary / key-value pairs
+    MAP_PAIR_ITEM = 10007; // Key-value pair item
+  }
+
+  WidgetType              widget       = 1; // Style class
+  int32                   is_value_set = 2; // 0 = empty, 1 = modified by the user
+  message ClientInlineBinding {          // [MERGED]
+    int32          type_tag     = 1;
+    optional Int   binding_int  = 102;
+    optional Enum  binding_enum = 106;
+  }
+  optional ClientInlineBinding client_inline = 3; // [MERGED] observed in client graphs
+  optional TypeDefinition type_def     = 4; // Type metadata
+
+  // Struct instance tracking (used to generate unique index names in the graph)
+  message InstanceTracker {
+    message Identity {
+      // Whether or not the structs are of the same type, the counter starts at 1 (per graph only)
+      // Within one graph, several struct values are recorded in turn and displayed as (StructName_index)
+      int32 local_index = 1;
+    }
+    int32    version_tag = 1; // always_one
+    Identity identity    = 100;
+  }
+
+  optional InstanceTracker tracker = 5; // Only valid for structs
+
+  // Actual data storage area
+  oneof storage {
+    Id               val_id     = 101; // ID types such as entity/GUID
+    Int              val_int    = 102; // Integer
+    Float            val_float  = 104; // Floating point
+    String           val_string = 105; // String
+    Enum             val_enum   = 106; // Enum index
+    Vector           val_vector = 107; // Vector
+    StructStorage    val_struct = 108; // Struct data
+    ListStorage      val_list   = 109; // Array data
+    PolymorphicValue val_poly   = 110; // Polymorphic value data
+    MapPairStorage   val_pair   = 111; // A single key-value pair
+    MapStorage       val_map    = 112; // Complete dictionary data
+  }
+}
+
+// Auxiliary storage structures
+
+message Id { int64 id = 1; }
+
+message Int { int32 int = 1; }
+
+message Float { float float = 1; }
+
+message String { string str = 1; }
+
+message Enum { int64 enum = 1; }
+
+message Vector {
+  message Vec {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+  }
+  Vec vec = 1;
+}
+
+message StructStorage { repeated TypedValue fields = 1; }
+
+message ListStorage { repeated TypedValue elements = 1; }
+
+message MapStorage {
+  repeated TypedValue pairs = 1;
+}
+
+message MapPairStorage {
+  TypedValue key   = 1;
+  TypedValue value = 2;
+}
+
+// Polymorphic value: used for variable pins
+message PolymorphicValue {
+  int32      chosen_type_index = 1; // Index of the selected type
+  TypedValue actual_value      = 2; // The actual value object
+
+  // Describes the concrete struct ID or generic parameter and guides instantiation
+  optional DynamicTypeMetadata extra_meta = 5; // The type configuration of the polymorphic type system.
+}
+
+// It exists so that the system still has complete type knowledge before any data has been generated.
+message DynamicTypeMetadata {
+  message Config {
+    message Inner {
+      TypedValue.WidgetType          container_style = 1;
+      optional TypedValue.WidgetType item_style      = 2;
+      oneof schema_binding {
+        TypeDefinition.StructReference    target_struct_id    = 100;
+        TypeDefinition.StructReference    list_item_struct_id = 101;
+        TypeDefinition.MapKeyValueBinding map_config          = 102;
+      }
+    }
+    Inner inner = 1;
+  }
+  int32  version = 4;
+  Config config  = 100;
+}
+
+// ========================================================================
+// 4. Physical Resource Wrappers (Graph & Interface Container)
+// ========================================================================
+
+// ### Wrapper structure analysis: why is a Wrapper needed?
+// NodeGraphWrapper and CompositeDefWrapper appear in the code, each with a nested InnerWrapper. This design is very common in large engines (such as Unity or custom engines), for three reasons:
+//   - Type erasure and heterogeneous containers: if the raw message were put directly into the oneof, adding "common metadata" (an encryption flag, a compression algorithm, a version number) to all resource types later would require changing every concrete message.
+//   - Smooth version migration (forward compatibility): InnerWrapper provides a buffer. If the structure of NodeGraph changes in a breaking way, the engine can first parse the version number in the Wrapper layer and then decide which version of the parser to call.
+//   - Memory layout optimization: in some serialization frameworks this nesting allows the engine to read the "shell" information of a resource (such as ID and name) first, without fully deserializing the inner logic.
+
+message NodeGraphContainer {
+  message InnerWrapper { NodeGraph graph = 1; }
+  InnerWrapper inner = 1;
+}
+
+message NodeInterfaceContainer {
+  message InnerWrapper { NodeInterface interface = 1; }
+  InnerWrapper inner = 1;
+}
+
+message StructureDefinitionContainer {
+  StructureDefinition def = 1;
+}
+
+// ========================================================================
+// 5. Graph & Interface Definitions
+// ========================================================================
+
+// Node graph (logic container)
+message NodeGraph {
+  // Unique identity of the resource
+  ResourceLocator identity = 1;
+  // Display name of the graph
+  string display_name = 2;
+
+// --- Execution layer ---
+  // List of logic node instances
+  repeated NodeInstance nodes = 3;
+
+  // --- Interface layer ---
+  // Interface mapping table: defines how external pins pass through to the inner nodes
+  // Only effective when the graph is called as a "composite node"
+  repeated InterfaceMapping port_mappings = 4;
+
+  // --- Comments and presentation ---
+  repeated Annotation comments = 5;
+
+  // --- Data layer ---
+  // Local variable pool / blackboard variables: data shared inside the graph
+  repeated GraphVariable blackboard = 6;
+
+  // [MERGED] affiliations (struct/related-graph declarations)
+  repeated GraphAffiliation affiliations = 7;
+
+  // --- Subsystem-specific parameters ---
+
+  // Entry index: corresponds to the index of an "entry node" or an "external trigger slot"
+  // TODO: should this be repeated?
+  optional int32 entry_slot_index = 100;
+
+  // Polling/evaluation frequency (filters only): the time interval at which the graph logic is re-evaluated (ineffective)
+  optional float evaluation_interval = 101;
+}
+
+// Composite node interface definition (external signature)
+message NodeInterface {
+  // Identity of the composite node
+  message Signature {
+    ResourceLocator shell_ref  = 1;
+    ResourceLocator kernel_ref = 2; // Nodes generated this way usually have shell == kernel
+
+    // Key: for user subgraphs it points to the inner logic graph; for system-generated nodes this field is empty
+    ResourceLocator graph_ref      = 4;
+    optional int32  signal_version = 5;
+  }
+
+  // Implementation template definition
+  message Implementation {
+    enum Category {
+      UNKNOWN         = 0;
+      COMPOSITE       = 1000; // User subgraph
+      SEND_SIGNAL     = 1001; // Send signal
+      LISTEN_SIGNAL   = 1002; // Listen to signal
+      STRUCT_ASSEMBLY = 1003; // Assemble struct
+      STRUCT_SPLIT    = 1004; // Split struct
+      STRUCT_MODIFY   = 1005; // Modify struct
+    }
+    Category category = 1;
+
+    message Id { int64 id = 1; }
+
+    oneof template {
+      // Signal info for Send/Listen
+      SignalSignature send_signal   = 101;
+      SignalSignature listen_signal = 102;
+      // Struct ID for Assembly/Split
+      Id assemble_struct = 104;
+      Id split_struct    = 105;
+      Id modify_struct   = 106;
+    }
+  }
+
+  Signature id = 4;
+
+  repeated PinInterface inflows   = 100;
+  repeated PinInterface outflows  = 101;
+  repeated PinInterface inputs    = 102;
+  repeated PinInterface outputs   = 103;
+  repeated PinInterface meta_pins = 106; // Formerly signals, holds Type 5 pins
+
+  Implementation impl = 107;
+
+// The names of the Which logic are kept on purpose, because they are the indices of the template system
+  enum TemplateRoot {
+    UNKNOWN        = 0;
+    SUB_TEMPLATE   = 1;
+    LISTEN_SIGNAL  = 2;
+    STRUCT         = 5;
+    USER_COMPOSITE = 6;
+  }
+  enum TemplateSub  {
+    NONE          = 0;
+    MODIFY_STRUCT = 3;
+    STRUCT_SUB    = 4;
+    SIGNAL_SUB    = 8;
+  }
+
+  string       name          = 200;
+  string       description   = 201;
+  TemplateRoot template_root = 203; // Formerly which
+  TemplateSub  template_sub  = 204; // Formerly subWhich
+}
+
+// Composite node parameter/data pin interface definition (external signature)
+message PinInterface {
+  string       name            = 1;
+  int32        visibility_mask = 2; // Formerly xxxx_always_1 (bit mask)
+  PinSignature sig             = 3; // Contains Kind (IN_PARAM/OUT_PARAM) and Index
+
+  // Pin type definition
+  message TypeInfo {
+    // optional for flow pin
+    optional TypedValue.WidgetType ui_class        = 1; // UI presentation form (IntBase, VecBase, etc.)
+    optional ServerTypeId          var_type_shell  = 3; // ServerTypeId enum; for an Enum it is [100id] (EnumCategoryId)
+    optional ServerTypeId          var_type_kernel = 4; // ServerTypeId enum; for an Enum it is 14 (EnumType)
+    optional TypedValue            default_value   = 2; // [MERGED, observed sample_2] default value of meta pin (e.g. signal name text)
+    optional int32                 flag_6          = 6; // [MERGED, observed sample_2] unknown, value 1
+
+    // Hint text of the parameter box
+    message Placeholder {
+      int32  always_1 = 1;
+      string text     = 2;
+    }
+    optional Placeholder placeholder = 5;
+
+    // Display state specific to metadata pins (e.g. shown as a signal-name input box)
+    message DisplayState {
+      enum State { NONE = 0; SIGNAL_NAME = 4; }
+      State state = 1;
+    }
+    optional DisplayState display_state = 7;
+
+    oneof detail {
+      EnumId   enum_id        = 101;
+      ListType list_item_type = 102;
+      StructId struct_id      = 104;
+      MapType  map_type       = 105;
+    }
+
+    message EnumId { int64 val = 1; }
+    message ListType {
+      TypeInfo item_type = 1;
+    }
+    message StructId { int64 val = 2; }
+    message MapType {
+      ServerTypeId key   = 3;
+      ServerTypeId value = 4;
+      // if value is StructList
+      optional int64 struct_id = 5;
+    }
+  }
+
+  TypeInfo type = 4;
+  // For system-generated struct/signal nodes, marks their metadata type
+  optional PinSignature meta_sig_type      = 5;
+  int32                 persistent_pin_uid = 8;
+}
+
+// TODO: struct definition (Stub)
+message StructureDefinition {
+  Field genericField  = 1;
+  Field concreteField = 2; // same as 1
+  int32 structVersion = 3; // Version Updated as structure is modified and as
+                           // other structures modified
+  int32 itemCount = 4; // item count
+  int32 field_5 = 5;   // [MERGED, observed 7.0 sample_3] value 1, unknown
+
+  message Field {
+    int64           id   = 1;
+    int64           xxx  = 2; // 2 for level stru def
+    repeated VarDef vars = 3;
+
+    string structName = 501;
+    int32  classBase  = 502; // always 1
+    int32  index      = 503; // same as StructureDef
+  }
+  message VarDef {
+
+    message TypeDef {
+      message SubType {
+        ServerTypeId type    = 1;
+        int64        xxxx_id = 2; // What are they?
+        ServerTypeId key     = 502;
+        ServerTypeId value   = 503;
+        int64        valueId = 504;
+      }
+      ServerTypeId type    = 1;
+      SubType      subType = 2;
+
+      oneof val {
+        Int    intVal  = 13;
+        Enum   boolVal = 14;
+        String strVal  = 16;
+        // TODO: default values of map / struct typed variables are not understood
+      }
+    }
+    message TypeDef3 {
+      message SubType {
+        ServerTypeId type = 1;
+        message Any { optional int32 f1 = 1; optional int64 f2 = 2; } // [MERGED] observed varints in 7.0
+        Any          xxxx_id = 2; // Why diff from TypeDef3
+        ServerTypeId key     = 502;
+        ServerTypeId value   = 503;
+        int64        valueId = 504;
+      }
+      ServerTypeId type    = 1;
+      SubType      subType = 2;
+
+      oneof val {
+        Int    intVal  = 13;
+        Enum   boolVal = 14;
+        String strVal  = 16;
+        // TODO: default values of map / struct typed variables are not understood
+        bytes opaque_21 = 21; bytes opaque_35 = 35; bytes opaque_36 = 36; // [MERGED] observed in advanced struct (default/list/dict values, not interpreted)
+      }
+    }
+    TypeDef  typedef1 = 1;
+    TypeDef3 typedef3 = 3;
+    string   name     = 5;
+
+    string       varName  = 501;
+    ServerTypeId varType  = 502;
+    int32        varIndex = 503; // variable index
+  }
+}
+
+// ========================================================================
+// 6. Node Instance & Components
+// ========================================================================
+
+// A single node instance in a node graph
+message NodeInstance {
+  // Unique index of the node in the graph (runtime handle)
+  int32 index = 1;
+
+  // Core definition and implementation are separated
+
+  // Shell definition (UI): shell_ref decides what the node looks like
+  ResourceLocator shell_ref = 2;
+
+  // Kernel implementation (logic): kernel_ref decides how the node runs
+  // - For fixed nodes: always has a value.
+  // - For variable nodes:
+  //    - If null: "unresolved". The node is in an invalid state, its type is not configured.
+  //    - If set: it has been mapped to a concrete kernel function ID according to the type the user chose.
+  // - For the Client Skill entry (Start): usually Kernel 2001. (Listen)
+  // - For Client Skill execution nodes (Execution): usually Kernel 2000. (POST)
+  optional ResourceLocator kernel_ref = 3;
+
+  // Pins and parameters
+  repeated PinInstance pins = 4;
+
+  float x_pos = 5;
+  float y_pos = 6;
+
+  // User note attached to the node
+  optional Annotation attached_comment = 7;
+
+  // Special context marker (Legacy / Context Provider)
+
+  // Only appears on entry nodes (NodeGraphStarts, Kernel 2001)
+  // Identifies the context type in which the graph is triggered (e.g. Signal).
+  // Actually a PinSignature without an index
+  optional PinSignature context_declaration = 8;
+
+  // Only for Signal-related nodes, used to detect definition version conflicts
+  optional int32 signal_version = 9;
+
+  message DependencyDeclaration {
+    ResourceLocator identity = 1;
+  }
+  // Struct dependency declarations
+  repeated DependencyDeclaration using_structs = 10;
+
+  // [MERGED] observed in creation_status / creation_status_decision graphs
+  optional StatusNodeExtension status_node_extension = 11;
+}
+
+// Pin signature (Meta Tag)
+message PinSignature {
+  enum Kind {
+    UNKNOWN   = 0;
+    IN_FLOW   = 1;
+    OUT_FLOW  = 2;
+    IN_PARAM  = 3;
+    OUT_PARAM = 4;
+
+    // Special purposes
+    META_RPC_OPCODE = 5; // Formerly SignalClient. Carries the RPC ID
+    META_TOPIC_NAME = 6; // Formerly Signal (Entry Context). Carries the signal name / context declaration
+
+    // Struct operations
+    STRUCT_REF        = 13;
+    STRUCT_KEY_MOD    = 14;
+    STRUCT_KEY_SET    = 15;
+    STRUCT_KEY_SELECT = 16;
+  }
+  Kind  kind  = 1;
+  int32 index = 2; // Which pin of this type (position among pins of the same kind)
+
+  // Stores the RPC ID when kind is META_RPC_OPCODE (5)
+  message SignalId { int64 id = 1; }
+  optional SignalId source_ref = 100;
+}
+
+// Signal signature (generic)
+message SignalSignature {
+  string          signal_name    = 1;
+  ResourceLocator server_node_id = 2;
+  ResourceLocator client_node_id = 3;
+}
+
+// Pin instance (runtime state)
+message PinInstance {
+  // Dual index system
+  PinSignature shell_sig  = 1; // i1: corresponds to the UI slot of the Shell definition
+  PinSignature kernel_sig = 2; // i2: corresponds to the parameter slot of the Kernel implementation
+
+  // Value and type
+  TypedValue value = 3;
+  int32      type  = 4; // Be careful! ServerTypeId in Server and ClientVarType in Client
+
+  // Connections
+  repeated NodeConnection connections = 5;
+
+  // Dynamic binding info
+
+  // Metadata binding
+  // Used by nodes such as SendSignal, stores the binding of an RPC ID or Topic Name
+  // Formerly signalPin
+  optional PinSignature binding_meta = 6;
+
+  // Persistent pin ID
+  // Only for dynamic types (Struct/Signal/Composite)
+  // When the Shell definition changes (pins inserted or reordered), this ID is used to recover the connections
+  optional int32 persistent_pin_uid = 7; // Formerly compositePinUid
+}
+
+// Connection
+message NodeConnection {
+  int32        target_node_index = 1;
+  PinSignature target_pin_shell  = 2;
+  PinSignature target_pin_kernel = 3;
+}
+
+// Interface mapping: pipes through the wall
+message InterfaceMapping {
+  // Pin definition on the shell of the composite node (outside)
+  PinSignature external_port = 1;
+
+  // Index of the inner target node it maps to (inside)
+  int32 internal_target_node_handle = 2;
+
+  // Concrete inner pin it maps to (logical/physical)
+  PinSignature internal_port_shell  = 3;
+  PinSignature internal_port_kernel = 4;
+}
+
+// Graph variable (blackboard variable)
+message GraphVariable {
+  string var_name = 2;
+
+  // Data type definition of the variable
+  ServerTypeId base_type = 3;
+
+  // Initial/current value of the variable
+  TypedValue storage_value = 4;
+
+  // Whether it is exposed as an externally configurable parameter
+  bool is_public = 5;
+
+  // For a struct variable, the ID of its definition
+  optional int64 schema_ref_id = 6;
+
+  // Sub-type definition of a container type (leftover field, only valid for Map)
+  ServerTypeId container_key_type   = 7;
+  ServerTypeId container_value_type = 8;
+}
+
+// Comment / text note
+message Annotation {
+  string text = 1;
+  // If the coordinates are empty, the comment is "attached" to a node instance (linked via NodeInstance.attached_comment)
+  optional float x_pos = 2;
+  optional float y_pos = 3;
+}
+
+
+// ========================================================================
+// 7. [MERGED] additions: graph affiliations, status node extension
+// ========================================================================
+
+message StatusNodeExtension {
+  int32 type = 1;
+  message Inner { int32 value = 1; }
+  optional Inner inner = 100;
+}
+
+message GraphAffiliation {
+  message Info {
+    ResourceLocator source = 1;
+    int32 type_xxx = 2;
+    int32 always_one_xxxx = 3;
+    oneof extend { StructItem struct_id = 100; }
+  }
+  message StructItem { int64 struct_id = 1; }
+  message Type { int32 type = 1; }
+  Info info = 1;
+  Type type = 2;
+}
+
+
+// ========================================================================
+// 9. .gil stage / level file payload  [MERGED]
+// ========================================================================
+// Same container as .gia (file type 2 instead of 3), but the payload is the whole stage, not an AssetBundle.
+// Sections known from stage files of games 7.0.0 and 7.1.0 (LevelName, Components, Entities, Categories, Terrains, NodeGraph, ...).
+// The node-graph section reuses the message types above unchanged (NodeGraph, NodeInterface, StructureDefinition).
+//
+// Convention: `opaque_N` = section that exists and is known but is NOT interpreted (kept out of the unknown-field census,
+// listed by `check`). `option opaque_rest = true;` = only the declared fields of that message are interpreted.
+// Any root field that is neither declared nor opaque_N is a census entry, so a new section added by a game update is visible.
+message GilFile {
+  string level_name       = 2;  // stage name, e.g. "Custom Tab_1_Save"
+  bytes  opaque_3         = 3;
+  GilTemplates templates  = 4;  // player / character / object / creation templates
+  GilEntities  entities   = 5;  // placed entities (+ player, character and level entities)
+  bytes  opaque_6         = 6;  // folder index (which resource lives in which folder or tab); read raw by src/mounts.mjs
+  GilTerrains  terrains   = 7;
+  bytes  opaque_8         = 8;  // prefab editing area (open prefab drafts and their instances); never read
+  GilUi        ui         = 9;  // interface layouts and controls
+  GilNodeGraphs node_graphs = 10; // server/client graphs, composite decls + bodies, signals, struct definitions
+  GilLevelSettings level_settings = 11; // factions, respawn / preset points, ...
+  GilGlobalTimers global_timers = 12;
+  bytes  opaque_14        = 14;
+  GilConfigs configs      = 15; // skills, statuses, items, classes, shields, environments, ...
+  bytes  opaque_16        = 16; // skill event tracks (keyed by the same guids as 15)
+  bytes  opaque_17        = 17;
+  GilCameras cameras      = 18;
+  bytes  opaque_19        = 19;
+  bytes  opaque_20        = 20;
+  bytes  opaque_21        = 21;
+  bytes  opaque_22        = 22;
+  bytes  opaque_23        = 23;
+  bytes  opaque_25        = 25; // peripheral systems: score groups, achievements, leaderboards
+  bytes  opaque_27        = 27;
+  bytes  opaque_29        = 29; // editor info ("OSRELWin7.0.0" + build numbers)
+  GilNamedList unit_tags  = 30;
+  GilSaveData  save_data  = 31; // resource class 41 (temporary in-game save data)
+  GilPaths     paths      = 32;
+  GilNamedList deployment_groups = 33;
+  bytes  opaque_35        = 35;
+  bytes  opaque_36        = 36; // multi-language text config
+  bytes  opaque_37        = 37;
+  bytes  opaque_38        = 38;
+  uint64 opaque_39        = 39;
+  uint64 opaque_40        = 40; // save time (unix seconds)
+  uint64 opaque_41        = 41;
+  optional uint32 mode_flag = 42; // 1 = classic mode (same meaning as AssetBundle.mode_flag)
+  string engine_version   = 43;
+  GilSceneTemplates scene_templates = 44;
+  bytes  opaque_45        = 45;
+  bytes  opaque_46        = 46;
+  bytes  opaque_48        = 48;
+  bytes  opaque_49        = 49;
+}
+
+// "component" list item shared by templates / entities / configs / paths: the item with kind == 1 carries the name.
+message GilComponent {
+  option opaque_rest = true;
+  int32 kind = 1;
+  GilNameHolder name = 11;
+}
+message GilNameHolder { option opaque_rest = true; string text = 1; }
+message GilNameOnly   { option opaque_rest = true; string name = 1; }
+message GilNamedEntry { option opaque_rest = true; uint32 guid = 1; string name = 2; }
+message GilNamedList  { repeated GilNamedEntry entries = 1; }
+
+message GilTemplates { repeated GilTemplate entries = 1; }
+message GilTemplate {
+  option opaque_rest = true;
+  uint32 guid = 1;
+  uint32 config_id = 2;              // id of the game's base prefab / template
+  repeated GilComponent components = 6;
+}
+message GilEntities { repeated GilEntity entries = 1; }
+message GilEntity {
+  option opaque_rest = true;
+  uint32 guid = 1;
+  repeated GilComponent components = 5;
+}
+message GilTerrains { repeated GilTerrain entries = 1; }
+message GilTerrain { option opaque_rest = true; uint32 guid = 1; GilNameOnly info = 2; }
+
+message GilUi {
+  bytes opaque_501 = 501;
+  repeated GilUiEntry entries = 502;
+  uint32 opaque_503 = 503;
+}
+message GilUiEntry {
+  option opaque_rest = true;
+  uint32 guid = 501;
+  uint32 parent = 504;               // layout guid for controls; absent for layouts
+  repeated GilUiInfo info = 505;
+}
+message GilUiInfo { option opaque_rest = true; GilUiName name = 12; }
+message GilUiName { option opaque_rest = true; string text = 501; }
+
+message GilConfigs { repeated GilConfig entries = 1; }
+message GilConfig {
+  option opaque_rest = true;
+  uint32 guid = 1;
+  uint32 config_type = 2;            // selects the resource class, see src/gil.mjs
+  repeated GilComponent components = 4;
+}
+message GilCameras { repeated GilCamera entries = 1; }
+message GilCamera { option opaque_rest = true; uint32 guid = 1; GilNameOnly info = 2; }
+message GilPaths { repeated GilPath entries = 1; }
+message GilPath { option opaque_rest = true; uint32 guid = 1; repeated GilComponent components = 4; }
+message GilGlobalTimers { repeated GilTimer entries = 1; }
+message GilTimer { option opaque_rest = true; string name = 1; }
+message GilSaveData { repeated GilSaveEntry entries = 3; }
+message GilSaveEntry { option opaque_rest = true; uint32 guid = 1; GilSaveInfo info = 100; }
+message GilSaveInfo { option opaque_rest = true; GilUiName name = 1; }
+message GilSceneTemplates {
+  repeated GilSceneTemplate kind_a = 1;   // -> ResourceClass 55
+  repeated GilSceneTemplate kind_b = 2;   // -> ResourceClass 56
+}
+message GilSceneTemplate { option opaque_rest = true; string name = 13; uint32 guid = 14; }
+
+message GilLevelSettings {
+  option opaque_rest = true;          // factions (2), camps, score settings … are not interpreted
+  GilRespawnList respawn_points = 3;
+  GilPresetPoints preset_points = 5;
+}
+message GilRespawnList { option opaque_rest = true; repeated GilRespawnPoint entries = 2; }
+message GilRespawnPoint { option opaque_rest = true; uint32 guid = 2; string name = 501; }
+message GilPresetPoints { repeated GilPresetPoint entries = 1; }
+message GilPresetPoint { option opaque_rest = true; uint32 guid = 1; string name = 501; }
+
+// Node-graph section of a level: the same three message kinds a .gia bundle carries, but as bare lists.
+message GilNodeGraphs {
+  repeated NodeGraphContainer.InnerWrapper     graphs           = 1; // ordinary graphs (locator kind 21001)
+  repeated NodeInterfaceContainer.InnerWrapper interfaces       = 2; // composite / signal / struct-node declarations
+  repeated bytes                               opaque_3         = 3; // node palette: composite folders; read raw by src/mounts.mjs
+  repeated NodeGraphContainer.InnerWrapper     composite_bodies = 4; // composite graphs (locator kind 21002)
+  repeated bytes                               opaque_5         = 5; // signal table (name -> send/listen/server node ids, parameters)
+  repeated StructureDefinition                 structs          = 6;
+  uint32                                       opaque_7         = 7;
+}

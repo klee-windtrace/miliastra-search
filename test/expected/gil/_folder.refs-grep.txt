@@ -1,0 +1,4 @@
+signal           "Signal_1"                         4 listen: ['Both'; 'Receive'], 4 send: ['Both'; 'Send']
+signal           "Signal_2"                         4 listen: ['Both'; 'Receive'], 4 send: ['Both'; 'Send']
+signal           "Signal_3"                         0 listen: [], 0 send: []
+timer            "* (listener for any name)"        2 listen: ['Send']

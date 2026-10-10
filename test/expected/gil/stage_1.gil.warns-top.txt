@@ -1,0 +1,12 @@
+# findings
+(no findings)
+
+# limits
+composites: 2/1000 declared
+PRESET_POINT: 1/2000
+ENVIRONMENT_CONFIGURATION: 1/50
+CLASS: 1/100
+TERRAIN_ENTITY: 1/1200
+
+top graphs by node count:
+'New Node Graph': 16/3000 nodes

@@ -1,0 +1,5 @@
+signal           "Static_1"                         1 listen: ['All_Static'], 1 send: ['All_Static']
+signal           "Static_2"                         1 listen: ['All_Static'], 1 send: ['All_Static']
+timer            "<dynamic>"                        0 start: [], 0 stop: [], 1 listen: ['Dynamic']
+timer            "Static_Timer" (onetime)           1 start: ['All_Static'], 1 stop: ['All_Static'], 1 listen: ['All_Static']
+timer            "tm"                               0 start: [], 0 stop: [], 1 listen: ['Static']

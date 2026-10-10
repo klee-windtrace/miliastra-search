@@ -1,0 +1,101 @@
+# FILE test/cases/gia/sample_0_main.gia
+GRAPH 'Graph' ENTITY_NODE_GRAPH class=9 guid='1073742366' kind=21001 service=20000 nodes=7
+GRAPH '<status>Empty' STATUS_NODE_GRAPH class=22 guid='1073742384' kind=21001 service=20003 nodes=0
+# FILE test/cases/gia/sample_1.gia
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=7
+GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=7 role=dependency composite_body=true
+# FILE test/cases/gia/sample_2.gia
+DECL "Signal_1" SIGNAL_NODE_DECL class=14 guid='1610612739' category=SEND_SIGNAL
+DECL "Signal_2" SIGNAL_NODE_DECL class=14 guid='1610612742' category=SEND_SIGNAL
+GRAPH 'Both' ENTITY_NODE_GRAPH class=9 guid='1073741828' kind=21001 service=20000 nodes=4
+GRAPH 'Receive' ENTITY_NODE_GRAPH class=9 guid='1073741826' kind=21001 service=20000 nodes=3
+GRAPH 'Send' ENTITY_NODE_GRAPH class=9 guid='1073741827' kind=21001 service=20000 nodes=3
+# FILE test/cases/gia/sample_3.gia
+GRAPH 'Structs' ENTITY_NODE_GRAPH class=9 guid='1073741829' kind=21001 service=20000 nodes=7
+# FILE test/cases/gia/sample_4.gia
+GRAPH 'Lists' ENTITY_NODE_GRAPH class=9 guid='1073741830' kind=21001 service=20000 nodes=14
+# FILE test/cases/gia/sample_5.gia
+GRAPH 'Variables' ENTITY_NODE_GRAPH class=9 guid='1073741831' kind=21001 service=20000 nodes=10
+# FILE test/cases/gia/sample_6.gia
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH class=9 guid='1073741827' kind=21001 service=20000 nodes=2
+GRAPH 'New Node Graph_1' ITEM_NODE_GRAPH class=46 guid='1073741828' kind=21001 service=20005 nodes=2
+# FILE test/cases/gia/sample_7.gia
+GRAPH '<skill>New Character Skill Node Graph' SKILL_NODE_GRAPH class=11 guid='1082130433' kind=21001 service=20002 nodes=5 entry_slot=1
+GRAPH '<creation>New Creation Skill Node Graph' CREATION_SKILL_GRAPH class=52 guid='1082130434' kind=21001 service=20008 nodes=3 entry_slot=1
+GRAPH '<creation>New Creation Status Node Graph' CREATION_STATUS_GRAPH class=53 guid='1082130435' kind=21001 service=20009 nodes=2 entry_slot=1
+GRAPH '<creation>New Creation Status Decision Node Graph' CREATION_STATUS_DECISION_GRAPH class=51 guid='1082130436' kind=21001 service=20007 nodes=3 entry_slot=1
+GRAPH '<skill>New Character Control Skill Node Graph' CHARACTER_CONTROL_SKILL_GRAPH class=64 guid='1082130437' kind=21001 service=20010 nodes=2 entry_slot=1
+GRAPH '<filter>New Filter Node Graph' BOOLEAN_FILTER_GRAPH class=10 guid='1082130438' kind=21001 service=20001 nodes=3 entry_slot=1 evaluation_interval=0.3
+GRAPH '<filter>New Filter Node Graph_1' INTEGER_FILTER_GRAPH class=47 guid='1082130439' kind=21001 service=20006 nodes=3 entry_slot=1 evaluation_interval=0.1
+# FILE test/cases/gia/sample_8.gia
+GRAPH 'Graph' ENTITY_NODE_GRAPH class=9 guid='1073741832' kind=21001 service=20000 nodes=7
+# FILE test/cases/gia/sample_9.gia
+DECL "Signal_1" SIGNAL_NODE_DECL class=14 guid='1610612781' category=SEND_SIGNAL
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=0
+GRAPH '<status>New Node Graph_1' STATUS_NODE_GRAPH class=22 guid='1073741826' kind=21001 service=20003 nodes=0
+GRAPH '<class>New Node Graph_2' CLASS_NODE_GRAPH class=23 guid='1073741827' kind=21001 service=20004 nodes=0
+GRAPH 'New Node Graph_3' ITEM_NODE_GRAPH class=46 guid='1073741828' kind=21001 service=20005 nodes=0
+GRAPH '<skill>New Character Skill Node Graph' SKILL_NODE_GRAPH class=11 guid='1082130433' kind=21001 service=20002 nodes=1 entry_slot=1
+GRAPH '<creation>New Creation Skill Node Graph' CREATION_SKILL_GRAPH class=52 guid='1082130434' kind=21001 service=20008 nodes=1 entry_slot=1
+GRAPH '<creation>New Creation Status Node Graph' CREATION_STATUS_GRAPH class=53 guid='1082130435' kind=21001 service=20009 nodes=1 entry_slot=1
+GRAPH '<creation>New Creation Status Decision Node Graph' CREATION_STATUS_DECISION_GRAPH class=51 guid='1082130436' kind=21001 service=20007 nodes=1 entry_slot=1
+GRAPH '<skill>New Character Control Skill Node Graph' CHARACTER_CONTROL_SKILL_GRAPH class=64 guid='1082130437' kind=21001 service=20010 nodes=1 entry_slot=1
+GRAPH '<filter>New Filter Node Graph' BOOLEAN_FILTER_GRAPH class=10 guid='1082130438' kind=21001 service=20001 nodes=1 entry_slot=1 evaluation_interval=0.3
+GRAPH '<filter>New Filter Node Graph_1' INTEGER_FILTER_GRAPH class=47 guid='1082130439' kind=21001 service=20006 nodes=1 entry_slot=1 evaluation_interval=0.3
+RESOURCE "Default Template" PLAYER_TEMPLATE class=18 guid='1086324737'
+RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519041'
+RESOURCE "Custom Class" CLASS class=17 guid='1090519041'
+RESOURCE "Custom Skill" SKILL class=8 guid='1098907649'
+RESOURCE "Control Skill" CONTROL_SKILL class=65 guid='1228931073'
+RESOURCE "Custom Creation Skill" CUSTOM_CREATION_SKILL class=54 guid='1191182337'
+RESOURCE "Skill Variable" SKILL_VARIABLE class=60 guid='1207959553'
+RESOURCE "New Skill Resource" SKILL_RESOURCE class=16 guid='1103101953'
+RESOURCE "New Status" UNIT_STATUS class=7 guid='1077936129'
+RESOURCE "Global Timer1" GLOBAL_TIMER class=24 guid='1073741825'
+RESOURCE "New Projectile" PROJECTILE class=25 guid='1077936134'
+RESOURCE "Custom Template" SHOP_TEMPLATE class=30 guid='1136656385'
+RESOURCE "New Item" ITEM class=26 guid='1107296257'
+RESOURCE "Unit Tags" UNIT_TAG class=44 guid='1073741825'
+RESOURCE "Scan Tag Template" SCAN_TAG class=45 guid='1161822209'
+RESOURCE "Entity Deployment Group" ENTITY_DEPLOYMENT_GROUP class=43 guid='1073741825'
+RESOURCE "Light Source" LIGHT_SOURCE class=48 guid='1182793729'
+RESOURCE "VFX Tool" VFX_TOOL class=58 guid='1199570945'
+RESOURCE "Custom Camera" CAMERA class=13 guid='1073741825'
+RESOURCE "Stone Functional Platform" OBJECT class=1 guid='1077936129' parent=(entities: 1)
+RESOURCE "Arrow Sign" OBJECT class=1 guid='1077936131' parent=(entities: 0)
+RESOURCE "Wooden Bridge" OBJECT class=1 guid='1077936132' parent=(entities: 0)
+RESOURCE "Challenge Coin Loot" OBJECT class=1 guid='1077936133' parent=(entities: 0)
+RESOURCE "Prefab Group" OBJECT class=1 guid='1077936130' parent=(entities: 1)
+RESOURCE "Pyro Hilichurl Shooter" CREATION class=2 guid='1082130433'
+RESOURCE "Cryo Abyss Mage" CREATION class=2 guid='1082130434'
+RESOURCE "Stone Functional Platform" OBJECT_ENTITY class=3 guid='1077936129' parent=(1077936129:"Stone Functional Platform")
+RESOURCE "Challenge Coin Loot" OBJECT_ENTITY class=3 guid='1077936136' parent=(10007002)
+RESOURCE "Prefab Group" OBJECT_ENTITY class=3 guid='1077936132' parent=(1077936130:"Prefab Group")
+RESOURCE "Pyro Slime" CREATION_ENTITY class=4 guid='1082130433'
+RESOURCE "Hydro Slime" CREATION_ENTITY class=4 guid='1082130434'
+RESOURCE "Fabric-Roof Hut" STATIC_ENTITY class=3 guid='1077936135' parent=(20001485)
+RESOURCE "Terrain01" TERRAIN_ENTITY class=5 guid='1073741825'
+RESOURCE "Default Layout" INTERFACE_LAYOUT class=20 guid='1073741825'
+RESOURCE "Environment Configuration" ENVIRONMENT_CONFIGURATION class=49 guid='1186988033'
+RESOURCE "Path" PATH class=38 guid='1073741825'
+RESOURCE "Shield" SHIELD class=39 guid='1157627905'
+RESOURCE "Create Preset Point" PRESET_POINT class=6 guid='1073741825'
+RESOURCE "" class#41 class=41 guid='1073741825'
+RESOURCE "New Scene Generation Template" SCENE_GENERATION_TEMPLATE_A class=55 guid='1073741825'
+RESOURCE "New Scene Generation Template" SCENE_GENERATION_TEMPLATE_B class=56 guid='1073741826'
+RESOURCE "New Scene Generation Template" SCENE_GENERATION_TEMPLATE_B class=56 guid='1073741827'
+RESOURCE "Mini-Map" UI_CONTROL class=15 guid='1073741826'
+RESOURCE "Skill Area" UI_CONTROL class=15 guid='1073741827'
+RESOURCE "Team Information" UI_CONTROL class=15 guid='1073741828'
+RESOURCE "Character HP Bar" UI_CONTROL class=15 guid='1073741829'
+RESOURCE "Joystick" UI_CONTROL class=15 guid='1073741830'
+RESOURCE "Creation HP Bar" UI_CONTROL class=15 guid='1073741831'
+RESOURCE "Exit Button" UI_CONTROL class=15 guid='1073741832'
+RESOURCE "Voice-Over" UI_CONTROL class=15 guid='1073741833'
+RESOURCE "Tab" UI_CONTROL class=15 guid='1073741834'
+RESOURCE "Chat Button" UI_CONTROL class=15 guid='1073741835'
+RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741836'
+RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741837'
+RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741838'
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741839'

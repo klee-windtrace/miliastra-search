@@ -1,0 +1,2 @@
+composite        "Create Composite Node"            2 call: ['New Node Graph']
+composite        "Create Composite Node(1)"         1 call: ['New Node Graph']

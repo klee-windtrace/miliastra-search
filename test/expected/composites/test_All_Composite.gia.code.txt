@@ -1,0 +1,199 @@
+DECL "Static_2" SIGNAL_NODE_DECL guid='1610612741' role=dependency
+DECL/Static_2 SEND_SIGNAL name='Static_2' server_node=1610612742 client_node=1610612743
+DECL/Static_2 in.flow#0 uid=17
+DECL/Static_2 out.flow#0 uid=18
+DECL/Static_2 meta#0 "Signal Name" uid=19
+DECL "Static_1" SIGNAL_NODE_DECL guid='1610612737' role=dependency
+DECL/Static_1 SEND_SIGNAL name='Static_1' server_node=1610612738 client_node=1610612739
+DECL/Static_1 in.flow#0 uid=1
+DECL/Static_1 out.flow#0 uid=2
+DECL/Static_1 meta#0 "Signal Name" uid=3
+GRAPH 'All_Composite' ENTITY_NODE_GRAPH (guid 1073741826)
+'All_Composite'/VAR Static_Graph : L<Gid> public=false
+'All_Composite'/[1] Create Composite Node (1610612745) user=COMPOSITE @(-335,-156)
+'All_Composite'/[1] Create Composite Node (1610612745) out.flow#0 -> [2] Create Composite Node(1) (1610612746) in.flow#0
+'All_Composite'/[2] Create Composite Node(1) (1610612746) user=COMPOSITE @(117,-156)
+'All_Composite'/[2] Create Composite Node(1) (1610612746) out.flow#0 "1" -> [18] Create Composite Node(15) (1610612760) in.flow#0
+'All_Composite'/[2] Create Composite Node(1) (1610612746) in#0 "Control Expression" <- [1] Create Composite Node (1610612745) out#1 "Variable Name" : Str
+'All_Composite'/[3] Create Composite Node(2) (1610612747) user=COMPOSITE @(-311.2381,-664.2857)
+'All_Composite'/[3] Create Composite Node(2) (1610612747) out.flow#0 -> [5] Create Composite Node(3) (1610612748) in.flow#0
+'All_Composite'/[5] Create Composite Node(3) (1610612748) user=COMPOSITE @(131.0238,-663.1667)
+'All_Composite'/[5] Create Composite Node(3) (1610612748) out.flow#0 "1" -> [6] Create Composite Node(4) (1610612749) in.flow#0
+'All_Composite'/[5] Create Composite Node(3) (1610612748) in#0 "Control Expression" <- [3] Create Composite Node(2) (1610612747) out#1 "Timer Name" : Str
+'All_Composite'/[6] Create Composite Node(4) (1610612749) user=COMPOSITE @(622.4008,-488.64682)
+'All_Composite'/[6] Create Composite Node(4) (1610612749) out.flow#0 -> [14] Create Composite Node(11) (1610612756) in.flow#0
+'All_Composite'/[6] Create Composite Node(4) (1610612749) in#0 "Target Entity" <- [3] Create Composite Node(2) (1610612747) out#0 "Event Source Entity" : Ety
+'All_Composite'/[8] Create Composite Node(5) (1610612750) user=COMPOSITE @(724.48413,-957.6746)
+'All_Composite'/[8] Create Composite Node(5) (1610612750) out.flow#0 -> [12] Create Composite Node(9) (1610612754) in.flow#0
+'All_Composite'/[8] Create Composite Node(5) (1610612750) in#0 "Target Entity" <- [10] Create Composite Node(7) (1610612752) out#0 "Event Source Entity" : Ety
+'All_Composite'/[9] Create Composite Node(6) (1610612751) user=COMPOSITE @(145.46825,-1135.3889)
+'All_Composite'/[9] Create Composite Node(6) (1610612751) out.flow#0 "1" -> [8] Create Composite Node(5) (1610612750) in.flow#0
+'All_Composite'/[9] Create Composite Node(6) (1610612751) in#0 "Control Expression" <- [10] Create Composite Node(7) (1610612752) out#1 "Timer Name" : Str
+'All_Composite'/[10] Create Composite Node(7) (1610612752) user=COMPOSITE @(-349.57144,-1134.2858)
+'All_Composite'/[10] Create Composite Node(7) (1610612752) out.flow#0 -> [9] Create Composite Node(6) (1610612751) in.flow#0
+'All_Composite'/[11] Create Composite Node(8) (1610612753) user=COMPOSITE @(1335.5952,-1168.0913)
+'All_Composite'/[12] Create Composite Node(9) (1610612754) user=COMPOSITE @(1300.5952,-955.59125)
+'All_Composite'/[12] Create Composite Node(9) (1610612754) in#0 "Timer Name" <- [11] Create Composite Node(8) (1610612753) out#0 "Value" : Str
+'All_Composite'/[12] Create Composite Node(9) (1610612754) in#1 "Target Entity" <- [10] Create Composite Node(7) (1610612752) out#0 "Event Source Entity" : Ety
+'All_Composite'/[13] Create Composite Node(10) (1610612755) user=COMPOSITE @(1130.7738,-650.76984)
+'All_Composite'/[14] Create Composite Node(11) (1610612756) user=COMPOSITE @(1113.0952,-488.09128)
+'All_Composite'/[14] Create Composite Node(11) (1610612756) in#0 "Timer Name" <- [13] Create Composite Node(10) (1610612755) out#0 "Value" : Str
+'All_Composite'/[14] Create Composite Node(11) (1610612756) in#1 "Target Entity" <- [3] Create Composite Node(2) (1610612747) out#0 "Event Source Entity" : Ety
+'All_Composite'/[15] Create Composite Node(12) (1610612757) user=COMPOSITE @(1241.488,-193.26984)
+'All_Composite'/[16] Create Composite Node(13) (1610612758) user=COMPOSITE @(1822.9166,-171.84126)
+'All_Composite'/[16] Create Composite Node(13) (1610612758) in#0 "Target Entity" <- [1] Create Composite Node (1610612745) out#0 "Event Source Entity" : Ety
+'All_Composite'/[16] Create Composite Node(13) (1610612758) in#1 "Variable Name" <- [15] Create Composite Node(12) (1610612757) out#0 "Value" : Str
+'All_Composite'/[17] Create Composite Node(14) (1610612759) user=COMPOSITE @(1238.631,19.587301)
+'All_Composite'/[17] Create Composite Node(14) (1610612759) in#0 "Variable Value" <- [16] Create Composite Node(13) (1610612758) out#0 "Variable Value" : Flt
+'All_Composite'/[17] Create Composite Node(14) (1610612759) in#1 "Variable Name" <- [15] Create Composite Node(12) (1610612757) out#0 "Value" : Str
+'All_Composite'/[17] Create Composite Node(14) (1610612759) in#2 "Target Entity" <- [1] Create Composite Node (1610612745) out#0 "Event Source Entity" : Ety
+'All_Composite'/[18] Create Composite Node(15) (1610612760) user=COMPOSITE @(687.2024,21.015873)
+'All_Composite'/[18] Create Composite Node(15) (1610612760) out.flow#0 -> [17] Create Composite Node(14) (1610612759) in.flow#0
+'All_Composite'/[18] Create Composite Node(15) (1610612760) in#0 "Target Entity" <- [1] Create Composite Node (1610612745) out#0 "Event Source Entity" : Ety
+'All_Composite'/[19] Create Composite Node(16) (1610612761) user=COMPOSITE @(-361.8095,352.38095)
+'All_Composite'/[19] Create Composite Node(16) (1610612761) out.flow#0 -> [20] Create Composite Node(17) (1610612762) in.flow#0
+'All_Composite'/[20] Create Composite Node(17) (1610612762) user=COMPOSITE @(127.690475,351.83334)
+'All_Composite'/[20] Create Composite Node(17) (1610612762) out.flow#0 "1" -> [21] Create Composite Node(18) (1610612763) in.flow#0
+'All_Composite'/[20] Create Composite Node(17) (1610612762) in#0 "Control Expression" <- [19] Create Composite Node(16) (1610612761) out#0 "Variable Name" : Str
+'All_Composite'/[21] Create Composite Node(18) (1610612763) user=COMPOSITE @(716.1427,526.788)
+'All_Composite'/[21] Create Composite Node(18) (1610612763) out.flow#0 -> [24] Create Composite Node(21) (1610612766) in.flow#0
+'All_Composite'/[22] Create Composite Node(19) (1610612764) user=COMPOSITE @(161.2619,822.7976)
+'All_Composite'/[23] Create Composite Node(20) (1610612765) user=COMPOSITE @(-331.2381,827.381)
+'All_Composite'/[23] Create Composite Node(20) (1610612765) out.flow#0 -> [22] Create Composite Node(19) (1610612764) in.flow#0
+'All_Composite'/[24] Create Composite Node(21) (1610612766) user=COMPOSITE @(1157.5713,529.64514)
+'All_Composite'/[24] Create Composite Node(21) (1610612766) in#0 "Variable Name" <- [26] Create Composite Node(23) (1610612768) out#0 "Value" : Str
+'All_Composite'/[24] Create Composite Node(21) (1610612766) in#1 "Variable Value" <- [25] Create Composite Node(22) (1610612767) out#0 "Variable Value" : L<Gid>
+'All_Composite'/[25] Create Composite Node(22) (1610612767) user=COMPOSITE @(1635.1427,538.5499)
+'All_Composite'/[25] Create Composite Node(22) (1610612767) in#0 "Variable Name" <- [26] Create Composite Node(23) (1610612768) out#0 "Value" : Str
+'All_Composite'/[26] Create Composite Node(23) (1610612768) user=COMPOSITE @(1173.4641,895.1809)
+'All_Composite'/[27] Create Composite Node(24) (1610612769) user=COMPOSITE @(173.7619,1110.2976)
+'All_Composite'/[28] Create Composite Node(25) (1610612770) user=COMPOSITE @(-317.90475,1112.381)
+'All_Composite'/[28] Create Composite Node(25) (1610612770) out.flow#0 -> [27] Create Composite Node(24) (1610612769) in.flow#0
+GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH (guid 1610612737, decl 1610612745) role=dependency
+'<composite>Create Composite Node'/PORTMAP ext.out.flow#0 -> [1] When Custom Variable Changes (36/40) out.flow#0
+'<composite>Create Composite Node'/PORTMAP ext.out#0 "Event Source Entity" -> [1] When Custom Variable Changes (36/40) out#0 "Event Source Entity"
+'<composite>Create Composite Node'/PORTMAP ext.out#1 "Variable Name" -> [1] When Custom Variable Changes (36/40) out#2 "Variable Name"
+'<composite>Create Composite Node'/[1] When Custom Variable Changes (36/40) variant=C<T:Flt> @(0,0)
+GRAPH '<composite>Create Composite Node(2)' ENTITY_NODE_GRAPH (guid 1610612739, decl 1610612747) role=dependency
+'<composite>Create Composite Node(2)'/PORTMAP ext.out.flow#0 -> [6] When Timer Is Triggered (83) out.flow#0
+'<composite>Create Composite Node(2)'/PORTMAP ext.out#0 "Event Source Entity" -> [6] When Timer Is Triggered (83) out#0 "Event Source Entity"
+'<composite>Create Composite Node(2)'/PORTMAP ext.out#1 "Timer Name" -> [6] When Timer Is Triggered (83) out#2 "Timer Name"
+'<composite>Create Composite Node(2)'/[6] When Timer Is Triggered (83) @(0,0)
+GRAPH '<composite>Create Composite Node(4)' ENTITY_NODE_GRAPH (guid 1610612741, decl 1610612749) role=dependency
+'<composite>Create Composite Node(4)'/PORTMAP ext.in.flow#0 -> [34] Start Timer (79) in.flow#0
+'<composite>Create Composite Node(4)'/PORTMAP ext.out.flow#0 -> [34] Start Timer (79) out.flow#0
+'<composite>Create Composite Node(4)'/PORTMAP ext.in#0 "Target Entity" -> [34] Start Timer (79) in#0 "Target Entity"
+'<composite>Create Composite Node(4)'/[34] Start Timer (79) @(0,0)
+'<composite>Create Composite Node(4)'/[34] Start Timer (79) in#1 "Timer Name" = 'Static_Timer' : Str
+'<composite>Create Composite Node(4)'/[34] Start Timer (79) in#2 "Loop" = No : Bol
+GRAPH '<composite>Create Composite Node(6)' ENTITY_NODE_GRAPH (guid 1610612743, decl 1610612751) role=dependency
+'<composite>Create Composite Node(6)'/PORTMAP ext.in.flow#0 -> [11] Multiple Branches (3/4) in.flow#0
+'<composite>Create Composite Node(6)'/PORTMAP ext.out.flow#0 "1" -> [11] Multiple Branches (3/4) out.flow#1 "Static_Global"
+'<composite>Create Composite Node(6)'/PORTMAP ext.in#0 "Control Expression" -> [11] Multiple Branches (3/4) in#0 "Control Expression"
+'<composite>Create Composite Node(6)'/[11] Multiple Branches (3/4) variant=C<T:Str> @(0,0)
+GRAPH '<composite>Create Composite Node(8)' ENTITY_NODE_GRAPH (guid 1610612745, decl 1610612753) role=dependency
+'<composite>Create Composite Node(8)'/PORTMAP ext.out#0 "Value" -> [33] Get Local Variable (18/2656) out#1 "Value"
+'<composite>Create Composite Node(8)'/[33] Get Local Variable (18/2656) variant=C<T:Str> @(0,0)
+'<composite>Create Composite Node(8)'/[33] Get Local Variable (18/2656) in#0 "Initial Value" = 'Static_Global' : Str
+GRAPH '<composite>Create Composite Node(9)' ENTITY_NODE_GRAPH (guid 1610612746, decl 1610612754) role=dependency
+'<composite>Create Composite Node(9)'/PORTMAP ext.in.flow#0 -> [32] Stop Global Timer (313) in.flow#0
+'<composite>Create Composite Node(9)'/PORTMAP ext.in#0 "Timer Name" -> [32] Stop Global Timer (313) in#1 "Timer Name"
+'<composite>Create Composite Node(9)'/PORTMAP ext.in#1 "Target Entity" -> [32] Stop Global Timer (313) in#0 "Target Entity"
+'<composite>Create Composite Node(9)'/[32] Stop Global Timer (313) @(0,0)
+GRAPH '<composite>Create Composite Node(10)' ENTITY_NODE_GRAPH (guid 1610612747, decl 1610612755) role=dependency
+'<composite>Create Composite Node(10)'/PORTMAP ext.out#0 "Value" -> [36] Get Local Variable (18/2656) out#1 "Value"
+'<composite>Create Composite Node(10)'/[36] Get Local Variable (18/2656) variant=C<T:Str> @(0,0)
+'<composite>Create Composite Node(10)'/[36] Get Local Variable (18/2656) in#0 "Initial Value" = 'Static_Timer' : Str
+GRAPH '<composite>Create Composite Node(11)' ENTITY_NODE_GRAPH (guid 1610612748, decl 1610612756) role=dependency
+'<composite>Create Composite Node(11)'/PORTMAP ext.in.flow#0 -> [35] Stop Timer (82) in.flow#0
+'<composite>Create Composite Node(11)'/PORTMAP ext.in#0 "Timer Name" -> [35] Stop Timer (82) in#1 "Timer Name"
+'<composite>Create Composite Node(11)'/PORTMAP ext.in#1 "Target Entity" -> [35] Stop Timer (82) in#0 "Target Entity"
+'<composite>Create Composite Node(11)'/[35] Stop Timer (82) @(0,0)
+GRAPH '<composite>Create Composite Node(12)' ENTITY_NODE_GRAPH (guid 1610612749, decl 1610612757) role=dependency
+'<composite>Create Composite Node(12)'/PORTMAP ext.out#0 "Value" -> [39] Get Local Variable (18/2656) out#1 "Value"
+'<composite>Create Composite Node(12)'/[39] Get Local Variable (18/2656) variant=C<T:Str> @(0,0)
+'<composite>Create Composite Node(12)'/[39] Get Local Variable (18/2656) in#0 "Initial Value" = 'Static_Var' : Str
+GRAPH '<composite>Create Composite Node(13)' ENTITY_NODE_GRAPH (guid 1610612750, decl 1610612758) role=dependency
+'<composite>Create Composite Node(13)'/PORTMAP ext.in#0 "Target Entity" -> [40] Get Custom Variable (50/54) in#0 "Target Entity"
+'<composite>Create Composite Node(13)'/PORTMAP ext.in#1 "Variable Name" -> [40] Get Custom Variable (50/54) in#1 "Variable Name"
+'<composite>Create Composite Node(13)'/PORTMAP ext.out#0 "Variable Value" -> [40] Get Custom Variable (50/54) out#0 "Variable Value"
+'<composite>Create Composite Node(13)'/[40] Get Custom Variable (50/54) variant=C<T:Flt> @(0,0)
+GRAPH '<composite>Create Composite Node(14)' ENTITY_NODE_GRAPH (guid 1610612751, decl 1610612759) role=dependency
+'<composite>Create Composite Node(14)'/PORTMAP ext.in.flow#0 -> [38] Set Custom Variable (22/26) in.flow#0
+'<composite>Create Composite Node(14)'/PORTMAP ext.in#0 "Variable Value" -> [38] Set Custom Variable (22/26) in#2 "Variable Value"
+'<composite>Create Composite Node(14)'/PORTMAP ext.in#1 "Variable Name" -> [38] Set Custom Variable (22/26) in#1 "Variable Name"
+'<composite>Create Composite Node(14)'/PORTMAP ext.in#2 "Target Entity" -> [38] Set Custom Variable (22/26) in#0 "Target Entity"
+'<composite>Create Composite Node(14)'/[38] Set Custom Variable (22/26) variant=C<T:Flt> @(0,0)
+'<composite>Create Composite Node(14)'/[38] Set Custom Variable (22/26) in#4 "Trigger Event" = No : Bol
+GRAPH '<composite>Create Composite Node(15)' ENTITY_NODE_GRAPH (guid 1610612752, decl 1610612760) role=dependency
+'<composite>Create Composite Node(15)'/PORTMAP ext.in.flow#0 -> [37] Set Custom Variable (22/26) in.flow#0
+'<composite>Create Composite Node(15)'/PORTMAP ext.out.flow#0 -> [37] Set Custom Variable (22/26) out.flow#0
+'<composite>Create Composite Node(15)'/PORTMAP ext.in#0 "Target Entity" -> [37] Set Custom Variable (22/26) in#0 "Target Entity"
+'<composite>Create Composite Node(15)'/[37] Set Custom Variable (22/26) variant=C<T:Flt> @(0,0)
+'<composite>Create Composite Node(15)'/[37] Set Custom Variable (22/26) in#1 "Variable Name" = 'Static_Var' : Str
+'<composite>Create Composite Node(15)'/[37] Set Custom Variable (22/26) in#2 "Variable Value" = 0 : Flt
+GRAPH '<composite>Create Composite Node(16)' ENTITY_NODE_GRAPH (guid 1610612753, decl 1610612761) role=dependency
+'<composite>Create Composite Node(16)'/PORTMAP ext.out.flow#0 -> [4] When Node Graph Variable Changes (351/357) out.flow#0
+'<composite>Create Composite Node(16)'/PORTMAP ext.out#0 "Variable Name" -> [4] When Node Graph Variable Changes (351/357) out#2 "Variable Name"
+'<composite>Create Composite Node(16)'/[4] When Node Graph Variable Changes (351/357) variant=C<T:L<Gid>> @(0,0)
+GRAPH '<composite>Create Composite Node(17)' ENTITY_NODE_GRAPH (guid 1610612754, decl 1610612762) role=dependency
+'<composite>Create Composite Node(17)'/PORTMAP ext.in.flow#0 -> [7] Multiple Branches (3/4) in.flow#0
+'<composite>Create Composite Node(17)'/PORTMAP ext.out.flow#0 "1" -> [7] Multiple Branches (3/4) out.flow#1 "Static_Graph"
+'<composite>Create Composite Node(17)'/PORTMAP ext.in#0 "Control Expression" -> [7] Multiple Branches (3/4) in#0 "Control Expression"
+'<composite>Create Composite Node(17)'/[7] Multiple Branches (3/4) variant=C<T:Str> @(0,0)
+GRAPH '<composite>Create Composite Node(18)' ENTITY_NODE_GRAPH (guid 1610612755, decl 1610612763) role=dependency
+'<composite>Create Composite Node(18)'/PORTMAP ext.in.flow#0 -> [41] Set Node Graph Variable (323) in.flow#0
+'<composite>Create Composite Node(18)'/PORTMAP ext.out.flow#0 -> [41] Set Node Graph Variable (323) out.flow#0
+'<composite>Create Composite Node(18)'/[41] Set Node Graph Variable (323) @(0,0)
+'<composite>Create Composite Node(18)'/[41] Set Node Graph Variable (323) in#0 "Variable Name" = 'Static_Graph' : Str
+GRAPH '<composite>Create Composite Node(19)' ENTITY_NODE_GRAPH (guid 1610612756, decl 1610612764) role=dependency
+'<composite>Create Composite Node(19)'/PORTMAP ext.in.flow#0 -> [29] Send Signal (1610612741) in.flow#0
+'<composite>Create Composite Node(19)'/[29] Send Signal (1610612741) user=SEND_SIGNAL signal='Static_2' @(0,0) sigver=2
+'<composite>Create Composite Node(19)'/[29] Send Signal (1610612741) meta.rpc#0 "Signal Name" = 'Static_2'
+GRAPH '<composite>Create Composite Node(20)' ENTITY_NODE_GRAPH (guid 1610612757, decl 1610612765) role=dependency
+'<composite>Create Composite Node(20)'/PORTMAP ext.out.flow#0 -> [27] Monitor Signal (1610612738) out.flow#0
+'<composite>Create Composite Node(20)'/[27] Monitor Signal (1610612738) user=LISTEN_SIGNAL signal='Static_1' @(0,0) sigver=2
+'<composite>Create Composite Node(20)'/[27] Monitor Signal (1610612738) meta.rpc#0 "Signal Name" = 'Static_1'
+GRAPH '<composite>Create Composite Node(21)' ENTITY_NODE_GRAPH (guid 1610612758, decl 1610612766) role=dependency
+'<composite>Create Composite Node(21)'/PORTMAP ext.in.flow#0 -> [42] Set Node Graph Variable (323/329) in.flow#0
+'<composite>Create Composite Node(21)'/PORTMAP ext.in#0 "Variable Name" -> [42] Set Node Graph Variable (323/329) in#0 "Variable Name"
+'<composite>Create Composite Node(21)'/PORTMAP ext.in#1 "Variable Value" -> [42] Set Node Graph Variable (323/329) in#1 "Variable Value"
+'<composite>Create Composite Node(21)'/[42] Set Node Graph Variable (323/329) variant=C<T:L<Gid>> @(0,0)
+'<composite>Create Composite Node(21)'/[42] Set Node Graph Variable (323/329) in#2 "Trigger Event" = No : Bol
+GRAPH '<composite>Create Composite Node(22)' ENTITY_NODE_GRAPH (guid 1610612759, decl 1610612767) role=dependency
+'<composite>Create Composite Node(22)'/PORTMAP ext.in#0 "Variable Name" -> [44] Get Node Graph Variable (337/343) in#0 "Variable Name"
+'<composite>Create Composite Node(22)'/PORTMAP ext.out#0 "Variable Value" -> [44] Get Node Graph Variable (337/343) out#0 "Variable Value"
+'<composite>Create Composite Node(22)'/[44] Get Node Graph Variable (337/343) variant=C<T:L<Gid>> @(0,0)
+GRAPH '<composite>Create Composite Node(23)' ENTITY_NODE_GRAPH (guid 1610612760, decl 1610612768) role=dependency
+'<composite>Create Composite Node(23)'/PORTMAP ext.out#0 "Value" -> [43] Get Local Variable (18/2656) out#1 "Value"
+'<composite>Create Composite Node(23)'/[43] Get Local Variable (18/2656) variant=C<T:Str> @(0,0)
+'<composite>Create Composite Node(23)'/[43] Get Local Variable (18/2656) in#0 "Initial Value" = 'Static_Graph' : Str
+GRAPH '<composite>Create Composite Node(24)' ENTITY_NODE_GRAPH (guid 1610612761, decl 1610612769) role=dependency
+'<composite>Create Composite Node(24)'/PORTMAP ext.in.flow#0 -> [30] Send Signal (1610612737) in.flow#0
+'<composite>Create Composite Node(24)'/[30] Send Signal (1610612737) user=SEND_SIGNAL signal='Static_1' @(0,0) sigver=2
+'<composite>Create Composite Node(24)'/[30] Send Signal (1610612737) meta.rpc#0 "Signal Name" = 'Static_1'
+GRAPH '<composite>Create Composite Node(25)' ENTITY_NODE_GRAPH (guid 1610612762, decl 1610612770) role=dependency
+'<composite>Create Composite Node(25)'/PORTMAP ext.out.flow#0 -> [28] Monitor Signal (1610612742) out.flow#0
+'<composite>Create Composite Node(25)'/[28] Monitor Signal (1610612742) user=LISTEN_SIGNAL signal='Static_2' @(0,0) sigver=2
+'<composite>Create Composite Node(25)'/[28] Monitor Signal (1610612742) meta.rpc#0 "Signal Name" = 'Static_2'
+GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH (guid 1610612738, decl 1610612746) role=dependency
+'<composite>Create Composite Node(1)'/PORTMAP ext.in.flow#0 -> [2] Multiple Branches (3/4) in.flow#0
+'<composite>Create Composite Node(1)'/PORTMAP ext.out.flow#0 "1" -> [2] Multiple Branches (3/4) out.flow#1 "Static_Var"
+'<composite>Create Composite Node(1)'/PORTMAP ext.in#0 "Control Expression" -> [2] Multiple Branches (3/4) in#0 "Control Expression"
+'<composite>Create Composite Node(1)'/[2] Multiple Branches (3/4) variant=C<T:Str> @(0,0)
+GRAPH '<composite>Create Composite Node(5)' ENTITY_NODE_GRAPH (guid 1610612742, decl 1610612750) role=dependency
+'<composite>Create Composite Node(5)'/PORTMAP ext.in.flow#0 -> [31] Start Global Timer (311) in.flow#0
+'<composite>Create Composite Node(5)'/PORTMAP ext.out.flow#0 -> [31] Start Global Timer (311) out.flow#0
+'<composite>Create Composite Node(5)'/PORTMAP ext.in#0 "Target Entity" -> [31] Start Global Timer (311) in#0 "Target Entity"
+'<composite>Create Composite Node(5)'/[31] Start Global Timer (311) @(0,0)
+'<composite>Create Composite Node(5)'/[31] Start Global Timer (311) in#1 "Timer Name" = 'Static_Global' : Str
+GRAPH '<composite>Create Composite Node(3)' ENTITY_NODE_GRAPH (guid 1610612740, decl 1610612748) role=dependency
+'<composite>Create Composite Node(3)'/PORTMAP ext.in.flow#0 -> [10] Multiple Branches (3/4) in.flow#0
+'<composite>Create Composite Node(3)'/PORTMAP ext.out.flow#0 "1" -> [10] Multiple Branches (3/4) out.flow#1 "Static_Timer"
+'<composite>Create Composite Node(3)'/PORTMAP ext.in#0 "Control Expression" -> [10] Multiple Branches (3/4) in#0 "Control Expression"
+'<composite>Create Composite Node(3)'/[10] Multiple Branches (3/4) variant=C<T:Str> @(0,0)
+GRAPH '<composite>Create Composite Node(7)' ENTITY_NODE_GRAPH (guid 1610612744, decl 1610612752) role=dependency
+'<composite>Create Composite Node(7)'/PORTMAP ext.out.flow#0 -> [14] When Global Timer Is Triggered (315) out.flow#0
+'<composite>Create Composite Node(7)'/PORTMAP ext.out#0 "Event Source Entity" -> [14] When Global Timer Is Triggered (315) out#0 "Event Source Entity"
+'<composite>Create Composite Node(7)'/PORTMAP ext.out#1 "Timer Name" -> [14] When Global Timer Is Triggered (315) out#2 "Timer Name"
+'<composite>Create Composite Node(7)'/[14] When Global Timer Is Triggered (315) @(0,0)

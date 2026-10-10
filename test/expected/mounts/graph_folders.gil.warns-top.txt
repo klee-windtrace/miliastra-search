@@ -1,0 +1,21 @@
+# findings
+INFO  composite-never-called: composite "AA - 01" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "BB - 02" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "CC - 03" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "Tab A - 04" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "Tab C - 05" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "Tab B - 06" is defined but never called in the scanned graphs
+
+# limits
+composites: 6/1000 declared
+prefabs (OBJECT): 6/1000
+PRESET_POINT: 1/2000
+ENVIRONMENT_CONFIGURATION: 1/50
+CLASS: 1/100
+UNIT_STATUS: 6/1000
+SKILL: 6/100
+TERRAIN_ENTITY: 1/1200
+
+top graphs by node count:
+'<skill>New Character Skill Node Graph - 14': 1/3000 nodes
+'<skill>New Character Skill Node Graph - 15': 1/3000 nodes

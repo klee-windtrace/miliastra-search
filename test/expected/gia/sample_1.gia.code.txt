@@ -1,0 +1,46 @@
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH (guid 1073741825)
+'New Node Graph'/[1] Create Composite Node (1610612737) user=COMPOSITE @(514.5714,126.28571)
+'New Node Graph'/[3] When Tab Is Selected (307) @(-329,128)
+'New Node Graph'/[3] When Tab Is Selected (307) out.flow#0 -> [9] Multiple Branches (3) in.flow#0
+'New Node Graph'/[4] Set Preset Status (66) @(1016,306.14285)
+'New Node Graph'/[4] Set Preset Status (66) out.flow#0 -> [16] Set Local Variable (19/2677) in.flow#0
+'New Node Graph'/[4] Set Preset Status (66) in#0 "Target Entity" <- [3] When Tab Is Selected (307) out#0 "Event Source Entity" : Ety
+'New Node Graph'/[4] Set Preset Status (66) in#1 "Preset Status Index" <- [5] Create Composite Node (1610612737) out#0 "Value" : Int
+'New Node Graph'/[4] Set Preset Status (66) in#2 "Preset Status Value" <- [5] Create Composite Node (1610612737) out#0 "Value" : Int
+'New Node Graph'/[5] Create Composite Node (1610612737) user=COMPOSITE @(1063,118.14286)
+'New Node Graph'/[9] Multiple Branches (3) @(33.57143,126.71429)
+'New Node Graph'/[9] Multiple Branches (3) out.flow#1 "1" -> [15] Create Composite Node(1) (1610612738) in.flow#0
+'New Node Graph'/[9] Multiple Branches (3) in#0 "Control Expression" <- [3] When Tab Is Selected (307) out#2 "Tab ID" : Int
+'New Node Graph'/[15] Create Composite Node(1) (1610612738) user=COMPOSITE @(480.42856,307)
+'New Node Graph'/[15] Create Composite Node(1) (1610612738) out.flow#0 "Yes" -> [4] Set Preset Status (66) in.flow#0
+'New Node Graph'/[15] Create Composite Node(1) (1610612738) in#0 "Input" <- [1] Create Composite Node (1610612737) out#0 "Value" : Int
+'New Node Graph'/[15] Create Composite Node(1) (1610612738) in#1 "3D Vector" = (1, 2, 3) : Vec
+'New Node Graph'/[16] Set Local Variable (19/2677) variant=C<T:Flt> @(1517.8572,305.2857)
+'New Node Graph'/[16] Set Local Variable (19/2677) in#1 "Value" <- [15] Create Composite Node(1) (1610612738) out#0 "X-Component" : Flt
+GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH (guid 1610612737, decl 1610612737) role=dependency
+'<composite>Create Composite Node'/PORTMAP ext.out#0 "Value" -> [1] Get Local Variable (18/20) out#1 "Value"
+'<composite>Create Composite Node'/[1] Get Local Variable (18/20) variant=C<T:Int> @(-128,-138)
+'<composite>Create Composite Node'/[1] Get Local Variable (18/20) in#0 "Initial Value" = 42 : Int
+GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH (guid 1610612738, decl 1610612738) role=dependency
+'<composite>Create Composite Node(1)'/PORTMAP ext.in.flow#0 -> [11] Double Branch (2) in.flow#0
+'<composite>Create Composite Node(1)'/PORTMAP ext.in.flow#0 -> [1] Print String (1) in.flow#0
+'<composite>Create Composite Node(1)'/PORTMAP ext.out.flow#0 "Yes" -> [11] Double Branch (2) out.flow#0 "Yes"
+'<composite>Create Composite Node(1)'/PORTMAP ext.out.flow#0 "Yes" -> [1] Print String (1) out.flow#0
+'<composite>Create Composite Node(1)'/PORTMAP ext.out.flow#1 "No" -> [11] Double Branch (2) out.flow#1 "No"
+'<composite>Create Composite Node(1)'/PORTMAP ext.in#0 "Input" -> [2] Data Type Conversion (180/182) in#0 "Input"
+'<composite>Create Composite Node(1)'/PORTMAP ext.in#0 "Input" -> [10] Equal (14/370) in#1 "Input 2"
+'<composite>Create Composite Node(1)'/PORTMAP ext.in#1 "3D Vector" -> [21] Split 3D Vector (9) in#0 "3D Vector"
+'<composite>Create Composite Node(1)'/PORTMAP ext.out#0 "X-Component" -> [21] Split 3D Vector (9) out#0 "X-Component"
+'<composite>Create Composite Node(1)'/PORTMAP ext.out#1 "Z-Component" -> [21] Split 3D Vector (9) out#2 "Z-Component"
+'<composite>Create Composite Node(1)'/[1] Print String (1) @(203.85715,-324.7143)
+'<composite>Create Composite Node(1)'/[1] Print String (1) in#0 "String" <- [2] Data Type Conversion (180/182) out#0 "Output" : Str
+'<composite>Create Composite Node(1)'/[2] Data Type Conversion (180/182) variant=C<K:Int,V:Str> @(186.71428,-546.1429)
+'<composite>Create Composite Node(1)'/[6] When Entering Collision Trigger (92) @(-344,-190.28572)
+'<composite>Create Composite Node(1)'/[6] When Entering Collision Trigger (92) out.flow#0 -> [1] Print String (1) in.flow#0
+'<composite>Create Composite Node(1)'/[8] When Exiting Collision Trigger (91) @(-325.42856,228.28572)
+'<composite>Create Composite Node(1)'/[8] When Exiting Collision Trigger (91) out.flow#0 -> [11] Double Branch (2) in.flow#0
+'<composite>Create Composite Node(1)'/[10] Equal (14/370) variant=C<T:Int> @(124.57143,-50.285713)
+'<composite>Create Composite Node(1)'/[10] Equal (14/370) in#0 "Input 1" <- [6] When Entering Collision Trigger (92) out#4 "Trigger ID" : Int
+'<composite>Create Composite Node(1)'/[11] Double Branch (2) @(268.85715,226.85715)
+'<composite>Create Composite Node(1)'/[11] Double Branch (2) in#0 "Condition" <- [10] Equal (14/370) out#0 "Result" : Bol
+'<composite>Create Composite Node(1)'/[21] Split 3D Vector (9) @(709.5714,-327.57144)

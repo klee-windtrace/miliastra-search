@@ -1,0 +1,42 @@
+GRAPH 'Variables' ENTITY_NODE_GRAPH (guid 1073741831)
+'Variables'/VAR Variable_1 : Bol public=false = No
+'Variables'/[1] When Custom Variable Changes (36) @(-420,-317)
+'Variables'/[1] When Custom Variable Changes (36) out.flow#0 -> [6] Double Branch (2) in.flow#0
+'Variables'/[1] When Custom Variable Changes (36) out#3 "Pre-Change Value" = 0 : Int
+'Variables'/[1] When Custom Variable Changes (36) out#4 "Post-Change Value" = 0 : Int
+'Variables'/[3] When Node Graph Variable Changes (351/354) variant=C<T:Bol> @(-412,85)
+'Variables'/[3] When Node Graph Variable Changes (351/354) out.flow#0 -> [4] Multiple Branches (3/4) in.flow#0
+'Variables'/[3] When Node Graph Variable Changes (351/354) out#3 "Pre-Change Value" = No : Bol
+'Variables'/[3] When Node Graph Variable Changes (351/354) out#4 "Post-Change Value" = No : Bol
+'Variables'/[4] Multiple Branches (3/4) variant=C<T:Str> @(71.14286,82.42857)
+'Variables'/[4] Multiple Branches (3/4) out.flow#0 "Default" -> [5] Set Node Graph Variable (323/325) in.flow#0
+'Variables'/[4] Multiple Branches (3/4) in#0 "Control Expression" <- [3] When Node Graph Variable Changes (351/354) out#2 "Variable Name" : Str
+'Variables'/[4] Multiple Branches (3/4) in#0 "Control Expression" = '' : Str (also wired)
+'Variables'/[5] Set Node Graph Variable (323/325) variant=C<T:Bol> @(658,217)
+'Variables'/[5] Set Node Graph Variable (323/325) in#0 "Variable Name" = 'Variable_1' : Str
+'Variables'/[5] Set Node Graph Variable (323/325) in#1 "Variable Value" <- [3] When Node Graph Variable Changes (351/354) out#4 "Post-Change Value" : Bol
+'Variables'/[5] Set Node Graph Variable (323/325) in#1 "Variable Value" = Yes : Bol (also wired)
+'Variables'/[5] Set Node Graph Variable (323/325) in#2 "Trigger Event" = No : Bol
+'Variables'/[6] Double Branch (2) @(75.14286,-316.57144)
+'Variables'/[6] Double Branch (2) out.flow#0 "Yes" -> [8] Set Local Variable (19/21) in.flow#0
+'Variables'/[6] Double Branch (2) in#0 "Condition" <- [7] Get Node Graph Variable (337/340) out#0 "Variable Value" : Bol
+'Variables'/[7] Get Node Graph Variable (337/340) variant=C<T:Bol> @(99.42857,-539.4286)
+'Variables'/[7] Get Node Graph Variable (337/340) in#0 "Variable Name" = 'Variable_1' : Str
+'Variables'/[7] Get Node Graph Variable (337/340) out#0 "Variable Value" = No : Bol
+'Variables'/[8] Set Local Variable (19/21) variant=C<T:Int> @(658,-313.7143)
+'Variables'/[8] Set Local Variable (19/21) out.flow#0 -> [10] Set Custom Variable (22) in.flow#0
+'Variables'/[8] Set Local Variable (19/21) in#0 "Local Variable" <- [9] Get Local Variable (18/20) out#0 "Local Variable" : Loc
+'Variables'/[8] Set Local Variable (19/21) in#1 "Value" <- [1] When Custom Variable Changes (36) out#4 "Post-Change Value" : Int
+'Variables'/[8] Set Local Variable (19/21) in#1 "Value" = 0 : Int (also wired)
+'Variables'/[9] Get Local Variable (18/20) variant=C<T:Int> @(660.8571,-563.7143)
+'Variables'/[9] Get Local Variable (18/20) in#0 "Initial Value" <- [11] Get Custom Variable (50) out#0 "Variable Value" : Int
+'Variables'/[9] Get Local Variable (18/20) in#0 "Initial Value" = 42 : Int (also wired)
+'Variables'/[9] Get Local Variable (18/20) out#1 "Value" = 0 : Int
+'Variables'/[10] Set Custom Variable (22) @(1250.8572,-310.85715)
+'Variables'/[10] Set Custom Variable (22) in#0 "Target Entity" <- [1] When Custom Variable Changes (36) out#0 "Event Source Entity" : Ety
+'Variables'/[10] Set Custom Variable (22) in#1 "Variable Name" = 'Test' : Str
+'Variables'/[10] Set Custom Variable (22) in#2 "Variable Value" <- [9] Get Local Variable (18/20) out#1 "Value" : Int
+'Variables'/[10] Set Custom Variable (22) in#2 "Variable Value" = 0 : Int (also wired)
+'Variables'/[11] Get Custom Variable (50) @(668.8571,-841.1429)
+'Variables'/[11] Get Custom Variable (50) in#1 "Variable Name" = 'Test' : Str
+'Variables'/[11] Get Custom Variable (50) out#0 "Variable Value" = 0 : Int

@@ -1,0 +1,5 @@
+literal_id       "Cfg:6"                            1 Ref: ['Send']
+literal_id       "Pfb:5"                            1 Ref: ['Send']
+signal           "Signal_1"                         2 listen: ['Both'; 'Receive'], 2 send: ['Both'; 'Send']
+signal           "Signal_2"                         2 listen: ['Both'; 'Receive'], 2 send: ['Both'; 'Send']
+timer            "* (listener for any name)"        1 listen: ['Send']

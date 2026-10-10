@@ -1,0 +1,4 @@
+composite        "Composite in custom"              0 call: []
+composite        "Composite in default"             0 call: []
+mount            'Saved to folder (My)'             4 entity: OBJECT_ENTITY:"Wireframe Cuboid" (x3); OBJECT_ENTITY:"Wireframe Cube"
+signal           "Signal_Name"                      0 listen: [], 0 send: []

@@ -1,0 +1,7 @@
+composite        "Create Composite Node"            2 call: ['New Node Graph']
+composite        "Create Composite Node(1)"         1 call: ['<composite>Create Composite Node']
+graph_variable   "Var_1" (Int)                      ['New Node Graph']: 2 get, 2 set
+literal_id       "Cfg:1098907649" (SKILL:"test_skill") 1 Ref: ['New Node Graph']
+literal_id       "Gid:1077936131" (OBJECT_ENTITY:"entity_test") 1 Ref: ['New Node Graph']
+literal_id       "Int: 1073741825" (INTERFACE_LAYOUT:"Default Layout") 1 Ref: ['New Node Graph']
+literal_id       "Pfb:10005018"                     1 Ref: ['New Node Graph']

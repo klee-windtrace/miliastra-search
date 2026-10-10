@@ -1,0 +1,3 @@
+# findings
+INFO  signal-never-used: signal "Signal_3" is declared but never sent or listened to in the scanned graphs [stage_012379.gil]
+INFO  signal-never-used: signal "Signal_1" is declared but never sent or listened to in the scanned graphs [stage_9.gil]

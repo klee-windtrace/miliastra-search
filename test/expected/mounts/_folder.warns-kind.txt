@@ -1,0 +1,3 @@
+# findings
+INFO  signal-never-used: signal "Signal_Name" is declared but never sent or listened to in the scanned graphs [test_folders.gia]
+INFO  signal-never-used: signal "Signal_Name" is declared but never sent or listened to in the scanned graphs [test_folders.gil]

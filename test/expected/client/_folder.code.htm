@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>code client_var_types.gia</title>
+<style>
+:root{color-scheme:dark;--bg:#0C0C0C;--panel:#161616;--line:#2e2e2e;--fg:#CCCCCC;--muted:#767676;--accent:#61D6D6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1500px;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+h1,h2,h3,h4{line-height:1.25;color:#F2F2F2}
+h1{font-size:1.7rem;margin:.2rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.4rem;word-break:break-all}
+h2{font-size:1.25rem;margin:1.6rem 0 .6rem}
+h3{font-size:1.05rem;margin:1.2rem 0 .5rem}
+hr{border:0;border-top:1px solid var(--line);margin:1.8rem 0}
+code,pre,table,.lines{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:.88em}
+.guid{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em}
+code{background:#1c1c1c;border-radius:3px;padding:.05em .3em}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:.8rem 1rem;overflow:auto}
+.tablewrap{margin:.5rem 0 1rem}
+table{border-collapse:collapse;min-width:50%}
+th,td{border:1px solid var(--line);padding:.3rem .6rem;text-align:left;vertical-align:top}
+th{background:var(--panel);color:#F2F2F2;white-space:nowrap;position:sticky;top:-2px}
+tbody tr:nth-child(even){background:#111}
+tbody tr:hover{background:#1c1c1c}
+td.right,th.right{text-align:right}td.center,th.center{text-align:center}
+.lines>div{white-space:pre-wrap;word-break:break-word}
+.facts{display:grid;grid-template-columns:max-content 1fr;gap:.15rem 1rem;margin:.4rem 0 1rem}.facts dt{color:var(--muted)}.facts dd{margin:0}
+.note{border-left:3px solid var(--accent);background:var(--panel);padding:.5rem .9rem;margin:.6rem 0}.note.warn{border-color:#E74856}
+.toc{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:.6rem 1rem;margin:0 0 1.2rem;columns:3 20rem}
+.toc a{color:var(--accent);text-decoration:none;display:block;padding:.05rem 0;break-inside:avoid}.toc a:hover{text-decoration:underline}
+ul{padding-left:1.4rem}
+.q{color:var(--muted)}.muted{color:var(--muted)}
+pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pre-wrap;word-break:break-word}
+.title{font-weight:700;color:#F2F2F2}
+.section{color:#61D6D6}
+.heading{font-weight:700;color:#3A96DD}
+.fileName{color:#3A96DD}
+.metaKey{color:#767676}
+.className{color:#0037DA}
+.warn{color:#E74856}
+.info{color:#3B78FF}
+.findingType{color:#767676}
+.limitOk{color:#16C60C}
+.limitNear{color:#F9F1A5}
+.limitOver{color:#E74856}
+.graphName{color:#C19C00}
+.graphTag{color:#F9F1A5}
+.key{color:#16C60C}
+.folderName{color:#C50F1F}
+.declName{color:#16C60C}
+.varName{color:#16C60C}
+.pinName{color:#13A10E}
+.pinLabel{color:#3A96DD}
+.guid{color:#C19C00}
+.signalName{color:#C19C00}
+.structName{color:#16C60C}
+.keyword{color:#B4009E}
+.nodeIndex{color:#767676}
+.nodeName{font-weight:700}
+.nodeId{color:#767676}
+.coord{color:#767676}
+.arrow{color:#B4009E}
+.typeName{color:#B4009E}
+.flag{color:#767676}
+.string{color:#C19C00}
+.number{color:#3A96DD}
+.bool{color:#3A96DD}
+.enumValue{color:#61D6D6}
+.idValue{color:#13A10E}
+.vector{color:#3A96DD}
+.kind{color:#881798}
+.role{color:#3B78FF}
+.count{color:#F2F2F2}
+.mode{color:#767676}
+</style>
+</head>
+<body>
+<main>
+<h1>File <span class="fileName">test/cases/client/client_var_types.gia</span></h1>
+<pre class="lines"><span class="heading">GRAPH</span> '<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>' <span class="className">SKILL_NODE_GRAPH</span> (guid <span class="metaValue">1082130433</span>)
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[1]</span> <span class="nodeName">Node Graph Starts</span> <span class="nodeId">(200042/2001)</span> <span class="coord">@(0,0)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[2]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/40)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:Bol&gt;</span> <span class="coord">@(394,-266)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[2]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/40)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_bool</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[3]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/41)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:Int&gt;</span> <span class="coord">@(427,-44)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[3]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/41)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_int</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[4]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/42)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:Flt&gt;</span> <span class="coord">@(865,-280)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[4]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/42)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_float</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[5]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/43)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:Str&gt;</span> <span class="coord">@(881,-60)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[5]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/43)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_str</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[6]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/44)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:Gid&gt;</span> <span class="coord">@(1324,-281)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[6]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/44)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_guid</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[7]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/45)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:Ety&gt;</span> <span class="coord">@(1372,-44)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[7]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/45)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_entity</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[8]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/46)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:Vec&gt;</span> <span class="coord">@(410,218)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[8]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/46)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_vector</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[9]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/47)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:L&lt;Int&gt;&gt;</span> <span class="coord">@(896,182)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[9]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/47)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_int_list</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[10]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/48)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:L&lt;Str&gt;&gt;</span> <span class="coord">@(1374,176)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[10]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/48)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_str_list</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[11]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/49)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:L&lt;Ety&gt;&gt;</span> <span class="coord">@(351,447)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[11]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/49)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_entity_list</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[12]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/50)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:L&lt;Gid&gt;&gt;</span> <span class="coord">@(840,440)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[12]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/50)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_guid_list</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[13]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/51)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:L&lt;Flt&gt;&gt;</span> <span class="coord">@(1276,427)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[13]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/51)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_float_list</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[14]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/52)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:L&lt;Vec&gt;&gt;</span> <span class="coord">@(1758,431)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[14]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/52)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_vector_list</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[15]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/53)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:L&lt;Bol&gt;&gt;</span> <span class="coord">@(1814,159)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[15]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/53)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_bool_list</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[16]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/54)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:Cfg&gt;</span> <span class="coord">@(1799,-81)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[16]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/54)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_config</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[17]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/55)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:Pfb&gt;</span> <span class="coord">@(1788,-303)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[17]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/55)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_prefab</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[18]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/56)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:L&lt;Cfg&gt;&gt;</span> <span class="coord">@(2223,-318)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[18]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/56)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_config_list</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[19]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/57)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:L&lt;Pfb&gt;&gt;</span> <span class="coord">@(2258,-83)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[19]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/57)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_prefab_list</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[20]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/58)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:Fct&gt;</span> <span class="coord">@(2289,146)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[20]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/58)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_faction</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[21]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/59)</span> <span class="metaKey">variant</span>=<span class="metaValue">C&lt;T:L&lt;Fct&gt;&gt;</span> <span class="coord">@(2303,397)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[21]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/59)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_faction_list</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[22]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/1056)</span> <span class="coord">@(2778,-327)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[22]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016/1056)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_dict_prefab_to_factionlist</span>' : <span class="typeName">Str</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[23]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016)</span> <span class="coord">@(2806.8572,-98)</span>
+'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">client_var_types</span>'/<span class="nodeIndex">[23]</span> <span class="nodeName">Get Custom Variable</span> <span class="nodeId">(200016)</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" <span class="arrow">=</span> '<span class="string">var_dict_generic</span>' : <span class="typeName">Str</span></pre>
+</main>
+</body>
+</html>

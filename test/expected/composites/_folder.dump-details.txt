@@ -1,0 +1,105 @@
+# FILE test/cases/composites/test_All_Composite.gia
+DECL "Static_2" SIGNAL_NODE_DECL class=14 guid='1610612741' category=SEND_SIGNAL role=dependency
+DECL "Static_1" SIGNAL_NODE_DECL class=14 guid='1610612737' category=SEND_SIGNAL role=dependency
+GRAPH 'All_Composite' ENTITY_NODE_GRAPH class=9 guid='1073741826' kind=21001 service=20000 nodes=26
+GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(2)' ENTITY_NODE_GRAPH class=9 guid='1610612739' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(4)' ENTITY_NODE_GRAPH class=9 guid='1610612741' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(6)' ENTITY_NODE_GRAPH class=9 guid='1610612743' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(8)' ENTITY_NODE_GRAPH class=9 guid='1610612745' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(9)' ENTITY_NODE_GRAPH class=9 guid='1610612746' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(10)' ENTITY_NODE_GRAPH class=9 guid='1610612747' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(11)' ENTITY_NODE_GRAPH class=9 guid='1610612748' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(12)' ENTITY_NODE_GRAPH class=9 guid='1610612749' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(13)' ENTITY_NODE_GRAPH class=9 guid='1610612750' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(14)' ENTITY_NODE_GRAPH class=9 guid='1610612751' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(15)' ENTITY_NODE_GRAPH class=9 guid='1610612752' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(16)' ENTITY_NODE_GRAPH class=9 guid='1610612753' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(17)' ENTITY_NODE_GRAPH class=9 guid='1610612754' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(18)' ENTITY_NODE_GRAPH class=9 guid='1610612755' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(19)' ENTITY_NODE_GRAPH class=9 guid='1610612756' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(20)' ENTITY_NODE_GRAPH class=9 guid='1610612757' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(21)' ENTITY_NODE_GRAPH class=9 guid='1610612758' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(22)' ENTITY_NODE_GRAPH class=9 guid='1610612759' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(23)' ENTITY_NODE_GRAPH class=9 guid='1610612760' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(24)' ENTITY_NODE_GRAPH class=9 guid='1610612761' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(25)' ENTITY_NODE_GRAPH class=9 guid='1610612762' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(5)' ENTITY_NODE_GRAPH class=9 guid='1610612742' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(3)' ENTITY_NODE_GRAPH class=9 guid='1610612740' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(7)' ENTITY_NODE_GRAPH class=9 guid='1610612744' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+# FILE test/cases/composites/test_composite.gia
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=7
+GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH class=9 guid='1610612900' kind=21002 service=20000 nodes=4 role=dependency composite_body=true
+GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH class=9 guid='1610612901' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+RESOURCE "test_skill" SKILL class=8 guid='1098907649'
+RESOURCE "prefab_test" OBJECT class=1 guid='1077936129' parent=(entities: 1)
+RESOURCE "entity_test" OBJECT_ENTITY class=3 guid='1077936131' parent=(1077936129:"prefab_test")
+RESOURCE "Default Layout" INTERFACE_LAYOUT class=20 guid='1073741825'
+RESOURCE "Mini-Map" UI_CONTROL class=15 guid='1073741826'
+RESOURCE "Skill Area" UI_CONTROL class=15 guid='1073741827'
+RESOURCE "Team Information" UI_CONTROL class=15 guid='1073741828'
+RESOURCE "Character HP Bar" UI_CONTROL class=15 guid='1073741829'
+RESOURCE "Joystick" UI_CONTROL class=15 guid='1073741830'
+RESOURCE "Creation HP Bar" UI_CONTROL class=15 guid='1073741831'
+RESOURCE "Exit Button" UI_CONTROL class=15 guid='1073741832'
+RESOURCE "Voice-Over" UI_CONTROL class=15 guid='1073741833'
+RESOURCE "Tab" UI_CONTROL class=15 guid='1073741834'
+RESOURCE "Chat Button" UI_CONTROL class=15 guid='1073741835'
+RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741836'
+RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741837'
+RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741838'
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741839'
+# FILE test/cases/composites/test_composite.gil
+GRAPH /(default)/'New Node Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=7
+GRAPH /(default)/'<composite>Create Composite Node' ENTITY_NODE_GRAPH class=9 guid='1610612900' kind=21002 service=20000 nodes=4 composite_body=true
+GRAPH /(default)/'<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH class=9 guid='1610612901' kind=21002 service=20000 nodes=1 composite_body=true
+RESOURCE "Stage Entity" GIL_LEVEL_ENTITY class=- guid='1094713345' section=root.5
+RESOURCE "Default Template" PLAYER_TEMPLATE class=18 guid='1086324737' section=root.4
+RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519041' section=root.4
+RESOURCE "Custom Class" CLASS class=17 guid='1090519041' section=root.15
+RESOURCE /(default)/"test_skill" SKILL class=8 guid='1098907649' section=root.15
+RESOURCE "Inventory Template" GIL_INVENTORY_TEMPLATE class=- guid='1119879169' section=root.15
+RESOURCE "Custom Camera" CAMERA class=13 guid='1073741825' section=root.18
+RESOURCE /(default)/"prefab_test" OBJECT class=1 guid='1077936129' parent=(entities: 1) section=root.4
+RESOURCE "entity_test" OBJECT_ENTITY class=3 guid='1077936131' parent=(1077936129:"prefab_test") section=root.5
+RESOURCE "Terrain01" TERRAIN_ENTITY class=5 guid='1073741825' section=root.7
+RESOURCE "Default Layout" INTERFACE_LAYOUT class=20 guid='1073741825' section=root.9
+RESOURCE "HierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741840' section=root.9
+RESOURCE "HierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741841' section=root.9
+RESOURCE "ExclusiveEleGroupHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741842' section=root.9
+RESOURCE "ClientUIRootHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741843' section=root.9
+RESOURCE "ClientUIPrototypeHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741844' section=root.9
+RESOURCE "Environment Configuration" ENVIRONMENT_CONFIGURATION class=49 guid='1186988033' section=root.15
+RESOURCE "Create Preset Point" PRESET_POINT class=6 guid='1073741825' section=root.11.5
+RESOURCE "Spawn Point1" GIL_RESPAWN_POINT class=- guid='1073741825' section=root.11.3
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324737' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324738' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324739' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324740' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324741' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324742' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324743' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324744' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324745' section=root.5
+RESOURCE "Default Template(Edit Character)" GIL_CHARACTER_ENTITY class=- guid='1090519041' section=root.5
+RESOURCE "Custom Growth Curve" GIL_GROWTH_CURVE class=- guid='1094713345' section=root.15
+RESOURCE "Mini-Map" UI_CONTROL class=15 guid='1073741826' section=root.9
+RESOURCE "Skill Area" UI_CONTROL class=15 guid='1073741827' section=root.9
+RESOURCE "Team Information" UI_CONTROL class=15 guid='1073741828' section=root.9
+RESOURCE "Character HP Bar" UI_CONTROL class=15 guid='1073741829' section=root.9
+RESOURCE "Joystick" UI_CONTROL class=15 guid='1073741830' section=root.9
+RESOURCE "Creation HP Bar" UI_CONTROL class=15 guid='1073741831' section=root.9
+RESOURCE "Exit Button" UI_CONTROL class=15 guid='1073741832' section=root.9
+RESOURCE "Voice-Over" UI_CONTROL class=15 guid='1073741833' section=root.9
+RESOURCE "Tab" UI_CONTROL class=15 guid='1073741834' section=root.9
+RESOURCE "Chat Button" UI_CONTROL class=15 guid='1073741835' section=root.9
+RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741836' section=root.9
+RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741837' section=root.9
+RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741838' section=root.9
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741839' section=root.9
+# FILE test/cases/composites/var_change.gia
+GRAPH 'VAR_TEST' ENTITY_NODE_GRAPH class=9 guid='1073741841' kind=21001 service=20000 nodes=7
+GRAPH '<composite>VAR_TEST_1' ENTITY_NODE_GRAPH class=9 guid='1610612743' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>VAR_TEST_2' ENTITY_NODE_GRAPH class=9 guid='1610612744' kind=21002 service=20000 nodes=1 role=dependency composite_body=true
+GRAPH '<composite>VAR_TEST_3' ENTITY_NODE_GRAPH class=9 guid='1610612745' kind=21002 service=20000 nodes=2 role=dependency composite_body=true
