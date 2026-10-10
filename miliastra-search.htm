@@ -1,9 +1,216 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>miliastra-search</title>
+<!-- This page only collects files and options, builds the same command line the CLI takes, and shows what the
+     engine printed. All the logic lives in src/ (bundled into web/miliastra-search.bundle.js by `npm run build-web`).
+     Works from file:// as the bundle is a classic script, not an ES module. -->
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; background: #14161a; color: #d4d4d4; font: 14px/1.4 system-ui, sans-serif; display: flex; flex-direction: column; height: 100vh; }
+  nav { display: flex; gap: 2px; padding: 8px 8px 0; background: #1c1f24; }
+  nav button { background: #262a31; color: #aaa; border: 0; padding: 8px 18px; border-radius: 6px 6px 0 0; cursor: pointer; font: inherit; }
+  nav button.on { background: #14161a; color: #fff; }
+  section { display: none; flex: 1; min-height: 0; flex-direction: column; padding: 10px; gap: 8px; }
+  section.on { display: flex; }
+  input, select, button { background: #262a31; color: #d4d4d4; border: 1px solid #3a3f48; border-radius: 4px; padding: 4px 8px; font: inherit; }
+  button { cursor: pointer; }
+  button:hover { background: #333842; }
+  table { border-collapse: collapse; }
+  td, th { border: 1px solid #3a3f48; padding: 4px 10px; text-align: left; }
+  .opts { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; }
+  .opts label { display: inline-flex; gap: 6px; align-items: center; }
+  .opts code { color: #8ab4f8; }
+  iframe { flex: 1; min-height: 0; width: 100%; border: 1px solid #3a3f48; background: #0C0C0C; }
+  .status { color: #9aa0a6; white-space: pre-wrap; margin: 0; font: 12px ui-monospace, monospace; }
+  .warn { color: #e0a050; }
+  label { margin-right: 0px; padding-right: 20px; border-right: 1px solid #333; }
+  #dropzone { position: fixed; inset: 0; z-index: 10; display: none; align-items: center; justify-content: center; background: rgba(12, 12, 12, .85); border: 4px dashed #3B78FF; pointer-events: none; }
+  #dropzone.on { display: flex; }
+  #dropzone div { font-size: 22px; color: #F2F2F2; text-align: center; }
+  #dropzone small { display: block; margin-top: 8px; font-size: 14px; color: #9aa0a6; }
+</style>
 </head>
 <body>
-<h1>miliastra-search</h1></body>
+<nav id="tabs"></nav>
+
+<section id="tab-input">
+  <div><input type="file" id="picker" multiple> <span class="status" id="loadmsg"></span></div>
+  <table id="files"><thead><tr><th>File</th><th>Size</th><th>Type</th><th></th></tr></thead><tbody></tbody></table>
+  <div class="opts" id="globalopts"></div>
+  <h4>Files stay in this page (nothing is uploaded). You can also drop files anywhere on the page: that replaces the list above. Then open a mode tab and press Process!</h4>
+  <pre id="helpmsg" class="status"></pre>
+</section>
+<div id="dropzone"><div>Drop files to process them<small>replaces the current file list</small></div></div>
+
+<script src="web/miliastra-search.bundle.js"></script>
+<script>
+'use strict';
+const MS = globalThis.MiliastraSearch;
+
+// Per tab: the options of the CLI mode (see --help). 'flag' = checkbox, 'text'/'number' = input; empty = not passed.
+const GREP = [
+  { opt: 'search', type: 'text', title: 'only lines containing this text (case-insensitive)' },
+  { opt: 'match', type: 'text', title: 'only lines matching this regular expression' },
+  { opt: 'context', type: 'number', title: 'lines around every match' },
+];
+const TABS = {
+  info: [{ opt: 'key', type: 'text', title: 'print only this property of the File/Contents tables, or the count of this resource class' }, ...GREP, { opt: 'no-file-prefix', type: 'flag' }, { opt: 'show-tag', type: 'flag' }],
+  dump: [...GREP, { opt: 'no-file-prefix', type: 'flag' }, { opt: 'details', type: 'flag' }],
+  refs: [{ opt: 'kind', type: 'text' }, { opt: 'name', type: 'text' }, ...GREP, { opt: 'sort-desc', type: 'flag' }],
+  warns: [{ opt: 'kind', type: 'text' }, { opt: 'name', type: 'text' }, ...GREP, { opt: 'top-graphs', type: 'number' }],
+  code: [...GREP, { opt: 'all-pins', type: 'flag' }, { opt: 'defaults', type: 'flag' }, { opt: 'no-file-prefix', type: 'flag' }],
+};
+// Options that apply to every file and every mode: they live on the Input tab and are appended to every command line.
+const GLOBAL_OPTS = [
+  { opt: 'lenient', type: 'flag', title: 'tolerate container header/tail problems (best-effort decode)' },
+  { opt: 'lang', type: 'select', values: ['EN', 'CHS', 'CHT', 'DE', 'ES', 'FR', 'ID', 'IT', 'JP', 'KR', 'PT', 'RU', 'TH', 'TR', 'VI'].map((l) => [l, l]), title: 'language of the node/pin names' },
+];
+const FORMATS = [['htm', 'Plain'], ['html', 'Rich']];
+const BLACK_PAGE = 'data:text/html,<style>html{background:%230C0C0C}</style>';
+
+const $ = (sel, el = document) => el.querySelector(sel);
+const el = (tag, props = {}, ...kids) => { const e = Object.assign(document.createElement(tag), props); e.append(...kids); return e; };
+
+// ---- Input tab: the files added (name -> bytes) ----
+const files = new Map();
+const frameResets = []; // one per mode tab: forget that tab's shown result (see renderFiles)
+async function addFiles(list) {
+  for (const f of list) {
+    let name = f.name, n = 1;
+    while (files.has(name)) name = `${f.name} (${++n})`;
+    files.set(name, new Uint8Array(await f.arrayBuffer()));
+  }
+  renderFiles();
+}
+const picker = $('#picker');
+picker.addEventListener('change', async () => {
+  const list = [...picker.files];
+  picker.value = '';
+  await addFiles(list); // the picker ADDS to the table
+});
+// Global options (Input tab): the same for all files and all modes.
+const globalInputs = GLOBAL_OPTS.map((o) => {
+  const input = o.type === 'select' ? el('select', { title: o.title || '' }, ...o.values.map(([v, label]) => el('option', { value: v, textContent: label }))) : el('input', { type: 'checkbox', title: o.title || '' });
+  const code = el('code', { textContent: '--' + o.opt });
+  const [a, b] = o.type === 'flag' ? [input, code] : [code, input];
+  $('#globalopts').append(el('label', {}, a, b));
+  return [o, input];
+});
+function globalArgs() {
+  const argv = [];
+  for (const [o, input] of globalInputs) {
+    if (o.type === 'flag') { if (input.checked) argv.push('--' + o.opt); }
+    else if (input.value !== '') argv.push('--' + o.opt, input.value);
+  }
+  return argv;
+}
+
+// ---- Drag and drop: dropping FILES anywhere replaces the whole list and shows the Input tab ----
+// Only drags that carry files get the overlay (dragged text has no 'Files' type and keeps its normal behaviour).
+const dropzone = $('#dropzone');
+const hasFiles = (e) => [...(e.dataTransfer?.types || [])].includes('Files');
+let dragDepth = 0;
+const frameHide = (show) => {
+  for(let frame of document.querySelectorAll('iframe')){
+    frame.style.display = show ? 'block' : 'none';
+  }
+}
+const hideDrop = () => { dragDepth = 0; dropzone.classList.remove('on'); frameHide(true); };
+window.addEventListener('dragenter', (e) => { if (!hasFiles(e)) return; e.preventDefault(); dragDepth++; dropzone.classList.add('on'); frameHide(false); });
+window.addEventListener('dragover', (e) => { if (!hasFiles(e)) return; e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; });
+window.addEventListener('dragleave', (e) => { if (!hasFiles(e)) return; if (--dragDepth <= 0) hideDrop(); });
+window.addEventListener('dragend', hideDrop);
+window.addEventListener('drop', async (e) => {
+  if (!hasFiles(e)) return;
+  e.preventDefault(); hideDrop();
+  const list = [...e.dataTransfer.files];
+  files.clear(); // unlike the picker, a drop means "process exactly these"
+  showTab('input');
+  await addFiles(list);
+});
+
+function renderFiles() {
+  for (const reset of frameResets) reset(); // whatever was processed before no longer matches the files
+  const body = $('#files tbody'); body.replaceChildren();
+  for (const [name, bytes] of files) {
+    const id = MS.identifyFile(bytes);
+    const type = id.format ? `${id.format} (by ${id.how})` : `not a GIA/GIL file: ${id.reason}`;
+    const del = el('button', { textContent: 'Delete', onclick: () => { files.delete(name); renderFiles(); } });
+    body.append(el('tr', {}, el('td', { textContent: name }), el('td', { textContent: bytes.length.toLocaleString() }),
+      el('td', { textContent: type }), el('td', {}, del)));
+    if (id.warnings?.length) body.append(el('tr', {}, el('td', { colSpan: 4, className: 'warn', textContent: id.warnings.join('; ') })));
+  }
+}
+
+// ---- Mode tabs (Info, Dump, Refs, Warns, Code) ----
+const tabNames = ['input', ...Object.keys(TABS)];
+function showTab(name) {
+  for (const t of tabNames) { $(`#tab-${t}`).classList.toggle('on', t === name); $('#tabs').children[tabNames.indexOf(t)].classList.toggle('on', t === name); }
+}
+for (const t of tabNames) $('#tabs').append(el('button', { textContent: t[0].toUpperCase() + t.slice(1), onclick: () => showTab(t) }));
+for (const [mode, options] of Object.entries(TABS)) {
+  const section = el('section', { id: `tab-${mode}` });
+  const opts = el('div', { className: 'opts' });
+  const fmt = el('select', {}, ...FORMATS.map(([v, label]) => el('option', { value: v, textContent: label })));
+  opts.append(el('label', {}, 'Format ', fmt));
+  const inputs = options.map((o) => {
+    const input = el('input', { type: o.type === 'flag' ? 'checkbox' : o.type, title: o.title || '', size: o.type === 'number' ? 4 : 18 });
+    const code = el('code', { textContent: '--' + o.opt });
+    const [a, b] = o.type === 'flag' ? [input, code] : [code, input];
+    opts.append(el('label', {}, a, b));
+    return [o, input];
+  });
+  const status = el('pre', { className: 'status' });
+  const frame = el('iframe', { sandbox: '', src: BLACK_PAGE}); // the engine's HTML page, shown as is
+  const go = el('button', { textContent: 'Process!' });
+  const full = el('button', { textContent: 'fullscreen' });
+  const door = el('table', { className: 'door' }, el('tr',{}, el('td', {width:1}, go), el('td', {}, status), el('td', {width:1}, full)));
+  let lastOut = ''; // the engine's page as it came out, without the <base> the frame needs (see below)
+  const runIt = () => {
+    // The command line the CLI would get: mode, every added file, the chosen format, then the filled-in options.
+    const argv = [mode, ...files.keys(), '--format', fmt.value, ...globalArgs()];
+    for (const [o, input] of inputs) {
+      if (o.type === 'flag') { if (input.checked) argv.push('--' + o.opt); }
+      else if (input.value !== '') argv.push('--' + o.opt, input.value);
+    }
+    const r = MS.run(argv, files);
+    // Inside a srcdoc frame a link like href="#x" resolves against THIS page's address (miliastra-search.htm), so the
+    // frame tries to navigate there (blocked by the sandbox) instead of scrolling. Pointing <base> at the frame's own
+    // address (about:srcdoc) makes such links same-document jumps again.
+    lastOut = r.out || '';
+    if (r.out) {
+      frame.srcdoc = r.out.replace('<head>', '<head><base href="about:srcdoc">');
+    } else {
+      frame.removeAttribute('srcdoc'); frame.src = BLACK_PAGE;
+    }
+    status.textContent = `$ miliastra-search ${argv.map((a) => (/[\s'"|*?]/.test(a) ? JSON.stringify(a) : a)).join(' ')}\nexit code ${r.code}${r.err ? '\n' + r.err.trimEnd() : ''}`;
+  };
+  frameResets.push(() => { lastOut = ''; frame.removeAttribute('srcdoc'); frame.src = BLACK_PAGE; status.textContent = ''; });
+  go.onclick = () => { status.textContent = 'Processing…'; setTimeout(runIt, 20); };
+  // The new tab is filled with document.write: a blob: URL is refused when this page is opened from file://. A tab written that way has the address
+  // about:blank, where href="#x" would navigate away, so the page brings a click handler that scrolls to the target itself.
+  const ANCHORS = '<script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href^=\\"#\\"]");if(!a)return;var t=document.getElementById(decodeURIComponent(a.getAttribute("href").slice(1)));if(t){e.preventDefault();t.scrollIntoView();}});<\/script>';
+  full.onclick = () => {
+    if (!lastOut) return;
+    const w = window.open('', '_blank');
+    if (!w) { alert('Please allow popup windows to open a new tab here'); return; }
+    w.document.open();
+    w.document.write(lastOut.includes('</body>') ? lastOut.replace('</body>', () => ANCHORS + '</body>') : lastOut + ANCHORS);
+    w.document.close();
+  };
+  // Enter in any argument field is "Process!"
+  opts.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' || e.isComposing || !['INPUT', 'SELECT'].includes(e.target.tagName)) return;
+    e.preventDefault();
+    go.click();
+  });
+  section.append(opts, door, frame);
+  document.body.append(section);
+}
+showTab('input');
+$('#helpmsg').textContent = MS.run(['--help'], []).out + '\n\n';
+</script>
+</body>
 </html>
