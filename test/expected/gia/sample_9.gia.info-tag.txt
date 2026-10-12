@@ -1,0 +1,71 @@
+# FILE test/cases/gia/sample_9.gia
+format                 gia
+detected_by            header
+file_size              32048
+container_file_type    gia
+engine_version         7.0.0
+mode                   beyond
+export_name            sample_0.gia
+node_db_version        7.1.0
+export_tag             658181221-1789916442-1073742392-\sample_0.gia
+uid                    658181221
+time                   1789916442
+file_id                1073742392
+resources              80
+primary                54
+dependencies           26
+graphs                 11
+nodes                  7
+composite_bodies       0
+declarations           12
+structs                1
+mounts                 0
+unresolved_node_types  0
+CLASS OBJECT class=1 count=5
+CLASS CREATION class=2 count=2
+CLASS OBJECT_ENTITY class=3 count=3
+CLASS STATIC_ENTITY class=3 count=1
+CLASS CREATION_ENTITY class=4 count=2
+CLASS TERRAIN_ENTITY class=5 count=1
+CLASS PRESET_POINT class=6 count=1
+CLASS UNIT_STATUS class=7 count=1
+CLASS SKILL class=8 count=1
+CLASS ENTITY_NODE_GRAPH class=9 count=1
+CLASS BOOLEAN_FILTER_GRAPH class=10 count=1
+CLASS SKILL_NODE_GRAPH class=11 count=1
+CLASS COMPOSITE_NODE_DECL class=12 count=10
+CLASS CAMERA class=13 count=1
+CLASS SIGNAL_NODE_DECL class=14 count=2
+CLASS UI_CONTROL class=15 count=14
+CLASS SKILL_RESOURCE class=16 count=1
+CLASS CLASS class=17 count=1
+CLASS PLAYER_TEMPLATE class=18 count=1
+CLASS CHARACTER_TEMPLATE class=19 count=1
+CLASS INTERFACE_LAYOUT class=20 count=1
+CLASS STATUS_NODE_GRAPH class=22 count=1
+CLASS CLASS_NODE_GRAPH class=23 count=1
+CLASS GLOBAL_TIMER class=24 count=1
+CLASS PROJECTILE class=25 count=1
+CLASS ITEM class=26 count=1
+CLASS STRUCTURE class=29 count=1
+CLASS SHOP_TEMPLATE class=30 count=1
+CLASS PATH class=38 count=1
+CLASS SHIELD class=39 count=1
+CLASS class#41 class=41 count=1
+CLASS ENTITY_DEPLOYMENT_GROUP class=43 count=1
+CLASS UNIT_TAG class=44 count=1
+CLASS SCAN_TAG class=45 count=1
+CLASS ITEM_NODE_GRAPH class=46 count=1
+CLASS INTEGER_FILTER_GRAPH class=47 count=1
+CLASS LIGHT_SOURCE class=48 count=1
+CLASS ENVIRONMENT_CONFIGURATION class=49 count=1
+CLASS CREATION_STATUS_DECISION_GRAPH class=51 count=1
+CLASS CREATION_SKILL_GRAPH class=52 count=1
+CLASS CREATION_STATUS_GRAPH class=53 count=1
+CLASS CUSTOM_CREATION_SKILL class=54 count=1
+CLASS SCENE_GENERATION_TEMPLATE_A class=55 count=1
+CLASS SCENE_GENERATION_TEMPLATE_B class=56 count=2
+CLASS VFX_TOOL class=58 count=1
+CLASS SKILL_VARIABLE class=60 count=1
+CLASS CHARACTER_CONTROL_SKILL_GRAPH class=64 count=1
+CLASS CONTROL_SKILL class=65 count=1

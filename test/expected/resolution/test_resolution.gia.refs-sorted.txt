@@ -1,0 +1,21 @@
+composite        "Create Composite Node"            6 call: ['Dynamic'; 'Indirect'; 'Static'; '<composite>Create Composite Node(1)']
+composite        "Create Composite Node(1)"         3 call: ['Dynamic'; 'Indirect'; 'Static']
+custom_variable  "var1"                             0 get: [], 0 set: [], 2 listen: ['Dynamic'; 'Static']
+custom_variable  "var2"                             0 get: [], 0 set: [], 2 listen: ['Dynamic'; 'Static']
+custom_variable  "var3"                             0 get: [], 0 set: [], 2 listen: ['Dynamic'; 'Static']
+custom_variable  "* (listener for any name)"        1 listen: ['Dynamic']
+custom_variable  "test" (Str)                       1 get: ['Dynamic'], 0 set: []
+custom_variable  "test1"                            1 get: ['Indirect'], 0 set: []
+global_timer     "* (listener for any name)"        1 listen: ['Dynamic']
+global_timer     "test3"                            1 get-time: ['Indirect']
+graph_variable   "test2" (Str)                      ['Indirect']: 2 get, 0 set
+graph_variable   "gvar1"                            ['Static']: 0 get, 0 set, 2 listen
+graph_variable   "name" (Str)                       ['Static']: 1 get, 0 set
+graph_variable   "name" (Str)                       ['Dynamic']: 1 get, 0 set
+graph_variable   "gvar3"                            ['Static']: 0 get, 0 set, 1 listen
+graph_variable   "gvar4"                            ['Static']: 0 get, 0 set, 1 listen
+graph_variable   "* (listener for any name)"        1 listen: ['Dynamic']
+graph_variable   "gvar1"                            ['Dynamic']: 0 get, 0 set, 1 listen
+timer            "<dynamic>"                        0 start: [], 0 stop: [], 1 listen: ['Dynamic']
+timer            "test4"                            0 start: [], 1 stop: ['Indirect']
+timer            "tm"                               0 start: [], 0 stop: [], 1 listen: ['Static']

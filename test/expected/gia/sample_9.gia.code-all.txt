@@ -1,0 +1,28 @@
+DECL "Signal_1" SIGNAL_NODE_DECL guid='1610612781'
+DECL/Signal_1 SEND_SIGNAL name='Signal_1' server_node=1610612782 client_node=1610612783
+DECL/Signal_1 in.flow#0 uid=178
+DECL/Signal_1 out.flow#0 uid=179
+DECL/Signal_1 meta#0 "Signal Name" uid=180
+STRUCT "Structure" guid='1077936129' id=1077936129 version=2
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH (guid 1073741825)
+GRAPH '<status>New Node Graph_1' STATUS_NODE_GRAPH (guid 1073741826)
+GRAPH '<class>New Node Graph_2' CLASS_NODE_GRAPH (guid 1073741827)
+GRAPH 'New Node Graph_3' ITEM_NODE_GRAPH (guid 1073741828)
+GRAPH '<skill>New Character Skill Node Graph' SKILL_NODE_GRAPH (guid 1082130433)
+'<skill>New Character Skill Node Graph'/[1] Node Graph Starts (200042/2001) @(0,0)
+GRAPH '<creation>New Creation Skill Node Graph' CREATION_SKILL_GRAPH (guid 1082130434)
+'<creation>New Creation Skill Node Graph'/[1] Node Graph Starts (200042/2001) @(0,0)
+GRAPH '<creation>New Creation Status Node Graph' CREATION_STATUS_GRAPH (guid 1082130435)
+'<creation>New Creation Status Node Graph'/[1] Execute only by sequence (200126/4000) @(0,0) status_ext=1/1
+GRAPH '<creation>New Creation Status Decision Node Graph' CREATION_STATUS_DECISION_GRAPH (guid 1082130436)
+'<creation>New Creation Status Decision Node Graph'/[1] Execute only by sequence (200126/4000) @(0,0) status_ext=1/1
+GRAPH '<skill>New Character Control Skill Node Graph' CHARACTER_CONTROL_SKILL_GRAPH (guid 1082130437)
+'<skill>New Character Control Skill Node Graph'/[1] Node Graph Starts (200042/2001) @(0,0)
+GRAPH '<filter>New Filter Node Graph' BOOLEAN_FILTER_GRAPH (guid 1082130438)
+'<filter>New Filter Node Graph'/[1] Node Graph End (Boolean) (200000) @(0,0)
+'<filter>New Filter Node Graph'/[1] Node Graph End (Boolean) (200000) in#0 "Output Result (Boolean)" = No : Bol (default)
+'<filter>New Filter Node Graph'/[1] Node Graph End (Boolean) (200000) in#1 "Filter Return Type" = enum:1000010«Return Boolean» : Enum (default)
+GRAPH '<filter>New Filter Node Graph_1' INTEGER_FILTER_GRAPH (guid 1082130439)
+'<filter>New Filter Node Graph_1'/[1] Node Graph End (Integer) (200122) @(0,0)
+'<filter>New Filter Node Graph_1'/[1] Node Graph End (Integer) (200122) in#0 "Output Result (Integer)" = 0 : Int (default)
+'<filter>New Filter Node Graph_1'/[1] Node Graph End (Integer) (200122) in#1 "Filter Return Type" = enum:10000011«Return Integer» : Enum (default)

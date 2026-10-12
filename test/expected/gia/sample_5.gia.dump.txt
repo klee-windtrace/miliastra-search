@@ -1,0 +1,1 @@
+GRAPH 'Variables' ENTITY_NODE_GRAPH guid='1073741831' nodes=10

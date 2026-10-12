@@ -1,0 +1,432 @@
+# FILE test/cases/mounts/composite_folders.gil
+GRAPH /(default)/'<composite>01' ENTITY_NODE_GRAPH class=9 guid='1610612838' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /(default)/'<composite>02' ENTITY_NODE_GRAPH class=9 guid='1610612862' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /(default)/'<composite>03' ENTITY_NODE_GRAPH class=9 guid='1610612842' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /A/'<composite>A1' ENTITY_NODE_GRAPH class=9 guid='1610612750' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /A/'<composite>A2' ENTITY_NODE_GRAPH class=9 guid='1610612751' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /A/'<composite>A3' ENTITY_NODE_GRAPH class=9 guid='1610612752' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /B/'<composite>B1' ENTITY_NODE_GRAPH class=9 guid='1610612741' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /B/'<composite>B2' ENTITY_NODE_GRAPH class=9 guid='1610612748' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /B/'<composite>B3' ENTITY_NODE_GRAPH class=9 guid='1610612747' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /C/'<composite>C1' ENTITY_NODE_GRAPH class=9 guid='1610612749' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /C/'<composite>C2' ENTITY_NODE_GRAPH class=9 guid='1610612835' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /C/'<composite>C3' ENTITY_NODE_GRAPH class=9 guid='1610612794' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /D/'<composite>D1' ENTITY_NODE_GRAPH class=9 guid='1073741938' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /D/'<composite>D2' ENTITY_NODE_GRAPH class=9 guid='1073741920' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /D/'<composite>D3' ENTITY_NODE_GRAPH class=9 guid='1073741926' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /E/'<composite>E1' ENTITY_NODE_GRAPH class=9 guid='1610612899' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /E/'<composite>E2' ENTITY_NODE_GRAPH class=9 guid='1610612840' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /E/'<composite>E3' ENTITY_NODE_GRAPH class=9 guid='1073742077' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /F/'<composite>F1' ENTITY_NODE_GRAPH class=9 guid='1073742200' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /F/'<composite>F2' ENTITY_NODE_GRAPH class=9 guid='1073742074' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /F/'<composite>F3' ENTITY_NODE_GRAPH class=9 guid='1610612760' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /G/'<composite>G1' ENTITY_NODE_GRAPH class=9 guid='1610612763' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /G/'<composite>G2' ENTITY_NODE_GRAPH class=9 guid='1073742030' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /G/'<composite>G3' ENTITY_NODE_GRAPH class=9 guid='1073742076' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /H/'<composite>H1' ENTITY_NODE_GRAPH class=9 guid='1073742064' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /H/'<composite>H2' ENTITY_NODE_GRAPH class=9 guid='1073742057' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /H/'<composite>H3' ENTITY_NODE_GRAPH class=9 guid='1073742048' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /I/'<composite>I1' ENTITY_NODE_GRAPH class=9 guid='1610612797' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /I/'<composite>I2' ENTITY_NODE_GRAPH class=9 guid='1610612755' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /I/'<composite>I3' ENTITY_NODE_GRAPH class=9 guid='1610612826' kind=21002 service=20000 nodes=0 composite_body=true
+RESOURCE "Stage Entity" GIL_LEVEL_ENTITY class=- guid='1094713345' section=root.5
+RESOURCE "Player_Template" PLAYER_TEMPLATE class=18 guid='1086324737' section=root.4
+RESOURCE "Player_Template(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519041' section=root.4
+RESOURCE "Custom Class_35" CLASS class=17 guid='1090519104' section=root.15
+RESOURCE "Custom Camera" CAMERA class=13 guid='1073741834' section=root.18
+RESOURCE "Collision_Wall" OBJECT class=1 guid='1077936264' parent=(entities: 0) section=root.4
+RESOURCE "Custom Layout" INTERFACE_LAYOUT class=20 guid='1073756688' section=root.9
+RESOURCE "ClientUIRootHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073756686' section=root.9
+RESOURCE "ClientUIPrototypeHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073756687' section=root.9
+RESOURCE "Environment Configuration" ENVIRONMENT_CONFIGURATION class=49 guid='1186988033' section=root.15
+RESOURCE "Shield_Test" SHIELD class=39 guid='1157627905' section=root.15
+RESOURCE "SpawnRevive" PRESET_POINT class=6 guid='1073741826' section=root.11.5
+RESOURCE "Spawn" GIL_RESPAWN_POINT class=- guid='1073741826' section=root.11.3
+RESOURCE "Player_Template" GIL_PLAYER_ENTITY class=- guid='1086324737' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324738' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324739' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324740' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324741' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324742' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324743' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324744' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324745' section=root.5
+RESOURCE "Player_Template(Edit Character)" GIL_CHARACTER_ENTITY class=- guid='1090519041' section=root.5
+RESOURCE "Custom Growth Curve_1" GIL_GROWTH_CURVE class=- guid='1094713348' section=root.15
+RESOURCE "Custom Growth Curve_3" GIL_GROWTH_CURVE class=- guid='1094713349' section=root.15
+RESOURCE "Custom Growth Curve_4" GIL_GROWTH_CURVE class=- guid='1094713350' section=root.15
+RESOURCE "Custom Growth Curve_5" GIL_GROWTH_CURVE class=- guid='1094713351' section=root.15
+RESOURCE "Custom Growth Curve_6" GIL_GROWTH_CURVE class=- guid='1094713352' section=root.15
+RESOURCE "Custom Growth Curve_7" GIL_GROWTH_CURVE class=- guid='1094713353' section=root.15
+RESOURCE "Custom Growth Curve_8" GIL_GROWTH_CURVE class=- guid='1094713354' section=root.15
+RESOURCE "Custom Growth Curve_9" GIL_GROWTH_CURVE class=- guid='1094713355' section=root.15
+RESOURCE "Custom Growth Curve_10" GIL_GROWTH_CURVE class=- guid='1094713356' section=root.15
+RESOURCE "Custom Growth Curve_11" GIL_GROWTH_CURVE class=- guid='1094713357' section=root.15
+RESOURCE "Custom Growth Curve_12" GIL_GROWTH_CURVE class=- guid='1094713358' section=root.15
+RESOURCE "Custom Growth Curve_13" GIL_GROWTH_CURVE class=- guid='1094713359' section=root.15
+RESOURCE "Custom Growth Curve_14" GIL_GROWTH_CURVE class=- guid='1094713360' section=root.15
+RESOURCE "Custom Growth Curve_15" GIL_GROWTH_CURVE class=- guid='1094713361' section=root.15
+RESOURCE "Custom Growth Curve_16" GIL_GROWTH_CURVE class=- guid='1094713362' section=root.15
+RESOURCE "Custom Growth Curve_17" GIL_GROWTH_CURVE class=- guid='1094713363' section=root.15
+RESOURCE "Custom Growth Curve_18" GIL_GROWTH_CURVE class=- guid='1094713364' section=root.15
+RESOURCE "Custom Growth Curve_19" GIL_GROWTH_CURVE class=- guid='1094713365' section=root.15
+RESOURCE "Custom Growth Curve_20" GIL_GROWTH_CURVE class=- guid='1094713366' section=root.15
+RESOURCE "Custom Growth Curve_21" GIL_GROWTH_CURVE class=- guid='1094713367' section=root.15
+RESOURCE "Custom Growth Curve_22" GIL_GROWTH_CURVE class=- guid='1094713368' section=root.15
+RESOURCE "Custom Growth Curve_23" GIL_GROWTH_CURVE class=- guid='1094713369' section=root.15
+RESOURCE "Custom Growth Curve_24" GIL_GROWTH_CURVE class=- guid='1094713370' section=root.15
+RESOURCE "Custom Growth Curve_25" GIL_GROWTH_CURVE class=- guid='1094713371' section=root.15
+RESOURCE "Custom Growth Curve" GIL_GROWTH_CURVE class=- guid='1094713408' section=root.15
+RESOURCE "Custom Growth Curve_26" GIL_GROWTH_CURVE class=- guid='1094713372' section=root.15
+RESOURCE "" GIL_UI_UNNAMED class=- guid='1073741838' section=root.9
+RESOURCE "" GIL_UI_UNNAMED class=- guid='1073742552' section=root.9
+RESOURCE "" GIL_UI_UNNAMED class=- guid='1073742575' section=root.9
+RESOURCE "Mini-Map" UI_CONTROL class=15 guid='1073756689' section=root.9
+RESOURCE "Skill Area" UI_CONTROL class=15 guid='1073756690' section=root.9
+RESOURCE "Team Information" UI_CONTROL class=15 guid='1073756691' section=root.9
+RESOURCE "Character HP Bar" UI_CONTROL class=15 guid='1073756692' section=root.9
+RESOURCE "Joystick" UI_CONTROL class=15 guid='1073756693' section=root.9
+RESOURCE "Creation HP Bar" UI_CONTROL class=15 guid='1073756694' section=root.9
+RESOURCE "Exit Button" UI_CONTROL class=15 guid='1073756695' section=root.9
+RESOURCE "Voice-Over" UI_CONTROL class=15 guid='1073756696' section=root.9
+RESOURCE "Tab" UI_CONTROL class=15 guid='1073756697' section=root.9
+RESOURCE "Chat Button" UI_CONTROL class=15 guid='1073756698' section=root.9
+RESOURCE "Network Status" UI_CONTROL class=15 guid='1073756699' section=root.9
+RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073756700' section=root.9
+RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073756701' section=root.9
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073756702' section=root.9
+# FILE test/cases/mounts/graph_folders.gil
+GRAPH /(default)/'A - 01' ENTITY_NODE_GRAPH class=9 guid='1073741826' kind=21001 service=20000 nodes=0
+GRAPH /(default)/'B - 02' ENTITY_NODE_GRAPH class=9 guid='1073741827' kind=21001 service=20000 nodes=0
+GRAPH /(default)/'C - 03' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=0
+GRAPH /B/'In B - 04' ENTITY_NODE_GRAPH class=9 guid='1073741836' kind=21001 service=20000 nodes=0
+GRAPH /C/'In C - 05' ENTITY_NODE_GRAPH class=9 guid='1073741835' kind=21001 service=20000 nodes=0
+GRAPH /C/'In C - 06' ENTITY_NODE_GRAPH class=9 guid='1073741837' kind=21001 service=20000 nodes=0
+GRAPH /A/'In A - 07' ENTITY_NODE_GRAPH class=9 guid='1073741834' kind=21001 service=20000 nodes=0
+GRAPH /(default)/'<status>Status Graph - 08' STATUS_NODE_GRAPH class=22 guid='1073741833' kind=21001 service=20003 nodes=0
+GRAPH /Status Graph Tab/'<status>New Node Graph - 09' STATUS_NODE_GRAPH class=22 guid='1073741838' kind=21001 service=20003 nodes=0
+GRAPH /(default)/'<class>Class Graph - 10' CLASS_NODE_GRAPH class=23 guid='1073741831' kind=21001 service=20004 nodes=0
+GRAPH /Class Graph Tab/'<class>New Node Graph - 11' CLASS_NODE_GRAPH class=23 guid='1073741839' kind=21001 service=20004 nodes=0
+GRAPH /(default)/'Item Graph - 12' ITEM_NODE_GRAPH class=46 guid='1073741832' kind=21001 service=20005 nodes=0
+GRAPH /Item Graph Tab/'New Node Graph - 13' ITEM_NODE_GRAPH class=46 guid='1073741840' kind=21001 service=20005 nodes=0
+GRAPH /(default)/'<composite>AA - 01' ENTITY_NODE_GRAPH class=9 guid='1610612742' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /(default)/'<composite>BB - 02' ENTITY_NODE_GRAPH class=9 guid='1610612739' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /(default)/'<composite>CC - 03' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /Composite Tab A/'<composite>Tab A - 04' ENTITY_NODE_GRAPH class=9 guid='1610612741' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /Composite Tab C/'<composite>Tab C - 05' ENTITY_NODE_GRAPH class=9 guid='1610612740' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /Composite Tab B/'<composite>Tab B - 06' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /(default)/'<skill>New Character Skill Node Graph - 14' SKILL_NODE_GRAPH class=11 guid='1082130433' kind=21001 service=20002 nodes=1 entry_slot=1
+GRAPH /Char Skill Graph Tab/'<skill>New Character Skill Node Graph - 15' SKILL_NODE_GRAPH class=11 guid='1082130440' kind=21001 service=20002 nodes=1 entry_slot=1
+GRAPH /(default)/'<creation>New Creation Skill Node Graph - 16' CREATION_SKILL_GRAPH class=52 guid='1082130434' kind=21001 service=20008 nodes=1 entry_slot=1
+GRAPH /Creation Skill Graph Tab/'<creation>New Creation Skill Node Graph - 17' CREATION_SKILL_GRAPH class=52 guid='1082130441' kind=21001 service=20008 nodes=1 entry_slot=1
+GRAPH /(default)/'<creation>New Creation Status Node Graph - 18' CREATION_STATUS_GRAPH class=53 guid='1082130435' kind=21001 service=20009 nodes=1 entry_slot=1
+GRAPH /Creation Status Graph Tab/'<creation>New Creation Status Node Graph - 19' CREATION_STATUS_GRAPH class=53 guid='1082130442' kind=21001 service=20009 nodes=1 entry_slot=1
+GRAPH /(default)/'<creation>New Creation Status Decision Node Graph - 20' CREATION_STATUS_DECISION_GRAPH class=51 guid='1082130436' kind=21001 service=20007 nodes=1 entry_slot=1
+GRAPH /Creation Decision Graph Tab/'<creation>New Creation Status Decision Node Graph - 21' CREATION_STATUS_DECISION_GRAPH class=51 guid='1082130444' kind=21001 service=20007 nodes=1 entry_slot=1
+GRAPH /(default)/'<skill>New Character Control Skill Node Graph' CHARACTER_CONTROL_SKILL_GRAPH class=64 guid='1082130437' kind=21001 service=20010 nodes=1 entry_slot=1
+GRAPH /(default)/'<filter>New Filter Node Graph Bool' BOOLEAN_FILTER_GRAPH class=10 guid='1082130438' kind=21001 service=20001 nodes=1 entry_slot=1 evaluation_interval=0.3
+GRAPH /(default)/'<filter>New Filter Node Graph Int' INTEGER_FILTER_GRAPH class=47 guid='1082130439' kind=21001 service=20006 nodes=1 entry_slot=1 evaluation_interval=0.3
+RESOURCE "Stage Entity" GIL_LEVEL_ENTITY class=- guid='1094713345' section=root.5
+RESOURCE "Default Template" PLAYER_TEMPLATE class=18 guid='1086324737' section=root.4
+RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519041' section=root.4
+RESOURCE "Custom Class" CLASS class=17 guid='1090519041' section=root.15
+RESOURCE /char skill tab 1/"A in 1st - 01" SKILL class=8 guid='1098907651' section=root.15
+RESOURCE /char skill tab 1/"B in 1st - 02" SKILL class=8 guid='1098907650' section=root.15
+RESOURCE /char skill tab 2/"D in 2nd - 03" SKILL class=8 guid='1098907653' section=root.15
+RESOURCE /char skill tab 2/"C in 2nd - 04" SKILL class=8 guid='1098907654' section=root.15
+RESOURCE /(default)/"D in def - 05" SKILL class=8 guid='1098907649' section=root.15
+RESOURCE /(default)/"C in def - 06" SKILL class=8 guid='1098907652' section=root.15
+RESOURCE /Control skill tab 1/"Control Skill in 1" CONTROL_SKILL class=65 guid='1228931075' section=root.15
+RESOURCE /Control skill tab 2/"Control Skill in 2" CONTROL_SKILL class=65 guid='1228931076' section=root.15
+RESOURCE /(default)/"Control Skill" CONTROL_SKILL class=65 guid='1228931073' section=root.15
+RESOURCE /Custom Creation Skill Tab 1/"Custom Creation Skill in 1" CUSTOM_CREATION_SKILL class=54 guid='1191182338' section=root.15
+RESOURCE /Custom Creation Skill Tab 2/"Custom Creation Skill in 2" CUSTOM_CREATION_SKILL class=54 guid='1191182339' section=root.15
+RESOURCE /(default)/"Custom Creation Skill" CUSTOM_CREATION_SKILL class=54 guid='1191182337' section=root.15
+RESOURCE /First status tab/"B in 1st - 01" UNIT_STATUS class=7 guid='1077936129' section=root.15
+RESOURCE /First status tab/"A in 1st - 02" UNIT_STATUS class=7 guid='1077936132' section=root.15
+RESOURCE /Second status tab/"B in 2nd - 03" UNIT_STATUS class=7 guid='1077936133' section=root.15
+RESOURCE /Second status tab/"A in 2nd - 04" UNIT_STATUS class=7 guid='1077936131' section=root.15
+RESOURCE /(default)/"A in def - 05" UNIT_STATUS class=7 guid='1077936134' section=root.15
+RESOURCE /(default)/"B in def - 06" UNIT_STATUS class=7 guid='1077936130' section=root.15
+RESOURCE "Inventory Template" GIL_INVENTORY_TEMPLATE class=- guid='1119879169' section=root.15
+RESOURCE "Custom Camera" CAMERA class=13 guid='1073741825' section=root.18
+RESOURCE /First prefab tab/"B in 1st - 01" OBJECT class=1 guid='1077936131' parent=(entities: 0) section=root.4
+RESOURCE /First prefab tab/"A in 1st - 02" OBJECT class=1 guid='1077936134' parent=(entities: 0) section=root.4
+RESOURCE /Second prefab tab/"A in 2nd - 03" OBJECT class=1 guid='1077936133' parent=(entities: 0) section=root.4
+RESOURCE /Second prefab tab/"B in 2nd - 04" OBJECT class=1 guid='1077936132' parent=(entities: 0) section=root.4
+RESOURCE /(default)/"B in def - 05" OBJECT class=1 guid='1077936129' parent=(entities: 0) section=root.4
+RESOURCE /(default)/"A in def - 06" OBJECT class=1 guid='1077936130' parent=(entities: 0) section=root.4
+RESOURCE "Terrain01" TERRAIN_ENTITY class=5 guid='1073741825' section=root.7
+RESOURCE "Default Layout" INTERFACE_LAYOUT class=20 guid='1073741825' section=root.9
+RESOURCE "HierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741840' section=root.9
+RESOURCE "HierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741841' section=root.9
+RESOURCE "ExclusiveEleGroupHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741842' section=root.9
+RESOURCE "ClientUIRootHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741843' section=root.9
+RESOURCE "ClientUIPrototypeHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741844' section=root.9
+RESOURCE "Environment Configuration" ENVIRONMENT_CONFIGURATION class=49 guid='1186988033' section=root.15
+RESOURCE "Create Preset Point" PRESET_POINT class=6 guid='1073741825' section=root.11.5
+RESOURCE "Spawn Point1" GIL_RESPAWN_POINT class=- guid='1073741825' section=root.11.3
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324737' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324738' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324739' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324740' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324741' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324742' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324743' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324744' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324745' section=root.5
+RESOURCE "Default Template(Edit Character)" GIL_CHARACTER_ENTITY class=- guid='1090519041' section=root.5
+RESOURCE "Custom Growth Curve" GIL_GROWTH_CURVE class=- guid='1094713345' section=root.15
+RESOURCE "Mini-Map" UI_CONTROL class=15 guid='1073741826' section=root.9
+RESOURCE "Skill Area" UI_CONTROL class=15 guid='1073741827' section=root.9
+RESOURCE "Team Information" UI_CONTROL class=15 guid='1073741828' section=root.9
+RESOURCE "Character HP Bar" UI_CONTROL class=15 guid='1073741829' section=root.9
+RESOURCE "Joystick" UI_CONTROL class=15 guid='1073741830' section=root.9
+RESOURCE "Creation HP Bar" UI_CONTROL class=15 guid='1073741831' section=root.9
+RESOURCE "Exit Button" UI_CONTROL class=15 guid='1073741832' section=root.9
+RESOURCE "Voice-Over" UI_CONTROL class=15 guid='1073741833' section=root.9
+RESOURCE "Tab" UI_CONTROL class=15 guid='1073741834' section=root.9
+RESOURCE "Chat Button" UI_CONTROL class=15 guid='1073741835' section=root.9
+RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741836' section=root.9
+RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741837' section=root.9
+RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741838' section=root.9
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741839' section=root.9
+# FILE test/cases/mounts/test_folders.gia
+DECL "Signal_Name" SIGNAL_NODE_DECL class=14 guid='1610613129' category=SEND_SIGNAL
+GRAPH 'Saved to custom (New Folder)' ENTITY_NODE_GRAPH class=9 guid='1073741827' kind=21001 service=20000 nodes=0
+GRAPH 'Saved to default (Uncategorized Tab)' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=0
+GRAPH 'Saved to folder (My)' ENTITY_NODE_GRAPH class=9 guid='1073741826' kind=21001 service=20000 nodes=0
+GRAPH '<status>Status, saved to custom (New Folder)' STATUS_NODE_GRAPH class=22 guid='1073741830' kind=21001 service=20003 nodes=0
+GRAPH '<status>Status, saved to default (Uncategorized Tab)' STATUS_NODE_GRAPH class=22 guid='1073741829' kind=21001 service=20003 nodes=0
+GRAPH '<class>Class, saved to custom (New Folder)' CLASS_NODE_GRAPH class=23 guid='1073741832' kind=21001 service=20004 nodes=0
+GRAPH '<class>Class, saved to default (Uncategorized Tab)' CLASS_NODE_GRAPH class=23 guid='1073741831' kind=21001 service=20004 nodes=0
+GRAPH 'Item, saved to custom (New Folder)' ITEM_NODE_GRAPH class=46 guid='1073741834' kind=21001 service=20005 nodes=0
+GRAPH 'Item, saved to default (Uncategorized Tab)' ITEM_NODE_GRAPH class=46 guid='1073741833' kind=21001 service=20005 nodes=0
+GRAPH '<composite>Composite in custom' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=0 role=dependency composite_body=true
+GRAPH '<composite>Composite in default' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=0 role=dependency composite_body=true description='Composite Description'
+GRAPH '<skill>Character skill, custom' SKILL_NODE_GRAPH class=11 guid='1082130434' kind=21001 service=20002 nodes=1 entry_slot=1
+GRAPH '<skill>Character skill, default' SKILL_NODE_GRAPH class=11 guid='1082130433' kind=21001 service=20002 nodes=1 entry_slot=1
+GRAPH '<creation>Creation skill, custom' CREATION_SKILL_GRAPH class=52 guid='1082130436' kind=21001 service=20008 nodes=1 entry_slot=1
+GRAPH '<creation>Creation skill, default' CREATION_SKILL_GRAPH class=52 guid='1082130435' kind=21001 service=20008 nodes=1 entry_slot=1
+GRAPH '<creation>Creation status, custom' CREATION_STATUS_GRAPH class=53 guid='1082130438' kind=21001 service=20009 nodes=1 entry_slot=1
+GRAPH '<creation>Creation status, default' CREATION_STATUS_GRAPH class=53 guid='1082130437' kind=21001 service=20009 nodes=1 entry_slot=1
+GRAPH '<creation>Creation decision, custom' CREATION_STATUS_DECISION_GRAPH class=51 guid='1082130440' kind=21001 service=20007 nodes=1 entry_slot=1
+GRAPH '<creation>Creation decision, default' CREATION_STATUS_DECISION_GRAPH class=51 guid='1082130439' kind=21001 service=20007 nodes=1 entry_slot=1
+GRAPH '<skill>Character control, custom' CHARACTER_CONTROL_SKILL_GRAPH class=64 guid='1082130442' kind=21001 service=20010 nodes=1 entry_slot=1
+GRAPH '<skill>Character control, default' CHARACTER_CONTROL_SKILL_GRAPH class=64 guid='1082130441' kind=21001 service=20010 nodes=1 entry_slot=1
+GRAPH '<filter>Boolean filter, custom' BOOLEAN_FILTER_GRAPH class=10 guid='1082130444' kind=21001 service=20001 nodes=1 entry_slot=1 evaluation_interval=0.3
+GRAPH '<filter>Boolean filter, default' BOOLEAN_FILTER_GRAPH class=10 guid='1082130443' kind=21001 service=20001 nodes=1 entry_slot=1 evaluation_interval=0.3
+GRAPH '<filter>Integer filter, custom' INTEGER_FILTER_GRAPH class=47 guid='1082130446' kind=21001 service=20006 nodes=1 entry_slot=1 evaluation_interval=0.3
+GRAPH '<filter>Integer filter, default' INTEGER_FILTER_GRAPH class=47 guid='1082130445' kind=21001 service=20006 nodes=1 entry_slot=1 evaluation_interval=0.3
+RESOURCE "Default Template" PLAYER_TEMPLATE class=18 guid='1086324737'
+RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519041'
+RESOURCE "Custom Class" CLASS class=17 guid='1090519041'
+RESOURCE "Custom Camera" CAMERA class=13 guid='1073741825'
+RESOURCE "Wireframe Cuboid" OBJECT_ENTITY class=3 guid='1077936129' parent=(10009010)
+RESOURCE "Wireframe Cuboid" OBJECT_ENTITY class=3 guid='1077936130' parent=(10009010)
+RESOURCE "Wireframe Cuboid" OBJECT_ENTITY class=3 guid='1077936131' parent=(10009010)
+RESOURCE "Wireframe Cube" OBJECT_ENTITY class=3 guid='1077936132' parent=(10009010)
+RESOURCE "Pavilion 20001488" STATIC_ENTITY class=3 guid='1077936133' parent=(20001488)
+RESOURCE "Terrain01" TERRAIN_ENTITY class=5 guid='1073741825'
+RESOURCE "Default Layout" INTERFACE_LAYOUT class=20 guid='1073741825'
+RESOURCE "Environment Configuration" ENVIRONMENT_CONFIGURATION class=49 guid='1186988033'
+RESOURCE "Create Preset Point" PRESET_POINT class=6 guid='1073741825'
+RESOURCE "Manage Peripheral System" class#66 class=66 guid='1073741825'
+RESOURCE "Manage Background Music" class#67 class=67 guid='1073741825'
+RESOURCE "Stage Settings" class#68 class=68 guid='1073741825'
+RESOURCE "Mini-Map" UI_CONTROL class=15 guid='1073741826'
+RESOURCE "Skill Area" UI_CONTROL class=15 guid='1073741827'
+RESOURCE "Team Information" UI_CONTROL class=15 guid='1073741828'
+RESOURCE "Character HP Bar" UI_CONTROL class=15 guid='1073741829'
+RESOURCE "Joystick" UI_CONTROL class=15 guid='1073741830'
+RESOURCE "Creation HP Bar" UI_CONTROL class=15 guid='1073741831'
+RESOURCE "Exit Button" UI_CONTROL class=15 guid='1073741832'
+RESOURCE "Voice-Over" UI_CONTROL class=15 guid='1073741833'
+RESOURCE "Tab" UI_CONTROL class=15 guid='1073741834'
+RESOURCE "Chat Button" UI_CONTROL class=15 guid='1073741835'
+RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741836'
+RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741837'
+RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741838'
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741839'
+# FILE test/cases/mounts/test_folders.gil
+DECL "Signal_Name" SIGNAL_NODE_DECL class=14 guid='1610613129' category=SEND_SIGNAL
+GRAPH /(default)/'Saved to default (Uncategorized Tab)' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=0
+GRAPH /New Folder/'Saved to custom (New Folder)' ENTITY_NODE_GRAPH class=9 guid='1073741827' kind=21001 service=20000 nodes=0
+GRAPH /My/'Saved to folder (My)' ENTITY_NODE_GRAPH class=9 guid='1073741826' kind=21001 service=20000 nodes=0
+GRAPH /(default)/'<status>Status, saved to default (Uncategorized Tab)' STATUS_NODE_GRAPH class=22 guid='1073741829' kind=21001 service=20003 nodes=0
+GRAPH /New Folder/'<status>Status, saved to custom (New Folder)' STATUS_NODE_GRAPH class=22 guid='1073741830' kind=21001 service=20003 nodes=0
+GRAPH /(default)/'<class>Class, saved to default (Uncategorized Tab)' CLASS_NODE_GRAPH class=23 guid='1073741831' kind=21001 service=20004 nodes=0
+GRAPH /New Folder/'<class>Class, saved to custom (New Folder)' CLASS_NODE_GRAPH class=23 guid='1073741832' kind=21001 service=20004 nodes=0
+GRAPH /(default)/'Item, saved to default (Uncategorized Tab)' ITEM_NODE_GRAPH class=46 guid='1073741833' kind=21001 service=20005 nodes=0
+GRAPH /New Folder/'Item, saved to custom (New Folder)' ITEM_NODE_GRAPH class=46 guid='1073741834' kind=21001 service=20005 nodes=0
+GRAPH /(default)/'<composite>Composite in default' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=0 composite_body=true description='Composite Description'
+GRAPH /New Folder/'<composite>Composite in custom' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /(default)/'<skill>Character skill, default' SKILL_NODE_GRAPH class=11 guid='1082130433' kind=21001 service=20002 nodes=1 entry_slot=1
+GRAPH /New Folder/'<skill>Character skill, custom' SKILL_NODE_GRAPH class=11 guid='1082130434' kind=21001 service=20002 nodes=1 entry_slot=1
+GRAPH /(default)/'<creation>Creation skill, default' CREATION_SKILL_GRAPH class=52 guid='1082130435' kind=21001 service=20008 nodes=1 entry_slot=1
+GRAPH /New Folder/'<creation>Creation skill, custom' CREATION_SKILL_GRAPH class=52 guid='1082130436' kind=21001 service=20008 nodes=1 entry_slot=1
+GRAPH /(default)/'<creation>Creation status, default' CREATION_STATUS_GRAPH class=53 guid='1082130437' kind=21001 service=20009 nodes=1 entry_slot=1
+GRAPH /New Folder/'<creation>Creation status, custom' CREATION_STATUS_GRAPH class=53 guid='1082130438' kind=21001 service=20009 nodes=1 entry_slot=1
+GRAPH /(default)/'<creation>Creation decision, default' CREATION_STATUS_DECISION_GRAPH class=51 guid='1082130439' kind=21001 service=20007 nodes=1 entry_slot=1
+GRAPH /New Folder/'<creation>Creation decision, custom' CREATION_STATUS_DECISION_GRAPH class=51 guid='1082130440' kind=21001 service=20007 nodes=1 entry_slot=1
+GRAPH /(default)/'<skill>Character control, default' CHARACTER_CONTROL_SKILL_GRAPH class=64 guid='1082130441' kind=21001 service=20010 nodes=1 entry_slot=1
+GRAPH /New Folder/'<skill>Character control, custom' CHARACTER_CONTROL_SKILL_GRAPH class=64 guid='1082130442' kind=21001 service=20010 nodes=1 entry_slot=1
+GRAPH /(default)/'<filter>Boolean filter, default' BOOLEAN_FILTER_GRAPH class=10 guid='1082130443' kind=21001 service=20001 nodes=1 entry_slot=1 evaluation_interval=0.3
+GRAPH /New Folder/'<filter>Boolean filter, custom' BOOLEAN_FILTER_GRAPH class=10 guid='1082130444' kind=21001 service=20001 nodes=1 entry_slot=1 evaluation_interval=0.3
+GRAPH /(default)/'<filter>Integer filter, default' INTEGER_FILTER_GRAPH class=47 guid='1082130445' kind=21001 service=20006 nodes=1 entry_slot=1 evaluation_interval=0.3
+GRAPH /New Folder/'<filter>Integer filter, custom' INTEGER_FILTER_GRAPH class=47 guid='1082130446' kind=21001 service=20006 nodes=1 entry_slot=1 evaluation_interval=0.3
+RESOURCE "Stage Entity" GIL_LEVEL_ENTITY class=- guid='1094713345' section=root.5
+RESOURCE "Default Template" PLAYER_TEMPLATE class=18 guid='1086324737' section=root.4
+RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519041' section=root.4
+RESOURCE "Custom Class" CLASS class=17 guid='1090519041' section=root.15
+RESOURCE "Inventory Template" GIL_INVENTORY_TEMPLATE class=- guid='1119879169' section=root.15
+RESOURCE "Custom Camera" CAMERA class=13 guid='1073741825' section=root.18
+RESOURCE "Wireframe Cuboid" OBJECT_ENTITY class=3 guid='1077936129' parent=(10009010) section=root.5
+MOUNT 'Saved to folder (My)' -> OBJECT_ENTITY "Wireframe Cuboid" entity
+RESOURCE "Wireframe Cuboid" OBJECT_ENTITY class=3 guid='1077936130' parent=(10009010) section=root.5
+MOUNT 'Saved to folder (My)' -> OBJECT_ENTITY "Wireframe Cuboid" entity
+RESOURCE "Wireframe Cuboid" OBJECT_ENTITY class=3 guid='1077936131' parent=(10009010) section=root.5
+MOUNT 'Saved to folder (My)' -> OBJECT_ENTITY "Wireframe Cuboid" entity
+RESOURCE "Wireframe Cube" OBJECT_ENTITY class=3 guid='1077936132' parent=(10009010) section=root.5
+MOUNT 'Saved to folder (My)' -> OBJECT_ENTITY "Wireframe Cube" entity
+RESOURCE "Pavilion 20001488" STATIC_ENTITY class=3 guid='1077936133' parent=(20001488) section=root.5
+RESOURCE "Terrain01" TERRAIN_ENTITY class=5 guid='1073741825' section=root.7
+RESOURCE "Default Layout" INTERFACE_LAYOUT class=20 guid='1073741825' section=root.9
+RESOURCE "HierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741840' section=root.9
+RESOURCE "HierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741841' section=root.9
+RESOURCE "ExclusiveEleGroupHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741842' section=root.9
+RESOURCE "ClientUIRootHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741843' section=root.9
+RESOURCE "ClientUIPrototypeHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741844' section=root.9
+RESOURCE "Environment Configuration" ENVIRONMENT_CONFIGURATION class=49 guid='1186988033' section=root.15
+RESOURCE "Create Preset Point" PRESET_POINT class=6 guid='1073741825' section=root.11.5
+RESOURCE "Spawn Point1" GIL_RESPAWN_POINT class=- guid='1073741825' section=root.11.3
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324737' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324738' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324739' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324740' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324741' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324742' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324743' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324744' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324745' section=root.5
+RESOURCE "Default Template(Edit Character)" GIL_CHARACTER_ENTITY class=- guid='1090519041' section=root.5
+RESOURCE "Custom Growth Curve" GIL_GROWTH_CURVE class=- guid='1094713345' section=root.15
+RESOURCE "Mini-Map" UI_CONTROL class=15 guid='1073741826' section=root.9
+RESOURCE "Skill Area" UI_CONTROL class=15 guid='1073741827' section=root.9
+RESOURCE "Team Information" UI_CONTROL class=15 guid='1073741828' section=root.9
+RESOURCE "Character HP Bar" UI_CONTROL class=15 guid='1073741829' section=root.9
+RESOURCE "Joystick" UI_CONTROL class=15 guid='1073741830' section=root.9
+RESOURCE "Creation HP Bar" UI_CONTROL class=15 guid='1073741831' section=root.9
+RESOURCE "Exit Button" UI_CONTROL class=15 guid='1073741832' section=root.9
+RESOURCE "Voice-Over" UI_CONTROL class=15 guid='1073741833' section=root.9
+RESOURCE "Tab" UI_CONTROL class=15 guid='1073741834' section=root.9
+RESOURCE "Chat Button" UI_CONTROL class=15 guid='1073741835' section=root.9
+RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741836' section=root.9
+RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741837' section=root.9
+RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741838' section=root.9
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741839' section=root.9
+# FILE test/cases/mounts/test_mount.gil
+GRAPH /(default)/'Mounted_Character' ENTITY_NODE_GRAPH class=9 guid='1073741826' kind=21001 service=20000 nodes=0
+GRAPH /(default)/'Mounted_Creation' ENTITY_NODE_GRAPH class=9 guid='1073741830' kind=21001 service=20000 nodes=0
+GRAPH /(default)/'Mounted_Entity' ENTITY_NODE_GRAPH class=9 guid='1073741828' kind=21001 service=20000 nodes=0
+GRAPH /(default)/'Mounted_Everywhere' ENTITY_NODE_GRAPH class=9 guid='1073741832' kind=21001 service=20000 nodes=0
+GRAPH /(default)/'Mounted_Player' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=0
+GRAPH /(default)/'Mounted_Prefab' ENTITY_NODE_GRAPH class=9 guid='1073741827' kind=21001 service=20000 nodes=0
+GRAPH /(default)/'<status>Mounted_Status' STATUS_NODE_GRAPH class=22 guid='1073741831' kind=21001 service=20003 nodes=0
+GRAPH /(default)/'<class>Mounted_Class_Character' CLASS_NODE_GRAPH class=23 guid='1073741833' kind=21001 service=20004 nodes=0
+GRAPH /(default)/'<class>Mounted_Class_Player' CLASS_NODE_GRAPH class=23 guid='1073741834' kind=21001 service=20004 nodes=0
+RESOURCE "Stage Entity" GIL_LEVEL_ENTITY class=- guid='1094713345' section=root.5
+MOUNT 'Mounted_Everywhere' -> GIL_LEVEL_ENTITY "Stage Entity" entity
+RESOURCE "No_Graphs" PLAYER_TEMPLATE class=18 guid='1086324737' section=root.4
+RESOURCE "With_PlayerGraph" PLAYER_TEMPLATE class=18 guid='1086324738' section=root.4
+MOUNT 'Mounted_Player' -> PLAYER_TEMPLATE "With_PlayerGraph" player
+RESOURCE "With_CharacterGraph" PLAYER_TEMPLATE class=18 guid='1086324739' section=root.4
+RESOURCE "With_Both_And_Common" PLAYER_TEMPLATE class=18 guid='1086324740' section=root.4
+MOUNT 'Mounted_Player' -> PLAYER_TEMPLATE "With_Both_And_Common" player
+MOUNT 'Mounted_Everywhere' -> PLAYER_TEMPLATE "With_Both_And_Common" player
+RESOURCE "No_Graphs(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519041' section=root.4
+RESOURCE "With_PlayerGraph(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519042' section=root.4
+RESOURCE "With_CharacterGraph(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519043' section=root.4
+MOUNT 'Mounted_Character' -> CHARACTER_TEMPLATE "With_CharacterGraph(Edit Character)" character
+RESOURCE "With_Both_And_Common(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519044' section=root.4
+MOUNT 'Mounted_Character' -> CHARACTER_TEMPLATE "With_Both_And_Common(Edit Character)" character
+MOUNT 'Mounted_Everywhere' -> CHARACTER_TEMPLATE "With_Both_And_Common(Edit Character)" character
+RESOURCE "Class_Empty" CLASS class=17 guid='1090519041' section=root.15
+RESOURCE "Class_Character" CLASS class=17 guid='1090519042' section=root.15
+MOUNT '<class>Mounted_Class_Character' -> CLASS "Class_Character" character
+RESOURCE "Class_Player" CLASS class=17 guid='1090519043' section=root.15
+MOUNT '<class>Mounted_Class_Player' -> CLASS "Class_Player" player
+RESOURCE "Class_Both_On_Both" CLASS class=17 guid='1090519044' section=root.15
+MOUNT '<class>Mounted_Class_Player' -> CLASS "Class_Both_On_Both" player
+MOUNT '<class>Mounted_Class_Character' -> CLASS "Class_Both_On_Both" character
+MOUNT '<class>Mounted_Class_Player' -> CLASS "Class_Both_On_Both" character
+MOUNT '<class>Mounted_Class_Character' -> CLASS "Class_Both_On_Both" player
+RESOURCE /(default)/"Status_Empty" UNIT_STATUS class=7 guid='1077936129' section=root.15
+RESOURCE /(default)/"Status_Mounted" UNIT_STATUS class=7 guid='1077936130' section=root.15
+MOUNT '<status>Mounted_Status' -> UNIT_STATUS "Status_Mounted" status
+RESOURCE "Inventory Template" GIL_INVENTORY_TEMPLATE class=- guid='1119879169' section=root.15
+RESOURCE "Custom Camera" CAMERA class=13 guid='1073741825' section=root.18
+RESOURCE /(default)/"Prefab_Static" OBJECT class=1 guid='1077936129' parent=(entities: 1) section=root.4
+RESOURCE /(default)/"Prefab_Dynamic" OBJECT class=1 guid='1077936130' parent=(entities: 1) section=root.4
+RESOURCE /(default)/"Prefab_NotPlaced" OBJECT class=1 guid='1077936131' parent=(entities: 0) section=root.4
+RESOURCE /(default)/"Prefab_Placed" OBJECT class=1 guid='1077936132' parent=(entities: 0) section=root.4
+RESOURCE /(default)/"Prefab_Graphs" OBJECT class=1 guid='1077936133' parent=(entities: 1) section=root.4
+MOUNT 'Mounted_Prefab' -> OBJECT "Prefab_Graphs" entity
+MOUNT 'Mounted_Everywhere' -> OBJECT "Prefab_Graphs" entity
+RESOURCE "Converted_Static2Dynamic" OBJECT_ENTITY class=3 guid='1077936131' parent=(20001430) section=root.5
+RESOURCE "Native_Dymanic" OBJECT_ENTITY class=3 guid='1077936132' parent=(20001856) section=root.5
+RESOURCE "Prefab_Dynamic" OBJECT_ENTITY class=3 guid='1077936133' parent=(1077936130:"Prefab_Dynamic") section=root.5
+RESOURCE "Entity_Graphs" OBJECT_ENTITY class=3 guid='1077936141' parent=(1077936133:"Prefab_Graphs") section=root.5
+MOUNT 'Mounted_Everywhere' -> OBJECT_ENTITY "Entity_Graphs" entity
+MOUNT 'Mounted_Entity' -> OBJECT_ENTITY "Entity_Graphs" entity
+RESOURCE "Native_Dymanic_Stripped" OBJECT_ENTITY class=3 guid='1077936144' parent=(20001856) section=root.5
+RESOURCE "Pyro Slime" CREATION_ENTITY class=4 guid='1082130433' parent=(30002007) section=root.5
+MOUNT 'Mounted_Everywhere' -> CREATION_ENTITY "Pyro Slime" entity
+MOUNT 'Mounted_Creation' -> CREATION_ENTITY "Pyro Slime" entity
+RESOURCE "Native_Static" STATIC_ENTITY class=3 guid='1077936129' parent=(20001430) section=root.5
+RESOURCE "Prefab_Static" STATIC_ENTITY class=3 guid='1077936130' parent=(1077936129:"Prefab_Static") section=root.5
+RESOURCE "Converted_Dynamic2Static" STATIC_ENTITY class=3 guid='1077936134' parent=(20001856) section=root.5
+RESOURCE "Terrain01" TERRAIN_ENTITY class=5 guid='1073741825' section=root.7
+RESOURCE "Default Layout" INTERFACE_LAYOUT class=20 guid='1073741825' section=root.9
+RESOURCE "HierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741840' section=root.9
+RESOURCE "HierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741841' section=root.9
+RESOURCE "ExclusiveEleGroupHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741842' section=root.9
+RESOURCE "ClientUIRootHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741843' section=root.9
+RESOURCE "ClientUIPrototypeHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741844' section=root.9
+RESOURCE "Environment Configuration" ENVIRONMENT_CONFIGURATION class=49 guid='1186988033' section=root.15
+RESOURCE "Create Preset Point" PRESET_POINT class=6 guid='1073741825' section=root.11.5
+RESOURCE "Spawn Point1" GIL_RESPAWN_POINT class=- guid='1073741825' section=root.11.3
+RESOURCE "No_Graphs" GIL_PLAYER_ENTITY class=- guid='1086324737' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324738' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324739' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324740' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324741' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324742' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324743' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324744' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324745' section=root.5
+RESOURCE "With_PlayerGraph" GIL_PLAYER_ENTITY class=- guid='1086324746' section=root.5
+RESOURCE "With_CharacterGraph" GIL_PLAYER_ENTITY class=- guid='1086324747' section=root.5
+RESOURCE "With_Both_And_Common" GIL_PLAYER_ENTITY class=- guid='1086324748' section=root.5
+RESOURCE "No_Graphs(Edit Character)" GIL_CHARACTER_ENTITY class=- guid='1090519041' section=root.5
+RESOURCE "With_PlayerGraph(Edit Character)" GIL_CHARACTER_ENTITY class=- guid='1090519042' section=root.5
+RESOURCE "With_CharacterGraph(Edit Character)" GIL_CHARACTER_ENTITY class=- guid='1090519043' section=root.5
+RESOURCE "With_Both_And_Common(Edit Character)" GIL_CHARACTER_ENTITY class=- guid='1090519044' section=root.5
+RESOURCE "Custom Growth Curve" GIL_GROWTH_CURVE class=- guid='1094713345' section=root.15
+RESOURCE "Custom Growth Curve_1" GIL_GROWTH_CURVE class=- guid='1094713346' section=root.15
+RESOURCE "Custom Growth Curve_2" GIL_GROWTH_CURVE class=- guid='1094713347' section=root.15
+RESOURCE "Custom Growth Curve_3" GIL_GROWTH_CURVE class=- guid='1094713348' section=root.15
+RESOURCE "Mini-Map" UI_CONTROL class=15 guid='1073741826' section=root.9
+RESOURCE "Skill Area" UI_CONTROL class=15 guid='1073741827' section=root.9
+RESOURCE "Team Information" UI_CONTROL class=15 guid='1073741828' section=root.9
+RESOURCE "Character HP Bar" UI_CONTROL class=15 guid='1073741829' section=root.9
+RESOURCE "Joystick" UI_CONTROL class=15 guid='1073741830' section=root.9
+RESOURCE "Creation HP Bar" UI_CONTROL class=15 guid='1073741831' section=root.9
+RESOURCE "Exit Button" UI_CONTROL class=15 guid='1073741832' section=root.9
+RESOURCE "Voice-Over" UI_CONTROL class=15 guid='1073741833' section=root.9
+RESOURCE "Tab" UI_CONTROL class=15 guid='1073741834' section=root.9
+RESOURCE "Chat Button" UI_CONTROL class=15 guid='1073741835' section=root.9
+RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741836' section=root.9
+RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741837' section=root.9
+RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741838' section=root.9
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741839' section=root.9

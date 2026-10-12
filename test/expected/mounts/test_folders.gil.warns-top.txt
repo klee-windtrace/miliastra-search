@@ -1,0 +1,18 @@
+# findings
+INFO  signal-never-used: signal "Signal_Name" is declared but never sent or listened to in the scanned graphs
+INFO  composite-never-called: composite "Composite in default" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "Composite in custom" is defined but never called in the scanned graphs
+
+# limits
+composites: 2/1000 declared
+signals: 1/100 declared
+dynamic entities (OBJECT_ENTITY): 4/3000
+PRESET_POINT: 1/2000
+ENVIRONMENT_CONFIGURATION: 1/50
+CLASS: 1/100
+TERRAIN_ENTITY: 1/1200
+static entities: 1
+
+top graphs by node count:
+'<skill>Character skill, default': 1/3000 nodes
+'<skill>Character skill, custom': 1/3000 nodes

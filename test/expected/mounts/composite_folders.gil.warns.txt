@@ -1,0 +1,41 @@
+# findings
+INFO  composite-never-called: composite "01" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "02" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "03" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "A1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "A2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "A3" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "B1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "B2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "B3" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "C1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "C2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "C3" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "D1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "D2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "D3" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "E1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "E2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "E3" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "F1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "F2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "F3" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "G1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "G2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "G3" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "H1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "H2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "H3" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "I1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "I2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "I3" is defined but never called in the scanned graphs
+
+# limits
+composites: 30/1000 declared
+prefabs (OBJECT): 1/1000
+PRESET_POINT: 1/2000
+ENVIRONMENT_CONFIGURATION: 1/50
+CLASS: 1/100
+
+top graphs by node count:
+(no graphs in the scanned files)

@@ -1,0 +1,5 @@
+test/cases/resolution/test_All_Static.gia:CLASS ENTITY_NODE_GRAPH class=9 count=1
+test/cases/resolution/test_All_Static.gia:CLASS COMPOSITE_NODE_DECL class=12 count=4
+test/cases/resolution/test_All_Static.gia:CLASS SIGNAL_NODE_DECL class=14 count=4
+test/cases/resolution/test_resolution.gia:CLASS ENTITY_NODE_GRAPH class=9 count=5
+test/cases/resolution/test_resolution.gia:CLASS COMPOSITE_NODE_DECL class=12 count=2

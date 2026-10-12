@@ -1,0 +1,4 @@
+== test/cases/client/client_var_types.gia  gia  engine 7.1.0  mode beyond  resources 1 (0 not interpreted)
+   UNKNOWN FIELD AssetBundle.resources.graph_data.inner.graph.nodes.pins.value.val_poly.actual_value.type_def.client_side #3 wire 0 ×1 e.g. 2
+   UNKNOWN FIELD AssetBundle.resources.graph_data.inner.graph.nodes.pins.value.val_poly.actual_value.type_def.client_side #101 wire 2 ×1 e.g. 8 bytes 0x0813101920012802
+   UNKNOWN FIELD AssetBundle.resources.graph_data.inner.graph.nodes.pins.value.val_poly.extra_meta.config.inner #103 wire 2 ×1 e.g. 4 bytes 0x20012801

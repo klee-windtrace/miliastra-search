@@ -1,0 +1,8 @@
+INFO  catch-all-listener: [5] When Timer Is Triggered in graph 'Send' also runs code for every name: [4] Send Signal runs for every name (not a name switch) [stage_012379.gil]
+INFO  catch-all-listener: [5] When Timer Is Triggered in graph 'Send' also runs code for every name: [4] Send Signal runs for every name (not a name switch) [stage_2.gil]
+INFO  signal-never-used: signal "Signal_3" is declared but never sent or listened to in the scanned graphs [stage_012379.gil]
+INFO  signal-never-used: signal "Signal_1" is declared but never sent or listened to in the scanned graphs [stage_9.gil]
+WARN  composite-definition-count-anomaly: composite "Create Composite Node" has 2 definition(s) in the scanned files (expected exactly 1) – guid=1073741825; guid=1073741825; this points to a structural bug in the GIL/GIA or in how this tool parsed it [stage_012379.gil]
+WARN  composite-definition-count-anomaly: composite "Create Composite Node(1)" has 2 definition(s) in the scanned files (expected exactly 1) – guid=1073741826; guid=1073741826; this points to a structural bug in the GIL/GIA or in how this tool parsed it [stage_012379.gil]
+INFO  struct-never-used: struct "Structure_2" (guid=1077936131 fields=) is defined but never used in the scanned graphs [stage_012379.gil]
+INFO  struct-never-used: struct "Structure" (guid=1077936129 fields=) is defined but never used in the scanned graphs [stage_9.gil]

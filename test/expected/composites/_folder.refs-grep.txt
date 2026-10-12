@@ -1,0 +1,3 @@
+signal           "Static_1"                         1 listen: ['All_Composite'], 1 send: ['All_Composite']
+signal           "Static_2"                         1 listen: ['All_Composite'], 1 send: ['All_Composite']
+timer            "Static_Timer" (onetime)           1 start: ['<composite>Create Composite Node(4)'], 1 stop: ['All_Composite'], 1 listen: ['All_Composite']

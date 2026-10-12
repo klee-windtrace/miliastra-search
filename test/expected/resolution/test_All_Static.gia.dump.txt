@@ -1,0 +1,3 @@
+DECL "Static_1" SIGNAL_NODE_DECL guid='1610612737' role=dependency
+DECL "Static_2" SIGNAL_NODE_DECL guid='1610612741' role=dependency
+GRAPH 'All_Static' ENTITY_NODE_GRAPH guid='1073741825' nodes=26

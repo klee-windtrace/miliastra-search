@@ -1,0 +1,9 @@
+struct           "Structure"                        defined guid=1077936129 fields=Add variable 1
+                                                    2 field-type: Structure_1.Add variable 3; Structure_1.Add variable 4
+                                                    1 modify: ['Structs']
+                                                    1 assemble: ['Structs']
+                                                    1 split: ['Structs']
+struct           "Structure_1"                      defined guid=1077936130 fields=Add variable 1|Add variable 2|Add variable 3|Add variable 4
+                                                    1 modify: ['Structs']
+                                                    1 assemble: ['Structs']
+                                                    1 split: ['Structs']

@@ -1,0 +1,8 @@
+custom_variable  "* (listener for any name)"        1 listen: ['Variables']
+custom_variable  "test" (Int)                       1 get: ['<filter>New Filter Node Graph_1'], 0 set: []
+custom_variable  "Test" (Int)                       1 get: ['Variables'], 0 set: [], 1 trigger: ['Variables']
+graph_variable   "Graph_Var" (Ety)                  ['Graph']: 1 get, 0 set
+graph_variable   "* (listener for any name)"        1 listen: ['Variables']
+graph_variable   "Variable_1" (Bol)                 ['Variables']: 1 get, 1 set
+graph_variable   "Graph_Var" (Ety)                  ['Graph']: 1 get, 0 set
+literal_id       "Cfg:10"                           1 Ref: ['Lists']

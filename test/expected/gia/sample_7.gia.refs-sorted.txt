@@ -1,0 +1,3 @@
+custom_variable  "test" (Int)                       1 get: ['<filter>New Filter Node Graph_1'], 0 set: []
+literal_id       "Cfg:1082130435"                   1 Ref: ['<creation>New Creation Status Decision Node Graph']
+literal_id       "Cfg:2"                            1 Ref: ['<skill>New Character Skill Node Graph']

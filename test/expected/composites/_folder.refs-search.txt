@@ -1,0 +1,9 @@
+composite        "VAR_TEST_3"                       1 call: ['VAR_TEST']
+custom_variable  "Static_Var" (Flt)                 1 get: ['All_Composite'], 1 set: ['All_Composite'], 1 trigger: ['<composite>Create Composite Node(15)'], 1 listen: ['All_Composite']
+custom_variable  "Var1" (Int)                       0 get: [], 0 set: [], 1 trigger: ['VAR_TEST'], 1 listen: ['VAR_TEST']
+custom_variable  "Var2" (Str)                       0 get: [], 0 set: [], 1 trigger: ['<composite>VAR_TEST_2'], 1 listen: ['<composite>VAR_TEST_3']
+global_timer     "Static_Global"                    1 start: ['<composite>Create Composite Node(5)'], 1 stop: ['All_Composite'], 1 listen: ['All_Composite']
+graph_variable   "Static_Graph" (L<Gid>)            ['All_Composite']: 1 get, 1 set, 1 trigger, 1 listen
+graph_variable   "Var_1" (Int)                      ['New Node Graph']: 2 get, 2 set
+graph_variable   "Var_1" (Int)                      ['New Node Graph']: 2 get, 2 set
+literal_id       "Cfg:1098907649" (SKILL:"test_skill") 2 Ref: ['New Node Graph']

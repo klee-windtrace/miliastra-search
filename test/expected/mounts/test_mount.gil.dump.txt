@@ -1,0 +1,104 @@
+GRAPH /(default)/'Mounted_Character' ENTITY_NODE_GRAPH guid='1073741826' nodes=0
+GRAPH /(default)/'Mounted_Creation' ENTITY_NODE_GRAPH guid='1073741830' nodes=0
+GRAPH /(default)/'Mounted_Entity' ENTITY_NODE_GRAPH guid='1073741828' nodes=0
+GRAPH /(default)/'Mounted_Everywhere' ENTITY_NODE_GRAPH guid='1073741832' nodes=0
+GRAPH /(default)/'Mounted_Player' ENTITY_NODE_GRAPH guid='1073741825' nodes=0
+GRAPH /(default)/'Mounted_Prefab' ENTITY_NODE_GRAPH guid='1073741827' nodes=0
+GRAPH /(default)/'<status>Mounted_Status' STATUS_NODE_GRAPH guid='1073741831' nodes=0
+GRAPH /(default)/'<class>Mounted_Class_Character' CLASS_NODE_GRAPH guid='1073741833' nodes=0
+GRAPH /(default)/'<class>Mounted_Class_Player' CLASS_NODE_GRAPH guid='1073741834' nodes=0
+RESOURCE "Stage Entity" GIL_LEVEL_ENTITY guid='1094713345'
+MOUNT 'Mounted_Everywhere' -> GIL_LEVEL_ENTITY "Stage Entity" entity
+RESOURCE "No_Graphs" PLAYER_TEMPLATE guid='1086324737'
+RESOURCE "With_PlayerGraph" PLAYER_TEMPLATE guid='1086324738'
+MOUNT 'Mounted_Player' -> PLAYER_TEMPLATE "With_PlayerGraph" player
+RESOURCE "With_CharacterGraph" PLAYER_TEMPLATE guid='1086324739'
+RESOURCE "With_Both_And_Common" PLAYER_TEMPLATE guid='1086324740'
+MOUNT 'Mounted_Player' -> PLAYER_TEMPLATE "With_Both_And_Common" player
+MOUNT 'Mounted_Everywhere' -> PLAYER_TEMPLATE "With_Both_And_Common" player
+RESOURCE "No_Graphs(Edit Character)" CHARACTER_TEMPLATE guid='1090519041'
+RESOURCE "With_PlayerGraph(Edit Character)" CHARACTER_TEMPLATE guid='1090519042'
+RESOURCE "With_CharacterGraph(Edit Character)" CHARACTER_TEMPLATE guid='1090519043'
+MOUNT 'Mounted_Character' -> CHARACTER_TEMPLATE "With_CharacterGraph(Edit Character)" character
+RESOURCE "With_Both_And_Common(Edit Character)" CHARACTER_TEMPLATE guid='1090519044'
+MOUNT 'Mounted_Character' -> CHARACTER_TEMPLATE "With_Both_And_Common(Edit Character)" character
+MOUNT 'Mounted_Everywhere' -> CHARACTER_TEMPLATE "With_Both_And_Common(Edit Character)" character
+RESOURCE "Class_Empty" CLASS guid='1090519041'
+RESOURCE "Class_Character" CLASS guid='1090519042'
+MOUNT '<class>Mounted_Class_Character' -> CLASS "Class_Character" character
+RESOURCE "Class_Player" CLASS guid='1090519043'
+MOUNT '<class>Mounted_Class_Player' -> CLASS "Class_Player" player
+RESOURCE "Class_Both_On_Both" CLASS guid='1090519044'
+MOUNT '<class>Mounted_Class_Player' -> CLASS "Class_Both_On_Both" player
+MOUNT '<class>Mounted_Class_Character' -> CLASS "Class_Both_On_Both" character
+MOUNT '<class>Mounted_Class_Player' -> CLASS "Class_Both_On_Both" character
+MOUNT '<class>Mounted_Class_Character' -> CLASS "Class_Both_On_Both" player
+RESOURCE /(default)/"Status_Empty" UNIT_STATUS guid='1077936129'
+RESOURCE /(default)/"Status_Mounted" UNIT_STATUS guid='1077936130'
+MOUNT '<status>Mounted_Status' -> UNIT_STATUS "Status_Mounted" status
+RESOURCE "Inventory Template" GIL_INVENTORY_TEMPLATE guid='1119879169'
+RESOURCE "Custom Camera" CAMERA guid='1073741825'
+RESOURCE /(default)/"Prefab_Static" OBJECT guid='1077936129' parent=(entities: 1)
+RESOURCE /(default)/"Prefab_Dynamic" OBJECT guid='1077936130' parent=(entities: 1)
+RESOURCE /(default)/"Prefab_NotPlaced" OBJECT guid='1077936131' parent=(entities: 0)
+RESOURCE /(default)/"Prefab_Placed" OBJECT guid='1077936132' parent=(entities: 0)
+RESOURCE /(default)/"Prefab_Graphs" OBJECT guid='1077936133' parent=(entities: 1)
+MOUNT 'Mounted_Prefab' -> OBJECT "Prefab_Graphs" entity
+MOUNT 'Mounted_Everywhere' -> OBJECT "Prefab_Graphs" entity
+RESOURCE "Converted_Static2Dynamic" OBJECT_ENTITY guid='1077936131' parent=(20001430)
+RESOURCE "Native_Dymanic" OBJECT_ENTITY guid='1077936132' parent=(20001856)
+RESOURCE "Prefab_Dynamic" OBJECT_ENTITY guid='1077936133' parent=(1077936130:"Prefab_Dynamic")
+RESOURCE "Entity_Graphs" OBJECT_ENTITY guid='1077936141' parent=(1077936133:"Prefab_Graphs")
+MOUNT 'Mounted_Everywhere' -> OBJECT_ENTITY "Entity_Graphs" entity
+MOUNT 'Mounted_Entity' -> OBJECT_ENTITY "Entity_Graphs" entity
+RESOURCE "Native_Dymanic_Stripped" OBJECT_ENTITY guid='1077936144' parent=(20001856)
+RESOURCE "Pyro Slime" CREATION_ENTITY guid='1082130433' parent=(30002007)
+MOUNT 'Mounted_Everywhere' -> CREATION_ENTITY "Pyro Slime" entity
+MOUNT 'Mounted_Creation' -> CREATION_ENTITY "Pyro Slime" entity
+RESOURCE "Native_Static" STATIC_ENTITY guid='1077936129' parent=(20001430)
+RESOURCE "Prefab_Static" STATIC_ENTITY guid='1077936130' parent=(1077936129:"Prefab_Static")
+RESOURCE "Converted_Dynamic2Static" STATIC_ENTITY guid='1077936134' parent=(20001856)
+RESOURCE "Terrain01" TERRAIN_ENTITY guid='1073741825'
+RESOURCE "Default Layout" INTERFACE_LAYOUT guid='1073741825'
+RESOURCE "HierarchyRoot" INTERFACE_LAYOUT guid='1073741840'
+RESOURCE "HierarchyRoot" INTERFACE_LAYOUT guid='1073741841'
+RESOURCE "ExclusiveEleGroupHierarchyRoot" INTERFACE_LAYOUT guid='1073741842'
+RESOURCE "ClientUIRootHierarchyRoot" INTERFACE_LAYOUT guid='1073741843'
+RESOURCE "ClientUIPrototypeHierarchyRoot" INTERFACE_LAYOUT guid='1073741844'
+RESOURCE "Environment Configuration" ENVIRONMENT_CONFIGURATION guid='1186988033'
+RESOURCE "Create Preset Point" PRESET_POINT guid='1073741825'
+RESOURCE "Spawn Point1" GIL_RESPAWN_POINT guid='1073741825'
+RESOURCE "No_Graphs" GIL_PLAYER_ENTITY guid='1086324737'
+RESOURCE "Default Template" GIL_PLAYER_ENTITY guid='1086324738'
+RESOURCE "Default Template" GIL_PLAYER_ENTITY guid='1086324739'
+RESOURCE "Default Template" GIL_PLAYER_ENTITY guid='1086324740'
+RESOURCE "Default Template" GIL_PLAYER_ENTITY guid='1086324741'
+RESOURCE "Default Template" GIL_PLAYER_ENTITY guid='1086324742'
+RESOURCE "Default Template" GIL_PLAYER_ENTITY guid='1086324743'
+RESOURCE "Default Template" GIL_PLAYER_ENTITY guid='1086324744'
+RESOURCE "Default Template" GIL_PLAYER_ENTITY guid='1086324745'
+RESOURCE "With_PlayerGraph" GIL_PLAYER_ENTITY guid='1086324746'
+RESOURCE "With_CharacterGraph" GIL_PLAYER_ENTITY guid='1086324747'
+RESOURCE "With_Both_And_Common" GIL_PLAYER_ENTITY guid='1086324748'
+RESOURCE "No_Graphs(Edit Character)" GIL_CHARACTER_ENTITY guid='1090519041'
+RESOURCE "With_PlayerGraph(Edit Character)" GIL_CHARACTER_ENTITY guid='1090519042'
+RESOURCE "With_CharacterGraph(Edit Character)" GIL_CHARACTER_ENTITY guid='1090519043'
+RESOURCE "With_Both_And_Common(Edit Character)" GIL_CHARACTER_ENTITY guid='1090519044'
+RESOURCE "Custom Growth Curve" GIL_GROWTH_CURVE guid='1094713345'
+RESOURCE "Custom Growth Curve_1" GIL_GROWTH_CURVE guid='1094713346'
+RESOURCE "Custom Growth Curve_2" GIL_GROWTH_CURVE guid='1094713347'
+RESOURCE "Custom Growth Curve_3" GIL_GROWTH_CURVE guid='1094713348'
+RESOURCE "Mini-Map" UI_CONTROL guid='1073741826'
+RESOURCE "Skill Area" UI_CONTROL guid='1073741827'
+RESOURCE "Team Information" UI_CONTROL guid='1073741828'
+RESOURCE "Character HP Bar" UI_CONTROL guid='1073741829'
+RESOURCE "Joystick" UI_CONTROL guid='1073741830'
+RESOURCE "Creation HP Bar" UI_CONTROL guid='1073741831'
+RESOURCE "Exit Button" UI_CONTROL guid='1073741832'
+RESOURCE "Voice-Over" UI_CONTROL guid='1073741833'
+RESOURCE "Tab" UI_CONTROL guid='1073741834'
+RESOURCE "Chat Button" UI_CONTROL guid='1073741835'
+RESOURCE "Network Status" UI_CONTROL guid='1073741836'
+RESOURCE "Struggle Button" UI_CONTROL guid='1073741837'
+RESOURCE "Voice Chat Button" UI_CONTROL guid='1073741838'
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL guid='1073741839'

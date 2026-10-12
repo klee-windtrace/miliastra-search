@@ -1,0 +1,55 @@
+# FILE test/cases/mounts/composite_folders.gil
+format                 gil
+detected_by            header
+file_size              133059
+container_file_type    gil
+engine_version         7.1.0
+mode                   beyond
+level_name             composite_folders
+node_db_version        7.1.0
+export_tag             null
+resources              126
+graphs                 30
+nodes                  0
+composite_bodies       30
+declarations           30
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS OBJECT class=1 count=1
+CLASS PRESET_POINT class=6 count=1
+CLASS ENTITY_NODE_GRAPH class=9 count=30
+CLASS COMPOSITE_NODE_DECL class=12 count=30
+CLASS CAMERA class=13 count=1
+CLASS UI_CONTROL class=15 count=14
+CLASS CLASS class=17 count=1
+CLASS PLAYER_TEMPLATE class=18 count=1
+CLASS CHARACTER_TEMPLATE class=19 count=1
+CLASS INTERFACE_LAYOUT class=20 count=3
+CLASS SHIELD class=39 count=1
+CLASS ENVIRONMENT_CONFIGURATION class=49 count=1
+CLASS GIL_CHARACTER_ENTITY class=- count=1
+CLASS GIL_GROWTH_CURVE class=- count=26
+CLASS GIL_LEVEL_ENTITY class=- count=1
+CLASS GIL_PLAYER_ENTITY class=- count=9
+CLASS GIL_RESPAWN_POINT class=- count=1
+CLASS GIL_UI_UNNAMED class=- count=3
+SECTION root.4 resources=3 description='templates: prefabs, player and character templates, creation templates'
+SECTION root.5 resources=11 description='entities placed in the level, plus the stage, player and character entities'
+SECTION root.9 resources=20 description='UI: layouts and their controls'
+SECTION root.10.2 resources=30 description='node declarations: signals and composite declarations'
+SECTION root.10.4 resources=30 description='composite bodies: the graphs inside composite nodes'
+SECTION root.11.3 resources=1 description='respawn points'
+SECTION root.11.5 resources=1 description='preset points'
+SECTION root.15 resources=29 description='configs: unit statuses, classes, skills, items and the like'
+SECTION root.18 resources=1 description='cameras'
+FOLDER /(default)/ graphs=3
+FOLDER /A/ graphs=3
+FOLDER /B/ graphs=3
+FOLDER /C/ graphs=3
+FOLDER /D/ graphs=3
+FOLDER /E/ graphs=3
+FOLDER /F/ graphs=3
+FOLDER /G/ graphs=3
+FOLDER /H/ graphs=3
+FOLDER /I/ graphs=3

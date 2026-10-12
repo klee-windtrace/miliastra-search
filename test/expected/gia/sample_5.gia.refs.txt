@@ -1,0 +1,4 @@
+custom_variable  "* (listener for any name)"        1 listen: ['Variables']
+custom_variable  "Test" (Int)                       1 get: ['Variables'], 0 set: [], 1 trigger: ['Variables']
+graph_variable   "* (listener for any name)"        1 listen: ['Variables']
+graph_variable   "Variable_1" (Bol)                 ['Variables']: 1 get, 1 set

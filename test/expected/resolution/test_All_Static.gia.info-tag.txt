@@ -1,0 +1,26 @@
+# FILE test/cases/resolution/test_All_Static.gia
+format                 gia
+detected_by            header
+file_size              6905
+container_file_type    gia
+engine_version         7.1.0
+mode                   beyond
+export_name            test_All_Static.gia
+node_db_version        7.1.0
+export_tag             909814789-1790670872-1073741839-\test_All_Static.gia
+uid                    909814789
+time                   1790670872
+file_id                1073741839
+resources              9
+primary                1
+dependencies           8
+graphs                 1
+nodes                  26
+composite_bodies       0
+declarations           8
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=1
+CLASS COMPOSITE_NODE_DECL class=12 count=4
+CLASS SIGNAL_NODE_DECL class=14 count=4

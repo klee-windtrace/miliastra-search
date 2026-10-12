@@ -1,0 +1,4 @@
+GRAPH 'VAR_TEST' ENTITY_NODE_GRAPH guid='1073741841' nodes=7
+GRAPH '<composite>VAR_TEST_1' ENTITY_NODE_GRAPH guid='1610612743' nodes=1 role=dependency
+GRAPH '<composite>VAR_TEST_2' ENTITY_NODE_GRAPH guid='1610612744' nodes=1 role=dependency
+GRAPH '<composite>VAR_TEST_3' ENTITY_NODE_GRAPH guid='1610612745' nodes=2 role=dependency

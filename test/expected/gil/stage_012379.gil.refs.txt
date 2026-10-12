@@ -1,0 +1,22 @@
+composite        "Create Composite Node"            2 call: ['New Node Graph']
+composite        "Create Composite Node(1)"         1 call: ['New Node Graph']
+custom_variable  "test" (Int)                       1 get: ['<filter>New Filter Node Graph_1'], 0 set: []
+graph_variable   "Graph_Var" (Ety)                  ['Graph']: 1 get, 0 set
+literal_id       "Cfg:1082130437"                   1 Ref: ['<creation>New Creation Status Decision Node Graph']
+literal_id       "Cfg:2"                            1 Ref: ['<skill>New Character Skill Node Graph']
+literal_id       "Cfg:6"                            1 Ref: ['Send']
+literal_id       "Pfb:5"                            1 Ref: ['Send']
+signal           "Signal_1"                         2 listen: ['Both'; 'Receive'], 2 send: ['Both'; 'Send']
+signal           "Signal_2"                         2 listen: ['Both'; 'Receive'], 2 send: ['Both'; 'Send']
+signal           "Signal_3"                         0 listen: [], 0 send: []
+struct           "Structure"                        defined guid=1077936129 fields=Add variable 1
+                                                    2 field-type: Structure_1.Add variable 3; Structure_1.Add variable 4
+                                                    1 modify: ['Structs']
+                                                    1 assemble: ['Structs']
+                                                    1 split: ['Structs']
+struct           "Structure_1"                      defined guid=1077936130 fields=Add variable 1|Add variable 2|Add variable 3|Add variable 4
+                                                    1 modify: ['Structs']
+                                                    1 assemble: ['Structs']
+                                                    1 split: ['Structs']
+struct           "Structure_2"                      defined guid=1077936131 fields=
+timer            "* (listener for any name)"        1 listen: ['Send']

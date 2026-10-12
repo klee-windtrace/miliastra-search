@@ -1,0 +1,2 @@
+signal           "Static_1"                         1 listen: ['All_Static'], 1 send: ['All_Static']
+signal           "Static_2"                         1 listen: ['All_Static'], 1 send: ['All_Static']

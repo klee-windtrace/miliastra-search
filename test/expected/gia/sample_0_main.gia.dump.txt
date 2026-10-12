@@ -1,0 +1,2 @@
+GRAPH 'Graph' ENTITY_NODE_GRAPH guid='1073742366' nodes=7
+GRAPH '<status>Empty' STATUS_NODE_GRAPH guid='1073742384' nodes=0

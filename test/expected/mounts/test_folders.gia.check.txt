@@ -1,0 +1,9 @@
+== test/cases/mounts/test_folders.gia  gia  engine 7.1.0  mode beyond  resources 61 (30 not interpreted)
+   UNKNOWN FIELD AssetBundle.dependencies.interface_data.inner.interface.impl.listen_signal #4 wire 2 ×1 e.g. 17 bytes 0x08914e10a09c0118f1ab01288c83808006
+   UNKNOWN FIELD AssetBundle.dependencies.interface_data.inner.interface.impl.send_signal #4 wire 2 ×1 e.g. 17 bytes 0x08914e10a09c0118f1ab01288c83808006
+   UNKNOWN FIELD AssetBundle.dependencies.interface_data.inner.interface.impl #108 wire 2 ×1 e.g. 70 bytes 0x0a0b5369676e616c5f4e616d65121108914e10a09c0118f1…
+   UNKNOWN FIELD AssetBundle.resources.interface_data.inner.interface.impl.send_signal #4 wire 2 ×1 e.g. 17 bytes 0x08914e10a09c0118f1ab01288c83808006
+   UNKNOWN FIELD AssetBundle.resources #32 wire 2 ×1 e.g. 160 bytes 0x0a9d01123eaa1f3b0801101418fbffffffffffffffff0128…
+   UNKNOWN FIELD AssetBundle.resources #33 wire 2 ×1 e.g. 9 bytes 0x0a0730643d0000803f
+   UNKNOWN FIELD AssetBundle.resources #34 wire 2 ×1 e.g. 359 bytes 0x0ae4020a350a0f0d0000c842150000c8421d0000c8421200…
+   opaque (known but uninterpreted) fields: resources.opaque_12×5, resources.opaque_16×1, resources.opaque_11×1, resources.opaque_15×2, resources.opaque_17×1, resources.opaque_19×1, resources.opaque_18×1, dependencies.opaque_11×1, dependencies.opaque_19×14

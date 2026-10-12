@@ -1,0 +1,56 @@
+DECL "Signal_Name" SIGNAL_NODE_DECL guid='1610613129'
+GRAPH 'Saved to custom (New Folder)' ENTITY_NODE_GRAPH guid='1073741827' nodes=0
+GRAPH 'Saved to default (Uncategorized Tab)' ENTITY_NODE_GRAPH guid='1073741825' nodes=0
+GRAPH 'Saved to folder (My)' ENTITY_NODE_GRAPH guid='1073741826' nodes=0
+GRAPH '<status>Status, saved to custom (New Folder)' STATUS_NODE_GRAPH guid='1073741830' nodes=0
+GRAPH '<status>Status, saved to default (Uncategorized Tab)' STATUS_NODE_GRAPH guid='1073741829' nodes=0
+GRAPH '<class>Class, saved to custom (New Folder)' CLASS_NODE_GRAPH guid='1073741832' nodes=0
+GRAPH '<class>Class, saved to default (Uncategorized Tab)' CLASS_NODE_GRAPH guid='1073741831' nodes=0
+GRAPH 'Item, saved to custom (New Folder)' ITEM_NODE_GRAPH guid='1073741834' nodes=0
+GRAPH 'Item, saved to default (Uncategorized Tab)' ITEM_NODE_GRAPH guid='1073741833' nodes=0
+GRAPH '<composite>Composite in custom' ENTITY_NODE_GRAPH guid='1610612738' nodes=0 role=dependency
+GRAPH '<composite>Composite in default' ENTITY_NODE_GRAPH guid='1610612737' nodes=0 role=dependency description='Composite Description'
+GRAPH '<skill>Character skill, custom' SKILL_NODE_GRAPH guid='1082130434' nodes=1
+GRAPH '<skill>Character skill, default' SKILL_NODE_GRAPH guid='1082130433' nodes=1
+GRAPH '<creation>Creation skill, custom' CREATION_SKILL_GRAPH guid='1082130436' nodes=1
+GRAPH '<creation>Creation skill, default' CREATION_SKILL_GRAPH guid='1082130435' nodes=1
+GRAPH '<creation>Creation status, custom' CREATION_STATUS_GRAPH guid='1082130438' nodes=1
+GRAPH '<creation>Creation status, default' CREATION_STATUS_GRAPH guid='1082130437' nodes=1
+GRAPH '<creation>Creation decision, custom' CREATION_STATUS_DECISION_GRAPH guid='1082130440' nodes=1
+GRAPH '<creation>Creation decision, default' CREATION_STATUS_DECISION_GRAPH guid='1082130439' nodes=1
+GRAPH '<skill>Character control, custom' CHARACTER_CONTROL_SKILL_GRAPH guid='1082130442' nodes=1
+GRAPH '<skill>Character control, default' CHARACTER_CONTROL_SKILL_GRAPH guid='1082130441' nodes=1
+GRAPH '<filter>Boolean filter, custom' BOOLEAN_FILTER_GRAPH guid='1082130444' nodes=1
+GRAPH '<filter>Boolean filter, default' BOOLEAN_FILTER_GRAPH guid='1082130443' nodes=1
+GRAPH '<filter>Integer filter, custom' INTEGER_FILTER_GRAPH guid='1082130446' nodes=1
+GRAPH '<filter>Integer filter, default' INTEGER_FILTER_GRAPH guid='1082130445' nodes=1
+RESOURCE "Default Template" PLAYER_TEMPLATE guid='1086324737'
+RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE guid='1090519041'
+RESOURCE "Custom Class" CLASS guid='1090519041'
+RESOURCE "Custom Camera" CAMERA guid='1073741825'
+RESOURCE "Wireframe Cuboid" OBJECT_ENTITY guid='1077936129' parent=(10009010)
+RESOURCE "Wireframe Cuboid" OBJECT_ENTITY guid='1077936130' parent=(10009010)
+RESOURCE "Wireframe Cuboid" OBJECT_ENTITY guid='1077936131' parent=(10009010)
+RESOURCE "Wireframe Cube" OBJECT_ENTITY guid='1077936132' parent=(10009010)
+RESOURCE "Pavilion 20001488" STATIC_ENTITY guid='1077936133' parent=(20001488)
+RESOURCE "Terrain01" TERRAIN_ENTITY guid='1073741825'
+RESOURCE "Default Layout" INTERFACE_LAYOUT guid='1073741825'
+RESOURCE "Environment Configuration" ENVIRONMENT_CONFIGURATION guid='1186988033'
+RESOURCE "Create Preset Point" PRESET_POINT guid='1073741825'
+RESOURCE "Manage Peripheral System" class#66 guid='1073741825'
+RESOURCE "Manage Background Music" class#67 guid='1073741825'
+RESOURCE "Stage Settings" class#68 guid='1073741825'
+RESOURCE "Mini-Map" UI_CONTROL guid='1073741826'
+RESOURCE "Skill Area" UI_CONTROL guid='1073741827'
+RESOURCE "Team Information" UI_CONTROL guid='1073741828'
+RESOURCE "Character HP Bar" UI_CONTROL guid='1073741829'
+RESOURCE "Joystick" UI_CONTROL guid='1073741830'
+RESOURCE "Creation HP Bar" UI_CONTROL guid='1073741831'
+RESOURCE "Exit Button" UI_CONTROL guid='1073741832'
+RESOURCE "Voice-Over" UI_CONTROL guid='1073741833'
+RESOURCE "Tab" UI_CONTROL guid='1073741834'
+RESOURCE "Chat Button" UI_CONTROL guid='1073741835'
+RESOURCE "Network Status" UI_CONTROL guid='1073741836'
+RESOURCE "Struggle Button" UI_CONTROL guid='1073741837'
+RESOURCE "Voice Chat Button" UI_CONTROL guid='1073741838'
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL guid='1073741839'

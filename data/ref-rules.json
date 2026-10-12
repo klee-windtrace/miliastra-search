@@ -1,0 +1,30 @@
+{
+  "_doc": "Which node pins carry a *name* that refers to a named thing. Keyed by numeric node ID (shell id). Extend via data/overlay.json ('refRules') or edit here. pin/valuePin/triggerPin/loopPin = '<kind>:<shellIndex>' with kind one of in_param/out_param. valuePin (optional) is the pin whose type labels the variable's datatype. triggerPin (optional) is a boolean 'Trigger Event' pin; triggerDefault (with triggerPin) is its value when the file stores no pin (pins are stored only when edited): true for both Set nodes; loopPin (optional) is a boolean 'Loop' pin (Start Timer only).",
+  "namedPins": [
+    { "kind": "graph_variable",  "node": 337,    "pin": "in_param:0", "role": "get", "valuePin": "out_param:0" },
+    { "kind": "graph_variable",  "node": 323,    "pin": "in_param:0", "role": "set", "valuePin": "in_param:1", "triggerPin": "in_param:2", "triggerDefault": true },
+    { "kind": "custom_variable", "node": 50,     "pin": "in_param:1", "role": "get", "valuePin": "out_param:0" },
+    { "kind": "custom_variable", "node": 22,     "pin": "in_param:1", "role": "set", "valuePin": "in_param:2", "triggerPin": "in_param:4", "triggerDefault": true },
+    { "kind": "custom_variable", "node": 3360,   "pin": "in_param:1", "role": "snapshot-get" },
+    { "kind": "custom_variable", "node": 200016, "pin": "in_param:1", "role": "get", "valuePin": "out_param:0" },
+    { "kind": "custom_variable", "node": 200173, "pin": "in_param:1", "role": "get", "valuePin": "out_param:0" },
+    { "kind": "timer", "node": 79,  "pin": "in_param:1", "role": "start", "loopPin": "in_param:2" },
+    { "kind": "timer", "node": 80,  "pin": "in_param:1", "role": "pause" },
+    { "kind": "timer", "node": 81,  "pin": "in_param:1", "role": "resume" },
+    { "kind": "timer", "node": 82,  "pin": "in_param:1", "role": "stop" },
+    { "kind": "global_timer", "node": 309, "pin": "in_param:1", "role": "pause" },
+    { "kind": "global_timer", "node": 310, "pin": "in_param:1", "role": "get-time" },
+    { "kind": "global_timer", "node": 311, "pin": "in_param:1", "role": "start" },
+    { "kind": "global_timer", "node": 312, "pin": "in_param:1", "role": "resume" },
+    { "kind": "global_timer", "node": 313, "pin": "in_param:1", "role": "stop" },
+    { "kind": "global_timer", "node": 314, "pin": "in_param:1", "role": "modify" }
+  ],
+  "eventNodesWithNameOutput": {
+    "_doc": "These trigger nodes fire for ANY variable/timer; the name only appears as an OUTPUT pin, so they are reported as a listener for any name.",
+    "36": "custom_variable", "351": "graph_variable", "83": "timer", "315": "global_timer"
+  },
+  "eventNamePins": {
+    "_doc": "Shell out_param index of the name output on each event node above (all four are 'Variable Name'/'Timer Name', index 2 – checked against data/nodes.json by test/resolution.test.mjs). Used by the listener analysis; an event listed above but missing here stays a plain any-name listener.",
+    "36": 2, "351": 2, "83": 2, "315": 2
+  }
+}

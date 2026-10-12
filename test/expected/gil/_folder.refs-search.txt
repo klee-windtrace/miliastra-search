@@ -1,0 +1,5 @@
+composite        "Create Composite Node(1)"         2 call: ['New Node Graph']
+custom_variable  "test" (Int)                       2 get: ['<filter>New Filter Node Graph_1'], 0 set: []
+graph_variable   "Graph_Var" (Ety)                  ['Graph']: 1 get, 0 set
+graph_variable   "Graph_Var" (Ety)                  ['Graph']: 1 get, 0 set
+literal_id       "Cfg:1082130437"                   2 Ref: ['<creation>New Creation Status Decision Node Graph']

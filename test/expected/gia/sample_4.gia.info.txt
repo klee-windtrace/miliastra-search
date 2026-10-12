@@ -1,0 +1,20 @@
+# FILE test/cases/gia/sample_4.gia
+format                 gia
+detected_by            header
+file_size              15167
+container_file_type    gia
+engine_version         7.0.0
+mode                   beyond
+export_name            sample_4.gia
+node_db_version        7.1.0
+resources              1
+primary                1
+dependencies           0
+graphs                 1
+nodes                  14
+composite_bodies       0
+declarations           0
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=1

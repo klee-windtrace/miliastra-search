@@ -1,0 +1,8 @@
+# findings
+INFO  catch-all-listener: [1] When Custom Variable Changes in graph 'Variables' also runs code for every name: [6] Double Branch: condition is not an Equal comparison
+INFO  catch-all-listener: [3] When Node Graph Variable Changes in graph 'Variables' also runs code for every name: [5] Set Node Graph Variable runs for every name (not a name switch)
+
+# limits
+
+top graphs by node count:
+'Variables': 10/3000 nodes

@@ -1,0 +1,3 @@
+composite        "Composite in custom"              0 call: []
+composite        "Composite in default"             0 call: []
+signal           "Signal_Name"                      0 listen: [], 0 send: []

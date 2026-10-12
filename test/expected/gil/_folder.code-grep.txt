@@ -1,0 +1,54 @@
+test/cases/gil/stage_0.gil:'Graph'/[4] Double Branch (2) @(214.57143,48.57143)
+test/cases/gil/stage_0.gil:'Graph'/[4] Double Branch (2) out.flow#0 "Yes" -> [5] Print String (1) in.flow#0
+test/cases/gil/stage_0.gil:'Graph'/[4] Double Branch (2) out.flow#1 "No" -> [6] Destroy Entity (69) in.flow#0
+test/cases/gil/stage_0.gil:'Graph'/[4] Double Branch (2) in#0 "Condition" <- [3] Equal (14/16) out#0 "Result" : Bol
+test/cases/gil/stage_0.gil:'Graph'/[5] Print String (1) @(814,-200.84126)
+test/cases/gil/stage_0.gil:'Graph'/[5] Print String (1) in#0 "String" = 'Created' : Str
+test/cases/gil/stage_0.gil:'Graph'/[6] Destroy Entity (69) @(795.1111,250.26984)
+test/cases/gil/stage_012379.gil:'Graph'/[4] Double Branch (2) @(214.57143,48.57143)
+test/cases/gil/stage_012379.gil:'Graph'/[4] Double Branch (2) out.flow#0 "Yes" -> [5] Print String (1) in.flow#0
+test/cases/gil/stage_012379.gil:'Graph'/[4] Double Branch (2) out.flow#1 "No" -> [6] Destroy Entity (69) in.flow#0
+test/cases/gil/stage_012379.gil:'Graph'/[4] Double Branch (2) in#0 "Condition" <- [3] Equal (14/16) out#0 "Result" : Bol
+test/cases/gil/stage_012379.gil:'Graph'/[5] Print String (1) @(814,-200.84126)
+test/cases/gil/stage_012379.gil:'Graph'/[5] Print String (1) in#0 "String" = 'Created' : Str
+test/cases/gil/stage_012379.gil:'Graph'/[6] Destroy Entity (69) @(795.1111,250.26984)
+--
+test/cases/gil/stage_012379.gil:'Receive'/[5] Monitor Signal (1073741830) user=LISTEN_SIGNAL signal='Signal_2' @(-284,98) sigver=3
+test/cases/gil/stage_012379.gil:'Receive'/[5] Monitor Signal (1073741830) out.flow#0 -> [6] Print String (1) in.flow#0
+test/cases/gil/stage_012379.gil:'Receive'/[5] Monitor Signal (1073741830) meta.rpc#0 "Signal Name" = 'Signal_2'
+test/cases/gil/stage_012379.gil:'Receive'/[6] Print String (1) @(223,96)
+test/cases/gil/stage_012379.gil:'Receive'/[6] Print String (1) in#0 "String" <- [5] Monitor Signal (1073741830) out#12 "Parameter_10" : Str
+test/cases/gil/stage_012379.gil:GRAPH 'Send' ENTITY_NODE_GRAPH (guid 1073741831)
+--
+test/cases/gil/stage_012379.gil:'<composite>Create Composite Node(1)'/PORTMAP ext.in.flow#0 -> [11] Double Branch (2) in.flow#0
+test/cases/gil/stage_012379.gil:'<composite>Create Composite Node(1)'/PORTMAP ext.in.flow#0 -> [1] Print String (1) in.flow#0
+test/cases/gil/stage_012379.gil:'<composite>Create Composite Node(1)'/PORTMAP ext.out.flow#0 "Yes" -> [11] Double Branch (2) out.flow#0 "Yes"
+test/cases/gil/stage_012379.gil:'<composite>Create Composite Node(1)'/PORTMAP ext.out.flow#0 "Yes" -> [1] Print String (1) out.flow#0
+test/cases/gil/stage_012379.gil:'<composite>Create Composite Node(1)'/PORTMAP ext.out.flow#1 "No" -> [11] Double Branch (2) out.flow#1 "No"
+--
+test/cases/gil/stage_012379.gil:'<composite>Create Composite Node(1)'/PORTMAP ext.out#1 "Z-Component" -> [21] Split 3D Vector (9) out#2 "Z-Component"
+test/cases/gil/stage_012379.gil:'<composite>Create Composite Node(1)'/[1] Print String (1) @(203.85715,-324.7143)
+test/cases/gil/stage_012379.gil:'<composite>Create Composite Node(1)'/[1] Print String (1) in#0 "String" <- [2] Data Type Conversion (180/182) out#0 "Output" : Str
+test/cases/gil/stage_012379.gil:'<composite>Create Composite Node(1)'/[2] Data Type Conversion (180/182) variant=C<K:Int,V:Str> @(186.71428,-546.1429)
+test/cases/gil/stage_012379.gil:'<composite>Create Composite Node(1)'/[6] When Entering Collision Trigger (92) @(-344,-190.28572)
+test/cases/gil/stage_012379.gil:'<composite>Create Composite Node(1)'/[6] When Entering Collision Trigger (92) out.flow#0 -> [1] Print String (1) in.flow#0
+test/cases/gil/stage_012379.gil:'<composite>Create Composite Node(1)'/[8] When Exiting Collision Trigger (91) @(-325.42856,228.28572)
+test/cases/gil/stage_1.gil:'<composite>Create Composite Node(1)'/PORTMAP ext.in.flow#0 -> [11] Double Branch (2) in.flow#0
+test/cases/gil/stage_1.gil:'<composite>Create Composite Node(1)'/PORTMAP ext.in.flow#0 -> [1] Print String (1) in.flow#0
+test/cases/gil/stage_1.gil:'<composite>Create Composite Node(1)'/PORTMAP ext.out.flow#0 "Yes" -> [11] Double Branch (2) out.flow#0 "Yes"
+test/cases/gil/stage_1.gil:'<composite>Create Composite Node(1)'/PORTMAP ext.out.flow#0 "Yes" -> [1] Print String (1) out.flow#0
+test/cases/gil/stage_1.gil:'<composite>Create Composite Node(1)'/PORTMAP ext.out.flow#1 "No" -> [11] Double Branch (2) out.flow#1 "No"
+--
+test/cases/gil/stage_1.gil:'<composite>Create Composite Node(1)'/PORTMAP ext.out#1 "Z-Component" -> [21] Split 3D Vector (9) out#2 "Z-Component"
+test/cases/gil/stage_1.gil:'<composite>Create Composite Node(1)'/[1] Print String (1) @(203.85715,-324.7143)
+test/cases/gil/stage_1.gil:'<composite>Create Composite Node(1)'/[1] Print String (1) in#0 "String" <- [2] Data Type Conversion (180/182) out#0 "Output" : Str
+test/cases/gil/stage_1.gil:'<composite>Create Composite Node(1)'/[2] Data Type Conversion (180/182) variant=C<K:Int,V:Str> @(186.71428,-546.1429)
+test/cases/gil/stage_1.gil:'<composite>Create Composite Node(1)'/[6] When Entering Collision Trigger (92) @(-344,-190.28572)
+test/cases/gil/stage_1.gil:'<composite>Create Composite Node(1)'/[6] When Entering Collision Trigger (92) out.flow#0 -> [1] Print String (1) in.flow#0
+test/cases/gil/stage_1.gil:'<composite>Create Composite Node(1)'/[8] When Exiting Collision Trigger (91) @(-325.42856,228.28572)
+test/cases/gil/stage_2.gil:'Receive'/[5] Monitor Signal (1073741828) user=LISTEN_SIGNAL signal='Signal_2' @(-284,98) sigver=3
+test/cases/gil/stage_2.gil:'Receive'/[5] Monitor Signal (1073741828) out.flow#0 -> [6] Print String (1) in.flow#0
+test/cases/gil/stage_2.gil:'Receive'/[5] Monitor Signal (1073741828) meta.rpc#0 "Signal Name" = 'Signal_2'
+test/cases/gil/stage_2.gil:'Receive'/[6] Print String (1) @(223,96)
+test/cases/gil/stage_2.gil:'Receive'/[6] Print String (1) in#0 "String" <- [5] Monitor Signal (1073741828) out#12 "Parameter_10" : Str
+test/cases/gil/stage_2.gil:GRAPH 'Send' ENTITY_NODE_GRAPH (guid 1073741826)

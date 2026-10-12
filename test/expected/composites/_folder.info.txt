@@ -1,0 +1,121 @@
+# FILE test/cases/composites/test_All_Composite.gia
+format                 gia
+detected_by            header
+file_size              15914
+container_file_type    gia
+engine_version         7.1.0
+mode                   beyond
+export_name            test_All_Composite.gia
+node_db_version        7.1.0
+resources              61
+primary                1
+dependencies           60
+graphs                 27
+nodes                  52
+composite_bodies       26
+declarations           34
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=27
+CLASS COMPOSITE_NODE_DECL class=12 count=30
+CLASS SIGNAL_NODE_DECL class=14 count=4
+
+# FILE test/cases/composites/test_composite.gia
+format                 gia
+detected_by            header
+file_size              6705
+container_file_type    gia
+engine_version         7.1.0
+mode                   beyond
+export_name            test_composite.gia
+node_db_version        7.1.0
+resources              23
+primary                7
+dependencies           16
+graphs                 3
+nodes                  12
+composite_bodies       2
+declarations           2
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS OBJECT class=1 count=1
+CLASS OBJECT_ENTITY class=3 count=1
+CLASS SKILL class=8 count=1
+CLASS ENTITY_NODE_GRAPH class=9 count=3
+CLASS COMPOSITE_NODE_DECL class=12 count=2
+CLASS UI_CONTROL class=15 count=14
+CLASS INTERFACE_LAYOUT class=20 count=1
+
+# FILE test/cases/composites/test_composite.gil
+format                 gil
+detected_by            header
+file_size              26658
+container_file_type    gil
+engine_version         7.1.0
+mode                   beyond
+level_name             New Stage_Save_3
+node_db_version        7.1.0
+resources              49
+graphs                 3
+nodes                  12
+composite_bodies       2
+declarations           2
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS OBJECT class=1 count=1
+CLASS OBJECT_ENTITY class=3 count=1
+CLASS TERRAIN_ENTITY class=5 count=1
+CLASS PRESET_POINT class=6 count=1
+CLASS SKILL class=8 count=1
+CLASS ENTITY_NODE_GRAPH class=9 count=3
+CLASS COMPOSITE_NODE_DECL class=12 count=2
+CLASS CAMERA class=13 count=1
+CLASS UI_CONTROL class=15 count=14
+CLASS CLASS class=17 count=1
+CLASS PLAYER_TEMPLATE class=18 count=1
+CLASS CHARACTER_TEMPLATE class=19 count=1
+CLASS INTERFACE_LAYOUT class=20 count=6
+CLASS ENVIRONMENT_CONFIGURATION class=49 count=1
+CLASS GIL_CHARACTER_ENTITY class=- count=1
+CLASS GIL_GROWTH_CURVE class=- count=1
+CLASS GIL_INVENTORY_TEMPLATE class=- count=1
+CLASS GIL_LEVEL_ENTITY class=- count=1
+CLASS GIL_PLAYER_ENTITY class=- count=9
+CLASS GIL_RESPAWN_POINT class=- count=1
+SECTION root.4 resources=3 description='templates: prefabs, player and character templates, creation templates'
+SECTION root.5 resources=12 description='entities placed in the level, plus the stage, player and character entities'
+SECTION root.7 resources=1 description='terrains'
+SECTION root.9 resources=20 description='UI: layouts and their controls'
+SECTION root.10.1 resources=1 description='node graphs (entity, status, class, item, skill, filter, creation graphs)'
+SECTION root.10.2 resources=2 description='node declarations: signals and composite declarations'
+SECTION root.10.4 resources=2 description='composite bodies: the graphs inside composite nodes'
+SECTION root.11.3 resources=1 description='respawn points'
+SECTION root.11.5 resources=1 description='preset points'
+SECTION root.15 resources=5 description='configs: unit statuses, classes, skills, items and the like'
+SECTION root.18 resources=1 description='cameras'
+FOLDER /(default)/ graphs=3 resources=2
+
+# FILE test/cases/composites/var_change.gia
+format                 gia
+detected_by            header
+file_size              2369
+container_file_type    gia
+engine_version         7.1.0
+mode                   beyond
+export_name            var_change.gia
+node_db_version        7.1.0
+resources              7
+primary                1
+dependencies           6
+graphs                 4
+nodes                  11
+composite_bodies       3
+declarations           3
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=4
+CLASS COMPOSITE_NODE_DECL class=12 count=3

@@ -1,0 +1,7 @@
+# findings
+(no findings)
+
+# limits
+
+top graphs by node count:
+'Graph': 7/3000 nodes

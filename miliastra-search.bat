@@ -1,0 +1,1 @@
+@pushd "%~dp0" & @node miliastra-search.mjs %* & @popd

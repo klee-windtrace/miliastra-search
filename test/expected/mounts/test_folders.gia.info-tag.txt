@@ -1,0 +1,50 @@
+# FILE test/cases/mounts/test_folders.gia
+format                 gia
+detected_by            header
+file_size              21619
+container_file_type    gia
+engine_version         7.1.0
+mode                   beyond
+export_name            test_folders.gia
+node_db_version        7.1.0
+export_tag             909814789-1790864953-1073741846-\test_folders.gia
+uid                    909814789
+time                   1790864953
+file_id                1073741846
+resources              61
+primary                41
+dependencies           20
+graphs                 25
+nodes                  14
+composite_bodies       2
+declarations           6
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS OBJECT_ENTITY class=3 count=4
+CLASS STATIC_ENTITY class=3 count=1
+CLASS TERRAIN_ENTITY class=5 count=1
+CLASS PRESET_POINT class=6 count=1
+CLASS ENTITY_NODE_GRAPH class=9 count=5
+CLASS BOOLEAN_FILTER_GRAPH class=10 count=2
+CLASS SKILL_NODE_GRAPH class=11 count=2
+CLASS COMPOSITE_NODE_DECL class=12 count=4
+CLASS CAMERA class=13 count=1
+CLASS SIGNAL_NODE_DECL class=14 count=2
+CLASS UI_CONTROL class=15 count=14
+CLASS CLASS class=17 count=1
+CLASS PLAYER_TEMPLATE class=18 count=1
+CLASS CHARACTER_TEMPLATE class=19 count=1
+CLASS INTERFACE_LAYOUT class=20 count=1
+CLASS STATUS_NODE_GRAPH class=22 count=2
+CLASS CLASS_NODE_GRAPH class=23 count=2
+CLASS ITEM_NODE_GRAPH class=46 count=2
+CLASS INTEGER_FILTER_GRAPH class=47 count=2
+CLASS ENVIRONMENT_CONFIGURATION class=49 count=1
+CLASS CREATION_STATUS_DECISION_GRAPH class=51 count=2
+CLASS CREATION_SKILL_GRAPH class=52 count=2
+CLASS CREATION_STATUS_GRAPH class=53 count=2
+CLASS CHARACTER_CONTROL_SKILL_GRAPH class=64 count=2
+CLASS class#66 class=66 count=1
+CLASS class#67 class=67 count=1
+CLASS class#68 class=68 count=1

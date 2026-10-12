@@ -1,0 +1,12 @@
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH (guid 1073741825)
+'New Node Graph'/[1] When All Player's Characters Are Revived (286) @(-446,-135)
+'New Node Graph'/[1] When All Player's Characters Are Revived (286) out.flow#0 -> [2] Revive the active character (803) in.flow#0
+'New Node Graph'/[2] Revive the active character (803) @(103,-135)
+'New Node Graph'/[2] Revive the active character (803) in#0 "Player Entity" <- [1] When All Player's Characters Are Revived (286) out#0 "Player Entity" : Ety
+GRAPH 'New Node Graph_1' ITEM_NODE_GRAPH (guid 1073741826)
+'New Node Graph_1'/[1] When Floating Interaction Page is Triggered (826) @(-343,-157)
+'New Node Graph_1'/[1] When Floating Interaction Page is Triggered (826) out.flow#0 -> [2] Teleport Player (Classic Mode) (805) in.flow#0
+'New Node Graph_1'/[2] Teleport Player (Classic Mode) (805) @(208,-159)
+'New Node Graph_1'/[2] Teleport Player (Classic Mode) (805) in#0 "Player Entity" <- [1] When Floating Interaction Page is Triggered (826) out#0 "Player Entity" : Ety
+'New Node Graph_1'/[2] Teleport Player (Classic Mode) (805) in#1 "Target Location" = (1, 1, 1) : Vec
+'New Node Graph_1'/[2] Teleport Player (Classic Mode) (805) in#2 "Target Rotation" = (2, 2, 2) : Vec

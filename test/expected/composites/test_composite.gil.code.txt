@@ -1,0 +1,34 @@
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH (guid 1073741825)
+'New Node Graph'/VAR Var_1 : Int public=false = 1
+'New Node Graph'/[1] When Entity Is Created (71) @(-373.85715,-177.28572)
+'New Node Graph'/[1] When Entity Is Created (71) out.flow#0 -> [15] Create Composite Node (1610613134) in.flow#0
+'New Node Graph'/[14] Create Composite Node (1610613134) user=COMPOSITE @(354.14285,-179.14285)
+'New Node Graph'/[14] Create Composite Node (1610613134) out.flow#0 "Yes" -> [18] Switch Current Interface Layout (382) in.flow#0
+'New Node Graph'/[15] Create Composite Node (1610613134) user=COMPOSITE @(-28.714285,-178.66667)
+'New Node Graph'/[15] Create Composite Node (1610613134) out.flow#0 "Yes" -> [14] Create Composite Node (1610613134) in.flow#0
+'New Node Graph'/[17] Query All Skill Instance IDs by Skill Config ID (812) @(1276.608,-540.3176)
+'New Node Graph'/[17] Query All Skill Instance IDs by Skill Config ID (812) in#1 "Skill Config ID" = id:1098907649 : Cfg
+'New Node Graph'/[18] Switch Current Interface Layout (382) @(751.2857,-176.28572)
+'New Node Graph'/[18] Switch Current Interface Layout (382) in#1 "Layout Index" = 1073741825 : Int
+'New Node Graph'/[21] Get Entity With Specified Prefab ID on the Field (320) @(1255.24,-266.45618)
+'New Node Graph'/[21] Get Entity With Specified Prefab ID on the Field (320) in#0 "Prefab ID" = id:10005018 : Pfb
+'New Node Graph'/[22] Query Entity by GUID (75) @(1283.8114,-45.02761)
+'New Node Graph'/[22] Query Entity by GUID (75) in#0 "GUID" = id:1077936131 : Gid
+GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH (guid 1610612900, decl 1610613134)
+'<composite>Create Composite Node'/PORTMAP ext.in.flow#0 -> [2] Double Branch (2) in.flow#0
+'<composite>Create Composite Node'/PORTMAP ext.out.flow#0 "Yes" -> [2] Double Branch (2) out.flow#0 "Yes"
+'<composite>Create Composite Node'/[2] Double Branch (2) @(51.142857,247.95238)
+'<composite>Create Composite Node'/[2] Double Branch (2) out.flow#1 "No" -> [7] Create Composite Node(1) (1610613135) in.flow#0
+'<composite>Create Composite Node'/[2] Double Branch (2) in#0 "Condition" <- [4] Equal (14/370) out#0 "Result" : Bol
+'<composite>Create Composite Node'/[3] Get Node Graph Variable (337/339) variant=C<T:Int> @(1.7142857,-224.7619)
+'<composite>Create Composite Node'/[3] Get Node Graph Variable (337/339) in#0 "Variable Name" = 'Var_1' : Str
+'<composite>Create Composite Node'/[4] Equal (14/370) variant=C<T:Int> @(-52.857143,-23.190475)
+'<composite>Create Composite Node'/[4] Equal (14/370) in#0 "Input 1" <- [3] Get Node Graph Variable (337/339) out#0 "Variable Value" : Int
+'<composite>Create Composite Node'/[4] Equal (14/370) in#1 "Input 2" = 0 : Int
+'<composite>Create Composite Node'/[7] Create Composite Node(1) (1610613135) user=COMPOSITE @(478.7143,291)
+GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH (guid 1610612901, decl 1610613135)
+'<composite>Create Composite Node(1)'/PORTMAP ext.in.flow#0 -> [1] Set Node Graph Variable (323) in.flow#0
+'<composite>Create Composite Node(1)'/[1] Set Node Graph Variable (323) @(0,0)
+'<composite>Create Composite Node(1)'/[1] Set Node Graph Variable (323) in#0 "Variable Name" = 'Var_1' : Str
+'<composite>Create Composite Node(1)'/[1] Set Node Graph Variable (323) in#1 "Variable Value" = 0 : Int
+'<composite>Create Composite Node(1)'/[1] Set Node Graph Variable (323) in#2 "Trigger Event" = No : Bol

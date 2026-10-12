@@ -1,0 +1,7 @@
+# findings
+(no findings)
+
+# limits
+
+top graphs by node count:
+'Structs': 7/3000 nodes

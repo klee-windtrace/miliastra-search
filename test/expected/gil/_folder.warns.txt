@@ -1,0 +1,46 @@
+# findings
+INFO  catch-all-listener: [5] When Timer Is Triggered in graph 'Send' also runs code for every name: [4] Send Signal runs for every name (not a name switch) [stage_012379.gil]
+INFO  catch-all-listener: [5] When Timer Is Triggered in graph 'Send' also runs code for every name: [4] Send Signal runs for every name (not a name switch) [stage_2.gil]
+INFO  signal-never-used: signal "Signal_3" is declared but never sent or listened to in the scanned graphs [stage_012379.gil]
+INFO  signal-never-used: signal "Signal_1" is declared but never sent or listened to in the scanned graphs [stage_9.gil]
+WARN  composite-definition-count-anomaly: composite "Create Composite Node" has 2 definition(s) in the scanned files (expected exactly 1) – guid=1073741825; guid=1073741825; this points to a structural bug in the GIL/GIA or in how this tool parsed it [stage_012379.gil]
+WARN  composite-definition-count-anomaly: composite "Create Composite Node(1)" has 2 definition(s) in the scanned files (expected exactly 1) – guid=1073741826; guid=1073741826; this points to a structural bug in the GIL/GIA or in how this tool parsed it [stage_012379.gil]
+INFO  struct-never-used: struct "Structure_2" (guid=1077936131 fields=) is defined but never used in the scanned graphs [stage_012379.gil]
+INFO  struct-never-used: struct "Structure" (guid=1077936129 fields=) is defined but never used in the scanned graphs [stage_9.gil]
+
+# limits
+composites: 4/1000 declared
+signals: 3/100 declared
+prefabs (OBJECT): 10/1000
+dynamic entities (OBJECT_ENTITY): 6/3000
+ENTITY_DEPLOYMENT_GROUP: 2/500
+PRESET_POINT: 10/2000
+ENVIRONMENT_CONFIGURATION: 10/50
+CLASS: 9/100
+UNIT_STATUS: 2/1000
+SKILL: 2/100
+TERRAIN_ENTITY: 10/1200
+GLOBAL_TIMER: 2/50
+static entities: 2
+
+top graphs by node count:
+'New Node Graph': 16/3000 nodes [stage_012379.gil]
+'New Node Graph': 16/3000 nodes [stage_1.gil]
+'Graph': 7/3000 nodes [stage_0.gil]
+'Graph': 7/3000 nodes [stage_012379.gil]
+'Structs': 7/3000 nodes [stage_012379.gil]
+'Structs': 7/3000 nodes [stage_3.gil]
+'<skill>New Character Skill Node Graph': 5/3000 nodes [stage_012379.gil]
+'<skill>New Character Skill Node Graph': 5/3000 nodes [stage_7.gil]
+'Both': 4/3000 nodes [stage_012379.gil]
+'Both': 4/3000 nodes [stage_2.gil]
+'Receive': 3/3000 nodes [stage_012379.gil]
+'Send': 3/3000 nodes [stage_012379.gil]
+'<creation>New Creation Skill Node Graph': 3/3000 nodes [stage_012379.gil]
+'<creation>New Creation Status Decision Node Graph': 3/3000 nodes [stage_012379.gil]
+'<filter>New Filter Node Graph': 3/3000 nodes [stage_012379.gil]
+'<filter>New Filter Node Graph_1': 3/3000 nodes [stage_012379.gil]
+'Receive': 3/3000 nodes [stage_2.gil]
+'Send': 3/3000 nodes [stage_2.gil]
+'<creation>New Creation Skill Node Graph': 3/3000 nodes [stage_7.gil]
+'<creation>New Creation Status Decision Node Graph': 3/3000 nodes [stage_7.gil]

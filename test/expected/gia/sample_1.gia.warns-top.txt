@@ -1,0 +1,8 @@
+# findings
+(no findings)
+
+# limits
+composites: 2/1000 declared
+
+top graphs by node count:
+'New Node Graph': 16/3000 nodes

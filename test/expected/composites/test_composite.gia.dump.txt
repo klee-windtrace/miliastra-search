@@ -1,0 +1,21 @@
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH guid='1073741825' nodes=7
+GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH guid='1610612900' nodes=4 role=dependency
+GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH guid='1610612901' nodes=1 role=dependency
+RESOURCE "test_skill" SKILL guid='1098907649'
+RESOURCE "prefab_test" OBJECT guid='1077936129' parent=(entities: 1)
+RESOURCE "entity_test" OBJECT_ENTITY guid='1077936131' parent=(1077936129:"prefab_test")
+RESOURCE "Default Layout" INTERFACE_LAYOUT guid='1073741825'
+RESOURCE "Mini-Map" UI_CONTROL guid='1073741826'
+RESOURCE "Skill Area" UI_CONTROL guid='1073741827'
+RESOURCE "Team Information" UI_CONTROL guid='1073741828'
+RESOURCE "Character HP Bar" UI_CONTROL guid='1073741829'
+RESOURCE "Joystick" UI_CONTROL guid='1073741830'
+RESOURCE "Creation HP Bar" UI_CONTROL guid='1073741831'
+RESOURCE "Exit Button" UI_CONTROL guid='1073741832'
+RESOURCE "Voice-Over" UI_CONTROL guid='1073741833'
+RESOURCE "Tab" UI_CONTROL guid='1073741834'
+RESOURCE "Chat Button" UI_CONTROL guid='1073741835'
+RESOURCE "Network Status" UI_CONTROL guid='1073741836'
+RESOURCE "Struggle Button" UI_CONTROL guid='1073741837'
+RESOURCE "Voice Chat Button" UI_CONTROL guid='1073741838'
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL guid='1073741839'

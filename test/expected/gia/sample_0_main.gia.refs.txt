@@ -1,0 +1,1 @@
+graph_variable   "Graph_Var" (Ety)                  ['Graph']: 1 get, 0 set

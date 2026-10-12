@@ -1,0 +1,50 @@
+# FILE test/cases/gil/stage_7.gil
+format                 gil
+detected_by            header
+file_size              27679
+container_file_type    gil
+engine_version         7.0.0
+mode                   beyond
+level_name             Настраиваемая вкладка_1_Сохранение_6
+node_db_version        7.1.0
+resources              46
+graphs                 7
+nodes                  21
+composite_bodies       0
+declarations           0
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS TERRAIN_ENTITY class=5 count=1
+CLASS PRESET_POINT class=6 count=1
+CLASS BOOLEAN_FILTER_GRAPH class=10 count=1
+CLASS SKILL_NODE_GRAPH class=11 count=1
+CLASS CAMERA class=13 count=1
+CLASS UI_CONTROL class=15 count=14
+CLASS CLASS class=17 count=1
+CLASS PLAYER_TEMPLATE class=18 count=1
+CLASS CHARACTER_TEMPLATE class=19 count=1
+CLASS INTERFACE_LAYOUT class=20 count=1
+CLASS INTEGER_FILTER_GRAPH class=47 count=1
+CLASS ENVIRONMENT_CONFIGURATION class=49 count=1
+CLASS CREATION_STATUS_DECISION_GRAPH class=51 count=1
+CLASS CREATION_SKILL_GRAPH class=52 count=1
+CLASS CREATION_STATUS_GRAPH class=53 count=1
+CLASS CHARACTER_CONTROL_SKILL_GRAPH class=64 count=1
+CLASS GIL_CHARACTER_ENTITY class=- count=1
+CLASS GIL_GROWTH_CURVE class=- count=1
+CLASS GIL_INVENTORY_TEMPLATE class=- count=1
+CLASS GIL_LEVEL_ENTITY class=- count=1
+CLASS GIL_PLAYER_ENTITY class=- count=9
+CLASS GIL_RESPAWN_POINT class=- count=1
+CLASS GIL_UI_UNNAMED class=- count=3
+SECTION root.4 resources=2 description='templates: prefabs, player and character templates, creation templates'
+SECTION root.5 resources=11 description='entities placed in the level, plus the stage, player and character entities'
+SECTION root.7 resources=1 description='terrains'
+SECTION root.9 resources=18 description='UI: layouts and their controls'
+SECTION root.10.1 resources=7 description='node graphs (entity, status, class, item, skill, filter, creation graphs)'
+SECTION root.11.3 resources=1 description='respawn points'
+SECTION root.11.5 resources=1 description='preset points'
+SECTION root.15 resources=4 description='configs: unit statuses, classes, skills, items and the like'
+SECTION root.18 resources=1 description='cameras'
+FOLDER /(default)/ graphs=7

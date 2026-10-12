@@ -1,0 +1,7 @@
+# findings
+(no findings)
+
+# limits
+
+top graphs by node count:
+'<skill>client_var_types': 23/3000 nodes

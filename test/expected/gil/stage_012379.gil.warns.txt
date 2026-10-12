@@ -1,0 +1,41 @@
+# findings
+INFO  catch-all-listener: [5] When Timer Is Triggered in graph 'Send' also runs code for every name: [4] Send Signal runs for every name (not a name switch)
+INFO  signal-never-used: signal "Signal_3" is declared but never sent or listened to in the scanned graphs
+INFO  struct-never-used: struct "Structure_2" (guid=1077936131 fields=) is defined but never used in the scanned graphs
+
+# limits
+composites: 2/1000 declared
+signals: 3/100 declared
+prefabs (OBJECT): 5/1000
+dynamic entities (OBJECT_ENTITY): 3/3000
+ENTITY_DEPLOYMENT_GROUP: 1/500
+PRESET_POINT: 2/2000
+ENVIRONMENT_CONFIGURATION: 2/50
+CLASS: 2/100
+UNIT_STATUS: 1/1000
+SKILL: 1/100
+TERRAIN_ENTITY: 2/1200
+GLOBAL_TIMER: 1/50
+static entities: 1
+
+top graphs by node count:
+'New Node Graph': 16/3000 nodes
+'Graph': 7/3000 nodes
+'Structs': 7/3000 nodes
+'<skill>New Character Skill Node Graph': 5/3000 nodes
+'Both': 4/3000 nodes
+'Receive': 3/3000 nodes
+'Send': 3/3000 nodes
+'<creation>New Creation Skill Node Graph': 3/3000 nodes
+'<creation>New Creation Status Decision Node Graph': 3/3000 nodes
+'<filter>New Filter Node Graph': 3/3000 nodes
+'<filter>New Filter Node Graph_1': 3/3000 nodes
+'<creation>New Creation Status Node Graph': 2/3000 nodes
+'<skill>New Character Control Skill Node Graph': 2/3000 nodes
+'<skill>New Character Skill Node Graph_1': 1/3000 nodes
+'<creation>New Creation Skill Node Graph_1': 1/3000 nodes
+'<creation>New Creation Status Node Graph_1': 1/3000 nodes
+'<creation>New Creation Status Decision Node Graph_1': 1/3000 nodes
+'<skill>New Character Control Skill Node Graph_1': 1/3000 nodes
+'<filter>New Filter Node Graph_2': 1/3000 nodes
+'<filter>New Filter Node Graph_1_1': 1/3000 nodes

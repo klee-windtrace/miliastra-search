@@ -1,0 +1,109 @@
+DECL "Signal_1" SIGNAL_NODE_DECL guid='1073741825'
+GRAPH /(default)/'New Node Graph' ENTITY_NODE_GRAPH guid='1073741825' nodes=0
+GRAPH /(default)/'<status>New Node Graph_1' STATUS_NODE_GRAPH guid='1073741826' nodes=0
+GRAPH /(default)/'<class>New Node Graph_2' CLASS_NODE_GRAPH guid='1073741827' nodes=0
+GRAPH /(default)/'New Node Graph_3' ITEM_NODE_GRAPH guid='1073741828' nodes=0
+GRAPH /(default)/'<skill>New Character Skill Node Graph' SKILL_NODE_GRAPH guid='1082130435' nodes=1
+GRAPH /(default)/'<creation>New Creation Skill Node Graph' CREATION_SKILL_GRAPH guid='1082130436' nodes=1
+GRAPH /(default)/'<creation>New Creation Status Node Graph' CREATION_STATUS_GRAPH guid='1082130437' nodes=1
+GRAPH /(default)/'<creation>New Creation Status Decision Node Graph' CREATION_STATUS_DECISION_GRAPH guid='1082130439' nodes=1
+GRAPH /(default)/'<skill>New Character Control Skill Node Graph' CHARACTER_CONTROL_SKILL_GRAPH guid='1082130438' nodes=1
+GRAPH /(default)/'<filter>New Filter Node Graph' BOOLEAN_FILTER_GRAPH guid='1082130433' nodes=1
+GRAPH /(default)/'<filter>New Filter Node Graph_1' INTEGER_FILTER_GRAPH guid='1082130434' nodes=1
+RESOURCE "Сущность уровня" GIL_LEVEL_ENTITY guid='1094713345'
+RESOURCE "Шаблон по умолчанию" PLAYER_TEMPLATE guid='1086324737'
+RESOURCE "Default Template" PLAYER_TEMPLATE guid='1086324738'
+RESOURCE "Шаблон по умолчанию(Редактор персонажа)" CHARACTER_TEMPLATE guid='1090519041'
+RESOURCE "Default Template(Редактор персонажа)" CHARACTER_TEMPLATE guid='1090519042'
+RESOURCE "Настраиваемый класс" CLASS guid='1090519041'
+RESOURCE "Custom Class" CLASS guid='1090519042'
+RESOURCE /(default)/"Custom Skill" SKILL guid='1098907649'
+RESOURCE /(default)/"Control Skill" CONTROL_SKILL guid='1228931073'
+RESOURCE /(default)/"Custom Creation Skill" CUSTOM_CREATION_SKILL guid='1191182337'
+RESOURCE "Skill Variable" SKILL_VARIABLE guid='1207959553'
+RESOURCE "New Skill Resource" SKILL_RESOURCE guid='1103101953'
+RESOURCE /(default)/"New Status" UNIT_STATUS guid='1077936129'
+RESOURCE "Global Timer11" GLOBAL_TIMER guid='null'
+RESOURCE "New Projectile" PROJECTILE guid='1077936133'
+RESOURCE "Шаблон инвентаря" GIL_INVENTORY_TEMPLATE guid='1119879169'
+RESOURCE "Custom Template" SHOP_TEMPLATE guid='1136656385'
+RESOURCE "New Item" ITEM guid='1107296257'
+RESOURCE "Unit Tags" UNIT_TAG guid='1073741825'
+RESOURCE "Scan Tag Template" SCAN_TAG guid='1161822209'
+RESOURCE "Entity Deployment Group" ENTITY_DEPLOYMENT_GROUP guid='1073741825'
+RESOURCE "Light Source" LIGHT_SOURCE guid='1182793729'
+RESOURCE "VFX Tool" VFX_TOOL guid='1199570945'
+RESOURCE "Настраиваемая камера" CAMERA guid='1073741825'
+RESOURCE "Custom Camera" CAMERA guid='1073741826'
+RESOURCE /(default)/"Wooden Bridge" OBJECT guid='1077936131' parent=(entities: 0)
+RESOURCE /(default)/"Arrow Sign" OBJECT guid='1077936130' parent=(entities: 0)
+RESOURCE /(default)/"Stone Functional Platform" OBJECT guid='1077936129' parent=(entities: 1)
+RESOURCE "Prefab Group" OBJECT guid='1077936134' parent=(entities: 1)
+RESOURCE "Challenge Coin Loot" OBJECT guid='1077936132' parent=(entities: 0)
+RESOURCE "Cryo Abyss Mage" CREATION guid='1082130434'
+RESOURCE "Pyro Hilichurl Shooter" CREATION guid='1082130433'
+RESOURCE "Challenge Coin Loot" OBJECT_ENTITY guid='1077936131' parent=(10007002)
+RESOURCE "Stone Functional Platform" OBJECT_ENTITY guid='1077936129' parent=(1077936129:"Stone Functional Platform")
+RESOURCE "Prefab Group" OBJECT_ENTITY guid='1077936132' parent=(1077936134:"Prefab Group")
+RESOURCE "Hydro Slime" CREATION_ENTITY guid='1082130434' parent=(30007006)
+RESOURCE "Pyro Slime" CREATION_ENTITY guid='1082130433' parent=(30002007)
+RESOURCE "Fabric-Roof Hut" STATIC_ENTITY guid='1077936130' parent=(20001485)
+RESOURCE "Ландшафт 01" TERRAIN_ENTITY guid='1073741825'
+RESOURCE "Terrain01" TERRAIN_ENTITY guid='1073741826'
+RESOURCE "Макет по умолчанию" INTERFACE_LAYOUT guid='1073741825'
+RESOURCE "Default Layout" INTERFACE_LAYOUT guid='1073741843'
+RESOURCE "Конфигурация окружения" ENVIRONMENT_CONFIGURATION guid='1186988033'
+RESOURCE "Environment Configuration" ENVIRONMENT_CONFIGURATION guid='1186988034'
+RESOURCE "Path" PATH guid='1073741825'
+RESOURCE "Shield" SHIELD guid='1157627905'
+RESOURCE "Новая предустановленная точка" PRESET_POINT guid='1073741825'
+RESOURCE "Create Preset Point" PRESET_POINT guid='1073741826'
+RESOURCE "Точка воскрешения1" GIL_RESPAWN_POINT guid='1073741825'
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY guid='1086324737'
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY guid='1086324738'
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY guid='1086324739'
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY guid='1086324740'
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY guid='1086324741'
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY guid='1086324742'
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY guid='1086324743'
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY guid='1086324744'
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY guid='1086324745'
+RESOURCE "Default Template" GIL_PLAYER_ENTITY guid='1086324746'
+RESOURCE "Шаблон по умолчанию(Редактор персонажа)" GIL_CHARACTER_ENTITY guid='1090519041'
+RESOURCE "Default Template(Редактор персонажа)" GIL_CHARACTER_ENTITY guid='1090519042'
+RESOURCE "Настраиваемая кривая роста" GIL_GROWTH_CURVE guid='1094713345'
+RESOURCE "Temporary In-game Save Data" class#41 guid='1073741825'
+RESOURCE "" GIL_UI_UNNAMED guid='1073741840'
+RESOURCE "" GIL_UI_UNNAMED guid='1073741841'
+RESOURCE "" GIL_UI_UNNAMED guid='1073741842'
+RESOURCE "New Scene Generation Template" SCENE_GENERATION_TEMPLATE_A guid='1073741825'
+RESOURCE "New Scene Generation Template_1" SCENE_GENERATION_TEMPLATE_B guid='1073741826'
+RESOURCE "New Scene Generation Template_2" SCENE_GENERATION_TEMPLATE_B guid='1073741827'
+RESOURCE "Мини-карта" UI_CONTROL guid='1073741826'
+RESOURCE "Область навыков" UI_CONTROL guid='1073741827'
+RESOURCE "Информация отряда" UI_CONTROL guid='1073741828'
+RESOURCE "Шкала HP персонажа" UI_CONTROL guid='1073741829'
+RESOURCE "Джойстик" UI_CONTROL guid='1073741830'
+RESOURCE "Шкала HP создания" UI_CONTROL guid='1073741831'
+RESOURCE "Кнопка выхода" UI_CONTROL guid='1073741832'
+RESOURCE "Озвучивание" UI_CONTROL guid='1073741833'
+RESOURCE "Вкладка" UI_CONTROL guid='1073741834'
+RESOURCE "Кнопка чата" UI_CONTROL guid='1073741835'
+RESOURCE "Статус сети" UI_CONTROL guid='1073741836'
+RESOURCE "Кнопка сопротивления" UI_CONTROL guid='1073741837'
+RESOURCE "Кнопка голосового чата" UI_CONTROL guid='1073741838'
+RESOURCE "Очередь подсказок голосового чата" UI_CONTROL guid='1073741839'
+RESOURCE "Мини-карта" UI_CONTROL guid='1073741844'
+RESOURCE "Область навыков" UI_CONTROL guid='1073741845'
+RESOURCE "Информация отряда" UI_CONTROL guid='1073741846'
+RESOURCE "Шкала HP персонажа" UI_CONTROL guid='1073741847'
+RESOURCE "Джойстик" UI_CONTROL guid='1073741848'
+RESOURCE "Шкала HP создания" UI_CONTROL guid='1073741849'
+RESOURCE "Кнопка выхода" UI_CONTROL guid='1073741850'
+RESOURCE "Озвучивание" UI_CONTROL guid='1073741851'
+RESOURCE "Вкладка" UI_CONTROL guid='1073741852'
+RESOURCE "Кнопка чата" UI_CONTROL guid='1073741853'
+RESOURCE "Статус сети" UI_CONTROL guid='1073741854'
+RESOURCE "Кнопка сопротивления" UI_CONTROL guid='1073741855'
+RESOURCE "Кнопка голосового чата" UI_CONTROL guid='1073741856'
+RESOURCE "Очередь подсказок голосового чата" UI_CONTROL guid='1073741857'
