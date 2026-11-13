@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -12,20 +12,26 @@
   nav { display: flex; gap: 2px; padding: 8px 8px 0; background: #1c1f24; }
   nav button { background: #262a31; color: #aaa; border: 0; padding: 8px 18px; border-radius: 6px 6px 0 0; cursor: pointer; font: inherit; }
   nav button.on { background: #14161a; color: #fff; }
-  section { display: none; flex: 1; min-height: 0; flex-direction: column; padding: 10px; gap: 8px; }
-  section.on { display: flex; }
+  /* The tabs are stacked on top of each other and the others hidden with `visibility`, not `display:none`: a hidden result frame keeps its layout,
+     so showing it again does not make the browser lay out a huge document anew (that took seconds). */
+  main { flex: 1; min-height: 0; position: relative; }
+  section { position: absolute; inset: 0; display: flex; visibility: hidden; flex-direction: column; padding: 10px; gap: 8px; box-sizing: border-box; overflow: auto; }
+  section.on { visibility: visible; }
   input, select, button { background: #262a31; color: #d4d4d4; border: 1px solid #3a3f48; border-radius: 4px; padding: 4px 8px; font: inherit; }
+  input[type="text"] { width: 128px; }
+  input[type="number"] { width: 64px; }
   button { cursor: pointer; }
   button:hover { background: #333842; }
   table { border-collapse: collapse; }
   td, th { border: 1px solid #3a3f48; padding: 4px 10px; text-align: left; }
-  .opts { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; }
+  .opts { display: flex; flex-wrap: wrap; gap: 6px 6px; align-items: center; }
   .opts label { display: inline-flex; gap: 6px; align-items: center; }
   .opts code { color: #8ab4f8; }
+  textarea.llm { flex: 1; min-height: 0; width: 100%; box-sizing: border-box; border: 1px solid #3a3f48; border-radius: 0; background: #0C0C0C; color: #CCCCCC; font: 13px/1.4 ui-monospace, Consolas, monospace; white-space: pre; tab-size: 4; resize: none; }
   iframe { flex: 1; min-height: 0; width: 100%; border: 1px solid #3a3f48; background: #0C0C0C; }
   .status { color: #9aa0a6; white-space: pre-wrap; margin: 0; font: 12px ui-monospace, monospace; }
   .warn { color: #e0a050; }
-  label { margin-right: 0px; padding-right: 20px; border-right: 1px solid #333; }
+  label { margin-right: 0px; padding-right: 10px; border-right: 1px solid #333; }
   #dropzone { position: fixed; inset: 0; z-index: 10; display: none; align-items: center; justify-content: center; background: rgba(12, 12, 12, .85); border: 4px dashed #3B78FF; pointer-events: none; }
   #dropzone.on { display: flex; }
   #dropzone div { font-size: 22px; color: #F2F2F2; text-align: center; }
@@ -35,6 +41,7 @@
 <body>
 <nav id="tabs"></nav>
 
+<main id="stack">
 <section id="tab-input">
   <div><input type="file" id="picker" multiple> <span class="status" id="loadmsg"></span></div>
   <table id="files"><thead><tr><th>File</th><th>Size</th><th>Type</th><th></th></tr></thead><tbody></tbody></table>
@@ -42,6 +49,7 @@
   <h4>Files stay in this page (nothing is uploaded). You can also drop files anywhere on the page: that replaces the list above. Then open a mode tab and press Process!</h4>
   <pre id="helpmsg" class="status"></pre>
 </section>
+</main>
 <div id="dropzone"><div>Drop files to process them<small>replaces the current file list</small></div></div>
 
 <script src="web/miliastra-search.bundle.js"></script>
@@ -57,24 +65,47 @@ const GREP = [
 ];
 const TABS = {
   info: [{ opt: 'key', type: 'text', title: 'print only this property of the File/Contents tables, or the count of this resource class' }, ...GREP, { opt: 'no-file-prefix', type: 'flag' }, { opt: 'show-tag', type: 'flag' }],
-  dump: [...GREP, { opt: 'no-file-prefix', type: 'flag' }, { opt: 'details', type: 'flag' }],
+  dump: [...GREP, { opt: 'no-file-prefix', type: 'flag' }, { opt: 'details', type: 'flag' }, { opt: 'dedup', type: 'flag', title: 'list resources that differ in their guid only once, with a +N more label' }],
   refs: [{ opt: 'kind', type: 'text' }, { opt: 'name', type: 'text' }, ...GREP, { opt: 'sort-desc', type: 'flag' }],
   warns: [{ opt: 'kind', type: 'text' }, { opt: 'name', type: 'text' }, ...GREP, { opt: 'top-graphs', type: 'number' }],
-  code: [...GREP, { opt: 'all-pins', type: 'flag' }, { opt: 'defaults', type: 'flag' }, { opt: 'no-file-prefix', type: 'flag' }],
+  code: [...GREP, { opt: 'all-pins', type: 'flag' }, { opt: 'pseudocode', type: 'flag', title: 'one function per graph; --search / --match then select graphs by name', checked: true }, { opt: 'expand', type: 'flag', title: 'with pseudocode: write a composite call as the nodes of its body' }, { opt: 'optimize', type: 'flag', title: 'with pseudocode: shorter code (single outputs read directly, values read once written where they are read)', checked: true }, { opt: 'lazy', type: 'flag', title: 'with pseudocode: lazy values across composites' }, { opt: 'no-file-prefix', type: 'flag' }],
+  // every mode's output one after the other (dump always with details); code (heavy) only with --with-code. Takes the options of the other tabs.
+  all: [{ opt: 'kind', type: 'text' }, { opt: 'name', type: 'text' }, ...GREP, { opt: 'no-file-prefix', type: 'flag' }, { opt: 'show-tag', type: 'flag' }, { opt: 'sort-desc', type: 'flag' }, { opt: 'top-graphs', type: 'number' }, { opt: 'dedup', type: 'flag', title: 'list resources that differ in their guid only once, with a +N more label' },
+    { opt: 'with-code', type: 'flag', title: 'also the code view (heavy)' }, { opt: 'all-pins', type: 'flag' },
+    { opt: 'pseudocode', type: 'flag', title: 'the code view as one function per graph' }, { opt: 'expand', type: 'flag', title: 'with pseudocode: write a composite call as the nodes of its body' }, { opt: 'optimize', type: 'flag', title: 'with pseudocode: shorter code' }, { opt: 'lazy', type: 'flag', title: 'with pseudocode: lazy values across composites' }],
+  // everything for a language model to read: no options, the result goes into a text area (see the llm branch below)
+  llm: [],
 };
 // Options that apply to every file and every mode: they live on the Input tab and are appended to every command line.
 const GLOBAL_OPTS = [
   { opt: 'lenient', type: 'flag', title: 'tolerate container header/tail problems (best-effort decode)' },
   { opt: 'lang', type: 'select', values: ['EN', 'CHS', 'CHT', 'DE', 'ES', 'FR', 'ID', 'IT', 'JP', 'KR', 'PT', 'RU', 'TH', 'TR', 'VI'].map((l) => [l, l]), title: 'language of the node/pin names' },
 ];
-const FORMATS = [['htm', 'Plain'], ['html', 'Rich']];
-const BLACK_PAGE = 'data:text/html,<style>html{background:%230C0C0C}</style>';
+const FORMATS = [['html', 'Rich'], ['htm', 'Plain'], ['json', 'Json']]; // the first is the default
+// A frame cannot pass a drag to this page by itself (it is its own document), so every page shown in one brings a few lines of script that
+// do: the frame is sandboxed without allow-same-origin, so the script can only post a message up, see the dragenter handler below.
+const DRAG_SCRIPT = '<script>addEventListener("dragenter",function(e){var t=e.dataTransfer&&e.dataTransfer.types;if(t&&[].indexOf.call(t,"Files")>=0){e.preventDefault();parent.postMessage("ms-drag","*");}});addEventListener("dragover",function(e){e.preventDefault();});<\/script>';
+const BLACK_PAGE = '<!DOCTYPE html><html><head><meta charset="utf-8"><style>html{background:#0C0C0C}</style>' + DRAG_SCRIPT + '</head><body></body></html>';
+// A short note is text, not a page: shown preformatted on the same black background as the others.
+const escHtml = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const textPage = (t) => `<!DOCTYPE html>\n<html><head><meta charset="utf-8"><style>html{background:#0C0C0C;color:#CCCCCC}pre{font:13px/1.4 ui-monospace,Consolas,monospace;white-space:pre-wrap;word-break:break-word;margin:12px}</style></head><body><pre>${escHtml(t)}</pre></body></html>\n`;
 
 const $ = (sel, el = document) => el.querySelector(sel);
 const el = (tag, props = {}, ...kids) => { const e = Object.assign(document.createElement(tag), props); e.append(...kids); return e; };
 
 // ---- Input tab: the files added (name -> bytes) ----
 const files = new Map();
+// "<input files> - <mode>.json": what a downloaded report is called
+const reportFileName = (mode, ext) => {
+  let base = [...files.keys()].join(', ').replace(/[\\/:*?"<>|]/g, '_');
+  if (base.length > 120) base = base.slice(0, 117) + '...';
+  return `${base} - ${mode}.${ext}`;
+};
+const jsonFileName = (mode) => reportFileName(mode, 'json');
+const download = (name, text, type) => {
+  const a = el('a', { href: URL.createObjectURL(new Blob([text], { type })), download: name });
+  document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 60000);
+};
 const frameResets = []; // one per mode tab: forget that tab's shown result (see renderFiles)
 async function addFiles(list) {
   for (const f of list) {
@@ -114,7 +145,7 @@ const hasFiles = (e) => [...(e.dataTransfer?.types || [])].includes('Files');
 let dragDepth = 0;
 const frameHide = (show) => {
   for(let frame of document.querySelectorAll('iframe')){
-    frame.style.display = show ? 'block' : 'none';
+    frame.style.visibility = show ? '' : 'hidden'; // not display:none, which drops the layout of the frame's document
   }
 }
 const hideDrop = () => { dragDepth = 0; dropzone.classList.remove('on'); frameHide(true); };
@@ -122,6 +153,11 @@ window.addEventListener('dragenter', (e) => { if (!hasFiles(e)) return; e.preven
 window.addEventListener('dragover', (e) => { if (!hasFiles(e)) return; e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; });
 window.addEventListener('dragleave', (e) => { if (!hasFiles(e)) return; if (--dragDepth <= 0) hideDrop(); });
 window.addEventListener('dragend', hideDrop);
+// A file dragged over a frame: the frame's script says so. The overlay then hides the frames, so the rest of the drag is this page's again.
+window.addEventListener('message', (e) => {
+  if (e.data !== 'ms-drag' || ![...document.querySelectorAll('iframe')].some((f) => f.contentWindow === e.source)) return;
+  dragDepth = 0; dropzone.classList.add('on'); frameHide(false);
+});
 window.addEventListener('drop', async (e) => {
   if (!hasFiles(e)) return;
   e.preventDefault(); hideDrop();
@@ -136,7 +172,8 @@ function renderFiles() {
   const body = $('#files tbody'); body.replaceChildren();
   for (const [name, bytes] of files) {
     const id = MS.identifyFile(bytes);
-    const type = id.format ? `${id.format} (by ${id.how})` : `not a GIA/GIL file: ${id.reason}`;
+    const type = id.format === 'report' ? `saved report (by ${id.how}): mode ${id.mode}, files: ${id.files.join(', ') || '-'}`
+      : id.format ? `${id.format} (by ${id.how})` : `not a GIA/GIL file or saved report: ${id.reason}`;
     const del = el('button', { textContent: 'Delete', onclick: () => { files.delete(name); renderFiles(); } });
     body.append(el('tr', {}, el('td', { textContent: name }), el('td', { textContent: bytes.length.toLocaleString() }),
       el('td', { textContent: type }), el('td', {}, del)));
@@ -144,26 +181,46 @@ function renderFiles() {
   }
 }
 
-// ---- Mode tabs (Info, Dump, Refs, Warns, Code) ----
+// ---- Mode tabs (Info, Dump, Refs, Warns, Code, All) ----
 const tabNames = ['input', ...Object.keys(TABS)];
 function showTab(name) {
   for (const t of tabNames) { $(`#tab-${t}`).classList.toggle('on', t === name); $('#tabs').children[tabNames.indexOf(t)].classList.toggle('on', t === name); }
 }
-for (const t of tabNames) $('#tabs').append(el('button', { textContent: t[0].toUpperCase() + t.slice(1), onclick: () => showTab(t) }));
+for (const t of tabNames) $('#tabs').append(el('button', { textContent: t === 'llm' ? 'LLM' : t[0].toUpperCase() + t.slice(1), onclick: () => showTab(t) }));
 for (const [mode, options] of Object.entries(TABS)) {
   const section = el('section', { id: `tab-${mode}` });
+  if (mode === 'llm') { // no options and no format: the text of the `llm` mode in a text area, to copy or to download as a .txt file
+    const status = el('pre', { className: 'status' });
+    const area = el('textarea', { className: 'llm', readOnly: true, spellcheck: false, wrap: 'off' });
+    const go = el('button', { textContent: 'Process!' });
+    const save = el('button', { textContent: 'download' });
+    const door = el('table', { className: 'door' }, el('tr', {}, el('td', { width: 1 }, go), el('td', {}, status), el('td', { width: 1 }, save)));
+    const runLlm = () => {
+      const argv = [mode, ...files.keys()];
+      const r = MS.run(argv, files);
+      area.value = r.out ?? '';
+      status.textContent = `$ miliastra-search ${argv.map((a) => (/[\s'"|*?]/.test(a) ? JSON.stringify(a) : a)).join(' ')}\nexit code ${r.code}${r.err ? '\n' + r.err.trimEnd() : ''}`;
+    };
+    frameResets.push(() => { area.value = ''; status.textContent = ''; });
+    go.onclick = () => { status.textContent = 'Processing…'; setTimeout(runLlm, 20); };
+    save.onclick = () => { if (area.value) download(reportFileName(mode, 'txt'), area.value, 'text/plain;charset=utf-8'); };
+    section.append(door, area);
+    $('#stack').append(section);
+    continue;
+  }
   const opts = el('div', { className: 'opts' });
   const fmt = el('select', {}, ...FORMATS.map(([v, label]) => el('option', { value: v, textContent: label })));
   opts.append(el('label', {}, 'Format ', fmt));
   const inputs = options.map((o) => {
     const input = el('input', { type: o.type === 'flag' ? 'checkbox' : o.type, title: o.title || '', size: o.type === 'number' ? 4 : 18 });
+    if (o.checked) input.checked = true;
     const code = el('code', { textContent: '--' + o.opt });
     const [a, b] = o.type === 'flag' ? [input, code] : [code, input];
     opts.append(el('label', {}, a, b));
     return [o, input];
   });
   const status = el('pre', { className: 'status' });
-  const frame = el('iframe', { sandbox: '', src: BLACK_PAGE}); // the engine's HTML page, shown as is
+  const frame = el('iframe', { sandbox: 'allow-scripts', srcdoc: BLACK_PAGE }); // the engine's HTML page, shown as is
   const go = el('button', { textContent: 'Process!' });
   const full = el('button', { textContent: 'fullscreen' });
   const door = el('table', { className: 'door' }, el('tr',{}, el('td', {width:1}, go), el('td', {}, status), el('td', {width:1}, full)));
@@ -179,15 +236,23 @@ for (const [mode, options] of Object.entries(TABS)) {
     // Inside a srcdoc frame a link like href="#x" resolves against THIS page's address (miliastra-search.htm), so the
     // frame tries to navigate there (blocked by the sandbox) instead of scrolling. Pointing <base> at the frame's own
     // address (about:srcdoc) makes such links same-document jumps again.
-    lastOut = r.out || '';
-    if (r.out) {
-      frame.srcdoc = r.out.replace('<head>', '<head><base href="about:srcdoc">');
+    lastOut = r.out ?? '';
+    if (r.out && fmt.value === 'json' && r.code === 0) {
+      // the report is a file for other programs: it is downloaded, the frame only says so
+      const name = jsonFileName(mode);
+      const blob = new Blob([r.out], { type: 'application/json' });
+      const a = el('a', { href: URL.createObjectURL(blob), download: name });
+      document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 60000);
+      lastOut = textPage(`"${name}" downloaded, ${(blob.size / 1024).toFixed(1)} kb.`);
+    }
+    if (lastOut) {
+      frame.srcdoc = lastOut.replace('<head>', () => '<head><base href="about:srcdoc">' + DRAG_SCRIPT);
     } else {
-      frame.removeAttribute('srcdoc'); frame.src = BLACK_PAGE;
+      frame.srcdoc = BLACK_PAGE;
     }
     status.textContent = `$ miliastra-search ${argv.map((a) => (/[\s'"|*?]/.test(a) ? JSON.stringify(a) : a)).join(' ')}\nexit code ${r.code}${r.err ? '\n' + r.err.trimEnd() : ''}`;
   };
-  frameResets.push(() => { lastOut = ''; frame.removeAttribute('srcdoc'); frame.src = BLACK_PAGE; status.textContent = ''; });
+  frameResets.push(() => { lastOut = ''; frame.srcdoc = BLACK_PAGE; status.textContent = ''; });
   go.onclick = () => { status.textContent = 'Processing…'; setTimeout(runIt, 20); };
   // The new tab is filled with document.write: a blob: URL is refused when this page is opened from file://. A tab written that way has the address
   // about:blank, where href="#x" would navigate away, so the page brings a click handler that scrolls to the target itself.
@@ -207,7 +272,7 @@ for (const [mode, options] of Object.entries(TABS)) {
     go.click();
   });
   section.append(opts, door, frame);
-  document.body.append(section);
+  $('#stack').append(section);
 }
 showTab('input');
 $('#helpmsg').textContent = MS.run(['--help'], []).out + '\n\n';
