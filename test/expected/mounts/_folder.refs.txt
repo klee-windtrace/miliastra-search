@@ -36,7 +36,7 @@ composite        "I3"                               0 call: []
 composite        "Tab A - 04"                       0 call: []
 composite        "Tab B - 06"                       0 call: []
 composite        "Tab C - 05"                       0 call: []
-mount            'Saved to folder (My)'             4 entity: OBJECT_ENTITY:"Wireframe Cuboid" (x3); OBJECT_ENTITY:"Wireframe Cube"
+mount            'Saved to folder (My)'             8 entity: OBJECT_ENTITY:"Wireframe Cuboid" (x6); OBJECT_ENTITY:"Wireframe Cube" (x2)
 mount            'Mounted_Character'                2 character: CHARACTER_TEMPLATE:"With_CharacterGraph(Edit Character)"; CHARACTER_TEMPLATE:"With_Both_And_Common(Edit Character)"
 mount            'Mounted_Creation'                 1 entity: CREATION_ENTITY:"Pyro Slime"
 mount            'Mounted_Entity'                   1 entity: OBJECT_ENTITY:"Entity_Graphs"

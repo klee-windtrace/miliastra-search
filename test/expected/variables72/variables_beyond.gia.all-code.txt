@@ -1,0 +1,79 @@
+# INFO
+# FILE variables_beyond.gia
+format                 gia
+detected_by            header
+file_size              13187
+container_file_type    gia
+engine_version         7.2.0
+mode                   beyond
+export_name            variables_beyond.gia
+node_db_version        7.2.0
+export_tag             909814789-1794320179-1073741873-\variables_beyond.gia
+uid                    909814789
+time                   1794320179
+file_id                1073741873
+resources              16
+primary                14
+dependencies           2
+graphs                 0
+nodes                  0
+composite_bodies       0
+declarations           0
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS OBJECT class=1 count=1
+CLASS CREATION class=2 count=2
+CLASS OBJECT_ENTITY class=3 count=6
+CLASS CREATION_ENTITY class=4 count=2
+CLASS CLASS class=17 count=1
+CLASS PLAYER_TEMPLATE class=18 count=2
+CLASS CHARACTER_TEMPLATE class=19 count=2
+
+# DUMP
+RESOURCE "Default Template" PLAYER_TEMPLATE class=18 guid='1086324737'
+RESOURCE "Custom Player Template" PLAYER_TEMPLATE class=18 guid='1086324738'
+RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519041'
+RESOURCE "Custom Player Template(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519042'
+RESOURCE "Custom Class" CLASS class=17 guid='1090519041'
+RESOURCE "Empty Model" OBJECT class=1 guid='1077936129' parent=(entities: 5)
+RESOURCE "Basic" CREATION class=2 guid='1082130433' parent=(entities: 1)
+RESOURCE "Complex" CREATION class=2 guid='1082130434' parent=(entities: 1)
+RESOURCE "Same" OBJECT_ENTITY class=3 guid='1077936130' parent=(1077936129:"Empty Model")
+RESOURCE "Value" OBJECT_ENTITY class=3 guid='1077936131' parent=(1077936129:"Empty Model")
+RESOURCE "Type" OBJECT_ENTITY class=3 guid='1077936132' parent=(1077936129:"Empty Model")
+RESOURCE "Added" OBJECT_ENTITY class=3 guid='1077936134' parent=(1077936129:"Empty Model")
+RESOURCE "Removed" OBJECT_ENTITY class=3 guid='1077936135' parent=(1077936129:"Empty Model")
+RESOURCE "Empty Model" OBJECT_ENTITY class=3 guid='1077936136' parent=(10005018)
+RESOURCE "Basic" CREATION_ENTITY class=4 guid='1082130436' parent=(1082130433:"Basic")
+RESOURCE "Complex" CREATION_ENTITY class=4 guid='1082130438' parent=(1082130434:"Complex")
+VARIABLE Player 1086324737:"Default Template" 'On_Player' : Str = '1'
+VARIABLE Player 1086324738:"Custom Player Template" 'Custom_Player' : Str = '3'
+VARIABLE Character 1090519041:"Default Template(Edit Character)" 'On_Character' : Str = '2'
+VARIABLE Character 1090519042:"Custom Player Template(Edit Character)" 'Custom_Character' : Str = '4'
+VARIABLE 1077936129:"Empty Model" 'On_Prefab' : Str = '10'
+VARIABLE 1082130433:"Basic" 'On_Basic' : Str = '7'
+VARIABLE 1082130434:"Complex" 'On_Complex' : Str = '8'
+VARIABLE_CHANGE 1077936131:"Value" (1077936129:"Empty Model") 'On_Prefab' edit: Str = '11'
+VARIABLE_CHANGE 1077936132:"Type" (1077936129:"Empty Model") 'On_Prefab' newtype: Int = 0
+VARIABLE_CHANGE 1077936134:"Added" (1077936129:"Empty Model") 'Extra' add: Str = '12'
+VARIABLE_CHANGE 1077936135:"Removed" (1077936129:"Empty Model") 'On_Prefab' delete: Str
+VARIABLE_CHANGE 1077936136:"Empty Model" (10005018) 'On_Entity' add: Str = '9'
+VARIABLE_CHANGE 1082130436:"Basic" (1082130433:"Basic") 'add' add: Str = ''
+VARIABLE_CHANGE 1082130438:"Complex" (1082130434:"Complex") 'add' add: Str = ''
+
+# REFS
+
+# WARNS
+# findings
+INFO  custom-variable-type-conflict: custom variable "On_Prefab" is declared with 2 different types: Str on "Empty Model", "Same", "Value", +1 more; Int on "Type"
+
+# limits
+prefabs (OBJECT): 1/1000
+dynamic entities (OBJECT_ENTITY): 6/3000
+CLASS: 1/100
+
+top graphs by node count:
+(no graphs in the scanned files)
+
+# CODE

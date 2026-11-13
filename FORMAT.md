@@ -134,7 +134,7 @@ nodes), 6 meta "topic name", 13–16 struct operations.
   defaults. For graph variables the type comes from the declaration, not from the pins.
 * `persistent_pin_uid` exists only on dynamic nodes (composite, signal, struct). When a declaration is edited and its pins reordered, the uid is
   how the editor finds the old wires again, so for user-defined nodes match pins by `(kind, index)` first and by uid second.
-* **Placeholder pins:** a 100-input `Assembly List` node is stored with about 100 type-only pins with no value and no wire. They carry no information.
+* **Placeholder pins:** a 100-input `Assembly List` node is stored with about 100 type-only pins with no value and no wire. They carry no information. The hidden `in#0` `Count` says how many of them are real; like every value it is stored only once edited, so without it the database's default holds (1 for a list, 2 for a dictionary: a freshly placed node with its first slot or key/value pair wired has no `Count`).
 * **Name pins.** The name of a variable, timer or signal is a plain string literal on an input pin: `Get/Set Node Graph Variable` pin 0,
   `Get/Set Custom Variable` pin 1, timers pin 1, and for signals the meta pin (kind 5) of every call site. `When … Variable Changes` and
   `When Timer Is Triggered` carry the name only as an **output**, so they listen to *any* name; to know which names they handle you have to follow
@@ -302,6 +302,51 @@ A **mount** says which graph is attached to which host. It is a component of kin
 * **Status graph:** a status config (type 1) holds, at component kind 6 → field 21 → 1 → 1 → 2, the message `{1: 1, 2: <guid>, 501: 20003}`. A status with
   no graph has the same message with only `501: 20003`. A status has at most one graph.
 * The same graph can be mounted on several identical hosts (same class and name); every host has its own entry.
+* **Values of published graph variables.** A host that sets a published variable of its graph stores it in the slot, after the graph reference, as a repeated
+  `2: variable`: `{1: {…graph reference…}, 2: {2: name, 4: value, 5: 1, 6: declared type}*}`. It is the message of a custom variable (see below) without the
+  type id in field 3 (the type is the value's own `4.1`); only the value of a published variable can be set, never its type or whether it exists. Derived from `variables_graph.gia` (7.2.0):
+  * A prefab (or template) lists only the variables whose value it changed from the graph's; a mount without any `2` holds the graph's own values. A value that is set
+    back to the graph's value is not listed (the editor drops the entry).
+  * An **entity stores the values it ends up with** for every variable that differs from the *graph's* value, whether it inherited the difference from its prefab or set it
+    itself: an entity of an edited prefab that changes nothing repeats the prefab's list, and one that restores the graph's values has no `2` at all. So the entity's list is not a
+    delta of the prefab's; comparing with the prefab means reading both lists against the graph's defaults (a variable that is not listed has the graph's value).
+  * A zero value is a stored entry with an empty payload (`Faction` = 0 is `27: {}`), not an absent entry.
+  * Neither a private variable nor a variable the graph does not have is listed; the Entity type cannot be given a value, so it is never listed.
+  * The mount of a `.gia` entity or template is in the same lists as in a `.gil` (entity `12 → 1`: lists 5 / 6 / 7; template `11 → 1`: 6 / 7 / 8); a player / character template of a `.gia` (classes 18 / 19) says which side its graphs are on.
+
+### Custom variables
+
+The variables a prefab, entity, template or the stage declares (name, type, initial value) are a component of **kind 1 in the dynamic component list**
+(root 5 field 7, root 4 field 8, a `.gia` entity's `12 → 1` field 7, a template's `11 → 1` field 8), the one that also has `2: 1`; the kind-1 component of the other lists is the name.
+Its payload (field 11) is `{1: variable}*`. An entity or template without variables has the component with an empty payload (`08 01 10 01 5a 00`), which is why a static native
+entity's "single kind-1 component" (below) is this one. The stage entity (root 5, band 5) has it too.
+
+    variable    = { 2: name, 3: type id, 4: value, 5: 1, 6: { 1: type id, 2: type info } }
+    value       = { 1: type id, 2: type info, <10 + type id>: payload }
+    type info   = struct / list of structs: { 1: 1, 2: struct id }   dictionary: { 2: selector, 502: key type, 503: value type } (not read)
+                  anything else: empty
+
+The type ids are the **server** ids of section 5 (1 Ety, 2 Gid, 3 Int, 4 Bol, 5 Flt, 6 Str, 7 L<Gid>, 8 L<Int>, 9 L<Bol>, 10 L<Flt>, 11 L<Str>, 12 Vec, 13 L<Ety>, 15 L<Vec>,
+17 Fct, 20 Cfg, 21 Pfb, 22 L<Cfg>, 23 L<Pfb>, 24 L<Fct>, 25 Struct, 26 L<Struct>, 27 Dict). A value of type T has its payload in field **10 + T** (Str 16, L<Str> 21, Struct 35, Dict 37).
+Payloads:
+
+| Type | Payload |
+|---|---|
+| Str / Int / Bol / Ety / Gid / Fct | `{1: element}`: string / varint (an Int is an int32, a negative one sign-extended to 10 bytes) / 0 or 1 / varint |
+| Flt | `{1: fixed32}` |
+| Vec | `{1: {1: x, 2: y, 3: z}}`, fixed32 each; a zero component is left out |
+| Cfg / Pfb | `{1: {2: id}}` (the inner message is empty for 0) |
+| lists | `{1: element}*`; Int, Bol, Ety, Gid, Fct and Flt lists are **packed** (one length-delimited `1`, varints / fixed32), Str, Vec, Cfg and Pfb lists repeat the field |
+| Struct | `{1: field value}*, 501: struct id, 502: {2: 28, 4: n}`; each field is a value (type id, payload) with its name in 501 |
+| L<Struct> | `{1: struct value}*, 501: struct id`; an element is a whole value (`{1: 25, 2: type info, 35: {…}}`) |
+| Dict | `{501: key, 502: value, 503: key type id, 504: value type id, 505: n}`; key and value are whole values; the key / value type is Str (6) when the type id is left out in the *declared type* (field 6) |
+
+An absent element is the zero value (`""`, 0, false, a zero vector, id 0, an empty list, and a dictionary without `501`). Types seen in `variables_classic.gil` and `variables_beyond.gia` (7.2.0)
+cover all of them. A dictionary with several pairs repeats `501` / `502` (the *i*-th key goes with the *i*-th value); values may be lists or structs. Not known: the selector in a dictionary's type info (`66` for a Str key, 46 Int, 26 Gid, 106 Cfg,
+126 Pfb, 86 Fct, 6 Ety), field 5 (always 1), the struct field `502`, and whether a `.gia` can hold the stage (the sample has none; a stage's variables are known only from `.gil`).
+The editor cannot give an Entity variable a value, so Entity values and Entity-keyed dictionaries read as empty.
+
+A creation entity (`.gia` class 4) names its creation prefab like an object entity (`12 → 1 → 2 → 1`).
 
 ### Static vs dynamic entities
 
@@ -373,11 +418,11 @@ Families seen, with the type code of their items:
 ## 10. Known gaps and uncertainties
 
 * Struct field **default values** (`TypeDef3` fields 21 / 35 / 36) and map/struct typed defaults: kept as raw bytes.
-* The interior of non-graph resources (prefabs, terrain, skills, UI, cameras, …): only name, class and GUID are read, plus mounts and the dynamic flag.
+* The interior of non-graph resources (prefabs, terrain, skills, UI, cameras, …): only name, class and GUID are read, plus mounts, the dynamic flag and the custom variables of entities and templates.
 * `val_struct` / `val_map` literal *pin values* are implemented from the schema but no sample contains one, so that path is untested; so are
   struct-typed graph variables and client-side composite/struct usage.
 * The projectile-versus-object split rests on one observed base-config id. Class 41 (save data) has no name in the `.gia` enum.
 * `client_inline` (see section 5), a second layer inside signal declarations, and a few `.gil` root fields (1, 50, 52, 53) appear in 7.1.0 files
-  and are not decoded; nothing here depends on them.
+  and are not decoded; nothing here depends on them. A 7.2.0 file (`codegen72`) has field 103 inside a node's `context_declaration` (3 bytes, `12 01 01`), also not decoded.
 * The dynamic-list rule (section 8) is based on a few samples; a re-saved sample of a static entity converted to dynamic would settle it.
 * All observations come from games 7.0.0 and 7.1.0 and files saved by them. The editor's UI language affects stored default names and the default-tab name.

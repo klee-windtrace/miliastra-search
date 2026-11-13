@@ -1,0 +1,3 @@
+GRAPH '<composite>Naive execution delay' ENTITY_NODE_GRAPH guid='1610612738' nodes=6 role=dependency
+GRAPH '<composite>Test Delay Print' ENTITY_NODE_GRAPH guid='1610612739' nodes=3 role=dependency
+GRAPH '<composite>Wrapped (Custom Variable)' ENTITY_NODE_GRAPH guid='1610612737' nodes=2 role=dependency

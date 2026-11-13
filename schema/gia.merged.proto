@@ -972,6 +972,90 @@ message GilComponent {
   GilNameHolder name = 11;
 }
 message GilNameHolder { option opaque_rest = true; string text = 1; }
+
+// [MERGED] Custom variables of an entity or template (games 7.2.0; files variables_classic.gil / variables_beyond.gia). They sit in the component of
+// kind 1 of the *dynamic* component list (entity field 7, template field 8). The lists are opaque in GilEntity / GilTemplate, so these messages only
+// document the layout; src/varscan.mjs reads it. FORMAT.md, "Custom variables".
+message GilVariableComponent {
+  option opaque_rest = true;
+  int32 kind = 1;                    // 1
+  uint32 flag_2 = 2;                 // 1
+  GilVariableList variables = 11;
+}
+message GilVariableList { repeated GilCustomVariable entries = 1; }
+message GilCustomVariable {
+  string name = 2;
+  int32 type = 3;                    // server type id (see section 5): 6 Str, 8 L<Int>, 25 Struct, 27 Dict, ...
+  GilVariableValue value = 4;        // the initial value
+  uint32 flag_5 = 5;                 // 1 in every file seen
+  GilVariableDeclared declared = 6;  // the declared type again; a default key / value type of a dictionary (Str) is left out
+}
+message GilVariableDeclared { int32 type = 1; GilVariableTypeInfo info = 2; }
+message GilVariableTypeInfo {
+  option opaque_rest = true;
+  GilStructRef struct_ref = 2;       // struct and list of structs
+  int32 key_type = 502;              // dictionary
+  int32 value_type = 503;            // dictionary
+}
+message GilStructRef { uint32 opaque_1 = 1; uint32 struct_id = 2; }  // opaque_1 = 1
+// A typed value: the payload of a value of type T is in field 10 + T. Not every payload is declared: the scalar ones wrap `{ 1: element }`, and an
+// absent element is the zero value.
+message GilVariableValue {
+  option opaque_rest = true;
+  int32 type = 1;
+  GilVariableTypeInfo info = 2;      // for a dictionary the field 2 inside holds a selector that is not read
+  GilVarEty ety = 11;                // Ety  { 1: varint }
+  GilVarEty gid = 12;                // Gid  { 1: varint }
+  GilVarInt int = 13;                // Int  { 1: int32 (negative values sign-extended to 64 bits) }
+  GilVarInt bol = 14;                // Bol  { 1: 0 | 1 }
+  GilVarFloat flt = 15;              // Flt  { 1: fixed32 }
+  GilVarStr str = 16;                // Str  { 1: string }
+  GilVarIdList list_gid = 17;        // L<Gid>: packed varints
+  GilVarIntList list_int = 18;       // L<Int>: packed varints
+  GilVarIntList list_bol = 19;       // L<Bol>: packed varints
+  GilVarFloatList list_flt = 20;     // L<Flt>: packed fixed32
+  GilVarStrList list_str = 21;       // L<Str>: one `1: string` per element
+  GilVarVec vec = 22;                // Vec  { 1: { 1: x, 2: y, 3: z } } (fixed32, a zero component is left out)
+  GilVarIdList list_ety = 23;        // L<Ety>: packed varints
+  GilVarVecList list_vec = 25;       // L<Vec>: one `1: { x, y, z }` per element
+  GilVarConfig cfg = 30;             // Cfg  { 1: { 2: id } }
+  GilVarConfig pfb = 31;             // Pfb  { 1: { 2: id } }
+  GilVarConfigList list_cfg = 32;    // L<Cfg>: one `1: { 2: id }` per element
+  GilVarConfigList list_pfb = 33;    // L<Pfb>: one `1: { 2: id }` per element
+  GilVarIdList list_fct = 34;        // L<Fct>: packed varints
+  GilVarStruct struct_value = 35;    // Struct
+  GilVarStructList list_struct = 36; // L<Struct>
+  GilVarDict dict = 37;              // Dict
+  GilVarEty fct = 27;                // Fct  { 1: varint }
+  string field_name = 501;           // only on a field of a struct: its name
+}
+message GilVarEty { uint64 id = 1; }
+message GilVarInt { int32 value = 1; }
+message GilVarFloat { float value = 1; }
+message GilVarStr { string value = 1; }
+message GilVarVec { GilVec3 value = 1; }
+message GilVec3 { float x = 1; float y = 2; float z = 3; }
+message GilVarConfig { GilConfigId value = 1; }
+message GilConfigId { uint32 opaque_1 = 1; uint32 id = 2; }
+message GilVarIdList { repeated uint64 ids = 1; }
+message GilVarIntList { repeated int32 values = 1; }
+message GilVarFloatList { repeated float values = 1; }
+message GilVarStrList { repeated string values = 1; }
+message GilVarVecList { repeated GilVec3 values = 1; }
+message GilVarConfigList { repeated GilConfigId values = 1; }
+message GilVarStruct {
+  repeated GilVariableValue fields = 1;  // in declaration order; each field value is named by its own 501
+  uint32 struct_id = 501;
+  bytes opaque_502 = 502;                // `{ 2: 28, 4: <number> }`
+}
+message GilVarStructList { repeated GilVariableValue structs = 1; uint32 struct_id = 501; }
+message GilVarDict {
+  repeated GilVariableValue keys = 501;
+  repeated GilVariableValue values = 502;  // parallel to `keys` (one pair seen; a dictionary of entities has keys and no values)
+  int32 key_type = 503;
+  int32 value_type = 504;
+  uint32 opaque_505 = 505;                 // the same id in every dictionary seen
+}
 message GilNameOnly   { option opaque_rest = true; string name = 1; }
 message GilNamedEntry { option opaque_rest = true; uint32 guid = 1; string name = 2; }
 message GilNamedList  { repeated GilNamedEntry entries = 1; }

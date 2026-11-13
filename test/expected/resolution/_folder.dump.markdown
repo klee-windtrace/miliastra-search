@@ -1,4 +1,4 @@
-﻿# File `test/cases/resolution/test_All_Static.gia`
+﻿# File `test_All_Static.gia`
 
 ## Declarations (2)
 
@@ -13,7 +13,13 @@
 | --- | --- | --- | ---: |
 | '*All\_Static*' | ENTITY\_NODE\_GRAPH | '`1073741825`' | **26** |
 
-# File `test/cases/resolution/test_resolution.gia`
+## Variables
+
+| Graph | Variable | Type | Value |
+| --- | --- | --- | --- |
+| '*All\_Static*' | '**Static\_Graph**' | *L\<Gid\>* | \[\] |
+
+# File `test_resolution.gia`
 
 ## Graphs (5)
 
@@ -24,3 +30,11 @@
 | '*Static*' | ENTITY\_NODE\_GRAPH | '`1073741825`' | **28** |   |
 | '<u>\<composite\></u>*Create Composite Node*' | ENTITY\_NODE\_GRAPH | '`1610612737`' | **2** | dependency |
 | '<u>\<composite\></u>*Create Composite Node(1)*' | ENTITY\_NODE\_GRAPH | '`1610612738`' | **1** | dependency |
+
+## Variables
+
+| Graph | Variable | Type | Value |
+| --- | --- | --- | --- |
+| '*Dynamic*' | '**name**' | *Str* | '`gvar3`' |
+| '*Indirect*' | '**test2**' | *Str* | '`test4`' |
+| '*Static*' | '**name**' | *Str* | '`gvar3`' |

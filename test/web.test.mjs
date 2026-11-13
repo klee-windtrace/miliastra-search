@@ -45,10 +45,18 @@ test('identifyFile tells gia from gil from garbage by content', () => {
   assert.ok(bad.reason);
 });
 
+test('identifyFile recognises a saved report by its header and tells its mode and files', () => {
+  const json = new TextEncoder().encode(JSON.stringify({ header: { software: 'miliastra-search', version: '0', mode: 'dump', files: ['a.gia', 'b.gil'], options: {} }, dump: [] }));
+  assert.deepEqual(JSON.parse(JSON.stringify(web.identifyFile(json))), { format: 'report', how: 'json', mode: 'dump', files: ['a.gia', 'b.gil'], warnings: [] }); // through JSON: the bundle's arrays come from another realm
+  const bom = new Uint8Array([0xEF, 0xBB, 0xBF, ...json]);
+  assert.equal(web.identifyFile(bom).format, 'report');
+  for (const bad of ['{"header":{"software":"x","mode":"dump","files":[]}}', '{"header":{"software":"miliastra-search","mode":"dump","files":[1]}}', '{"a":', '[1]']) assert.equal(web.identifyFile(new TextEncoder().encode(bad)).format, null, bad);
+});
+
 const runs = [
   ['dump', 'sample_1.gia'], ['code', 'stage_1.gil', '--all-pins'], ['refs', 'sample_1.gia', 'test_composite.gia'],
   ['refs', 'sample_1.gia', '--sort-desc'], ['warns', 'sample_1.gia', 'test_composite.gia', '--top-graphs', '2'], ['info', 'sample_1.gia', 'stage_1.gil', '--show-tag', '--lang', 'zh'], ['dump', 'sample_1.gia', 'stage_1.gil', '--search', 'GRAPH'],
-  ['code', 'sample_1.gia', '--match', 'set|get', '--context', '1'], ['dump', 'test_folders.gil'], ['refs', 'test_folders.gil'],
+  ['code', 'sample_1.gia', '--match', 'set|get', '--context', '1'], ['dump', 'test_folders.gil'], ['refs', 'test_folders.gil'], ['all', 'sample_1.gia', 'stage_1.gil'], ['all', 'sample_1.gia', '--with-code', '--search', 'GRAPH'],
 ];
 for (const fmt of ['text', 'htm', 'html']) for (const args of runs) {
   test(`web run == cli: ${args.join(' ')} --format ${fmt}`, () => {
@@ -69,4 +77,20 @@ test('web run reports errors like the CLI does', () => {
   assert.equal(r.code, 1);
   assert.match(r.err, /notes\.txt/);
   assert.equal(web.run(['dump', 'missing.gia'], vfs).code, 2);
+});
+
+test('web run == cli: llm, and the page has an LLM tab (last) with a text area, a .txt download and --dedup on dump and all', () => {
+  {
+    const w = web.run(['llm', 'sample_1.gia', 'stage_1.gil'], vfs);
+    const c = cli(['llm', 'gia/sample_1.gia', 'gil/stage_1.gil']);
+    assert.equal(w.code, 0);
+    assert.equal(w.out, c.out.replace(/(gia|gil)\//g, ''));
+    assert.ok(w.out.includes('# CODE') && !w.out.includes('# WARNS'));
+  }
+  const page = fs.readFileSync(path.join(root, 'miliastra-search.htm'), 'utf8');
+  assert.match(page, /\bllm: \[\]/);
+  assert.ok(page.indexOf('  all: [') < page.indexOf('  llm: []'), 'LLM tab comes after All');
+  assert.equal(page.match(/opt: 'dedup'/g).length, 2);
+  assert.match(page, /createElement|el\('textarea'/);
+  assert.match(page, /reportFileName\(mode, 'txt'\)/);
 });

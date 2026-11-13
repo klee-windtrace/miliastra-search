@@ -1,4 +1,4 @@
-﻿# File `test/cases/mounts/composite_folders.gil`
+﻿# File `composite_folders.gil`
 
 ## Graphs (30)
 
@@ -106,7 +106,64 @@
 | "**Voice Chat Button**" | UI\_CONTROL | '`1073756701`' |   |
 | "**Voice Chat Hint Queue**" | UI\_CONTROL | '`1073756702`' |   |
 
-# File `test/cases/mounts/graph_folders.gil`
+## Variables
+
+| Prefab | Variable | Type | Value |
+| --- | --- | --- | --- |
+| Stage 1094713345:"**Stage Entity**" | '**Environment**' | *Int* | 0 |
+| Stage 1094713345:"**Stage Entity**" | '**Phase**' | *Str* | '' |
+| Stage 1094713345:"**Stage Entity**" | '**Hunt\_Weights**' | *Flt* | 0 |
+| Stage 1094713345:"**Stage Entity**" | '**G\_TotalPlayers**' | *Int* | 0 |
+| Stage 1094713345:"**Stage Entity**" | '**Is\_SinglePlayer**' | *Bol* | No |
+| Stage 1094713345:"**Stage Entity**" | '**G\_ReadyPlayers**' | *Dict\<Int,Ety\>* | {} |
+| Stage 1094713345:"**Stage Entity**" | '**Initial\_Text**' | *Str* | '' |
+| Stage 1094713345:"**Stage Entity**" | '**Initial\_Lines**' | *L\<Str\>* | \['`<color=#ACFF44>Waiting for players...</color>`', '`<color=#FFCC33>Choose your role!</color>`', '', '`<color=#FF5E41>You will be Hunter!</color>`', '`<color=#37FFFF>Two-player High Score Battle</color>`', '`??`'\] |
+| Stage 1094713345:"**Stage Entity**" | '**Total\_Weight**' | *Flt* | 0 |
+| Stage 1094713345:"**Stage Entity**" | '**G\_NooneHunter**' | *Bol* | No |
+| Stage 1094713345:"**Stage Entity**" | '**Titles\_Timer**' | *L\<Str\>* | \['`initial`', '`rebels`', '`hunter`', ''\] |
+| Stage 1094713345:"**Stage Entity**" | '**Titles\_Prepare**' | *L\<Str\>* | \['`<color=#FFCC33>Hunting starts in:</color>`', '`<color=#FFCC33>Hunter released in:</color>`', '', ''\] |
+| Stage 1094713345:"**Stage Entity**" | '**Titles\_Hunt**' | *L\<Str\>* | \['', '`<color=#ACFF44>Time to repair:</color>`', '`<color=#ACFF44>Time till victory:</color>`', ''\] |
+| Stage 1094713345:"**Stage Entity**" | '**Titles\_Single**' | *L\<Str\>* | \['', '`<color=#ACFF44>Test run mode</color>`', '`<color=#ACFF44>Test run mode</color>`', ''\] |
+| Stage 1094713345:"**Stage Entity**" | '**Text\_Who\_Rebels**' | *Str* | '`<color=#37FFFF>YOU ARE A REBEL</color>; the hunter is:\\n`' |
+| Stage 1094713345:"**Stage Entity**" | '**Text\_Who\_Hunter**' | *Str* | '`YOU ARE THE HUNTER`' |
+| Stage 1094713345:"**Stage Entity**" | '**G\_DevicesRepaired**' | *Int* | 0 |
+| Stage 1094713345:"**Stage Entity**" | '**G\_NeedRepair**' | *Int* | 0 |
+| Stage 1094713345:"**Stage Entity**" | '**Game\_Winner**' | *Str* | '' |
+| Stage 1094713345:"**Stage Entity**" | '**G\_OneRebel**' | *Bol* | No |
+| Stage 1094713345:"**Stage Entity**" | '**G\_HuntStarted**' | *Bol* | No |
+| Stage 1094713345:"**Stage Entity**" | '**OPT\_Hunters**' | *Int* | 1 |
+| Stage 1094713345:"**Stage Entity**" | '**OPT\_Devices**' | *Int* | -2 |
+| Stage 1094713345:"**Stage Entity**" | '**OPT\_Repair**' | *Int* | 1 |
+| Stage 1094713345:"**Stage Entity**" | '**OPT\_Time**' | *Flt* | 300 |
+| Stage 1094713345:"**Stage Entity**" | '**OPT\_Fixing**' | *Int* | 30 |
+| Stage 1094713345:"**Stage Entity**" | '**G\_Prison\_Time**' | *Int* | 10 |
+| Stage 1094713345:"**Stage Entity**" | '**G\_Devices\_Used**' | *Dict\<Ety,Bol\>* | {} |
+| Stage 1094713345:"**Stage Entity**" | '**G\_Devices\_Max**' | *Int* | 999 |
+| Stage 1094713345:"**Stage Entity**" | '**Nicknames**' | *Dict\<Int,Str\>* | {} |
+| Stage 1094713345:"**Stage Entity**" | '**Roles**' | *Dict\<Int,Str\>* | {} |
+| Stage 1094713345:"**Stage Entity**" | '**G\_CurrentScore**' | *Int* | 0 |
+| Stage 1094713345:"**Stage Entity**" | '**V\_PlayerConnection**' | *Dict\<Int,Ety\>* | {} |
+| Stage 1094713345:"**Stage Entity**" | '**OPT\_Stamina**' | *Int* | 300 |
+| Stage 1094713345:"**Stage Entity**" | '**Are\_Two\_Players**' | *Bol* | No |
+| Stage 1094713345:"**Stage Entity**" | '**G\_Trace\_CD**' | *Flt* | 0 |
+| Stage 1094713345:"**Stage Entity**" | '**G\_Tour\_Round**' | *Int* | 1 |
+| Stage 1094713345:"**Stage Entity**" | '**G\_BestScore**' | *Int* | 0 |
+| Stage 1094713345:"**Stage Entity**" | '**Titles\_Tour**' | *L\<Str\>* | \['', '`<color=#ACFF44>Round: </color>`', '`<color=#ACFF44>Round: </color>`', ''\] |
+| Stage 1094713345:"**Stage Entity**" | '**Tour\_Nicknames**' | *L\<Str\>* | \['', ''\] |
+| Stage 1094713345:"**Stage Entity**" | '**Tour\_Restart**' | *Bol* | No |
+| Stage 1094713345:"**Stage Entity**" | '**C\_Tasker\_Task**' | *Str* | '' |
+| Stage 1094713345:"**Stage Entity**" | '**G\_Have\_Players**' | *Bol* | No |
+| Stage 1094713345:"**Stage Entity**" | '**C\_ReadyPlayers**' | *Ety* | id:0 |
+| Stage 1094713345:"**Stage Entity**" | '**Current\_Map**' | *Str* | '`NONE`' |
+| Stage 1094713345:"**Stage Entity**" | '**C\_Do\_Restart**' | *Str* | '' |
+| Stage 1094713345:"**Stage Entity**" | '**Titles\_Bad**' | *L\<Str\>* | \['`??`', '`??`', '`??`', '`??`'\] |
+| Stage 1094713345:"**Stage Entity**" | '**Titles\_Empty**' | *L\<Str\>* | \['', '', '', ''\] |
+| Stage 1094713345:"**Stage Entity**" | '**Insiders**' | *L\<Ety\>* | \[\] |
+| Stage 1094713345:"**Stage Entity**" | '**U\_Game\_Mode**' | *L\<Int\>* | \[101027, 0, 0, 0\] |
+| Stage 1094713345:"**Stage Entity**" | '**Debug\_Entities**' | *Int* | 0 |
+| Stage 1094713345:"**Stage Entity**" | '**UI\_Prefab**' | *Dict\<Str,Pfb\>* | {'`Beacon`': id:10005076, '`Invis`': id:10005077, '`Area`': id:20001849, '`Bow`': id:20002302, '`Device`': id:10005029} |
+
+# File `graph_folders.gil`
 
 ## Graphs (30)
 
@@ -213,7 +270,7 @@
 | "**Voice Chat Button**" | UI\_CONTROL | '`1073741838`' |   |   |
 | "**Voice Chat Hint Queue**" | UI\_CONTROL | '`1073741839`' |   |   |
 
-# File `test/cases/mounts/test_folders.gia`
+# File `test_folders.gia`
 
 ## Declarations (1)
 
@@ -253,40 +310,40 @@
 
 ## Resources (30)
 
-| Name | Class | Guid | Parent |
-| --- | --- | --- | --- |
-| "**Default Template**" | PLAYER\_TEMPLATE | '`1086324737`' |   |
-| "**Default Template(Edit Character)**" | CHARACTER\_TEMPLATE | '`1090519041`' |   |
-| "**Custom Class**" | CLASS | '`1090519041`' |   |
-| "**Custom Camera**" | CAMERA | '`1073741825`' |   |
-| "**Wireframe Cuboid**" | OBJECT\_ENTITY | '`1077936129`' | (10009010) |
-| "**Wireframe Cuboid**" | OBJECT\_ENTITY | '`1077936130`' | (10009010) |
-| "**Wireframe Cuboid**" | OBJECT\_ENTITY | '`1077936131`' | (10009010) |
-| "**Wireframe Cube**" | OBJECT\_ENTITY | '`1077936132`' | (10009010) |
-| "**Pavilion 20001488**" | STATIC\_ENTITY | '`1077936133`' | (20001488) |
-| "**Terrain01**" | TERRAIN\_ENTITY | '`1073741825`' |   |
-| "**Default Layout**" | INTERFACE\_LAYOUT | '`1073741825`' |   |
-| "**Environment Configuration**" | ENVIRONMENT\_CONFIGURATION | '`1186988033`' |   |
-| "**Create Preset Point**" | PRESET\_POINT | '`1073741825`' |   |
-| "**Manage Peripheral System**" | class#66 | '`1073741825`' |   |
-| "**Manage Background Music**" | class#67 | '`1073741825`' |   |
-| "**Stage Settings**" | class#68 | '`1073741825`' |   |
-| "**Mini-Map**" | UI\_CONTROL | '`1073741826`' |   |
-| "**Skill Area**" | UI\_CONTROL | '`1073741827`' |   |
-| "**Team Information**" | UI\_CONTROL | '`1073741828`' |   |
-| "**Character HP Bar**" | UI\_CONTROL | '`1073741829`' |   |
-| "**Joystick**" | UI\_CONTROL | '`1073741830`' |   |
-| "**Creation HP Bar**" | UI\_CONTROL | '`1073741831`' |   |
-| "**Exit Button**" | UI\_CONTROL | '`1073741832`' |   |
-| "**Voice-Over**" | UI\_CONTROL | '`1073741833`' |   |
-| "**Tab**" | UI\_CONTROL | '`1073741834`' |   |
-| "**Chat Button**" | UI\_CONTROL | '`1073741835`' |   |
-| "**Network Status**" | UI\_CONTROL | '`1073741836`' |   |
-| "**Struggle Button**" | UI\_CONTROL | '`1073741837`' |   |
-| "**Voice Chat Button**" | UI\_CONTROL | '`1073741838`' |   |
-| "**Voice Chat Hint Queue**" | UI\_CONTROL | '`1073741839`' |   |
+| Name | Class | Guid | Parent | Mounted graphs |
+| --- | --- | --- | --- | --- |
+| "**Default Template**" | PLAYER\_TEMPLATE | '`1086324737`' |   |   |
+| "**Default Template(Edit Character)**" | CHARACTER\_TEMPLATE | '`1090519041`' |   |   |
+| "**Custom Class**" | CLASS | '`1090519041`' |   |   |
+| "**Custom Camera**" | CAMERA | '`1073741825`' |   |   |
+| "**Wireframe Cuboid**" | OBJECT\_ENTITY | '`1077936129`' | (10009010) | entity: '*Saved to folder (My)*' |
+| "**Wireframe Cuboid**" | OBJECT\_ENTITY | '`1077936130`' | (10009010) | entity: '*Saved to folder (My)*' |
+| "**Wireframe Cuboid**" | OBJECT\_ENTITY | '`1077936131`' | (10009010) | entity: '*Saved to folder (My)*' |
+| "**Wireframe Cube**" | OBJECT\_ENTITY | '`1077936132`' | (10009010) | entity: '*Saved to folder (My)*' |
+| "**Pavilion 20001488**" | STATIC\_ENTITY | '`1077936133`' | (20001488) |   |
+| "**Terrain01**" | TERRAIN\_ENTITY | '`1073741825`' |   |   |
+| "**Default Layout**" | INTERFACE\_LAYOUT | '`1073741825`' |   |   |
+| "**Environment Configuration**" | ENVIRONMENT\_CONFIGURATION | '`1186988033`' |   |   |
+| "**Create Preset Point**" | PRESET\_POINT | '`1073741825`' |   |   |
+| "**Manage Peripheral System**" | class#66 | '`1073741825`' |   |   |
+| "**Manage Background Music**" | class#67 | '`1073741825`' |   |   |
+| "**Stage Settings**" | class#68 | '`1073741825`' |   |   |
+| "**Mini-Map**" | UI\_CONTROL | '`1073741826`' |   |   |
+| "**Skill Area**" | UI\_CONTROL | '`1073741827`' |   |   |
+| "**Team Information**" | UI\_CONTROL | '`1073741828`' |   |   |
+| "**Character HP Bar**" | UI\_CONTROL | '`1073741829`' |   |   |
+| "**Joystick**" | UI\_CONTROL | '`1073741830`' |   |   |
+| "**Creation HP Bar**" | UI\_CONTROL | '`1073741831`' |   |   |
+| "**Exit Button**" | UI\_CONTROL | '`1073741832`' |   |   |
+| "**Voice-Over**" | UI\_CONTROL | '`1073741833`' |   |   |
+| "**Tab**" | UI\_CONTROL | '`1073741834`' |   |   |
+| "**Chat Button**" | UI\_CONTROL | '`1073741835`' |   |   |
+| "**Network Status**" | UI\_CONTROL | '`1073741836`' |   |   |
+| "**Struggle Button**" | UI\_CONTROL | '`1073741837`' |   |   |
+| "**Voice Chat Button**" | UI\_CONTROL | '`1073741838`' |   |   |
+| "**Voice Chat Hint Queue**" | UI\_CONTROL | '`1073741839`' |   |   |
 
-# File `test/cases/mounts/test_folders.gil`
+# File `test_folders.gil`
 
 ## Declarations (1)
 
@@ -375,7 +432,7 @@
 | "**Voice Chat Button**" | UI\_CONTROL | '`1073741838`' |   |   |
 | "**Voice Chat Hint Queue**" | UI\_CONTROL | '`1073741839`' |   |   |
 
-# File `test/cases/mounts/test_mount.gil`
+# File `test_mount.gil`
 
 ## Graphs (9)
 

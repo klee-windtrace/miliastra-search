@@ -1,0 +1,18 @@
+# findings
+INFO  declared-but-unused: graph variable "String" in graph 'New Node Graph' is declared but no node references it by literal name
+INFO  declared-but-unused: graph variable "Integer" in graph 'New Node Graph' is declared but no node references it by literal name
+INFO  declared-but-unused: graph variable "Faction" in graph 'New Node Graph' is declared but no node references it by literal name
+INFO  declared-but-unused: graph variable "Float" in graph 'New Node Graph' is declared but no node references it by literal name
+INFO  declared-but-unused: graph variable "Entity" in graph 'New Node Graph' is declared but no node references it by literal name
+INFO  declared-but-unused: graph variable "Private" in graph 'New Node Graph' is declared but no node references it by literal name
+INFO  declared-but-unused: graph variable "Faction" in graph 'Test5' is declared but no node references it by literal name
+INFO  declared-but-unused: graph variable "Status" in graph '<status>Status' is declared but no node references it by literal name
+
+# limits
+prefabs (OBJECT): 3/1000
+dynamic entities (OBJECT_ENTITY): 5/3000
+
+top graphs by node count:
+'New Node Graph': 0/3000 nodes
+'Test5': 0/3000 nodes
+'<status>Status': 0/3000 nodes

@@ -1,0 +1,1 @@
+struct           "Struct"                           defined guid=1077936129 fields=Add variable 1|Add variable 2|Add variable 3|Add variable 4

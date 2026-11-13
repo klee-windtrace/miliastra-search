@@ -9,8 +9,9 @@ import path from 'node:path';
 import { casesDir, overviewLines } from './helpers.mjs';
 import { parseBundle } from '../src/model.mjs';
 import { NodeDb } from '../src/nodedb.mjs';
-import { buildRefs, refLineSpans } from '../src/refs.mjs';
-import { plain } from '../src/doc.mjs';
+import { buildRefs, referenceJson } from '../src/refs.mjs';
+import { referenceLine } from '../src/present/refs.mjs';
+import { plain } from '../src/present/doc.mjs';
 
 const db = new NodeDb();
 const bundle = () => parseBundle(fs.readFileSync(path.join(casesDir, 'composites', 'var_change.gia')), { file: 'var_change.gia' });
@@ -27,7 +28,7 @@ test('the detail view shows the same role as the overview', () => {
   const { refs } = buildRefs([bundle()], db);
   const sets = refs.filter((r) => r.kind === 'custom_variable' && r.key === 'Var1' && r.role === 'set');
   assert.ok(sets.length >= 1);
-  for (const r of sets) assert.match(plain(refLineSpans(r)), / literal trigger @ /);
+  for (const r of sets) assert.match(plain(referenceLine(referenceJson(r))), / literal trigger @ /);
 });
 
 test('an explicit false (a stored pin) makes it a plain set again', () => {

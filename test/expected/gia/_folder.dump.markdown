@@ -1,4 +1,4 @@
-﻿# File `test/cases/gia/sample_0_main.gia`
+﻿# File `sample_0_main.gia`
 
 ## Graphs (2)
 
@@ -7,7 +7,13 @@
 | '*Graph*' | ENTITY\_NODE\_GRAPH | '`1073742366`' | **7** |
 | '<u>\<status\></u>*Empty*' | STATUS\_NODE\_GRAPH | '`1073742384`' | **0** |
 
-# File `test/cases/gia/sample_1.gia`
+## Variables
+
+| Graph | Variable | Type | Value |
+| --- | --- | --- | --- |
+| '*Graph*' | '**Graph\_Var**' | *Ety* | id:0 |
+
+# File `sample_1.gia`
 
 ## Graphs (3)
 
@@ -17,7 +23,7 @@
 | '<u>\<composite\></u>*Create Composite Node*' | ENTITY\_NODE\_GRAPH | '`1610612737`' | **1** | dependency |
 | '<u>\<composite\></u>*Create Composite Node(1)*' | ENTITY\_NODE\_GRAPH | '`1610612738`' | **7** | dependency |
 
-# File `test/cases/gia/sample_2.gia`
+# File `sample_2.gia`
 
 ## Declarations (2)
 
@@ -34,7 +40,7 @@
 | '*Receive*' | ENTITY\_NODE\_GRAPH | '`1073741826`' | **3** |
 | '*Send*' | ENTITY\_NODE\_GRAPH | '`1073741827`' | **3** |
 
-# File `test/cases/gia/sample_3.gia`
+# File `sample_3.gia`
 
 ## Graphs (1)
 
@@ -42,7 +48,7 @@
 | --- | --- | --- | ---: |
 | '*Structs*' | ENTITY\_NODE\_GRAPH | '`1073741829`' | **7** |
 
-# File `test/cases/gia/sample_4.gia`
+# File `sample_4.gia`
 
 ## Graphs (1)
 
@@ -50,7 +56,7 @@
 | --- | --- | --- | ---: |
 | '*Lists*' | ENTITY\_NODE\_GRAPH | '`1073741830`' | **14** |
 
-# File `test/cases/gia/sample_5.gia`
+# File `sample_5.gia`
 
 ## Graphs (1)
 
@@ -58,7 +64,13 @@
 | --- | --- | --- | ---: |
 | '*Variables*' | ENTITY\_NODE\_GRAPH | '`1073741831`' | **10** |
 
-# File `test/cases/gia/sample_6.gia`
+## Variables
+
+| Graph | Variable | Type | Value |
+| --- | --- | --- | --- |
+| '*Variables*' | '**Variable\_1**' | *Bol* | No |
+
+# File `sample_6.gia`
 
 ## Graphs (2)
 
@@ -67,7 +79,7 @@
 | '*New Node Graph*' | ENTITY\_NODE\_GRAPH | '`1073741827`' | **2** |
 | '*New Node Graph\_1*' | ITEM\_NODE\_GRAPH | '`1073741828`' | **2** |
 
-# File `test/cases/gia/sample_7.gia`
+# File `sample_7.gia`
 
 ## Graphs (7)
 
@@ -81,7 +93,7 @@
 | '<u>\<filter\></u>*New Filter Node Graph*' | BOOLEAN\_FILTER\_GRAPH | '`1082130438`' | **3** |
 | '<u>\<filter\></u>*New Filter Node Graph\_1*' | INTEGER\_FILTER\_GRAPH | '`1082130439`' | **3** |
 
-# File `test/cases/gia/sample_8.gia`
+# File `sample_8.gia`
 
 ## Graphs (1)
 
@@ -89,7 +101,13 @@
 | --- | --- | --- | ---: |
 | '*Graph*' | ENTITY\_NODE\_GRAPH | '`1073741832`' | **7** |
 
-# File `test/cases/gia/sample_9.gia`
+## Variables
+
+| Graph | Variable | Type | Value |
+| --- | --- | --- | --- |
+| '*Graph*' | '**Graph\_Var**' | *Ety* | id:0 |
+
+# File `sample_9.gia`
 
 ## Declarations (1)
 
@@ -146,8 +164,8 @@
 | "**Stone Functional Platform**" | OBJECT\_ENTITY | '`1077936129`' | (1077936129:"**Stone Functional Platform**") |
 | "**Challenge Coin Loot**" | OBJECT\_ENTITY | '`1077936136`' | (10007002) |
 | "**Prefab Group**" | OBJECT\_ENTITY | '`1077936132`' | (1077936130:"**Prefab Group**") |
-| "**Pyro Slime**" | CREATION\_ENTITY | '`1082130433`' |   |
-| "**Hydro Slime**" | CREATION\_ENTITY | '`1082130434`' |   |
+| "**Pyro Slime**" | CREATION\_ENTITY | '`1082130433`' | (30002007) |
+| "**Hydro Slime**" | CREATION\_ENTITY | '`1082130434`' | (30007006) |
 | "**Fabric-Roof Hut**" | STATIC\_ENTITY | '`1077936135`' | (20001485) |
 | "**Terrain01**" | TERRAIN\_ENTITY | '`1073741825`' |   |
 | "**Default Layout**" | INTERFACE\_LAYOUT | '`1073741825`' |   |

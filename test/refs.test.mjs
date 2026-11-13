@@ -219,7 +219,7 @@ test('limits: composite slot count and signal name count vs Miliastra maximums; 
   assert.equal(l1.composites.used, 2); assert.equal(l1.composites.max, 1000);
   const b2 = bundle('sample_2.gia');
   const { limits: l2 } = buildRefs([b2], db);
-  assert.equal(l2.signals.used, 2); assert.equal(l2.signals.max, 100);
+  assert.equal(l2.signals.used, 2); assert.equal(l2.signals.max, 99);
   assert.ok(l2.graphSizes.every((g) => g.nodes < 100));
   const b3 = bundle('sample_8.gia');
   const g3 = b3.resources.find((r) => r.kind === 'graph').graph;
@@ -288,7 +288,7 @@ test('cli: warns limits section omits lines whose used count is 0', () => {
   const r = cli('warns', sample('sample_1.gia'));
   assert.equal(r.status, 0);
   const section = r.stdout.slice(r.stdout.indexOf('# limits'));
-  assert.doesNotMatch(section, /: 0\//); // e.g. no "SKILL: 0/100" or "signals: 0/100"
+  assert.doesNotMatch(section, /: 0\//); // e.g. no "SKILL: 0/100" or "signals: 0/99"
   assert.match(section, /composites: \d+\/1000 declared/); // sample_1 does declare composites, kept
 });
 test('cli: code omits the resource list but keeps graphs and their nodes', () => {

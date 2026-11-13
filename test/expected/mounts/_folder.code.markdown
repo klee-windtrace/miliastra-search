@@ -1,4 +1,4 @@
-﻿# File `test/cases/mounts/composite_folders.gil`
+﻿# File `composite_folders.gil`
 
 ## Graph '<u>\<composite\></u>*01*'
 
@@ -180,7 +180,7 @@
 - **guid**: '`1610612826`'
 - **declaration guid**: '`1610612982`'
 
-# File `test/cases/mounts/graph_folders.gil`
+# File `graph_folders.gil`
 
 ## Graph '*A - 01*'
 
@@ -373,6 +373,11 @@
 
 \[1\] **Node Graph End (Boolean)** (200000) @(0,0)
 
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Output Result (Boolean)" | = | No | *Bol* | default |
+| `in#1` | "Filter Return Type" | = | enum:1000010«Return Boolean» | *Enum* | default |
+
 ## Graph '<u>\<filter\></u>*New Filter Node Graph Int*'
 
 - **type**: INTEGER\_FILTER\_GRAPH
@@ -382,7 +387,12 @@
 
 \[1\] **Node Graph End (Integer)** (200122) @(0,0)
 
-# File `test/cases/mounts/test_folders.gia`
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Output Result (Integer)" | = | 0 | *Int* | default |
+| `in#1` | "Filter Return Type" | = | enum:10000011«Return Integer» | *Enum* | default |
+
+# File `test_folders.gia`
 
 ## Decl "**Signal\_Name**"
 
@@ -556,6 +566,11 @@
 
 \[1\] **Node Graph End (Boolean)** (200000) @(0,0)
 
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Output Result (Boolean)" | = | No | *Bol* | default |
+| `in#1` | "Filter Return Type" | = | enum:1000010«Return Boolean» | *Enum* | default |
+
 ## Graph '<u>\<filter\></u>*Boolean filter, default*'
 
 - **type**: BOOLEAN\_FILTER\_GRAPH
@@ -564,6 +579,11 @@
 ### Nodes
 
 \[1\] **Node Graph End (Boolean)** (200000) @(0,0)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Output Result (Boolean)" | = | No | *Bol* | default |
+| `in#1` | "Filter Return Type" | = | enum:1000010«Return Boolean» | *Enum* | default |
 
 ## Graph '<u>\<filter\></u>*Integer filter, custom*'
 
@@ -574,6 +594,11 @@
 
 \[1\] **Node Graph End (Integer)** (200122) @(0,0)
 
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Output Result (Integer)" | = | 0 | *Int* | default |
+| `in#1` | "Filter Return Type" | = | enum:10000011«Return Integer» | *Enum* | default |
+
 ## Graph '<u>\<filter\></u>*Integer filter, default*'
 
 - **type**: INTEGER\_FILTER\_GRAPH
@@ -583,7 +608,12 @@
 
 \[1\] **Node Graph End (Integer)** (200122) @(0,0)
 
-# File `test/cases/mounts/test_folders.gil`
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Output Result (Integer)" | = | 0 | *Int* | default |
+| `in#1` | "Filter Return Type" | = | enum:10000011«Return Integer» | *Enum* | default |
+
+# File `test_folders.gil`
 
 ## Decl "**Signal\_Name**"
 
@@ -755,6 +785,11 @@
 
 \[1\] **Node Graph End (Boolean)** (200000) @(0,0)
 
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Output Result (Boolean)" | = | No | *Bol* | default |
+| `in#1` | "Filter Return Type" | = | enum:1000010«Return Boolean» | *Enum* | default |
+
 ## Graph '<u>\<filter\></u>*Boolean filter, custom*'
 
 - **type**: BOOLEAN\_FILTER\_GRAPH
@@ -763,6 +798,11 @@
 ### Nodes
 
 \[1\] **Node Graph End (Boolean)** (200000) @(0,0)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Output Result (Boolean)" | = | No | *Bol* | default |
+| `in#1` | "Filter Return Type" | = | enum:1000010«Return Boolean» | *Enum* | default |
 
 ## Graph '<u>\<filter\></u>*Integer filter, default*'
 
@@ -773,6 +813,11 @@
 
 \[1\] **Node Graph End (Integer)** (200122) @(0,0)
 
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Output Result (Integer)" | = | 0 | *Int* | default |
+| `in#1` | "Filter Return Type" | = | enum:10000011«Return Integer» | *Enum* | default |
+
 ## Graph '<u>\<filter\></u>*Integer filter, custom*'
 
 - **type**: INTEGER\_FILTER\_GRAPH
@@ -782,7 +827,12 @@
 
 \[1\] **Node Graph End (Integer)** (200122) @(0,0)
 
-# File `test/cases/mounts/test_mount.gil`
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Output Result (Integer)" | = | 0 | *Int* | default |
+| `in#1` | "Filter Return Type" | = | enum:10000011«Return Integer» | *Enum* | default |
+
+# File `test_mount.gil`
 
 ## Graph '*Mounted\_Character*'
 

@@ -1,4 +1,4 @@
-# FILE test/cases/gia/sample_2.gia
+# FILE sample_2.gia
 format                 gia
 detected_by            header
 file_size              4722
@@ -6,7 +6,7 @@ container_file_type    gia
 engine_version         7.0.0
 mode                   beyond
 export_name            sample_2.gia
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              9
 primary                5
 dependencies           4

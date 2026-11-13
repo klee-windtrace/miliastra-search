@@ -1,0 +1,211 @@
+# INFO
+# FILE test_folders.gia
+format                 gia
+detected_by            header
+file_size              21619
+container_file_type    gia
+engine_version         7.1.0
+mode                   beyond
+export_name            test_folders.gia
+node_db_version        7.2.0
+export_tag             909814789-1790864953-1073741846-\test_folders.gia
+uid                    909814789
+time                   1790864953
+file_id                1073741846
+resources              61
+primary                41
+dependencies           20
+graphs                 25
+nodes                  14
+composite_bodies       2
+declarations           6
+structs                0
+mounts                 4
+unresolved_node_types  0
+CLASS OBJECT_ENTITY class=3 count=4
+CLASS STATIC_ENTITY class=3 count=1
+CLASS TERRAIN_ENTITY class=5 count=1
+CLASS PRESET_POINT class=6 count=1
+CLASS ENTITY_NODE_GRAPH class=9 count=5
+CLASS BOOLEAN_FILTER_GRAPH class=10 count=2
+CLASS SKILL_NODE_GRAPH class=11 count=2
+CLASS COMPOSITE_NODE_DECL class=12 count=4
+CLASS CAMERA class=13 count=1
+CLASS SIGNAL_NODE_DECL class=14 count=2
+CLASS UI_CONTROL class=15 count=14
+CLASS CLASS class=17 count=1
+CLASS PLAYER_TEMPLATE class=18 count=1
+CLASS CHARACTER_TEMPLATE class=19 count=1
+CLASS INTERFACE_LAYOUT class=20 count=1
+CLASS STATUS_NODE_GRAPH class=22 count=2
+CLASS CLASS_NODE_GRAPH class=23 count=2
+CLASS ITEM_NODE_GRAPH class=46 count=2
+CLASS INTEGER_FILTER_GRAPH class=47 count=2
+CLASS ENVIRONMENT_CONFIGURATION class=49 count=1
+CLASS CREATION_STATUS_DECISION_GRAPH class=51 count=2
+CLASS CREATION_SKILL_GRAPH class=52 count=2
+CLASS CREATION_STATUS_GRAPH class=53 count=2
+CLASS CHARACTER_CONTROL_SKILL_GRAPH class=64 count=2
+CLASS class#66 class=66 count=1
+CLASS class#67 class=67 count=1
+CLASS class#68 class=68 count=1
+
+# DUMP
+DECL "Signal_Name" SIGNAL_NODE_DECL class=14 guid='1610613129' category=SEND_SIGNAL
+GRAPH 'Saved to custom (New Folder)' ENTITY_NODE_GRAPH class=9 guid='1073741827' kind=21001 service=20000 nodes=0
+GRAPH 'Saved to default (Uncategorized Tab)' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=0
+GRAPH 'Saved to folder (My)' ENTITY_NODE_GRAPH class=9 guid='1073741826' kind=21001 service=20000 nodes=0
+GRAPH '<status>Status, saved to custom (New Folder)' STATUS_NODE_GRAPH class=22 guid='1073741830' kind=21001 service=20003 nodes=0
+GRAPH '<status>Status, saved to default (Uncategorized Tab)' STATUS_NODE_GRAPH class=22 guid='1073741829' kind=21001 service=20003 nodes=0
+GRAPH '<class>Class, saved to custom (New Folder)' CLASS_NODE_GRAPH class=23 guid='1073741832' kind=21001 service=20004 nodes=0
+GRAPH '<class>Class, saved to default (Uncategorized Tab)' CLASS_NODE_GRAPH class=23 guid='1073741831' kind=21001 service=20004 nodes=0
+GRAPH 'Item, saved to custom (New Folder)' ITEM_NODE_GRAPH class=46 guid='1073741834' kind=21001 service=20005 nodes=0
+GRAPH 'Item, saved to default (Uncategorized Tab)' ITEM_NODE_GRAPH class=46 guid='1073741833' kind=21001 service=20005 nodes=0
+GRAPH '<composite>Composite in custom' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=0 role=dependency decl='1610612738'
+GRAPH '<composite>Composite in default' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=0 role=dependency decl='1610612737' description='Composite Description'
+GRAPH '<skill>Character skill, custom' SKILL_NODE_GRAPH class=11 guid='1082130434' kind=21001 service=20002 nodes=1 entry_slot=1
+GRAPH '<skill>Character skill, default' SKILL_NODE_GRAPH class=11 guid='1082130433' kind=21001 service=20002 nodes=1 entry_slot=1
+GRAPH '<creation>Creation skill, custom' CREATION_SKILL_GRAPH class=52 guid='1082130436' kind=21001 service=20008 nodes=1 entry_slot=1
+GRAPH '<creation>Creation skill, default' CREATION_SKILL_GRAPH class=52 guid='1082130435' kind=21001 service=20008 nodes=1 entry_slot=1
+GRAPH '<creation>Creation status, custom' CREATION_STATUS_GRAPH class=53 guid='1082130438' kind=21001 service=20009 nodes=1 entry_slot=1
+GRAPH '<creation>Creation status, default' CREATION_STATUS_GRAPH class=53 guid='1082130437' kind=21001 service=20009 nodes=1 entry_slot=1
+GRAPH '<creation>Creation decision, custom' CREATION_STATUS_DECISION_GRAPH class=51 guid='1082130440' kind=21001 service=20007 nodes=1 entry_slot=1
+GRAPH '<creation>Creation decision, default' CREATION_STATUS_DECISION_GRAPH class=51 guid='1082130439' kind=21001 service=20007 nodes=1 entry_slot=1
+GRAPH '<skill>Character control, custom' CHARACTER_CONTROL_SKILL_GRAPH class=64 guid='1082130442' kind=21001 service=20010 nodes=1 entry_slot=1
+GRAPH '<skill>Character control, default' CHARACTER_CONTROL_SKILL_GRAPH class=64 guid='1082130441' kind=21001 service=20010 nodes=1 entry_slot=1
+GRAPH '<filter>Boolean filter, custom' BOOLEAN_FILTER_GRAPH class=10 guid='1082130444' kind=21001 service=20001 nodes=1 entry_slot=1 evaluation_interval=0.3
+GRAPH '<filter>Boolean filter, default' BOOLEAN_FILTER_GRAPH class=10 guid='1082130443' kind=21001 service=20001 nodes=1 entry_slot=1 evaluation_interval=0.3
+GRAPH '<filter>Integer filter, custom' INTEGER_FILTER_GRAPH class=47 guid='1082130446' kind=21001 service=20006 nodes=1 entry_slot=1 evaluation_interval=0.3
+GRAPH '<filter>Integer filter, default' INTEGER_FILTER_GRAPH class=47 guid='1082130445' kind=21001 service=20006 nodes=1 entry_slot=1 evaluation_interval=0.3
+RESOURCE "Default Template" PLAYER_TEMPLATE class=18 guid='1086324737'
+RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519041'
+RESOURCE "Custom Class" CLASS class=17 guid='1090519041'
+RESOURCE "Custom Camera" CAMERA class=13 guid='1073741825'
+RESOURCE "Wireframe Cuboid" OBJECT_ENTITY class=3 guid='1077936129' parent=(10009010)
+MOUNT 'Saved to folder (My)' -> OBJECT_ENTITY "Wireframe Cuboid" entity
+RESOURCE "Wireframe Cuboid" OBJECT_ENTITY class=3 guid='1077936130' parent=(10009010)
+MOUNT 'Saved to folder (My)' -> OBJECT_ENTITY "Wireframe Cuboid" entity
+RESOURCE "Wireframe Cuboid" OBJECT_ENTITY class=3 guid='1077936131' parent=(10009010)
+MOUNT 'Saved to folder (My)' -> OBJECT_ENTITY "Wireframe Cuboid" entity
+RESOURCE "Wireframe Cube" OBJECT_ENTITY class=3 guid='1077936132' parent=(10009010)
+MOUNT 'Saved to folder (My)' -> OBJECT_ENTITY "Wireframe Cube" entity
+RESOURCE "Pavilion 20001488" STATIC_ENTITY class=3 guid='1077936133' parent=(20001488)
+RESOURCE "Terrain01" TERRAIN_ENTITY class=5 guid='1073741825'
+RESOURCE "Default Layout" INTERFACE_LAYOUT class=20 guid='1073741825'
+RESOURCE "Environment Configuration" ENVIRONMENT_CONFIGURATION class=49 guid='1186988033'
+RESOURCE "Create Preset Point" PRESET_POINT class=6 guid='1073741825'
+RESOURCE "Manage Peripheral System" class#66 class=66 guid='1073741825'
+RESOURCE "Manage Background Music" class#67 class=67 guid='1073741825'
+RESOURCE "Stage Settings" class#68 class=68 guid='1073741825'
+RESOURCE "Mini-Map" UI_CONTROL class=15 guid='1073741826'
+RESOURCE "Skill Area" UI_CONTROL class=15 guid='1073741827'
+RESOURCE "Team Information" UI_CONTROL class=15 guid='1073741828'
+RESOURCE "Character HP Bar" UI_CONTROL class=15 guid='1073741829'
+RESOURCE "Joystick" UI_CONTROL class=15 guid='1073741830'
+RESOURCE "Creation HP Bar" UI_CONTROL class=15 guid='1073741831'
+RESOURCE "Exit Button" UI_CONTROL class=15 guid='1073741832'
+RESOURCE "Voice-Over" UI_CONTROL class=15 guid='1073741833'
+RESOURCE "Tab" UI_CONTROL class=15 guid='1073741834'
+RESOURCE "Chat Button" UI_CONTROL class=15 guid='1073741835'
+RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741836'
+RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741837'
+RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741838'
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741839'
+
+# REFS
+composite        "Composite in custom"              0 call: []
+composite        "Composite in default"             0 call: []
+mount            'Saved to folder (My)'             4 entity: OBJECT_ENTITY:"Wireframe Cuboid" (x3); OBJECT_ENTITY:"Wireframe Cube"
+signal           "Signal_Name"                      0 listen: [], 0 send: []
+
+# WARNS
+# findings
+INFO  signal-never-used: signal "Signal_Name" is declared but never sent or listened to in the scanned graphs
+INFO  composite-never-called: composite "Composite in custom" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "Composite in default" is defined but never called in the scanned graphs
+
+# limits
+composites: 2/1000 declared
+signals: 1/99 declared
+dynamic entities (OBJECT_ENTITY): 4/3000
+PRESET_POINT: 1/2000
+ENVIRONMENT_CONFIGURATION: 1/50
+CLASS: 1/100
+TERRAIN_ENTITY: 1/1200
+static entities: 1
+
+top graphs by node count:
+'<skill>Character skill, custom': 1/3000 nodes
+'<skill>Character skill, default': 1/3000 nodes
+'<creation>Creation skill, custom': 1/3000 nodes
+'<creation>Creation skill, default': 1/3000 nodes
+'<creation>Creation status, custom': 1/3000 nodes
+'<creation>Creation status, default': 1/3000 nodes
+'<creation>Creation decision, custom': 1/3000 nodes
+'<creation>Creation decision, default': 1/3000 nodes
+'<skill>Character control, custom': 1/3000 nodes
+'<skill>Character control, default': 1/3000 nodes
+'<filter>Boolean filter, custom': 1/3000 nodes
+'<filter>Boolean filter, default': 1/3000 nodes
+'<filter>Integer filter, custom': 1/3000 nodes
+'<filter>Integer filter, default': 1/3000 nodes
+'Saved to custom (New Folder)': 0/3000 nodes
+'Saved to default (Uncategorized Tab)': 0/3000 nodes
+'Saved to folder (My)': 0/3000 nodes
+'<status>Status, saved to custom (New Folder)': 0/3000 nodes
+'<status>Status, saved to default (Uncategorized Tab)': 0/3000 nodes
+'<class>Class, saved to custom (New Folder)': 0/3000 nodes
+
+# CODE
+DECL "Signal_Name" SIGNAL_NODE_DECL guid='1610613129'
+DECL/Signal_Name SEND_SIGNAL name='Signal_Name' server_node=1610613130 client_node=1610613131
+DECL/Signal_Name in.flow#0 uid=2577
+DECL/Signal_Name out.flow#0 uid=2578
+DECL/Signal_Name meta#0 "Signal Name" uid=2579
+GRAPH 'Saved to custom (New Folder)' ENTITY_NODE_GRAPH (guid 1073741827)
+GRAPH 'Saved to default (Uncategorized Tab)' ENTITY_NODE_GRAPH (guid 1073741825)
+GRAPH 'Saved to folder (My)' ENTITY_NODE_GRAPH (guid 1073741826)
+GRAPH '<status>Status, saved to custom (New Folder)' STATUS_NODE_GRAPH (guid 1073741830)
+GRAPH '<status>Status, saved to default (Uncategorized Tab)' STATUS_NODE_GRAPH (guid 1073741829)
+GRAPH '<class>Class, saved to custom (New Folder)' CLASS_NODE_GRAPH (guid 1073741832)
+GRAPH '<class>Class, saved to default (Uncategorized Tab)' CLASS_NODE_GRAPH (guid 1073741831)
+GRAPH 'Item, saved to custom (New Folder)' ITEM_NODE_GRAPH (guid 1073741834)
+GRAPH 'Item, saved to default (Uncategorized Tab)' ITEM_NODE_GRAPH (guid 1073741833)
+GRAPH '<composite>Composite in custom' ENTITY_NODE_GRAPH (guid 1610612738, decl 1610612738) role=dependency
+GRAPH '<composite>Composite in default' ENTITY_NODE_GRAPH (guid 1610612737, decl 1610612737) role=dependency description='Composite Description'
+GRAPH '<skill>Character skill, custom' SKILL_NODE_GRAPH (guid 1082130434)
+'<skill>Character skill, custom'/[1] Node Graph Starts (200042/2001) @(0,0)
+GRAPH '<skill>Character skill, default' SKILL_NODE_GRAPH (guid 1082130433)
+'<skill>Character skill, default'/[1] Node Graph Starts (200042/2001) @(0,0)
+GRAPH '<creation>Creation skill, custom' CREATION_SKILL_GRAPH (guid 1082130436)
+'<creation>Creation skill, custom'/[1] Node Graph Starts (200042/2001) @(0,0)
+GRAPH '<creation>Creation skill, default' CREATION_SKILL_GRAPH (guid 1082130435)
+'<creation>Creation skill, default'/[1] Node Graph Starts (200042/2001) @(0,0)
+GRAPH '<creation>Creation status, custom' CREATION_STATUS_GRAPH (guid 1082130438)
+'<creation>Creation status, custom'/[1] Execute only by sequence (200126/4000) @(0,0) status_ext=1/1
+GRAPH '<creation>Creation status, default' CREATION_STATUS_GRAPH (guid 1082130437)
+'<creation>Creation status, default'/[1] Execute only by sequence (200126/4000) @(0,0) status_ext=1/1
+GRAPH '<creation>Creation decision, custom' CREATION_STATUS_DECISION_GRAPH (guid 1082130440)
+'<creation>Creation decision, custom'/[1] Execute only by sequence (200126/4000) @(0,0) status_ext=1/1
+GRAPH '<creation>Creation decision, default' CREATION_STATUS_DECISION_GRAPH (guid 1082130439)
+'<creation>Creation decision, default'/[1] Execute only by sequence (200126/4000) @(0,0) status_ext=1/1
+GRAPH '<skill>Character control, custom' CHARACTER_CONTROL_SKILL_GRAPH (guid 1082130442)
+'<skill>Character control, custom'/[1] Node Graph Starts (200042/2001) @(0,0)
+GRAPH '<skill>Character control, default' CHARACTER_CONTROL_SKILL_GRAPH (guid 1082130441)
+'<skill>Character control, default'/[1] Node Graph Starts (200042/2001) @(0,0)
+GRAPH '<filter>Boolean filter, custom' BOOLEAN_FILTER_GRAPH (guid 1082130444)
+'<filter>Boolean filter, custom'/[1] Node Graph End (Boolean) (200000) @(0,0)
+'<filter>Boolean filter, custom'/[1] Node Graph End (Boolean) (200000) in#0 "Output Result (Boolean)" = No : Bol (default)
+'<filter>Boolean filter, custom'/[1] Node Graph End (Boolean) (200000) in#1 "Filter Return Type" = enum:1000010«Return Boolean» : Enum (default)
+GRAPH '<filter>Boolean filter, default' BOOLEAN_FILTER_GRAPH (guid 1082130443)
+'<filter>Boolean filter, default'/[1] Node Graph End (Boolean) (200000) @(0,0)
+'<filter>Boolean filter, default'/[1] Node Graph End (Boolean) (200000) in#0 "Output Result (Boolean)" = No : Bol (default)
+'<filter>Boolean filter, default'/[1] Node Graph End (Boolean) (200000) in#1 "Filter Return Type" = enum:1000010«Return Boolean» : Enum (default)
+GRAPH '<filter>Integer filter, custom' INTEGER_FILTER_GRAPH (guid 1082130446)
+'<filter>Integer filter, custom'/[1] Node Graph End (Integer) (200122) @(0,0)
+'<filter>Integer filter, custom'/[1] Node Graph End (Integer) (200122) in#0 "Output Result (Integer)" = 0 : Int (default)
+'<filter>Integer filter, custom'/[1] Node Graph End (Integer) (200122) in#1 "Filter Return Type" = enum:10000011«Return Integer» : Enum (default)
+GRAPH '<filter>Integer filter, default' INTEGER_FILTER_GRAPH (guid 1082130445)
+'<filter>Integer filter, default'/[1] Node Graph End (Integer) (200122) @(0,0)
+'<filter>Integer filter, default'/[1] Node Graph End (Integer) (200122) in#0 "Output Result (Integer)" = 0 : Int (default)
+'<filter>Integer filter, default'/[1] Node Graph End (Integer) (200122) in#1 "Filter Return Type" = enum:10000011«Return Integer» : Enum (default)

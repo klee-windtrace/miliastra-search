@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>all assembly_pins.gil</title>
+<style>
+:root{color-scheme:dark;--bg:#0C0C0C;--panel:#161616;--line:#2e2e2e;--fg:#CCCCCC;--muted:#767676;--accent:#61D6D6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1500px;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+h1,h2,h3,h4{line-height:1.25;color:#F2F2F2}
+h1{font-size:1.7rem;margin:.2rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.4rem;word-break:break-all}
+h2{font-size:1.25rem;margin:1.6rem 0 .6rem}
+h3{font-size:1.05rem;margin:1.2rem 0 .5rem}
+hr{border:0;border-top:1px solid var(--line);margin:1.8rem 0}
+code,pre,table,.lines{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:.88em}
+.guid{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em}
+code{background:#1c1c1c;border-radius:3px;padding:.05em .3em}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:.8rem 1rem;overflow:auto}
+.tablewrap{margin:.5rem 0 1rem}
+table{border-collapse:collapse;min-width:50%}
+th,td{border:1px solid var(--line);padding:.3rem .6rem;text-align:left;vertical-align:top}
+th{background:var(--panel);color:#F2F2F2;white-space:nowrap;position:sticky;top:-2px}
+tbody tr:nth-child(even){background:#111}
+tbody tr:hover{background:#1c1c1c}
+td.right,th.right{text-align:right}td.center,th.center{text-align:center}
+.lines>div{white-space:pre-wrap;word-break:break-word}
+.facts{display:grid;grid-template-columns:max-content 1fr;gap:.15rem 1rem;margin:.4rem 0 1rem}.facts dt{color:var(--muted)}.facts dd{margin:0}
+.note{border-left:3px solid var(--accent);background:var(--panel);padding:.5rem .9rem;margin:.6rem 0}.note.warn{border-color:#E74856}
+.toc{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:.6rem 1rem;margin:0 0 1.2rem;columns:3 20rem}
+.toc a{color:var(--accent);text-decoration:none;display:block;padding:.05rem 0;break-inside:avoid}.toc a:hover{text-decoration:underline}
+ul{padding-left:1.4rem}
+.q{color:var(--muted)}.muted{color:var(--muted)}
+pre a{text-decoration:none}pre a:hover{text-decoration:underline}[id]:target{background:#4a4a10;border-radius:2px}
+pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pre-wrap;word-break:break-word}
+.title{font-weight:700;color:#F2F2F2}
+.section{color:#61D6D6}
+.heading{font-weight:700;color:#3A96DD}
+.fileName{color:#3A96DD}
+.metaKey{color:#767676}
+.className{color:#0037DA}
+.warn{color:#E74856}
+.info{color:#3B78FF}
+.findingType{color:#767676}
+.limitOk{color:#16C60C}
+.limitNear{color:#F9F1A5}
+.limitOver{color:#E74856}
+.graphName{color:#C19C00}
+.graphTag{color:#F9F1A5}
+.key{color:#16C60C}
+.more{color:#B4009E}
+.folderName{color:#C50F1F}
+.declName{color:#16C60C}
+.variableName{color:#C19C00}
+.varName{color:#16C60C}
+.pinName{color:#13A10E}
+.pinLabel{color:#3A96DD}
+.guid{color:#C19C00}
+.signalName{color:#C19C00}
+.structName{color:#16C60C}
+.keyword{color:#B4009E}
+.nodeIndex{color:#767676}
+.nodeName{font-weight:700}
+.nodeId{color:#767676}
+.coord{color:#767676}
+.arrow{color:#B4009E}
+.typeName{color:#B4009E}
+.flag{color:#767676}
+.string{color:#C19C00}
+.number{color:#61D6D6}
+.bool{color:#3A96DD}
+.enumValue{color:#61D6D6}
+.idValue{color:#13A10E}
+.vector{color:#3A96DD}
+.jsKeyword{color:#B4009E}
+.jsSwitch{color:#3B78FF}
+.jsError{color:#C50F1F}
+.jsCall{color:#F9F1A5}
+.jsKey{color:#13A10E}
+.jsVar{color:#E74856}
+.jsOut{color:#3A96DD}
+.jsString{color:#C19C00}
+.jsComment{color:#767676}
+.kind{color:#881798}
+.role{color:#3B78FF}
+.count{color:#F2F2F2}
+.mode{color:#767676}
+</style>
+</head>
+<body>
+<main>
+<h1>Info</h1>
+<nav class="toc"><a href="#file-assembly-pins-gil">File <span class="fileName">assembly_pins.gil</span></a><a href="#file">File</a><a href="#contents">Contents</a><a href="#file-assembly-pins-gil-2">File <span class="fileName">assembly_pins.gil</span></a><a href="#graphs-5">Graphs (5)</a><a href="#resources-41">Resources (41)</a><a href="#reference-index">Reference index</a><a href="#references">References</a><a href="#warnings-and-limits">Warnings and limits</a><a href="#findings">Findings</a><a href="#limits">Limits</a><a href="#top-graphs-by-node-count">Top graphs by node count</a></nav>
+<h2 id="file-assembly-pins-gil">File <span class="fileName">assembly_pins.gil</span></h2>
+<h2 id="file">File</h2>
+<div class="tablewrap"><table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td><span class="metaKey">format</span></td><td><span class="metaValue">gil</span></td></tr><tr><td><span class="metaKey">detected_by</span></td><td><span class="metaValue">header</span></td></tr><tr><td><span class="metaKey">file_size</span></td><td><span class="metaValue">68307</span></td></tr><tr><td><span class="metaKey">container_file_type</span></td><td><span class="metaValue">gil</span></td></tr><tr><td><span class="metaKey">engine_version</span></td><td><span class="metaValue">7.1.0</span></td></tr><tr><td><span class="metaKey">mode</span></td><td><span class="metaValue">beyond</span></td></tr><tr><td><span class="metaKey">level_name</span></td><td><span class="metaValue">empty_pins</span></td></tr><tr><td><span class="metaKey">node_db_version</span></td><td><span class="metaValue">7.2.0</span></td></tr></tbody></table></div>
+<h2 id="contents">Contents</h2>
+<div class="tablewrap"><table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td><span class="metaKey">resources</span></td><td><span class="metaValue">46</span></td></tr><tr><td><span class="metaKey">graphs</span></td><td><span class="metaValue">5</span></td></tr><tr><td><span class="metaKey">nodes</span></td><td><span class="metaValue">63</span></td></tr><tr><td><span class="metaKey">composite_bodies</span></td><td><span class="metaValue">0</span></td></tr><tr><td><span class="metaKey">declarations</span></td><td><span class="metaValue">0</span></td></tr><tr><td><span class="metaKey">structs</span></td><td><span class="metaValue">0</span></td></tr><tr><td><span class="metaKey">mounts</span></td><td><span class="metaValue">0</span></td></tr><tr><td><span class="metaKey">unresolved_node_types</span></td><td><span class="metaValue">0</span></td></tr></tbody></table></div>
+<h3>Resources by class</h3>
+<div class="tablewrap"><table><thead><tr><th>Class</th><th class="right">Class id</th><th class="right">Count</th></tr></thead><tbody><tr><td><span class="className">TERRAIN_ENTITY</span></td><td class="right">5</td><td class="right"><span class="count">1</span></td></tr><tr><td><span class="className">PRESET_POINT</span></td><td class="right">6</td><td class="right"><span class="count">1</span></td></tr><tr><td><span class="className">ENTITY_NODE_GRAPH</span></td><td class="right">9</td><td class="right"><span class="count">1</span></td></tr><tr><td><span class="className">SKILL_NODE_GRAPH</span></td><td class="right">11</td><td class="right"><span class="count">1</span></td></tr><tr><td><span class="className">CAMERA</span></td><td class="right">13</td><td class="right"><span class="count">1</span></td></tr><tr><td><span class="className">UI_CONTROL</span></td><td class="right">15</td><td class="right"><span class="count">14</span></td></tr><tr><td><span class="className">CLASS</span></td><td class="right">17</td><td class="right"><span class="count">1</span></td></tr><tr><td><span class="className">PLAYER_TEMPLATE</span></td><td class="right">18</td><td class="right"><span class="count">1</span></td></tr><tr><td><span class="className">CHARACTER_TEMPLATE</span></td><td class="right">19</td><td class="right"><span class="count">1</span></td></tr><tr><td><span class="className">INTERFACE_LAYOUT</span></td><td class="right">20</td><td class="right"><span class="count">6</span></td></tr><tr><td><span class="className">STATUS_NODE_GRAPH</span></td><td class="right">22</td><td class="right"><span class="count">1</span></td></tr><tr><td><span class="className">ENVIRONMENT_CONFIGURATION</span></td><td class="right">49</td><td class="right"><span class="count">1</span></td></tr><tr><td><span class="className">CREATION_STATUS_DECISION_GRAPH</span></td><td class="right">51</td><td class="right"><span class="count">1</span></td></tr><tr><td><span class="className">CREATION_STATUS_GRAPH</span></td><td class="right">53</td><td class="right"><span class="count">1</span></td></tr><tr><td><span class="className">GIL_CHARACTER_ENTITY</span></td><td class="right">-</td><td class="right"><span class="count">1</span></td></tr><tr><td><span class="className">GIL_GROWTH_CURVE</span></td><td class="right">-</td><td class="right"><span class="count">1</span></td></tr><tr><td><span class="className">GIL_INVENTORY_TEMPLATE</span></td><td class="right">-</td><td class="right"><span class="count">1</span></td></tr><tr><td><span class="className">GIL_LEVEL_ENTITY</span></td><td class="right">-</td><td class="right"><span class="count">1</span></td></tr><tr><td><span class="className">GIL_PLAYER_ENTITY</span></td><td class="right">-</td><td class="right"><span class="count">9</span></td></tr><tr><td><span class="className">GIL_RESPAWN_POINT</span></td><td class="right">-</td><td class="right"><span class="count">1</span></td></tr></tbody></table></div>
+<h3>Level sections</h3>
+<div class="tablewrap"><table><thead><tr><th>Section</th><th class="right">Resources</th><th>Description</th></tr></thead><tbody><tr><td><span class="metaValue">root.4</span></td><td class="right"><span class="count">2</span></td><td>templates: prefabs, player and character templates, creation templates</td></tr><tr><td><span class="metaValue">root.5</span></td><td class="right"><span class="count">11</span></td><td>entities placed in the level, plus the stage, player and character entities</td></tr><tr><td><span class="metaValue">root.7</span></td><td class="right"><span class="count">1</span></td><td>terrains</td></tr><tr><td><span class="metaValue">root.9</span></td><td class="right"><span class="count">20</span></td><td>UI: layouts and their controls</td></tr><tr><td><span class="metaValue">root.10.1</span></td><td class="right"><span class="count">5</span></td><td>node graphs (entity, status, class, item, skill, filter, creation graphs)</td></tr><tr><td><span class="metaValue">root.11.3</span></td><td class="right"><span class="count">1</span></td><td>respawn points</td></tr><tr><td><span class="metaValue">root.11.5</span></td><td class="right"><span class="count">1</span></td><td>preset points</td></tr><tr><td><span class="metaValue">root.15</span></td><td class="right"><span class="count">4</span></td><td>configs: unit statuses, classes, skills, items and the like</td></tr><tr><td><span class="metaValue">root.18</span></td><td class="right"><span class="count">1</span></td><td>cameras</td></tr></tbody></table></div>
+<h3>Resource folders</h3>
+<div class="tablewrap"><table><thead><tr><th>Folder</th><th class="right">Graphs</th><th class="right">Resources</th></tr></thead><tbody><tr><td>/<span class="folderName">(default)</span>/</td><td class="right"><span class="count">5</span></td><td class="right"></td></tr></tbody></table></div>
+<hr>
+<h1>Dump</h1>
+<h2 id="file-assembly-pins-gil-2">File <span class="fileName">assembly_pins.gil</span></h2>
+<h2 id="graphs-5">Graphs (5)</h2>
+<div class="tablewrap"><table><thead><tr><th>Name</th><th>Class</th><th class="right">Class id</th><th>Guid</th><th class="right">Kind</th><th class="right">Service</th><th class="right">Nodes</th><th class="right">Entry slot</th><th>Folder</th></tr></thead><tbody><tr><td>'<span class="graphName">New Node Graph</span>'</td><td><span class="className">ENTITY_NODE_GRAPH</span></td><td class="right">9</td><td>'<span class="guid">1073741825</span>'</td><td class="right"><span class="metaValue">21001</span></td><td class="right"><span class="metaValue">20000</span></td><td class="right"><span class="count">14</span></td><td class="right"></td><td>/<span class="folderName">(default)</span>/</td></tr><tr><td>'<span class="graphTag">&lt;status&gt;</span><span class="graphName">New Node Graph_1</span>'</td><td><span class="className">STATUS_NODE_GRAPH</span></td><td class="right">22</td><td>'<span class="guid">1073741826</span>'</td><td class="right"><span class="metaValue">21001</span></td><td class="right"><span class="metaValue">20003</span></td><td class="right"><span class="count">11</span></td><td class="right"></td><td>/<span class="folderName">(default)</span>/</td></tr><tr><td>'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">New Character Skill Node Graph</span>'</td><td><span class="className">SKILL_NODE_GRAPH</span></td><td class="right">11</td><td>'<span class="guid">1082130433</span>'</td><td class="right"><span class="metaValue">21001</span></td><td class="right"><span class="metaValue">20002</span></td><td class="right"><span class="count">15</span></td><td class="right"><span class="metaValue">1</span></td><td>/<span class="folderName">(default)</span>/</td></tr><tr><td>'<span class="graphTag">&lt;creation&gt;</span><span class="graphName">New Creation Status Node Graph</span>'</td><td><span class="className">CREATION_STATUS_GRAPH</span></td><td class="right">53</td><td>'<span class="guid">1082130435</span>'</td><td class="right"><span class="metaValue">21001</span></td><td class="right"><span class="metaValue">20009</span></td><td class="right"><span class="count">17</span></td><td class="right"><span class="metaValue">1</span></td><td>/<span class="folderName">(default)</span>/</td></tr><tr><td>'<span class="graphTag">&lt;creation&gt;</span><span class="graphName">New Creation Status Decision Node Graph</span>'</td><td><span class="className">CREATION_STATUS_DECISION_GRAPH</span></td><td class="right">51</td><td>'<span class="guid">1082130434</span>'</td><td class="right"><span class="metaValue">21001</span></td><td class="right"><span class="metaValue">20007</span></td><td class="right"><span class="count">6</span></td><td class="right"><span class="metaValue">1</span></td><td>/<span class="folderName">(default)</span>/</td></tr></tbody></table></div>
+<h2 id="resources-41">Resources (41)</h2>
+<div class="tablewrap"><table><thead><tr><th>Name</th><th>Class</th><th class="right">Class id</th><th>Guid</th><th>Section</th></tr></thead><tbody><tr><td>"<span class="declName">Stage Entity</span>"</td><td><span class="className">GIL_LEVEL_ENTITY</span></td><td class="right">-</td><td>'<span class="guid">1094713345</span>'</td><td>root.5</td></tr><tr><td>"<span class="declName">Default Template</span>"</td><td><span class="className">PLAYER_TEMPLATE</span></td><td class="right">18</td><td>'<span class="guid">1086324737</span>'</td><td>root.4</td></tr><tr><td>"<span class="declName">Default Template(Edit Character)</span>"</td><td><span class="className">CHARACTER_TEMPLATE</span></td><td class="right">19</td><td>'<span class="guid">1090519041</span>'</td><td>root.4</td></tr><tr><td>"<span class="declName">Custom Class</span>"</td><td><span class="className">CLASS</span></td><td class="right">17</td><td>'<span class="guid">1090519041</span>'</td><td>root.15</td></tr><tr><td>"<span class="declName">Inventory Template</span>"</td><td><span class="className">GIL_INVENTORY_TEMPLATE</span></td><td class="right">-</td><td>'<span class="guid">1119879169</span>'</td><td>root.15</td></tr><tr><td>"<span class="declName">Custom Camera</span>"</td><td><span class="className">CAMERA</span></td><td class="right">13</td><td>'<span class="guid">1073741825</span>'</td><td>root.18</td></tr><tr><td>"<span class="declName">Terrain01</span>"</td><td><span class="className">TERRAIN_ENTITY</span></td><td class="right">5</td><td>'<span class="guid">1073741825</span>'</td><td>root.7</td></tr><tr><td>"<span class="declName">Default Layout</span>"</td><td><span class="className">INTERFACE_LAYOUT</span></td><td class="right">20</td><td>'<span class="guid">1073741825</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">HierarchyRoot</span>"</td><td><span class="className">INTERFACE_LAYOUT</span></td><td class="right">20</td><td>'<span class="guid">1073741840</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">HierarchyRoot</span>"</td><td><span class="className">INTERFACE_LAYOUT</span></td><td class="right">20</td><td>'<span class="guid">1073741841</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">ExclusiveEleGroupHierarchyRoot</span>"</td><td><span class="className">INTERFACE_LAYOUT</span></td><td class="right">20</td><td>'<span class="guid">1073741842</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">ClientUIRootHierarchyRoot</span>"</td><td><span class="className">INTERFACE_LAYOUT</span></td><td class="right">20</td><td>'<span class="guid">1073741843</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">ClientUIPrototypeHierarchyRoot</span>"</td><td><span class="className">INTERFACE_LAYOUT</span></td><td class="right">20</td><td>'<span class="guid">1073741844</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">Environment Configuration</span>"</td><td><span class="className">ENVIRONMENT_CONFIGURATION</span></td><td class="right">49</td><td>'<span class="guid">1186988033</span>'</td><td>root.15</td></tr><tr><td>"<span class="declName">Create Preset Point</span>"</td><td><span class="className">PRESET_POINT</span></td><td class="right">6</td><td>'<span class="guid">1073741825</span>'</td><td>root.11.5</td></tr><tr><td>"<span class="declName">Spawn Point1</span>"</td><td><span class="className">GIL_RESPAWN_POINT</span></td><td class="right">-</td><td>'<span class="guid">1073741825</span>'</td><td>root.11.3</td></tr><tr><td>"<span class="declName">Default Template</span>"</td><td><span class="className">GIL_PLAYER_ENTITY</span></td><td class="right">-</td><td>'<span class="guid">1086324737</span>'</td><td>root.5</td></tr><tr><td>"<span class="declName">Default Template</span>"</td><td><span class="className">GIL_PLAYER_ENTITY</span></td><td class="right">-</td><td>'<span class="guid">1086324738</span>'</td><td>root.5</td></tr><tr><td>"<span class="declName">Default Template</span>"</td><td><span class="className">GIL_PLAYER_ENTITY</span></td><td class="right">-</td><td>'<span class="guid">1086324739</span>'</td><td>root.5</td></tr><tr><td>"<span class="declName">Default Template</span>"</td><td><span class="className">GIL_PLAYER_ENTITY</span></td><td class="right">-</td><td>'<span class="guid">1086324740</span>'</td><td>root.5</td></tr><tr><td>"<span class="declName">Default Template</span>"</td><td><span class="className">GIL_PLAYER_ENTITY</span></td><td class="right">-</td><td>'<span class="guid">1086324741</span>'</td><td>root.5</td></tr><tr><td>"<span class="declName">Default Template</span>"</td><td><span class="className">GIL_PLAYER_ENTITY</span></td><td class="right">-</td><td>'<span class="guid">1086324742</span>'</td><td>root.5</td></tr><tr><td>"<span class="declName">Default Template</span>"</td><td><span class="className">GIL_PLAYER_ENTITY</span></td><td class="right">-</td><td>'<span class="guid">1086324743</span>'</td><td>root.5</td></tr><tr><td>"<span class="declName">Default Template</span>"</td><td><span class="className">GIL_PLAYER_ENTITY</span></td><td class="right">-</td><td>'<span class="guid">1086324744</span>'</td><td>root.5</td></tr><tr><td>"<span class="declName">Default Template</span>"</td><td><span class="className">GIL_PLAYER_ENTITY</span></td><td class="right">-</td><td>'<span class="guid">1086324745</span>'</td><td>root.5</td></tr><tr><td>"<span class="declName">Default Template(Edit Character)</span>"</td><td><span class="className">GIL_CHARACTER_ENTITY</span></td><td class="right">-</td><td>'<span class="guid">1090519041</span>'</td><td>root.5</td></tr><tr><td>"<span class="declName">Custom Growth Curve</span>"</td><td><span class="className">GIL_GROWTH_CURVE</span></td><td class="right">-</td><td>'<span class="guid">1094713345</span>'</td><td>root.15</td></tr><tr><td>"<span class="declName">Mini-Map</span>"</td><td><span class="className">UI_CONTROL</span></td><td class="right">15</td><td>'<span class="guid">1073741826</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">Skill Area</span>"</td><td><span class="className">UI_CONTROL</span></td><td class="right">15</td><td>'<span class="guid">1073741827</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">Team Information</span>"</td><td><span class="className">UI_CONTROL</span></td><td class="right">15</td><td>'<span class="guid">1073741828</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">Character HP Bar</span>"</td><td><span class="className">UI_CONTROL</span></td><td class="right">15</td><td>'<span class="guid">1073741829</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">Joystick</span>"</td><td><span class="className">UI_CONTROL</span></td><td class="right">15</td><td>'<span class="guid">1073741830</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">Creation HP Bar</span>"</td><td><span class="className">UI_CONTROL</span></td><td class="right">15</td><td>'<span class="guid">1073741831</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">Exit Button</span>"</td><td><span class="className">UI_CONTROL</span></td><td class="right">15</td><td>'<span class="guid">1073741832</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">Voice-Over</span>"</td><td><span class="className">UI_CONTROL</span></td><td class="right">15</td><td>'<span class="guid">1073741833</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">Tab</span>"</td><td><span class="className">UI_CONTROL</span></td><td class="right">15</td><td>'<span class="guid">1073741834</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">Chat Button</span>"</td><td><span class="className">UI_CONTROL</span></td><td class="right">15</td><td>'<span class="guid">1073741835</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">Network Status</span>"</td><td><span class="className">UI_CONTROL</span></td><td class="right">15</td><td>'<span class="guid">1073741836</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">Struggle Button</span>"</td><td><span class="className">UI_CONTROL</span></td><td class="right">15</td><td>'<span class="guid">1073741837</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">Voice Chat Button</span>"</td><td><span class="className">UI_CONTROL</span></td><td class="right">15</td><td>'<span class="guid">1073741838</span>'</td><td>root.9</td></tr><tr><td>"<span class="declName">Voice Chat Hint Queue</span>"</td><td><span class="className">UI_CONTROL</span></td><td class="right">15</td><td>'<span class="guid">1073741839</span>'</td><td>root.9</td></tr></tbody></table></div>
+<hr>
+<h1>Refs</h1>
+<h2 id="reference-index">Reference index</h2>
+<p>Scanned 1 file:</p>
+<ul><li><span class="fileName">assembly_pins.gil</span></li></ul>
+<h2 id="references">References</h2>
+<h3><span class="kind">graph_variable</span> (6)</h3>
+<div class="tablewrap"><table><thead><tr><th>graph_variable</th><th>Type</th><th>Graph</th><th class="left">get</th><th class="left">set</th></tr></thead><tbody><tr><td>"<span class="key">&lt;unset&gt;</span>"</td><td><span class="typeName">Bol</span></td><td>'<span class="graphName">New Node Graph</span>'</td><td class="left"><span class="count">3</span></td><td class="left"><span class="count">0</span></td></tr><tr><td>"<span class="key">&lt;unset&gt;</span>"</td><td><span class="typeName">Cfg</span></td><td>'<span class="graphName">New Node Graph</span>'</td><td class="left"><span class="count">1</span></td><td class="left"><span class="count">0</span></td></tr><tr><td>"<span class="key">&lt;unset&gt;</span>"</td><td><span class="typeName">Ety</span></td><td>'<span class="graphName">New Node Graph</span>'</td><td class="left"><span class="count">1</span></td><td class="left"><span class="count">0</span></td></tr><tr><td>"<span class="key">&lt;unset&gt;</span>"</td><td><span class="typeName">Flt</span></td><td>'<span class="graphName">New Node Graph</span>'</td><td class="left"><span class="count">1</span></td><td class="left"><span class="count">0</span></td></tr><tr><td>"<span class="key">&lt;unset&gt;</span>"</td><td><span class="typeName">Str</span></td><td>'<span class="graphName">New Node Graph</span>'</td><td class="left"><span class="count">1</span></td><td class="left"><span class="count">0</span></td></tr><tr><td>"<span class="key">&lt;unset&gt;</span>"</td><td><span class="typeName">Vec</span></td><td>'<span class="graphName">New Node Graph</span>'</td><td class="left"><span class="count">2</span></td><td class="left"><span class="count">0</span></td></tr></tbody></table></div>
+<h3><span class="kind">literal_id</span> (1)</h3>
+<div class="tablewrap"><table><thead><tr><th>literal_id</th><th class="left">Ref</th></tr></thead><tbody><tr><td>"<span class="key">Cfg:2</span>"</td><td class="left"><span class="count">1</span><br>'<span class="graphName">New Node Graph</span>'</td></tr></tbody></table></div>
+<hr>
+<h1>Warns</h1>
+<h2 id="warnings-and-limits">Warnings and limits</h2>
+<p>Scanned 1 file:</p>
+<ul><li><span class="fileName">assembly_pins.gil</span></li></ul>
+<h2 id="findings">Findings</h2>
+<p>(no findings)</p>
+<hr>
+<h2 id="limits">Limits</h2>
+<div class="tablewrap"><table><thead><tr><th>Resource</th><th class="right">Used / max</th></tr></thead><tbody><tr><td>PRESET_POINT</td><td class="right"><span class="limitOk">1/2000</span></td></tr><tr><td>ENVIRONMENT_CONFIGURATION</td><td class="right"><span class="limitOk">1/50</span></td></tr><tr><td>CLASS</td><td class="right"><span class="limitOk">1/100</span></td></tr><tr><td>TERRAIN_ENTITY</td><td class="right"><span class="limitOk">1/1200</span></td></tr></tbody></table></div>
+<hr>
+<h2 id="top-graphs-by-node-count">Top graphs by node count</h2>
+<div class="tablewrap"><table><thead><tr><th>Graph</th><th class="right">Effective nodes</th></tr></thead><tbody><tr><td>'<span class="graphTag">&lt;creation&gt;</span><span class="graphName">New Creation Status Node Graph</span>'</td><td class="right"><span class="limitOk">17/3000</span></td></tr><tr><td>'<span class="graphTag">&lt;skill&gt;</span><span class="graphName">New Character Skill Node Graph</span>'</td><td class="right"><span class="limitOk">15/3000</span></td></tr><tr><td>'<span class="graphName">New Node Graph</span>'</td><td class="right"><span class="limitOk">14/3000</span></td></tr><tr><td>'<span class="graphTag">&lt;status&gt;</span><span class="graphName">New Node Graph_1</span>'</td><td class="right"><span class="limitOk">11/3000</span></td></tr><tr><td>'<span class="graphTag">&lt;creation&gt;</span><span class="graphName">New Creation Status Decision Node Graph</span>'</td><td class="right"><span class="limitOk">6/3000</span></td></tr></tbody></table></div>
+</main>
+</body>
+</html>

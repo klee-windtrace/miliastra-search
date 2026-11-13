@@ -111,7 +111,7 @@ test('the prefab of an entity is found in a .gia too, by the entity definition',
   const bg = parseBundle(fs.readFileSync(gia), { file: gia });
   const ents = bg.resources.filter((r) => r.classId === 3);
   assert.ok(ents.length && ents.every((r) => r.parentId != null), 'every object entity names its parent id');
-  assert.ok(run(['dump', gia, '--format', 'text']).split('\n').filter((l) => / OBJECT_ENTITY | STATIC_ENTITY /.test(l)).every((l) => /parent=\(\d+[:)]/.test(l)));
+  assert.ok(run(['dump', gia, '--format', 'text']).split('\n').filter((l) => /^RESOURCE .* (OBJECT_ENTITY|STATIC_ENTITY) /.test(l)).every((l) => /parent=\(\d+[:)]/.test(l)));
 });
 
 test('dump lists graphs as a table (no STRUCT entries); code still lists structs', () => {

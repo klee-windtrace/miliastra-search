@@ -1,0 +1,46 @@
+# INFO
+# FILE sample_3.gia
+format                 gia
+detected_by            header
+file_size              8272
+container_file_type    gia
+engine_version         7.0.0
+mode                   beyond
+export_name            sample_3.gia
+node_db_version        7.2.0
+resources              21
+primary                3
+dependencies           18
+graphs                 1
+nodes                  7
+composite_bodies       0
+declarations           18
+structs                2
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=1
+CLASS COMPOSITE_NODE_DECL class=12 count=18
+CLASS STRUCTURE class=29 count=2
+
+# DUMP
+GRAPH 'Structs' ENTITY_NODE_GRAPH class=9 guid='1073741829' kind=21001 service=20000 nodes=7
+
+# REFS
+struct           "Structure"                        defined guid=1077936129 fields=Add variable 1
+                                                    2 field-type: Structure_1.Add variable 3; Structure_1.Add variable 4
+                                                    1 modify: ['Structs']
+                                                    1 assemble: ['Structs']
+                                                    1 split: ['Structs']
+struct           "Structure_1"                      defined guid=1077936130 fields=Add variable 1|Add variable 2|Add variable 3|Add variable 4
+                                                    1 modify: ['Structs']
+                                                    1 assemble: ['Structs']
+                                                    1 split: ['Structs']
+
+# WARNS
+# findings
+(no findings)
+
+# limits
+
+top graphs by node count:
+'Structs': 7/3000 nodes

@@ -32,6 +32,7 @@ td.right,th.right{text-align:right}td.center,th.center{text-align:center}
 .toc a{color:var(--accent);text-decoration:none;display:block;padding:.05rem 0;break-inside:avoid}.toc a:hover{text-decoration:underline}
 ul{padding-left:1.4rem}
 .q{color:var(--muted)}.muted{color:var(--muted)}
+pre a{text-decoration:none}pre a:hover{text-decoration:underline}[id]:target{background:#4a4a10;border-radius:2px}
 pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pre-wrap;word-break:break-word}
 .title{font-weight:700;color:#F2F2F2}
 .section{color:#61D6D6}
@@ -48,8 +49,10 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 .graphName{color:#C19C00}
 .graphTag{color:#F9F1A5}
 .key{color:#16C60C}
+.more{color:#B4009E}
 .folderName{color:#C50F1F}
 .declName{color:#16C60C}
+.variableName{color:#C19C00}
 .varName{color:#16C60C}
 .pinName{color:#13A10E}
 .pinLabel{color:#3A96DD}
@@ -65,11 +68,20 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 .typeName{color:#B4009E}
 .flag{color:#767676}
 .string{color:#C19C00}
-.number{color:#3A96DD}
+.number{color:#61D6D6}
 .bool{color:#3A96DD}
 .enumValue{color:#61D6D6}
 .idValue{color:#13A10E}
 .vector{color:#3A96DD}
+.jsKeyword{color:#B4009E}
+.jsSwitch{color:#3B78FF}
+.jsError{color:#C50F1F}
+.jsCall{color:#F9F1A5}
+.jsKey{color:#13A10E}
+.jsVar{color:#E74856}
+.jsOut{color:#3A96DD}
+.jsString{color:#C19C00}
+.jsComment{color:#767676}
 .kind{color:#881798}
 .role{color:#3B78FF}
 .count{color:#F2F2F2}
@@ -117,7 +129,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="kind">composite</span>        "<span class="key">Tab A - 04</span>"                       <span class="count">0</span> <span class="role">call</span>: []
 <span class="kind">composite</span>        "<span class="key">Tab B - 06</span>"                       <span class="count">0</span> <span class="role">call</span>: []
 <span class="kind">composite</span>        "<span class="key">Tab C - 05</span>"                       <span class="count">0</span> <span class="role">call</span>: []
-<span class="kind">mount</span>            '<span class="graphName">Saved to folder (My)</span>'             <span class="count">4</span> <span class="role">entity</span>: <span class="className">OBJECT_ENTITY</span>:"<span class="key">Wireframe Cuboid</span>" (x3); <span class="className">OBJECT_ENTITY</span>:"<span class="key">Wireframe Cube</span>"
+<span class="kind">mount</span>            '<span class="graphName">Saved to folder (My)</span>'             <span class="count">8</span> <span class="role">entity</span>: <span class="className">OBJECT_ENTITY</span>:"<span class="key">Wireframe Cuboid</span>" (x6); <span class="className">OBJECT_ENTITY</span>:"<span class="key">Wireframe Cube</span>" (x2)
 <span class="kind">mount</span>            '<span class="graphName">Mounted_Character</span>'                <span class="count">2</span> <span class="role">character</span>: <span class="className">CHARACTER_TEMPLATE</span>:"<span class="key">With_CharacterGraph(Edit Character)</span>"; <span class="className">CHARACTER_TEMPLATE</span>:"<span class="key">With_Both_And_Common(Edit Character)</span>"
 <span class="kind">mount</span>            '<span class="graphName">Mounted_Creation</span>'                 <span class="count">1</span> <span class="role">entity</span>: <span class="className">CREATION_ENTITY</span>:"<span class="key">Pyro Slime</span>"
 <span class="kind">mount</span>            '<span class="graphName">Mounted_Entity</span>'                   <span class="count">1</span> <span class="role">entity</span>: <span class="className">OBJECT_ENTITY</span>:"<span class="key">Entity_Graphs</span>"

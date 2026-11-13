@@ -1,4 +1,4 @@
-﻿# File `test/cases/gil/stage_0.gil`
+﻿# File `stage_0.gil`
 
 ## File
 
@@ -11,7 +11,7 @@
 | engine\_version | 7.0.0 |
 | mode | beyond |
 | level\_name | Настраиваемая вкладка\_1\_Сохранение\_8 |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -71,7 +71,7 @@
 
 ---
 
-# File `test/cases/gil/stage_012379.gil`
+# File `stage_012379.gil`
 
 ## File
 
@@ -84,7 +84,7 @@
 | engine\_version | 7.0.0 |
 | mode | beyond |
 | level\_name | Custom Tab\_1\_Save\_2 |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -192,7 +192,7 @@
 
 ---
 
-# File `test/cases/gil/stage_1.gil`
+# File `stage_1.gil`
 
 ## File
 
@@ -205,7 +205,7 @@
 | engine\_version | 7.0.0 |
 | mode | beyond |
 | level\_name | Custom Tab\_1\_Save |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -267,7 +267,7 @@
 
 ---
 
-# File `test/cases/gil/stage_2.gil`
+# File `stage_2.gil`
 
 ## File
 
@@ -280,7 +280,7 @@
 | engine\_version | 7.0.0 |
 | mode | beyond |
 | level\_name | Настраиваемая вкладка\_1\_Сохранение\_3 |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -342,7 +342,7 @@
 
 ---
 
-# File `test/cases/gil/stage_3.gil`
+# File `stage_3.gil`
 
 ## File
 
@@ -355,7 +355,7 @@
 | engine\_version | 7.0.0 |
 | mode | beyond |
 | level\_name | Настраиваемая вкладка\_1\_Сохранение\_4 |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -418,7 +418,7 @@
 
 ---
 
-# File `test/cases/gil/stage_6.gil`
+# File `stage_6.gil`
 
 ## File
 
@@ -431,7 +431,7 @@
 | engine\_version | 7.0.0 |
 | mode | classic |
 | level\_name | Настраиваемая вкладка\_1\_Сохранение\_5 |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -489,7 +489,7 @@
 
 ---
 
-# File `test/cases/gil/stage_7.gil`
+# File `stage_7.gil`
 
 ## File
 
@@ -502,7 +502,7 @@
 | engine\_version | 7.0.0 |
 | mode | beyond |
 | level\_name | Настраиваемая вкладка\_1\_Сохранение\_6 |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -567,7 +567,7 @@
 
 ---
 
-# File `test/cases/gil/stage_9.gil`
+# File `stage_9.gil`
 
 ## File
 
@@ -580,7 +580,7 @@
 | engine\_version | 7.0.0 |
 | mode | beyond |
 | level\_name | Настраиваемая вкладка\_1\_Сохранение\_7 |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 

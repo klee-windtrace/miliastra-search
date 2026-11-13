@@ -2,11 +2,11 @@
 
 Scanned 5 files:
 
-- `test/cases/mounts/composite_folders.gil`
-- `test/cases/mounts/graph_folders.gil`
-- `test/cases/mounts/test_folders.gia`
-- `test/cases/mounts/test_folders.gil`
-- `test/cases/mounts/test_mount.gil`
+- `composite_folders.gil`
+- `graph_folders.gil`
+- `test_folders.gia`
+- `test_folders.gil`
+- `test_mount.gil`
 
 ## References
 
@@ -57,7 +57,7 @@ Scanned 5 files:
 
 | mount | entity | character | player | status |
 | --- | --- | --- | --- | --- |
-| '*Saved to folder (My)*' | **4**<br>OBJECT\_ENTITY:"**Wireframe Cuboid**" (x3); OBJECT\_ENTITY:"**Wireframe Cube**" |   |   |   |
+| '*Saved to folder (My)*' | **8**<br>OBJECT\_ENTITY:"**Wireframe Cuboid**" (x6); OBJECT\_ENTITY:"**Wireframe Cube**" (x2) |   |   |   |
 | '*Mounted\_Character*' |   | **2**<br>CHARACTER\_TEMPLATE:"**With\_CharacterGraph(Edit Character)**"; CHARACTER\_TEMPLATE:"**With\_Both\_And\_Common(Edit Character)**" |   |   |
 | '*Mounted\_Creation*' | **1**<br>CREATION\_ENTITY:"**Pyro Slime**" |   |   |   |
 | '*Mounted\_Entity*' | **1**<br>OBJECT\_ENTITY:"**Entity\_Graphs**" |   |   |   |

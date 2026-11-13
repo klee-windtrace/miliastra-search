@@ -1,4 +1,4 @@
-﻿# File `test/cases/resolution/test_All_Static.gia`
+﻿# File `test_All_Static.gia`
 
 ## Decl "**Static\_1**"
 
@@ -37,7 +37,7 @@
 
 | Name | Type | Public | Struct | Value |
 | --- | --- | --- | --- | --- |
-| **Static\_Graph** | *L\<Gid\>* | false |   |   |
+| **Static\_Graph** | *L\<Gid\>* | false |   | \[\] |
 
 ### Nodes
 
@@ -46,6 +46,8 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` |   | -\> | \[2\] **Multiple Branches** (3/4) `in.flow#0` |   |   |
+| `out#3` | "Pre-Change Value" | = | 0 | *Flt* |   |
+| `out#4` | "Post-Change Value" | = | 0 | *Flt* |   |
 
 \[2\] **Multiple Branches** (3/4) variant=C\<T:Str\> @(117,-156)
 
@@ -53,12 +55,15 @@
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#1` | "Static\_Var" | -\> | \[37\] **Set Custom Variable** (22/26) `in.flow#0` |   |   |
 | `in#0` | "Control Expression" | \<- | \[1\] **When Custom Variable Changes** (36/40) `out#2` "Variable Name" | *Str* |   |
+| `in#0` | "Control Expression" | = | '' | *Str* | also wired |
 
 \[4\] **When Node Graph Variable Changes** (351/357) variant=C\<T:L\<Gid\>\> @(-361.8095,352.38095)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` |   | -\> | \[7\] **Multiple Branches** (3/4) `in.flow#0` |   |   |
+| `out#3` | "Pre-Change Value" | = | \[\] | *L\<Gid\>* |   |
+| `out#4` | "Post-Change Value" | = | \[\] | *L\<Gid\>* |   |
 
 \[6\] **When Timer Is Triggered** (83) @(-311.2381,-664.2857)
 
@@ -72,6 +77,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#1` | "Static\_Graph" | -\> | \[41\] **Set Node Graph Variable** (323) `in.flow#0` |   |   |
 | `in#0` | "Control Expression" | \<- | \[4\] **When Node Graph Variable Changes** (351/357) `out#2` "Variable Name" | *Str* |   |
+| `in#0` | "Control Expression" | = | '' | *Str* | also wired |
 
 \[10\] **Multiple Branches** (3/4) variant=C\<T:Str\> @(131.0238,-663.1667)
 
@@ -79,6 +85,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#1` | "Static\_Timer" | -\> | \[34\] **Start Timer** (79) `in.flow#0` |   |   |
 | `in#0` | "Control Expression" | \<- | \[6\] **When Timer Is Triggered** (83) `out#2` "Timer Name" | *Str* |   |
+| `in#0` | "Control Expression" | = | '' | *Str* | also wired |
 
 \[11\] **Multiple Branches** (3/4) variant=C\<T:Str\> @(145.46825,-1135.3889)
 
@@ -86,6 +93,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#1` | "Static\_Global" | -\> | \[31\] **Start Global Timer** (311) `in.flow#0` |   |   |
 | `in#0` | "Control Expression" | \<- | \[14\] **When Global Timer Is Triggered** (315) `out#2` "Timer Name" | *Str* |   |
+| `in#0` | "Control Expression" | = | '' | *Str* | also wired |
 
 \[14\] **When Global Timer Is Triggered** (315) @(-349.57144,-1134.2858)
 
@@ -139,6 +147,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | = | '`Static_Global`' | *Str* |   |
+| `out#1` | "Value" | = | '' | *Str* |   |
 
 \[34\] **Start Timer** (79) @(622.4008,-488.64682)
 
@@ -161,6 +170,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | = | '`Static_Timer`' | *Str* |   |
+| `out#1` | "Value" | = | '' | *Str* |   |
 
 \[37\] **Set Custom Variable** (22/26) variant=C\<T:Flt\> @(687.2024,21.015873)
 
@@ -179,6 +189,7 @@
 | `in#1` | "Variable Name" | \<- | \[39\] **Get Local Variable** (18/2656) `out#1` "Value" | *Str* |   |
 | `in#1` | "Variable Name" | = | '`Static_Var`' | *Str* | also wired |
 | `in#2` | "Variable Value" | \<- | \[40\] **Get Custom Variable** (50/54) `out#0` "Variable Value" | *Flt* |   |
+| `in#2` | "Variable Value" | = | 0 | *Flt* | also wired |
 | `in#4` | "Trigger Event" | = | No | *Bol* |   |
 
 \[39\] **Get Local Variable** (18/2656) variant=C\<T:Str\> @(1241.488,-193.26984)
@@ -186,6 +197,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | = | '`Static_Var`' | *Str* |   |
+| `out#1` | "Value" | = | '' | *Str* |   |
 
 \[40\] **Get Custom Variable** (50/54) variant=C\<T:Flt\> @(1822.9166,-171.84126)
 
@@ -194,6 +206,7 @@
 | `in#0` | "Target Entity" | \<- | \[1\] **When Custom Variable Changes** (36/40) `out#0` "Event Source Entity" | *Ety* |   |
 | `in#1` | "Variable Name" | \<- | \[39\] **Get Local Variable** (18/2656) `out#1` "Value" | *Str* |   |
 | `in#1` | "Variable Name" | = | '`Static_Var`' | *Str* | also wired |
+| `out#0` | "Variable Value" | = | 0 | *Flt* |   |
 
 \[41\] **Set Node Graph Variable** (323) @(716.1427,526.788)
 
@@ -208,6 +221,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Variable Name" | \<- | \[43\] **Get Local Variable** (18/2656) `out#1` "Value" | *Str* |   |
 | `in#1` | "Variable Value" | \<- | \[44\] **Get Node Graph Variable** (337/343) `out#0` "Variable Value" | *L\<Gid\>* |   |
+| `in#1` | "Variable Value" | = | \[\] | *L\<Gid\>* | also wired |
 | `in#2` | "Trigger Event" | = | No | *Bol* |   |
 
 \[43\] **Get Local Variable** (18/2656) variant=C\<T:Str\> @(1173.4641,895.1809)
@@ -215,6 +229,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | = | '`Static_Graph`' | *Str* |   |
+| `out#1` | "Value" | = | '' | *Str* |   |
 
 \[44\] **Get Node Graph Variable** (337/343) variant=C\<T:L\<Gid\>\> @(1635.1427,538.5499)
 
@@ -222,8 +237,9 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Variable Name" | \<- | \[43\] **Get Local Variable** (18/2656) `out#1` "Value" | *Str* |   |
 | `in#0` | "Variable Name" | = | '`Static_Graph`' | *Str* | also wired |
+| `out#0` | "Variable Value" | = | \[\] | *L\<Gid\>* |   |
 
-# File `test/cases/resolution/test_resolution.gia`
+# File `test_resolution.gia`
 
 ## Graph '*Dynamic*'
 
@@ -243,12 +259,16 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` |   | -\> | \[5\] **Multiple Branches** (3/4) `in.flow#0` |   |   |
+| `out#3` | "Pre-Change Value" | = | 0 | *Int* |   |
+| `out#4` | "Post-Change Value" | = | 0 | *Int* |   |
 
 \[2\] **When Node Graph Variable Changes** (351/356) variant=C\<T:Str\> @(-540,117)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` |   | -\> | \[8\] **Double Branch** (2) `in.flow#0` |   |   |
+| `out#3` | "Pre-Change Value" | = | '' | *Str* |   |
+| `out#4` | "Post-Change Value" | = | '' | *Str* |   |
 
 \[3\] **When Timer Is Triggered** (83) @(1586,-498)
 
@@ -269,6 +289,7 @@
 | `out.flow#0` | "Default" | -\> | \[7\] **Multiple Branches** (3/4) `in.flow#0` |   |   |
 | `out.flow#2` | "var2" | -\> | \[6\] **Settle Stage** (77) `in.flow#0` |   |   |
 | `in#0` | "Control Expression" | \<- | \[1\] **When Custom Variable Changes** (36) `out#2` "Variable Name" | *Str* |   |
+| `in#0` | "Control Expression" | = | '' | *Str* | also wired |
 
 \[6\] **Settle Stage** (77) @(508,-198)
 
@@ -278,6 +299,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` | "Default" | -\> | \[21\] **Settle Stage** (77) `in.flow#0` |   |   |
 | `in#0` | "Control Expression" | \<- | \[1\] **When Custom Variable Changes** (36) `out#2` "Variable Name" | *Str* |   |
+| `in#0` | "Control Expression" | = | '' | *Str* | also wired |
 
 \[8\] **Double Branch** (2) @(0,112)
 
@@ -292,6 +314,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Input 1" | \<- | \[2\] **When Node Graph Variable Changes** (351/356) `out#2` "Variable Name" | *Str* |   |
+| `in#0` | "Input 1" | = | '' | *Str* | also wired |
 | `in#1` | "Input 2" | = | '`gvar1`' | *Str* |   |
 
 \[10\] **Settle Stage** (77) @(402,32)
@@ -308,13 +331,16 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Input 1" | \<- | \[13\] **Get Local Variable** (18/2656) `out#1` "Value" | *Str* |   |
+| `in#0` | "Input 1" | = | '' | *Str* | also wired |
 | `in#1` | "Input 2" | \<- | \[2\] **When Node Graph Variable Changes** (351/356) `out#4` "Post-Change Value" | *Str* |   |
+| `in#1` | "Input 2" | = | '' | *Str* | also wired |
 
 \[13\] **Get Local Variable** (18/2656) variant=C\<T:Str\> @(222,756)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | = | '`gvar1`' | *Str* |   |
+| `out#1` | "Value" | = | '' | *Str* |   |
 
 \[14\] **Multiple Branches** (3/4) variant=C\<T:Str\> @(1414,504)
 
@@ -322,6 +348,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` | "Default" | -\> | \[15\] **Double Branch** (2) `in.flow#0` |   |   |
 | `in#0` | "Control Expression" | \<- | \[2\] **When Node Graph Variable Changes** (351/356) `out#2` "Variable Name" | *Str* |   |
+| `in#0` | "Control Expression" | = | '' | *Str* | also wired |
 
 \[15\] **Double Branch** (2) @(2096,540)
 
@@ -336,19 +363,24 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Input 1" | \<- | \[17\] **Get Local Variable** (18/2656) `out#1` "Value" | *Str* |   |
+| `in#0` | "Input 1" | = | '' | *Str* | also wired |
 | `in#1` | "Input 2" | \<- | \[18\] **Get Node Graph Variable** (337/342) `out#0` "Variable Value" | *Str* |   |
+| `in#1` | "Input 2" | = | '' | *Str* | also wired |
 
 \[17\] **Get Local Variable** (18/2656) variant=C\<T:Str\> @(1159.5,865)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | \<- | \[2\] **When Node Graph Variable Changes** (351/356) `out#2` "Variable Name" | *Str* |   |
+| `in#0` | "Initial Value" | = | '' | *Str* | also wired |
+| `out#1` | "Value" | = | '' | *Str* |   |
 
 \[18\] **Get Node Graph Variable** (337/342) variant=C\<T:Str\> @(1659.5,1100)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Variable Name" | = | '`name`' | *Str* |   |
+| `out#0` | "Variable Value" | = | '' | *Str* |   |
 
 \[19\] **Double Branch** (2) @(2022.5,-473)
 
@@ -362,7 +394,9 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Input 1" | \<- | \[24\] **Create Composite Node** (1610612737) `out#0` "y" | *Str* |   |
+| `in#0` | "Input 1" | = | '' | *Str* | also wired |
 | `in#1` | "Input 2" | \<- | \[3\] **When Timer Is Triggered** (83) `out#2` "Timer Name" | *Str* |   |
+| `in#1` | "Input 2" | = | '' | *Str* | also wired |
 
 \[21\] **Settle Stage** (77) @(1272.6666,-391.66666)
 
@@ -374,6 +408,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Target Entity" | \<- | \[3\] **When Timer Is Triggered** (83) `out#0` "Event Source Entity" | *Ety* |   |
 | `in#1` | "Variable Name" | = | '`test`' | *Str* |   |
+| `out#0` | "Variable Value" | = | '' | *Str* |   |
 
 \[24\] **Create Composite Node** (1610612737) user=COMPOSITE @(2110.8333,37)
 
@@ -396,7 +431,9 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Input 1" | \<- | \[31\] **Create Composite Node** (1610612737) `out#0` "y" | *Str* |   |
+| `in#0` | "Input 1" | = | '' | *Str* | also wired |
 | `in#1` | "Input 2" | \<- | \[17\] **Get Local Variable** (18/2656) `out#1` "Value" | *Str* |   |
+| `in#1` | "Input 2" | = | '' | *Str* | also wired |
 
 \[31\] **Create Composite Node** (1610612737) user=COMPOSITE @(2820.8333,1435.3334)
 
@@ -435,6 +472,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | = | '`test1`' | *Str* |   |
+| `out#1` | "Value" | = | '' | *Str* |   |
 
 \[3\] **Get Node Graph Variable** (337) @(8,39)
 
@@ -466,6 +504,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | = | '`test3`' | *Str* |   |
+| `out#1` | "Value" | = | '' | *Str* |   |
 
 \[9\] **Stop Timer** (82) @(812.5,347)
 
@@ -481,6 +520,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Variable Name" | = | '`test2`' | *Str* |   |
+| `out#0` | "Variable Value" | = | '' | *Str* |   |
 
 ## Graph '*Static*'
 
@@ -500,12 +540,16 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` |   | -\> | \[5\] **Multiple Branches** (3/4) `in.flow#0` |   |   |
+| `out#3` | "Pre-Change Value" | = | 0 | *Int* |   |
+| `out#4` | "Post-Change Value" | = | 0 | *Int* |   |
 
 \[2\] **When Node Graph Variable Changes** (351/356) variant=C\<T:Str\> @(-540,117)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` |   | -\> | \[8\] **Double Branch** (2) `in.flow#0` |   |   |
+| `out#3` | "Pre-Change Value" | = | '' | *Str* |   |
+| `out#4` | "Post-Change Value" | = | '' | *Str* |   |
 
 \[3\] **When Timer Is Triggered** (83) @(1586,-498)
 
@@ -522,6 +566,7 @@
 | `out.flow#0` | "Default" | -\> | \[7\] **Multiple Branches** (3/4) `in.flow#0` |   |   |
 | `out.flow#2` | "var2" | -\> | \[6\] **Settle Stage** (77) `in.flow#0` |   |   |
 | `in#0` | "Control Expression" | \<- | \[1\] **When Custom Variable Changes** (36) `out#2` "Variable Name" | *Str* |   |
+| `in#0` | "Control Expression" | = | '' | *Str* | also wired |
 
 \[6\] **Settle Stage** (77) @(508,-198)
 
@@ -530,6 +575,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Control Expression" | \<- | \[1\] **When Custom Variable Changes** (36) `out#2` "Variable Name" | *Str* |   |
+| `in#0` | "Control Expression" | = | '' | *Str* | also wired |
 
 \[8\] **Double Branch** (2) @(0,112)
 
@@ -544,6 +590,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Input 1" | \<- | \[2\] **When Node Graph Variable Changes** (351/356) `out#2` "Variable Name" | *Str* |   |
+| `in#0` | "Input 1" | = | '' | *Str* | also wired |
 | `in#1` | "Input 2" | = | '`gvar1`' | *Str* |   |
 
 \[10\] **Settle Stage** (77) @(402,32)
@@ -560,13 +607,16 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Input 1" | \<- | \[13\] **Get Local Variable** (18/2656) `out#1` "Value" | *Str* |   |
+| `in#0` | "Input 1" | = | '' | *Str* | also wired |
 | `in#1` | "Input 2" | \<- | \[2\] **When Node Graph Variable Changes** (351/356) `out#2` "Variable Name" | *Str* |   |
+| `in#1` | "Input 2" | = | '' | *Str* | also wired |
 
 \[13\] **Get Local Variable** (18/2656) variant=C\<T:Str\> @(222,756)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | = | '`gvar1`' | *Str* |   |
+| `out#1` | "Value" | = | '' | *Str* |   |
 
 \[14\] **Multiple Branches** (3/4) variant=C\<T:Str\> @(1414,504)
 
@@ -574,6 +624,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` | "Default" | -\> | \[15\] **Double Branch** (2) `in.flow#0` |   |   |
 | `in#0` | "Control Expression" | \<- | \[2\] **When Node Graph Variable Changes** (351/356) `out#2` "Variable Name" | *Str* |   |
+| `in#0` | "Control Expression" | = | '' | *Str* | also wired |
 
 \[15\] **Double Branch** (2) @(2096,540)
 
@@ -588,19 +639,24 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Input 1" | \<- | \[17\] **Get Local Variable** (18/2656) `out#1` "Value" | *Str* |   |
+| `in#0` | "Input 1" | = | '' | *Str* | also wired |
 | `in#1` | "Input 2" | \<- | \[18\] **Get Node Graph Variable** (337/342) `out#0` "Variable Value" | *Str* |   |
+| `in#1` | "Input 2" | = | '' | *Str* | also wired |
 
 \[17\] **Get Local Variable** (18/2656) variant=C\<T:Str\> @(1159.5,865)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | \<- | \[2\] **When Node Graph Variable Changes** (351/356) `out#2` "Variable Name" | *Str* |   |
+| `in#0` | "Initial Value" | = | '' | *Str* | also wired |
+| `out#1` | "Value" | = | '' | *Str* |   |
 
 \[18\] **Get Node Graph Variable** (337/342) variant=C\<T:Str\> @(1659.5,1100)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Variable Name" | = | '`name`' | *Str* |   |
+| `out#0` | "Variable Value" | = | '' | *Str* |   |
 
 \[19\] **Double Branch** (2) @(2022.5,-473)
 
@@ -614,7 +670,9 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Input 1" | \<- | \[24\] **Create Composite Node** (1610612737) `out#0` "y" | *Str* |   |
+| `in#0` | "Input 1" | = | '' | *Str* | also wired |
 | `in#1` | "Input 2" | \<- | \[3\] **When Timer Is Triggered** (83) `out#2` "Timer Name" | *Str* |   |
+| `in#1` | "Input 2" | = | '' | *Str* | also wired |
 
 \[24\] **Create Composite Node** (1610612737) user=COMPOSITE @(2110.8333,37)
 
@@ -627,6 +685,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | = | '`tm`' | *Str* |   |
+| `out#1` | "Value" | = | '' | *Str* |   |
 
 \[26\] **Settle Stage** (77) @(2460.8333,-588)
 
@@ -643,7 +702,9 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Input 1" | \<- | \[31\] **Create Composite Node** (1610612737) `out#0` "y" | *Str* |   |
+| `in#0` | "Input 1" | = | '' | *Str* | also wired |
 | `in#1` | "Input 2" | \<- | \[17\] **Get Local Variable** (18/2656) `out#1` "Value" | *Str* |   |
+| `in#1` | "Input 2" | = | '' | *Str* | also wired |
 
 \[31\] **Create Composite Node** (1610612737) user=COMPOSITE @(2820.8333,1435.3334)
 
@@ -675,11 +736,18 @@
 
 \[1\] **Get Local Variable** (18/2656) variant=C\<T:Str\> @(-27,-189)
 
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Initial Value" | = | '' | *Str* |   |
+| `out#1` | "Value" | = | '' | *Str* |   |
+
 \[21\] **Get Local Variable** (18/2656) variant=C\<T:Str\> @(1,5)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | \<- | \[1\] **Get Local Variable** (18/2656) `out#1` "Value" | *Str* |   |
+| `in#0` | "Initial Value" | = | '' | *Str* | also wired |
+| `out#1` | "Value" | = | '' | *Str* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(1)*'
 

@@ -1,4 +1,4 @@
-# FILE test/cases/mounts/test_folders.gia
+# FILE test_folders.gia
 format                 gia
 detected_by            header
 file_size              21619
@@ -6,7 +6,7 @@ container_file_type    gia
 engine_version         7.1.0
 mode                   beyond
 export_name            test_folders.gia
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              61
 primary                41
 dependencies           20
@@ -15,7 +15,7 @@ nodes                  14
 composite_bodies       2
 declarations           6
 structs                0
-mounts                 0
+mounts                 4
 unresolved_node_types  0
 CLASS OBJECT_ENTITY class=3 count=4
 CLASS STATIC_ENTITY class=3 count=1

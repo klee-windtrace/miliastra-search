@@ -1,4 +1,4 @@
-﻿# File `test/cases/gil/stage_0.gil`
+﻿# File `stage_0.gil`
 
 ## Graphs (2)
 
@@ -51,7 +51,13 @@
 | "**Кнопка голосового чата**" | UI\_CONTROL | '`1073741838`' |
 | "**Очередь подсказок голосового чата**" | UI\_CONTROL | '`1073741839`' |
 
-# File `test/cases/gil/stage_012379.gil`
+## Variables
+
+| Graph | Variable | Type | Value |
+| --- | --- | --- | --- |
+| '*Graph*' | '**Graph\_Var**' | *Ety* | id:0 |
+
+# File `stage_012379.gil`
 
 ## Declarations (3)
 
@@ -195,7 +201,13 @@
 | "**Voice Chat Button**" | UI\_CONTROL | '`1073741856`' |   |   |
 | "**Voice Chat Hint Queue**" | UI\_CONTROL | '`1073741857`' |   |   |
 
-# File `test/cases/gil/stage_1.gil`
+## Variables
+
+| Graph | Variable | Type | Value |
+| --- | --- | --- | --- |
+| '*Graph*' | '**Graph\_Var**' | *Ety* | id:0 |
+
+# File `stage_1.gil`
 
 ## Graphs (3)
 
@@ -249,7 +261,7 @@
 | "**Voice Chat Button**" | UI\_CONTROL | '`1073741838`' |
 | "**Voice Chat Hint Queue**" | UI\_CONTROL | '`1073741839`' |
 
-# File `test/cases/gil/stage_2.gil`
+# File `stage_2.gil`
 
 ## Declarations (2)
 
@@ -310,7 +322,7 @@
 | "**Кнопка голосового чата**" | UI\_CONTROL | '`1073741838`' |
 | "**Очередь подсказок голосового чата**" | UI\_CONTROL | '`1073741839`' |
 
-# File `test/cases/gil/stage_3.gil`
+# File `stage_3.gil`
 
 ## Graphs (1)
 
@@ -362,7 +374,7 @@
 | "**Кнопка голосового чата**" | UI\_CONTROL | '`1073741838`' |
 | "**Очередь подсказок голосового чата**" | UI\_CONTROL | '`1073741839`' |
 
-# File `test/cases/gil/stage_6.gil`
+# File `stage_6.gil`
 
 ## Graphs (2)
 
@@ -416,7 +428,7 @@
 | "**Кнопка голосового чата**" | UI\_CONTROL | '`1073741841`' |
 | "**Очередь подсказок голосового чата**" | UI\_CONTROL | '`1073741842`' |
 
-# File `test/cases/gil/stage_7.gil`
+# File `stage_7.gil`
 
 ## Graphs (7)
 
@@ -474,7 +486,7 @@
 | "**Кнопка голосового чата**" | UI\_CONTROL | '`1073741838`' |
 | "**Очередь подсказок голосового чата**" | UI\_CONTROL | '`1073741839`' |
 
-# File `test/cases/gil/stage_9.gil`
+# File `stage_9.gil`
 
 ## Declarations (1)
 

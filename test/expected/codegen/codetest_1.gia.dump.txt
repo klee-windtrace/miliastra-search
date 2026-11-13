@@ -1,0 +1,4 @@
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH guid='1073741829' nodes=30
+GRAPH '<creation>New Creation Status Decision Node Graph' CREATION_STATUS_DECISION_GRAPH guid='1082130435' nodes=4
+GRAPH '<filter>New Filter Node Graph' INTEGER_FILTER_GRAPH guid='1082130436' nodes=5
+RESOURCE "Empty Model" OBJECT guid='1077936129' parent=(entities: 0)

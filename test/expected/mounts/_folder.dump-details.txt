@@ -1,34 +1,34 @@
-# FILE test/cases/mounts/composite_folders.gil
-GRAPH /(default)/'<composite>01' ENTITY_NODE_GRAPH class=9 guid='1610612838' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /(default)/'<composite>02' ENTITY_NODE_GRAPH class=9 guid='1610612862' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /(default)/'<composite>03' ENTITY_NODE_GRAPH class=9 guid='1610612842' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /A/'<composite>A1' ENTITY_NODE_GRAPH class=9 guid='1610612750' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /A/'<composite>A2' ENTITY_NODE_GRAPH class=9 guid='1610612751' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /A/'<composite>A3' ENTITY_NODE_GRAPH class=9 guid='1610612752' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /B/'<composite>B1' ENTITY_NODE_GRAPH class=9 guid='1610612741' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /B/'<composite>B2' ENTITY_NODE_GRAPH class=9 guid='1610612748' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /B/'<composite>B3' ENTITY_NODE_GRAPH class=9 guid='1610612747' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /C/'<composite>C1' ENTITY_NODE_GRAPH class=9 guid='1610612749' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /C/'<composite>C2' ENTITY_NODE_GRAPH class=9 guid='1610612835' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /C/'<composite>C3' ENTITY_NODE_GRAPH class=9 guid='1610612794' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /D/'<composite>D1' ENTITY_NODE_GRAPH class=9 guid='1073741938' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /D/'<composite>D2' ENTITY_NODE_GRAPH class=9 guid='1073741920' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /D/'<composite>D3' ENTITY_NODE_GRAPH class=9 guid='1073741926' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /E/'<composite>E1' ENTITY_NODE_GRAPH class=9 guid='1610612899' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /E/'<composite>E2' ENTITY_NODE_GRAPH class=9 guid='1610612840' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /E/'<composite>E3' ENTITY_NODE_GRAPH class=9 guid='1073742077' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /F/'<composite>F1' ENTITY_NODE_GRAPH class=9 guid='1073742200' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /F/'<composite>F2' ENTITY_NODE_GRAPH class=9 guid='1073742074' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /F/'<composite>F3' ENTITY_NODE_GRAPH class=9 guid='1610612760' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /G/'<composite>G1' ENTITY_NODE_GRAPH class=9 guid='1610612763' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /G/'<composite>G2' ENTITY_NODE_GRAPH class=9 guid='1073742030' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /G/'<composite>G3' ENTITY_NODE_GRAPH class=9 guid='1073742076' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /H/'<composite>H1' ENTITY_NODE_GRAPH class=9 guid='1073742064' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /H/'<composite>H2' ENTITY_NODE_GRAPH class=9 guid='1073742057' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /H/'<composite>H3' ENTITY_NODE_GRAPH class=9 guid='1073742048' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /I/'<composite>I1' ENTITY_NODE_GRAPH class=9 guid='1610612797' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /I/'<composite>I2' ENTITY_NODE_GRAPH class=9 guid='1610612755' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /I/'<composite>I3' ENTITY_NODE_GRAPH class=9 guid='1610612826' kind=21002 service=20000 nodes=0 composite_body=true
+# FILE composite_folders.gil
+GRAPH /(default)/'<composite>01' ENTITY_NODE_GRAPH class=9 guid='1610612838' kind=21002 service=20000 nodes=0 decl='1610613000'
+GRAPH /(default)/'<composite>02' ENTITY_NODE_GRAPH class=9 guid='1610612862' kind=21002 service=20000 nodes=0 decl='1610613036'
+GRAPH /(default)/'<composite>03' ENTITY_NODE_GRAPH class=9 guid='1610612842' kind=21002 service=20000 nodes=0 decl='1610613004'
+GRAPH /A/'<composite>A1' ENTITY_NODE_GRAPH class=9 guid='1610612750' kind=21002 service=20000 nodes=0 decl='1610612819'
+GRAPH /A/'<composite>A2' ENTITY_NODE_GRAPH class=9 guid='1610612751' kind=21002 service=20000 nodes=0 decl='1610612820'
+GRAPH /A/'<composite>A3' ENTITY_NODE_GRAPH class=9 guid='1610612752' kind=21002 service=20000 nodes=0 decl='1610612821'
+GRAPH /B/'<composite>B1' ENTITY_NODE_GRAPH class=9 guid='1610612741' kind=21002 service=20000 nodes=0 decl='1610612793'
+GRAPH /B/'<composite>B2' ENTITY_NODE_GRAPH class=9 guid='1610612748' kind=21002 service=20000 nodes=0 decl='1610612794'
+GRAPH /B/'<composite>B3' ENTITY_NODE_GRAPH class=9 guid='1610612747' kind=21002 service=20000 nodes=0 decl='1610612748'
+GRAPH /C/'<composite>C1' ENTITY_NODE_GRAPH class=9 guid='1610612749' kind=21002 service=20000 nodes=0 decl='1610612935'
+GRAPH /C/'<composite>C2' ENTITY_NODE_GRAPH class=9 guid='1610612835' kind=21002 service=20000 nodes=0 decl='1610612994'
+GRAPH /C/'<composite>C3' ENTITY_NODE_GRAPH class=9 guid='1610612794' kind=21002 service=20000 nodes=0 decl='1610612920'
+GRAPH /D/'<composite>D1' ENTITY_NODE_GRAPH class=9 guid='1073741938' kind=21002 service=20000 nodes=0 decl='1073741877'
+GRAPH /D/'<composite>D2' ENTITY_NODE_GRAPH class=9 guid='1073741920' kind=21002 service=20000 nodes=0 decl='1073741859'
+GRAPH /D/'<composite>D3' ENTITY_NODE_GRAPH class=9 guid='1073741926' kind=21002 service=20000 nodes=0 decl='1073741865'
+GRAPH /E/'<composite>E1' ENTITY_NODE_GRAPH class=9 guid='1610612899' kind=21002 service=20000 nodes=0 decl='1610613076'
+GRAPH /E/'<composite>E2' ENTITY_NODE_GRAPH class=9 guid='1610612840' kind=21002 service=20000 nodes=0 decl='1610613002'
+GRAPH /E/'<composite>E3' ENTITY_NODE_GRAPH class=9 guid='1073742077' kind=21002 service=20000 nodes=0 decl='1073742000'
+GRAPH /F/'<composite>F1' ENTITY_NODE_GRAPH class=9 guid='1073742200' kind=21002 service=20000 nodes=0 decl='1073742073'
+GRAPH /F/'<composite>F2' ENTITY_NODE_GRAPH class=9 guid='1073742074' kind=21002 service=20000 nodes=0 decl='1073741997'
+GRAPH /F/'<composite>F3' ENTITY_NODE_GRAPH class=9 guid='1610612760' kind=21002 service=20000 nodes=0 decl='1610612797'
+GRAPH /G/'<composite>G1' ENTITY_NODE_GRAPH class=9 guid='1610612763' kind=21002 service=20000 nodes=0 decl='1610612754'
+GRAPH /G/'<composite>G2' ENTITY_NODE_GRAPH class=9 guid='1073742030' kind=21002 service=20000 nodes=0 decl='1073741960'
+GRAPH /G/'<composite>G3' ENTITY_NODE_GRAPH class=9 guid='1073742076' kind=21002 service=20000 nodes=0 decl='1073741999'
+GRAPH /H/'<composite>H1' ENTITY_NODE_GRAPH class=9 guid='1073742064' kind=21002 service=20000 nodes=0 decl='1073741990'
+GRAPH /H/'<composite>H2' ENTITY_NODE_GRAPH class=9 guid='1073742057' kind=21002 service=20000 nodes=0 decl='1073741983'
+GRAPH /H/'<composite>H3' ENTITY_NODE_GRAPH class=9 guid='1073742048' kind=21002 service=20000 nodes=0 decl='1073741974'
+GRAPH /I/'<composite>I1' ENTITY_NODE_GRAPH class=9 guid='1610612797' kind=21002 service=20000 nodes=0 decl='1610612942'
+GRAPH /I/'<composite>I2' ENTITY_NODE_GRAPH class=9 guid='1610612755' kind=21002 service=20000 nodes=0 decl='1610612752'
+GRAPH /I/'<composite>I3' ENTITY_NODE_GRAPH class=9 guid='1610612826' kind=21002 service=20000 nodes=0 decl='1610612982'
 RESOURCE "Stage Entity" GIL_LEVEL_ENTITY class=- guid='1094713345' section=root.5
 RESOURCE "Player_Template" PLAYER_TEMPLATE class=18 guid='1086324737' section=root.4
 RESOURCE "Player_Template(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519041' section=root.4
@@ -95,7 +95,59 @@ RESOURCE "Network Status" UI_CONTROL class=15 guid='1073756699' section=root.9
 RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073756700' section=root.9
 RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073756701' section=root.9
 RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073756702' section=root.9
-# FILE test/cases/mounts/graph_folders.gil
+VARIABLE Stage 1094713345:"Stage Entity" 'Environment' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'Phase' : Str = ''
+VARIABLE Stage 1094713345:"Stage Entity" 'Hunt_Weights' : Flt = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'G_TotalPlayers' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'Is_SinglePlayer' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'G_ReadyPlayers' : Dict<Int,Ety> = {}
+VARIABLE Stage 1094713345:"Stage Entity" 'Initial_Text' : Str = ''
+VARIABLE Stage 1094713345:"Stage Entity" 'Initial_Lines' : L<Str> = ['<color=#ACFF44>Waiting for players...</color>', '<color=#FFCC33>Choose your role!</color>', '', '<color=#FF5E41>You will be Hunter!</color>', '<color=#37FFFF>Two-player High Score Battle</color>', '??']
+VARIABLE Stage 1094713345:"Stage Entity" 'Total_Weight' : Flt = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'G_NooneHunter' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Timer' : L<Str> = ['initial', 'rebels', 'hunter', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Prepare' : L<Str> = ['<color=#FFCC33>Hunting starts in:</color>', '<color=#FFCC33>Hunter released in:</color>', '', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Hunt' : L<Str> = ['', '<color=#ACFF44>Time to repair:</color>', '<color=#ACFF44>Time till victory:</color>', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Single' : L<Str> = ['', '<color=#ACFF44>Test run mode</color>', '<color=#ACFF44>Test run mode</color>', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Text_Who_Rebels' : Str = '<color=#37FFFF>YOU ARE A REBEL</color>; the hunter is:\\n'
+VARIABLE Stage 1094713345:"Stage Entity" 'Text_Who_Hunter' : Str = 'YOU ARE THE HUNTER'
+VARIABLE Stage 1094713345:"Stage Entity" 'G_DevicesRepaired' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'G_NeedRepair' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'Game_Winner' : Str = ''
+VARIABLE Stage 1094713345:"Stage Entity" 'G_OneRebel' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'G_HuntStarted' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Hunters' : Int = 1
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Devices' : Int = -2
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Repair' : Int = 1
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Time' : Flt = 300
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Fixing' : Int = 30
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Prison_Time' : Int = 10
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Devices_Used' : Dict<Ety,Bol> = {}
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Devices_Max' : Int = 999
+VARIABLE Stage 1094713345:"Stage Entity" 'Nicknames' : Dict<Int,Str> = {}
+VARIABLE Stage 1094713345:"Stage Entity" 'Roles' : Dict<Int,Str> = {}
+VARIABLE Stage 1094713345:"Stage Entity" 'G_CurrentScore' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'V_PlayerConnection' : Dict<Int,Ety> = {}
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Stamina' : Int = 300
+VARIABLE Stage 1094713345:"Stage Entity" 'Are_Two_Players' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Trace_CD' : Flt = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Tour_Round' : Int = 1
+VARIABLE Stage 1094713345:"Stage Entity" 'G_BestScore' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Tour' : L<Str> = ['', '<color=#ACFF44>Round: </color>', '<color=#ACFF44>Round: </color>', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Tour_Nicknames' : L<Str> = ['', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Tour_Restart' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'C_Tasker_Task' : Str = ''
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Have_Players' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'C_ReadyPlayers' : Ety = id:0
+VARIABLE Stage 1094713345:"Stage Entity" 'Current_Map' : Str = 'NONE'
+VARIABLE Stage 1094713345:"Stage Entity" 'C_Do_Restart' : Str = ''
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Bad' : L<Str> = ['??', '??', '??', '??']
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Empty' : L<Str> = ['', '', '', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Insiders' : L<Ety> = []
+VARIABLE Stage 1094713345:"Stage Entity" 'U_Game_Mode' : L<Int> = [101027, 0, 0, 0]
+VARIABLE Stage 1094713345:"Stage Entity" 'Debug_Entities' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'UI_Prefab' : Dict<Str,Pfb> = {'Beacon': id:10005076, 'Invis': id:10005077, 'Area': id:20001849, 'Bow': id:20002302, 'Device': id:10005029}
+# FILE graph_folders.gil
 GRAPH /(default)/'A - 01' ENTITY_NODE_GRAPH class=9 guid='1073741826' kind=21001 service=20000 nodes=0
 GRAPH /(default)/'B - 02' ENTITY_NODE_GRAPH class=9 guid='1073741827' kind=21001 service=20000 nodes=0
 GRAPH /(default)/'C - 03' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=0
@@ -109,12 +161,12 @@ GRAPH /(default)/'<class>Class Graph - 10' CLASS_NODE_GRAPH class=23 guid='10737
 GRAPH /Class Graph Tab/'<class>New Node Graph - 11' CLASS_NODE_GRAPH class=23 guid='1073741839' kind=21001 service=20004 nodes=0
 GRAPH /(default)/'Item Graph - 12' ITEM_NODE_GRAPH class=46 guid='1073741832' kind=21001 service=20005 nodes=0
 GRAPH /Item Graph Tab/'New Node Graph - 13' ITEM_NODE_GRAPH class=46 guid='1073741840' kind=21001 service=20005 nodes=0
-GRAPH /(default)/'<composite>AA - 01' ENTITY_NODE_GRAPH class=9 guid='1610612742' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /(default)/'<composite>BB - 02' ENTITY_NODE_GRAPH class=9 guid='1610612739' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /(default)/'<composite>CC - 03' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /Composite Tab A/'<composite>Tab A - 04' ENTITY_NODE_GRAPH class=9 guid='1610612741' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /Composite Tab C/'<composite>Tab C - 05' ENTITY_NODE_GRAPH class=9 guid='1610612740' kind=21002 service=20000 nodes=0 composite_body=true
-GRAPH /Composite Tab B/'<composite>Tab B - 06' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /(default)/'<composite>AA - 01' ENTITY_NODE_GRAPH class=9 guid='1610612742' kind=21002 service=20000 nodes=0 decl='1610612742'
+GRAPH /(default)/'<composite>BB - 02' ENTITY_NODE_GRAPH class=9 guid='1610612739' kind=21002 service=20000 nodes=0 decl='1610612739'
+GRAPH /(default)/'<composite>CC - 03' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=0 decl='1610612738'
+GRAPH /Composite Tab A/'<composite>Tab A - 04' ENTITY_NODE_GRAPH class=9 guid='1610612741' kind=21002 service=20000 nodes=0 decl='1610612741'
+GRAPH /Composite Tab C/'<composite>Tab C - 05' ENTITY_NODE_GRAPH class=9 guid='1610612740' kind=21002 service=20000 nodes=0 decl='1610612740'
+GRAPH /Composite Tab B/'<composite>Tab B - 06' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=0 decl='1610612737'
 GRAPH /(default)/'<skill>New Character Skill Node Graph - 14' SKILL_NODE_GRAPH class=11 guid='1082130433' kind=21001 service=20002 nodes=1 entry_slot=1
 GRAPH /Char Skill Graph Tab/'<skill>New Character Skill Node Graph - 15' SKILL_NODE_GRAPH class=11 guid='1082130440' kind=21001 service=20002 nodes=1 entry_slot=1
 GRAPH /(default)/'<creation>New Creation Skill Node Graph - 16' CREATION_SKILL_GRAPH class=52 guid='1082130434' kind=21001 service=20008 nodes=1 entry_slot=1
@@ -191,7 +243,7 @@ RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741836' section=root.9
 RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741837' section=root.9
 RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741838' section=root.9
 RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741839' section=root.9
-# FILE test/cases/mounts/test_folders.gia
+# FILE test_folders.gia
 DECL "Signal_Name" SIGNAL_NODE_DECL class=14 guid='1610613129' category=SEND_SIGNAL
 GRAPH 'Saved to custom (New Folder)' ENTITY_NODE_GRAPH class=9 guid='1073741827' kind=21001 service=20000 nodes=0
 GRAPH 'Saved to default (Uncategorized Tab)' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=0
@@ -202,8 +254,8 @@ GRAPH '<class>Class, saved to custom (New Folder)' CLASS_NODE_GRAPH class=23 gui
 GRAPH '<class>Class, saved to default (Uncategorized Tab)' CLASS_NODE_GRAPH class=23 guid='1073741831' kind=21001 service=20004 nodes=0
 GRAPH 'Item, saved to custom (New Folder)' ITEM_NODE_GRAPH class=46 guid='1073741834' kind=21001 service=20005 nodes=0
 GRAPH 'Item, saved to default (Uncategorized Tab)' ITEM_NODE_GRAPH class=46 guid='1073741833' kind=21001 service=20005 nodes=0
-GRAPH '<composite>Composite in custom' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=0 role=dependency composite_body=true
-GRAPH '<composite>Composite in default' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=0 role=dependency composite_body=true description='Composite Description'
+GRAPH '<composite>Composite in custom' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=0 role=dependency decl='1610612738'
+GRAPH '<composite>Composite in default' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=0 role=dependency decl='1610612737' description='Composite Description'
 GRAPH '<skill>Character skill, custom' SKILL_NODE_GRAPH class=11 guid='1082130434' kind=21001 service=20002 nodes=1 entry_slot=1
 GRAPH '<skill>Character skill, default' SKILL_NODE_GRAPH class=11 guid='1082130433' kind=21001 service=20002 nodes=1 entry_slot=1
 GRAPH '<creation>Creation skill, custom' CREATION_SKILL_GRAPH class=52 guid='1082130436' kind=21001 service=20008 nodes=1 entry_slot=1
@@ -223,9 +275,13 @@ RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE class=19 guid='10
 RESOURCE "Custom Class" CLASS class=17 guid='1090519041'
 RESOURCE "Custom Camera" CAMERA class=13 guid='1073741825'
 RESOURCE "Wireframe Cuboid" OBJECT_ENTITY class=3 guid='1077936129' parent=(10009010)
+MOUNT 'Saved to folder (My)' -> OBJECT_ENTITY "Wireframe Cuboid" entity
 RESOURCE "Wireframe Cuboid" OBJECT_ENTITY class=3 guid='1077936130' parent=(10009010)
+MOUNT 'Saved to folder (My)' -> OBJECT_ENTITY "Wireframe Cuboid" entity
 RESOURCE "Wireframe Cuboid" OBJECT_ENTITY class=3 guid='1077936131' parent=(10009010)
+MOUNT 'Saved to folder (My)' -> OBJECT_ENTITY "Wireframe Cuboid" entity
 RESOURCE "Wireframe Cube" OBJECT_ENTITY class=3 guid='1077936132' parent=(10009010)
+MOUNT 'Saved to folder (My)' -> OBJECT_ENTITY "Wireframe Cube" entity
 RESOURCE "Pavilion 20001488" STATIC_ENTITY class=3 guid='1077936133' parent=(20001488)
 RESOURCE "Terrain01" TERRAIN_ENTITY class=5 guid='1073741825'
 RESOURCE "Default Layout" INTERFACE_LAYOUT class=20 guid='1073741825'
@@ -248,7 +304,7 @@ RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741836'
 RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741837'
 RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741838'
 RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741839'
-# FILE test/cases/mounts/test_folders.gil
+# FILE test_folders.gil
 DECL "Signal_Name" SIGNAL_NODE_DECL class=14 guid='1610613129' category=SEND_SIGNAL
 GRAPH /(default)/'Saved to default (Uncategorized Tab)' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=0
 GRAPH /New Folder/'Saved to custom (New Folder)' ENTITY_NODE_GRAPH class=9 guid='1073741827' kind=21001 service=20000 nodes=0
@@ -259,8 +315,8 @@ GRAPH /(default)/'<class>Class, saved to default (Uncategorized Tab)' CLASS_NODE
 GRAPH /New Folder/'<class>Class, saved to custom (New Folder)' CLASS_NODE_GRAPH class=23 guid='1073741832' kind=21001 service=20004 nodes=0
 GRAPH /(default)/'Item, saved to default (Uncategorized Tab)' ITEM_NODE_GRAPH class=46 guid='1073741833' kind=21001 service=20005 nodes=0
 GRAPH /New Folder/'Item, saved to custom (New Folder)' ITEM_NODE_GRAPH class=46 guid='1073741834' kind=21001 service=20005 nodes=0
-GRAPH /(default)/'<composite>Composite in default' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=0 composite_body=true description='Composite Description'
-GRAPH /New Folder/'<composite>Composite in custom' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=0 composite_body=true
+GRAPH /(default)/'<composite>Composite in default' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=0 decl='1610612737' description='Composite Description'
+GRAPH /New Folder/'<composite>Composite in custom' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=0 decl='1610612738'
 GRAPH /(default)/'<skill>Character skill, default' SKILL_NODE_GRAPH class=11 guid='1082130433' kind=21001 service=20002 nodes=1 entry_slot=1
 GRAPH /New Folder/'<skill>Character skill, custom' SKILL_NODE_GRAPH class=11 guid='1082130434' kind=21001 service=20002 nodes=1 entry_slot=1
 GRAPH /(default)/'<creation>Creation skill, default' CREATION_SKILL_GRAPH class=52 guid='1082130435' kind=21001 service=20008 nodes=1 entry_slot=1
@@ -325,7 +381,7 @@ RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741836' section=root.9
 RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741837' section=root.9
 RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741838' section=root.9
 RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741839' section=root.9
-# FILE test/cases/mounts/test_mount.gil
+# FILE test_mount.gil
 GRAPH /(default)/'Mounted_Character' ENTITY_NODE_GRAPH class=9 guid='1073741826' kind=21001 service=20000 nodes=0
 GRAPH /(default)/'Mounted_Creation' ENTITY_NODE_GRAPH class=9 guid='1073741830' kind=21001 service=20000 nodes=0
 GRAPH /(default)/'Mounted_Entity' ENTITY_NODE_GRAPH class=9 guid='1073741828' kind=21001 service=20000 nodes=0

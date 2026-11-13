@@ -1,0 +1,65 @@
+# INFO
+# FILE codetest_2.gia
+format                 gia
+detected_by            header
+file_size              6553
+container_file_type    gia
+engine_version         7.1.0
+mode                   beyond
+export_name            codetest_2.gia
+node_db_version        7.2.0
+resources              21
+primary                1
+dependencies           20
+graphs                 11
+nodes                  35
+composite_bodies       10
+declarations           10
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=10
+CLASS COMPOSITE_NODE_DECL class=12 count=10
+CLASS STATUS_NODE_GRAPH class=22 count=1
+
+# DUMP
+GRAPH '<status>Status' STATUS_NODE_GRAPH class=22 guid='1073741830' kind=21001 service=20003 nodes=17
+GRAPH '<composite>Calling Twice' ENTITY_NODE_GRAPH class=9 guid='1610612743' kind=21002 service=20000 nodes=3 role=dependency decl='1610612743'
+GRAPH '<composite>Exposed Computed' ENTITY_NODE_GRAPH class=9 guid='1610612748' kind=21002 service=20000 nodes=2 role=dependency decl='1610612748'
+GRAPH '<composite>Exposed Local' ENTITY_NODE_GRAPH class=9 guid='1610612745' kind=21002 service=20000 nodes=2 role=dependency decl='1610612745'
+GRAPH '<composite>Exposed Native' ENTITY_NODE_GRAPH class=9 guid='1610612746' kind=21002 service=20000 nodes=1 role=dependency decl='1610612746'
+GRAPH '<composite>Linear Flow' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=1 role=dependency decl='1610612738'
+GRAPH '<composite>Simple Data' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=1 role=dependency decl='1610612737'
+GRAPH '<composite>Terminal' ENTITY_NODE_GRAPH class=9 guid='1610612739' kind=21002 service=20000 nodes=1 role=dependency decl='1610612739'
+GRAPH '<composite>Two Exclusive Outs' ENTITY_NODE_GRAPH class=9 guid='1610612742' kind=21002 service=20000 nodes=1 role=dependency decl='1610612742'
+GRAPH '<composite>Two In One Out' ENTITY_NODE_GRAPH class=9 guid='1610612741' kind=21002 service=20000 nodes=2 role=dependency decl='1610612741'
+GRAPH '<composite>With Event' ENTITY_NODE_GRAPH class=9 guid='1610612744' kind=21002 service=20000 nodes=4 role=dependency decl='1610612744'
+GRAPH_VARIABLE '<status>Status' 'gvar' : Int = 1
+
+# REFS
+composite        "Calling Twice"                    1 call: ['<status>Status']
+composite        "Exposed Computed"                 1 call: ['<status>Status']
+composite        "Exposed Local"                    1 call: ['<status>Status']
+composite        "Exposed Native"                   1 call: ['<status>Status']
+composite        "Linear Flow"                      1 call: ['<status>Status']
+composite        "Simple Data"                      1 call: ['<status>Status']
+composite        "Terminal"                         1 call: ['<status>Status']
+composite        "Two Exclusive Outs"               1 call: ['<status>Status']
+composite        "Two In One Out"                   1 call: ['<status>Status']
+composite        "With Event"                       1 call: ['<status>Status']
+custom_variable  "none"                             0 get: [], 0 set: [], 1 trigger: ['<composite>With Event']
+custom_variable  "x" (Bol)                          0 get: [], 0 set: [], 1 trigger: ['<status>Status']
+custom_variable  "y" (Bol)                          0 get: [], 0 set: [], 1 trigger: ['<status>Status']
+custom_variable  "z" (Bol)                          0 get: [], 0 set: [], 1 trigger: ['<status>Status']
+graph_variable   "gvar" (Int)                       ['<status>Status']: 0 get, 1 set, 1 trigger
+timer            "timer"                            0 start: [], 0 stop: [], 1 listen: ['<composite>With Event']
+
+# WARNS
+# findings
+(no findings)
+
+# limits
+composites: 10/1000 declared
+
+top graphs by node count:
+'<status>Status': 35/3000 nodes

@@ -18,10 +18,10 @@ test('client custom variables show their type in refs, wired or not', () => {
 test('dump leaves out the numeric details unless --details is on', () => {
   const file = c('mounts', 'test_folders.gil');
   const plain = text('dump', file);
-  assert.doesNotMatch(plain, /\b(class|section|kind|service|composite_body|category|folder|mounted_on)=/);
+  assert.doesNotMatch(plain, /\b(class|section|kind|service|composite_body|decl|category|folder|mounted_on)=/);
   const det = text('dump', file, '--details');
   const det9 = text('dump', c('gil', 'stage_9.gil'), '--details');
-  assert.match(det, /^GRAPH \/New Folder\/'<composite>Composite in custom' ENTITY_NODE_GRAPH class=9 guid='\d+' kind=21002 service=20000 nodes=0 composite_body=true$/m);
+  assert.match(det, /^GRAPH \/New Folder\/'<composite>Composite in custom' ENTITY_NODE_GRAPH class=9 guid='\d+' kind=21002 service=20000 nodes=0 decl='\d+'$/m);
   assert.match(det9, /^RESOURCE \/[^/]+\/"[^"]+" \w+ class=\S+ guid='\d+' section=root\.\d/m);
   assert.doesNotMatch(text('dump', c('gil', 'stage_9.gil')), /^RESOURCE .*(class|section)=/m);
   assert.match(det, /^DECL "Signal_Name" SIGNAL_NODE_DECL class=14 guid='\d+' category=SEND_SIGNAL$/m);

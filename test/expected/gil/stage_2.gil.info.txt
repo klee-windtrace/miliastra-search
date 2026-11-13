@@ -1,4 +1,4 @@
-# FILE test/cases/gil/stage_2.gil
+# FILE stage_2.gil
 format                 gil
 detected_by            header
 file_size              28750
@@ -6,7 +6,7 @@ container_file_type    gil
 engine_version         7.0.0
 mode                   beyond
 level_name             Настраиваемая вкладка_1_Сохранение_3
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              48
 graphs                 3
 nodes                  10

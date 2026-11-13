@@ -1,5 +1,5 @@
 # findings
-(no findings)
+INFO  custom-variable-undeclared: custom variable "test" is used in ['<filter>New Filter Node Graph_1'] but no entity, prefab or template declares it
 
 # limits
 PRESET_POINT: 1/2000

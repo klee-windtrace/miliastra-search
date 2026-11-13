@@ -1,0 +1,138 @@
+GRAPH '<status>Status' STATUS_NODE_GRAPH (guid 1073741830)
+'<status>Status'/VAR gvar : Int public=false = 1
+'<status>Status'/[1] When Unit Status Changes (300) @(-136,-84)
+'<status>Status'/[1] When Unit Status Changes (300) out.flow#0 -> [2] Multiple Branches (3) in.flow#0
+'<status>Status'/[2] Multiple Branches (3) @(303,-88.57143)
+'<status>Status'/[2] Multiple Branches (3) out.flow#1 "0" -> [3] Remove Unit Status (301) in.flow#0
+'<status>Status'/[2] Multiple Branches (3) in#0 "Control Expression" <- [1] When Unit Status Changes (300) out#7 "Original Status Stacks" : Int
+'<status>Status'/[2] Multiple Branches (3) in#0 "Control Expression" = 0 : Int (also wired)
+'<status>Status'/[3] Remove Unit Status (301) @(892.5714,88.28571)
+'<status>Status'/[3] Remove Unit Status (301) out.flow#0 -> [5] Set Node Graph Variable (323) in.flow#0
+'<status>Status'/[3] Remove Unit Status (301) in#0 "Remove Target Entity" <- [1] When Unit Status Changes (300) out#0 "Event Source Entity" : Ety
+'<status>Status'/[3] Remove Unit Status (301) in#1 "Unit Status Config ID" <- [1] When Unit Status Changes (300) out#2 "Unit Status Config ID" : Cfg
+'<status>Status'/[3] Remove Unit Status (301) in#2 "Removal Method" = enum:1540«All Coexisting Statuses With the Same Name» : Enum
+'<status>Status'/[3] Remove Unit Status (301) in#4 "Remover Entity" <- [1] When Unit Status Changes (300) out#3 "Applier Entity" : Ety
+'<status>Status'/[5] Set Node Graph Variable (323) @(1444.7142,84.85714)
+'<status>Status'/[5] Set Node Graph Variable (323) out.flow#0 -> [12] Linear Flow (1610612738) in.flow#0
+'<status>Status'/[5] Set Node Graph Variable (323) in#0 "Variable Name" = 'gvar' : Str
+'<status>Status'/[5] Set Node Graph Variable (323) in#1 "Variable Value" <- [7] Simple Data (1610612737) out#0 "Value" : Int
+'<status>Status'/[5] Set Node Graph Variable (323) in#1 "Variable Value" = 0 : Int (also wired)
+'<status>Status'/[5] Set Node Graph Variable (323) in#2 "Trigger Event" = No : Bol
+'<status>Status'/[7] Simple Data (1610612737) user=COMPOSITE @(1474.7142,-142.28572)
+'<status>Status'/[12] Linear Flow (1610612738) user=COMPOSITE @(1889.4166,88.36905)
+'<status>Status'/[12] Linear Flow (1610612738) out.flow#0 -> [21] Two In One Out (1610612741) in.flow#1
+'<status>Status'/[12] Linear Flow (1610612738) out.flow#0 -> [25] Two Exclusive Outs (1610612742) in.flow#0
+'<status>Status'/[15] Terminal (1610612739) user=COMPOSITE @(2682.9285,-420.61905)
+'<status>Status'/[21] Two In One Out (1610612741) user=COMPOSITE @(2726.738,39.38095)
+'<status>Status'/[21] Two In One Out (1610612741) out.flow#0 -> [29] Calling Twice (1610612743) in.flow#0
+'<status>Status'/[25] Two Exclusive Outs (1610612742) user=COMPOSITE @(2280.0715,-157.7619)
+'<status>Status'/[25] Two Exclusive Outs (1610612742) out.flow#0 "Yes" -> [15] Terminal (1610612739) in.flow#0
+'<status>Status'/[25] Two Exclusive Outs (1610612742) out.flow#1 "No" -> [21] Two In One Out (1610612741) in.flow#0
+'<status>Status'/[25] Two Exclusive Outs (1610612742) in#0 "Condition" = No : Bol
+'<status>Status'/[29] Calling Twice (1610612743) user=COMPOSITE @(3124.5952,34.261906)
+'<status>Status'/[29] Calling Twice (1610612743) out.flow#0 -> [36] With Event (1610612744) in.flow#0
+'<status>Status'/[34] Set Custom Variable (22/28) variant=C<T:Bol> @(3877.5952,36.714287)
+'<status>Status'/[34] Set Custom Variable (22/28) out.flow#0 -> [39] Set Custom Variable (22/28) in.flow#0
+'<status>Status'/[34] Set Custom Variable (22/28) in#1 "Variable Name" = 'x' : Str
+'<status>Status'/[34] Set Custom Variable (22/28) in#2 "Variable Value" <- [42] Exposed Local (1610612745) out#0 "Value" : Bol
+'<status>Status'/[34] Set Custom Variable (22/28) in#2 "Variable Value" = Yes : Bol (also wired)
+'<status>Status'/[34] Set Custom Variable (22/28) in#4 "Trigger Event" <- [42] Exposed Local (1610612745) out#0 "Value" : Bol
+'<status>Status'/[36] With Event (1610612744) user=COMPOSITE @(3528.6577,41.24107)
+'<status>Status'/[36] With Event (1610612744) out.flow#0 -> [34] Set Custom Variable (22/28) in.flow#0
+'<status>Status'/[39] Set Custom Variable (22/28) variant=C<T:Bol> @(4237.9287,39.440475)
+'<status>Status'/[39] Set Custom Variable (22/28) out.flow#0 -> [40] Set Custom Variable (22/28) in.flow#0
+'<status>Status'/[39] Set Custom Variable (22/28) in#1 "Variable Name" = 'y' : Str
+'<status>Status'/[39] Set Custom Variable (22/28) in#2 "Variable Value" <- [46] Exposed Native (1610612746) out#0 "Consume?" : Bol
+'<status>Status'/[39] Set Custom Variable (22/28) in#2 "Variable Value" = Yes : Bol (also wired)
+'<status>Status'/[39] Set Custom Variable (22/28) in#4 "Trigger Event" <- [46] Exposed Native (1610612746) out#0 "Consume?" : Bol
+'<status>Status'/[40] Set Custom Variable (22/28) variant=C<T:Bol> @(4663.643,34.440475)
+'<status>Status'/[40] Set Custom Variable (22/28) in#1 "Variable Name" = 'z' : Str
+'<status>Status'/[40] Set Custom Variable (22/28) in#2 "Variable Value" <- [54] Exposed Computed (1610612748) out#0 "Result" : Bol
+'<status>Status'/[40] Set Custom Variable (22/28) in#2 "Variable Value" = Yes : Bol (also wired)
+'<status>Status'/[40] Set Custom Variable (22/28) in#4 "Trigger Event" <- [54] Exposed Computed (1610612748) out#0 "Result" : Bol
+'<status>Status'/[42] Exposed Local (1610612745) user=COMPOSITE @(3867.1223,-274.70096)
+'<status>Status'/[42] Exposed Local (1610612745) out.flow#0 -> [46] Exposed Native (1610612746) in.flow#0
+'<status>Status'/[46] Exposed Native (1610612746) user=COMPOSITE @(4251.911,-278.6043)
+'<status>Status'/[46] Exposed Native (1610612746) out.flow#0 -> [54] Exposed Computed (1610612748) in.flow#0
+'<status>Status'/[54] Exposed Computed (1610612748) user=COMPOSITE @(4693.5776,-274.43765)
+GRAPH '<composite>Calling Twice' ENTITY_NODE_GRAPH (guid 1610612743, decl 1610612743) role=dependency
+'<composite>Calling Twice'/PORTMAP ext.in.flow#0 -> [19] Double Branch (2) in.flow#0
+'<composite>Calling Twice'/PORTMAP ext.out.flow#0 -> [1] Double Branch (2) out.flow#1 "No"
+'<composite>Calling Twice'/[1] Double Branch (2) @(485,-41)
+'<composite>Calling Twice'/[1] Double Branch (2) in#0 "Condition" = No : Bol
+'<composite>Calling Twice'/[19] Double Branch (2) @(-160,-85)
+'<composite>Calling Twice'/[19] Double Branch (2) out.flow#1 "No" -> [22] Double Branch (2) in.flow#0
+'<composite>Calling Twice'/[19] Double Branch (2) out.flow#1 "No" -> [1] Double Branch (2) in.flow#0
+'<composite>Calling Twice'/[19] Double Branch (2) in#0 "Condition" = No : Bol
+'<composite>Calling Twice'/[22] Double Branch (2) @(160,85)
+'<composite>Calling Twice'/[22] Double Branch (2) out.flow#0 "Yes" -> [1] Double Branch (2) in.flow#0
+'<composite>Calling Twice'/[22] Double Branch (2) in#0 "Condition" = Yes : Bol
+GRAPH '<composite>Exposed Computed' ENTITY_NODE_GRAPH (guid 1610612748, decl 1610612748) role=dependency
+'<composite>Exposed Computed'/PORTMAP ext.in.flow#0 -> [48] Add Unit Status (297) in.flow#0
+'<composite>Exposed Computed'/PORTMAP ext.out.flow#0 -> [48] Add Unit Status (297) out.flow#0
+'<composite>Exposed Computed'/PORTMAP ext.out#0 "Result" -> [47] Greater Than (232) out#0 "Result"
+'<composite>Exposed Computed'/[47] Greater Than (232) @(20,234.16667)
+'<composite>Exposed Computed'/[47] Greater Than (232) in#0 "Left Value" <- [48] Add Unit Status (297) out#1 "Slot ID" : Int
+'<composite>Exposed Computed'/[47] Greater Than (232) in#0 "Left Value" = 0 : Int (also wired)
+'<composite>Exposed Computed'/[47] Greater Than (232) in#1 "Right Value" <- [48] Add Unit Status (297) out#1 "Slot ID" : Int
+'<composite>Exposed Computed'/[47] Greater Than (232) in#1 "Right Value" = 0 : Int (also wired)
+'<composite>Exposed Computed'/[48] Add Unit Status (297) @(-20,-234.16667)
+GRAPH '<composite>Exposed Local' ENTITY_NODE_GRAPH (guid 1610612745, decl 1610612745) role=dependency
+'<composite>Exposed Local'/PORTMAP ext.in.flow#0 -> [38] Forwarding Event (190) in.flow#0
+'<composite>Exposed Local'/PORTMAP ext.out.flow#0 -> [38] Forwarding Event (190) out.flow#0
+'<composite>Exposed Local'/PORTMAP ext.in#0 "Target Entity" -> [38] Forwarding Event (190) in#0 "Target Entity"
+'<composite>Exposed Local'/PORTMAP ext.out#0 "Value" -> [37] Get Local Variable (18) out#1 "Value"
+'<composite>Exposed Local'/[37] Get Local Variable (18) @(-12.646014,109.14144)
+'<composite>Exposed Local'/[37] Get Local Variable (18) in#0 "Initial Value" = Yes : Bol
+'<composite>Exposed Local'/[37] Get Local Variable (18) out#1 "Value" = No : Bol
+'<composite>Exposed Local'/[38] Forwarding Event (190) @(12.646014,-109.14144)
+GRAPH '<composite>Exposed Native' ENTITY_NODE_GRAPH (guid 1610612746, decl 1610612746) role=dependency
+'<composite>Exposed Native'/PORTMAP ext.in.flow#0 -> [44] Consume Gift Box (772) in.flow#0
+'<composite>Exposed Native'/PORTMAP ext.out.flow#0 -> [44] Consume Gift Box (772) out.flow#0
+'<composite>Exposed Native'/PORTMAP ext.in#0 "Player Entity" -> [44] Consume Gift Box (772) in#0 "Player Entity"
+'<composite>Exposed Native'/PORTMAP ext.out#0 "Consume?" -> [44] Consume Gift Box (772) out#0 "Consume?"
+'<composite>Exposed Native'/[44] Consume Gift Box (772) @(0,0)
+'<composite>Exposed Native'/[44] Consume Gift Box (772) in#1 "Gift Box Index" = 1 : Int
+'<composite>Exposed Native'/[44] Consume Gift Box (772) in#2 "Consumption Quantity" = 1 : Int
+GRAPH '<composite>Linear Flow' ENTITY_NODE_GRAPH (guid 1610612738, decl 1610612738) role=dependency
+'<composite>Linear Flow'/PORTMAP ext.in.flow#0 -> [8] Set Node Graph Variable (323) in.flow#0
+'<composite>Linear Flow'/PORTMAP ext.out.flow#0 -> [8] Set Node Graph Variable (323) out.flow#0
+'<composite>Linear Flow'/[8] Set Node Graph Variable (323) @(0,0)
+'<composite>Linear Flow'/[8] Set Node Graph Variable (323) in#0 "Variable Name" = 'gvar' : Str
+'<composite>Linear Flow'/[8] Set Node Graph Variable (323) in#1 "Variable Value" = 0 : Int
+'<composite>Linear Flow'/[8] Set Node Graph Variable (323) in#2 "Trigger Event" = Yes : Bol
+GRAPH '<composite>Simple Data' ENTITY_NODE_GRAPH (guid 1610612737, decl 1610612737) role=dependency
+'<composite>Simple Data'/PORTMAP ext.out#0 "Value" -> [4] Get Local Variable (18/20) out#1 "Value"
+'<composite>Simple Data'/[4] Get Local Variable (18/20) variant=C<T:Int> @(0,0)
+'<composite>Simple Data'/[4] Get Local Variable (18/20) in#0 "Initial Value" = 42 : Int
+'<composite>Simple Data'/[4] Get Local Variable (18/20) out#1 "Value" = 0 : Int
+GRAPH '<composite>Terminal' ENTITY_NODE_GRAPH (guid 1610612739, decl 1610612739) role=dependency
+'<composite>Terminal'/PORTMAP ext.in.flow#0 -> [13] Break Loop (6) in.flow#0
+'<composite>Terminal'/[13] Break Loop (6) @(0,0)
+GRAPH '<composite>Two Exclusive Outs' ENTITY_NODE_GRAPH (guid 1610612742, decl 1610612742) role=dependency
+'<composite>Two Exclusive Outs'/PORTMAP ext.in.flow#0 -> [10] Double Branch (2) in.flow#0
+'<composite>Two Exclusive Outs'/PORTMAP ext.out.flow#0 "Yes" -> [10] Double Branch (2) out.flow#0 "Yes"
+'<composite>Two Exclusive Outs'/PORTMAP ext.out.flow#1 "No" -> [10] Double Branch (2) out.flow#1 "No"
+'<composite>Two Exclusive Outs'/PORTMAP ext.in#0 "Condition" -> [10] Double Branch (2) in#0 "Condition"
+'<composite>Two Exclusive Outs'/[10] Double Branch (2) @(0,0)
+GRAPH '<composite>Two In One Out' ENTITY_NODE_GRAPH (guid 1610612741, decl 1610612741) role=dependency
+'<composite>Two In One Out'/PORTMAP ext.in.flow#0 -> [17] Print String (1) in.flow#0
+'<composite>Two In One Out'/PORTMAP ext.in.flow#1 -> [18] Print String (1) in.flow#0
+'<composite>Two In One Out'/PORTMAP ext.out.flow#0 -> [18] Print String (1) out.flow#0
+'<composite>Two In One Out'/PORTMAP ext.out.flow#0 -> [17] Print String (1) out.flow#0
+'<composite>Two In One Out'/[17] Print String (1) @(2.142857,-114.28571)
+'<composite>Two In One Out'/[17] Print String (1) in#0 "String" = 'First' : Str
+'<composite>Two In One Out'/[18] Print String (1) @(-2.142857,114.28571)
+'<composite>Two In One Out'/[18] Print String (1) in#0 "String" = 'Second' : Str
+GRAPH '<composite>With Event' ENTITY_NODE_GRAPH (guid 1610612744, decl 1610612744) role=dependency
+'<composite>With Event'/PORTMAP ext.in.flow#0 -> [32] Set Custom Variable (22) in.flow#0
+'<composite>With Event'/PORTMAP ext.out.flow#0 -> [31] Multiple Branches (3/4) out.flow#1 "timer"
+'<composite>With Event'/[30] When Timer Is Triggered (83) @(52.1875,30.9375)
+'<composite>With Event'/[30] When Timer Is Triggered (83) out.flow#0 -> [31] Multiple Branches (3/4) in.flow#0
+'<composite>With Event'/[31] Multiple Branches (3/4) variant=C<T:Str> @(417.1875,32.1875)
+'<composite>With Event'/[31] Multiple Branches (3/4) in#0 "Control Expression" <- [30] When Timer Is Triggered (83) out#2 "Timer Name" : Str
+'<composite>With Event'/[31] Multiple Branches (3/4) in#0 "Control Expression" = '' : Str (also wired)
+'<composite>With Event'/[32] Set Custom Variable (22) @(-262.8125,47.1875)
+'<composite>With Event'/[32] Set Custom Variable (22) in#0 "Target Entity" <- [33] Get Self Entity (73) out#0 "Self Entity" : Ety
+'<composite>With Event'/[32] Set Custom Variable (22) in#1 "Variable Name" = 'none' : Str
+'<composite>With Event'/[33] Get Self Entity (73) @(-206.5625,-110.3125)

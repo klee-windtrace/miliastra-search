@@ -1,0 +1,2 @@
+INFO  dynamic-reference: [1] Set Custom Variable in#1 "Variable Name" in graph 'Dead composite': name is computed at runtime (Data Type Conversion output "Output" is computed at runtime); cannot be resolved statically
+INFO  dynamic-reference: [2] Get Custom Variable in#1 "Variable Name" in graph 'Dead composite': name is computed at runtime (Data Type Conversion output "Output" is computed at runtime); cannot be resolved statically

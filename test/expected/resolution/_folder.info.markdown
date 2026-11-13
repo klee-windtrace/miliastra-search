@@ -1,4 +1,4 @@
-﻿# File `test/cases/resolution/test_All_Static.gia`
+﻿# File `test_All_Static.gia`
 
 ## File
 
@@ -11,7 +11,7 @@
 | engine\_version | 7.1.0 |
 | mode | beyond |
 | export\_name | test\_All\_Static.gia |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -38,7 +38,7 @@
 
 ---
 
-# File `test/cases/resolution/test_resolution.gia`
+# File `test_resolution.gia`
 
 ## File
 
@@ -51,7 +51,7 @@
 | engine\_version | 7.1.0 |
 | mode | beyond |
 | export\_name | test\_resolution.gia |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 

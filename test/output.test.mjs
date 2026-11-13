@@ -3,17 +3,20 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { S, graph, key, frac, level, marker, T, spansOf, textLines, plain, flat } from '../src/doc.mjs';
-import { STYLES, styleCss } from '../src/theme.mjs';
-import { makeFormatter, resolveFormat, FORMAT_NAMES } from '../src/output/index.mjs';
-import { mdEsc } from '../src/output/markdown.mjs';
-import { htmlEsc, css } from '../src/output/html.mjs';
+import { S, graph, key, frac, level, marker, T, spansOf, toRich, textLines, plain, flat } from '../src/present/doc.mjs';
+import { STYLES, styleCss } from '../src/present/theme.mjs';
+import { makeFormatter, resolveFormat, FORMAT_NAMES } from '../src/present/output/index.mjs';
+import { mdEsc } from '../src/present/output/markdown.mjs';
+import { htmlEsc, css } from '../src/present/output/html.mjs';
 import { NodeDb } from '../src/nodedb.mjs';
 import { parseBundle } from '../src/model.mjs';
-import { renderDoc } from '../src/render.mjs';
-import { buildRefs } from '../src/refs.mjs';
-import { refsReport, refsDetailReport, warnsReport, warnsDetailReport } from '../src/report-refs.mjs';
-import { fileInfo, infoBlocks } from '../src/info.mjs';
+import { fileCode } from '../src/code.mjs';
+import { codeBlocks } from '../src/present/code.mjs';
+import { buildRefs, buildOverviewRows, referenceJson, findingJson, limitsJson } from '../src/refs.mjs';
+import { refsReport, refsDetailReport } from '../src/present/refs.mjs';
+import { warnsReport, warnsDetailReport } from '../src/present/warns.mjs';
+import { fileInfo } from '../src/info.mjs';
+import { infoBlocks } from '../src/present/info.mjs';
 import { main } from '../src/cli.mjs';
 import { casesDir } from './helpers.mjs';
 import { categories, fixtures, run } from './expected.mjs';
@@ -26,7 +29,7 @@ const cliFull = (args) => { let out = '', err = ''; const code = main(args, { ou
 
 // ---------- choosing the format ----------
 test('formats: text color md htm markdown html auto – md/htm are their own formats, not aliases', () => {
-  assert.deepEqual(FORMAT_NAMES, ['auto', 'text', 'color', 'md', 'htm', 'markdown', 'html']);
+  assert.deepEqual(FORMAT_NAMES, ['auto', 'text', 'color', 'md', 'htm', 'markdown', 'html', 'json']);
   for (const f of FORMAT_NAMES.filter((x) => x !== 'auto')) assert.equal(resolveFormat({ format: f }), f);
   assert.throws(() => resolveFormat({ format: 'pdf' }), /unknown output format/);
 });
@@ -34,7 +37,7 @@ test('formats: text color md htm markdown html auto – md/htm are their own for
 test('auto: by the extension of --output; otherwise color on a terminal (no NO_COLOR), else text; a file never gets color', () => {
   const r = (output) => resolveFormat({ output, toTerminal: true, env: {} });
   assert.equal(r('a.md'), 'md'); assert.equal(r('a.MARKDOWN'), 'markdown'); assert.equal(r('a.htm'), 'htm'); assert.equal(r('dir/a.html'), 'html');
-  assert.equal(r('a.txt'), 'text'); assert.equal(r('noext'), 'text');
+  assert.equal(r('a.json'), 'json'); assert.equal(r('a.txt'), 'text'); assert.equal(r('noext'), 'text');
   assert.equal(resolveFormat({ toTerminal: true, env: {} }), 'color');
   assert.equal(resolveFormat({ toTerminal: true, env: { NO_COLOR: '1' } }), 'text');
   assert.equal(resolveFormat({ toTerminal: false, env: {} }), 'text');
@@ -47,23 +50,23 @@ test('theme: every style used anywhere in dump/refs output is defined in theme.m
   const used = new Set();
   const collect = (v) => { // any object with a string `s` and a `text` is a span; look everywhere else recursively
     if (Array.isArray(v)) v.forEach(collect);
-    else if (v && typeof v === 'object') { if (typeof v.s === 'string' && 'text' in v) used.add(v.s); else Object.values(v).forEach(collect); }
+    else if (v && typeof v === 'object') { if (typeof v.s === 'string' && 'text' in v) used.add(v.s); else if (typeof v.role === 'string' && 'text' in v) used.add(v.role); else Object.values(v).forEach(collect); }
   };
   const walk = (blocks) => collect(blocks);
   const db = new NodeDb();
   for (const cat of categories()) for (const f of fixtures(cat)) {
     const bundle = parseBundle(fs.readFileSync(path.join(casesDir, cat, f)), { file: f });
-    walk(renderDoc(bundle, db, { defaults: true, allPins: true }).blocks);
+    walk(codeBlocks(fileCode(bundle, db), { allPins: true }));
     const { refs, findings, limits } = buildRefs([bundle], db);
-    walk(refsReport(refs, { files: [f], sortDesc: false }));
-    walk(refsDetailReport(refs, { multi: false, files: [f], what: 'x' }));
-    walk(warnsReport({ findings, limits, files: [f], multi: false, topN: 3 }));
-    walk(warnsDetailReport(findings, { multi: false, files: [f], what: 'x' }));
-    walk(infoBlocks(fileInfo(bundle, db, { showTag: true }), { showTag: true }));
-    for (const x of findings) collect(spansOf(x.message));
-    for (const r of refs) { collect(spansOf(r.note)); collect(spansOf(r.pin)); }
+    walk(refsReport(buildOverviewRows(refs), { files: [f] }));
+    walk(refsDetailReport(refs.map(referenceJson), { multi: false, files: [f], what: 'x' }));
+    walk(warnsReport({ findings: findings.map(findingJson), limits: limitsJson(limits, 3), files: [f], multi: false }));
+    walk(warnsDetailReport(findings.map(findingJson), { multi: false, files: [f], what: 'x' }));
+    walk(infoBlocks(fileInfo(bundle, db), { showTag: true }));
+    for (const x of findings) collect(toRich(x.message));
+    for (const r of refs) { collect(toRich(r.note)); collect(toRich(r.pin)); }
   }
-  const builtin = new Set(['graph', 'frac', 'marker']); // graph is drawn with the graphName + graphTag styles
+  const builtin = new Set(['graph', 'frac', 'marker', 'sep']); // graph is drawn with the graphName + graphTag styles
   for (const u of used) assert.ok(STYLES[u] || builtin.has(u), `style "${u}" is used but not defined in src/theme.mjs`);
   for (const must of ['graph', 'key', 'pinName', 'pinLabel', 'string', 'number', 'typeName', 'nodeName', 'kind', 'role', 'count', 'mode']) assert.ok(used.has(must), `style ${must} never used (dead or broken)`);
 });
@@ -152,7 +155,7 @@ test('md: same lines as text with markdown emphasis, real headings and --- separ
   assert.match(md, /^# /m); assert.match(md, /&nbsp;/); assert.match(md, /\*\*\d+\*\* \w+/); assert.ok(!md.includes(ESC));
   assert.ok(!/^\| /m.test(md), 'no tables in the line format');
   const dump = noBom(cli('dump', sample, '--format', 'md'));
-  assert.match(dump, /^# File `test\/cases\/gia\/sample_2\.gia`$/m);
+  assert.match(dump, /^# File `sample_2\.gia`$/m);
   assert.match(dump, /^\*\*GRAPH\*\* '\*Receive\*'/m);
   assert.ok(!/^\\#/m.test(dump), 'header-ish lines are not escaped headings');
 });
@@ -211,7 +214,7 @@ test('CLI: code --search/check/raw work in every format', () => {
 });
 
 // ---------- UTF-8 BOM for Markdown ----------
-test('md and markdown output start with a UTF-8 BOM (stdout and --output file), other formats and --json never do', () => {
+test('md and markdown output start with a UTF-8 BOM (stdout and --output file), other formats and json never do', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ms-bom-'));
   for (const fmt of ['md', 'markdown']) for (const mode of ['info', 'dump', 'code', 'refs', 'warns']) {
     const out = cliFull([mode, sample, '--format', fmt]).out;
@@ -226,5 +229,5 @@ test('md and markdown output start with a UTF-8 BOM (stdout and --output file), 
   // grep output is a document too
   assert.ok(cliFull(['code', sample, '--search', 'Signal_1', '--format', 'md']).out.startsWith('\uFEFF'));
   for (const fmt of ['text', 'color', 'htm', 'html']) assert.ok(!cliFull(['info', sample, '--format', fmt]).out.includes('\uFEFF'), fmt);
-  assert.ok(!cliFull(['info', sample, '--json', '--format', 'md']).out.includes('\uFEFF'), '--json is JSON, not Markdown');
+  assert.ok(!cliFull(['info', sample, '--format', 'json']).out.includes('\uFEFF'), 'json is JSON, not Markdown');
 });

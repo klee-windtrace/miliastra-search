@@ -1,0 +1,7 @@
+graph_variable   "<unset>" (Bol)                    ['New Node Graph']: 3 get, 0 set
+graph_variable   "<unset>" (Cfg)                    ['New Node Graph']: 1 get, 0 set
+graph_variable   "<unset>" (Ety)                    ['New Node Graph']: 1 get, 0 set
+graph_variable   "<unset>" (Flt)                    ['New Node Graph']: 1 get, 0 set
+graph_variable   "<unset>" (Str)                    ['New Node Graph']: 1 get, 0 set
+graph_variable   "<unset>" (Vec)                    ['New Node Graph']: 2 get, 0 set
+literal_id       "Cfg:2"                            1 Ref: ['New Node Graph']

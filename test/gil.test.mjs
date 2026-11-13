@@ -9,8 +9,9 @@ import os from 'node:os';
 import { parseBundle } from '../src/model.mjs';
 import { NodeDb } from '../src/nodedb.mjs';
 import { unwrapContainer, detectFormat, ContainerError } from '../src/container.mjs';
-import { fileInfo, infoBlocks } from '../src/info.mjs';
-import { textLines, plain } from '../src/doc.mjs';
+import { fileInfo } from '../src/info.mjs';
+import { infoBlocks } from '../src/present/info.mjs';
+import { textLines, plain } from '../src/present/doc.mjs';
 import { here, readSample, payloadOf, renderText } from './helpers.mjs';
 
 const db = new NodeDb();
@@ -127,8 +128,8 @@ test('CLI: file names do not matter; directories pick up .gia/.gil and extension
   assert.doesNotMatch(out, /notes\.txt/);
   // several files in one dump/code run: each file's lines are introduced by a `# FILE` line (a single file prints none)
   assert.match(execFileSync('node', [bin, 'dump', d], { encoding: 'utf8' }), /^# FILE .*noext$/m);
-  const chk = JSON.parse(execFileSync('node', [bin, 'check', d, '--json'], { encoding: 'utf8' }));
-  assert.deepEqual(chk.map((r) => r.format).sort(), ['gia', 'gil']);
+  const chk = JSON.parse(execFileSync('node', [bin, 'check', d, '--format', 'json'], { encoding: 'utf8' }));
+  assert.deepEqual(chk.check.map((r) => r.format).sort(), ['gia', 'gil']);
   const s = execFileSync('node', [bin, 'code', '--search', 'Structure_1', path.join(d, 'noext')], { encoding: 'utf8' });
   assert.match(s, /STRUCT_ASSEMBLY/);
 });

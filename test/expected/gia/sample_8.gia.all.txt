@@ -1,0 +1,37 @@
+# INFO
+# FILE sample_8.gia
+format                 gia
+detected_by            header
+file_size              831
+container_file_type    gia
+engine_version         7.0.0
+mode                   beyond
+export_name            sample_8.gia
+node_db_version        7.2.0
+resources              1
+primary                1
+dependencies           0
+graphs                 1
+nodes                  7
+composite_bodies       0
+declarations           0
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=1
+
+# DUMP
+GRAPH 'Graph' ENTITY_NODE_GRAPH class=9 guid='1073741832' kind=21001 service=20000 nodes=7
+GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = id:0
+
+# REFS
+graph_variable   "Graph_Var" (Ety)                  ['Graph']: 1 get, 0 set
+
+# WARNS
+# findings
+(no findings)
+
+# limits
+
+top graphs by node count:
+'Graph': 7/3000 nodes

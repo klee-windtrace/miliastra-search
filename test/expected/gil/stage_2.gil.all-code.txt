@@ -1,0 +1,177 @@
+# INFO
+# FILE stage_2.gil
+format                 gil
+detected_by            header
+file_size              28750
+container_file_type    gil
+engine_version         7.0.0
+mode                   beyond
+level_name             Настраиваемая вкладка_1_Сохранение_3
+node_db_version        7.2.0
+export_tag             null
+resources              48
+graphs                 3
+nodes                  10
+composite_bodies       0
+declarations           6
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS TERRAIN_ENTITY class=5 count=1
+CLASS PRESET_POINT class=6 count=1
+CLASS ENTITY_NODE_GRAPH class=9 count=3
+CLASS COMPOSITE_NODE_DECL class=12 count=2
+CLASS CAMERA class=13 count=1
+CLASS SIGNAL_NODE_DECL class=14 count=4
+CLASS UI_CONTROL class=15 count=14
+CLASS CLASS class=17 count=1
+CLASS PLAYER_TEMPLATE class=18 count=1
+CLASS CHARACTER_TEMPLATE class=19 count=1
+CLASS INTERFACE_LAYOUT class=20 count=1
+CLASS ENVIRONMENT_CONFIGURATION class=49 count=1
+CLASS GIL_CHARACTER_ENTITY class=- count=1
+CLASS GIL_GROWTH_CURVE class=- count=1
+CLASS GIL_INVENTORY_TEMPLATE class=- count=1
+CLASS GIL_LEVEL_ENTITY class=- count=1
+CLASS GIL_PLAYER_ENTITY class=- count=9
+CLASS GIL_RESPAWN_POINT class=- count=1
+CLASS GIL_UI_UNNAMED class=- count=3
+SECTION root.4 resources=2 description='templates: prefabs, player and character templates, creation templates'
+SECTION root.5 resources=11 description='entities placed in the level, plus the stage, player and character entities'
+SECTION root.7 resources=1 description='terrains'
+SECTION root.9 resources=18 description='UI: layouts and their controls'
+SECTION root.10.1 resources=3 description='node graphs (entity, status, class, item, skill, filter, creation graphs)'
+SECTION root.10.2 resources=6 description='node declarations: signals and composite declarations'
+SECTION root.11.3 resources=1 description='respawn points'
+SECTION root.11.5 resources=1 description='preset points'
+SECTION root.15 resources=4 description='configs: unit statuses, classes, skills, items and the like'
+SECTION root.18 resources=1 description='cameras'
+FOLDER /(default)/ graphs=3
+
+# DUMP
+DECL "Signal_2" SIGNAL_NODE_DECL class=14 guid='1073741829' category=SEND_SIGNAL
+DECL "Signal_1" SIGNAL_NODE_DECL class=14 guid='1073741826' category=SEND_SIGNAL
+GRAPH /(default)/'Both' ENTITY_NODE_GRAPH class=9 guid='1073741827' kind=21001 service=20000 nodes=4
+GRAPH /(default)/'Receive' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=3
+GRAPH /(default)/'Send' ENTITY_NODE_GRAPH class=9 guid='1073741826' kind=21001 service=20000 nodes=3
+RESOURCE "Сущность уровня" GIL_LEVEL_ENTITY class=- guid='1094713345' section=root.5
+RESOURCE "Шаблон по умолчанию" PLAYER_TEMPLATE class=18 guid='1086324737' section=root.4
+RESOURCE "Шаблон по умолчанию(Редактор персонажа)" CHARACTER_TEMPLATE class=19 guid='1090519041' section=root.4
+RESOURCE "Настраиваемый класс" CLASS class=17 guid='1090519041' section=root.15
+RESOURCE "Шаблон инвентаря" GIL_INVENTORY_TEMPLATE class=- guid='1119879169' section=root.15
+RESOURCE "Настраиваемая камера" CAMERA class=13 guid='1073741825' section=root.18
+RESOURCE "Ландшафт 01" TERRAIN_ENTITY class=5 guid='1073741825' section=root.7
+RESOURCE "Макет по умолчанию" INTERFACE_LAYOUT class=20 guid='1073741825' section=root.9
+RESOURCE "Конфигурация окружения" ENVIRONMENT_CONFIGURATION class=49 guid='1186988033' section=root.15
+RESOURCE "Новая предустановленная точка" PRESET_POINT class=6 guid='1073741825' section=root.11.5
+RESOURCE "Точка воскрешения1" GIL_RESPAWN_POINT class=- guid='1073741825' section=root.11.3
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY class=- guid='1086324737' section=root.5
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY class=- guid='1086324738' section=root.5
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY class=- guid='1086324739' section=root.5
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY class=- guid='1086324740' section=root.5
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY class=- guid='1086324741' section=root.5
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY class=- guid='1086324742' section=root.5
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY class=- guid='1086324743' section=root.5
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY class=- guid='1086324744' section=root.5
+RESOURCE "Шаблон по умолчанию" GIL_PLAYER_ENTITY class=- guid='1086324745' section=root.5
+RESOURCE "Шаблон по умолчанию(Редактор персонажа)" GIL_CHARACTER_ENTITY class=- guid='1090519041' section=root.5
+RESOURCE "Настраиваемая кривая роста" GIL_GROWTH_CURVE class=- guid='1094713345' section=root.15
+RESOURCE "" GIL_UI_UNNAMED class=- guid='1073741840' section=root.9
+RESOURCE "" GIL_UI_UNNAMED class=- guid='1073741841' section=root.9
+RESOURCE "" GIL_UI_UNNAMED class=- guid='1073741842' section=root.9
+RESOURCE "Мини-карта" UI_CONTROL class=15 guid='1073741826' section=root.9
+RESOURCE "Область навыков" UI_CONTROL class=15 guid='1073741827' section=root.9
+RESOURCE "Информация отряда" UI_CONTROL class=15 guid='1073741828' section=root.9
+RESOURCE "Шкала HP персонажа" UI_CONTROL class=15 guid='1073741829' section=root.9
+RESOURCE "Джойстик" UI_CONTROL class=15 guid='1073741830' section=root.9
+RESOURCE "Шкала HP создания" UI_CONTROL class=15 guid='1073741831' section=root.9
+RESOURCE "Кнопка выхода" UI_CONTROL class=15 guid='1073741832' section=root.9
+RESOURCE "Озвучивание" UI_CONTROL class=15 guid='1073741833' section=root.9
+RESOURCE "Вкладка" UI_CONTROL class=15 guid='1073741834' section=root.9
+RESOURCE "Кнопка чата" UI_CONTROL class=15 guid='1073741835' section=root.9
+RESOURCE "Статус сети" UI_CONTROL class=15 guid='1073741836' section=root.9
+RESOURCE "Кнопка сопротивления" UI_CONTROL class=15 guid='1073741837' section=root.9
+RESOURCE "Кнопка голосового чата" UI_CONTROL class=15 guid='1073741838' section=root.9
+RESOURCE "Очередь подсказок голосового чата" UI_CONTROL class=15 guid='1073741839' section=root.9
+
+# REFS
+literal_id       "Cfg:6"                            1 Ref: ['Send']
+literal_id       "Pfb:5"                            1 Ref: ['Send']
+signal           "Signal_1"                         2 listen: ['Both'; 'Receive'], 2 send: ['Both'; 'Send']
+signal           "Signal_2"                         2 listen: ['Both'; 'Receive'], 2 send: ['Both'; 'Send']
+timer            "* (listener for any name)"        1 listen: ['Send']
+
+# WARNS
+# findings
+INFO  catch-all-listener: [5] When Timer Is Triggered in graph 'Send' also runs code for every name: [4] Send Signal runs for every name (not a name switch)
+
+# limits
+signals: 2/99 declared
+PRESET_POINT: 1/2000
+ENVIRONMENT_CONFIGURATION: 1/50
+CLASS: 1/100
+TERRAIN_ENTITY: 1/1200
+
+top graphs by node count:
+'Both': 4/3000 nodes
+'Receive': 3/3000 nodes
+'Send': 3/3000 nodes
+
+# CODE
+DECL "Signal_2" SIGNAL_NODE_DECL guid='1073741829'
+DECL/Signal_2 SEND_SIGNAL name='Signal_2' server_node=1073741828 client_node=1073741830
+DECL/Signal_2 in.flow#0 uid=30
+DECL/Signal_2 out.flow#0 uid=31
+DECL/Signal_2 in#0 "Parameter_1" : Int uid=42
+DECL/Signal_2 in#1 "Parameter_2" : Flt uid=43
+DECL/Signal_2 in#2 "Parameter_3" : Vec uid=44
+DECL/Signal_2 in#3 "Parameter_4" : Bol enum_family=1 uid=45
+DECL/Signal_2 in#4 "Parameter_5" : Gid uid=46
+DECL/Signal_2 in#5 "Parameter_6" : Ety uid=47
+DECL/Signal_2 in#6 "Parameter_7" : Pfb uid=48
+DECL/Signal_2 in#7 "Parameter_8" : Cfg uid=49
+DECL/Signal_2 in#8 "Parameter_9" : L<Int> uid=50
+DECL/Signal_2 in#9 "Parameter_10" : Str uid=72
+DECL/Signal_2 meta#0 "Signal Name" uid=32
+DECL "Signal_1" SIGNAL_NODE_DECL guid='1073741826'
+DECL/Signal_1 SEND_SIGNAL name='Signal_1' server_node=1073741825 client_node=1073741827
+DECL/Signal_1 in.flow#0 uid=18
+DECL/Signal_1 out.flow#0 uid=19
+DECL/Signal_1 meta#0 "Signal Name" uid=20
+GRAPH 'Both' ENTITY_NODE_GRAPH (guid 1073741827)
+'Both'/[2] Monitor Signal (1073741825) user=LISTEN_SIGNAL signal='Signal_1' @(-293,-150) sigver=1
+'Both'/[2] Monitor Signal (1073741825) out.flow#0 -> [4] Send Signal (1073741826) in.flow#0
+'Both'/[2] Monitor Signal (1073741825) meta.rpc#0 "Signal Name" = 'Signal_1'
+'Both'/[4] Send Signal (1073741826) user=SEND_SIGNAL signal='Signal_1' @(207,-148) sigver=1
+'Both'/[4] Send Signal (1073741826) out.flow#0 -> [6] Send Signal (1073741829) in.flow#0
+'Both'/[4] Send Signal (1073741826) meta.rpc#0 "Signal Name" = 'Signal_1'
+'Both'/[6] Send Signal (1073741829) user=SEND_SIGNAL signal='Signal_2' @(583,-153) sigver=3
+'Both'/[6] Send Signal (1073741829) in#8 "Parameter_9" <- [7] Monitor Signal (1073741828) out#11 "Parameter_9" : L<Int>
+'Both'/[6] Send Signal (1073741829) meta.rpc#0 "Signal Name" = 'Signal_2'
+'Both'/[7] Monitor Signal (1073741828) user=LISTEN_SIGNAL signal='Signal_2' @(102.85714,143.28572) sigver=3
+'Both'/[7] Monitor Signal (1073741828) out.flow#0 -> [6] Send Signal (1073741829) in.flow#0
+'Both'/[7] Monitor Signal (1073741828) meta.rpc#0 "Signal Name" = 'Signal_2'
+GRAPH 'Receive' ENTITY_NODE_GRAPH (guid 1073741825)
+'Receive'/[2] Monitor Signal (1073741825) user=LISTEN_SIGNAL signal='Signal_1' @(-286,-207) sigver=1
+'Receive'/[2] Monitor Signal (1073741825) meta.rpc#0 "Signal Name" = 'Signal_1'
+'Receive'/[5] Monitor Signal (1073741828) user=LISTEN_SIGNAL signal='Signal_2' @(-284,98) sigver=3
+'Receive'/[5] Monitor Signal (1073741828) out.flow#0 -> [6] Print String (1) in.flow#0
+'Receive'/[5] Monitor Signal (1073741828) meta.rpc#0 "Signal Name" = 'Signal_2'
+'Receive'/[6] Print String (1) @(223,96)
+'Receive'/[6] Print String (1) in#0 "String" <- [5] Monitor Signal (1073741828) out#12 "Parameter_10" : Str
+GRAPH 'Send' ENTITY_NODE_GRAPH (guid 1073741826)
+'Send'/[2] Send Signal (1073741826) user=SEND_SIGNAL signal='Signal_1' @(-172.85715,-372.7143) sigver=1
+'Send'/[2] Send Signal (1073741826) meta.rpc#0 "Signal Name" = 'Signal_1'
+'Send'/[4] Send Signal (1073741829) user=SEND_SIGNAL signal='Signal_2' @(-197,-101) sigver=3
+'Send'/[4] Send Signal (1073741829) in#0 "Parameter_1" <- [5] When Timer Is Triggered (83) out#3 "Timer Sequence ID" : Int
+'Send'/[4] Send Signal (1073741829) in#1 "Parameter_2" = 4 : Flt
+'Send'/[4] Send Signal (1073741829) in#2 "Parameter_3" = (1, 2, 3) : Vec
+'Send'/[4] Send Signal (1073741829) in#3 "Parameter_4" = Yes : Bol
+'Send'/[4] Send Signal (1073741829) in#4 "Parameter_5" <- [5] When Timer Is Triggered (83) out#1 "Event Source GUID" : Gid
+'Send'/[4] Send Signal (1073741829) in#5 "Parameter_6" <- [5] When Timer Is Triggered (83) out#0 "Event Source Entity" : Ety
+'Send'/[4] Send Signal (1073741829) in#6 "Parameter_7" = id:5 : Pfb
+'Send'/[4] Send Signal (1073741829) in#7 "Parameter_8" = id:6 : Cfg
+'Send'/[4] Send Signal (1073741829) in#9 "Parameter_10" <- [5] When Timer Is Triggered (83) out#2 "Timer Name" : Str
+'Send'/[4] Send Signal (1073741829) meta.rpc#0 "Signal Name" = 'Signal_2'
+'Send'/[5] When Timer Is Triggered (83) @(-582,-100)
+'Send'/[5] When Timer Is Triggered (83) out.flow#0 -> [4] Send Signal (1073741829) in.flow#0

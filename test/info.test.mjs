@@ -1,4 +1,4 @@
-﻿// The `info` mode: facts about the file itself (moved out of dump), class counts, level sections, --show-tag, --json.
+﻿// The `info` mode: facts about the file itself (moved out of dump), class counts, level sections, --show-tag, --format json.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';
@@ -20,13 +20,13 @@ test('info: gia facts line, content counts and one CLASS line per resource class
   const i = fileInfo(b, db);
   assert.equal(i.format, 'gia'); assert.equal(i.detected_by, 'header'); assert.equal(i.engine_version, '7.0.0'); assert.equal(i.mode, 'beyond');
   assert.equal(i.file_size, readSample('sample_3.gia').length);
-  assert.equal(i.export_name, 'sample_3.gia'); assert.equal(i.level_name, undefined);
+  assert.equal(i.export_name, 'sample_3.gia'); assert.equal(i.level_name, null);
   assert.equal(i.resources, b.resources.length);
   assert.equal(i.primary + i.dependencies, i.resources, 'a gia splits into primary and dependency resources');
   assert.equal(i.classes.reduce((n, c) => n + c.count, 0), i.resources, 'the class table covers every resource');
-  assert.equal(i.sections, undefined, 'sections/folders are a .gil thing');
+  assert.equal(i.sections, null, 'sections/folders are a .gil thing'); assert.equal(i.folders, null);
   const out = run(['info', giaPath, '--format', 'text']);
-  assert.match(out, /^# FILE test\/cases\/gia\/sample_3\.gia$/m);
+  assert.match(out, /^# FILE sample_3\.gia$/m, 'a file is shown by its name only');
   assert.match(out, /^format +gia\ndetected_by +header\nfile_size +\d+\ncontainer_file_type +gia\n/m, 'File and Contents are two-column key/value lines');
   assert.match(out, /^engine_version +7\.0\.0\nmode +beyond\nexport_name +sample_3\.gia\nnode_db_version +\S+\nresources +\d+\n/m);
   assert.match(out, /^CLASS ENTITY_NODE_GRAPH class=9 count=1$/m);
@@ -36,7 +36,7 @@ test('info: gia facts line, content counts and one CLASS line per resource class
 test('info: a .gil also lists its sections (and folders), which add up to the resource count', () => {
   const b = parseBundle(fs.readFileSync(path.join(here, '..', gilPath)), { file: gilPath });
   const i = fileInfo(b, db);
-  assert.equal(i.format, 'gil'); assert.equal(typeof i.level_name, 'string'); assert.equal(i.export_name, undefined);
+  assert.equal(i.format, 'gil'); assert.equal(typeof i.level_name, 'string'); assert.equal(i.export_name, null);
   assert.equal(i.sections.reduce((n, s) => n + s.count, 0), i.resources);
   assert.ok(i.sections.some((s) => s.section === 'root.10.1'), 'graphs live in root.10.1');
   const out = run(['info', gilPath, '--format', 'text']);
@@ -58,7 +58,7 @@ test('dump/code start with the content, not the file facts; with several files e
     const one = run([mode, giaPath, '--format', 'text']);
     assert.doesNotMatch(one, /^# |engine_version/m, `${mode}: single file`);
     const two = run([mode, giaPath, path.join('test', 'cases', 'gia', 'sample_1.gia'), '--format', 'text']);
-    assert.deepEqual(lines(two).filter((l) => l.startsWith('# ')), ['# FILE test/cases/gia/sample_3.gia', '# FILE test/cases/gia/sample_1.gia'], `${mode}: two files`);
+    assert.deepEqual(lines(two).filter((l) => l.startsWith('# ')), ['# FILE sample_3.gia', '# FILE sample_1.gia'], `${mode}: two files`);
   }
 });
 
@@ -68,18 +68,25 @@ test('info works in every format, with several files, and greps like the other m
   assert.match(run(['info', giaPath, '--format', 'markdown']), /^\| Property \| Value \|$/m, 'File and Contents are tables in the document formats'); 
   assert.match(run(['info', giaPath, '--format', 'html']), /<h1>File <span class="fileName">/);
   const grep = run(['info', giaPath, gilPath, '--match', '^CLASS ENTITY_NODE_GRAPH', '--format', 'text']);
-  const counts = (p) => fileInfo(parseBundle(fs.readFileSync(path.join(here, '..', p)), { file: p }), db).classes.find((c) => c.className === 'ENTITY_NODE_GRAPH').count;
-  assert.deepEqual(lines(grep), [`${giaPath}:CLASS ENTITY_NODE_GRAPH class=9 count=${counts(giaPath)}`, `${gilPath}:CLASS ENTITY_NODE_GRAPH class=9 count=${counts(gilPath)}`]);
+  const counts = (p) => fileInfo(parseBundle(fs.readFileSync(path.join(here, '..', p)), { file: p }), db).classes.find((c) => c.class_name === 'ENTITY_NODE_GRAPH').count;
+  assert.deepEqual(lines(grep), [`sample_3.gia:CLASS ENTITY_NODE_GRAPH class=9 count=${counts(giaPath)}`, `stage_1.gil:CLASS ENTITY_NODE_GRAPH class=9 count=${counts(gilPath)}`]);
 });
 
-test('info --json: one object per file; cannot be combined with grep', () => {
-  const r = spawnSync(process.execPath, [path.join(here, '..', 'miliastra-search.mjs'), 'info', giaPath, gilPath, '--json'], { encoding: 'utf8', cwd: path.join(here, '..') });
+test('info --format json: one item per file, every key always there; cannot be combined with grep', () => {
+  const r = spawnSync(process.execPath, [path.join(here, '..', 'miliastra-search.mjs'), 'info', giaPath, gilPath, '--show-tag', '--format', 'json'], { encoding: 'utf8', cwd: path.join(here, '..') });
   assert.equal(r.status, 0);
-  const j = JSON.parse(r.stdout);
+  const report = JSON.parse(r.stdout);
+  assert.equal(report.header.mode, 'info');
+  const j = report.info;
   assert.deepEqual(j.map((x) => x.format), ['gia', 'gil']);
-  assert.ok(!('export_tag' in j[0]), 'tag only with --show-tag');
+  assert.ok(j[0].export_tag.uid.length > 0, 'with --show-tag the tag is in the data');
+  assert.equal(report.header.options.show_tag, true);
+  const without = JSON.parse(spawnSync(process.execPath, [path.join(here, '..', 'miliastra-search.mjs'), 'info', giaPath, '--format', 'json'], { encoding: 'utf8', cwd: path.join(here, '..') }).stdout);
+  assert.equal(without.info[0].export_tag, null, 'without it the tag is not in the data');
+  assert.equal(j[1].export_tag, null);
   assert.ok(Array.isArray(j[1].sections) && Array.isArray(j[0].classes));
-  assert.equal(spawnSync(process.execPath, [path.join(here, '..', 'miliastra-search.mjs'), 'info', giaPath, '--json', '--search', 'x'], { encoding: 'utf8', cwd: path.join(here, '..') }).status, 2);
+  assert.equal(j[0].sections, null); assert.equal(j[1].primary, null); assert.equal(j[1].export_name, null); assert.equal(j[0].level_name, null);
+  assert.equal(spawnSync(process.execPath, [path.join(here, '..', 'miliastra-search.mjs'), 'info', giaPath, '--format', 'json', '--search', 'x'], { encoding: 'utf8', cwd: path.join(here, '..') }).status, 2);
 });
 
 test('info reports container warnings of a --lenient decode', () => {
@@ -116,18 +123,19 @@ test('info --key prints only the value: properties, class counts, plain text in 
   assert.equal(run(['info', giaPath, '--key', 'export_name']), 'sample_3.gia\n');
   assert.equal(run(['info', giaPath, '--key', 'STRUCTURE']), '2\n', 'the count of a resource class');
   assert.equal(run(['info', giaPath, '--key', 'Resources']), `${fileInfo(parseBundle(readSample('sample_3.gia'), { file: giaPath }), db).resources}\n`, 'case does not matter');
-  assert.match(run(['info', giaPath, '--key', 'uid']), /^\d+\n$/, 'the export tag needs no --show-tag');
+  assert.match(run(['info', giaPath, '--key', 'uid', '--show-tag']), /^\d+\n$/, 'the export tag parts need --show-tag (it is a parser option)');
+  assert.equal(run(['info', giaPath, '--key', 'uid']), '', 'without it there is no uid to print');
   for (const fmt of ['color', 'html', 'markdown']) assert.match(run(['info', giaPath, '--key', 'format', '--format', fmt]), /gia/, fmt);
   assert.equal(run(['info', giaPath, '--key', 'format', '--format', 'color']), 'gia\n');
 });
 
 test('info --key: several files get a file: prefix unless --no-file-prefix; a missing key is exit 1; no combining with grep/json', () => {
-  assert.equal(run(['info', giaPath, gilPath, '--key', 'format']), `${giaPath}:gia\n${gilPath}:gil\n`);
+  assert.equal(run(['info', giaPath, gilPath, '--key', 'format']), 'sample_3.gia:gia\nstage_1.gil:gil\n');
   assert.equal(run(['info', giaPath, gilPath, '--key', 'format', '--no-file-prefix']), 'gia\ngil\n');
   const bin = path.join(here, '..', 'miliastra-search.mjs'), opts = { encoding: 'utf8', cwd: path.join(here, '..') };
   const missing = spawnSync(process.execPath, [bin, 'info', giaPath, '--key', 'level_name'], opts);
   assert.equal(missing.status, 1); assert.equal(missing.stdout, ''); assert.match(missing.stderr, /level_name/);
-  assert.equal(spawnSync(process.execPath, [bin, 'info', giaPath, '--key', 'mode', '--json'], opts).status, 2);
+  assert.equal(spawnSync(process.execPath, [bin, 'info', giaPath, '--key', 'mode', '--format', 'json'], opts).status, 2);
   assert.equal(spawnSync(process.execPath, [bin, 'info', giaPath, '--key', 'mode', '--search', 'x'], opts).status, 2);
   assert.equal(spawnSync(process.execPath, [bin, 'info', giaPath, '--key'], opts).status, 2);
 });

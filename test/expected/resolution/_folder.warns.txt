@@ -11,7 +11,7 @@ WARN  used-but-undeclared: graph variable "gvar4" is referenced in graph 'Static
 
 # limits
 composites: 2/1000 declared
-signals: 2/100 declared
+signals: 2/99 declared
 
 top graphs by node count:
 'Dynamic': 37/3000 nodes [test_resolution.gia]

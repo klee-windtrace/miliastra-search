@@ -1,4 +1,4 @@
-# FILE test/cases/composites/test_composite.gia
+# FILE test_composite.gia
 format                 gia
 detected_by            header
 file_size              6705
@@ -6,7 +6,7 @@ container_file_type    gia
 engine_version         7.1.0
 mode                   beyond
 export_name            test_composite.gia
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              23
 primary                7
 dependencies           16

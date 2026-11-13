@@ -1,0 +1,1221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "miliastra-search/report.schema.json",
+  "title": "miliastra-search report",
+  "description": "The JSON that `--format json` (or an --output file ending in .json) prints. Documented in JSON.md; keep both in step with src/report.mjs. Uses only the JSON Schema keywords $ref, type, enum, const, properties, required, additionalProperties, items, oneOf, so any validator (and src/present/validate.mjs) can read it.",
+  "oneOf": [
+    { "$ref": "#/$defs/infoReport" },
+    { "$ref": "#/$defs/dumpReport" },
+    { "$ref": "#/$defs/codeReport" },
+    { "$ref": "#/$defs/refsReport" },
+    { "$ref": "#/$defs/warnsReport" },
+    { "$ref": "#/$defs/checkReport" },
+    { "$ref": "#/$defs/rawReport" },
+    { "$ref": "#/$defs/allReport" }
+  ],
+  "$defs": {
+    "str": { "type": "string" },
+    "strOrNull": { "type": ["string", "null"] },
+    "int": { "type": "integer" },
+    "intOrNull": { "type": ["integer", "null"] },
+    "strings": { "type": "array", "items": { "type": "string" } },
+    "graphRef": {
+      "description": "A graph name, split: `tag` is the <tag> of its service domain or composite body (without the brackets), null for an ordinary graph.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tag", "name"],
+      "properties": { "tag": { "$ref": "#/$defs/strOrNull" }, "name": { "$ref": "#/$defs/str" } }
+    },
+    "richText": {
+      "description": "A message made of plain strings and terms. A term says what its text is (role), never how it looks; a `graph` term also has the tag of the graph name.",
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "type": "string" },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["role", "text"],
+            "properties": { "role": { "$ref": "#/$defs/str" }, "text": { "$ref": "#/$defs/str" }, "tag": { "$ref": "#/$defs/str" } }
+          }
+        ]
+      }
+    },
+    "richTextOrNull": { "oneOf": [{ "$ref": "#/$defs/richText" }, { "type": "null" }] },
+    "graphRefOrNull": { "oneOf": [{ "$ref": "#/$defs/graphRef" }, { "type": "null" }] },
+    "idOrNull": { "type": ["integer", "string", "null"] },
+    "kind": { "enum": ["graph_variable", "custom_variable", "timer", "global_timer", "signal", "composite", "struct", "mount", "node_type", "literal_id"] },
+    "parseOptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lang", "node_db", "input", "lenient"],
+      "properties": { "lang": { "$ref": "#/$defs/str" }, "node_db": { "$ref": "#/$defs/strOrNull" }, "input": { "enum": ["gia", "gil", null] }, "lenient": { "type": "boolean" } }
+    },
+    "codeOptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lang", "node_db", "input", "lenient", "expand"],
+      "properties": { "lang": { "$ref": "#/$defs/str" }, "node_db": { "$ref": "#/$defs/strOrNull" }, "input": { "enum": ["gia", "gil", null] }, "lenient": { "type": "boolean" }, "expand": { "description": "The pseudocode writes a composite call as the nodes of the composite's body (--expand) instead of a call of the composite's function.", "type": "boolean" } }
+    },
+    "refsOptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lang", "node_db", "input", "lenient", "kind", "name", "sort_desc"],
+      "properties": {
+        "lang": { "$ref": "#/$defs/str" },
+        "node_db": { "$ref": "#/$defs/strOrNull" },
+        "input": { "enum": ["gia", "gil", null] },
+        "lenient": { "type": "boolean" },
+        "kind": { "$ref": "#/$defs/strOrNull" },
+        "name": { "$ref": "#/$defs/strOrNull" },
+        "sort_desc": { "type": "boolean" }
+      }
+    },
+    "warnsOptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lang", "node_db", "input", "lenient", "kind", "name", "top_graphs"],
+      "properties": {
+        "lang": { "$ref": "#/$defs/str" },
+        "node_db": { "$ref": "#/$defs/strOrNull" },
+        "input": { "enum": ["gia", "gil", null] },
+        "lenient": { "type": "boolean" },
+        "kind": { "$ref": "#/$defs/strOrNull" },
+        "name": { "$ref": "#/$defs/strOrNull" },
+        "top_graphs": { "$ref": "#/$defs/int" }
+      }
+    },
+    "noOptions": { "type": "object", "additionalProperties": false, "properties": {} },
+    "infoReport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["header", "info"],
+      "properties": {
+        "header": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["software", "version", "mode", "files", "options"],
+          "properties": {
+            "software": { "const": "miliastra-search" },
+            "version": { "$ref": "#/$defs/str" },
+            "mode": { "const": "info" },
+            "files": { "$ref": "#/$defs/strings" },
+            "options": { "$ref": "#/$defs/infoOptions" }
+          }
+        },
+        "info": { "$ref": "#/$defs/infoBody" }
+      }
+    },
+    "infoItem": {
+      "description": "What `info` says about one file. Facts that do not apply to the kind of file are null (level_name, sections and folders belong to a .gil; export_name, primary, dependencies and export_tag to a .gia; the tag is null unless the `show_tag` option was given).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "format", "detected_by", "file_size", "container_file_type", "engine_version", "mode", "level_name", "export_name", "node_db_version", "resources", "primary", "dependencies", "graphs", "nodes", "composite_bodies", "declarations", "structs", "mounts", "unresolved_node_types", "container_warnings", "export_tag", "classes", "sections", "folders"],
+      "properties": {
+        "file": { "$ref": "#/$defs/str" },
+        "format": { "enum": ["gia", "gil"] },
+        "detected_by": { "$ref": "#/$defs/str" },
+        "file_size": { "$ref": "#/$defs/int" },
+        "container_file_type": { "$ref": "#/$defs/strOrNull" },
+        "engine_version": { "$ref": "#/$defs/strOrNull" },
+        "mode": { "$ref": "#/$defs/str" },
+        "level_name": { "$ref": "#/$defs/strOrNull" },
+        "export_name": { "$ref": "#/$defs/strOrNull" },
+        "node_db_version": { "$ref": "#/$defs/strOrNull" },
+        "resources": { "$ref": "#/$defs/int" },
+        "primary": { "$ref": "#/$defs/intOrNull" },
+        "dependencies": { "$ref": "#/$defs/intOrNull" },
+        "graphs": { "$ref": "#/$defs/int" },
+        "nodes": { "$ref": "#/$defs/int" },
+        "composite_bodies": { "$ref": "#/$defs/int" },
+        "declarations": { "$ref": "#/$defs/int" },
+        "structs": { "$ref": "#/$defs/int" },
+        "mounts": { "$ref": "#/$defs/int" },
+        "unresolved_node_types": { "$ref": "#/$defs/int" },
+        "container_warnings": { "$ref": "#/$defs/strings" },
+        "export_tag": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["raw", "uid", "time", "file_id"],
+              "properties": { "raw": { "$ref": "#/$defs/strOrNull" }, "uid": { "$ref": "#/$defs/strOrNull" }, "time": { "$ref": "#/$defs/strOrNull" }, "file_id": { "$ref": "#/$defs/strOrNull" } }
+            },
+            { "type": "null" }
+          ]
+        },
+        "classes": {
+          "description": "One item per resource class, in class-id order (unknown classes last).",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["class_name", "class_id", "count"],
+            "properties": { "class_name": { "$ref": "#/$defs/str" }, "class_id": { "$ref": "#/$defs/intOrNull" }, "count": { "$ref": "#/$defs/int" } }
+          }
+        },
+        "sections": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["section", "count", "description"],
+                "properties": {
+                  "section": { "$ref": "#/$defs/str" },
+                  "count": { "$ref": "#/$defs/int" },
+                  "description": { "$ref": "#/$defs/strOrNull" }
+                }
+              }
+            },
+            { "type": "null" }
+          ]
+        },
+        "folders": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["name", "graphs", "resources"],
+                "properties": { "name": { "$ref": "#/$defs/str" }, "graphs": { "$ref": "#/$defs/int" }, "resources": { "$ref": "#/$defs/int" } }
+              }
+            },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "refsReport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["header", "refs"],
+      "properties": {
+        "header": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["software", "version", "mode", "files", "options"],
+          "properties": {
+            "software": { "const": "miliastra-search" },
+            "version": { "$ref": "#/$defs/str" },
+            "mode": { "const": "refs" },
+            "files": { "$ref": "#/$defs/strings" },
+            "options": { "$ref": "#/$defs/refsOptions" }
+          }
+        },
+        "refs": { "$ref": "#/$defs/refsBody" }
+      }
+    },
+    "overviewEntry": {
+      "description": "A group of references with the same key (variables are also grouped by graph and type), with how often each role occurs and in which graphs.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "key", "key_graph", "type", "loop", "resolved", "graph", "definition", "parts"],
+      "properties": {
+        "kind": { "$ref": "#/$defs/kind" },
+        "key": { "$ref": "#/$defs/str" },
+        "key_graph": { "$ref": "#/$defs/graphRefOrNull" },
+        "type": { "$ref": "#/$defs/strOrNull" },
+        "loop": { "enum": ["onetime", "looped", null] },
+        "resolved": { "$ref": "#/$defs/richTextOrNull" },
+        "graph": { "$ref": "#/$defs/graphRefOrNull" },
+        "definition": { "$ref": "#/$defs/strOrNull" },
+        "parts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["role", "count", "graphs", "note"],
+            "properties": {
+              "role": { "$ref": "#/$defs/str" },
+              "count": { "$ref": "#/$defs/int" },
+              "graphs": { "oneOf": [{ "type": "array", "items": { "$ref": "#/$defs/graphRef" } }, { "type": "null" }] },
+              "note": { "$ref": "#/$defs/richTextOrNull" }
+            }
+          }
+        }
+      }
+    },
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "kind", "key", "key_graph", "scope", "mode", "role", "display_role", "var_type", "trigger", "loop", "graph", "graph_guid", "graph_class", "composite_body", "node", "host", "pin", "resolved", "resolved_via", "via_composite", "raw_copy", "note"],
+      "properties": {
+        "file": { "$ref": "#/$defs/str" },
+        "kind": { "$ref": "#/$defs/kind" },
+        "key": { "$ref": "#/$defs/str" },
+        "key_graph": { "$ref": "#/$defs/graphRefOrNull" },
+        "scope": { "$ref": "#/$defs/strOrNull" },
+        "mode": { "enum": ["declaration", "definition", "literal", "dynamic", "unset", "usage"] },
+        "role": { "$ref": "#/$defs/strOrNull" },
+        "display_role": { "$ref": "#/$defs/strOrNull" },
+        "var_type": { "$ref": "#/$defs/strOrNull" },
+        "trigger": { "$ref": "#/$defs/strOrNull" },
+        "loop": { "$ref": "#/$defs/strOrNull" },
+        "graph": { "$ref": "#/$defs/graphRefOrNull" },
+        "graph_guid": { "$ref": "#/$defs/idOrNull" },
+        "graph_class": { "$ref": "#/$defs/strOrNull" },
+        "composite_body": { "type": "boolean" },
+        "node": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["index", "name", "id", "comment"],
+              "properties": { "index": { "$ref": "#/$defs/int" }, "name": { "$ref": "#/$defs/strOrNull" }, "id": { "$ref": "#/$defs/intOrNull" }, "comment": { "$ref": "#/$defs/strOrNull" } }
+            },
+            { "type": "null" }
+          ]
+        },
+        "host": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["class_name", "name", "guid"],
+              "properties": { "class_name": { "$ref": "#/$defs/str" }, "name": { "$ref": "#/$defs/str" }, "guid": { "$ref": "#/$defs/idOrNull" } }
+            },
+            { "type": "null" }
+          ]
+        },
+        "pin": { "$ref": "#/$defs/richTextOrNull" },
+        "resolved": { "$ref": "#/$defs/richTextOrNull" },
+        "resolved_via": { "type": "array", "items": { "$ref": "#/$defs/richText" } },
+        "via_composite": { "type": "array", "items": { "$ref": "#/$defs/graphRef" } },
+        "raw_copy": { "type": "boolean" },
+        "note": { "$ref": "#/$defs/richTextOrNull" }
+      }
+    },
+    "warnsReport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["header", "warns"],
+      "properties": {
+        "header": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["software", "version", "mode", "files", "options"],
+          "properties": {
+            "software": { "const": "miliastra-search" },
+            "version": { "$ref": "#/$defs/str" },
+            "mode": { "const": "warns" },
+            "files": { "$ref": "#/$defs/strings" },
+            "options": { "$ref": "#/$defs/warnsOptions" }
+          }
+        },
+        "warns": { "$ref": "#/$defs/warnsBody" }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "type", "kind", "key", "file", "graph", "message"],
+      "properties": {
+        "level": { "enum": ["info", "warn"] },
+        "type": { "$ref": "#/$defs/str" },
+        "kind": { "$ref": "#/$defs/str" },
+        "key": { "$ref": "#/$defs/str" },
+        "file": { "$ref": "#/$defs/str" },
+        "graph": { "$ref": "#/$defs/graphRefOrNull" },
+        "message": { "$ref": "#/$defs/richText" }
+      }
+    },
+    "usage": { "type": "object", "additionalProperties": false, "required": ["used", "max"], "properties": { "used": { "$ref": "#/$defs/int" }, "max": { "$ref": "#/$defs/int" } } },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["composites", "signals", "resources", "static_entities", "graph_node_max", "graph_sizes"],
+      "properties": {
+        "composites": { "$ref": "#/$defs/usage" },
+        "signals": { "$ref": "#/$defs/usage" },
+        "resources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["class_name", "label", "used", "max"],
+            "properties": { "class_name": { "$ref": "#/$defs/str" }, "label": { "$ref": "#/$defs/str" }, "used": { "$ref": "#/$defs/int" }, "max": { "$ref": "#/$defs/int" } }
+          }
+        },
+        "static_entities": { "$ref": "#/$defs/int" },
+        "graph_node_max": { "$ref": "#/$defs/int" },
+        "graph_sizes": {
+          "description": "The biggest graphs by effective node count, biggest first; as many as --top-graphs asked for.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["file", "graph", "nodes"],
+            "properties": { "file": { "$ref": "#/$defs/str" }, "graph": { "$ref": "#/$defs/graphRef" }, "nodes": { "$ref": "#/$defs/int" } }
+          }
+        }
+      }
+    },
+    "checkReport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["header", "check"],
+      "properties": {
+        "header": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["software", "version", "mode", "files", "options"],
+          "properties": {
+            "software": { "const": "miliastra-search" },
+            "version": { "$ref": "#/$defs/str" },
+            "mode": { "const": "check" },
+            "files": { "$ref": "#/$defs/strings" },
+            "options": { "$ref": "#/$defs/parseOptions" }
+          }
+        },
+        "check": { "$ref": "#/$defs/checkBody" }
+      }
+    },
+    "checkItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "format", "engine_version", "mode", "resources", "opaque_resources", "container_warnings", "unknown_fields", "opaque_sections", "opaque_fields", "unresolved_nodes"],
+      "properties": {
+        "file": { "$ref": "#/$defs/str" },
+        "format": { "enum": ["gia", "gil"] },
+        "engine_version": { "$ref": "#/$defs/strOrNull" },
+        "mode": { "$ref": "#/$defs/str" },
+        "resources": { "$ref": "#/$defs/int" },
+        "opaque_resources": { "$ref": "#/$defs/int" },
+        "container_warnings": { "$ref": "#/$defs/strings" },
+        "unknown_fields": {
+          "description": "Fields in the file that the decoder's schema does not declare.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "field", "wire", "count", "note", "sample"],
+            "properties": {
+              "path": { "$ref": "#/$defs/str" },
+              "field": { "$ref": "#/$defs/int" },
+              "wire": { "$ref": "#/$defs/int" },
+              "count": { "$ref": "#/$defs/int" },
+              "note": { "$ref": "#/$defs/strOrNull" },
+              "sample": { "$ref": "#/$defs/strOrNull" }
+            }
+          }
+        },
+        "opaque_sections": {
+          "description": "Level sections of a .gil that are listed but not interpreted (\"root.3\").",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["section", "count"],
+            "properties": { "section": { "$ref": "#/$defs/str" }, "count": { "$ref": "#/$defs/int" } }
+          }
+        },
+        "opaque_fields": {
+          "description": "Fields inside the interpreted parts that are known but not interpreted.",
+          "type": "array",
+          "items": { "type": "object", "additionalProperties": false, "required": ["path", "count"], "properties": { "path": { "$ref": "#/$defs/str" }, "count": { "$ref": "#/$defs/int" } } }
+        },
+        "unresolved_nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["what", "count", "where"],
+            "properties": { "what": { "$ref": "#/$defs/str" }, "count": { "$ref": "#/$defs/int" }, "where": { "$ref": "#/$defs/strings" } }
+          }
+        }
+      }
+    },
+    "rawReport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["header", "raw"],
+      "properties": {
+        "header": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["software", "version", "mode", "files", "options"],
+          "properties": {
+            "software": { "const": "miliastra-search" },
+            "version": { "$ref": "#/$defs/str" },
+            "mode": { "const": "raw" },
+            "files": { "$ref": "#/$defs/strings" },
+            "options": { "$ref": "#/$defs/noOptions" }
+          }
+        },
+        "raw": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["container_warnings", "payload"],
+          "properties": { "container_warnings": { "$ref": "#/$defs/strings" }, "payload": { "$ref": "#/$defs/rawMessage" } }
+        }
+      }
+    },
+    "rawMessage": {
+      "description": "Protobuf fields read without a schema. `error` is why the bytes are no protobuf (then `fields` is empty), else null.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["error", "fields"],
+      "properties": { "error": { "$ref": "#/$defs/strOrNull" }, "fields": { "type": "array", "items": { "$ref": "#/$defs/rawField" } } }
+    },
+    "rawField": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["field", "type", "value"],
+          "properties": { "field": { "$ref": "#/$defs/int" }, "type": { "const": "varint" }, "value": { "type": ["integer", "string"] } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["field", "type", "value"],
+          "properties": { "field": { "$ref": "#/$defs/int" }, "type": { "enum": ["f32", "f64"] }, "value": { "type": ["number", "string"] } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["field", "type", "value"],
+          "properties": { "field": { "$ref": "#/$defs/int" }, "type": { "const": "string" }, "value": { "$ref": "#/$defs/str" } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["field", "type", "message"],
+          "properties": { "field": { "$ref": "#/$defs/int" }, "type": { "const": "message" }, "message": { "$ref": "#/$defs/rawMessage" } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["field", "type", "length", "hex", "truncated"],
+          "properties": { "field": { "$ref": "#/$defs/int" }, "type": { "const": "bytes" }, "length": { "$ref": "#/$defs/int" }, "hex": { "$ref": "#/$defs/str" }, "truncated": { "type": "boolean" } }
+        }
+      ]
+    },
+    "infoOptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lang", "node_db", "input", "lenient", "show_tag"],
+      "properties": {
+        "lang": { "$ref": "#/$defs/str" },
+        "node_db": { "$ref": "#/$defs/strOrNull" },
+        "input": { "enum": ["gia", "gil", null] },
+        "lenient": { "type": "boolean" },
+        "show_tag": { "type": "boolean" }
+      }
+    },
+    "allOptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lang", "node_db", "input", "lenient", "show_tag", "kind", "name", "sort_desc", "top_graphs", "with_code", "expand"],
+      "properties": {
+        "lang": { "$ref": "#/$defs/str" },
+        "node_db": { "$ref": "#/$defs/strOrNull" },
+        "input": { "enum": ["gia", "gil", null] },
+        "lenient": { "type": "boolean" },
+        "show_tag": { "type": "boolean" },
+        "kind": { "$ref": "#/$defs/strOrNull" },
+        "name": { "$ref": "#/$defs/strOrNull" },
+        "sort_desc": { "type": "boolean" },
+        "top_graphs": { "$ref": "#/$defs/int" },
+        "with_code": { "type": "boolean" },
+        "expand": { "type": "boolean" }
+      }
+    },
+    "infoBody": {
+      "description": "One item per decoded file.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/infoItem" }
+    },
+    "refsBody": {
+      "description": "`overview` (no --name): `entries` groups the references by key. `detail` (--name): `entries` is null. `references` always lists the selected references one by one.",
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["view", "entries", "references"],
+          "properties": {
+            "view": { "const": "overview" },
+            "entries": { "type": "array", "items": { "$ref": "#/$defs/overviewEntry" } },
+            "references": { "type": "array", "items": { "$ref": "#/$defs/reference" } }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["view", "entries", "references"],
+          "properties": { "view": { "const": "detail" }, "entries": { "type": "null" }, "references": { "type": "array", "items": { "$ref": "#/$defs/reference" } } }
+        }
+      ]
+    },
+    "warnsBody": {
+      "description": "`report` (no --kind / --name): findings and limits. `findings` (a selection): the findings only, `limits` is null.",
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["view", "findings", "limits"],
+          "properties": { "view": { "const": "report" }, "findings": { "type": "array", "items": { "$ref": "#/$defs/finding" } }, "limits": { "$ref": "#/$defs/limits" } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["view", "findings", "limits"],
+          "properties": { "view": { "const": "findings" }, "findings": { "type": "array", "items": { "$ref": "#/$defs/finding" } }, "limits": { "type": "null" } }
+        }
+      ]
+    },
+    "checkBody": {
+      "description": "One item per decoded file.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/checkItem" }
+    },
+    "dumpReport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["header", "dump"],
+      "properties": {
+        "header": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["software", "version", "mode", "files", "options"],
+          "properties": {
+            "software": { "const": "miliastra-search" },
+            "version": { "$ref": "#/$defs/str" },
+            "mode": { "const": "dump" },
+            "files": { "$ref": "#/$defs/strings" },
+            "options": { "$ref": "#/$defs/parseOptions" }
+          }
+        },
+        "dump": { "$ref": "#/$defs/dumpBody" }
+      }
+    },
+    "dumpBody": {
+      "description": "One item per decoded file.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/dumpItem" }
+    },
+    "dumpItem": {
+      "description": "What `dump` says about one file: the graphs, declarations and other resources in the order the editor lists them (`items`). Composite declarations, the second half of a send-signal pair and structs are not part of it. The numeric facts the editor does not show (`class_id`, `section`, `kind`, `service`, `entry_slot`, `evaluation_interval`, `decl_guid`) are always in it; a renderer shows them on request (`--details`).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "container_warnings", "engine_version", "node_db_version", "items", "variables", "unresolved_nodes"],
+      "properties": {
+        "file": { "$ref": "#/$defs/str" },
+        "container_warnings": { "$ref": "#/$defs/strings" },
+        "engine_version": { "$ref": "#/$defs/strOrNull" },
+        "node_db_version": { "$ref": "#/$defs/strOrNull" },
+        "items": { "type": "array", "items": { "oneOf": [{ "$ref": "#/$defs/dumpGraph" }, { "$ref": "#/$defs/dumpDeclaration" }, { "$ref": "#/$defs/dumpResource" }] } },
+        "variables": { "$ref": "#/$defs/dumpVariables" },
+        "unresolved_nodes": { "$ref": "#/$defs/unresolvedNodes" }
+      }
+    },
+    "dumpVariables": {
+      "description": "The variables of the file: what each node graph declares, what each prefab (the stage, the player and character templates first) declares as custom variables, and how entities differ from their prefab. A prefab or an entity also has a row for each published graph variable it sets itself (`graph` set).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["graphs", "prefabs", "entities"],
+      "properties": {
+        "graphs": {
+          "description": "One row per variable of a node graph (a composite body has none), in the order of the resources.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["graph", "name", "type", "struct", "public", "value"],
+            "properties": {
+              "graph": { "$ref": "#/$defs/graphRef" },
+              "name": { "$ref": "#/$defs/str" },
+              "type": { "$ref": "#/$defs/str" },
+              "struct": { "$ref": "#/$defs/structRefOrNull" },
+              "public": { "type": "boolean" },
+              "value": { "$ref": "#/$defs/valueOrNull" }
+            }
+          }
+        },
+        "prefabs": {
+          "description": "One row per variable of a prefab, in the order stage, player templates, character templates, other prefabs; after the custom variables of each prefab the published graph variables it sets to a value other than the graph's.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["owner", "graph", "name", "type", "struct", "value"],
+            "properties": {
+              "graph": { "oneOf": [{ "$ref": "#/$defs/graphRef" }, { "type": "null" }] },
+              "owner": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["kind", "guid", "name", "class_name"],
+                "properties": {
+                  "kind": { "enum": ["stage", "player", "character", "prefab"] },
+                  "guid": { "$ref": "#/$defs/idOrNull" },
+                  "name": { "$ref": "#/$defs/str" },
+                  "class_name": { "$ref": "#/$defs/str" }
+                }
+              },
+              "name": { "$ref": "#/$defs/str" },
+              "type": { "$ref": "#/$defs/str" },
+              "struct": { "$ref": "#/$defs/structRefOrNull" },
+              "value": { "$ref": "#/$defs/valueOrNull" }
+            }
+          }
+        },
+        "entities": {
+          "description": "One row per variable an entity changes compared with its prefab; entities that change nothing are not listed. `prefab` is the id the entity was created from (`name` null when the file has no such prefab), null when the entity names none.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["entity", "prefab", "graph", "name", "change", "type", "struct", "value"],
+            "properties": {
+              "graph": { "oneOf": [{ "$ref": "#/$defs/graphRef" }, { "type": "null" }] },
+              "entity": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["guid", "name", "class_name"],
+                "properties": { "guid": { "$ref": "#/$defs/idOrNull" }, "name": { "$ref": "#/$defs/str" }, "class_name": { "$ref": "#/$defs/str" } }
+              },
+              "prefab": {
+                "oneOf": [
+                  { "type": "object", "additionalProperties": false, "required": ["guid", "name"], "properties": { "guid": { "$ref": "#/$defs/idOrNull" }, "name": { "$ref": "#/$defs/strOrNull" } } },
+                  { "type": "null" }
+                ]
+              },
+              "name": { "$ref": "#/$defs/str" },
+              "change": { "enum": ["add", "delete", "newtype", "edit"] },
+              "type": { "$ref": "#/$defs/str" },
+              "struct": { "$ref": "#/$defs/structRefOrNull" },
+              "value": { "$ref": "#/$defs/valueOrNull" }
+            }
+          }
+        }
+      }
+    },
+    "unresolvedNodes": {
+      "description": "The node types the database has no name for: what they are, how often they occur, and where (the first few places).",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["what", "count", "where"],
+        "properties": { "what": { "$ref": "#/$defs/str" }, "count": { "$ref": "#/$defs/int" }, "where": { "$ref": "#/$defs/strings" } }
+      }
+    },
+    "dumpGraph": {
+      "description": "A node graph (a composite body too). `name` carries the <tag> of its service domain. `decl_guid` = the GUID of the declaration of a composite body, null for another graph or when the file has no such declaration.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "name", "folder", "class_name", "class_id", "guid", "kind", "service", "nodes", "entry_slot", "evaluation_interval", "composite_body", "decl_guid", "description", "dependency"],
+      "properties": {
+        "type": { "const": "graph" },
+        "name": { "$ref": "#/$defs/graphRef" },
+        "folder": { "$ref": "#/$defs/strOrNull" },
+        "class_name": { "$ref": "#/$defs/str" },
+        "class_id": { "$ref": "#/$defs/intOrNull" },
+        "guid": { "$ref": "#/$defs/idOrNull" },
+        "kind": { "$ref": "#/$defs/int" },
+        "service": { "$ref": "#/$defs/int" },
+        "nodes": { "$ref": "#/$defs/int" },
+        "entry_slot": { "$ref": "#/$defs/intOrNull" },
+        "evaluation_interval": { "type": ["number", "null"] },
+        "composite_body": { "type": "boolean" },
+        "decl_guid": { "$ref": "#/$defs/idOrNull" },
+        "description": { "$ref": "#/$defs/strOrNull" },
+        "dependency": { "type": "boolean" }
+      }
+    },
+    "dumpDeclaration": {
+      "description": "A signal or composite declaration.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "name", "class_name", "class_id", "guid", "category", "description", "dependency"],
+      "properties": {
+        "type": { "const": "declaration" },
+        "name": { "$ref": "#/$defs/str" },
+        "class_name": { "$ref": "#/$defs/str" },
+        "class_id": { "$ref": "#/$defs/intOrNull" },
+        "guid": { "$ref": "#/$defs/idOrNull" },
+        "category": { "$ref": "#/$defs/strOrNull" },
+        "description": { "$ref": "#/$defs/strOrNull" },
+        "dependency": { "type": "boolean" }
+      }
+    },
+    "dumpResource": {
+      "description": "Any other resource. `parent` = the template an entity was created from (`name` null for a native object), `entities` = how many entities a template has (null for other resources); `mounts` = the graphs mounted on it (`graph` null when the file has no such graph).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "name", "folder", "class_name", "class_id", "guid", "section", "parent", "entities", "mounts"],
+      "properties": {
+        "type": { "const": "resource" },
+        "name": { "$ref": "#/$defs/str" },
+        "folder": { "$ref": "#/$defs/strOrNull" },
+        "class_name": { "$ref": "#/$defs/str" },
+        "class_id": { "$ref": "#/$defs/intOrNull" },
+        "guid": { "$ref": "#/$defs/idOrNull" },
+        "section": { "$ref": "#/$defs/strOrNull" },
+        "parent": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "name"],
+              "properties": { "id": { "$ref": "#/$defs/idOrNull" }, "name": { "$ref": "#/$defs/strOrNull" } }
+            },
+            { "type": "null" }
+          ]
+        },
+        "entities": { "$ref": "#/$defs/intOrNull" },
+        "mounts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["slot", "graph", "graph_guid", "host"],
+            "properties": {
+              "slot": { "$ref": "#/$defs/str" },
+              "graph": { "$ref": "#/$defs/graphRefOrNull" },
+              "graph_guid": { "$ref": "#/$defs/idOrNull" },
+              "host": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["class_name", "name", "slot"],
+                "properties": { "class_name": { "$ref": "#/$defs/str" }, "name": { "$ref": "#/$defs/str" }, "slot": { "$ref": "#/$defs/str" } }
+              }
+            }
+          }
+        }
+      }
+    },
+    "floatNumber": {
+      "description": "A float32 as a JSON number; one that is not finite (JSON has no such number) is its name.",
+      "oneOf": [{ "type": "number" }, { "enum": ["NaN", "Infinity", "-Infinity"] }]
+    },
+    "floatOrNull": { "oneOf": [{ "$ref": "#/$defs/floatNumber" }, { "type": "null" }] },
+    "nodeRef": {
+      "description": "A node of the same graph as another node's wire or a port mapping names it. `name` is null (and the ids too) when the graph has no node with this index.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["index", "name", "shell_id", "kernel_id"],
+      "properties": { "index": { "$ref": "#/$defs/int" }, "name": { "$ref": "#/$defs/strOrNull" }, "shell_id": { "$ref": "#/$defs/idOrNull" }, "kernel_id": { "$ref": "#/$defs/idOrNull" } }
+    },
+    "pinRef": {
+      "description": "A pin of a node: its kind (in_flow, out_flow, in_param, out_param, meta_rpc, meta_topic, ...; `kind<N>` for a kind this version does not know), its index among the pins of that kind, and its name when the node's definition gives one.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "index", "name"],
+      "properties": { "kind": { "$ref": "#/$defs/str" }, "index": { "$ref": "#/$defs/int" }, "name": { "$ref": "#/$defs/strOrNull" } }
+    },
+    "structRef": {
+      "description": "A struct by id and name; `name` is null when the file does not define the struct.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name"],
+      "properties": { "id": { "$ref": "#/$defs/idOrNull" }, "name": { "$ref": "#/$defs/strOrNull" } }
+    },
+    "structRefOrNull": { "oneOf": [{ "$ref": "#/$defs/structRef" }, { "type": "null" }] },
+    "valueOrNull": { "oneOf": [{ "$ref": "#/$defs/value" }, { "type": "null" }] },
+    "value": {
+      "description": "A typed value, by `kind`. `set` is false for a value nobody edited (the game's default for the type). Inside a list, struct, pair or map a missing value is null.",
+      "oneOf": [
+        { "type": "object", "additionalProperties": false, "required": ["kind", "set", "value"], "properties": { "kind": { "const": "int" }, "set": { "type": "boolean" }, "value": { "type": ["integer", "string"] }, "resource": { "$ref": "#/$defs/resourceOrNull" } } },
+        { "type": "object", "additionalProperties": false, "required": ["kind", "set", "value"], "properties": { "kind": { "const": "float" }, "set": { "type": "boolean" }, "value": { "$ref": "#/$defs/floatNumber" } } },
+        { "type": "object", "additionalProperties": false, "required": ["kind", "set", "value"], "properties": { "kind": { "const": "str" }, "set": { "type": "boolean" }, "value": { "$ref": "#/$defs/str" } } },
+        { "type": "object", "additionalProperties": false, "required": ["kind", "set", "value"], "properties": { "kind": { "const": "id" }, "set": { "type": "boolean" }, "value": { "type": ["integer", "string"] }, "resource": { "$ref": "#/$defs/resourceOrNull" } } },
+        { "type": "object", "additionalProperties": false, "required": ["kind", "set", "value"], "properties": { "kind": { "const": "vec" }, "set": { "type": "boolean" }, "value": { "type": "array", "items": { "$ref": "#/$defs/floatNumber" } } } },
+        { "type": "object", "additionalProperties": false, "required": ["kind", "set", "value"], "properties": { "kind": { "const": "bool" }, "set": { "type": "boolean" }, "value": { "type": "boolean" } } },
+        { "type": "object", "additionalProperties": false, "required": ["kind", "set", "value", "names"], "properties": { "kind": { "const": "enum" }, "set": { "type": "boolean" }, "value": { "$ref": "#/$defs/int" }, "names": { "$ref": "#/$defs/strings" } } },
+        { "type": "object", "additionalProperties": false, "required": ["kind", "set", "items"], "properties": { "kind": { "const": "list" }, "set": { "type": "boolean" }, "items": { "type": "array", "items": { "$ref": "#/$defs/valueOrNull" } } } },
+        { "type": "object", "additionalProperties": false, "required": ["kind", "set", "items"], "properties": { "kind": { "const": "struct" }, "set": { "type": "boolean" }, "items": { "type": "array", "items": { "$ref": "#/$defs/valueOrNull" } } } },
+        { "type": "object", "additionalProperties": false, "required": ["kind", "set", "key", "value"], "properties": { "kind": { "const": "pair" }, "set": { "type": "boolean" }, "key": { "$ref": "#/$defs/valueOrNull" }, "value": { "$ref": "#/$defs/valueOrNull" } } },
+        { "type": "object", "additionalProperties": false, "required": ["kind", "set", "pairs"], "properties": { "kind": { "const": "map" }, "set": { "type": "boolean" }, "pairs": { "type": "array", "items": { "$ref": "#/$defs/valueOrNull" } } } }
+      ]
+    },
+    "codeReport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["header", "code"],
+      "properties": {
+        "header": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["software", "version", "mode", "files", "options"],
+          "properties": {
+            "software": { "const": "miliastra-search" },
+            "version": { "$ref": "#/$defs/str" },
+            "mode": { "const": "code" },
+            "files": { "$ref": "#/$defs/strings" },
+            "options": { "$ref": "#/$defs/codeOptions" }
+          }
+        },
+        "code": { "$ref": "#/$defs/codeBody" }
+      }
+    },
+    "codeBody": {
+      "description": "One item per decoded file.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/codeItem" }
+    },
+    "codeItem": {
+      "description": "What `code` says about one file: the declarations and structs it holds and its graphs, node by node, in the order the editor lists them (`items`). Composite declarations (the composite is a graph) and the second half of a send-signal pair are not part of it. The data is the complete graph model: pins without a value or wire and values nobody edited are in it as well.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "container_warnings", "engine_version", "node_db_version", "items", "unresolved_nodes"],
+      "properties": {
+        "file": { "$ref": "#/$defs/str" },
+        "container_warnings": { "$ref": "#/$defs/strings" },
+        "engine_version": { "$ref": "#/$defs/strOrNull" },
+        "node_db_version": { "$ref": "#/$defs/strOrNull" },
+        "items": { "type": "array", "items": { "oneOf": [{ "$ref": "#/$defs/codeGraph" }, { "$ref": "#/$defs/codeDeclaration" }, { "$ref": "#/$defs/codeStruct" }] } },
+        "unresolved_nodes": { "$ref": "#/$defs/unresolvedNodes" }
+      }
+    },
+    "codeGraph": {
+      "description": "A node graph (a composite body too). `name` carries the <tag> of its service domain; `decl_guid` is the GUID of a composite body's declaration (null for another graph, or when the file has no such declaration); `service` is the service domain (20000, 20003, 20004 and 20005 are server graphs, the others client graphs); `description` is a composite's, from its declaration. `nodes` are in node-index order.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "name", "class_name", "guid", "decl_guid", "composite_body", "service", "evaluation_interval", "description", "dependency", "variables", "comments", "port_mappings", "affiliations", "anomalies", "nodes", "pseudocode"],
+      "properties": {
+        "type": { "const": "graph" },
+        "name": { "$ref": "#/$defs/graphRef" },
+        "class_name": { "$ref": "#/$defs/str" },
+        "guid": { "$ref": "#/$defs/idOrNull" },
+        "decl_guid": { "$ref": "#/$defs/idOrNull" },
+        "composite_body": { "type": "boolean" },
+        "service": { "$ref": "#/$defs/int" },
+        "evaluation_interval": { "description": "A filter graph's time interval in seconds (null: the file stores none, the game uses 0.3).", "$ref": "#/$defs/floatOrNull" },
+        "description": { "$ref": "#/$defs/strOrNull" },
+        "dependency": { "type": "boolean" },
+        "variables": {
+          "description": "The graph's variables (its blackboard).",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "type", "public", "struct", "value"],
+            "properties": { "name": { "$ref": "#/$defs/str" }, "type": { "$ref": "#/$defs/str" }, "public": { "type": "boolean" }, "struct": { "$ref": "#/$defs/structRefOrNull" }, "value": { "$ref": "#/$defs/valueOrNull" } }
+          }
+        },
+        "comments": {
+          "description": "The comments placed on the canvas (not the ones attached to a node); the position is null when the file has none.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["text", "x", "y"],
+            "properties": { "text": { "$ref": "#/$defs/str" }, "x": { "$ref": "#/$defs/floatOrNull" }, "y": { "$ref": "#/$defs/floatOrNull" } }
+          }
+        },
+        "port_mappings": {
+          "description": "A composite body only: which pin of the composite's declaration (`external`) is which pin of which node inside (`internal`).",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["external", "internal"],
+            "properties": {
+              "external": { "$ref": "#/$defs/pinRef" },
+              "internal": { "type": "object", "additionalProperties": false, "required": ["node", "pin"], "properties": { "node": { "$ref": "#/$defs/nodeRef" }, "pin": { "$ref": "#/$defs/pinRef" } } }
+            }
+          }
+        },
+        "affiliations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["struct_id", "source_guid"],
+            "properties": { "struct_id": { "$ref": "#/$defs/idOrNull" }, "source_guid": { "$ref": "#/$defs/idOrNull" } }
+          }
+        },
+        "anomalies": { "description": "Inconsistencies found in the graph (a wire to a node that does not exist, ...).", "$ref": "#/$defs/strings" },
+        "nodes": { "type": "array", "items": { "$ref": "#/$defs/codeNode" } },
+        "pseudocode": { "$ref": "#/$defs/pseudocode" }
+      }
+    },
+    "resourceOrNull": {
+      "description": "What a literal id points at among the resources of the file (the same match as the `literal_id` references of `refs`): the resource's class and name; null when the value is no id or nothing matches.",
+      "oneOf": [{ "type": "object", "additionalProperties": false, "required": ["class_name", "name"], "properties": { "class_name": { "$ref": "#/$defs/str" }, "name": { "$ref": "#/$defs/str" } } }, { "type": "null" }]
+    },
+    "pseudocode": {
+      "description": "The graph as a function: `tag` (Entity, Status, Class, Item, Filter, Skill, Creation, Composite, or Graph for another service domain), `namespace` (ServerGraphs, ClientGraphs or Composite: where a renderer files the function) and `function` (`TAG_GUID`, an identifier), and a case per execution node (a node with flow pins), in the order of the flow: from each entry point (an event, a composite call with events inside, in a composite body the flow inputs) depth first in pin and wire order, then what no entry point reaches. A composite call is a node like any other (a case when the composite has flow pins, a data node otherwise); with the option `expand` it is replaced by the nodes of the composite's body as if they stood where the call is.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tag", "namespace", "function", "flat", "unreachable", "flow", "interface", "cases"],
+      "properties": {
+        "tag": { "$ref": "#/$defs/str" }, "namespace": { "enum": ["ServerGraphs", "ClientGraphs", "Composite"] }, "function": { "$ref": "#/$defs/str" },
+        "flat": { "description": "The graph is one case that ends in the graph's end node (a filter graph): it is one expression, written without a switch between cases.", "type": "boolean" },
+        "unreachable": { "description": "A composite body that no reachable code makes use of: no reachable case enters one of its instances or has an event inside it, and no reachable calculation reads one of its data outputs. Always false for a graph that is not a composite body.", "type": "boolean" },
+        "flow": { "description": "A composite body: how the flow leaves it, found by following every path of its body. `type`: single (it always leaves through one flow output, once), choice (through exactly one of several, once, or through none: `terminal`), generic (anything else: it leaves any number of times, does something after it left, has events of its own, calls itself, or has no flow input); `pins`: the labels of the flow outputs it may leave through (single, choice; empty for generic); `terminal`: it may end without leaving through any. Null for any other graph.", "oneOf": [{ "$ref": "#/$defs/pseudoBodyFlow" }, { "type": "null" }] },
+        "interface": { "description": "A composite body: its data pins. Null for any other graph.", "oneOf": [{ "$ref": "#/$defs/pseudoInterface" }, { "type": "null" }] },
+        "cases": { "type": "array", "items": { "$ref": "#/$defs/pseudoCase" } }
+      }
+    },
+    "pseudoBodyFlow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "pins", "terminal"],
+      "properties": { "type": { "enum": ["single", "choice", "generic"] }, "pins": { "type": "array", "items": { "$ref": "#/$defs/str" } }, "terminal": { "type": "boolean" } }
+    },
+    "pseudoFlow": {
+      "description": "How the flow leaves a node. `type`: single (always through its one flow output, once: nearly every native node, and a composite that always leaves through one output), choice (through exactly one of several outputs, once: Double Branch, Multiple Branches, a composite that does), generic (anything else: outputs run in turn or repeatedly, a composite that does more after it left). `form` is how a style writes the node: call (single), if (a choice between two ways), switch (a choice between any number), loop (generic: a loop over what the node yields). `terminal`: the flow may end without leaving through any output (a composite that may drop it; a node without flow outputs). `default` (switch only): pin (the first branch of `next` is the `default` of the switch: Multiple Branches), terminal (the `default` is the dropped flow), none (nothing is dropped: the `default` throws).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "form", "terminal", "default"],
+      "properties": { "type": { "enum": ["single", "choice", "generic"] }, "form": { "enum": ["call", "if", "switch", "loop"] }, "terminal": { "type": "boolean" }, "default": { "enum": ["pin", "terminal", "none", null] } }
+    },
+    "pseudoInterface": {
+      "description": "The data pins of a composite whose body is shown on its own. `inputs`: each is read in the body as `In.<key>`. `outputs`: each is what the composite's output pin is read from (`expr`; null when nothing inside is wired to it), `data` being the data nodes those expressions need, in the order they are written.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inputs", "data", "outputs"],
+      "properties": {
+        "inputs": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["pin", "key", "type"], "properties": { "pin": { "$ref": "#/$defs/pinRef" }, "key": { "$ref": "#/$defs/str" }, "type": { "$ref": "#/$defs/str" } } } },
+        "data": { "type": "array", "items": { "$ref": "#/$defs/pseudoCall" } },
+        "outputs": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["pin", "key", "type", "expr"], "properties": { "pin": { "$ref": "#/$defs/pinRef" }, "key": { "$ref": "#/$defs/str" }, "type": { "$ref": "#/$defs/str" }, "expr": { "oneOf": [{ "$ref": "#/$defs/pseudoExpr" }, { "type": "null" }] } } } }
+      }
+    },
+    "pseudoCase": {
+      "description": "What happens when the flow reaches one node. `id` is what `targets` name (`node_0002`, `event_0001`; inside expanded composites the ids of the calls in front, `node_0005.node_0002`). `kind`: event (no flow input), execution, composite (a call of a composite that is not expanded), end (the end node of a filter graph), terminal (nothing follows). `flow`: how the flow leaves the node (a composite call: how it leaves the composite). `next` has a branch for each flow output the flow may leave through; an output of a composite call that its body never leaves through is left out. `callers`: the cases whose flow outputs are wired to this one (null for an event, and for a composite call that has events inside and nothing wired to its flow inputs: the events enter there). `events`: for a composite call, the entry points its events give the case. `unreachable`: no entry point reaches the case. `event`: the node has no flow input, whatever its kind (a composite call is never one). `ports`: in a composite body, the composite's flow inputs that lead here, each with the `label` the body is entered by (the pin's name made of identifier characters, or its index). `data`: the data nodes this node needs, in the order they are written; `call`: the node itself; `next`: one branch per flow output.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "event", "flow", "callers", "node", "via", "ports", "events", "unreachable", "data", "call", "next"],
+      "properties": {
+        "id": { "$ref": "#/$defs/str" },
+        "kind": { "enum": ["event", "execution", "composite", "end", "terminal"] },
+        "event": { "type": "boolean" },
+        "flow": { "$ref": "#/$defs/pseudoFlow" },
+        "callers": { "oneOf": [{ "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["id", "function"], "properties": { "id": { "$ref": "#/$defs/str" }, "function": { "$ref": "#/$defs/str" } } } }, { "type": "null" }] },
+        "node": { "$ref": "#/$defs/nodeRef" },
+        "via": { "description": "The composite calls this node is expanded from, outermost first (nodes of the graph's own nodes: empty). A call's `node` is a node of the graph the composite body is. Each also has the `graph` the call is in.", "type": "array", "items": { "$ref": "#/$defs/pseudoVia" } },
+        "ports": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["pin", "label"], "properties": { "pin": { "$ref": "#/$defs/pinRef" }, "label": { "$ref": "#/$defs/str" } } } },
+        "events": { "description": "A call of a composite that is not expanded: the entry points its events give this case, each `<id of the case>.<event id in the body>` (`node_0007.event_0001`; an event of a composite the body calls has that call in between). Empty for any other case.", "type": "array", "items": { "$ref": "#/$defs/str" } },
+        "unreachable": { "description": "No entry point (an event, a composite call with events inside, in a composite body a flow input) reaches the case. Unreachable cases come last.", "type": "boolean" },
+        "data": { "type": "array", "items": { "$ref": "#/$defs/pseudoCall" } },
+        "call": { "$ref": "#/$defs/pseudoCall" },
+        "next": { "type": "array", "items": { "$ref": "#/$defs/pseudoBranch" } }
+      }
+    },
+    "pseudoVia": {
+      "description": "A composite call a node is expanded from: the node, and the graph it is a node of.",
+      "allOf": [{ "$ref": "#/$defs/nodeRef" }, { "type": "object", "required": ["graph"], "properties": { "graph": { "$ref": "#/$defs/pseudoGraphKey" } } }]
+    },
+    "pseudoGraphKey": {
+      "description": "A graph as the pair that identifies it in a file: its GUID and its service domain.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["guid", "service"],
+      "properties": { "guid": { "$ref": "#/$defs/idOrNull" }, "service": { "$ref": "#/$defs/int" } }
+    },
+    "pseudoCall": {
+      "description": "A node as a call of the function that stands for it: `function` is an identifier; `args` are the inputs the file stores (an event gets `Event` first); `composite`: the node is a call of a composite that is not expanded, written `Composite['name']($, { inputs }, $.input)`, with every input the composite declares among `args`; `input`: the node has several flow inputs, or is a composite call with a flow input, and takes the name of the one the flow came through as a last argument (`$.input`; a composite call that only reads data pins has none); `outputs` are all outputs the node can have, named by `name` (`global`: a variable of the whole graph, written `$.name`; else an intermediate of the case); `uses`: how many reads of the variable there are (in the case, or for a global in the whole graph).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node", "graph", "via", "comment", "function", "composite", "input", "args", "extra", "outputs"],
+      "properties": {
+        "node": { "$ref": "#/$defs/nodeRef" },
+        "graph": { "description": "The graph `node` is a node of: the graph itself, or the body of a composite when the node is expanded from it.", "$ref": "#/$defs/pseudoGraphKey" },
+        "via": { "type": "array", "items": { "$ref": "#/$defs/pseudoVia" } },
+        "comment": { "$ref": "#/$defs/strOrNull" },
+        "function": { "$ref": "#/$defs/str" },
+        "composite": { "description": "Set when the node is a call of a composite that is not expanded: `name` is the name the composite's body is filed under (the `name` of its graph, in the namespace `Composite`); `instance` names the instance the call stands for (`Comp_001`: the position of the call node among the composite calls of its graph, behind the names of the instances it is expanded from), which the composite files what it keeps under.", "oneOf": [{ "type": "object", "additionalProperties": false, "required": ["name", "instance"], "properties": { "name": { "$ref": "#/$defs/str" }, "instance": { "$ref": "#/$defs/str" } } }, { "type": "null" }] },
+        "input": { "type": "boolean" },
+        "args": { "type": "array", "items": { "$ref": "#/$defs/pseudoArg" } },
+        "extra": { "description": "A constant the node is given as an argument after its pins (a literal expression), or null: the name of a Get Local Variable's variable (`Var_0001`: the n-th such node of the file; in an expanded composite behind the names of its instances, `Comp_001_Var_0001`; a composite body shown on its own writes it behind the name of its own instance), the evaluation interval of a filter graph for its end node.", "oneOf": [{ "$ref": "#/$defs/pseudoExpr" }, { "type": "null" }] },
+        "outputs": { "type": "array", "items": { "$ref": "#/$defs/pseudoOutput" } }
+      }
+    },
+    "pseudoArg": {
+      "description": "An input: `key` is an identifier; `pin` is null for the `Event` of an event; `expr` is null for a pin with neither value nor wire; `hidden`: the game hides the pin, and it holds nothing but its default (`is_bp_var` of the custom variable nodes), so a style leaves it out unless it shows every pin.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pin", "key", "expr", "hidden"],
+      "properties": { "hidden": { "type": "boolean" }, "pin": { "oneOf": [{ "$ref": "#/$defs/pinRef" }, { "type": "null" }] }, "key": { "$ref": "#/$defs/str" }, "expr": { "oneOf": [{ "$ref": "#/$defs/pseudoExpr" }, { "type": "null" }] } }
+    },
+    "pseudoOutput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pin", "key", "type", "name", "global", "uses"],
+      "properties": { "pin": { "$ref": "#/$defs/pinRef" }, "key": { "$ref": "#/$defs/str" }, "type": { "$ref": "#/$defs/str" }, "name": { "$ref": "#/$defs/strOrNull" }, "global": { "type": "boolean" }, "uses": { "$ref": "#/$defs/int" } }
+    },
+    "pseudoExpr": {
+      "description": "What an input is fed with. `kind`: var (`name`: an intermediate of the case), global (`name`: the output of an execution node), literal (`type`: the word of its datatype or null, `value`; `value.set` false is the game's default, which a pin the file does not store has too), unset (an input whose type is not known, so it has no default value to give), port (`name`, `pin`: an input of the composite when its body is shown on its own), event (the event being handled), missing (`node`: the wire leads to a node the graph does not have). A literal also has `enum` (the titles of the enum family and of the value, either may be null, when the value is an enum the database knows) and `resource` (what an id points at). For var and global, `node` and `pin` are the node and the output that the variable is read from and `from` is `Function.Key` of them. Keys that do not belong to the kind are null.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "name", "type", "value", "enum", "resource", "node", "pin", "from"],
+      "properties": {
+        "kind": { "enum": ["var", "global", "literal", "unset", "port", "event", "missing"] },
+        "name": { "$ref": "#/$defs/strOrNull" },
+        "type": { "$ref": "#/$defs/strOrNull" },
+        "value": { "$ref": "#/$defs/valueOrNull" },
+        "enum": { "oneOf": [{ "type": "object", "additionalProperties": false, "required": ["family", "name"], "properties": { "family": { "$ref": "#/$defs/strOrNull" }, "name": { "$ref": "#/$defs/strOrNull" } } }, { "type": "null" }] },
+        "resource": { "$ref": "#/$defs/resourceOrNull" },
+        "node": { "oneOf": [{ "$ref": "#/$defs/nodeRef" }, { "type": "null" }] },
+        "pin": { "oneOf": [{ "$ref": "#/$defs/pinRef" }, { "type": "null" }] },
+        "from": { "$ref": "#/$defs/strOrNull" }
+      }
+    },
+    "pseudoBranch": {
+      "description": "A flow output: `label` is the string a generator yields for it (the pin's name made of identifier characters, or its index); `targets` are the cases the flow goes to, in wire order.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pin", "label", "targets"],
+      "properties": { "pin": { "$ref": "#/$defs/pinRef" }, "label": { "$ref": "#/$defs/str" }, "targets": { "type": "array", "items": { "$ref": "#/$defs/pseudoTarget" } } }
+    },
+    "pseudoTarget": {
+      "description": "A case id. `function`: the identifier of the node that case is (null for an exit). `input`: for a node with several flow inputs, the name of the one the flow goes through (a renderer sets `$.input` to it before `GoTo`), and for a call of a composite `input: ` and the name of its flow input, which names the case of the body that is entered; else null. `exit` is set when the flow leaves a composite body that is shown on its own (the id is `exit_` and the `label`): the pin of the composite's flow outputs; `label` is then the string the body yields for it, which the caller switches on (null for a case).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "exit", "label", "input", "function"],
+      "properties": { "id": { "$ref": "#/$defs/str" }, "exit": { "oneOf": [{ "$ref": "#/$defs/pinRef" }, { "type": "null" }] }, "label": { "$ref": "#/$defs/strOrNull" }, "input": { "$ref": "#/$defs/strOrNull" }, "function": { "$ref": "#/$defs/strOrNull" } }
+    },
+    "codeNode": {
+      "description": "A node. `name` and the ids are as the database and the file's own declarations resolve them (`unresolved`: no name is known, `name` is then `<node#ID>`); `kernel_id` equals `shell_id` unless the node is a variant. `variant` = the type combination of a generic node, `user` = what kind of user-defined node it is (composite, signal, struct ...), `signal` / `struct` = the signal or struct it sends, listens to or builds, `status_ext` = the extension of a status node. `comment` is the one attached to the node. `pins` are listed by kind (in_flow, out_flow, in_param, out_param, then the others), then index; only pins the file stores are there.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["index", "name", "shell_id", "kernel_id", "unresolved", "variant", "user", "signal", "struct", "x", "y", "signal_version", "status_ext", "comment", "pins"],
+      "properties": {
+        "index": { "$ref": "#/$defs/int" },
+        "name": { "$ref": "#/$defs/str" },
+        "shell_id": { "$ref": "#/$defs/idOrNull" },
+        "kernel_id": { "$ref": "#/$defs/idOrNull" },
+        "unresolved": { "type": "boolean" },
+        "variant": { "$ref": "#/$defs/strOrNull" },
+        "user": { "$ref": "#/$defs/strOrNull" },
+        "signal": { "$ref": "#/$defs/strOrNull" },
+        "struct": { "$ref": "#/$defs/strOrNull" },
+        "x": { "$ref": "#/$defs/floatNumber" },
+        "y": { "$ref": "#/$defs/floatNumber" },
+        "signal_version": { "$ref": "#/$defs/intOrNull" },
+        "status_ext": {
+          "oneOf": [
+            { "type": "object", "additionalProperties": false, "required": ["type", "inner"], "properties": { "type": { "$ref": "#/$defs/int" }, "inner": { "$ref": "#/$defs/intOrNull" } } },
+            { "type": "null" }
+          ]
+        },
+        "comment": { "$ref": "#/$defs/strOrNull" },
+        "pins": { "type": "array", "items": { "$ref": "#/$defs/codePin" } }
+      }
+    },
+    "codePin": {
+      "description": "A pin the file stores (a pin is stored when it has a value or a wire, or when the editor wrote it anyway; any other pin of the node has its definition's default). `type` = the pin's datatype label. `hidden`: the pin is not shown because its content is shown another way (the case list of Multiple Branches is shown as the names of its out-flow pins). `value` = the value on the pin (null when there is none), `default` = the file holds a value that nobody edited. `wires` = the pins this pin is wired to, as the file stores them: a flow wire is stored on its out_flow pin (and lists its targets), a data wire on the in_param pin (and lists its source), so a wire is on one of its two ends only. `binding` = what a pin of a generic or client node is bound to.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "index", "name", "type", "hidden", "value", "resource", "default", "wires", "binding"],
+      "properties": {
+        "kind": { "$ref": "#/$defs/str" },
+        "index": { "$ref": "#/$defs/int" },
+        "name": { "$ref": "#/$defs/strOrNull" },
+        "type": { "$ref": "#/$defs/strOrNull" },
+        "hidden": { "type": "boolean" },
+        "value": { "$ref": "#/$defs/valueOrNull" },
+        "resource": { "$ref": "#/$defs/resourceOrNull" },
+        "default": { "type": "boolean" },
+        "wires": {
+          "type": "array",
+          "items": { "type": "object", "additionalProperties": false, "required": ["node", "pin"], "properties": { "node": { "$ref": "#/$defs/nodeRef" }, "pin": { "$ref": "#/$defs/pinRef" } } }
+        },
+        "binding": {
+          "oneOf": [
+            { "type": "object", "additionalProperties": false, "required": ["kind", "index", "source_ref"], "properties": { "kind": { "$ref": "#/$defs/str" }, "index": { "$ref": "#/$defs/int" }, "source_ref": { "$ref": "#/$defs/idOrNull" } } },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "signalNode": {
+      "description": "The signal a declaration sends or listens to and the ids of its server and client node.",
+      "oneOf": [
+        { "type": "object", "additionalProperties": false, "required": ["name", "server_node", "client_node"], "properties": { "name": { "$ref": "#/$defs/str" }, "server_node": { "$ref": "#/$defs/idOrNull" }, "client_node": { "$ref": "#/$defs/idOrNull" } } },
+        { "type": "null" }
+      ]
+    },
+    "codeDeclaration": {
+      "description": "A signal or other declaration (not a composite's). `category`: send / listen signal, struct assembly / split / modify. `send_signal` / `listen_signal` / `assemble_struct` / `split_struct` / `modify_struct` are set for the kind of declaration it is, null otherwise. `pins` in the order in_flow, out_flow, in_param, out_param, meta.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "name", "class_name", "guid", "category", "description", "dependency", "send_signal", "listen_signal", "assemble_struct", "split_struct", "modify_struct", "pins"],
+      "properties": {
+        "type": { "const": "declaration" },
+        "name": { "$ref": "#/$defs/str" },
+        "class_name": { "$ref": "#/$defs/str" },
+        "guid": { "$ref": "#/$defs/idOrNull" },
+        "category": { "$ref": "#/$defs/strOrNull" },
+        "description": { "$ref": "#/$defs/strOrNull" },
+        "dependency": { "type": "boolean" },
+        "send_signal": { "$ref": "#/$defs/signalNode" },
+        "listen_signal": { "$ref": "#/$defs/signalNode" },
+        "assemble_struct": { "$ref": "#/$defs/structRefOrNull" },
+        "split_struct": { "$ref": "#/$defs/structRefOrNull" },
+        "modify_struct": { "$ref": "#/$defs/structRefOrNull" },
+        "pins": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["group", "index", "name", "type", "enum_family", "struct", "uid"],
+            "properties": {
+              "group": { "enum": ["in_flow", "out_flow", "in_param", "out_param", "meta"] },
+              "index": { "$ref": "#/$defs/int" },
+              "name": { "$ref": "#/$defs/strOrNull" },
+              "type": { "$ref": "#/$defs/strOrNull" },
+              "enum_family": { "$ref": "#/$defs/idOrNull" },
+              "struct": { "$ref": "#/$defs/structRefOrNull" },
+              "uid": { "$ref": "#/$defs/idOrNull" }
+            }
+          }
+        }
+      }
+    },
+    "codeStruct": {
+      "description": "A struct definition with its fields; a field of a struct type names that struct.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "name", "guid", "id", "version", "dependency", "fields"],
+      "properties": {
+        "type": { "const": "struct" },
+        "name": { "$ref": "#/$defs/str" },
+        "guid": { "$ref": "#/$defs/idOrNull" },
+        "id": { "$ref": "#/$defs/idOrNull" },
+        "version": { "$ref": "#/$defs/intOrNull" },
+        "dependency": { "type": "boolean" },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["index", "name", "type", "struct"],
+            "properties": { "index": { "$ref": "#/$defs/int" }, "name": { "$ref": "#/$defs/str" }, "type": { "$ref": "#/$defs/str" }, "struct": { "$ref": "#/$defs/structRefOrNull" } }
+          }
+        }
+      }
+    },
+    "allReport": {
+      "description": "The reports of several modes in one object: `all` lists the parts that are there, and each has the payload its single-mode report has; the others are null. `code` is null unless the option `with_code` was given.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["header", "all", "info", "dump", "code", "refs", "warns"],
+      "properties": {
+        "header": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["software", "version", "mode", "files", "options"],
+          "properties": {
+            "software": { "const": "miliastra-search" },
+            "version": { "$ref": "#/$defs/str" },
+            "mode": { "const": "all" },
+            "files": { "$ref": "#/$defs/strings" },
+            "options": { "$ref": "#/$defs/allOptions" }
+          }
+        },
+        "all": { "type": "array", "items": { "enum": ["info", "dump", "code", "refs", "warns"] } },
+        "info": { "oneOf": [{ "$ref": "#/$defs/infoBody" }, { "type": "null" }] },
+        "dump": { "oneOf": [{ "$ref": "#/$defs/dumpBody" }, { "type": "null" }] },
+        "code": { "oneOf": [{ "$ref": "#/$defs/codeBody" }, { "type": "null" }] },
+        "refs": { "oneOf": [{ "$ref": "#/$defs/refsBody" }, { "type": "null" }] },
+        "warns": { "oneOf": [{ "$ref": "#/$defs/warnsBody" }, { "type": "null" }] }
+      }
+    }
+  }
+}

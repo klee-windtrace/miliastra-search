@@ -44,7 +44,7 @@ INFO  composite-never-called: composite "Composite in default" is defined but ne
 
 # limits
 composites: 40/1000 declared
-signals: 1/100 declared
+signals: 1/99 declared
 prefabs (OBJECT): 12/1000
 dynamic entities (OBJECT_ENTITY): 13/3000
 PRESET_POINT: 5/2000

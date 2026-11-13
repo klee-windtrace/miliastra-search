@@ -45,9 +45,10 @@ test('--match on warns greps the printed lines (the limits section here)', () =>
   const r = cli('warns', '--match', '^limits$|^# limits', f);
   assert.equal(r.status, 0); assert.match(r.stdout, /# limits/);
 });
-test('usage errors: bad regexp, --json with grep, removed search mode and --regex', () => {
+test('usage errors: bad regexp, json with grep, removed search mode, --regex and --json', () => {
   assert.match(cli('refs', '--match', '(', f).stderr, /bad --match regexp/);
-  assert.equal(cli('refs', '--search', 'x', '--json', f).status, 2);
+  assert.equal(spawnSync(process.execPath, [path.join(here, '..', 'miliastra-search.mjs'), 'refs', '--search', 'x', '--format', 'json', f]).status, 2);
+  assert.match(cli('refs', '--json', f).stderr, /unknown option --json/);
   assert.equal(cli('search', 'x', f).status, 2);
   assert.match(cli('dump', '--regex', f).stderr, /unknown option/);
 });
@@ -56,8 +57,8 @@ test('no matching line: exit 1', () => {
 });
 test('--help names the modes of every option', () => {
   const h = cli('--help').stdout;
-  for (const opt of ['--search', '--match', '--context', '--kind', '--name', '--sort-desc', '--top-graphs', '--all-pins', '--defaults', '--show-tag', '--strict', '--json', '--lang', '--db', '--input', '--lenient', '--format', '--output']) assert.ok(h.includes(opt), opt);
-  for (const mode of ['info', 'dump', 'code', 'refs', 'warns', 'check', 'raw']) assert.match(h, new RegExp(`miliastra-search ${mode} `));
+  for (const opt of ['--search', '--match', '--context', '--kind', '--name', '--sort-desc', '--top-graphs', '--all-pins', '--show-tag', '--with-code', '--details', '--strict', '--lang', '--db', '--input', '--lenient', '--format', '--output']) assert.ok(h.includes(opt), opt);
+  for (const mode of ['info', 'dump', 'code', 'refs', 'warns', 'check', 'raw', 'all']) assert.match(h, new RegExp(`miliastra-search ${mode} `));
   assert.doesNotMatch(h, /--regex|--no-code|--no-resource|\bsearch +<files/);
 });
 

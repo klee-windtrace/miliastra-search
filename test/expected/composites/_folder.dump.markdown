@@ -1,4 +1,4 @@
-﻿# File `test/cases/composites/test_All_Composite.gia`
+﻿# File `test_All_Composite.gia`
 
 ## Declarations (2)
 
@@ -39,7 +39,13 @@
 | '<u>\<composite\></u>*Create Composite Node(3)*' | ENTITY\_NODE\_GRAPH | '`1610612740`' | **1** | dependency |
 | '<u>\<composite\></u>*Create Composite Node(7)*' | ENTITY\_NODE\_GRAPH | '`1610612744`' | **1** | dependency |
 
-# File `test/cases/composites/test_composite.gia`
+## Variables
+
+| Graph | Variable | Type | Value |
+| --- | --- | --- | --- |
+| '*All\_Composite*' | '**Static\_Graph**' | *L\<Gid\>* | \[\] |
+
+# File `test_composite.gia`
 
 ## Graphs (3)
 
@@ -72,7 +78,13 @@
 | "**Voice Chat Button**" | UI\_CONTROL | '`1073741838`' |   |
 | "**Voice Chat Hint Queue**" | UI\_CONTROL | '`1073741839`' |   |
 
-# File `test/cases/composites/test_composite.gil`
+## Variables
+
+| Graph | Variable | Type | Value |
+| --- | --- | --- | --- |
+| '*New Node Graph*' | '**Var\_1**' | *Int* | 1 |
+
+# File `test_composite.gil`
 
 ## Graphs (3)
 
@@ -131,7 +143,13 @@
 | "**Voice Chat Button**" | UI\_CONTROL | '`1073741838`' |   |   |
 | "**Voice Chat Hint Queue**" | UI\_CONTROL | '`1073741839`' |   |   |
 
-# File `test/cases/composites/var_change.gia`
+## Variables
+
+| Graph | Variable | Type | Value |
+| --- | --- | --- | --- |
+| '*New Node Graph*' | '**Var\_1**' | *Int* | 1 |
+
+# File `var_change.gia`
 
 ## Graphs (4)
 

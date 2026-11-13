@@ -17,7 +17,7 @@
 ## limits
 
 composites: 2/1000 declared<br>
-signals: 2/100 declared
+signals: 2/99 declared
 
 ---
 

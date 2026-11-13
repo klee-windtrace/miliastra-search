@@ -1,0 +1,41 @@
+# INFO
+# FILE sample_1.gia
+format                 gia
+detected_by            header
+file_size              2439
+container_file_type    gia
+engine_version         7.0.0
+mode                   beyond
+export_name            sample_1.gia
+node_db_version        7.2.0
+resources              5
+primary                3
+dependencies           2
+graphs                 3
+nodes                  15
+composite_bodies       2
+declarations           2
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=3
+CLASS COMPOSITE_NODE_DECL class=12 count=2
+
+# DUMP
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=7
+GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=1 role=dependency decl='1610612737'
+GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=7 role=dependency decl='1610612738'
+
+# REFS
+composite        "Create Composite Node"            2 call: ['New Node Graph']
+composite        "Create Composite Node(1)"         1 call: ['New Node Graph']
+
+# WARNS
+# findings
+(no findings)
+
+# limits
+composites: 2/1000 declared
+
+top graphs by node count:
+'New Node Graph': 16/3000 nodes

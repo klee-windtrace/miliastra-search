@@ -1,6 +1,6 @@
 {
   "name": "miliastra-search",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Text dump, search and reference index for Miliastra Wonderland node graphs",
   "type": "module",
   "bin": {
@@ -17,5 +17,5 @@
     "mihoyobin": "node scripts/mihoyobin.mjs",
     "add-bom": "node scripts/add-bom.mjs . \"md;mjs\""
   },
-  "license": "MIT"
+  "license": "0BSD"
 }

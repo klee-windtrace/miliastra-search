@@ -1,0 +1,65 @@
+# INFO
+# FILE codetest_3.gia
+format                 gia
+detected_by            header
+file_size              11438
+container_file_type    gia
+engine_version         7.2.0
+mode                   beyond
+export_name            codetest_3.gia
+node_db_version        7.2.0
+resources              10
+primary                7
+dependencies           3
+graphs                 7
+nodes                  46
+composite_bodies       3
+declarations           3
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=7
+CLASS COMPOSITE_NODE_DECL class=12 count=3
+
+# DUMP
+GRAPH 'Composite with event' ENTITY_NODE_GRAPH class=9 guid='1073741827' kind=21001 service=20000 nodes=9
+GRAPH 'Cycle with no entry' ENTITY_NODE_GRAPH class=9 guid='1073741826' kind=21001 service=20000 nodes=12
+GRAPH 'Dead composite' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=10
+GRAPH 'Nested event' ENTITY_NODE_GRAPH class=9 guid='1073741828' kind=21001 service=20000 nodes=4
+GRAPH '<composite>Naive execution delay' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=6 role=dependency decl='1610612738'
+GRAPH '<composite>Test Delay Print' ENTITY_NODE_GRAPH class=9 guid='1610612739' kind=21002 service=20000 nodes=3 role=dependency decl='1610612739'
+GRAPH '<composite>Wrapped (Custom Variable)' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=2 role=dependency decl='1610612737'
+
+# REFS
+composite        "Naive execution delay"            5 call: ['Composite with event'; '<composite>Test Delay Print']
+composite        "Test Delay Print"                 3 call: ['Nested event']
+composite        "Wrapped (Custom Variable)"        10 call: ['Composite with event'; 'Cycle with no entry'; 'Dead composite']
+custom_variable  "<dynamic>" (Int)                  1 get: ['Dead composite'], 1 set: ['Dead composite']
+custom_variable  "1" (Int)                          1 get: ['Dead composite'], 1 set: ['Dead composite']
+custom_variable  "2" (Int)                          1 get: ['Dead composite'], 1 set: ['Dead composite']
+custom_variable  "4" (Int)                          1 get: ['Dead composite'], 1 set: ['Dead composite']
+custom_variable  "5" (Int)                          1 get: ['Dead composite'], 1 set: ['Dead composite']
+custom_variable  "A" (Int)                          1 get: ['Cycle with no entry'], 0 set: [], 1 trigger: ['Cycle with no entry']
+custom_variable  "B" (Int)                          1 get: ['Cycle with no entry'], 0 set: [], 1 trigger: ['Cycle with no entry']
+custom_variable  "X" (Int)                          1 get: ['Composite with event'], 0 set: [], 1 trigger: ['Composite with event']
+custom_variable  "Y" (Int)                          1 get: ['Composite with event'], 0 set: [], 1 trigger: ['Composite with event']
+custom_variable  "Z" (Int)                          1 get: ['Composite with event'], 0 set: [], 1 trigger: ['Composite with event']
+timer            "1" (onetime)                      1 start: ['Composite with event'], 0 stop: [], 1 listen: ['Composite with event']
+timer            "2" (onetime)                      1 start: ['Composite with event'], 0 stop: [], 1 listen: ['Composite with event']
+timer            "3" (onetime)                      1 start: ['Composite with event'], 0 stop: [], 1 listen: ['Composite with event']
+timer            "4" (onetime)                      1 start: ['Composite with event'], 0 stop: [], 1 listen: ['Composite with event']
+timer            "Delay" (onetime)                  3 start: ['Nested event'], 0 stop: [], 3 listen: ['Nested event']
+
+# WARNS
+# findings
+INFO  dynamic-reference: [1] Set Custom Variable in#1 "Variable Name" in graph 'Dead composite': name is computed at runtime (Data Type Conversion output "Output" is computed at runtime); cannot be resolved statically
+INFO  dynamic-reference: [2] Get Custom Variable in#1 "Variable Name" in graph 'Dead composite': name is computed at runtime (Data Type Conversion output "Output" is computed at runtime); cannot be resolved statically
+
+# limits
+composites: 3/1000 declared
+
+top graphs by node count:
+'Composite with event': 39/3000 nodes
+'Nested event': 31/3000 nodes
+'Dead composite': 20/3000 nodes
+'Cycle with no entry': 16/3000 nodes

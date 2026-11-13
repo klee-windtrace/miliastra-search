@@ -1,0 +1,115 @@
+# INFO
+# FILE test_composite.gia
+format                 gia
+detected_by            header
+file_size              6705
+container_file_type    gia
+engine_version         7.1.0
+mode                   beyond
+export_name            test_composite.gia
+node_db_version        7.2.0
+export_tag             658181221-1790236511-1073741943-\test_composite.gia
+uid                    658181221
+time                   1790236511
+file_id                1073741943
+resources              23
+primary                7
+dependencies           16
+graphs                 3
+nodes                  12
+composite_bodies       2
+declarations           2
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS OBJECT class=1 count=1
+CLASS OBJECT_ENTITY class=3 count=1
+CLASS SKILL class=8 count=1
+CLASS ENTITY_NODE_GRAPH class=9 count=3
+CLASS COMPOSITE_NODE_DECL class=12 count=2
+CLASS UI_CONTROL class=15 count=14
+CLASS INTERFACE_LAYOUT class=20 count=1
+
+# DUMP
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=7
+GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH class=9 guid='1610612900' kind=21002 service=20000 nodes=4 role=dependency decl='1610613134'
+GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH class=9 guid='1610612901' kind=21002 service=20000 nodes=1 role=dependency decl='1610613135'
+RESOURCE "test_skill" SKILL class=8 guid='1098907649'
+RESOURCE "prefab_test" OBJECT class=1 guid='1077936129' parent=(entities: 1)
+RESOURCE "entity_test" OBJECT_ENTITY class=3 guid='1077936131' parent=(1077936129:"prefab_test")
+RESOURCE "Default Layout" INTERFACE_LAYOUT class=20 guid='1073741825'
+RESOURCE "Mini-Map" UI_CONTROL class=15 guid='1073741826'
+RESOURCE "Skill Area" UI_CONTROL class=15 guid='1073741827'
+RESOURCE "Team Information" UI_CONTROL class=15 guid='1073741828'
+RESOURCE "Character HP Bar" UI_CONTROL class=15 guid='1073741829'
+RESOURCE "Joystick" UI_CONTROL class=15 guid='1073741830'
+RESOURCE "Creation HP Bar" UI_CONTROL class=15 guid='1073741831'
+RESOURCE "Exit Button" UI_CONTROL class=15 guid='1073741832'
+RESOURCE "Voice-Over" UI_CONTROL class=15 guid='1073741833'
+RESOURCE "Tab" UI_CONTROL class=15 guid='1073741834'
+RESOURCE "Chat Button" UI_CONTROL class=15 guid='1073741835'
+RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741836'
+RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741837'
+RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741838'
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741839'
+GRAPH_VARIABLE 'New Node Graph' 'Var_1' : Int = 1
+
+# REFS
+composite        "Create Composite Node"            2 call: ['New Node Graph']
+composite        "Create Composite Node(1)"         1 call: ['<composite>Create Composite Node']
+graph_variable   "Var_1" (Int)                      ['New Node Graph']: 2 get, 2 set
+literal_id       "Cfg:1098907649" (SKILL:"test_skill") 1 Ref: ['New Node Graph']
+literal_id       "Gid:1077936131" (OBJECT_ENTITY:"entity_test") 1 Ref: ['New Node Graph']
+literal_id       "Int: 1073741825" (INTERFACE_LAYOUT:"Default Layout") 1 Ref: ['New Node Graph']
+literal_id       "Pfb:10005018"                     1 Ref: ['New Node Graph']
+
+# WARNS
+# findings
+(no findings)
+
+# limits
+composites: 2/1000 declared
+prefabs (OBJECT): 1/1000
+dynamic entities (OBJECT_ENTITY): 1/3000
+SKILL: 1/100
+
+top graphs by node count:
+'New Node Graph': 17/3000 nodes
+
+# CODE
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH (guid 1073741825)
+'New Node Graph'/VAR Var_1 : Int public=false = 1
+'New Node Graph'/[1] When Entity Is Created (71) @(-373.85715,-177.28572)
+'New Node Graph'/[1] When Entity Is Created (71) out.flow#0 -> [15] Create Composite Node (1610613134) in.flow#0
+'New Node Graph'/[14] Create Composite Node (1610613134) user=COMPOSITE @(354.14285,-179.14285)
+'New Node Graph'/[14] Create Composite Node (1610613134) out.flow#0 "Yes" -> [18] Switch Current Interface Layout (382) in.flow#0
+'New Node Graph'/[15] Create Composite Node (1610613134) user=COMPOSITE @(-28.714285,-178.66667)
+'New Node Graph'/[15] Create Composite Node (1610613134) out.flow#0 "Yes" -> [14] Create Composite Node (1610613134) in.flow#0
+'New Node Graph'/[17] Query All Skill Instance IDs by Skill Config ID (812) @(1276.608,-540.3176)
+'New Node Graph'/[17] Query All Skill Instance IDs by Skill Config ID (812) in#1 "Skill Config ID" = id:1098907649 : Cfg {SKILL:"test_skill"}
+'New Node Graph'/[18] Switch Current Interface Layout (382) @(751.2857,-176.28572)
+'New Node Graph'/[18] Switch Current Interface Layout (382) in#1 "Layout Index" = 1073741825 : Int {INTERFACE_LAYOUT:"Default Layout"}
+'New Node Graph'/[21] Get Entity With Specified Prefab ID on the Field (320) @(1255.24,-266.45618)
+'New Node Graph'/[21] Get Entity With Specified Prefab ID on the Field (320) in#0 "Prefab ID" = id:10005018 : Pfb
+'New Node Graph'/[22] Query Entity by GUID (75) @(1283.8114,-45.02761)
+'New Node Graph'/[22] Query Entity by GUID (75) in#0 "GUID" = id:1077936131 : Gid {OBJECT_ENTITY:"entity_test"}
+GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH (guid 1610612900, decl 1610613134) role=dependency
+'<composite>Create Composite Node'/PORTMAP ext.in.flow#0 -> [2] Double Branch (2) in.flow#0
+'<composite>Create Composite Node'/PORTMAP ext.out.flow#0 "Yes" -> [2] Double Branch (2) out.flow#0 "Yes"
+'<composite>Create Composite Node'/[2] Double Branch (2) @(51.142857,247.95238)
+'<composite>Create Composite Node'/[2] Double Branch (2) out.flow#1 "No" -> [7] Create Composite Node(1) (1610613135) in.flow#0
+'<composite>Create Composite Node'/[2] Double Branch (2) in#0 "Condition" <- [4] Equal (14/370) out#0 "Result" : Bol
+'<composite>Create Composite Node'/[3] Get Node Graph Variable (337/339) variant=C<T:Int> @(1.7142857,-224.7619)
+'<composite>Create Composite Node'/[3] Get Node Graph Variable (337/339) in#0 "Variable Name" = 'Var_1' : Str
+'<composite>Create Composite Node'/[3] Get Node Graph Variable (337/339) out#0 "Variable Value" = 0 : Int
+'<composite>Create Composite Node'/[4] Equal (14/370) variant=C<T:Int> @(-52.857143,-23.190475)
+'<composite>Create Composite Node'/[4] Equal (14/370) in#0 "Input 1" <- [3] Get Node Graph Variable (337/339) out#0 "Variable Value" : Int
+'<composite>Create Composite Node'/[4] Equal (14/370) in#0 "Input 1" = 0 : Int (also wired)
+'<composite>Create Composite Node'/[4] Equal (14/370) in#1 "Input 2" = 0 : Int
+'<composite>Create Composite Node'/[7] Create Composite Node(1) (1610613135) user=COMPOSITE @(478.7143,291)
+GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH (guid 1610612901, decl 1610613135) role=dependency
+'<composite>Create Composite Node(1)'/PORTMAP ext.in.flow#0 -> [1] Set Node Graph Variable (323) in.flow#0
+'<composite>Create Composite Node(1)'/[1] Set Node Graph Variable (323) @(0,0)
+'<composite>Create Composite Node(1)'/[1] Set Node Graph Variable (323) in#0 "Variable Name" = 'Var_1' : Str
+'<composite>Create Composite Node(1)'/[1] Set Node Graph Variable (323) in#1 "Variable Value" = 0 : Int
+'<composite>Create Composite Node(1)'/[1] Set Node Graph Variable (323) in#2 "Trigger Event" = No : Bol

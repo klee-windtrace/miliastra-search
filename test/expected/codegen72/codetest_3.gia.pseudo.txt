@@ -1,0 +1,576 @@
+ServerGraphs['Composite with event'] = async function Entity_1073741827($,node){
+  const GoTo = this.bind(this,$);
+  switch(node){
+    case 'node_0007.event_0001':
+    case 'node_0007':{ // called from 'event_0008: When_Entity_Is_Created'
+      for await ($.next of Composite['Naive execution delay']($, "Comp_001", {
+        Delay: Flt(1),
+        Timer_Name: "1",
+      }, node === "node_0007" ? $.input : node.slice(node.indexOf('.')+1))) {
+        switch($.next){
+          case "0":
+            $.input = "input: 0";
+            await GoTo("node_0018"); // Wrapped_Custom_Variable
+            break;
+          default:
+            return;
+        }
+      }
+      return;
+    }
+    case 'node_0018':{ // called from 'node_0007: Naive_execution_delay'
+      await Composite['Wrapped (Custom Variable)']($, "Comp_004", {
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "X",
+        Variable_Value: Int(0),
+        Trigger_Event: Bol(1),
+      }, $.input); // .Next=="0"
+      return Exit();
+    }
+    case 'event_0008':{
+      await When_Entity_Is_Created({
+        Event: $.event,
+      });
+      $.input = "input: 0";
+      return GoTo("node_0007"); // Naive_execution_delay
+    }
+    case 'node_0010.event_0001':
+    case 'node_0010':{ // called from 'node_0019: Wrapped_Custom_Variable'
+      for await ($.next of Composite['Naive execution delay']($, "Comp_002", {
+        Delay: Flt(2),
+        Timer_Name: "2",
+      }, node === "node_0010" ? $.input : node.slice(node.indexOf('.')+1))) {
+        switch($.next){
+          case "0":
+            break;
+          default:
+            return;
+        }
+      }
+      return Exit();
+    }
+    case 'node_0012.event_0001':
+    case 'node_0012':{ // called from 'node_0013: Double_Branch'
+      for await ($.next of Composite['Naive execution delay']($, "Comp_003", {
+        Delay: Flt(3),
+        Timer_Name: "3",
+      }, node === "node_0012" ? $.input : node.slice(node.indexOf('.')+1))) {
+        switch($.next){
+          case "0":
+            $.input = "input: 0";
+            await GoTo("node_0020"); // Wrapped_Custom_Variable
+            break;
+          default:
+            return;
+        }
+      }
+      return;
+    }
+    case 'node_0020':{ // 2 callers: ['node_0012: Naive_execution_delay', 'node_0013: Double_Branch']
+      await Composite['Wrapped (Custom Variable)']($, "Comp_006", {
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "Z",
+        Variable_Value: Int(0),
+        Trigger_Event: Bol(1),
+      }, $.input); // .Next=="0"
+      return Exit();
+    }
+    case 'node_0021.event_0001':
+    case 'node_0021':{
+      for await ($.next of Composite['Naive execution delay']($, "Comp_007", {
+        Delay: Flt(4),
+        Timer_Name: "4",
+      }, node === "node_0021" ? $.input : node.slice(node.indexOf('.')+1))) {
+        switch($.next){
+          case "0":
+            break;
+          default:
+            return;
+        }
+      }
+      return Exit();
+    }
+    case 'node_0013':{ // no callers
+      throw 'unreachable';
+      ({
+        Next: $.next,
+      } = Double_Branch({
+        Condition: Bol(1),
+      }));
+      if($.next=="Yes"){
+        $.input = "input: 0";
+        return GoTo("node_0012"); // Naive_execution_delay
+      }else{ // =="No"
+        $.input = "input: 0";
+        return GoTo("node_0020"); // Wrapped_Custom_Variable
+      }
+    }
+    case 'node_0019':{ // no callers
+      throw 'unreachable';
+      await Composite['Wrapped (Custom Variable)']($, "Comp_005", {
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "Y",
+        Variable_Value: Int(0),
+        Trigger_Event: Bol(1),
+      }, $.input); // .Next=="0"
+      $.input = "input: 0";
+      return GoTo("node_0010"); // Naive_execution_delay
+    }
+  }
+};
+
+ServerGraphs['Cycle with no entry'] = async function Entity_1073741826($,node){
+  const GoTo = this.bind(this,$);
+  switch(node){
+    case 'event_0001':{
+      await When_Entity_Is_Created({
+        Event: $.event,
+      });
+      $.input = "0";
+      void "node_0003"; // Finite_Loop
+    }
+    case 'node_0003':{ // 2 callers: ['event_0001: When_Entity_Is_Created', 'node_0005: Break_Loop']
+      for ({
+        Next: $.next,
+        Current_Loop_Value: $.Int_003,
+      } of Finite_Loop({
+        Loop_Start_Value: Int(1),
+        Loop_Termination_Value: Int(5),
+      }, $.input)) {
+        switch($.next){
+          case "Loop_Body":
+            $.input = "input: 0";
+            await GoTo("node_0002"); // Wrapped_Custom_Variable
+            break;
+          case "Loop_Complete":
+            await GoTo("node_0006"); // Settle_Stage
+            break;
+        }
+      }
+      return;
+    }
+    case 'node_0002':{ // called from 'node_0003: Finite_Loop'
+      await Composite['Wrapped (Custom Variable)']($, "Comp_001", {
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "A",
+        Variable_Value: $.Int_003, // Finite_Loop.Current_Loop_Value
+        Trigger_Event: Bol(1),
+      }, $.input); // .Next=="0"
+      void "node_0004"; // Multiple_Branches
+    }
+    case 'node_0004':{ // called from 'node_0002: Wrapped_Custom_Variable'
+      const {
+        Variable_Value: Int_01,
+      } = Composite['Wrapped (Custom Variable)']($, "Comp_001", {
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "A",
+        Variable_Value: $.Int_003, // Finite_Loop.Current_Loop_Value
+        Trigger_Event: Bol(1),
+      });
+
+      ({
+        Next: $.next,
+      } = Multiple_Branches({
+        Control_Expression: Int_01, // Wrapped_Custom_Variable.Variable_Value
+      }));
+      switch($.next){
+        default: // "Default"
+          return Exit();
+        case "3":
+          return GoTo("node_0005"); // Break_Loop
+      }
+    }
+    case 'node_0005':{ // called from 'node_0004: Multiple_Branches'
+      Break_Loop();
+      $.input = "Break_Loop";
+      return GoTo("node_0003"); // Finite_Loop
+    }
+    case 'node_0006':{ // called from 'node_0003: Finite_Loop'
+      Settle_Stage({
+        Success: Bol(0), // (default)
+      });
+      return Exit();
+    }
+    case 'node_0007':{ // no callers
+      throw 'unreachable';
+      Clear_List({
+        List: undefined, // (default)
+      });
+      $.input = "0";
+      void "node_0016"; // Finite_Loop
+    }
+    case 'node_0016':{ // 2 callers: ['node_0007: Clear_List', 'node_0014: Break_Loop']
+      throw 'unreachable';
+      for ({
+        Next: $.next,
+        Current_Loop_Value: $.Int_004,
+      } of Finite_Loop({
+        Loop_Start_Value: Int(1),
+        Loop_Termination_Value: Int(5),
+      }, $.input)) {
+        switch($.next){
+          case "Loop_Body":
+            $.input = "input: 0";
+            await GoTo("node_0017"); // Wrapped_Custom_Variable
+            break;
+          case "Loop_Complete":
+            await GoTo("node_0013"); // Settle_Stage
+            break;
+        }
+      }
+      return;
+    }
+    case 'node_0017':{ // called from 'node_0016: Finite_Loop'
+      throw 'unreachable';
+      await Composite['Wrapped (Custom Variable)']($, "Comp_002", {
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "B",
+        Variable_Value: $.Int_004, // Finite_Loop.Current_Loop_Value
+        Trigger_Event: Bol(1),
+      }, $.input); // .Next=="0"
+      void "node_0015"; // Multiple_Branches
+    }
+    case 'node_0015':{ // called from 'node_0017: Wrapped_Custom_Variable'
+      throw 'unreachable';
+      const {
+        Variable_Value: Int_01,
+      } = Composite['Wrapped (Custom Variable)']($, "Comp_002", {
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "B",
+        Variable_Value: $.Int_004, // Finite_Loop.Current_Loop_Value
+        Trigger_Event: Bol(1),
+      });
+
+      ({
+        Next: $.next,
+      } = Multiple_Branches({
+        Control_Expression: Int_01, // Wrapped_Custom_Variable.Variable_Value
+      }));
+      switch($.next){
+        default: // "Default"
+          return Exit();
+        case "3":
+          return GoTo("node_0014"); // Break_Loop
+      }
+    }
+    case 'node_0014':{ // called from 'node_0015: Multiple_Branches'
+      throw 'unreachable';
+      Break_Loop();
+      $.input = "Break_Loop";
+      return GoTo("node_0016"); // Finite_Loop
+    }
+    case 'node_0013':{ // called from 'node_0016: Finite_Loop'
+      throw 'unreachable';
+      Settle_Stage({
+        Success: Bol(0), // (default)
+      });
+      return Exit();
+    }
+  }
+};
+
+ServerGraphs['Dead composite'] = async function Entity_1073741825($,node){
+  const GoTo = this.bind(this,$);
+  switch(node){
+    case 'event_0004':{
+      ({
+        Event_Source_Entity: $.Ety_001,
+      } = await When_Entity_Is_Created({
+        Event: $.event,
+      }));
+      $.input = "input: 0";
+      void "node_0003"; // Wrapped_Custom_Variable
+    }
+    case 'node_0003':{ // called from 'event_0004: When_Entity_Is_Created'
+      await Composite['Wrapped (Custom Variable)']($, "Comp_001", {
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "1",
+        Variable_Value: Int(1),
+        Trigger_Event: Bol(0),
+      }, $.input); // .Next=="0"
+      void "node_0006"; // Print_String
+    }
+    case 'node_0006':{ // called from 'node_0003: Wrapped_Custom_Variable'
+      const {
+        Variable_Value: Int_01,
+      } = Composite['Wrapped (Custom Variable)']($, "Comp_002", {
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "2",
+        Variable_Value: Int(2),
+        Trigger_Event: Bol(0),
+      });
+      const {
+        Output: Str_02,
+      } = Data_Type_Conversion({
+        Input: Int_01, // Wrapped_Custom_Variable.Variable_Value
+        op: Enum("Type Conversions", 0), // (default)
+      });
+
+      Print_String({
+        String: Str_02, // Data_Type_Conversion.Output
+      });
+      return Exit();
+    }
+    case 'node_0008':{ // no callers
+      throw 'unreachable';
+      await Composite['Wrapped (Custom Variable)']($, "Comp_002", {
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "2",
+        Variable_Value: Int(2),
+        Trigger_Event: Bol(0),
+      }, $.input); // .Next=="0"
+      return Exit();
+    }
+    case 'node_0009':{ // no callers
+      throw 'unreachable';
+      const {
+        Variable_Value: Int_01,
+      } = Composite['Wrapped (Custom Variable)']($, "Comp_002", {
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "2",
+        Variable_Value: Int(2),
+        Trigger_Event: Bol(0),
+      });
+      const {
+        Output: Str_02,
+      } = Data_Type_Conversion({
+        Input: Int_01, // Wrapped_Custom_Variable.Variable_Value
+        op: Enum("Type Conversions", 0), // (default)
+      });
+
+      await Composite['Wrapped (Custom Variable)']($, "Comp_003", {
+        Target_Entity: $.Ety_001, // When_Entity_Is_Created.Event_Source_Entity
+        Variable_Name: Str_02, // Data_Type_Conversion.Output
+        Variable_Value: Int(3),
+        Trigger_Event: Bol(0),
+      }, $.input); // .Next=="0"
+      return Exit();
+    }
+    case 'node_0010':{ // no callers
+      throw 'unreachable';
+      await Composite['Wrapped (Custom Variable)']($, "Comp_004", {
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "4",
+        Variable_Value: Int(4),
+        Trigger_Event: Bol(0),
+      }, $.input); // .Next=="0"
+      return Exit();
+    }
+    case 'node_0011':{ // no callers
+      throw 'unreachable';
+      Print_String({
+        String: "", // (default)
+      });
+      $.input = "input: 0";
+      void "node_0013"; // Wrapped_Custom_Variable
+    }
+    case 'node_0013':{ // called from 'node_0011: Print_String'
+      throw 'unreachable';
+      await Composite['Wrapped (Custom Variable)']($, "Comp_005", {
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "5",
+        Variable_Value: Int(5),
+        Trigger_Event: Bol(0),
+      }, $.input); // .Next=="0"
+      void "node_0014"; // Print_String
+    }
+    case 'node_0014':{ // called from 'node_0013: Wrapped_Custom_Variable'
+      throw 'unreachable';
+      Print_String({
+        String: "", // (default)
+      });
+      return Exit();
+    }
+  }
+};
+
+ServerGraphs['Nested event'] = async function Entity_1073741828($,node){
+  const GoTo = this.bind(this,$);
+  switch(node){
+    case 'node_0006.node_0002.event_0001':
+    case 'node_0006':{
+      for await ($.next of Composite['Test Delay Print']($, "Comp_001", {
+        Delay: Flt(1),
+      }, node === "node_0006" ? $.input : node.slice(node.indexOf('.')+1))) {
+        switch($.next){
+          case "0":
+            break;
+          default:
+            return;
+        }
+      }
+      return Exit();
+    }
+    case 'event_0007':{
+      await When_Entity_Is_Created({
+        Event: $.event,
+      });
+      $.input = "input: 0";
+      void "node_0008"; // Test_Delay_Print
+    }
+    case 'node_0008.node_0002.event_0001':
+    case 'node_0008':{ // called from 'event_0007: When_Entity_Is_Created'
+      for await ($.next of Composite['Test Delay Print']($, "Comp_002", {
+        Delay: Flt(2),
+      }, node === "node_0008" ? $.input : node.slice(node.indexOf('.')+1))) {
+        switch($.next){
+          case "0":
+            $.input = "input: 0";
+            await GoTo("node_0009"); // Test_Delay_Print
+            break;
+          default:
+            return;
+        }
+      }
+      return;
+    }
+    case 'node_0009.node_0002.event_0001':
+    case 'node_0009':{ // called from 'node_0008: Test_Delay_Print'
+      for await ($.next of Composite['Test Delay Print']($, "Comp_003", {
+        Delay: Flt(3),
+      }, node === "node_0009" ? $.input : node.slice(node.indexOf('.')+1))) {
+        switch($.next){
+          case "0":
+            break;
+          default:
+            return;
+        }
+      }
+      return Exit();
+    }
+  }
+};
+
+Composite['Naive execution delay'] = function Composite_1610612738($,Comp,In = {
+  Delay: Flt,
+  Timer_Name: Str,
+},node){
+  const $$ = $[Comp] ??= {};
+  let next;
+  return (async function* GoTo(node){
+    switch(node){
+      case 'event_0001':{
+        ({
+          Timer_Name: $$.Str_003,
+        } = await When_Timer_Is_Triggered({
+          Event: $.event,
+        }));
+        void "node_0002"; // Double_Branch
+      }
+      case 'node_0002':{ // called from 'event_0001: When_Timer_Is_Triggered'
+        const {
+          Result: Bol_01,
+        } = Equal({
+          Input_1: $$.Str_003, // When_Timer_Is_Triggered.Timer_Name
+          Input_2: In.Timer_Name,
+        });
+
+        ({
+          Next: next,
+        } = Double_Branch({
+          Condition: Bol_01, // Equal.Result
+        }));
+        if(next=="Yes"){
+          return yield "0";
+        }else{ // =="No"
+          return Exit();
+        }
+      }
+      case 'input: 0':
+      case 'node_0004':{ // no callers
+        const {
+          Self_Entity: Ety_01,
+        } = Get_Self_Entity();
+        const {
+          List: LFlt_02,
+        } = Assembly_List({
+          Count: Int(1), // (default)
+          _0: In.Delay,
+        });
+
+        Start_Timer({
+          Target_Entity: Ety_01, // Get_Self_Entity.Self_Entity
+          Timer_Name: In.Timer_Name,
+          Loop: Bol(0),
+          Timer_Sequence: LFlt_02, // Assembly_List.List
+          context_GUID: Gid(0), // (default)
+        });
+        return Exit();
+      }
+    }
+  })(node);
+};
+
+Composite['Test Delay Print'] = function Composite_1610612739($,Comp,In = {
+  Delay: Flt,
+},node){
+  let next, input;
+  return (async function* GoTo(node){
+    switch(node){
+      case 'node_0002.event_0001':
+      case 'node_0002':{ // called from 'node_0004: Print_String'
+        for await (next of Composite['Naive execution delay']($, Comp + "_Comp_001", {
+          Delay: In.Delay,
+          Timer_Name: "Delay",
+        }, node === "node_0002" ? input : node.slice(node.indexOf('.')+1))) {
+          switch(next){
+            case "0":
+              yield* GoTo("node_0003"); // Print_String
+              break;
+            default:
+              return;
+          }
+        }
+        return;
+      }
+      case 'node_0003':{ // called from 'node_0002: Naive_execution_delay'
+        Print_String({
+          String: "Two",
+        });
+        return yield "0";
+      }
+      case 'input: 0':
+      case 'node_0004':{ // no callers
+        Print_String({
+          String: "One",
+        });
+        input = "input: 0";
+        return yield* GoTo("node_0002"); // Naive_execution_delay
+      }
+    }
+  })(node);
+};
+
+Composite['Wrapped (Custom Variable)'] = function Composite_1610612737($,Comp,In = {
+  Target_Entity: Ety,
+  Variable_Name: Str,
+  Variable_Value: Int,
+  Trigger_Event: Bol,
+},node){
+  if (!node){
+    const {
+      Variable_Value: Int_01,
+    } = Get_Custom_Variable({
+      Target_Entity: In.Target_Entity,
+      Variable_Name: In.Variable_Name,
+    });
+
+    return {
+      Variable_Value: Int_01, // Get_Custom_Variable.Variable_Value
+    };
+  }
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0001':{ // no callers
+        Set_Custom_Variable({
+          Target_Entity: In.Target_Entity,
+          Variable_Name: In.Variable_Name,
+          Variable_Value: In.Variable_Value,
+          Trigger_Event: In.Trigger_Event,
+        });
+        return { Next: "0" };
+      }
+    }
+  })(node);
+};

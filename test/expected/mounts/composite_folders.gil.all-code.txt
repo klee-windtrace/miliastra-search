@@ -1,0 +1,313 @@
+# INFO
+# FILE composite_folders.gil
+format                 gil
+detected_by            header
+file_size              133059
+container_file_type    gil
+engine_version         7.1.0
+mode                   beyond
+level_name             composite_folders
+node_db_version        7.2.0
+export_tag             null
+resources              126
+graphs                 30
+nodes                  0
+composite_bodies       30
+declarations           30
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS OBJECT class=1 count=1
+CLASS PRESET_POINT class=6 count=1
+CLASS ENTITY_NODE_GRAPH class=9 count=30
+CLASS COMPOSITE_NODE_DECL class=12 count=30
+CLASS CAMERA class=13 count=1
+CLASS UI_CONTROL class=15 count=14
+CLASS CLASS class=17 count=1
+CLASS PLAYER_TEMPLATE class=18 count=1
+CLASS CHARACTER_TEMPLATE class=19 count=1
+CLASS INTERFACE_LAYOUT class=20 count=3
+CLASS SHIELD class=39 count=1
+CLASS ENVIRONMENT_CONFIGURATION class=49 count=1
+CLASS GIL_CHARACTER_ENTITY class=- count=1
+CLASS GIL_GROWTH_CURVE class=- count=26
+CLASS GIL_LEVEL_ENTITY class=- count=1
+CLASS GIL_PLAYER_ENTITY class=- count=9
+CLASS GIL_RESPAWN_POINT class=- count=1
+CLASS GIL_UI_UNNAMED class=- count=3
+SECTION root.4 resources=3 description='templates: prefabs, player and character templates, creation templates'
+SECTION root.5 resources=11 description='entities placed in the level, plus the stage, player and character entities'
+SECTION root.9 resources=20 description='UI: layouts and their controls'
+SECTION root.10.2 resources=30 description='node declarations: signals and composite declarations'
+SECTION root.10.4 resources=30 description='composite bodies: the graphs inside composite nodes'
+SECTION root.11.3 resources=1 description='respawn points'
+SECTION root.11.5 resources=1 description='preset points'
+SECTION root.15 resources=29 description='configs: unit statuses, classes, skills, items and the like'
+SECTION root.18 resources=1 description='cameras'
+FOLDER /(default)/ graphs=3
+FOLDER /A/ graphs=3
+FOLDER /B/ graphs=3
+FOLDER /C/ graphs=3
+FOLDER /D/ graphs=3
+FOLDER /E/ graphs=3
+FOLDER /F/ graphs=3
+FOLDER /G/ graphs=3
+FOLDER /H/ graphs=3
+FOLDER /I/ graphs=3
+
+# DUMP
+GRAPH /(default)/'<composite>01' ENTITY_NODE_GRAPH class=9 guid='1610612838' kind=21002 service=20000 nodes=0 decl='1610613000'
+GRAPH /(default)/'<composite>02' ENTITY_NODE_GRAPH class=9 guid='1610612862' kind=21002 service=20000 nodes=0 decl='1610613036'
+GRAPH /(default)/'<composite>03' ENTITY_NODE_GRAPH class=9 guid='1610612842' kind=21002 service=20000 nodes=0 decl='1610613004'
+GRAPH /A/'<composite>A1' ENTITY_NODE_GRAPH class=9 guid='1610612750' kind=21002 service=20000 nodes=0 decl='1610612819'
+GRAPH /A/'<composite>A2' ENTITY_NODE_GRAPH class=9 guid='1610612751' kind=21002 service=20000 nodes=0 decl='1610612820'
+GRAPH /A/'<composite>A3' ENTITY_NODE_GRAPH class=9 guid='1610612752' kind=21002 service=20000 nodes=0 decl='1610612821'
+GRAPH /B/'<composite>B1' ENTITY_NODE_GRAPH class=9 guid='1610612741' kind=21002 service=20000 nodes=0 decl='1610612793'
+GRAPH /B/'<composite>B2' ENTITY_NODE_GRAPH class=9 guid='1610612748' kind=21002 service=20000 nodes=0 decl='1610612794'
+GRAPH /B/'<composite>B3' ENTITY_NODE_GRAPH class=9 guid='1610612747' kind=21002 service=20000 nodes=0 decl='1610612748'
+GRAPH /C/'<composite>C1' ENTITY_NODE_GRAPH class=9 guid='1610612749' kind=21002 service=20000 nodes=0 decl='1610612935'
+GRAPH /C/'<composite>C2' ENTITY_NODE_GRAPH class=9 guid='1610612835' kind=21002 service=20000 nodes=0 decl='1610612994'
+GRAPH /C/'<composite>C3' ENTITY_NODE_GRAPH class=9 guid='1610612794' kind=21002 service=20000 nodes=0 decl='1610612920'
+GRAPH /D/'<composite>D1' ENTITY_NODE_GRAPH class=9 guid='1073741938' kind=21002 service=20000 nodes=0 decl='1073741877'
+GRAPH /D/'<composite>D2' ENTITY_NODE_GRAPH class=9 guid='1073741920' kind=21002 service=20000 nodes=0 decl='1073741859'
+GRAPH /D/'<composite>D3' ENTITY_NODE_GRAPH class=9 guid='1073741926' kind=21002 service=20000 nodes=0 decl='1073741865'
+GRAPH /E/'<composite>E1' ENTITY_NODE_GRAPH class=9 guid='1610612899' kind=21002 service=20000 nodes=0 decl='1610613076'
+GRAPH /E/'<composite>E2' ENTITY_NODE_GRAPH class=9 guid='1610612840' kind=21002 service=20000 nodes=0 decl='1610613002'
+GRAPH /E/'<composite>E3' ENTITY_NODE_GRAPH class=9 guid='1073742077' kind=21002 service=20000 nodes=0 decl='1073742000'
+GRAPH /F/'<composite>F1' ENTITY_NODE_GRAPH class=9 guid='1073742200' kind=21002 service=20000 nodes=0 decl='1073742073'
+GRAPH /F/'<composite>F2' ENTITY_NODE_GRAPH class=9 guid='1073742074' kind=21002 service=20000 nodes=0 decl='1073741997'
+GRAPH /F/'<composite>F3' ENTITY_NODE_GRAPH class=9 guid='1610612760' kind=21002 service=20000 nodes=0 decl='1610612797'
+GRAPH /G/'<composite>G1' ENTITY_NODE_GRAPH class=9 guid='1610612763' kind=21002 service=20000 nodes=0 decl='1610612754'
+GRAPH /G/'<composite>G2' ENTITY_NODE_GRAPH class=9 guid='1073742030' kind=21002 service=20000 nodes=0 decl='1073741960'
+GRAPH /G/'<composite>G3' ENTITY_NODE_GRAPH class=9 guid='1073742076' kind=21002 service=20000 nodes=0 decl='1073741999'
+GRAPH /H/'<composite>H1' ENTITY_NODE_GRAPH class=9 guid='1073742064' kind=21002 service=20000 nodes=0 decl='1073741990'
+GRAPH /H/'<composite>H2' ENTITY_NODE_GRAPH class=9 guid='1073742057' kind=21002 service=20000 nodes=0 decl='1073741983'
+GRAPH /H/'<composite>H3' ENTITY_NODE_GRAPH class=9 guid='1073742048' kind=21002 service=20000 nodes=0 decl='1073741974'
+GRAPH /I/'<composite>I1' ENTITY_NODE_GRAPH class=9 guid='1610612797' kind=21002 service=20000 nodes=0 decl='1610612942'
+GRAPH /I/'<composite>I2' ENTITY_NODE_GRAPH class=9 guid='1610612755' kind=21002 service=20000 nodes=0 decl='1610612752'
+GRAPH /I/'<composite>I3' ENTITY_NODE_GRAPH class=9 guid='1610612826' kind=21002 service=20000 nodes=0 decl='1610612982'
+RESOURCE "Stage Entity" GIL_LEVEL_ENTITY class=- guid='1094713345' section=root.5
+RESOURCE "Player_Template" PLAYER_TEMPLATE class=18 guid='1086324737' section=root.4
+RESOURCE "Player_Template(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519041' section=root.4
+RESOURCE "Custom Class_35" CLASS class=17 guid='1090519104' section=root.15
+RESOURCE "Custom Camera" CAMERA class=13 guid='1073741834' section=root.18
+RESOURCE "Collision_Wall" OBJECT class=1 guid='1077936264' parent=(entities: 0) section=root.4
+RESOURCE "Custom Layout" INTERFACE_LAYOUT class=20 guid='1073756688' section=root.9
+RESOURCE "ClientUIRootHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073756686' section=root.9
+RESOURCE "ClientUIPrototypeHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073756687' section=root.9
+RESOURCE "Environment Configuration" ENVIRONMENT_CONFIGURATION class=49 guid='1186988033' section=root.15
+RESOURCE "Shield_Test" SHIELD class=39 guid='1157627905' section=root.15
+RESOURCE "SpawnRevive" PRESET_POINT class=6 guid='1073741826' section=root.11.5
+RESOURCE "Spawn" GIL_RESPAWN_POINT class=- guid='1073741826' section=root.11.3
+RESOURCE "Player_Template" GIL_PLAYER_ENTITY class=- guid='1086324737' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324738' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324739' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324740' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324741' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324742' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324743' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324744' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324745' section=root.5
+RESOURCE "Player_Template(Edit Character)" GIL_CHARACTER_ENTITY class=- guid='1090519041' section=root.5
+RESOURCE "Custom Growth Curve_1" GIL_GROWTH_CURVE class=- guid='1094713348' section=root.15
+RESOURCE "Custom Growth Curve_3" GIL_GROWTH_CURVE class=- guid='1094713349' section=root.15
+RESOURCE "Custom Growth Curve_4" GIL_GROWTH_CURVE class=- guid='1094713350' section=root.15
+RESOURCE "Custom Growth Curve_5" GIL_GROWTH_CURVE class=- guid='1094713351' section=root.15
+RESOURCE "Custom Growth Curve_6" GIL_GROWTH_CURVE class=- guid='1094713352' section=root.15
+RESOURCE "Custom Growth Curve_7" GIL_GROWTH_CURVE class=- guid='1094713353' section=root.15
+RESOURCE "Custom Growth Curve_8" GIL_GROWTH_CURVE class=- guid='1094713354' section=root.15
+RESOURCE "Custom Growth Curve_9" GIL_GROWTH_CURVE class=- guid='1094713355' section=root.15
+RESOURCE "Custom Growth Curve_10" GIL_GROWTH_CURVE class=- guid='1094713356' section=root.15
+RESOURCE "Custom Growth Curve_11" GIL_GROWTH_CURVE class=- guid='1094713357' section=root.15
+RESOURCE "Custom Growth Curve_12" GIL_GROWTH_CURVE class=- guid='1094713358' section=root.15
+RESOURCE "Custom Growth Curve_13" GIL_GROWTH_CURVE class=- guid='1094713359' section=root.15
+RESOURCE "Custom Growth Curve_14" GIL_GROWTH_CURVE class=- guid='1094713360' section=root.15
+RESOURCE "Custom Growth Curve_15" GIL_GROWTH_CURVE class=- guid='1094713361' section=root.15
+RESOURCE "Custom Growth Curve_16" GIL_GROWTH_CURVE class=- guid='1094713362' section=root.15
+RESOURCE "Custom Growth Curve_17" GIL_GROWTH_CURVE class=- guid='1094713363' section=root.15
+RESOURCE "Custom Growth Curve_18" GIL_GROWTH_CURVE class=- guid='1094713364' section=root.15
+RESOURCE "Custom Growth Curve_19" GIL_GROWTH_CURVE class=- guid='1094713365' section=root.15
+RESOURCE "Custom Growth Curve_20" GIL_GROWTH_CURVE class=- guid='1094713366' section=root.15
+RESOURCE "Custom Growth Curve_21" GIL_GROWTH_CURVE class=- guid='1094713367' section=root.15
+RESOURCE "Custom Growth Curve_22" GIL_GROWTH_CURVE class=- guid='1094713368' section=root.15
+RESOURCE "Custom Growth Curve_23" GIL_GROWTH_CURVE class=- guid='1094713369' section=root.15
+RESOURCE "Custom Growth Curve_24" GIL_GROWTH_CURVE class=- guid='1094713370' section=root.15
+RESOURCE "Custom Growth Curve_25" GIL_GROWTH_CURVE class=- guid='1094713371' section=root.15
+RESOURCE "Custom Growth Curve" GIL_GROWTH_CURVE class=- guid='1094713408' section=root.15
+RESOURCE "Custom Growth Curve_26" GIL_GROWTH_CURVE class=- guid='1094713372' section=root.15
+RESOURCE "" GIL_UI_UNNAMED class=- guid='1073741838' section=root.9
+RESOURCE "" GIL_UI_UNNAMED class=- guid='1073742552' section=root.9
+RESOURCE "" GIL_UI_UNNAMED class=- guid='1073742575' section=root.9
+RESOURCE "Mini-Map" UI_CONTROL class=15 guid='1073756689' section=root.9
+RESOURCE "Skill Area" UI_CONTROL class=15 guid='1073756690' section=root.9
+RESOURCE "Team Information" UI_CONTROL class=15 guid='1073756691' section=root.9
+RESOURCE "Character HP Bar" UI_CONTROL class=15 guid='1073756692' section=root.9
+RESOURCE "Joystick" UI_CONTROL class=15 guid='1073756693' section=root.9
+RESOURCE "Creation HP Bar" UI_CONTROL class=15 guid='1073756694' section=root.9
+RESOURCE "Exit Button" UI_CONTROL class=15 guid='1073756695' section=root.9
+RESOURCE "Voice-Over" UI_CONTROL class=15 guid='1073756696' section=root.9
+RESOURCE "Tab" UI_CONTROL class=15 guid='1073756697' section=root.9
+RESOURCE "Chat Button" UI_CONTROL class=15 guid='1073756698' section=root.9
+RESOURCE "Network Status" UI_CONTROL class=15 guid='1073756699' section=root.9
+RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073756700' section=root.9
+RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073756701' section=root.9
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073756702' section=root.9
+VARIABLE Stage 1094713345:"Stage Entity" 'Environment' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'Phase' : Str = ''
+VARIABLE Stage 1094713345:"Stage Entity" 'Hunt_Weights' : Flt = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'G_TotalPlayers' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'Is_SinglePlayer' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'G_ReadyPlayers' : Dict<Int,Ety> = {}
+VARIABLE Stage 1094713345:"Stage Entity" 'Initial_Text' : Str = ''
+VARIABLE Stage 1094713345:"Stage Entity" 'Initial_Lines' : L<Str> = ['<color=#ACFF44>Waiting for players...</color>', '<color=#FFCC33>Choose your role!</color>', '', '<color=#FF5E41>You will be Hunter!</color>', '<color=#37FFFF>Two-player High Score Battle</color>', '??']
+VARIABLE Stage 1094713345:"Stage Entity" 'Total_Weight' : Flt = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'G_NooneHunter' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Timer' : L<Str> = ['initial', 'rebels', 'hunter', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Prepare' : L<Str> = ['<color=#FFCC33>Hunting starts in:</color>', '<color=#FFCC33>Hunter released in:</color>', '', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Hunt' : L<Str> = ['', '<color=#ACFF44>Time to repair:</color>', '<color=#ACFF44>Time till victory:</color>', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Single' : L<Str> = ['', '<color=#ACFF44>Test run mode</color>', '<color=#ACFF44>Test run mode</color>', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Text_Who_Rebels' : Str = '<color=#37FFFF>YOU ARE A REBEL</color>; the hunter is:\\n'
+VARIABLE Stage 1094713345:"Stage Entity" 'Text_Who_Hunter' : Str = 'YOU ARE THE HUNTER'
+VARIABLE Stage 1094713345:"Stage Entity" 'G_DevicesRepaired' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'G_NeedRepair' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'Game_Winner' : Str = ''
+VARIABLE Stage 1094713345:"Stage Entity" 'G_OneRebel' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'G_HuntStarted' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Hunters' : Int = 1
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Devices' : Int = -2
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Repair' : Int = 1
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Time' : Flt = 300
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Fixing' : Int = 30
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Prison_Time' : Int = 10
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Devices_Used' : Dict<Ety,Bol> = {}
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Devices_Max' : Int = 999
+VARIABLE Stage 1094713345:"Stage Entity" 'Nicknames' : Dict<Int,Str> = {}
+VARIABLE Stage 1094713345:"Stage Entity" 'Roles' : Dict<Int,Str> = {}
+VARIABLE Stage 1094713345:"Stage Entity" 'G_CurrentScore' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'V_PlayerConnection' : Dict<Int,Ety> = {}
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Stamina' : Int = 300
+VARIABLE Stage 1094713345:"Stage Entity" 'Are_Two_Players' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Trace_CD' : Flt = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Tour_Round' : Int = 1
+VARIABLE Stage 1094713345:"Stage Entity" 'G_BestScore' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Tour' : L<Str> = ['', '<color=#ACFF44>Round: </color>', '<color=#ACFF44>Round: </color>', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Tour_Nicknames' : L<Str> = ['', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Tour_Restart' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'C_Tasker_Task' : Str = ''
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Have_Players' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'C_ReadyPlayers' : Ety = id:0
+VARIABLE Stage 1094713345:"Stage Entity" 'Current_Map' : Str = 'NONE'
+VARIABLE Stage 1094713345:"Stage Entity" 'C_Do_Restart' : Str = ''
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Bad' : L<Str> = ['??', '??', '??', '??']
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Empty' : L<Str> = ['', '', '', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Insiders' : L<Ety> = []
+VARIABLE Stage 1094713345:"Stage Entity" 'U_Game_Mode' : L<Int> = [101027, 0, 0, 0]
+VARIABLE Stage 1094713345:"Stage Entity" 'Debug_Entities' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'UI_Prefab' : Dict<Str,Pfb> = {'Beacon': id:10005076, 'Invis': id:10005077, 'Area': id:20001849, 'Bow': id:20002302, 'Device': id:10005029}
+
+# REFS
+composite        "01"                               0 call: []
+composite        "02"                               0 call: []
+composite        "03"                               0 call: []
+composite        "A1"                               0 call: []
+composite        "A2"                               0 call: []
+composite        "A3"                               0 call: []
+composite        "B1"                               0 call: []
+composite        "B2"                               0 call: []
+composite        "B3"                               0 call: []
+composite        "C1"                               0 call: []
+composite        "C2"                               0 call: []
+composite        "C3"                               0 call: []
+composite        "D1"                               0 call: []
+composite        "D2"                               0 call: []
+composite        "D3"                               0 call: []
+composite        "E1"                               0 call: []
+composite        "E2"                               0 call: []
+composite        "E3"                               0 call: []
+composite        "F1"                               0 call: []
+composite        "F2"                               0 call: []
+composite        "F3"                               0 call: []
+composite        "G1"                               0 call: []
+composite        "G2"                               0 call: []
+composite        "G3"                               0 call: []
+composite        "H1"                               0 call: []
+composite        "H2"                               0 call: []
+composite        "H3"                               0 call: []
+composite        "I1"                               0 call: []
+composite        "I2"                               0 call: []
+composite        "I3"                               0 call: []
+
+# WARNS
+# findings
+INFO  composite-never-called: composite "01" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "02" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "03" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "A1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "A2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "A3" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "B1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "B2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "B3" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "C1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "C2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "C3" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "D1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "D2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "D3" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "E1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "E2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "E3" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "F1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "F2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "F3" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "G1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "G2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "G3" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "H1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "H2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "H3" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "I1" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "I2" is defined but never called in the scanned graphs
+INFO  composite-never-called: composite "I3" is defined but never called in the scanned graphs
+
+# limits
+composites: 30/1000 declared
+prefabs (OBJECT): 1/1000
+PRESET_POINT: 1/2000
+ENVIRONMENT_CONFIGURATION: 1/50
+CLASS: 1/100
+
+top graphs by node count:
+(no graphs in the scanned files)
+
+# CODE
+GRAPH '<composite>01' ENTITY_NODE_GRAPH (guid 1610612838, decl 1610613000)
+GRAPH '<composite>02' ENTITY_NODE_GRAPH (guid 1610612862, decl 1610613036)
+GRAPH '<composite>03' ENTITY_NODE_GRAPH (guid 1610612842, decl 1610613004)
+GRAPH '<composite>A1' ENTITY_NODE_GRAPH (guid 1610612750, decl 1610612819)
+GRAPH '<composite>A2' ENTITY_NODE_GRAPH (guid 1610612751, decl 1610612820)
+GRAPH '<composite>A3' ENTITY_NODE_GRAPH (guid 1610612752, decl 1610612821)
+GRAPH '<composite>B1' ENTITY_NODE_GRAPH (guid 1610612741, decl 1610612793)
+GRAPH '<composite>B2' ENTITY_NODE_GRAPH (guid 1610612748, decl 1610612794)
+GRAPH '<composite>B3' ENTITY_NODE_GRAPH (guid 1610612747, decl 1610612748)
+GRAPH '<composite>C1' ENTITY_NODE_GRAPH (guid 1610612749, decl 1610612935)
+GRAPH '<composite>C2' ENTITY_NODE_GRAPH (guid 1610612835, decl 1610612994)
+GRAPH '<composite>C3' ENTITY_NODE_GRAPH (guid 1610612794, decl 1610612920)
+GRAPH '<composite>D1' ENTITY_NODE_GRAPH (guid 1073741938, decl 1073741877)
+GRAPH '<composite>D2' ENTITY_NODE_GRAPH (guid 1073741920, decl 1073741859)
+GRAPH '<composite>D3' ENTITY_NODE_GRAPH (guid 1073741926, decl 1073741865)
+GRAPH '<composite>E1' ENTITY_NODE_GRAPH (guid 1610612899, decl 1610613076)
+GRAPH '<composite>E2' ENTITY_NODE_GRAPH (guid 1610612840, decl 1610613002)
+GRAPH '<composite>E3' ENTITY_NODE_GRAPH (guid 1073742077, decl 1073742000)
+GRAPH '<composite>F1' ENTITY_NODE_GRAPH (guid 1073742200, decl 1073742073)
+GRAPH '<composite>F2' ENTITY_NODE_GRAPH (guid 1073742074, decl 1073741997)
+GRAPH '<composite>F3' ENTITY_NODE_GRAPH (guid 1610612760, decl 1610612797)
+GRAPH '<composite>G1' ENTITY_NODE_GRAPH (guid 1610612763, decl 1610612754)
+GRAPH '<composite>G2' ENTITY_NODE_GRAPH (guid 1073742030, decl 1073741960)
+GRAPH '<composite>G3' ENTITY_NODE_GRAPH (guid 1073742076, decl 1073741999)
+GRAPH '<composite>H1' ENTITY_NODE_GRAPH (guid 1073742064, decl 1073741990)
+GRAPH '<composite>H2' ENTITY_NODE_GRAPH (guid 1073742057, decl 1073741983)
+GRAPH '<composite>H3' ENTITY_NODE_GRAPH (guid 1073742048, decl 1073741974)
+GRAPH '<composite>I1' ENTITY_NODE_GRAPH (guid 1610612797, decl 1610612942)
+GRAPH '<composite>I2' ENTITY_NODE_GRAPH (guid 1610612755, decl 1610612752)
+GRAPH '<composite>I3' ENTITY_NODE_GRAPH (guid 1610612826, decl 1610612982)

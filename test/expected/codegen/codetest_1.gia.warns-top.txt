@@ -1,0 +1,13 @@
+# findings
+INFO  custom-variable-undeclared: custom variable "Var1" is used in ['New Node Graph'] but no entity, prefab or template declares it
+INFO  custom-variable-undeclared: custom variable "MyList" is used in ['New Node Graph'] but no entity, prefab or template declares it
+INFO  custom-variable-undeclared: custom variable "Test" is used in ['New Node Graph'] but no entity, prefab or template declares it
+INFO  custom-variable-undeclared: custom variable "test" is used in ['<creation>New Creation Status Decision Node Graph'] but no entity, prefab or template declares it
+INFO  custom-variable-undeclared: custom variable "list" is used in ['<filter>New Filter Node Graph'] but no entity, prefab or template declares it
+
+# limits
+prefabs (OBJECT): 1/1000
+
+top graphs by node count:
+'New Node Graph': 30/3000 nodes
+'<filter>New Filter Node Graph': 5/3000 nodes

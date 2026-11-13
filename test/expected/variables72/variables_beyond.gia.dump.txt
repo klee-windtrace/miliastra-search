@@ -1,0 +1,30 @@
+RESOURCE "Default Template" PLAYER_TEMPLATE guid='1086324737'
+RESOURCE "Custom Player Template" PLAYER_TEMPLATE guid='1086324738'
+RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE guid='1090519041'
+RESOURCE "Custom Player Template(Edit Character)" CHARACTER_TEMPLATE guid='1090519042'
+RESOURCE "Custom Class" CLASS guid='1090519041'
+RESOURCE "Empty Model" OBJECT guid='1077936129' parent=(entities: 5)
+RESOURCE "Basic" CREATION guid='1082130433' parent=(entities: 1)
+RESOURCE "Complex" CREATION guid='1082130434' parent=(entities: 1)
+RESOURCE "Same" OBJECT_ENTITY guid='1077936130' parent=(1077936129:"Empty Model")
+RESOURCE "Value" OBJECT_ENTITY guid='1077936131' parent=(1077936129:"Empty Model")
+RESOURCE "Type" OBJECT_ENTITY guid='1077936132' parent=(1077936129:"Empty Model")
+RESOURCE "Added" OBJECT_ENTITY guid='1077936134' parent=(1077936129:"Empty Model")
+RESOURCE "Removed" OBJECT_ENTITY guid='1077936135' parent=(1077936129:"Empty Model")
+RESOURCE "Empty Model" OBJECT_ENTITY guid='1077936136' parent=(10005018)
+RESOURCE "Basic" CREATION_ENTITY guid='1082130436' parent=(1082130433:"Basic")
+RESOURCE "Complex" CREATION_ENTITY guid='1082130438' parent=(1082130434:"Complex")
+VARIABLE Player 1086324737:"Default Template" 'On_Player' : Str = '1'
+VARIABLE Player 1086324738:"Custom Player Template" 'Custom_Player' : Str = '3'
+VARIABLE Character 1090519041:"Default Template(Edit Character)" 'On_Character' : Str = '2'
+VARIABLE Character 1090519042:"Custom Player Template(Edit Character)" 'Custom_Character' : Str = '4'
+VARIABLE 1077936129:"Empty Model" 'On_Prefab' : Str = '10'
+VARIABLE 1082130433:"Basic" 'On_Basic' : Str = '7'
+VARIABLE 1082130434:"Complex" 'On_Complex' : Str = '8'
+VARIABLE_CHANGE 1077936131:"Value" (1077936129:"Empty Model") 'On_Prefab' edit: Str = '11'
+VARIABLE_CHANGE 1077936132:"Type" (1077936129:"Empty Model") 'On_Prefab' newtype: Int = 0
+VARIABLE_CHANGE 1077936134:"Added" (1077936129:"Empty Model") 'Extra' add: Str = '12'
+VARIABLE_CHANGE 1077936135:"Removed" (1077936129:"Empty Model") 'On_Prefab' delete: Str
+VARIABLE_CHANGE 1077936136:"Empty Model" (10005018) 'On_Entity' add: Str = '9'
+VARIABLE_CHANGE 1082130436:"Basic" (1082130433:"Basic") 'add' add: Str = ''
+VARIABLE_CHANGE 1082130438:"Complex" (1082130434:"Complex") 'add' add: Str = ''

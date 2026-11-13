@@ -1,4 +1,4 @@
-# FILE test/cases/gil/stage_0.gil
+# FILE stage_0.gil
 format                 gil
 detected_by            header
 file_size              24989
@@ -6,7 +6,7 @@ container_file_type    gil
 engine_version         7.0.0
 mode                   beyond
 level_name             Настраиваемая вкладка_1_Сохранение_8
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              41
 graphs                 2
 nodes                  7
@@ -44,7 +44,7 @@ SECTION root.15 resources=4 description='configs: unit statuses, classes, skills
 SECTION root.18 resources=1 description='cameras'
 FOLDER /Импортированные ресурсы/ graphs=2
 
-# FILE test/cases/gil/stage_012379.gil
+# FILE stage_012379.gil
 format                 gil
 detected_by            header
 file_size              72666
@@ -52,7 +52,7 @@ container_file_type    gil
 engine_version         7.0.0
 mode                   beyond
 level_name             Custom Tab_1_Save_2
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              165
 graphs                 27
 nodes                  67
@@ -138,7 +138,7 @@ SECTION root.44.2 resources=2 description='scene templates, second list'
 FOLDER /Import Assets/ graphs=25 resources=7
 FOLDER /导入资产/ graphs=2
 
-# FILE test/cases/gil/stage_1.gil
+# FILE stage_1.gil
 format                 gil
 detected_by            header
 file_size              23760
@@ -146,7 +146,7 @@ container_file_type    gil
 engine_version         7.0.0
 mode                   beyond
 level_name             Custom Tab_1_Save
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              44
 graphs                 3
 nodes                  15
@@ -186,7 +186,7 @@ SECTION root.15 resources=4 description='configs: unit statuses, classes, skills
 SECTION root.18 resources=1 description='cameras'
 FOLDER /(default)/ graphs=3
 
-# FILE test/cases/gil/stage_2.gil
+# FILE stage_2.gil
 format                 gil
 detected_by            header
 file_size              28750
@@ -194,7 +194,7 @@ container_file_type    gil
 engine_version         7.0.0
 mode                   beyond
 level_name             Настраиваемая вкладка_1_Сохранение_3
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              48
 graphs                 3
 nodes                  10
@@ -234,7 +234,7 @@ SECTION root.15 resources=4 description='configs: unit statuses, classes, skills
 SECTION root.18 resources=1 description='cameras'
 FOLDER /(default)/ graphs=3
 
-# FILE test/cases/gil/stage_3.gil
+# FILE stage_3.gil
 format                 gil
 detected_by            header
 file_size              31043
@@ -242,7 +242,7 @@ container_file_type    gil
 engine_version         7.0.0
 mode                   beyond
 level_name             Настраиваемая вкладка_1_Сохранение_4
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              60
 graphs                 1
 nodes                  7
@@ -283,7 +283,7 @@ SECTION root.15 resources=4 description='configs: unit statuses, classes, skills
 SECTION root.18 resources=1 description='cameras'
 FOLDER /(default)/ graphs=1
 
-# FILE test/cases/gil/stage_6.gil
+# FILE stage_6.gil
 format                 gil
 detected_by            header
 file_size              18375
@@ -291,7 +291,7 @@ container_file_type    gil
 engine_version         7.0.0
 mode                   classic
 level_name             Настраиваемая вкладка_1_Сохранение_5
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              42
 graphs                 2
 nodes                  4
@@ -327,7 +327,7 @@ SECTION root.15 resources=2 description='configs: unit statuses, classes, skills
 SECTION root.18 resources=1 description='cameras'
 FOLDER /(default)/ graphs=2
 
-# FILE test/cases/gil/stage_7.gil
+# FILE stage_7.gil
 format                 gil
 detected_by            header
 file_size              27679
@@ -335,7 +335,7 @@ container_file_type    gil
 engine_version         7.0.0
 mode                   beyond
 level_name             Настраиваемая вкладка_1_Сохранение_6
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              46
 graphs                 7
 nodes                  21
@@ -378,7 +378,7 @@ SECTION root.15 resources=4 description='configs: unit statuses, classes, skills
 SECTION root.18 resources=1 description='cameras'
 FOLDER /(default)/ graphs=7
 
-# FILE test/cases/gil/stage_9.gil
+# FILE stage_9.gil
 format                 gil
 detected_by            header
 file_size              58507
@@ -386,7 +386,7 @@ container_file_type    gil
 engine_version         7.0.0
 mode                   beyond
 level_name             Настраиваемая вкладка_1_Сохранение_7
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              121
 graphs                 11
 nodes                  7

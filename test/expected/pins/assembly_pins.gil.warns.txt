@@ -1,0 +1,15 @@
+# findings
+(no findings)
+
+# limits
+PRESET_POINT: 1/2000
+ENVIRONMENT_CONFIGURATION: 1/50
+CLASS: 1/100
+TERRAIN_ENTITY: 1/1200
+
+top graphs by node count:
+'<creation>New Creation Status Node Graph': 17/3000 nodes
+'<skill>New Character Skill Node Graph': 15/3000 nodes
+'New Node Graph': 14/3000 nodes
+'<status>New Node Graph_1': 11/3000 nodes
+'<creation>New Creation Status Decision Node Graph': 6/3000 nodes

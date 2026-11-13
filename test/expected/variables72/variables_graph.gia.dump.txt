@@ -1,0 +1,45 @@
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH guid='1073741825' nodes=0
+GRAPH 'Test5' ENTITY_NODE_GRAPH guid='1073741826' nodes=0
+GRAPH '<status>Status' STATUS_NODE_GRAPH guid='1073741827' nodes=0
+RESOURCE "Default Template" PLAYER_TEMPLATE guid='1086324737'
+MOUNT 'New Node Graph' -> PLAYER_TEMPLATE "Default Template" player
+RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE guid='1090519041'
+MOUNT 'New Node Graph' -> CHARACTER_TEMPLATE "Default Template(Edit Character)" character
+MOUNT 'Test5' -> CHARACTER_TEMPLATE "Default Template(Edit Character)" character
+RESOURCE "Prefab_no_edits" OBJECT guid='1077936129' parent=(entities: 0)
+MOUNT 'New Node Graph' -> OBJECT "Prefab_no_edits" entity
+RESOURCE "Prefab_no_graph" OBJECT guid='1077936130' parent=(entities: 1)
+RESOURCE "Prefab_edited" OBJECT guid='1077936131' parent=(entities: 4)
+MOUNT 'New Node Graph' -> OBJECT "Prefab_edited" entity
+RESOURCE "Entity_no_graph" OBJECT_ENTITY guid='1077936132' parent=(1077936131:"Prefab_edited")
+RESOURCE "Entity_no_edits" OBJECT_ENTITY guid='1077936134' parent=(1077936131:"Prefab_edited")
+MOUNT 'New Node Graph' -> OBJECT_ENTITY "Entity_no_edits" entity
+RESOURCE "Prefab_no_graph" OBJECT_ENTITY guid='1077936137' parent=(1077936130:"Prefab_no_graph")
+MOUNT 'New Node Graph' -> OBJECT_ENTITY "Prefab_no_graph" entity
+RESOURCE "Prefab_edited" OBJECT_ENTITY guid='1077936138' parent=(1077936131:"Prefab_edited")
+MOUNT 'New Node Graph' -> OBJECT_ENTITY "Prefab_edited" entity
+RESOURCE "Entity_edited" OBJECT_ENTITY guid='1077936139' parent=(1077936131:"Prefab_edited")
+MOUNT 'New Node Graph' -> OBJECT_ENTITY "Entity_edited" entity
+GRAPH_VARIABLE 'New Node Graph' 'String' : Str (public) = 'graph'
+GRAPH_VARIABLE 'New Node Graph' 'Integer' : Int (public) = 0
+GRAPH_VARIABLE 'New Node Graph' 'Faction' : Fct (public) = id:1
+GRAPH_VARIABLE 'New Node Graph' 'Float' : Flt (public) = 2
+GRAPH_VARIABLE 'New Node Graph' 'Entity' : Ety (public) = id:0
+GRAPH_VARIABLE 'New Node Graph' 'Private' : Bol = Yes
+GRAPH_VARIABLE 'Test5' 'Faction' : Fct (public) = id:0
+GRAPH_VARIABLE '<status>Status' 'Status' : Dict<Str,Str> = {'Status': 'Status'}
+VARIABLE Player 1086324737:"Default Template" 'String' {'New Node Graph'} : Str = 'player'
+VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Faction' {'New Node Graph'} : Fct = id:5
+VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Faction' {'Test5'} : Fct = id:5
+VARIABLE 1077936131:"Prefab_edited" 'String' {'New Node Graph'} : Str = 'prefab'
+VARIABLE 1077936131:"Prefab_edited" 'Integer' {'New Node Graph'} : Int = 10
+VARIABLE 1077936131:"Prefab_edited" 'Faction' {'New Node Graph'} : Fct = id:0
+VARIABLE 1077936131:"Prefab_edited" 'Float' {'New Node Graph'} : Flt = 20
+VARIABLE_CHANGE 1077936138:"Prefab_edited" (1077936131:"Prefab_edited") 'String' {'New Node Graph'} edit: Str = 'graph'
+VARIABLE_CHANGE 1077936138:"Prefab_edited" (1077936131:"Prefab_edited") 'Integer' {'New Node Graph'} edit: Int = 0
+VARIABLE_CHANGE 1077936138:"Prefab_edited" (1077936131:"Prefab_edited") 'Faction' {'New Node Graph'} edit: Fct = id:1
+VARIABLE_CHANGE 1077936138:"Prefab_edited" (1077936131:"Prefab_edited") 'Float' {'New Node Graph'} edit: Flt = 2
+VARIABLE_CHANGE 1077936139:"Entity_edited" (1077936131:"Prefab_edited") 'String' {'New Node Graph'} edit: Str = 'entity'
+VARIABLE_CHANGE 1077936139:"Entity_edited" (1077936131:"Prefab_edited") 'Integer' {'New Node Graph'} edit: Int = 100
+VARIABLE_CHANGE 1077936139:"Entity_edited" (1077936131:"Prefab_edited") 'Faction' {'New Node Graph'} edit: Fct = id:200
+VARIABLE_CHANGE 1077936139:"Entity_edited" (1077936131:"Prefab_edited") 'Float' {'New Node Graph'} edit: Flt = 0

@@ -1,0 +1,7 @@
+GRAPH 'Composite with event' ENTITY_NODE_GRAPH guid='1073741827' nodes=9
+GRAPH 'Cycle with no entry' ENTITY_NODE_GRAPH guid='1073741826' nodes=12
+GRAPH 'Dead composite' ENTITY_NODE_GRAPH guid='1073741825' nodes=10
+GRAPH 'Nested event' ENTITY_NODE_GRAPH guid='1073741828' nodes=4
+GRAPH '<composite>Naive execution delay' ENTITY_NODE_GRAPH guid='1610612738' nodes=6 role=dependency
+GRAPH '<composite>Test Delay Print' ENTITY_NODE_GRAPH guid='1610612739' nodes=3 role=dependency
+GRAPH '<composite>Wrapped (Custom Variable)' ENTITY_NODE_GRAPH guid='1610612737' nodes=2 role=dependency

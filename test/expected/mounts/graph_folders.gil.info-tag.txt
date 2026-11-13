@@ -1,4 +1,4 @@
-# FILE test/cases/mounts/graph_folders.gil
+# FILE graph_folders.gil
 format                 gil
 detected_by            header
 file_size              44561
@@ -6,7 +6,7 @@ container_file_type    gil
 engine_version         7.1.0
 mode                   beyond
 level_name             graph_folders
-node_db_version        7.1.0
+node_db_version        7.2.0
 export_tag             null
 resources              101
 graphs                 30

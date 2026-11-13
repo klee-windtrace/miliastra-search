@@ -1,0 +1,9 @@
+graph_variable   "Entity" (Ety)                     ['New Node Graph']: 0 get, 0 set
+graph_variable   "Faction" (Fct)                    ['New Node Graph']: 0 get, 0 set
+graph_variable   "Float" (Flt)                      ['New Node Graph']: 0 get, 0 set
+graph_variable   "Integer" (Int)                    ['New Node Graph']: 0 get, 0 set
+graph_variable   "Private" (Bol)                    ['New Node Graph']: 0 get, 0 set
+graph_variable   "String" (Str)                     ['New Node Graph']: 0 get, 0 set
+graph_variable   "Faction" (Fct)                    ['Test5']: 0 get, 0 set
+graph_variable   "Status" (Dict)                    ['<status>Status']: 0 get, 0 set
+mount            'New Node Graph'                   1 player: PLAYER_TEMPLATE:"Default Template", 1 character: CHARACTER_TEMPLATE:"Default Template(Edit Character)", 6 entity: OBJECT:"Prefab_no_edits"; OBJECT:"Prefab_edited"; OBJECT_ENTITY:"Entity_no_edits"; OBJECT_ENTITY:"Prefab_no_graph"; OBJECT_ENTITY:"Prefab_edited"; OBJECT_ENTITY:"Entity_edited"

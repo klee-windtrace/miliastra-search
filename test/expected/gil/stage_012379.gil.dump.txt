@@ -125,3 +125,4 @@ RESOURCE "Network Status" UI_CONTROL guid='1073741854'
 RESOURCE "Struggle Button" UI_CONTROL guid='1073741855'
 RESOURCE "Voice Chat Button" UI_CONTROL guid='1073741856'
 RESOURCE "Voice Chat Hint Queue" UI_CONTROL guid='1073741857'
+GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = id:0

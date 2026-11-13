@@ -1,0 +1,408 @@
+ServerGraphs['Status'] = async function Status_1073741830($,node){
+  const GoTo = this.bind(this,$);
+  switch(node){
+    case 'event_0001':{
+      ({
+        Event_Source_Entity: $.Ety_001,
+        Event_Source_GUID: $.Gid_002,
+        Unit_Status_Config_ID: $.Cfg_003,
+        Applier_Entity: $.Ety_004,
+        Infinite_Duration: $.Bol_005,
+        Remaining_Status_Duration: $.Flt_006,
+        Remaining_Status_Stacks: $.Int_007,
+        Original_Status_Stacks: $.Int_008,
+        Slot_ID: $.Int_009,
+      } = await When_Unit_Status_Changes({
+        Event: $.event,
+      }));
+      void "node_0002"; // Multiple_Branches
+    }
+    case 'node_0002':{ // called from 'event_0001: When_Unit_Status_Changes'
+      switch(Multiple_Branches({
+        Control_Expression: $.Int_008, // When_Unit_Status_Changes.Original_Status_Stacks
+      }).Next){
+        default: // "Default"
+          return Exit();
+        case "0":
+          return GoTo("node_0003"); // Remove_Unit_Status
+      }
+    }
+    case 'node_0003':{ // called from 'node_0002: Multiple_Branches'
+      Remove_Unit_Status({
+        Remove_Target_Entity: $.Ety_001, // When_Unit_Status_Changes.Event_Source_Entity
+        Unit_Status_Config_ID: $.Cfg_003, // When_Unit_Status_Changes.Unit_Status_Config_ID
+        Removal_Method: Enum("Unit Status Removal Strategy", "All Coexisting Statuses With the Same Name"),
+        Removal_Reason: Enum("Unit Status Removal Reason", "Dispelled"), // (default)
+        Remover_Entity: $.Ety_004, // When_Unit_Status_Changes.Applier_Entity
+      });
+      void "node_0005"; // Set_Node_Graph_Variable
+    }
+    case 'node_0005':{ // called from 'node_0003: Remove_Unit_Status'
+      Set_Node_Graph_Variable({
+        Variable_Name: "gvar",
+        Variable_Value: Composite['Simple Data']($, "Comp_001", {}).Value,
+        Trigger_Event: Bol(0),
+      });
+      $.input = "input: 0";
+      void "node_0012"; // Linear_Flow
+    }
+    case 'node_0012':{ // called from 'node_0005: Set_Node_Graph_Variable'
+      await Composite['Linear Flow']($, "Comp_002", {}, $.input); // .Next=="0"
+      $.input = "input: 1";
+      await GoTo("node_0021"); // Two_In_One_Out
+      $.input = "input: 0";
+      return GoTo("node_0025"); // Two_Exclusive_Outs
+    }
+    case 'node_0021':{ // 2 callers: ['node_0012: Linear_Flow', 'node_0025: Two_Exclusive_Outs']
+      await Composite['Two In One Out']($, "Comp_004", {}, $.input); // .Next=="0"
+      $.input = "input: 0";
+      void "node_0029"; // Calling_Twice
+    }
+    case 'node_0029':{ // called from 'node_0021: Two_In_One_Out'
+      for await ($.next of Composite['Calling Twice']($, "Comp_006", {}, $.input)) {
+        switch($.next){
+          case "0":
+            $.input = "input: 0";
+            await GoTo("node_0036"); // With_Event
+            break;
+          default:
+            return;
+        }
+      }
+      return;
+    }
+    case 'node_0036.event_0030':
+    case 'node_0036':{ // called from 'node_0029: Calling_Twice'
+      for await ($.next of Composite['With Event']($, "Comp_007", {}, node === "node_0036" ? $.input : node.slice(node.indexOf('.')+1))) {
+        switch($.next){
+          case "0":
+            await GoTo("node_0034"); // Set_Custom_Variable
+            break;
+          default:
+            return;
+        }
+      }
+      return;
+    }
+    case 'node_0034':{ // called from 'node_0036: With_Event'
+      const Bol_01 = Composite['Exposed Local']($, "Comp_008", {
+        Target_Entity: Ety(0), // (default)
+      }).Value;
+
+      Set_Custom_Variable({
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "x",
+        Variable_Value: Bol_01, // Exposed_Local.Value
+        is_bp_var: Bol(0), // (default)
+        Trigger_Event: Bol_01, // Exposed_Local.Value
+      });
+      void "node_0039"; // Set_Custom_Variable
+    }
+    case 'node_0039':{ // called from 'node_0034: Set_Custom_Variable'
+      const Bol_01 = Composite['Exposed Native']($, "Comp_009", {
+        Player_Entity: Ety(0), // (default)
+      }).Consume;
+
+      Set_Custom_Variable({
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "y",
+        Variable_Value: Bol_01, // Exposed_Native.Consume
+        is_bp_var: Bol(0), // (default)
+        Trigger_Event: Bol_01, // Exposed_Native.Consume
+      });
+      void "node_0040"; // Set_Custom_Variable
+    }
+    case 'node_0040':{ // called from 'node_0039: Set_Custom_Variable'
+      const Bol_01 = Composite['Exposed Computed']($, "Comp_010", {}).Result;
+
+      Set_Custom_Variable({
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "z",
+        Variable_Value: Bol_01, // Exposed_Computed.Result
+        is_bp_var: Bol(0), // (default)
+        Trigger_Event: Bol_01, // Exposed_Computed.Result
+      });
+      return Exit();
+    }
+    case 'node_0025':{ // called from 'node_0012: Linear_Flow'
+      if((await Composite['Two Exclusive Outs']($, "Comp_005", {
+        Condition: Bol(0),
+      }, $.input)).Next=="Yes"){
+        $.input = "input: 0";
+        return GoTo("node_0015"); // Terminal
+      }else{ // =="No"
+        $.input = "input: 0";
+        return GoTo("node_0021"); // Two_In_One_Out
+      }
+    }
+    case 'node_0015':{ // called from 'node_0025: Two_Exclusive_Outs'
+      await Composite['Terminal']($, "Comp_003", {}, $.input); // terminal
+      return;
+    }
+    case 'node_0042':{ // no callers
+      throw 'unreachable';
+      await Composite['Exposed Local']($, "Comp_008", {
+        Target_Entity: Ety(0), // (default)
+      }, $.input); // .Next=="0"
+      $.input = "input: 0";
+      void "node_0046"; // Exposed_Native
+    }
+    case 'node_0046':{ // called from 'node_0042: Exposed_Local'
+      throw 'unreachable';
+      await Composite['Exposed Native']($, "Comp_009", {
+        Player_Entity: Ety(0), // (default)
+      }, $.input); // .Next=="0"
+      $.input = "input: 0";
+      void "node_0054"; // Exposed_Computed
+    }
+    case 'node_0054':{ // called from 'node_0046: Exposed_Native'
+      throw 'unreachable';
+      await Composite['Exposed Computed']($, "Comp_010", {}, $.input); // .Next=="0"
+      return Exit();
+    }
+  }
+};
+
+Composite['Calling Twice'] = function Composite_1610612743($,Comp,In = {},node){
+  return (async function* GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0019':{ // no callers
+        if(Double_Branch({
+          Condition: Bol(0),
+        }).Next=="Yes"){
+          return Exit();
+        }else{ // =="No"
+          yield* GoTo("node_0001"); // Double_Branch
+          return yield* GoTo("node_0022"); // Double_Branch
+        }
+      }
+      case 'node_0001':{ // 2 callers: ['node_0019: Double_Branch', 'node_0022: Double_Branch']
+        if(Double_Branch({
+          Condition: Bol(0),
+        }).Next=="Yes"){
+          return Exit();
+        }else{ // =="No"
+          return yield "0";
+        }
+      }
+      case 'node_0022':{ // called from 'node_0019: Double_Branch'
+        if(Double_Branch({
+          Condition: Bol(1),
+        }).Next=="Yes"){
+          return yield* GoTo("node_0001"); // Double_Branch
+        }else{ // =="No"
+          return Exit();
+        }
+      }
+    }
+  })(node);
+};
+
+Composite['Exposed Computed'] = function Composite_1610612748($,Comp,In = {},node){
+  const $$ = $[Comp] ??= {};
+  if (!node){
+    return {
+      Result: Bol(Greater_Than({
+        Left_Value: $$.Int_002, // Add_Unit_Status.Slot_ID
+        Right_Value: $$.Int_002, // Add_Unit_Status.Slot_ID
+        op: Enum("Comparison Operators", "Comparison Operators_Greater Than"), // (default)
+      }).Result),
+    };
+  }
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0048':{ // no callers
+        ({
+          Application_Result: $$.Enum_001,
+          Slot_ID: $$.Int_002,
+        } = Add_Unit_Status({
+          Applier_Entity: Ety(0), // (default)
+          Application_Target_Entity: Ety(0), // (default)
+          Unit_Status_Config_ID: Cfg(0), // (default)
+          Applied_Stacks: Int(0), // (default)
+          Unit_Status_Parameter_Dictionary: Dict([]), // (default)
+        }));
+        return { Next: "0" };
+      }
+    }
+  })(node);
+};
+
+Composite['Exposed Local'] = function Composite_1610612745($,Comp,In = {
+  Target_Entity: Ety,
+},node){
+  if (!node){
+    const {
+      Local_Variable: Loc_01,
+      Value: Bol_02,
+    } = Get_Local_Variable({
+      Initial_Value: Bol(1),
+    }, Comp + "_Var_0001");
+
+    return {
+      Value: Bol_02, // Get_Local_Variable.Value
+    };
+  }
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0038':{ // no callers
+        Forwarding_Event({
+          Target_Entity: In.Target_Entity,
+        });
+        return { Next: "0" };
+      }
+    }
+  })(node);
+};
+
+Composite['Exposed Native'] = function Composite_1610612746($,Comp,In = {
+  Player_Entity: Ety,
+},node){
+  const $$ = $[Comp] ??= {};
+  if (!node){
+    return {
+      Consume: $$.Bol_001, // Consume_Gift_Box.Consume
+    };
+  }
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0044':{ // no callers
+        $$.Bol_001 = Consume_Gift_Box({
+          Player_Entity: In.Player_Entity,
+          Gift_Box_Index: Int(1),
+          Consumption_Quantity: Int(1),
+        }).Consume;
+        return { Next: "0" };
+      }
+    }
+  })(node);
+};
+
+Composite['Linear Flow'] = function Composite_1610612738($,Comp,In = {},node){
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0008':{ // no callers
+        Set_Node_Graph_Variable({
+          Variable_Name: "gvar",
+          Variable_Value: Int(0),
+          Trigger_Event: Bol(1),
+        });
+        return { Next: "0" };
+      }
+    }
+  })(node);
+};
+
+Composite['Simple Data'] = function Composite_1610612737($,Comp,In = {},node){
+  if (!node){
+    const {
+      Local_Variable: Loc_01,
+      Value: Int_02,
+    } = Get_Local_Variable({
+      Initial_Value: Int(42),
+    }, Comp + "_Var_0002");
+
+    return {
+      Value: Int_02, // Get_Local_Variable.Value
+    };
+  }
+};
+
+Composite['Terminal'] = function Composite_1610612739($,Comp,In = {},node){
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0013':{ // no callers
+        Break_Loop();
+        return Exit();
+      }
+    }
+  })(node);
+};
+
+Composite['Two Exclusive Outs'] = function Composite_1610612742($,Comp,In = {
+  Condition: Bol,
+},node){
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0010':{ // no callers
+        if(Double_Branch({
+          Condition: In.Condition,
+        }).Next=="Yes"){
+          return { Next: "Yes" };
+        }else{ // =="No"
+          return { Next: "No" };
+        }
+      }
+    }
+  })(node);
+};
+
+Composite['Two In One Out'] = function Composite_1610612741($,Comp,In = {},node){
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0017':{ // no callers
+        Print_String({
+          String: "First",
+        });
+        return { Next: "0" };
+      }
+      case 'input: 1':
+      case 'node_0018':{ // no callers
+        Print_String({
+          String: "Second",
+        });
+        return { Next: "0" };
+      }
+    }
+  })(node);
+};
+
+Composite['With Event'] = function Composite_1610612744($,Comp,In = {},node){
+  const $$ = $[Comp] ??= {};
+  return (async function* GoTo(node){
+    switch(node){
+      case 'event_0030':{
+        ({
+          Event_Source_Entity: $$.Ety_001,
+          Event_Source_GUID: $$.Gid_002,
+          Timer_Name: $$.Str_003,
+          Timer_Sequence_ID: $$.Int_004,
+          Number_of_Loops: $$.Int_005,
+          context_GUID: $$.Gid_006,
+        } = await When_Timer_Is_Triggered({
+          Event: $.event,
+        }));
+        void "node_0031"; // Multiple_Branches
+      }
+      case 'node_0031':{ // called from 'event_0030: When_Timer_Is_Triggered'
+        switch(Multiple_Branches({
+          Control_Expression: $$.Str_003, // When_Timer_Is_Triggered.Timer_Name
+        }).Next){
+          default: // "Default"
+            return Exit();
+          case "timer":
+            return yield "0";
+        }
+      }
+      case 'input: 0':
+      case 'node_0032':{ // no callers
+        Set_Custom_Variable({
+          Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+          Variable_Name: "none",
+          Variable_Value: Int(0), // (default)
+          is_bp_var: Bol(0), // (default)
+          Trigger_Event: Bol(1), // (default)
+        });
+        return Exit();
+      }
+    }
+  })(node);
+};

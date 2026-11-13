@@ -1,4 +1,4 @@
-﻿# File `test/cases/composites/test_All_Composite.gia`
+﻿# File `test_All_Composite.gia`
 
 ## Decl "**Static\_2**"
 
@@ -37,7 +37,7 @@
 
 | Name | Type | Public | Struct | Value |
 | --- | --- | --- | --- | --- |
-| **Static\_Graph** | *L\<Gid\>* | false |   |   |
+| **Static\_Graph** | *L\<Gid\>* | false |   | \[\] |
 
 ### Nodes
 
@@ -205,6 +205,11 @@
 
 \[1\] **When Custom Variable Changes** (36/40) variant=C\<T:Flt\> @(0,0)
 
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out#3` | "Pre-Change Value" | = | 0 | *Flt* |   |
+| `out#4` | "Post-Change Value" | = | 0 | *Flt* |   |
+
 ## Graph '<u>\<composite\></u>*Create Composite Node(2)*'
 
 - **type**: ENTITY\_NODE\_GRAPH
@@ -267,6 +272,10 @@
 
 \[11\] **Multiple Branches** (3/4) variant=C\<T:Str\> @(0,0)
 
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Control Expression" | = | '' | *Str* |   |
+
 ## Graph '<u>\<composite\></u>*Create Composite Node(8)*'
 
 - **type**: ENTITY\_NODE\_GRAPH
@@ -287,6 +296,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | = | '`Static_Global`' | *Str* |   |
+| `out#1` | "Value" | = | '' | *Str* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(9)*'
 
@@ -327,6 +337,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | = | '`Static_Timer`' | *Str* |   |
+| `out#1` | "Value" | = | '' | *Str* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(11)*'
 
@@ -367,6 +378,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | = | '`Static_Var`' | *Str* |   |
+| `out#1` | "Value" | = | '' | *Str* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(13)*'
 
@@ -386,6 +398,10 @@
 ### Nodes
 
 \[40\] **Get Custom Variable** (50/54) variant=C\<T:Flt\> @(0,0)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out#0` | "Variable Value" | = | 0 | *Flt* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(14)*'
 
@@ -409,6 +425,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
+| `in#2` | "Variable Value" | = | 0 | *Flt* |   |
 | `in#4` | "Trigger Event" | = | No | *Bol* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(15)*'
@@ -453,6 +470,11 @@
 
 \[4\] **When Node Graph Variable Changes** (351/357) variant=C\<T:L\<Gid\>\> @(0,0)
 
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out#3` | "Pre-Change Value" | = | \[\] | *L\<Gid\>* |   |
+| `out#4` | "Post-Change Value" | = | \[\] | *L\<Gid\>* |   |
+
 ## Graph '<u>\<composite\></u>*Create Composite Node(17)*'
 
 - **type**: ENTITY\_NODE\_GRAPH
@@ -471,6 +493,10 @@
 ### Nodes
 
 \[7\] **Multiple Branches** (3/4) variant=C\<T:Str\> @(0,0)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Control Expression" | = | '' | *Str* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(18)*'
 
@@ -557,6 +583,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
+| `in#1` | "Variable Value" | = | \[\] | *L\<Gid\>* |   |
 | `in#2` | "Trigger Event" | = | No | *Bol* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(22)*'
@@ -576,6 +603,10 @@
 ### Nodes
 
 \[44\] **Get Node Graph Variable** (337/343) variant=C\<T:L\<Gid\>\> @(0,0)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out#0` | "Variable Value" | = | \[\] | *L\<Gid\>* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(23)*'
 
@@ -597,6 +628,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | = | '`Static_Graph`' | *Str* |   |
+| `out#1` | "Value" | = | '' | *Str* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(24)*'
 
@@ -659,6 +691,10 @@
 
 \[2\] **Multiple Branches** (3/4) variant=C\<T:Str\> @(0,0)
 
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Control Expression" | = | '' | *Str* |   |
+
 ## Graph '<u>\<composite\></u>*Create Composite Node(5)*'
 
 - **type**: ENTITY\_NODE\_GRAPH
@@ -701,6 +737,10 @@
 
 \[10\] **Multiple Branches** (3/4) variant=C\<T:Str\> @(0,0)
 
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Control Expression" | = | '' | *Str* |   |
+
 ## Graph '<u>\<composite\></u>*Create Composite Node(7)*'
 
 - **type**: ENTITY\_NODE\_GRAPH
@@ -720,7 +760,7 @@
 
 \[14\] **When Global Timer Is Triggered** (315) @(0,0)
 
-# File `test/cases/composites/test_composite.gia`
+# File `test_composite.gia`
 
 ## Graph '*New Node Graph*'
 
@@ -757,13 +797,13 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#1` | "Skill Config ID" | = | id:1098907649 | *Cfg* |   |
+| `in#1` | "Skill Config ID" | = | id:1098907649 {SKILL:"**test\_skill**"} | *Cfg* |   |
 
 \[18\] **Switch Current Interface Layout** (382) @(751.2857,-176.28572)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#1` | "Layout Index" | = | 1073741825 | *Int* |   |
+| `in#1` | "Layout Index" | = | 1073741825 {INTERFACE\_LAYOUT:"**Default Layout**"} | *Int* |   |
 
 \[21\] **Get Entity With Specified Prefab ID on the Field** (320) @(1255.24,-266.45618)
 
@@ -775,7 +815,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "GUID" | = | id:1077936131 | *Gid* |   |
+| `in#0` | "GUID" | = | id:1077936131 {OBJECT\_ENTITY:"**entity\_test**"} | *Gid* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node*'
 
@@ -805,12 +845,14 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Variable Name" | = | '`Var_1`' | *Str* |   |
+| `out#0` | "Variable Value" | = | 0 | *Int* |   |
 
 \[4\] **Equal** (14/370) variant=C\<T:Int\> @(-52.857143,-23.190475)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Input 1" | \<- | \[3\] **Get Node Graph Variable** (337/339) `out#0` "Variable Value" | *Int* |   |
+| `in#0` | "Input 1" | = | 0 | *Int* | also wired |
 | `in#1` | "Input 2" | = | 0 | *Int* |   |
 
 \[7\] **Create Composite Node(1)** (1610613135) user=COMPOSITE @(478.7143,291)
@@ -838,7 +880,7 @@
 | `in#1` | "Variable Value" | = | 0 | *Int* |   |
 | `in#2` | "Trigger Event" | = | No | *Bol* |   |
 
-# File `test/cases/composites/test_composite.gil`
+# File `test_composite.gil`
 
 ## Graph '*New Node Graph*'
 
@@ -875,13 +917,13 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#1` | "Skill Config ID" | = | id:1098907649 | *Cfg* |   |
+| `in#1` | "Skill Config ID" | = | id:1098907649 {SKILL:"**test\_skill**"} | *Cfg* |   |
 
 \[18\] **Switch Current Interface Layout** (382) @(751.2857,-176.28572)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#1` | "Layout Index" | = | 1073741825 | *Int* |   |
+| `in#1` | "Layout Index" | = | 1073741825 {INTERFACE\_LAYOUT:"**Default Layout**"} | *Int* |   |
 
 \[21\] **Get Entity With Specified Prefab ID on the Field** (320) @(1255.24,-266.45618)
 
@@ -893,7 +935,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "GUID" | = | id:1077936131 | *Gid* |   |
+| `in#0` | "GUID" | = | id:1077936131 {OBJECT\_ENTITY:"**entity\_test**"} | *Gid* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node*'
 
@@ -922,12 +964,14 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Variable Name" | = | '`Var_1`' | *Str* |   |
+| `out#0` | "Variable Value" | = | 0 | *Int* |   |
 
 \[4\] **Equal** (14/370) variant=C\<T:Int\> @(-52.857143,-23.190475)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Input 1" | \<- | \[3\] **Get Node Graph Variable** (337/339) `out#0` "Variable Value" | *Int* |   |
+| `in#0` | "Input 1" | = | 0 | *Int* | also wired |
 | `in#1` | "Input 2" | = | 0 | *Int* |   |
 
 \[7\] **Create Composite Node(1)** (1610613135) user=COMPOSITE @(478.7143,291)
@@ -954,7 +998,7 @@
 | `in#1` | "Variable Value" | = | 0 | *Int* |   |
 | `in#2` | "Trigger Event" | = | No | *Bol* |   |
 
-# File `test/cases/composites/var_change.gia`
+# File `var_change.gia`
 
 ## Graph '*VAR\_TEST*'
 
@@ -968,6 +1012,8 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` |   | -\> | \[2\] **Multiple Branches** (3/4) `in.flow#0` |   |   |
+| `out#3` | "Pre-Change Value" | = | 0 | *Int* |   |
+| `out#4` | "Post-Change Value" | = | 0 | *Int* |   |
 
 \[2\] **Multiple Branches** (3/4) variant=C\<T:Str\> @(130,-200)
 
@@ -975,6 +1021,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#1` | "Var1" | -\> | \[14\] **Settle Stage** (77) `in.flow#0` |   |   |
 | `in#0` | "Control Expression" | \<- | \[1\] **When Custom Variable Changes** (36) `out#2` "Variable Name" | *Str* |   |
+| `in#0` | "Control Expression" | = | '' | *Str* | also wired |
 
 \[3\] **When Entity Is Created** (71) @(-208,314)
 
@@ -1074,9 +1121,12 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` |   | -\> | \[7\] **Multiple Branches** (3/4) `in.flow#0` |   |   |
+| `out#3` | "Pre-Change Value" | = | '' | *Str* |   |
+| `out#4` | "Post-Change Value" | = | '' | *Str* |   |
 
 \[7\] **Multiple Branches** (3/4) variant=C\<T:Str\> @(211.5,0.5)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Control Expression" | \<- | \[6\] **When Custom Variable Changes** (36/37) `out#2` "Variable Name" | *Str* |   |
+| `in#0` | "Control Expression" | = | '' | *Str* | also wired |

@@ -2,7 +2,7 @@
 
 Scanned 1 file:
 
-- `test/cases/client/client_var_types.gia`
+- `client_var_types.gia`
 
 ## Findings
 

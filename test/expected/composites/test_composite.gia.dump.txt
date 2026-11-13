@@ -19,3 +19,4 @@ RESOURCE "Network Status" UI_CONTROL guid='1073741836'
 RESOURCE "Struggle Button" UI_CONTROL guid='1073741837'
 RESOURCE "Voice Chat Button" UI_CONTROL guid='1073741838'
 RESOURCE "Voice Chat Hint Queue" UI_CONTROL guid='1073741839'
+GRAPH_VARIABLE 'New Node Graph' 'Var_1' : Int = 1

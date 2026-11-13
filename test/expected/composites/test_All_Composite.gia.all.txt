@@ -1,0 +1,100 @@
+# INFO
+# FILE test_All_Composite.gia
+format                 gia
+detected_by            header
+file_size              15914
+container_file_type    gia
+engine_version         7.1.0
+mode                   beyond
+export_name            test_All_Composite.gia
+node_db_version        7.2.0
+resources              61
+primary                1
+dependencies           60
+graphs                 27
+nodes                  52
+composite_bodies       26
+declarations           34
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=27
+CLASS COMPOSITE_NODE_DECL class=12 count=30
+CLASS SIGNAL_NODE_DECL class=14 count=4
+
+# DUMP
+DECL "Static_2" SIGNAL_NODE_DECL class=14 guid='1610612741' category=SEND_SIGNAL role=dependency
+DECL "Static_1" SIGNAL_NODE_DECL class=14 guid='1610612737' category=SEND_SIGNAL role=dependency
+GRAPH 'All_Composite' ENTITY_NODE_GRAPH class=9 guid='1073741826' kind=21001 service=20000 nodes=26
+GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=1 role=dependency decl='1610612745'
+GRAPH '<composite>Create Composite Node(2)' ENTITY_NODE_GRAPH class=9 guid='1610612739' kind=21002 service=20000 nodes=1 role=dependency decl='1610612747'
+GRAPH '<composite>Create Composite Node(4)' ENTITY_NODE_GRAPH class=9 guid='1610612741' kind=21002 service=20000 nodes=1 role=dependency decl='1610612749'
+GRAPH '<composite>Create Composite Node(6)' ENTITY_NODE_GRAPH class=9 guid='1610612743' kind=21002 service=20000 nodes=1 role=dependency decl='1610612751'
+GRAPH '<composite>Create Composite Node(8)' ENTITY_NODE_GRAPH class=9 guid='1610612745' kind=21002 service=20000 nodes=1 role=dependency decl='1610612753'
+GRAPH '<composite>Create Composite Node(9)' ENTITY_NODE_GRAPH class=9 guid='1610612746' kind=21002 service=20000 nodes=1 role=dependency decl='1610612754'
+GRAPH '<composite>Create Composite Node(10)' ENTITY_NODE_GRAPH class=9 guid='1610612747' kind=21002 service=20000 nodes=1 role=dependency decl='1610612755'
+GRAPH '<composite>Create Composite Node(11)' ENTITY_NODE_GRAPH class=9 guid='1610612748' kind=21002 service=20000 nodes=1 role=dependency decl='1610612756'
+GRAPH '<composite>Create Composite Node(12)' ENTITY_NODE_GRAPH class=9 guid='1610612749' kind=21002 service=20000 nodes=1 role=dependency decl='1610612757'
+GRAPH '<composite>Create Composite Node(13)' ENTITY_NODE_GRAPH class=9 guid='1610612750' kind=21002 service=20000 nodes=1 role=dependency decl='1610612758'
+GRAPH '<composite>Create Composite Node(14)' ENTITY_NODE_GRAPH class=9 guid='1610612751' kind=21002 service=20000 nodes=1 role=dependency decl='1610612759'
+GRAPH '<composite>Create Composite Node(15)' ENTITY_NODE_GRAPH class=9 guid='1610612752' kind=21002 service=20000 nodes=1 role=dependency decl='1610612760'
+GRAPH '<composite>Create Composite Node(16)' ENTITY_NODE_GRAPH class=9 guid='1610612753' kind=21002 service=20000 nodes=1 role=dependency decl='1610612761'
+GRAPH '<composite>Create Composite Node(17)' ENTITY_NODE_GRAPH class=9 guid='1610612754' kind=21002 service=20000 nodes=1 role=dependency decl='1610612762'
+GRAPH '<composite>Create Composite Node(18)' ENTITY_NODE_GRAPH class=9 guid='1610612755' kind=21002 service=20000 nodes=1 role=dependency decl='1610612763'
+GRAPH '<composite>Create Composite Node(19)' ENTITY_NODE_GRAPH class=9 guid='1610612756' kind=21002 service=20000 nodes=1 role=dependency decl='1610612764'
+GRAPH '<composite>Create Composite Node(20)' ENTITY_NODE_GRAPH class=9 guid='1610612757' kind=21002 service=20000 nodes=1 role=dependency decl='1610612765'
+GRAPH '<composite>Create Composite Node(21)' ENTITY_NODE_GRAPH class=9 guid='1610612758' kind=21002 service=20000 nodes=1 role=dependency decl='1610612766'
+GRAPH '<composite>Create Composite Node(22)' ENTITY_NODE_GRAPH class=9 guid='1610612759' kind=21002 service=20000 nodes=1 role=dependency decl='1610612767'
+GRAPH '<composite>Create Composite Node(23)' ENTITY_NODE_GRAPH class=9 guid='1610612760' kind=21002 service=20000 nodes=1 role=dependency decl='1610612768'
+GRAPH '<composite>Create Composite Node(24)' ENTITY_NODE_GRAPH class=9 guid='1610612761' kind=21002 service=20000 nodes=1 role=dependency decl='1610612769'
+GRAPH '<composite>Create Composite Node(25)' ENTITY_NODE_GRAPH class=9 guid='1610612762' kind=21002 service=20000 nodes=1 role=dependency decl='1610612770'
+GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=1 role=dependency decl='1610612746'
+GRAPH '<composite>Create Composite Node(5)' ENTITY_NODE_GRAPH class=9 guid='1610612742' kind=21002 service=20000 nodes=1 role=dependency decl='1610612750'
+GRAPH '<composite>Create Composite Node(3)' ENTITY_NODE_GRAPH class=9 guid='1610612740' kind=21002 service=20000 nodes=1 role=dependency decl='1610612748'
+GRAPH '<composite>Create Composite Node(7)' ENTITY_NODE_GRAPH class=9 guid='1610612744' kind=21002 service=20000 nodes=1 role=dependency decl='1610612752'
+GRAPH_VARIABLE 'All_Composite' 'Static_Graph' : L<Gid> = []
+
+# REFS
+composite        "Create Composite Node"            1 call: ['All_Composite']
+composite        "Create Composite Node(1)"         1 call: ['All_Composite']
+composite        "Create Composite Node(10)"        1 call: ['All_Composite']
+composite        "Create Composite Node(11)"        1 call: ['All_Composite']
+composite        "Create Composite Node(12)"        1 call: ['All_Composite']
+composite        "Create Composite Node(13)"        1 call: ['All_Composite']
+composite        "Create Composite Node(14)"        1 call: ['All_Composite']
+composite        "Create Composite Node(15)"        1 call: ['All_Composite']
+composite        "Create Composite Node(16)"        1 call: ['All_Composite']
+composite        "Create Composite Node(17)"        1 call: ['All_Composite']
+composite        "Create Composite Node(18)"        1 call: ['All_Composite']
+composite        "Create Composite Node(19)"        1 call: ['All_Composite']
+composite        "Create Composite Node(2)"         1 call: ['All_Composite']
+composite        "Create Composite Node(20)"        1 call: ['All_Composite']
+composite        "Create Composite Node(21)"        1 call: ['All_Composite']
+composite        "Create Composite Node(22)"        1 call: ['All_Composite']
+composite        "Create Composite Node(23)"        1 call: ['All_Composite']
+composite        "Create Composite Node(24)"        1 call: ['All_Composite']
+composite        "Create Composite Node(25)"        1 call: ['All_Composite']
+composite        "Create Composite Node(3)"         1 call: ['All_Composite']
+composite        "Create Composite Node(4)"         1 call: ['All_Composite']
+composite        "Create Composite Node(5)"         1 call: ['All_Composite']
+composite        "Create Composite Node(6)"         1 call: ['All_Composite']
+composite        "Create Composite Node(7)"         1 call: ['All_Composite']
+composite        "Create Composite Node(8)"         1 call: ['All_Composite']
+composite        "Create Composite Node(9)"         1 call: ['All_Composite']
+custom_variable  "Static_Var" (Flt)                 1 get: ['All_Composite'], 1 set: ['All_Composite'], 1 trigger: ['<composite>Create Composite Node(15)'], 1 listen: ['All_Composite']
+global_timer     "Static_Global"                    1 start: ['<composite>Create Composite Node(5)'], 1 stop: ['All_Composite'], 1 listen: ['All_Composite']
+graph_variable   "Static_Graph" (L<Gid>)            ['All_Composite']: 1 get, 1 set, 1 trigger, 1 listen
+signal           "Static_1"                         1 listen: ['All_Composite'], 1 send: ['All_Composite']
+signal           "Static_2"                         1 listen: ['All_Composite'], 1 send: ['All_Composite']
+timer            "Static_Timer" (onetime)           1 start: ['<composite>Create Composite Node(4)'], 1 stop: ['All_Composite'], 1 listen: ['All_Composite']
+
+# WARNS
+# findings
+(no findings)
+
+# limits
+composites: 26/1000 declared
+signals: 2/99 declared
+
+top graphs by node count:
+'All_Composite': 52/3000 nodes

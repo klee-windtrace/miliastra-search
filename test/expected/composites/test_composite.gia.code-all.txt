@@ -7,13 +7,13 @@ GRAPH 'New Node Graph' ENTITY_NODE_GRAPH (guid 1073741825)
 'New Node Graph'/[15] Create Composite Node (1610613134) user=COMPOSITE @(-28.714285,-178.66667)
 'New Node Graph'/[15] Create Composite Node (1610613134) out.flow#0 "Yes" -> [14] Create Composite Node (1610613134) in.flow#0
 'New Node Graph'/[17] Query All Skill Instance IDs by Skill Config ID (812) @(1276.608,-540.3176)
-'New Node Graph'/[17] Query All Skill Instance IDs by Skill Config ID (812) in#1 "Skill Config ID" = id:1098907649 : Cfg
+'New Node Graph'/[17] Query All Skill Instance IDs by Skill Config ID (812) in#1 "Skill Config ID" = id:1098907649 : Cfg {SKILL:"test_skill"}
 'New Node Graph'/[18] Switch Current Interface Layout (382) @(751.2857,-176.28572)
-'New Node Graph'/[18] Switch Current Interface Layout (382) in#1 "Layout Index" = 1073741825 : Int
+'New Node Graph'/[18] Switch Current Interface Layout (382) in#1 "Layout Index" = 1073741825 : Int {INTERFACE_LAYOUT:"Default Layout"}
 'New Node Graph'/[21] Get Entity With Specified Prefab ID on the Field (320) @(1255.24,-266.45618)
 'New Node Graph'/[21] Get Entity With Specified Prefab ID on the Field (320) in#0 "Prefab ID" = id:10005018 : Pfb
 'New Node Graph'/[22] Query Entity by GUID (75) @(1283.8114,-45.02761)
-'New Node Graph'/[22] Query Entity by GUID (75) in#0 "GUID" = id:1077936131 : Gid
+'New Node Graph'/[22] Query Entity by GUID (75) in#0 "GUID" = id:1077936131 : Gid {OBJECT_ENTITY:"entity_test"}
 GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH (guid 1610612900, decl 1610613134) role=dependency
 '<composite>Create Composite Node'/PORTMAP ext.in.flow#0 -> [2] Double Branch (2) in.flow#0
 '<composite>Create Composite Node'/PORTMAP ext.out.flow#0 "Yes" -> [2] Double Branch (2) out.flow#0 "Yes"

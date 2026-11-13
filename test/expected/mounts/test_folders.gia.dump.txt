@@ -29,9 +29,13 @@ RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE guid='1090519041'
 RESOURCE "Custom Class" CLASS guid='1090519041'
 RESOURCE "Custom Camera" CAMERA guid='1073741825'
 RESOURCE "Wireframe Cuboid" OBJECT_ENTITY guid='1077936129' parent=(10009010)
+MOUNT 'Saved to folder (My)' -> OBJECT_ENTITY "Wireframe Cuboid" entity
 RESOURCE "Wireframe Cuboid" OBJECT_ENTITY guid='1077936130' parent=(10009010)
+MOUNT 'Saved to folder (My)' -> OBJECT_ENTITY "Wireframe Cuboid" entity
 RESOURCE "Wireframe Cuboid" OBJECT_ENTITY guid='1077936131' parent=(10009010)
+MOUNT 'Saved to folder (My)' -> OBJECT_ENTITY "Wireframe Cuboid" entity
 RESOURCE "Wireframe Cube" OBJECT_ENTITY guid='1077936132' parent=(10009010)
+MOUNT 'Saved to folder (My)' -> OBJECT_ENTITY "Wireframe Cube" entity
 RESOURCE "Pavilion 20001488" STATIC_ENTITY guid='1077936133' parent=(20001488)
 RESOURCE "Terrain01" TERRAIN_ENTITY guid='1073741825'
 RESOURCE "Default Layout" INTERFACE_LAYOUT guid='1073741825'

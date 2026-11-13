@@ -15,19 +15,31 @@ import { root, casesDir } from './helpers.mjs';
 
 export const expectedDir = path.join(root, 'test', 'expected');
 
-// One entry per option set exercised on every single fixture file. (Together they cover --show-tag, --defaults, --all-pins,
+// One entry per option set exercised on every single fixture file. (Together they cover --show-tag, --all-pins,
 // --sort-desc and --top-graphs; dump and code are the two views of the same analysis.)
 export const FILE_VARIANTS = {
   info: ['info'],
   'info-tag': ['info', '--show-tag'],
   dump: ['dump'],
   code: ['code'],
-  'code-all': ['code', '--defaults', '--all-pins'],
+  'code-all': ['code', '--all-pins'],
   refs: ['refs'],
   'refs-sorted': ['refs', '--sort-desc'],
   warns: ['warns'],
   'warns-top': ['warns', '--top-graphs', '2'],
   check: ['check'],
+  all: ['all'],
+  'all-code': ['all', '--with-code', '--details', '--show-tag'], // every mode at once, with the options that add data
+};
+// The pseudocode style, on the fixtures made for it (the `codegen` categories) under every combination of its rendering options.
+export const CODEGEN_CATEGORIES = ['codegen', 'codegen72'];
+export const CODEGEN_VARIANTS = {
+  pseudo: ['code', '--pseudocode'],
+  'pseudo-optimize': ['code', '--pseudocode', '--optimize'],
+  'pseudo-all-pins': ['code', '--pseudocode', '--all-pins'],
+  'pseudo-optimize-all-pins': ['code', '--pseudocode', '--optimize', '--all-pins'],
+  'pseudo-expand': ['code', '--pseudocode', '--expand'],
+  'pseudo-expand-optimize': ['code', '--pseudocode', '--expand', '--optimize'],
 };
 // Runs over a whole category folder at once (multi-file layout: file prefixes, several files in one report).
 export const FOLDER_RUNS = {
@@ -46,7 +58,7 @@ export const FOLDER_RUNS = {
 };
 // Unified document outputs, one per format for each category folder.
 export const DOC_FORMATS = ['md', 'markdown', 'htm', 'html'];
-export const DOC_COMMANDS = { info: ['info'], dump: ['dump'], code: ['code'], refs: ['refs'], warns: ['warns'] };
+export const DOC_COMMANDS = { info: ['info'], dump: ['dump'], code: ['code'], refs: ['refs'], warns: ['warns'], all: ['all'] };
 
 /** Run the CLI in-process (cwd = project root, so file labels are stable relative paths). Returns stdout. */
 export function run(args) {
@@ -67,6 +79,7 @@ export function generate() {
   for (const cat of categories()) {
     for (const f of fixtures(cat)) {
       for (const [name, args] of Object.entries(FILE_VARIANTS)) out.set(`${cat}/${f}.${name}.txt`, run([...args, rel(cat, f), '--format', 'text']));
+      if (CODEGEN_CATEGORIES.includes(cat)) for (const [name, args] of Object.entries(CODEGEN_VARIANTS)) out.set(`${cat}/${f}.${name}.txt`, run([...args, rel(cat, f), '--format', 'text']));
     }
     const folder = rel(cat);
     for (const [name, args] of Object.entries(FOLDER_RUNS)) out.set(`${cat}/_folder.${name}.txt`, run([...args, folder, '--format', 'text']));

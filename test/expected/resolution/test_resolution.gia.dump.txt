@@ -3,3 +3,6 @@ GRAPH 'Indirect' ENTITY_NODE_GRAPH guid='1073741827' nodes=10
 GRAPH 'Static' ENTITY_NODE_GRAPH guid='1073741825' nodes=28
 GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH guid='1610612737' nodes=2 role=dependency
 GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH guid='1610612738' nodes=1 role=dependency
+GRAPH_VARIABLE 'Dynamic' 'name' : Str = 'gvar3'
+GRAPH_VARIABLE 'Indirect' 'test2' : Str = 'test4'
+GRAPH_VARIABLE 'Static' 'name' : Str = 'gvar3'

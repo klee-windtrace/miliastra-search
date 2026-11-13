@@ -2,26 +2,26 @@
 
 Scanned 10 files:
 
-- `test/cases/gia/sample_0_main.gia`
-- `test/cases/gia/sample_1.gia`
-- `test/cases/gia/sample_2.gia`
-- `test/cases/gia/sample_3.gia`
-- `test/cases/gia/sample_4.gia`
-- `test/cases/gia/sample_5.gia`
-- `test/cases/gia/sample_6.gia`
-- `test/cases/gia/sample_7.gia`
-- `test/cases/gia/sample_8.gia`
-- `test/cases/gia/sample_9.gia`
+- `sample_0_main.gia`
+- `sample_1.gia`
+- `sample_2.gia`
+- `sample_3.gia`
+- `sample_4.gia`
+- `sample_5.gia`
+- `sample_6.gia`
+- `sample_7.gia`
+- `sample_8.gia`
+- `sample_9.gia`
 
 ## Findings
 
 | Level | Type | Message | File |
 | --- | --- | --- | --- |
-| *INFO*  | catch-all-listener | \[5\] **When Timer Is Triggered** in graph '*Send*' also runs code for every name: \[4\] **Send Signal** runs for every name (not a name switch) | `sample_2.gia` |
-| *INFO*  | catch-all-listener | \[1\] **When Custom Variable Changes** in graph '*Variables*' also runs code for every name: \[6\] **Double Branch**: condition is not an Equal comparison | `sample_5.gia` |
-| *INFO*  | catch-all-listener | \[3\] **When Node Graph Variable Changes** in graph '*Variables*' also runs code for every name: \[5\] **Set Node Graph Variable** runs for every name (not a name switch) | `sample_5.gia` |
-| *INFO*  | signal-never-used | signal "**Signal\_1**" is declared but never sent or listened to in the scanned graphs | `sample_9.gia` |
-| *INFO*  | struct-never-used | struct "**Structure**" (guid=1077936129 fields=) is defined but never used in the scanned graphs | `sample_9.gia` |
+| *INFO* | catch-all-listener | \[5\] **When Timer Is Triggered** in graph '*Send*' also runs code for every name: \[4\] **Send Signal** runs for every name (not a name switch) | `sample_2.gia` |
+| *INFO* | catch-all-listener | \[1\] **When Custom Variable Changes** in graph '*Variables*' also runs code for every name: \[6\] **Double Branch**: condition is not an Equal comparison | `sample_5.gia` |
+| *INFO* | catch-all-listener | \[3\] **When Node Graph Variable Changes** in graph '*Variables*' also runs code for every name: \[5\] **Set Node Graph Variable** runs for every name (not a name switch) | `sample_5.gia` |
+| *INFO* | signal-never-used | signal "**Signal\_1**" is declared but never sent or listened to in the scanned graphs | `sample_9.gia` |
+| *INFO* | struct-never-used | struct "**Structure**" (guid=1077936129 fields=) is defined but never used in the scanned graphs | `sample_9.gia` |
 
 ---
 
@@ -30,7 +30,7 @@ Scanned 10 files:
 | Resource | Used / max |
 | --- | ---: |
 | composites (declared) | 2/1000 |
-| signals (declared) | 2/100 |
+| signals (declared) | 2/99 |
 | prefabs (OBJECT) | 5/1000 |
 | dynamic entities (OBJECT\_ENTITY) | 3/3000 |
 | ENTITY\_DEPLOYMENT\_GROUP | 1/500 |

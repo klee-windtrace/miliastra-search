@@ -1,0 +1,5 @@
+timer            "1" (onetime)                      1 start: ['Composite with event'], 0 stop: [], 1 listen: ['Composite with event']
+timer            "2" (onetime)                      1 start: ['Composite with event'], 0 stop: [], 1 listen: ['Composite with event']
+timer            "3" (onetime)                      1 start: ['Composite with event'], 0 stop: [], 1 listen: ['Composite with event']
+timer            "4" (onetime)                      1 start: ['Composite with event'], 0 stop: [], 1 listen: ['Composite with event']
+timer            "Delay" (onetime)                  3 start: ['Nested event'], 0 stop: [], 3 listen: ['Nested event']

@@ -1,0 +1,13 @@
+{
+  "description": "Nodes that the pseudocode treats in a way their pins do not say, by the node id of the node database (the shell id; a variant keeps it). choice: the flow leaves through exactly one flow output and never through none; `form` is how the call is written ('if' for two outputs, 'switch' for any number), `default` 'first' writes the first output as the `default:` of the switch. A native node with a single flow output always leaves through it, and every other native node with several flow outputs (the loops, Execute only by sequence) runs them in turn. graphEnd: the node that ends a filter graph, which has no flow pins and no execution at all. localVariable: a node that creates a variable of its own each time it is placed in a graph. hiddenInputs: input pins (by index) that only matter when they hold something other than the game's default; a renderer leaves them out unless every pin is asked for.",
+  "choice": [
+    { "nodes": [2, 200056, 200125], "form": "if" },
+    { "nodes": [3, 200127, 200264], "form": "switch", "default": "first" }
+  ],
+  "graphEnd": [200000, 200122],
+  "localVariable": [18],
+  "hiddenInputs": [
+    { "nodes": [22], "pins": [3] },
+    { "nodes": [50], "pins": [2] }
+  ]
+}

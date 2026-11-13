@@ -1,0 +1,47 @@
+# INFO
+# FILE test_All_Static.gia
+format                 gia
+detected_by            header
+file_size              6905
+container_file_type    gia
+engine_version         7.1.0
+mode                   beyond
+export_name            test_All_Static.gia
+node_db_version        7.2.0
+resources              9
+primary                1
+dependencies           8
+graphs                 1
+nodes                  26
+composite_bodies       0
+declarations           8
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=1
+CLASS COMPOSITE_NODE_DECL class=12 count=4
+CLASS SIGNAL_NODE_DECL class=14 count=4
+
+# DUMP
+DECL "Static_1" SIGNAL_NODE_DECL class=14 guid='1610612737' category=SEND_SIGNAL role=dependency
+DECL "Static_2" SIGNAL_NODE_DECL class=14 guid='1610612741' category=SEND_SIGNAL role=dependency
+GRAPH 'All_Static' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=26
+GRAPH_VARIABLE 'All_Static' 'Static_Graph' : L<Gid> = []
+
+# REFS
+custom_variable  "Static_Var" (Flt)                 1 get: ['All_Static'], 1 set: ['All_Static'], 1 trigger: ['All_Static'], 1 listen: ['All_Static']
+global_timer     "Static_Global"                    1 start: ['All_Static'], 1 stop: ['All_Static'], 1 listen: ['All_Static']
+graph_variable   "Static_Graph" (L<Gid>)            ['All_Static']: 1 get, 1 set, 1 trigger, 1 listen
+signal           "Static_1"                         1 listen: ['All_Static'], 1 send: ['All_Static']
+signal           "Static_2"                         1 listen: ['All_Static'], 1 send: ['All_Static']
+timer            "Static_Timer" (onetime)           1 start: ['All_Static'], 1 stop: ['All_Static'], 1 listen: ['All_Static']
+
+# WARNS
+# findings
+(no findings)
+
+# limits
+signals: 2/99 declared
+
+top graphs by node count:
+'All_Static': 26/3000 nodes

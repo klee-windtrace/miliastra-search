@@ -32,6 +32,7 @@ td.right,th.right{text-align:right}td.center,th.center{text-align:center}
 .toc a{color:var(--accent);text-decoration:none;display:block;padding:.05rem 0;break-inside:avoid}.toc a:hover{text-decoration:underline}
 ul{padding-left:1.4rem}
 .q{color:var(--muted)}.muted{color:var(--muted)}
+pre a{text-decoration:none}pre a:hover{text-decoration:underline}[id]:target{background:#4a4a10;border-radius:2px}
 pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pre-wrap;word-break:break-word}
 .title{font-weight:700;color:#F2F2F2}
 .section{color:#61D6D6}
@@ -48,8 +49,10 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 .graphName{color:#C19C00}
 .graphTag{color:#F9F1A5}
 .key{color:#16C60C}
+.more{color:#B4009E}
 .folderName{color:#C50F1F}
 .declName{color:#16C60C}
+.variableName{color:#C19C00}
 .varName{color:#16C60C}
 .pinName{color:#13A10E}
 .pinLabel{color:#3A96DD}
@@ -65,11 +68,20 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 .typeName{color:#B4009E}
 .flag{color:#767676}
 .string{color:#C19C00}
-.number{color:#3A96DD}
+.number{color:#61D6D6}
 .bool{color:#3A96DD}
 .enumValue{color:#61D6D6}
 .idValue{color:#13A10E}
 .vector{color:#3A96DD}
+.jsKeyword{color:#B4009E}
+.jsSwitch{color:#3B78FF}
+.jsError{color:#C50F1F}
+.jsCall{color:#F9F1A5}
+.jsKey{color:#13A10E}
+.jsVar{color:#E74856}
+.jsOut{color:#3A96DD}
+.jsString{color:#C19C00}
+.jsComment{color:#767676}
 .kind{color:#881798}
 .role{color:#3B78FF}
 .count{color:#F2F2F2}
@@ -78,16 +90,20 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 </head>
 <body>
 <main>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/resolution/test_All_Static.gia</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">test_All_Static.gia</span></h1>
 <pre class="lines"><span class="heading">DECL</span> "<span class="declName">Static_1</span>" <span class="className">SIGNAL_NODE_DECL</span> <span class="metaKey">guid</span>='<span class="guid">1610612737</span>' <span class="metaKey">role</span>=<span class="metaValue">dependency</span>
 <span class="heading">DECL</span> "<span class="declName">Static_2</span>" <span class="className">SIGNAL_NODE_DECL</span> <span class="metaKey">guid</span>='<span class="guid">1610612741</span>' <span class="metaKey">role</span>=<span class="metaValue">dependency</span>
-<span class="heading">GRAPH</span> '<span class="graphName">All_Static</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">guid</span>='<span class="guid">1073741825</span>' <span class="metaKey">nodes</span>=<span class="metaValue">26</span></pre>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/resolution/test_resolution.gia</span></h1>
+<span class="heading">GRAPH</span> '<span class="graphName">All_Static</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">guid</span>='<span class="guid">1073741825</span>' <span class="metaKey">nodes</span>=<span class="metaValue">26</span>
+<span class="heading">GRAPH_VARIABLE</span> '<span class="graphName">All_Static</span>' '<span class="variableName">Static_Graph</span>' : <span class="typeName">L&lt;Gid&gt;</span> <span class="arrow">=</span> []</pre>
+<h1><span class="heading">FILE</span> <span class="fileName">test_resolution.gia</span></h1>
 <pre class="lines"><span class="heading">GRAPH</span> '<span class="graphName">Dynamic</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">guid</span>='<span class="guid">1073741826</span>' <span class="metaKey">nodes</span>=<span class="metaValue">30</span>
 <span class="heading">GRAPH</span> '<span class="graphName">Indirect</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">guid</span>='<span class="guid">1073741827</span>' <span class="metaKey">nodes</span>=<span class="metaValue">10</span>
 <span class="heading">GRAPH</span> '<span class="graphName">Static</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">guid</span>='<span class="guid">1073741825</span>' <span class="metaKey">nodes</span>=<span class="metaValue">28</span>
 <span class="heading">GRAPH</span> '<span class="graphTag">&lt;composite&gt;</span><span class="graphName">Create Composite Node</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">guid</span>='<span class="guid">1610612737</span>' <span class="metaKey">nodes</span>=<span class="metaValue">2</span> <span class="metaKey">role</span>=<span class="metaValue">dependency</span>
-<span class="heading">GRAPH</span> '<span class="graphTag">&lt;composite&gt;</span><span class="graphName">Create Composite Node(1)</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">guid</span>='<span class="guid">1610612738</span>' <span class="metaKey">nodes</span>=<span class="metaValue">1</span> <span class="metaKey">role</span>=<span class="metaValue">dependency</span></pre>
+<span class="heading">GRAPH</span> '<span class="graphTag">&lt;composite&gt;</span><span class="graphName">Create Composite Node(1)</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">guid</span>='<span class="guid">1610612738</span>' <span class="metaKey">nodes</span>=<span class="metaValue">1</span> <span class="metaKey">role</span>=<span class="metaValue">dependency</span>
+<span class="heading">GRAPH_VARIABLE</span> '<span class="graphName">Dynamic</span>' '<span class="variableName">name</span>' : <span class="typeName">Str</span> <span class="arrow">=</span> '<span class="string">gvar3</span>'
+<span class="heading">GRAPH_VARIABLE</span> '<span class="graphName">Indirect</span>' '<span class="variableName">test2</span>' : <span class="typeName">Str</span> <span class="arrow">=</span> '<span class="string">test4</span>'
+<span class="heading">GRAPH_VARIABLE</span> '<span class="graphName">Static</span>' '<span class="variableName">name</span>' : <span class="typeName">Str</span> <span class="arrow">=</span> '<span class="string">gvar3</span>'</pre>
 </main>
 </body>
 </html>

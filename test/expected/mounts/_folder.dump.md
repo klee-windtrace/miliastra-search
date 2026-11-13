@@ -1,4 +1,4 @@
-﻿# FILE `test/cases/mounts/composite_folders.gil`
+﻿# FILE `composite_folders.gil`
 
 **GRAPH** /(default)/'<u>\<composite\></u>*01*' ENTITY\_NODE\_GRAPH guid='`1610612838`' nodes=0<br>
 **GRAPH** /(default)/'<u>\<composite\></u>*02*' ENTITY\_NODE\_GRAPH guid='`1610612862`' nodes=0<br>
@@ -95,9 +95,61 @@
 **RESOURCE** "**Network Status**" UI\_CONTROL guid='`1073756699`'<br>
 **RESOURCE** "**Struggle Button**" UI\_CONTROL guid='`1073756700`'<br>
 **RESOURCE** "**Voice Chat Button**" UI\_CONTROL guid='`1073756701`'<br>
-**RESOURCE** "**Voice Chat Hint Queue**" UI\_CONTROL guid='`1073756702`'
+**RESOURCE** "**Voice Chat Hint Queue**" UI\_CONTROL guid='`1073756702`'<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Environment**' : *Int* = 0<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Phase**' : *Str* = ''<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Hunt\_Weights**' : *Flt* = 0<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_TotalPlayers**' : *Int* = 0<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Is\_SinglePlayer**' : *Bol* = No<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_ReadyPlayers**' : *Dict\<Int,Ety\>* = {}<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Initial\_Text**' : *Str* = ''<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Initial\_Lines**' : *L\<Str\>* = \['`<color=#ACFF44>Waiting for players...</color>`', '`<color=#FFCC33>Choose your role!</color>`', '', '`<color=#FF5E41>You will be Hunter!</color>`', '`<color=#37FFFF>Two-player High Score Battle</color>`', '`??`'\]<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Total\_Weight**' : *Flt* = 0<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_NooneHunter**' : *Bol* = No<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Titles\_Timer**' : *L\<Str\>* = \['`initial`', '`rebels`', '`hunter`', ''\]<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Titles\_Prepare**' : *L\<Str\>* = \['`<color=#FFCC33>Hunting starts in:</color>`', '`<color=#FFCC33>Hunter released in:</color>`', '', ''\]<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Titles\_Hunt**' : *L\<Str\>* = \['', '`<color=#ACFF44>Time to repair:</color>`', '`<color=#ACFF44>Time till victory:</color>`', ''\]<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Titles\_Single**' : *L\<Str\>* = \['', '`<color=#ACFF44>Test run mode</color>`', '`<color=#ACFF44>Test run mode</color>`', ''\]<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Text\_Who\_Rebels**' : *Str* = '`<color=#37FFFF>YOU ARE A REBEL</color>; the hunter is:\\n`'<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Text\_Who\_Hunter**' : *Str* = '`YOU ARE THE HUNTER`'<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_DevicesRepaired**' : *Int* = 0<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_NeedRepair**' : *Int* = 0<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Game\_Winner**' : *Str* = ''<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_OneRebel**' : *Bol* = No<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_HuntStarted**' : *Bol* = No<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**OPT\_Hunters**' : *Int* = 1<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**OPT\_Devices**' : *Int* = -2<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**OPT\_Repair**' : *Int* = 1<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**OPT\_Time**' : *Flt* = 300<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**OPT\_Fixing**' : *Int* = 30<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_Prison\_Time**' : *Int* = 10<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_Devices\_Used**' : *Dict\<Ety,Bol\>* = {}<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_Devices\_Max**' : *Int* = 999<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Nicknames**' : *Dict\<Int,Str\>* = {}<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Roles**' : *Dict\<Int,Str\>* = {}<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_CurrentScore**' : *Int* = 0<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**V\_PlayerConnection**' : *Dict\<Int,Ety\>* = {}<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**OPT\_Stamina**' : *Int* = 300<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Are\_Two\_Players**' : *Bol* = No<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_Trace\_CD**' : *Flt* = 0<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_Tour\_Round**' : *Int* = 1<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_BestScore**' : *Int* = 0<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Titles\_Tour**' : *L\<Str\>* = \['', '`<color=#ACFF44>Round: </color>`', '`<color=#ACFF44>Round: </color>`', ''\]<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Tour\_Nicknames**' : *L\<Str\>* = \['', ''\]<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Tour\_Restart**' : *Bol* = No<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**C\_Tasker\_Task**' : *Str* = ''<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_Have\_Players**' : *Bol* = No<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**C\_ReadyPlayers**' : *Ety* = id:0<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Current\_Map**' : *Str* = '`NONE`'<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**C\_Do\_Restart**' : *Str* = ''<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Titles\_Bad**' : *L\<Str\>* = \['`??`', '`??`', '`??`', '`??`'\]<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Titles\_Empty**' : *L\<Str\>* = \['', '', '', ''\]<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Insiders**' : *L\<Ety\>* = \[\]<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**U\_Game\_Mode**' : *L\<Int\>* = \[101027, 0, 0, 0\]<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Debug\_Entities**' : *Int* = 0<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**UI\_Prefab**' : *Dict\<Str,Pfb\>* = {'`Beacon`': id:10005076, '`Invis`': id:10005077, '`Area`': id:20001849, '`Bow`': id:20002302, '`Device`': id:10005029}
 
-# FILE `test/cases/mounts/graph_folders.gil`
+# FILE `graph_folders.gil`
 
 **GRAPH** /(default)/'*A - 01*' ENTITY\_NODE\_GRAPH guid='`1073741826`' nodes=0<br>
 **GRAPH** /(default)/'*B - 02*' ENTITY\_NODE\_GRAPH guid='`1073741827`' nodes=0<br>
@@ -195,7 +247,7 @@
 **RESOURCE** "**Voice Chat Button**" UI\_CONTROL guid='`1073741838`'<br>
 **RESOURCE** "**Voice Chat Hint Queue**" UI\_CONTROL guid='`1073741839`'
 
-# FILE `test/cases/mounts/test_folders.gia`
+# FILE `test_folders.gia`
 
 **DECL** "**Signal\_Name**" SIGNAL\_NODE\_DECL guid='`1610613129`'<br>
 **GRAPH** '*Saved to custom (New Folder)*' ENTITY\_NODE\_GRAPH guid='`1073741827`' nodes=0<br>
@@ -228,9 +280,13 @@
 **RESOURCE** "**Custom Class**" CLASS guid='`1090519041`'<br>
 **RESOURCE** "**Custom Camera**" CAMERA guid='`1073741825`'<br>
 **RESOURCE** "**Wireframe Cuboid**" OBJECT\_ENTITY guid='`1077936129`' parent=(10009010)<br>
+MOUNT '*Saved to folder (My)*' -\> OBJECT\_ENTITY "**Wireframe Cuboid**" entity<br>
 **RESOURCE** "**Wireframe Cuboid**" OBJECT\_ENTITY guid='`1077936130`' parent=(10009010)<br>
+MOUNT '*Saved to folder (My)*' -\> OBJECT\_ENTITY "**Wireframe Cuboid**" entity<br>
 **RESOURCE** "**Wireframe Cuboid**" OBJECT\_ENTITY guid='`1077936131`' parent=(10009010)<br>
+MOUNT '*Saved to folder (My)*' -\> OBJECT\_ENTITY "**Wireframe Cuboid**" entity<br>
 **RESOURCE** "**Wireframe Cube**" OBJECT\_ENTITY guid='`1077936132`' parent=(10009010)<br>
+MOUNT '*Saved to folder (My)*' -\> OBJECT\_ENTITY "**Wireframe Cube**" entity<br>
 **RESOURCE** "**Pavilion 20001488**" STATIC\_ENTITY guid='`1077936133`' parent=(20001488)<br>
 **RESOURCE** "**Terrain01**" TERRAIN\_ENTITY guid='`1073741825`'<br>
 **RESOURCE** "**Default Layout**" INTERFACE\_LAYOUT guid='`1073741825`'<br>
@@ -254,7 +310,7 @@
 **RESOURCE** "**Voice Chat Button**" UI\_CONTROL guid='`1073741838`'<br>
 **RESOURCE** "**Voice Chat Hint Queue**" UI\_CONTROL guid='`1073741839`'
 
-# FILE `test/cases/mounts/test_folders.gil`
+# FILE `test_folders.gil`
 
 **DECL** "**Signal\_Name**" SIGNAL\_NODE\_DECL guid='`1610613129`'<br>
 **GRAPH** /(default)/'*Saved to default (Uncategorized Tab)*' ENTITY\_NODE\_GRAPH guid='`1073741825`' nodes=0<br>
@@ -333,7 +389,7 @@ MOUNT '*Saved to folder (My)*' -\> OBJECT\_ENTITY "**Wireframe Cube**" entity<br
 **RESOURCE** "**Voice Chat Button**" UI\_CONTROL guid='`1073741838`'<br>
 **RESOURCE** "**Voice Chat Hint Queue**" UI\_CONTROL guid='`1073741839`'
 
-# FILE `test/cases/mounts/test_mount.gil`
+# FILE `test_mount.gil`
 
 **GRAPH** /(default)/'*Mounted\_Character*' ENTITY\_NODE\_GRAPH guid='`1073741826`' nodes=0<br>
 **GRAPH** /(default)/'*Mounted\_Creation*' ENTITY\_NODE\_GRAPH guid='`1073741830`' nodes=0<br>

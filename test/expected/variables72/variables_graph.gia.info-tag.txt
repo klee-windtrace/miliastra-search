@@ -1,0 +1,29 @@
+# FILE variables_graph.gia
+format                 gia
+detected_by            header
+file_size              7731
+container_file_type    gia
+engine_version         7.2.0
+mode                   beyond
+export_name            variables_graph.gia
+node_db_version        7.2.0
+export_tag             909814789-1794477551-1073741879-\variables_graph.gia
+uid                    909814789
+time                   1794477551
+file_id                1073741879
+resources              13
+primary                12
+dependencies           1
+graphs                 3
+nodes                  0
+composite_bodies       0
+declarations           0
+structs                0
+mounts                 9
+unresolved_node_types  0
+CLASS OBJECT class=1 count=3
+CLASS OBJECT_ENTITY class=3 count=5
+CLASS ENTITY_NODE_GRAPH class=9 count=2
+CLASS PLAYER_TEMPLATE class=18 count=1
+CLASS CHARACTER_TEMPLATE class=19 count=1
+CLASS STATUS_NODE_GRAPH class=22 count=1

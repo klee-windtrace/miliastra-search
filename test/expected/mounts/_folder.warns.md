@@ -50,7 +50,7 @@
 ## limits
 
 composites: 40/1000 declared<br>
-signals: 1/100 declared<br>
+signals: 1/99 declared<br>
 prefabs (OBJECT): 12/1000<br>
 dynamic entities (OBJECT\_ENTITY): 13/3000<br>
 PRESET\_POINT: 5/2000<br>

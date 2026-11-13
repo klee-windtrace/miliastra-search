@@ -2,8 +2,8 @@
 
 Scanned 2 files:
 
-- `test/cases/resolution/test_All_Static.gia`
-- `test/cases/resolution/test_resolution.gia`
+- `test_All_Static.gia`
+- `test_resolution.gia`
 
 ## References
 

@@ -3,9 +3,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { walkRaw } from '../src/decode.mjs';
-import { renderDoc } from '../src/render.mjs';
-import { buildOverviewRows, overviewRowLines } from '../src/refs.mjs';
-import { textLines, plain } from '../src/doc.mjs';
+import { analyzeBundle } from '../src/analyze.mjs';
+import { fileDump } from '../src/dump.mjs';
+import { fileCode } from '../src/code.mjs';
+import { dumpBlocks } from '../src/present/dump.mjs';
+import { codeBlocks } from '../src/present/code.mjs';
+import { buildOverviewRows } from '../src/refs.mjs';
+import { entryLines } from '../src/present/refs.mjs';
+import { textLines, plain } from '../src/present/doc.mjs';
 export const here = path.dirname(fileURLToPath(import.meta.url));
 export const root = path.join(here, '..');
 export const casesDir = path.join(here, 'cases'); // fixture categories: one folder each (gia, gil, composites, resolution)
@@ -13,13 +18,19 @@ export const samples = path.join(casesDir, 'gia');
 export const sample = (n) => path.join(samples, n);
 export const readSample = (n) => fs.readFileSync(sample(n));
 
-/** The dump as plain text lines (what the text format prints), plus the summary. */
+/**
+ * The dump lines followed by the code lines of one bundle as plain text (what the text format prints for `dump` and `code`), plus the code report.
+ * opts: the rendering options `details` (dump) and `allPins` (code).
+ */
 export function renderText(bundle, db, opts = {}) {
-  const { blocks, summary } = renderDoc(bundle, db, opts);
-  return { lines: textLines(blocks).map(plain), summary };
+  const analysis = analyzeBundle(bundle, db);
+  const dump = dumpBlocks(fileDump(bundle, db, { analysis }), { details: !!opts.details });
+  const code = fileCode(bundle, db, { analysis });
+  const blocks = codeBlocks(code, { allPins: !!opts.allPins });
+  return { lines: [...textLines(dump), ...textLines(blocks)].map(plain), code };
 }
 /** The refs overview as plain text (one entry per group; a struct entry is one multi-line block). */
-export const overviewLines = (sel, opts) => buildOverviewRows(sel, opts).map((row) => overviewRowLines(row).map(plain).join('\n'));
+export const overviewLines = (sel, opts) => buildOverviewRows(sel, opts).map((row) => entryLines(row).map(plain).join('\n'));
 
 export const varint = (n) => { n = BigInt(n); const out = []; while (n > 127n) { out.push(Number(n & 127n) | 128); n >>= 7n; } out.push(Number(n)); return Buffer.from(out); };
 export const lenField = (f, buf) => Buffer.concat([varint((f << 3) | 2), varint(buf.length), buf]);

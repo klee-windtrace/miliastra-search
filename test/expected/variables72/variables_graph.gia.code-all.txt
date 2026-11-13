@@ -1,0 +1,11 @@
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH (guid 1073741825)
+'New Node Graph'/VAR String : Str public=true = 'graph'
+'New Node Graph'/VAR Integer : Int public=true = 0
+'New Node Graph'/VAR Faction : Fct public=true = id:1
+'New Node Graph'/VAR Float : Flt public=true = 2
+'New Node Graph'/VAR Entity : Ety public=true = id:0
+'New Node Graph'/VAR Private : Bol public=false = Yes
+GRAPH 'Test5' ENTITY_NODE_GRAPH (guid 1073741826)
+'Test5'/VAR Faction : Fct public=true = id:0
+GRAPH '<status>Status' STATUS_NODE_GRAPH (guid 1073741827)
+'<status>Status'/VAR Status : Dict public=false = {'Status': 'Status'}

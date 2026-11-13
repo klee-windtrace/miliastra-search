@@ -1,0 +1,12 @@
+# findings
+(no findings)
+
+# limits
+prefabs (OBJECT): 1/1000
+PRESET_POINT: 1/2000
+ENVIRONMENT_CONFIGURATION: 1/50
+CLASS: 1/100
+TERRAIN_ENTITY: 1/1200
+
+top graphs by node count:
+(no graphs in the scanned files)

@@ -2,7 +2,7 @@
 (no findings)
 
 # limits
-signals: 2/100 declared
+signals: 2/99 declared
 
 top graphs by node count:
 'All_Static': 26/3000 nodes

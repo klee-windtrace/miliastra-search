@@ -1,7 +1,7 @@
-﻿# FILE `test/cases/gil/stage_0.gil`
+﻿# FILE `stage_0.gil`
 
 **GRAPH** '*Graph*' ENTITY\_NODE\_GRAPH (guid 1073741825)<br>
-'*Graph*'/VAR **Graph\_Var** : *Ety* public=false<br>
+'*Graph*'/VAR **Graph\_Var** : *Ety* public=false = id:0<br>
 '*Graph*'/COMMENT '`Comment`' @(-193,-100)<br>
 '*Graph*'/\[1\] **When Entity Is Created** (71) @(-219,48)<br>
 '*Graph*'/\[1\] **When Entity Is Created** (71) `out.flow#0` -\> \[4\] **Double Branch** (2) `in.flow#0`<br>
@@ -21,7 +21,7 @@
 '*Graph*'/\[8\] **Get Node Graph Variable** (337) `in#0` "Variable Name" = '`Graph_Var`' : *Str*<br>
 **GRAPH** '<u>\<status\></u>*Empty*' STATUS\_NODE\_GRAPH (guid 1073741826)
 
-# FILE `test/cases/gil/stage_012379.gil`
+# FILE `stage_012379.gil`
 
 **DECL** "**Signal\_2**" SIGNAL\_NODE\_DECL guid='`1073741831`'<br>
 DECL/**Signal\_2** SEND\_SIGNAL name='`Signal_2`' server\_node=1073741830 client\_node=1073741832<br>
@@ -70,7 +70,7 @@ STRUCT/**Structure\_1** FIELD#4 "**Add variable 4**" : *L\<Struct\>* struct=Stru
 '*Both*'/\[7\] **Monitor Signal** (1073741830) `out.flow#0` -\> \[6\] **Send Signal** (1073741831) `in.flow#0`<br>
 '*Both*'/\[7\] **Monitor Signal** (1073741830) `meta.rpc#0` "Signal Name" = '`Signal_2`'<br>
 **GRAPH** '*Graph*' ENTITY\_NODE\_GRAPH (guid 1073741825)<br>
-'*Graph*'/VAR **Graph\_Var** : *Ety* public=false<br>
+'*Graph*'/VAR **Graph\_Var** : *Ety* public=false = id:0<br>
 '*Graph*'/COMMENT '`Comment`' @(-193,-100)<br>
 '*Graph*'/\[1\] **When Entity Is Created** (71) @(-219,48)<br>
 '*Graph*'/\[1\] **When Entity Is Created** (71) `out.flow#0` -\> \[4\] **Double Branch** (2) `in.flow#0`<br>
@@ -101,12 +101,14 @@ STRUCT/**Structure\_1** FIELD#4 "**Add variable 4**" : *L\<Struct\>* struct=Stru
 '*New Node Graph*'/\[9\] **Multiple Branches** (3) @(33.57143,126.71429)<br>
 '*New Node Graph*'/\[9\] **Multiple Branches** (3) `out.flow#1` "1" -\> \[15\] **Create Composite Node(1)** (1073741826) `in.flow#0`<br>
 '*New Node Graph*'/\[9\] **Multiple Branches** (3) `in#0` "Control Expression" \<- \[3\] **When Tab Is Selected** (307) `out#2` "Tab ID" : *Int*<br>
+'*New Node Graph*'/\[9\] **Multiple Branches** (3) `in#0` "Control Expression" = 0 : *Int* *(also wired)*<br>
 '*New Node Graph*'/\[15\] **Create Composite Node(1)** (1073741826) user=COMPOSITE @(480.42856,307)<br>
 '*New Node Graph*'/\[15\] **Create Composite Node(1)** (1073741826) `out.flow#0` "Yes" -\> \[4\] **Set Preset Status** (66) `in.flow#0`<br>
 '*New Node Graph*'/\[15\] **Create Composite Node(1)** (1073741826) `in#0` "Input" \<- \[1\] **Create Composite Node** (1073741825) `out#0` "Value" : *Int*<br>
 '*New Node Graph*'/\[15\] **Create Composite Node(1)** (1073741826) `in#1` "3D Vector" = (1, 2, 3) : *Vec*<br>
 '*New Node Graph*'/\[16\] **Set Local Variable** (19/2677) variant=C\<T:Flt\> @(1517.8572,305.2857)<br>
 '*New Node Graph*'/\[16\] **Set Local Variable** (19/2677) `in#1` "Value" \<- \[15\] **Create Composite Node(1)** (1073741826) `out#0` "X-Component" : *Flt*<br>
+'*New Node Graph*'/\[16\] **Set Local Variable** (19/2677) `in#1` "Value" = 0 : *Flt* *(also wired)*<br>
 **GRAPH** '*New Node Graph\_2*' ENTITY\_NODE\_GRAPH (guid 1073741834)<br>
 **GRAPH** '*Receive*' ENTITY\_NODE\_GRAPH (guid 1073741830)<br>
 '*Receive*'/\[2\] **Monitor Signal** (1073741827) user=LISTEN\_SIGNAL signal='`Signal_1`' @(-286,-207) sigver=1<br>
@@ -163,6 +165,7 @@ STRUCT/**Structure\_1** FIELD#4 "**Add variable 4**" : *L\<Struct\>* struct=Stru
 '<u>\<composite\></u>*Create Composite Node*'/PORTMAP `ext.out#0` "Value" -\> \[1\] **Get Local Variable** (18/20) `out#1` "Value"<br>
 '<u>\<composite\></u>*Create Composite Node*'/\[1\] **Get Local Variable** (18/20) variant=C\<T:Int\> @(-128,-138)<br>
 '<u>\<composite\></u>*Create Composite Node*'/\[1\] **Get Local Variable** (18/20) `in#0` "Initial Value" = 42 : *Int*<br>
+'<u>\<composite\></u>*Create Composite Node*'/\[1\] **Get Local Variable** (18/20) `out#1` "Value" = 0 : *Int*<br>
 **GRAPH** '<u>\<composite\></u>*Create Composite Node(1)*' ENTITY\_NODE\_GRAPH (guid 1073741829, decl 1073741826)<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/PORTMAP `ext.in.flow#0` -\> \[11\] **Double Branch** (2) `in.flow#0`<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/PORTMAP `ext.in.flow#0` -\> \[1\] **Print String** (1) `in.flow#0`<br>
@@ -177,12 +180,16 @@ STRUCT/**Structure\_1** FIELD#4 "**Add variable 4**" : *L\<Struct\>* struct=Stru
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[1\] **Print String** (1) @(203.85715,-324.7143)<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[1\] **Print String** (1) `in#0` "String" \<- \[2\] **Data Type Conversion** (180/182) `out#0` "Output" : *Str*<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[2\] **Data Type Conversion** (180/182) variant=C\<K:Int,V:Str\> @(186.71428,-546.1429)<br>
+'<u>\<composite\></u>*Create Composite Node(1)*'/\[2\] **Data Type Conversion** (180/182) `in#0` "Input" = 0 : *Int*<br>
+'<u>\<composite\></u>*Create Composite Node(1)*'/\[2\] **Data Type Conversion** (180/182) `out#0` "Output" = '' : *Str*<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[6\] **When Entering Collision Trigger** (92) @(-344,-190.28572)<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[6\] **When Entering Collision Trigger** (92) `out.flow#0` -\> \[1\] **Print String** (1) `in.flow#0`<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[8\] **When Exiting Collision Trigger** (91) @(-325.42856,228.28572)<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[8\] **When Exiting Collision Trigger** (91) `out.flow#0` -\> \[11\] **Double Branch** (2) `in.flow#0`<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[10\] **Equal** (14/370) variant=C\<T:Int\> @(124.57143,-50.285713)<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[10\] **Equal** (14/370) `in#0` "Input 1" \<- \[6\] **When Entering Collision Trigger** (92) `out#4` "Trigger ID" : *Int*<br>
+'<u>\<composite\></u>*Create Composite Node(1)*'/\[10\] **Equal** (14/370) `in#0` "Input 1" = 0 : *Int* *(also wired)*<br>
+'<u>\<composite\></u>*Create Composite Node(1)*'/\[10\] **Equal** (14/370) `in#1` "Input 2" = 0 : *Int*<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[11\] **Double Branch** (2) @(268.85715,226.85715)<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[11\] **Double Branch** (2) `in#0` "Condition" \<- \[10\] **Equal** (14/370) `out#0` "Result" : *Bol*<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[21\] **Split 3D Vector** (9) @(709.5714,-327.57144)<br>
@@ -192,11 +199,28 @@ STRUCT/**Structure\_1** FIELD#4 "**Add variable 4**" : *L\<Struct\>* struct=Stru
 '<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) @(375,1)<br>
 '<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `in#0` "Special Effects Asset Configuration ID" = id:2 : *Cfg*<br>
 '<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `in#1` "Location" \<- \[4\] **3D Vector Zoom** (200066/134) `out#0` "Result" : *Vec*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `in#1` "Location" = (0, 0, 0) : *Vec* *(default)* *(also wired)*<br>
 '<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `in#2` "Rotate" \<- \[5\] **Get Ray Detection Result** (200109/1047) `out#0` "On-Hit Location" : *Vec*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `in#2` "Rotate" = (0, 0, 0) : *Vec* *(default)* *(also wired)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `in#3` "Zoom Multiplier" = 0 : *Flt* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `in#4` "Special Effects Asset" = 0 : *Int* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `in#5` "Play Default Sound Effect" = Yes : *Bol* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `meta.rpc#0` = 0 : *Int* *(default)*<br>
 '<u>\<skill\></u>*New Character Skill Node Graph*'/\[4\] **3D Vector Zoom** (200066/134) @(-42,195)<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[4\] **3D Vector Zoom** (200066/134) `in#0` "Zoom Multiplier" = 0 : *Flt* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[4\] **3D Vector Zoom** (200066/134) `in#1` "3D Vector" = (0, 0, 0) : *Vec* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[4\] **3D Vector Zoom** (200066/134) `out#0` "Result" = (0, 0, 0) : *Vec* *(default)*<br>
 '<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) @(-113.25,499.25)<br>
 '<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) `in#0` "Detect Initiator Entity" \<- \[6\] **Get Self Entity** (200033/1013) `out#0` "Self Entity" : *Ety*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) `in#1` "Launch Location" = (0, 0, 0) : *Vec* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) `in#2` "Launch Direction" = (0, 0, 0) : *Vec* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) `in#3` "Max Ray Length" = 0 : *Flt* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) `in#4` "Faction Filter" = enum:0«No \| Default \| None» : *Enum* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) `in#5` "Entity Type Filter" = \[\] : *L\<Enum\>* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) `in#6` "Hit Layer Filter" = \[\] : *L\<Enum\>* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) `out#0` "On-Hit Location" = (0, 0, 0) : *Vec* *(default)*<br>
 '<u>\<skill\></u>*New Character Skill Node Graph*'/\[6\] **Get Self Entity** (200033/1013) @(-415.5,510.25)<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[6\] **Get Self Entity** (200033/1013) `out#0` "Self Entity" = id:0 : *Ety* *(default)*<br>
 **GRAPH** '<u>\<skill\></u>*New Character Skill Node Graph\_1*' SKILL\_NODE\_GRAPH (guid 1082130442)<br>
 '<u>\<skill\></u>*New Character Skill Node Graph\_1*'/\[1\] **Node Graph Starts** (200042/2001) @(0,0)<br>
 **GRAPH** '<u>\<creation\></u>*New Creation Skill Node Graph*' CREATION\_SKILL\_GRAPH (guid 1082130436)<br>
@@ -204,13 +228,29 @@ STRUCT/**Structure\_1** FIELD#4 "**Add variable 4**" : *L\<Struct\>* struct=Stru
 '<u>\<creation\></u>*New Creation Skill Node Graph*'/\[1\] **Node Graph Starts** (200042/2001) `out.flow#0` -\> \[2\] **Taunt Target** (200089/2000) `in.flow#0`<br>
 '<u>\<creation\></u>*New Creation Skill Node Graph*'/\[2\] **Taunt Target** (200089/2000) @(385,-6)<br>
 '<u>\<creation\></u>*New Creation Skill Node Graph*'/\[2\] **Taunt Target** (200089/2000) `in#0` "Taunter Entity" \<- \[4\] **Traverse Entity List** (200055/2000) `out#0` "Current Entity" : *Ety*<br>
+'<u>\<creation\></u>*New Creation Skill Node Graph*'/\[2\] **Taunt Target** (200089/2000) `meta.rpc#0` = 0 : *Int* *(default)*<br>
 '<u>\<creation\></u>*New Creation Skill Node Graph*'/\[4\] **Traverse Entity List** (200055/2000) @(26,195)<br>
+'<u>\<creation\></u>*New Creation Skill Node Graph*'/\[4\] **Traverse Entity List** (200055/2000) `in#0` "Entity List" = \[\] : *L\<Ety\>* *(default)*<br>
+'<u>\<creation\></u>*New Creation Skill Node Graph*'/\[4\] **Traverse Entity List** (200055/2000) `out#0` "Current Entity" = id:0 : *Ety* *(default)*<br>
 **GRAPH** '<u>\<creation\></u>*New Creation Skill Node Graph\_1*' CREATION\_SKILL\_GRAPH (guid 1082130443)<br>
 '<u>\<creation\></u>*New Creation Skill Node Graph\_1*'/\[1\] **Node Graph Starts** (200042/2001) @(0,0)<br>
 **GRAPH** '<u>\<creation\></u>*New Creation Status Node Graph*' CREATION\_STATUS\_GRAPH (guid 1082130437)<br>
 '<u>\<creation\></u>*New Creation Status Node Graph*'/\[1\] **Execute only by sequence** (200126/4000) @(0,0) status\_ext=1/1<br>
 '<u>\<creation\></u>*New Creation Status Node Graph*'/\[1\] **Execute only by sequence** (200126/4000) `out.flow#0` "1" -\> \[2\] **Tactic: Ground Escape** (200138/4019) `in.flow#0`<br>
 '<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) @(431,-2)<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#0` "Execute" = Yes : *Bol* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#1` "Escape Trigger Distance" = 0 : *Flt* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#2` "Movement Speed" = enum:3601«Walk» : *Enum* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#3` "Maximum Escape Angle" = 0 : *Flt* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#4` "Minimum Escape Segments" = 0 : *Int* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#5` "Maximum Escape Segments" = 0 : *Int* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#6` "Minimum Escape Distance" = 0 : *Flt* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#7` "Maximum Escape Distance" = 0 : *Flt* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#8` "Escape Trigger CD" = 1 : *Flt* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#9` "Clear aggro and cancel tactic after countdown" = 0 : *Flt* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#10` "Whether restricted by territory" = Yes : *Bol* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#11` "Tactical Context" = '' : *Str* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#12` "Can skill be interrupted" = No : *Bol* *(default)*<br>
 **GRAPH** '<u>\<creation\></u>*New Creation Status Node Graph\_1*' CREATION\_STATUS\_GRAPH (guid 1082130444)<br>
 '<u>\<creation\></u>*New Creation Status Node Graph\_1*'/\[1\] **Execute only by sequence** (200126/4000) @(0,0) status\_ext=1/1<br>
 **GRAPH** '<u>\<creation\></u>*New Creation Status Decision Node Graph*' CREATION\_STATUS\_DECISION\_GRAPH (guid 1082130439)<br>
@@ -219,6 +259,7 @@ STRUCT/**Structure\_1** FIELD#4 "**Add variable 4**" : *L\<Struct\>* struct=Stru
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[2\] **Multiple Branches** (200127) @(445,39)<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[2\] **Multiple Branches** (200127) `out.flow#0` "Default" -\> \[3\] **Switch to self execution status** (200128/4011) `in.flow#0`<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[3\] **Switch to self execution status** (200128/4011) @(883,144)<br>
+'<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[3\] **Switch to self execution status** (200128/4011) `in#0` "Execute" = Yes : *Bol* *(default)*<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[3\] **Switch to self execution status** (200128/4011) `in#1` "Status Node Graph Configuration ID" = id:1082130437 : *Cfg*<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[3\] **Switch to self execution status** (200128/4011) `in#2` "Autonomous Logic Parameter ID" = 0 : *Int*<br>
 **GRAPH** '<u>\<creation\></u>*New Creation Status Decision Node Graph\_1*' CREATION\_STATUS\_DECISION\_GRAPH (guid 1082130446)<br>
@@ -232,23 +273,37 @@ STRUCT/**Structure\_1** FIELD#4 "**Add variable 4**" : *L\<Struct\>* struct=Stru
 **GRAPH** '<u>\<filter\></u>*New Filter Node Graph*' BOOLEAN\_FILTER\_GRAPH (guid 1082130433)<br>
 '<u>\<filter\></u>*New Filter Node Graph*'/\[1\] **Node Graph End (Boolean)** (200000) @(0,0)<br>
 '<u>\<filter\></u>*New Filter Node Graph*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" \<- \[2\] **Less Than** (200008/12) `out#0` "Result" : *Bol*<br>
+'<u>\<filter\></u>*New Filter Node Graph*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = No : *Bol* *(default)* *(also wired)*<br>
+'<u>\<filter\></u>*New Filter Node Graph*'/\[1\] **Node Graph End (Boolean)** (200000) `in#1` "Filter Return Type" = enum:1000010«Return Boolean» : *Enum* *(default)*<br>
 '<u>\<filter\></u>*New Filter Node Graph*'/\[2\] **Less Than** (200008/12) variant=C\<T:Int\> @(-531,-5)<br>
+'<u>\<filter\></u>*New Filter Node Graph*'/\[2\] **Less Than** (200008/12) `in#0` "op" = enum:101«Comparison Operators\_Less Than» : *Enum* *(default)*<br>
 '<u>\<filter\></u>*New Filter Node Graph*'/\[2\] **Less Than** (200008/12) `in#1` \<- \[3\] **Get List Length** (200018) `out#0` "Length" : *Int*<br>
+'<u>\<filter\></u>*New Filter Node Graph*'/\[2\] **Less Than** (200008/12) `in#1` = 0 : *Int* *(also wired)*<br>
 '<u>\<filter\></u>*New Filter Node Graph*'/\[2\] **Less Than** (200008/12) `in#2` = 0 : *Int*<br>
+'<u>\<filter\></u>*New Filter Node Graph*'/\[2\] **Less Than** (200008/12) `out#0` "Result" = No : *Bol* *(default)*<br>
 '<u>\<filter\></u>*New Filter Node Graph*'/\[3\] **Get List Length** (200018) @(-935,5)<br>
+'<u>\<filter\></u>*New Filter Node Graph*'/\[3\] **Get List Length** (200018) `out#0` "Length" = 0 : *Int* *(default)*<br>
 **GRAPH** '<u>\<filter\></u>*New Filter Node Graph\_2*' BOOLEAN\_FILTER\_GRAPH (guid 1082130440)<br>
 '<u>\<filter\></u>*New Filter Node Graph\_2*'/\[1\] **Node Graph End (Boolean)** (200000) @(0,0)<br>
+'<u>\<filter\></u>*New Filter Node Graph\_2*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = No : *Bol* *(default)*<br>
+'<u>\<filter\></u>*New Filter Node Graph\_2*'/\[1\] **Node Graph End (Boolean)** (200000) `in#1` "Filter Return Type" = enum:1000010«Return Boolean» : *Enum* *(default)*<br>
 **GRAPH** '<u>\<filter\></u>*New Filter Node Graph\_1*' INTEGER\_FILTER\_GRAPH (guid 1082130434)<br>
 '<u>\<filter\></u>*New Filter Node Graph\_1*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)<br>
 '<u>\<filter\></u>*New Filter Node Graph\_1*'/\[1\] **Node Graph End (Integer)** (200122) `in#0` "Output Result (Integer)" \<- \[2\] **Get Custom Variable** (200016/41) `out#0` "Variable Value" : *Int*<br>
+'<u>\<filter\></u>*New Filter Node Graph\_1*'/\[1\] **Node Graph End (Integer)** (200122) `in#0` "Output Result (Integer)" = 0 : *Int* *(default)* *(also wired)*<br>
+'<u>\<filter\></u>*New Filter Node Graph\_1*'/\[1\] **Node Graph End (Integer)** (200122) `in#1` "Filter Return Type" = enum:10000011«Return Integer» : *Enum* *(default)*<br>
 '<u>\<filter\></u>*New Filter Node Graph\_1*'/\[2\] **Get Custom Variable** (200016/41) variant=C\<T:Int\> @(-467,2)<br>
 '<u>\<filter\></u>*New Filter Node Graph\_1*'/\[2\] **Get Custom Variable** (200016/41) `in#0` "Target Entity" \<- \[3\] **Get Self Entity** (200033/1013) `out#0` "Self Entity" : *Ety*<br>
 '<u>\<filter\></u>*New Filter Node Graph\_1*'/\[2\] **Get Custom Variable** (200016/41) `in#1` "Variable Name" = '`test`' : *Str*<br>
+'<u>\<filter\></u>*New Filter Node Graph\_1*'/\[2\] **Get Custom Variable** (200016/41) `out#0` "Variable Value" = 0 : *Int*<br>
 '<u>\<filter\></u>*New Filter Node Graph\_1*'/\[3\] **Get Self Entity** (200033/1013) @(-413,-166)<br>
+'<u>\<filter\></u>*New Filter Node Graph\_1*'/\[3\] **Get Self Entity** (200033/1013) `out#0` "Self Entity" = id:0 : *Ety* *(default)*<br>
 **GRAPH** '<u>\<filter\></u>*New Filter Node Graph\_1\_1*' INTEGER\_FILTER\_GRAPH (guid 1082130441)<br>
-'<u>\<filter\></u>*New Filter Node Graph\_1\_1*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)
+'<u>\<filter\></u>*New Filter Node Graph\_1\_1*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)<br>
+'<u>\<filter\></u>*New Filter Node Graph\_1\_1*'/\[1\] **Node Graph End (Integer)** (200122) `in#0` "Output Result (Integer)" = 0 : *Int* *(default)*<br>
+'<u>\<filter\></u>*New Filter Node Graph\_1\_1*'/\[1\] **Node Graph End (Integer)** (200122) `in#1` "Filter Return Type" = enum:10000011«Return Integer» : *Enum* *(default)*
 
-# FILE `test/cases/gil/stage_1.gil`
+# FILE `stage_1.gil`
 
 **GRAPH** '*New Node Graph*' ENTITY\_NODE\_GRAPH (guid 1073741825)<br>
 '*New Node Graph*'/\[1\] **Create Composite Node** (1073741825) user=COMPOSITE @(514.5714,126.28571)<br>
@@ -263,16 +318,19 @@ STRUCT/**Structure\_1** FIELD#4 "**Add variable 4**" : *L\<Struct\>* struct=Stru
 '*New Node Graph*'/\[9\] **Multiple Branches** (3) @(33.57143,126.71429)<br>
 '*New Node Graph*'/\[9\] **Multiple Branches** (3) `out.flow#1` "1" -\> \[15\] **Create Composite Node(1)** (1073741826) `in.flow#0`<br>
 '*New Node Graph*'/\[9\] **Multiple Branches** (3) `in#0` "Control Expression" \<- \[3\] **When Tab Is Selected** (307) `out#2` "Tab ID" : *Int*<br>
+'*New Node Graph*'/\[9\] **Multiple Branches** (3) `in#0` "Control Expression" = 0 : *Int* *(also wired)*<br>
 '*New Node Graph*'/\[15\] **Create Composite Node(1)** (1073741826) user=COMPOSITE @(480.42856,307)<br>
 '*New Node Graph*'/\[15\] **Create Composite Node(1)** (1073741826) `out.flow#0` "Yes" -\> \[4\] **Set Preset Status** (66) `in.flow#0`<br>
 '*New Node Graph*'/\[15\] **Create Composite Node(1)** (1073741826) `in#0` "Input" \<- \[1\] **Create Composite Node** (1073741825) `out#0` "Value" : *Int*<br>
 '*New Node Graph*'/\[15\] **Create Composite Node(1)** (1073741826) `in#1` "3D Vector" = (1, 2, 3) : *Vec*<br>
 '*New Node Graph*'/\[16\] **Set Local Variable** (19/2677) variant=C\<T:Flt\> @(1517.8572,305.2857)<br>
 '*New Node Graph*'/\[16\] **Set Local Variable** (19/2677) `in#1` "Value" \<- \[15\] **Create Composite Node(1)** (1073741826) `out#0` "X-Component" : *Flt*<br>
+'*New Node Graph*'/\[16\] **Set Local Variable** (19/2677) `in#1` "Value" = 0 : *Flt* *(also wired)*<br>
 **GRAPH** '<u>\<composite\></u>*Create Composite Node*' ENTITY\_NODE\_GRAPH (guid 1073741826, decl 1073741825)<br>
 '<u>\<composite\></u>*Create Composite Node*'/PORTMAP `ext.out#0` "Value" -\> \[1\] **Get Local Variable** (18/20) `out#1` "Value"<br>
 '<u>\<composite\></u>*Create Composite Node*'/\[1\] **Get Local Variable** (18/20) variant=C\<T:Int\> @(-128,-138)<br>
 '<u>\<composite\></u>*Create Composite Node*'/\[1\] **Get Local Variable** (18/20) `in#0` "Initial Value" = 42 : *Int*<br>
+'<u>\<composite\></u>*Create Composite Node*'/\[1\] **Get Local Variable** (18/20) `out#1` "Value" = 0 : *Int*<br>
 **GRAPH** '<u>\<composite\></u>*Create Composite Node(1)*' ENTITY\_NODE\_GRAPH (guid 1073741827, decl 1073741826)<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/PORTMAP `ext.in.flow#0` -\> \[11\] **Double Branch** (2) `in.flow#0`<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/PORTMAP `ext.in.flow#0` -\> \[1\] **Print String** (1) `in.flow#0`<br>
@@ -287,17 +345,21 @@ STRUCT/**Structure\_1** FIELD#4 "**Add variable 4**" : *L\<Struct\>* struct=Stru
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[1\] **Print String** (1) @(203.85715,-324.7143)<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[1\] **Print String** (1) `in#0` "String" \<- \[2\] **Data Type Conversion** (180/182) `out#0` "Output" : *Str*<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[2\] **Data Type Conversion** (180/182) variant=C\<K:Int,V:Str\> @(186.71428,-546.1429)<br>
+'<u>\<composite\></u>*Create Composite Node(1)*'/\[2\] **Data Type Conversion** (180/182) `in#0` "Input" = 0 : *Int*<br>
+'<u>\<composite\></u>*Create Composite Node(1)*'/\[2\] **Data Type Conversion** (180/182) `out#0` "Output" = '' : *Str*<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[6\] **When Entering Collision Trigger** (92) @(-344,-190.28572)<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[6\] **When Entering Collision Trigger** (92) `out.flow#0` -\> \[1\] **Print String** (1) `in.flow#0`<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[8\] **When Exiting Collision Trigger** (91) @(-325.42856,228.28572)<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[8\] **When Exiting Collision Trigger** (91) `out.flow#0` -\> \[11\] **Double Branch** (2) `in.flow#0`<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[10\] **Equal** (14/370) variant=C\<T:Int\> @(124.57143,-50.285713)<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[10\] **Equal** (14/370) `in#0` "Input 1" \<- \[6\] **When Entering Collision Trigger** (92) `out#4` "Trigger ID" : *Int*<br>
+'<u>\<composite\></u>*Create Composite Node(1)*'/\[10\] **Equal** (14/370) `in#0` "Input 1" = 0 : *Int* *(also wired)*<br>
+'<u>\<composite\></u>*Create Composite Node(1)*'/\[10\] **Equal** (14/370) `in#1` "Input 2" = 0 : *Int*<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[11\] **Double Branch** (2) @(268.85715,226.85715)<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[11\] **Double Branch** (2) `in#0` "Condition" \<- \[10\] **Equal** (14/370) `out#0` "Result" : *Bol*<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[21\] **Split 3D Vector** (9) @(709.5714,-327.57144)
 
-# FILE `test/cases/gil/stage_2.gil`
+# FILE `stage_2.gil`
 
 **DECL** "**Signal\_2**" SIGNAL\_NODE\_DECL guid='`1073741829`'<br>
 DECL/**Signal\_2** SEND\_SIGNAL name='`Signal_2`' server\_node=1073741828 client\_node=1073741830<br>
@@ -357,7 +419,7 @@ DECL/**Signal\_1** `meta#0` "Signal Name" uid=20<br>
 '*Send*'/\[5\] **When Timer Is Triggered** (83) @(-582,-100)<br>
 '*Send*'/\[5\] **When Timer Is Triggered** (83) `out.flow#0` -\> \[4\] **Send Signal** (1073741829) `in.flow#0`
 
-# FILE `test/cases/gil/stage_3.gil`
+# FILE `stage_3.gil`
 
 **STRUCT** "**Structure**" guid='`1077936129`' id=1077936129 version=7<br>
 STRUCT/**Structure** FIELD#1 "**Add variable 1**" : *Str*<br>
@@ -390,7 +452,7 @@ STRUCT/**Structure\_1** FIELD#4 "**Add variable 4**" : *L\<Struct\>* struct=Stru
 '*Structs*'/\[14\] **Split Structure** (1073741835) user=STRUCT\_SPLIT struct='`Structure_1`' @(-313.2143,141)<br>
 '*Structs*'/\[14\] **Split Structure** (1073741835) `in#0` "Structure\_1" \<- \[13\] **Assemble Structure** (1073741834) `out#0` "Structure\_1" : *Struct*
 
-# FILE `test/cases/gil/stage_6.gil`
+# FILE `stage_6.gil`
 
 **GRAPH** '*New Node Graph*' ENTITY\_NODE\_GRAPH (guid 1073741825)<br>
 '*New Node Graph*'/\[1\] **When All Player's Characters Are Revived** (286) @(-446,-135)<br>
@@ -405,7 +467,7 @@ STRUCT/**Structure\_1** FIELD#4 "**Add variable 4**" : *L\<Struct\>* struct=Stru
 '*New Node Graph\_1*'/\[2\] **Teleport Player (Classic Mode)** (805) `in#1` "Target Location" = (1, 1, 1) : *Vec*<br>
 '*New Node Graph\_1*'/\[2\] **Teleport Player (Classic Mode)** (805) `in#2` "Target Rotation" = (2, 2, 2) : *Vec*
 
-# FILE `test/cases/gil/stage_7.gil`
+# FILE `stage_7.gil`
 
 **GRAPH** '<u>\<skill\></u>*New Character Skill Node Graph*' SKILL\_NODE\_GRAPH (guid 1082130435)<br>
 '<u>\<skill\></u>*New Character Skill Node Graph*'/\[1\] **Node Graph Starts** (200042/2001) @(0,0)<br>
@@ -413,27 +475,61 @@ STRUCT/**Structure\_1** FIELD#4 "**Add variable 4**" : *L\<Struct\>* struct=Stru
 '<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) @(375,1)<br>
 '<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `in#0` "Special Effects Asset Configuration ID" = id:2 : *Cfg*<br>
 '<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `in#1` "Location" \<- \[4\] **3D Vector Zoom** (200066/134) `out#0` "Result" : *Vec*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `in#1` "Location" = (0, 0, 0) : *Vec* *(default)* *(also wired)*<br>
 '<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `in#2` "Rotate" \<- \[5\] **Get Ray Detection Result** (200109/1047) `out#0` "On-Hit Location" : *Vec*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `in#2` "Rotate" = (0, 0, 0) : *Vec* *(default)* *(also wired)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `in#3` "Zoom Multiplier" = 0 : *Flt* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `in#4` "Special Effects Asset" = 0 : *Int* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `in#5` "Play Default Sound Effect" = Yes : *Bol* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[3\] **Play Timed Effects** (200038/2000) `meta.rpc#0` = 0 : *Int* *(default)*<br>
 '<u>\<skill\></u>*New Character Skill Node Graph*'/\[4\] **3D Vector Zoom** (200066/134) @(-42,195)<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[4\] **3D Vector Zoom** (200066/134) `in#0` "Zoom Multiplier" = 0 : *Flt* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[4\] **3D Vector Zoom** (200066/134) `in#1` "3D Vector" = (0, 0, 0) : *Vec* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[4\] **3D Vector Zoom** (200066/134) `out#0` "Result" = (0, 0, 0) : *Vec* *(default)*<br>
 '<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) @(-113.25,499.25)<br>
 '<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) `in#0` "Detect Initiator Entity" \<- \[6\] **Get Self Entity** (200033/1013) `out#0` "Self Entity" : *Ety*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) `in#1` "Launch Location" = (0, 0, 0) : *Vec* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) `in#2` "Launch Direction" = (0, 0, 0) : *Vec* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) `in#3` "Max Ray Length" = 0 : *Flt* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) `in#4` "Faction Filter" = enum:0«No \| Default \| None» : *Enum* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) `in#5` "Entity Type Filter" = \[\] : *L\<Enum\>* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) `in#6` "Hit Layer Filter" = \[\] : *L\<Enum\>* *(default)*<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[5\] **Get Ray Detection Result** (200109/1047) `out#0` "On-Hit Location" = (0, 0, 0) : *Vec* *(default)*<br>
 '<u>\<skill\></u>*New Character Skill Node Graph*'/\[6\] **Get Self Entity** (200033/1013) @(-415.5,510.25)<br>
+'<u>\<skill\></u>*New Character Skill Node Graph*'/\[6\] **Get Self Entity** (200033/1013) `out#0` "Self Entity" = id:0 : *Ety* *(default)*<br>
 **GRAPH** '<u>\<creation\></u>*New Creation Skill Node Graph*' CREATION\_SKILL\_GRAPH (guid 1082130436)<br>
 '<u>\<creation\></u>*New Creation Skill Node Graph*'/\[1\] **Node Graph Starts** (200042/2001) @(0,0)<br>
 '<u>\<creation\></u>*New Creation Skill Node Graph*'/\[1\] **Node Graph Starts** (200042/2001) `out.flow#0` -\> \[2\] **Taunt Target** (200089/2000) `in.flow#0`<br>
 '<u>\<creation\></u>*New Creation Skill Node Graph*'/\[2\] **Taunt Target** (200089/2000) @(385,-6)<br>
 '<u>\<creation\></u>*New Creation Skill Node Graph*'/\[2\] **Taunt Target** (200089/2000) `in#0` "Taunter Entity" \<- \[4\] **Traverse Entity List** (200055/2000) `out#0` "Current Entity" : *Ety*<br>
+'<u>\<creation\></u>*New Creation Skill Node Graph*'/\[2\] **Taunt Target** (200089/2000) `meta.rpc#0` = 0 : *Int* *(default)*<br>
 '<u>\<creation\></u>*New Creation Skill Node Graph*'/\[4\] **Traverse Entity List** (200055/2000) @(26,195)<br>
+'<u>\<creation\></u>*New Creation Skill Node Graph*'/\[4\] **Traverse Entity List** (200055/2000) `in#0` "Entity List" = \[\] : *L\<Ety\>* *(default)*<br>
+'<u>\<creation\></u>*New Creation Skill Node Graph*'/\[4\] **Traverse Entity List** (200055/2000) `out#0` "Current Entity" = id:0 : *Ety* *(default)*<br>
 **GRAPH** '<u>\<creation\></u>*New Creation Status Node Graph*' CREATION\_STATUS\_GRAPH (guid 1082130437)<br>
 '<u>\<creation\></u>*New Creation Status Node Graph*'/\[1\] **Execute only by sequence** (200126/4000) @(0,0) status\_ext=1/1<br>
 '<u>\<creation\></u>*New Creation Status Node Graph*'/\[1\] **Execute only by sequence** (200126/4000) `out.flow#0` "1" -\> \[2\] **Tactic: Ground Escape** (200138/4019) `in.flow#0`<br>
 '<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) @(431,-2)<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#0` "Execute" = Yes : *Bol* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#1` "Escape Trigger Distance" = 0 : *Flt* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#2` "Movement Speed" = enum:3601«Walk» : *Enum* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#3` "Maximum Escape Angle" = 0 : *Flt* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#4` "Minimum Escape Segments" = 0 : *Int* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#5` "Maximum Escape Segments" = 0 : *Int* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#6` "Minimum Escape Distance" = 0 : *Flt* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#7` "Maximum Escape Distance" = 0 : *Flt* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#8` "Escape Trigger CD" = 1 : *Flt* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#9` "Clear aggro and cancel tactic after countdown" = 0 : *Flt* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#10` "Whether restricted by territory" = Yes : *Bol* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#11` "Tactical Context" = '' : *Str* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Node Graph*'/\[2\] **Tactic: Ground Escape** (200138/4019) `in#12` "Can skill be interrupted" = No : *Bol* *(default)*<br>
 **GRAPH** '<u>\<creation\></u>*New Creation Status Decision Node Graph*' CREATION\_STATUS\_DECISION\_GRAPH (guid 1082130439)<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[1\] **Execute only by sequence** (200126/4000) @(0,0) status\_ext=1/2<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[1\] **Execute only by sequence** (200126/4000) `out.flow#1` "2" -\> \[2\] **Multiple Branches** (200127) `in.flow#0`<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[2\] **Multiple Branches** (200127) @(445,39)<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[2\] **Multiple Branches** (200127) `out.flow#0` "Default" -\> \[3\] **Switch to self execution status** (200128/4011) `in.flow#0`<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[3\] **Switch to self execution status** (200128/4011) @(883,144)<br>
+'<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[3\] **Switch to self execution status** (200128/4011) `in#0` "Execute" = Yes : *Bol* *(default)*<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[3\] **Switch to self execution status** (200128/4011) `in#1` "Status Node Graph Configuration ID" = id:1082130437 : *Cfg*<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[3\] **Switch to self execution status** (200128/4011) `in#2` "Autonomous Logic Parameter ID" = 0 : *Int*<br>
 **GRAPH** '<u>\<skill\></u>*New Character Control Skill Node Graph*' CHARACTER\_CONTROL\_SKILL\_GRAPH (guid 1082130438)<br>
@@ -443,19 +539,29 @@ STRUCT/**Structure\_1** FIELD#4 "**Add variable 4**" : *L\<Struct\>* struct=Stru
 **GRAPH** '<u>\<filter\></u>*New Filter Node Graph*' BOOLEAN\_FILTER\_GRAPH (guid 1082130433)<br>
 '<u>\<filter\></u>*New Filter Node Graph*'/\[1\] **Node Graph End (Boolean)** (200000) @(0,0)<br>
 '<u>\<filter\></u>*New Filter Node Graph*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" \<- \[2\] **Less Than** (200008/12) `out#0` "Result" : *Bol*<br>
+'<u>\<filter\></u>*New Filter Node Graph*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = No : *Bol* *(default)* *(also wired)*<br>
+'<u>\<filter\></u>*New Filter Node Graph*'/\[1\] **Node Graph End (Boolean)** (200000) `in#1` "Filter Return Type" = enum:1000010«Return Boolean» : *Enum* *(default)*<br>
 '<u>\<filter\></u>*New Filter Node Graph*'/\[2\] **Less Than** (200008/12) variant=C\<T:Int\> @(-531,-5)<br>
+'<u>\<filter\></u>*New Filter Node Graph*'/\[2\] **Less Than** (200008/12) `in#0` "op" = enum:101«Comparison Operators\_Less Than» : *Enum* *(default)*<br>
 '<u>\<filter\></u>*New Filter Node Graph*'/\[2\] **Less Than** (200008/12) `in#1` \<- \[3\] **Get List Length** (200018) `out#0` "Length" : *Int*<br>
+'<u>\<filter\></u>*New Filter Node Graph*'/\[2\] **Less Than** (200008/12) `in#1` = 0 : *Int* *(also wired)*<br>
 '<u>\<filter\></u>*New Filter Node Graph*'/\[2\] **Less Than** (200008/12) `in#2` = 0 : *Int*<br>
+'<u>\<filter\></u>*New Filter Node Graph*'/\[2\] **Less Than** (200008/12) `out#0` "Result" = No : *Bol* *(default)*<br>
 '<u>\<filter\></u>*New Filter Node Graph*'/\[3\] **Get List Length** (200018) @(-935,5)<br>
+'<u>\<filter\></u>*New Filter Node Graph*'/\[3\] **Get List Length** (200018) `out#0` "Length" = 0 : *Int* *(default)*<br>
 **GRAPH** '<u>\<filter\></u>*New Filter Node Graph\_1*' INTEGER\_FILTER\_GRAPH (guid 1082130434)<br>
 '<u>\<filter\></u>*New Filter Node Graph\_1*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)<br>
 '<u>\<filter\></u>*New Filter Node Graph\_1*'/\[1\] **Node Graph End (Integer)** (200122) `in#0` "Output Result (Integer)" \<- \[2\] **Get Custom Variable** (200016/41) `out#0` "Variable Value" : *Int*<br>
+'<u>\<filter\></u>*New Filter Node Graph\_1*'/\[1\] **Node Graph End (Integer)** (200122) `in#0` "Output Result (Integer)" = 0 : *Int* *(default)* *(also wired)*<br>
+'<u>\<filter\></u>*New Filter Node Graph\_1*'/\[1\] **Node Graph End (Integer)** (200122) `in#1` "Filter Return Type" = enum:10000011«Return Integer» : *Enum* *(default)*<br>
 '<u>\<filter\></u>*New Filter Node Graph\_1*'/\[2\] **Get Custom Variable** (200016/41) variant=C\<T:Int\> @(-467,2)<br>
 '<u>\<filter\></u>*New Filter Node Graph\_1*'/\[2\] **Get Custom Variable** (200016/41) `in#0` "Target Entity" \<- \[3\] **Get Self Entity** (200033/1013) `out#0` "Self Entity" : *Ety*<br>
 '<u>\<filter\></u>*New Filter Node Graph\_1*'/\[2\] **Get Custom Variable** (200016/41) `in#1` "Variable Name" = '`test`' : *Str*<br>
-'<u>\<filter\></u>*New Filter Node Graph\_1*'/\[3\] **Get Self Entity** (200033/1013) @(-413,-166)
+'<u>\<filter\></u>*New Filter Node Graph\_1*'/\[2\] **Get Custom Variable** (200016/41) `out#0` "Variable Value" = 0 : *Int*<br>
+'<u>\<filter\></u>*New Filter Node Graph\_1*'/\[3\] **Get Self Entity** (200033/1013) @(-413,-166)<br>
+'<u>\<filter\></u>*New Filter Node Graph\_1*'/\[3\] **Get Self Entity** (200033/1013) `out#0` "Self Entity" = id:0 : *Ety* *(default)*
 
-# FILE `test/cases/gil/stage_9.gil`
+# FILE `stage_9.gil`
 
 **DECL** "**Signal\_1**" SIGNAL\_NODE\_DECL guid='`1073741825`'<br>
 DECL/**Signal\_1** SEND\_SIGNAL name='`Signal_1`' server\_node=1073741826 client\_node=1073741827<br>
@@ -479,5 +585,9 @@ DECL/**Signal\_1** `meta#0` "Signal Name" uid=180<br>
 '<u>\<skill\></u>*New Character Control Skill Node Graph*'/\[1\] **Node Graph Starts** (200042/2001) @(0,0)<br>
 **GRAPH** '<u>\<filter\></u>*New Filter Node Graph*' BOOLEAN\_FILTER\_GRAPH (guid 1082130433)<br>
 '<u>\<filter\></u>*New Filter Node Graph*'/\[1\] **Node Graph End (Boolean)** (200000) @(0,0)<br>
+'<u>\<filter\></u>*New Filter Node Graph*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = No : *Bol* *(default)*<br>
+'<u>\<filter\></u>*New Filter Node Graph*'/\[1\] **Node Graph End (Boolean)** (200000) `in#1` "Filter Return Type" = enum:1000010«Return Boolean» : *Enum* *(default)*<br>
 **GRAPH** '<u>\<filter\></u>*New Filter Node Graph\_1*' INTEGER\_FILTER\_GRAPH (guid 1082130434)<br>
-'<u>\<filter\></u>*New Filter Node Graph\_1*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)
+'<u>\<filter\></u>*New Filter Node Graph\_1*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)<br>
+'<u>\<filter\></u>*New Filter Node Graph\_1*'/\[1\] **Node Graph End (Integer)** (200122) `in#0` "Output Result (Integer)" = 0 : *Int* *(default)*<br>
+'<u>\<filter\></u>*New Filter Node Graph\_1*'/\[1\] **Node Graph End (Integer)** (200122) `in#1` "Filter Return Type" = enum:10000011«Return Integer» : *Enum* *(default)*

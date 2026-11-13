@@ -1,4 +1,4 @@
-﻿# File `test/cases/gil/stage_0.gil`
+﻿# File `stage_0.gil`
 
 ## Graph '*Graph*'
 
@@ -9,7 +9,7 @@
 
 | Name | Type | Public | Struct | Value |
 | --- | --- | --- | --- | --- |
-| **Graph\_Var** | *Ety* | false |   |   |
+| **Graph\_Var** | *Ety* | false |   | id:0 |
 
 ### Comments
 
@@ -63,7 +63,7 @@
 - **type**: STATUS\_NODE\_GRAPH
 - **guid**: '`1073741826`'
 
-# File `test/cases/gil/stage_012379.gil`
+# File `stage_012379.gil`
 
 ## Decl "**Signal\_2**"
 
@@ -187,7 +187,7 @@
 
 | Name | Type | Public | Struct | Value |
 | --- | --- | --- | --- | --- |
-| **Graph\_Var** | *Ety* | false |   |   |
+| **Graph\_Var** | *Ety* | false |   | id:0 |
 
 ### Comments
 
@@ -268,6 +268,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#1` | "1" | -\> | \[15\] **Create Composite Node(1)** (1073741826) `in.flow#0` |   |   |
 | `in#0` | "Control Expression" | \<- | \[3\] **When Tab Is Selected** (307) `out#2` "Tab ID" | *Int* |   |
+| `in#0` | "Control Expression" | = | 0 | *Int* | also wired |
 
 \[15\] **Create Composite Node(1)** (1073741826) user=COMPOSITE @(480.42856,307)
 
@@ -282,6 +283,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Value" | \<- | \[15\] **Create Composite Node(1)** (1073741826) `out#0` "X-Component" | *Flt* |   |
+| `in#1` | "Value" | = | 0 | *Flt* | also wired |
 
 ## Graph '*New Node Graph\_2*'
 
@@ -444,6 +446,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | = | 42 | *Int* |   |
+| `out#1` | "Value" | = | 0 | *Int* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(1)*'
 
@@ -476,6 +479,11 @@
 
 \[2\] **Data Type Conversion** (180/182) variant=C\<K:Int,V:Str\> @(186.71428,-546.1429)
 
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Input" | = | 0 | *Int* |   |
+| `out#0` | "Output" | = | '' | *Str* |   |
+
 \[6\] **When Entering Collision Trigger** (92) @(-344,-190.28572)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
@@ -493,6 +501,8 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Input 1" | \<- | \[6\] **When Entering Collision Trigger** (92) `out#4` "Trigger ID" | *Int* |   |
+| `in#0` | "Input 1" | = | 0 | *Int* | also wired |
+| `in#1` | "Input 2" | = | 0 | *Int* |   |
 
 \[11\] **Double Branch** (2) @(268.85715,226.85715)
 
@@ -521,17 +531,40 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Special Effects Asset Configuration ID" | = | id:2 | *Cfg* |   |
 | `in#1` | "Location" | \<- | \[4\] **3D Vector Zoom** (200066/134) `out#0` "Result" | *Vec* |   |
+| `in#1` | "Location" | = | (0, 0, 0) | *Vec* | default, also wired |
 | `in#2` | "Rotate" | \<- | \[5\] **Get Ray Detection Result** (200109/1047) `out#0` "On-Hit Location" | *Vec* |   |
+| `in#2` | "Rotate" | = | (0, 0, 0) | *Vec* | default, also wired |
+| `in#3` | "Zoom Multiplier" | = | 0 | *Flt* | default |
+| `in#4` | "Special Effects Asset" | = | 0 | *Int* | default |
+| `in#5` | "Play Default Sound Effect" | = | Yes | *Bol* | default |
+| `meta.rpc#0` |   | = | 0 | *Int* | default |
 
 \[4\] **3D Vector Zoom** (200066/134) @(-42,195)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Zoom Multiplier" | = | 0 | *Flt* | default |
+| `in#1` | "3D Vector" | = | (0, 0, 0) | *Vec* | default |
+| `out#0` | "Result" | = | (0, 0, 0) | *Vec* | default |
 
 \[5\] **Get Ray Detection Result** (200109/1047) @(-113.25,499.25)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Detect Initiator Entity" | \<- | \[6\] **Get Self Entity** (200033/1013) `out#0` "Self Entity" | *Ety* |   |
+| `in#1` | "Launch Location" | = | (0, 0, 0) | *Vec* | default |
+| `in#2` | "Launch Direction" | = | (0, 0, 0) | *Vec* | default |
+| `in#3` | "Max Ray Length" | = | 0 | *Flt* | default |
+| `in#4` | "Faction Filter" | = | enum:0«No \| Default \| None» | *Enum* | default |
+| `in#5` | "Entity Type Filter" | = | \[\] | *L\<Enum\>* | default |
+| `in#6` | "Hit Layer Filter" | = | \[\] | *L\<Enum\>* | default |
+| `out#0` | "On-Hit Location" | = | (0, 0, 0) | *Vec* | default |
 
 \[6\] **Get Self Entity** (200033/1013) @(-415.5,510.25)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out#0` | "Self Entity" | = | id:0 | *Ety* | default |
 
 ## Graph '<u>\<skill\></u>*New Character Skill Node Graph\_1*'
 
@@ -560,8 +593,14 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Taunter Entity" | \<- | \[4\] **Traverse Entity List** (200055/2000) `out#0` "Current Entity" | *Ety* |   |
+| `meta.rpc#0` |   | = | 0 | *Int* | default |
 
 \[4\] **Traverse Entity List** (200055/2000) @(26,195)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Entity List" | = | \[\] | *L\<Ety\>* | default |
+| `out#0` | "Current Entity" | = | id:0 | *Ety* | default |
 
 ## Graph '<u>\<creation\></u>*New Creation Skill Node Graph\_1*'
 
@@ -586,6 +625,22 @@
 | `out.flow#0` | "1" | -\> | \[2\] **Tactic: Ground Escape** (200138/4019) `in.flow#0` |   |   |
 
 \[2\] **Tactic: Ground Escape** (200138/4019) @(431,-2)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Execute" | = | Yes | *Bol* | default |
+| `in#1` | "Escape Trigger Distance" | = | 0 | *Flt* | default |
+| `in#2` | "Movement Speed" | = | enum:3601«Walk» | *Enum* | default |
+| `in#3` | "Maximum Escape Angle" | = | 0 | *Flt* | default |
+| `in#4` | "Minimum Escape Segments" | = | 0 | *Int* | default |
+| `in#5` | "Maximum Escape Segments" | = | 0 | *Int* | default |
+| `in#6` | "Minimum Escape Distance" | = | 0 | *Flt* | default |
+| `in#7` | "Maximum Escape Distance" | = | 0 | *Flt* | default |
+| `in#8` | "Escape Trigger CD" | = | 1 | *Flt* | default |
+| `in#9` | "Clear aggro and cancel tactic after countdown" | = | 0 | *Flt* | default |
+| `in#10` | "Whether restricted by territory" | = | Yes | *Bol* | default |
+| `in#11` | "Tactical Context" | = | '' | *Str* | default |
+| `in#12` | "Can skill be interrupted" | = | No | *Bol* | default |
 
 ## Graph '<u>\<creation\></u>*New Creation Status Node Graph\_1*'
 
@@ -619,6 +674,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
+| `in#0` | "Execute" | = | Yes | *Bol* | default |
 | `in#1` | "Status Node Graph Configuration ID" | = | id:1082130437 | *Cfg* |   |
 | `in#2` | "Autonomous Logic Parameter ID" | = | 0 | *Int* |   |
 
@@ -667,15 +723,24 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Output Result (Boolean)" | \<- | \[2\] **Less Than** (200008/12) `out#0` "Result" | *Bol* |   |
+| `in#0` | "Output Result (Boolean)" | = | No | *Bol* | default, also wired |
+| `in#1` | "Filter Return Type" | = | enum:1000010«Return Boolean» | *Enum* | default |
 
 \[2\] **Less Than** (200008/12) variant=C\<T:Int\> @(-531,-5)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
+| `in#0` | "op" | = | enum:101«Comparison Operators\_Less Than» | *Enum* | default |
 | `in#1` |   | \<- | \[3\] **Get List Length** (200018) `out#0` "Length" | *Int* |   |
+| `in#1` |   | = | 0 | *Int* | also wired |
 | `in#2` |   | = | 0 | *Int* |   |
+| `out#0` | "Result" | = | No | *Bol* | default |
 
 \[3\] **Get List Length** (200018) @(-935,5)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out#0` | "Length" | = | 0 | *Int* | default |
 
 ## Graph '<u>\<filter\></u>*New Filter Node Graph\_2*'
 
@@ -685,6 +750,11 @@
 ### Nodes
 
 \[1\] **Node Graph End (Boolean)** (200000) @(0,0)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Output Result (Boolean)" | = | No | *Bol* | default |
+| `in#1` | "Filter Return Type" | = | enum:1000010«Return Boolean» | *Enum* | default |
 
 ## Graph '<u>\<filter\></u>*New Filter Node Graph\_1*'
 
@@ -698,6 +768,8 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Output Result (Integer)" | \<- | \[2\] **Get Custom Variable** (200016/41) `out#0` "Variable Value" | *Int* |   |
+| `in#0` | "Output Result (Integer)" | = | 0 | *Int* | default, also wired |
+| `in#1` | "Filter Return Type" | = | enum:10000011«Return Integer» | *Enum* | default |
 
 \[2\] **Get Custom Variable** (200016/41) variant=C\<T:Int\> @(-467,2)
 
@@ -705,8 +777,13 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Target Entity" | \<- | \[3\] **Get Self Entity** (200033/1013) `out#0` "Self Entity" | *Ety* |   |
 | `in#1` | "Variable Name" | = | '`test`' | *Str* |   |
+| `out#0` | "Variable Value" | = | 0 | *Int* |   |
 
 \[3\] **Get Self Entity** (200033/1013) @(-413,-166)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out#0` | "Self Entity" | = | id:0 | *Ety* | default |
 
 ## Graph '<u>\<filter\></u>*New Filter Node Graph\_1\_1*'
 
@@ -717,7 +794,12 @@
 
 \[1\] **Node Graph End (Integer)** (200122) @(0,0)
 
-# File `test/cases/gil/stage_1.gil`
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Output Result (Integer)" | = | 0 | *Int* | default |
+| `in#1` | "Filter Return Type" | = | enum:10000011«Return Integer» | *Enum* | default |
+
+# File `stage_1.gil`
 
 ## Graph '*New Node Graph*'
 
@@ -751,6 +833,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#1` | "1" | -\> | \[15\] **Create Composite Node(1)** (1073741826) `in.flow#0` |   |   |
 | `in#0` | "Control Expression" | \<- | \[3\] **When Tab Is Selected** (307) `out#2` "Tab ID" | *Int* |   |
+| `in#0` | "Control Expression" | = | 0 | *Int* | also wired |
 
 \[15\] **Create Composite Node(1)** (1073741826) user=COMPOSITE @(480.42856,307)
 
@@ -765,6 +848,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Value" | \<- | \[15\] **Create Composite Node(1)** (1073741826) `out#0` "X-Component" | *Flt* |   |
+| `in#1` | "Value" | = | 0 | *Flt* | also wired |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node*'
 
@@ -785,6 +869,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Initial Value" | = | 42 | *Int* |   |
+| `out#1` | "Value" | = | 0 | *Int* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(1)*'
 
@@ -817,6 +902,11 @@
 
 \[2\] **Data Type Conversion** (180/182) variant=C\<K:Int,V:Str\> @(186.71428,-546.1429)
 
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Input" | = | 0 | *Int* |   |
+| `out#0` | "Output" | = | '' | *Str* |   |
+
 \[6\] **When Entering Collision Trigger** (92) @(-344,-190.28572)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
@@ -834,6 +924,8 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Input 1" | \<- | \[6\] **When Entering Collision Trigger** (92) `out#4` "Trigger ID" | *Int* |   |
+| `in#0` | "Input 1" | = | 0 | *Int* | also wired |
+| `in#1` | "Input 2" | = | 0 | *Int* |   |
 
 \[11\] **Double Branch** (2) @(268.85715,226.85715)
 
@@ -843,7 +935,7 @@
 
 \[21\] **Split 3D Vector** (9) @(709.5714,-327.57144)
 
-# File `test/cases/gil/stage_2.gil`
+# File `stage_2.gil`
 
 ## Decl "**Signal\_2**"
 
@@ -976,7 +1068,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` |   | -\> | \[4\] **Send Signal** (1073741829) `in.flow#0` |   |   |
 
-# File `test/cases/gil/stage_3.gil`
+# File `stage_3.gil`
 
 ## Struct "**Structure**"
 
@@ -1058,7 +1150,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Structure\_1" | \<- | \[13\] **Assemble Structure** (1073741834) `out#0` "Structure\_1" | *Struct* |   |
 
-# File `test/cases/gil/stage_6.gil`
+# File `stage_6.gil`
 
 ## Graph '*New Node Graph*'
 
@@ -1100,7 +1192,7 @@
 | `in#1` | "Target Location" | = | (1, 1, 1) | *Vec* |   |
 | `in#2` | "Target Rotation" | = | (2, 2, 2) | *Vec* |   |
 
-# File `test/cases/gil/stage_7.gil`
+# File `stage_7.gil`
 
 ## Graph '<u>\<skill\></u>*New Character Skill Node Graph*'
 
@@ -1121,17 +1213,40 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Special Effects Asset Configuration ID" | = | id:2 | *Cfg* |   |
 | `in#1` | "Location" | \<- | \[4\] **3D Vector Zoom** (200066/134) `out#0` "Result" | *Vec* |   |
+| `in#1` | "Location" | = | (0, 0, 0) | *Vec* | default, also wired |
 | `in#2` | "Rotate" | \<- | \[5\] **Get Ray Detection Result** (200109/1047) `out#0` "On-Hit Location" | *Vec* |   |
+| `in#2` | "Rotate" | = | (0, 0, 0) | *Vec* | default, also wired |
+| `in#3` | "Zoom Multiplier" | = | 0 | *Flt* | default |
+| `in#4` | "Special Effects Asset" | = | 0 | *Int* | default |
+| `in#5` | "Play Default Sound Effect" | = | Yes | *Bol* | default |
+| `meta.rpc#0` |   | = | 0 | *Int* | default |
 
 \[4\] **3D Vector Zoom** (200066/134) @(-42,195)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Zoom Multiplier" | = | 0 | *Flt* | default |
+| `in#1` | "3D Vector" | = | (0, 0, 0) | *Vec* | default |
+| `out#0` | "Result" | = | (0, 0, 0) | *Vec* | default |
 
 \[5\] **Get Ray Detection Result** (200109/1047) @(-113.25,499.25)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Detect Initiator Entity" | \<- | \[6\] **Get Self Entity** (200033/1013) `out#0` "Self Entity" | *Ety* |   |
+| `in#1` | "Launch Location" | = | (0, 0, 0) | *Vec* | default |
+| `in#2` | "Launch Direction" | = | (0, 0, 0) | *Vec* | default |
+| `in#3` | "Max Ray Length" | = | 0 | *Flt* | default |
+| `in#4` | "Faction Filter" | = | enum:0«No \| Default \| None» | *Enum* | default |
+| `in#5` | "Entity Type Filter" | = | \[\] | *L\<Enum\>* | default |
+| `in#6` | "Hit Layer Filter" | = | \[\] | *L\<Enum\>* | default |
+| `out#0` | "On-Hit Location" | = | (0, 0, 0) | *Vec* | default |
 
 \[6\] **Get Self Entity** (200033/1013) @(-415.5,510.25)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out#0` | "Self Entity" | = | id:0 | *Ety* | default |
 
 ## Graph '<u>\<creation\></u>*New Creation Skill Node Graph*'
 
@@ -1151,8 +1266,14 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Taunter Entity" | \<- | \[4\] **Traverse Entity List** (200055/2000) `out#0` "Current Entity" | *Ety* |   |
+| `meta.rpc#0` |   | = | 0 | *Int* | default |
 
 \[4\] **Traverse Entity List** (200055/2000) @(26,195)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Entity List" | = | \[\] | *L\<Ety\>* | default |
+| `out#0` | "Current Entity" | = | id:0 | *Ety* | default |
 
 ## Graph '<u>\<creation\></u>*New Creation Status Node Graph*'
 
@@ -1168,6 +1289,22 @@
 | `out.flow#0` | "1" | -\> | \[2\] **Tactic: Ground Escape** (200138/4019) `in.flow#0` |   |   |
 
 \[2\] **Tactic: Ground Escape** (200138/4019) @(431,-2)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Execute" | = | Yes | *Bol* | default |
+| `in#1` | "Escape Trigger Distance" | = | 0 | *Flt* | default |
+| `in#2` | "Movement Speed" | = | enum:3601«Walk» | *Enum* | default |
+| `in#3` | "Maximum Escape Angle" | = | 0 | *Flt* | default |
+| `in#4` | "Minimum Escape Segments" | = | 0 | *Int* | default |
+| `in#5` | "Maximum Escape Segments" | = | 0 | *Int* | default |
+| `in#6` | "Minimum Escape Distance" | = | 0 | *Flt* | default |
+| `in#7` | "Maximum Escape Distance" | = | 0 | *Flt* | default |
+| `in#8` | "Escape Trigger CD" | = | 1 | *Flt* | default |
+| `in#9` | "Clear aggro and cancel tactic after countdown" | = | 0 | *Flt* | default |
+| `in#10` | "Whether restricted by territory" | = | Yes | *Bol* | default |
+| `in#11` | "Tactical Context" | = | '' | *Str* | default |
+| `in#12` | "Can skill be interrupted" | = | No | *Bol* | default |
 
 ## Graph '<u>\<creation\></u>*New Creation Status Decision Node Graph*'
 
@@ -1192,6 +1329,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
+| `in#0` | "Execute" | = | Yes | *Bol* | default |
 | `in#1` | "Status Node Graph Configuration ID" | = | id:1082130437 | *Cfg* |   |
 | `in#2` | "Autonomous Logic Parameter ID" | = | 0 | *Int* |   |
 
@@ -1222,15 +1360,24 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Output Result (Boolean)" | \<- | \[2\] **Less Than** (200008/12) `out#0` "Result" | *Bol* |   |
+| `in#0` | "Output Result (Boolean)" | = | No | *Bol* | default, also wired |
+| `in#1` | "Filter Return Type" | = | enum:1000010«Return Boolean» | *Enum* | default |
 
 \[2\] **Less Than** (200008/12) variant=C\<T:Int\> @(-531,-5)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
+| `in#0` | "op" | = | enum:101«Comparison Operators\_Less Than» | *Enum* | default |
 | `in#1` |   | \<- | \[3\] **Get List Length** (200018) `out#0` "Length" | *Int* |   |
+| `in#1` |   | = | 0 | *Int* | also wired |
 | `in#2` |   | = | 0 | *Int* |   |
+| `out#0` | "Result" | = | No | *Bol* | default |
 
 \[3\] **Get List Length** (200018) @(-935,5)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out#0` | "Length" | = | 0 | *Int* | default |
 
 ## Graph '<u>\<filter\></u>*New Filter Node Graph\_1*'
 
@@ -1244,6 +1391,8 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Output Result (Integer)" | \<- | \[2\] **Get Custom Variable** (200016/41) `out#0` "Variable Value" | *Int* |   |
+| `in#0` | "Output Result (Integer)" | = | 0 | *Int* | default, also wired |
+| `in#1` | "Filter Return Type" | = | enum:10000011«Return Integer» | *Enum* | default |
 
 \[2\] **Get Custom Variable** (200016/41) variant=C\<T:Int\> @(-467,2)
 
@@ -1251,10 +1400,15 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Target Entity" | \<- | \[3\] **Get Self Entity** (200033/1013) `out#0` "Self Entity" | *Ety* |   |
 | `in#1` | "Variable Name" | = | '`test`' | *Str* |   |
+| `out#0` | "Variable Value" | = | 0 | *Int* |   |
 
 \[3\] **Get Self Entity** (200033/1013) @(-413,-166)
 
-# File `test/cases/gil/stage_9.gil`
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out#0` | "Self Entity" | = | id:0 | *Ety* | default |
+
+# File `stage_9.gil`
 
 ## Decl "**Signal\_1**"
 
@@ -1349,6 +1503,11 @@
 
 \[1\] **Node Graph End (Boolean)** (200000) @(0,0)
 
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Output Result (Boolean)" | = | No | *Bol* | default |
+| `in#1` | "Filter Return Type" | = | enum:1000010«Return Boolean» | *Enum* | default |
+
 ## Graph '<u>\<filter\></u>*New Filter Node Graph\_1*'
 
 - **type**: INTEGER\_FILTER\_GRAPH
@@ -1357,3 +1516,8 @@
 ### Nodes
 
 \[1\] **Node Graph End (Integer)** (200122) @(0,0)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Output Result (Integer)" | = | 0 | *Int* | default |
+| `in#1` | "Filter Return Type" | = | enum:10000011«Return Integer» | *Enum* | default |

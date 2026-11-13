@@ -94,3 +94,55 @@ RESOURCE "Network Status" UI_CONTROL guid='1073756699'
 RESOURCE "Struggle Button" UI_CONTROL guid='1073756700'
 RESOURCE "Voice Chat Button" UI_CONTROL guid='1073756701'
 RESOURCE "Voice Chat Hint Queue" UI_CONTROL guid='1073756702'
+VARIABLE Stage 1094713345:"Stage Entity" 'Environment' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'Phase' : Str = ''
+VARIABLE Stage 1094713345:"Stage Entity" 'Hunt_Weights' : Flt = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'G_TotalPlayers' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'Is_SinglePlayer' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'G_ReadyPlayers' : Dict<Int,Ety> = {}
+VARIABLE Stage 1094713345:"Stage Entity" 'Initial_Text' : Str = ''
+VARIABLE Stage 1094713345:"Stage Entity" 'Initial_Lines' : L<Str> = ['<color=#ACFF44>Waiting for players...</color>', '<color=#FFCC33>Choose your role!</color>', '', '<color=#FF5E41>You will be Hunter!</color>', '<color=#37FFFF>Two-player High Score Battle</color>', '??']
+VARIABLE Stage 1094713345:"Stage Entity" 'Total_Weight' : Flt = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'G_NooneHunter' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Timer' : L<Str> = ['initial', 'rebels', 'hunter', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Prepare' : L<Str> = ['<color=#FFCC33>Hunting starts in:</color>', '<color=#FFCC33>Hunter released in:</color>', '', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Hunt' : L<Str> = ['', '<color=#ACFF44>Time to repair:</color>', '<color=#ACFF44>Time till victory:</color>', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Single' : L<Str> = ['', '<color=#ACFF44>Test run mode</color>', '<color=#ACFF44>Test run mode</color>', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Text_Who_Rebels' : Str = '<color=#37FFFF>YOU ARE A REBEL</color>; the hunter is:\\n'
+VARIABLE Stage 1094713345:"Stage Entity" 'Text_Who_Hunter' : Str = 'YOU ARE THE HUNTER'
+VARIABLE Stage 1094713345:"Stage Entity" 'G_DevicesRepaired' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'G_NeedRepair' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'Game_Winner' : Str = ''
+VARIABLE Stage 1094713345:"Stage Entity" 'G_OneRebel' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'G_HuntStarted' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Hunters' : Int = 1
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Devices' : Int = -2
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Repair' : Int = 1
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Time' : Flt = 300
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Fixing' : Int = 30
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Prison_Time' : Int = 10
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Devices_Used' : Dict<Ety,Bol> = {}
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Devices_Max' : Int = 999
+VARIABLE Stage 1094713345:"Stage Entity" 'Nicknames' : Dict<Int,Str> = {}
+VARIABLE Stage 1094713345:"Stage Entity" 'Roles' : Dict<Int,Str> = {}
+VARIABLE Stage 1094713345:"Stage Entity" 'G_CurrentScore' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'V_PlayerConnection' : Dict<Int,Ety> = {}
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Stamina' : Int = 300
+VARIABLE Stage 1094713345:"Stage Entity" 'Are_Two_Players' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Trace_CD' : Flt = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Tour_Round' : Int = 1
+VARIABLE Stage 1094713345:"Stage Entity" 'G_BestScore' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Tour' : L<Str> = ['', '<color=#ACFF44>Round: </color>', '<color=#ACFF44>Round: </color>', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Tour_Nicknames' : L<Str> = ['', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Tour_Restart' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'C_Tasker_Task' : Str = ''
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Have_Players' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'C_ReadyPlayers' : Ety = id:0
+VARIABLE Stage 1094713345:"Stage Entity" 'Current_Map' : Str = 'NONE'
+VARIABLE Stage 1094713345:"Stage Entity" 'C_Do_Restart' : Str = ''
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Bad' : L<Str> = ['??', '??', '??', '??']
+VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Empty' : L<Str> = ['', '', '', '']
+VARIABLE Stage 1094713345:"Stage Entity" 'Insiders' : L<Ety> = []
+VARIABLE Stage 1094713345:"Stage Entity" 'U_Game_Mode' : L<Int> = [101027, 0, 0, 0]
+VARIABLE Stage 1094713345:"Stage Entity" 'Debug_Entities' : Int = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'UI_Prefab' : Dict<Str,Pfb> = {'Beacon': id:10005076, 'Invis': id:10005077, 'Area': id:20001849, 'Bow': id:20002302, 'Device': id:10005029}

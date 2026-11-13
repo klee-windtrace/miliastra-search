@@ -1,5 +1,5 @@
 GRAPH 'Graph' ENTITY_NODE_GRAPH (guid 1073741825)
-'Graph'/VAR Graph_Var : Ety public=false
+'Graph'/VAR Graph_Var : Ety public=false = id:0
 'Graph'/COMMENT 'Comment' @(-193,-100)
 'Graph'/[1] When Entity Is Created (71) @(-219,48)
 'Graph'/[1] When Entity Is Created (71) out.flow#0 -> [4] Double Branch (2) in.flow#0

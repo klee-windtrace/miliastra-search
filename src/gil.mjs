@@ -50,11 +50,11 @@ function folderOf(raw, key) {
 function listOpaque(g, raw) {
   const out = [];
   const add = (section, classId, className, guid, name, extra) => out.push({ section, classId, className, guid: guid ?? null, name: name ?? '', ...extra });
-  const graphMounts = (info, slotOf) => (info?.graphs || []).map((r) => ({ slot: slotOf(r), graph: r.guid, service: r.service }));
+  const graphMounts = (info, slotOf) => (info?.graphs || []).map((r) => ({ slot: slotOf(r), graph: r.guid, service: r.service, edits: r.edits }));
   for (const t of g.templates?.entries || []) {
     const cls = t.config_id === PROJECTILE_BASE_CONFIG && band(t.guid) === 1 ? 25 : TEMPLATE_CLASS_BY_BAND[band(t.guid)];
     const slot = TEMPLATE_SLOT_BY_BAND[band(t.guid)] || 'entity';
-    add('root.4', cls ?? 0, cls == null ? 'UNKNOWN_TYPE' : null, t.guid, componentName(t.components), { mounts: graphMounts(raw.templates.get(t.guid), () => slot) });
+    add('root.4', cls ?? 0, cls == null ? 'UNKNOWN_TYPE' : null, t.guid, componentName(t.components), { mounts: graphMounts(raw.templates.get(t.guid), () => slot), variables: raw.templates.get(t.guid)?.variables ?? null });
   }
   for (const e of g.entities?.entries || []) {
     const b = band(e.guid);
@@ -62,9 +62,9 @@ function listOpaque(g, raw) {
     // Player / character entities mirror their template (same name, same graphs): the mounts are reported on the template only.
     const mounts = ENTITY_EXTRA_BY_BAND[b] === 'GIL_PLAYER_ENTITY' || ENTITY_EXTRA_BY_BAND[b] === 'GIL_CHARACTER_ENTITY' ? [] : graphMounts(info, () => 'entity');
     // An object entity is STATIC unless it carries the dynamic component list (see mounts.mjs). Creation entities are always dynamic.
-    if (b === 1) add('root.5', 3, info?.dynamic === false ? 'STATIC_ENTITY' : null, e.guid, componentName(e.components), { mounts, dynamic: info?.dynamic !== false, parent: info?.parent ?? null });
-    else if (ENTITY_CLASS_BY_BAND[b]) add('root.5', ENTITY_CLASS_BY_BAND[b], null, e.guid, componentName(e.components), { mounts, parent: info?.parent ?? null });
-    else add('root.5', null, ENTITY_EXTRA_BY_BAND[b] || 'UNKNOWN_TYPE', e.guid, componentName(e.components), { mounts });
+    if (b === 1) add('root.5', 3, info?.dynamic === false ? 'STATIC_ENTITY' : null, e.guid, componentName(e.components), { mounts, dynamic: info?.dynamic !== false, parent: info?.parent ?? null, variables: info?.variables ?? null });
+    else if (ENTITY_CLASS_BY_BAND[b]) add('root.5', ENTITY_CLASS_BY_BAND[b], null, e.guid, componentName(e.components), { mounts, parent: info?.parent ?? null, variables: info?.variables ?? null });
+    else add('root.5', null, ENTITY_EXTRA_BY_BAND[b] || 'UNKNOWN_TYPE', e.guid, componentName(e.components), { mounts, parent: info?.parent ?? null, variables: info?.variables ?? null });
   }
   for (const t of g.terrains?.entries || []) add('root.7', 5, null, t.guid, t.info?.name);
   for (const u of g.ui?.entries || []) {
@@ -80,7 +80,7 @@ function listOpaque(g, raw) {
     const name = componentName(c.components);
     const info = raw.configs.get(c.guid);
     let mounts = [];
-    if (c.config_type === CONFIG_TYPE_STATUS && info?.statusGraph) mounts = [{ slot: 'status', graph: info.statusGraph.guid, service: info.statusGraph.service }];
+    if (c.config_type === CONFIG_TYPE_STATUS && info?.statusGraph) mounts = [{ slot: 'status', graph: info.statusGraph.guid, service: info.statusGraph.service, edits: [] }];
     if (c.config_type === CONFIG_TYPE_CLASS) mounts = graphMounts(info, (r) => CLASS_SLOT_BY_LABEL[r.label] || 'entity');
     if (CONFIG_CLASS[c.config_type]) add('root.15', CONFIG_CLASS[c.config_type], null, c.guid, name, { mounts });
     else add('root.15', null, CONFIG_EXTRA[c.config_type] || `GIL_CONFIG_${c.config_type}`, c.guid, name, { mounts });
@@ -97,7 +97,7 @@ function listOpaque(g, raw) {
 
 /**
  * Decode a .gil payload. Returns an AssetBundle-shaped object (`resources` only, no `dependencies`: a level has no
- * primary/dependency split) plus `level` metadata. Every entry carries `_gil` = { section, folder?, folderRank?, folderPos?, mounts?, dynamic? }, and
+ * primary/dependency split) plus `level` metadata. Every entry carries `_gil` = { section, folder?, folderRank?, folderPos?, mounts?, dynamic?, parent?, variables? }, and
  * { classId, className } when the class is not the plain numeric `resource_class`.
  */
 export function decodeGil(payload, root, census) {
@@ -142,7 +142,7 @@ export function decodeGil(payload, root, census) {
   for (const o of listOpaque(g, raw)) {
     const where = FOLDER_BY_CLASS[o.classId];
     resources.push({ identity: { asset_guid: o.guid ?? undefined }, internal_name: o.name, resource_class: o.classId ?? 0,
-      _gil: { section: o.section, className: o.className, classId: o.classId, mounts: o.mounts || [], dynamic: o.dynamic, parent: o.parent ?? null,
+      _gil: { section: o.section, className: o.className, classId: o.classId, mounts: o.mounts || [], dynamic: o.dynamic, parent: o.parent ?? null, variables: o.variables ?? null,
         ...(where && o.guid != null ? folderOf(raw, folderKey(where, o.guid)) : {}) } });
   }
   return {

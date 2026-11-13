@@ -1,7 +1,7 @@
 ﻿// L2: semantic model, independent of protobuf field names.
 //
 //   Bundle   { file, header, fileSize, format, formatDetectedBy, level, engineVersion, modeFlag, exportTag, resources[], census, warnings[] }
-//   Resource { role:'primary'|'dependency', idx, classId, className, section, folder, folderRank, folderPos, mounts[], name, guid, identity, refs[],
+//   Resource { role:'primary'|'dependency', idx, classId, className, section, folder, folderRank, folderPos, parentId, variables[]|null, mounts[], name, guid, identity, refs[],
 //              kind:'graph'|'interface'|'struct'|'opaque', graph?, iface?, struct?, gkey? }
 //   Graph    { name, guid, identity, kind, service, nodes[], edges[], anomalies[], variables[], comments[], portMappings[], affiliations[] }
 //   Node     { index, shell:Loc, kernel:Loc|null, x, y, pins[], comment, signalVersion, statusExt, ctxDecl, usingStructs[] }
@@ -11,7 +11,7 @@
 
 import { unwrapContainer, detectFormat } from './container.mjs';
 import { decodeGil } from './gil.mjs';
-import { scanGiaEntities, DEFAULT_TAB_RANK } from './mounts.mjs';
+import { scanGiaDefinitions, DEFAULT_TAB_RANK } from './mounts.mjs';
 import { loadSchema } from './schema.mjs';
 import { decodeMessage, Census } from './decode.mjs';
 
@@ -49,6 +49,18 @@ export const CLIENT_TYPES = {
   21: 'L<Pfb>', 22: 'Struct', 23: 'L<Struct>', 24: 'Dict', 25: 'L<Fct>',
 };
 export const typeName = (backend, id) => (backend === 2 ? CLIENT_TYPES : SERVER_TYPES)[id] ?? `type#${id}`;
+
+/**
+ * A custom variable (varscan.mjs) with its type spelled out: `type` is the datatype word (`Int`, `L<Str>`, `Dict`), `label` adds what a dictionary
+ * maps (`Dict<Str,Int>`). A struct's id is not part of either: see `structId`.
+ */
+/** What makes two variables the same type: the label (`Dict<Str,Int>`) and, for a struct, the struct. */
+export const variableTypeKey = (v) => `${v.label}${v.structId != null ? `#${v.structId}` : ''}`;
+
+export function buildVariable(v) {
+  const type = typeName(1, v.typeId);
+  return { ...v, type, label: v.keyType == null ? type : `${type}<${typeName(1, v.keyType)},${typeName(1, v.valueType)}>` };
+}
 
 /** Normalise a TypedValue into a small AST. Returns null when there is no value payload at all. */
 export function normValue(tv) {
@@ -282,6 +294,9 @@ export function folderLabel(r) {
   return r.folder ?? null;
 }
 
+// the `slot` of a mount on a player / character template of a .gia (a .gil says it by the GUID band, see gil.mjs)
+const GIA_TEMPLATE_SLOT = { 18: 'player', 19: 'character' };
+
 export function parseBundle(buf, { file = '<memory>', lenient = false, format = null } = {}) {
   const root = loadSchema();
   const { payload, header, problems } = unwrapContainer(buf, { lenient });
@@ -290,7 +305,7 @@ export function parseBundle(buf, { file = '<memory>', lenient = false, format = 
   let ab, level = null;
   if (det.format === 'gil') ({ ab, level } = decodeGil(payload, root, census));
   else ab = decodeMessage(payload, root.messages.get('AssetBundle'), census);
-  const giaEntities = det.format === 'gia' ? scanGiaEntities(payload) : []; // per resource: { dynamic, parent } for an entity, null otherwise
+  const giaDefinitions = det.format === 'gia' ? scanGiaDefinitions(payload) : []; // per resource: { dynamic, parent, variables } for an entity or template, null otherwise
   const tag = level ? { name: level.name, uid: null, time: null, fileId: null } : maskTag(ab.export_tag);
   const bundle = {
     file, header, fileSize: buf.length, warnings: [...problems, ...det.warnings], census,
@@ -310,14 +325,18 @@ export function parseBundle(buf, { file = '<memory>', lenient = false, format = 
       // the classes of FOLDER_TYPE_BY_CLASS have them; they drive the order of the resources (see orderResources).
       folder: r._gil?.folder ?? null, folderRank: r._gil?.folderRank ?? null, folderPos: r._gil?.folderPos ?? null,
       // entities only: the id they were created from, a prefab's GUID or the id of a native object (see mounts.mjs)
-      parentId: r._gil?.parent ?? giaEntities[i]?.parent ?? null,
-      mounts: r._gil?.mounts ?? [], // graphs mounted on this resource: [{ slot, graph (guid), service }] (see mounts.mjs)
+      parentId: r._gil?.parent ?? giaDefinitions[i]?.parent ?? null,
+      // entities and templates only: their custom variables [{ name, typeId, structId, keyType, valueType, value }], null for any other resource (see varscan.mjs)
+      variables: (r._gil?.variables ?? giaDefinitions[i]?.variables)?.map(buildVariable) ?? null,
+      // graphs mounted on this resource: [{ slot, graph (guid), service, edits }]; `edits` = the published graph variables the host sets itself, as variables (see mounts.mjs)
+      mounts: (r._gil?.mounts ?? giaDefinitions[i]?.graphs?.map((m) => ({ slot: GIA_TEMPLATE_SLOT[r.resource_class] ?? 'entity', graph: m.guid, service: m.service, edits: m.edits })) ?? [])
+        .map((m) => ({ ...m, edits: (m.edits ?? []).map(buildVariable) })),
       name: r.internal_name ?? '', identity: loc(r.identity),
       guid: r.identity?.asset_guid ?? null,
       refs: (r.reference_list || []).map(loc),
       kind: 'opaque',
     };
-    if (giaEntities[i]?.dynamic === false) res.className = 'STATIC_ENTITY'; // same rule as in a .gil (gil.mjs)
+    if (giaDefinitions[i]?.dynamic === false) res.className = 'STATIC_ENTITY'; // same rule as in a .gil (gil.mjs)
     if (r._gil && 'classId' in r._gil) { res.classId = r._gil.classId; if (r._gil.className) res.className = r._gil.className; }
     if (r.graph_data) { res.kind = 'graph'; const g = r.graph_data.inner?.graph; res.graph = g ? buildGraph(g, res) : null; }
     else if (r.interface_data) { res.kind = 'interface'; const f = r.interface_data.inner?.interface; res.iface = f ? buildIface(f, root) : null; }

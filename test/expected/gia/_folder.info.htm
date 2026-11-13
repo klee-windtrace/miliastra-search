@@ -32,6 +32,7 @@ td.right,th.right{text-align:right}td.center,th.center{text-align:center}
 .toc a{color:var(--accent);text-decoration:none;display:block;padding:.05rem 0;break-inside:avoid}.toc a:hover{text-decoration:underline}
 ul{padding-left:1.4rem}
 .q{color:var(--muted)}.muted{color:var(--muted)}
+pre a{text-decoration:none}pre a:hover{text-decoration:underline}[id]:target{background:#4a4a10;border-radius:2px}
 pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pre-wrap;word-break:break-word}
 .title{font-weight:700;color:#F2F2F2}
 .section{color:#61D6D6}
@@ -48,8 +49,10 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 .graphName{color:#C19C00}
 .graphTag{color:#F9F1A5}
 .key{color:#16C60C}
+.more{color:#B4009E}
 .folderName{color:#C50F1F}
 .declName{color:#16C60C}
+.variableName{color:#C19C00}
 .varName{color:#16C60C}
 .pinName{color:#13A10E}
 .pinLabel{color:#3A96DD}
@@ -65,11 +68,20 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 .typeName{color:#B4009E}
 .flag{color:#767676}
 .string{color:#C19C00}
-.number{color:#3A96DD}
+.number{color:#61D6D6}
 .bool{color:#3A96DD}
 .enumValue{color:#61D6D6}
 .idValue{color:#13A10E}
 .vector{color:#3A96DD}
+.jsKeyword{color:#B4009E}
+.jsSwitch{color:#3B78FF}
+.jsError{color:#C50F1F}
+.jsCall{color:#F9F1A5}
+.jsKey{color:#13A10E}
+.jsVar{color:#E74856}
+.jsOut{color:#3A96DD}
+.jsString{color:#C19C00}
+.jsComment{color:#767676}
 .kind{color:#881798}
 .role{color:#3B78FF}
 .count{color:#F2F2F2}
@@ -78,7 +90,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 </head>
 <body>
 <main>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gia/sample_0_main.gia</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">sample_0_main.gia</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gia</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">887</span>
@@ -86,7 +98,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">beyond</span>
 <span class="metaKey">export_name</span>            <span class="metaValue">node_graphs.gia</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">2</span>
 <span class="metaKey">primary</span>                <span class="metaValue">2</span>
 <span class="metaKey">dependencies</span>           <span class="metaValue">0</span>
@@ -100,7 +112,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="keyword">CLASS</span> <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">9</span> <span class="metaKey">count</span>=<span class="metaValue">1</span>
 <span class="keyword">CLASS</span> <span class="className">STATUS_NODE_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">22</span> <span class="metaKey">count</span>=<span class="metaValue">1</span></pre>
 <hr>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gia/sample_1.gia</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">sample_1.gia</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gia</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">2439</span>
@@ -108,7 +120,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">beyond</span>
 <span class="metaKey">export_name</span>            <span class="metaValue">sample_1.gia</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">5</span>
 <span class="metaKey">primary</span>                <span class="metaValue">3</span>
 <span class="metaKey">dependencies</span>           <span class="metaValue">2</span>
@@ -122,7 +134,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="keyword">CLASS</span> <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">9</span> <span class="metaKey">count</span>=<span class="metaValue">3</span>
 <span class="keyword">CLASS</span> <span class="className">COMPOSITE_NODE_DECL</span> <span class="metaKey">class</span>=<span class="metaValue">12</span> <span class="metaKey">count</span>=<span class="metaValue">2</span></pre>
 <hr>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gia/sample_2.gia</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">sample_2.gia</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gia</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">4722</span>
@@ -130,7 +142,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">beyond</span>
 <span class="metaKey">export_name</span>            <span class="metaValue">sample_2.gia</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">9</span>
 <span class="metaKey">primary</span>                <span class="metaValue">5</span>
 <span class="metaKey">dependencies</span>           <span class="metaValue">4</span>
@@ -145,7 +157,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="keyword">CLASS</span> <span class="className">COMPOSITE_NODE_DECL</span> <span class="metaKey">class</span>=<span class="metaValue">12</span> <span class="metaKey">count</span>=<span class="metaValue">2</span>
 <span class="keyword">CLASS</span> <span class="className">SIGNAL_NODE_DECL</span> <span class="metaKey">class</span>=<span class="metaValue">14</span> <span class="metaKey">count</span>=<span class="metaValue">4</span></pre>
 <hr>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gia/sample_3.gia</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">sample_3.gia</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gia</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">8272</span>
@@ -153,7 +165,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">beyond</span>
 <span class="metaKey">export_name</span>            <span class="metaValue">sample_3.gia</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">21</span>
 <span class="metaKey">primary</span>                <span class="metaValue">3</span>
 <span class="metaKey">dependencies</span>           <span class="metaValue">18</span>
@@ -168,7 +180,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="keyword">CLASS</span> <span class="className">COMPOSITE_NODE_DECL</span> <span class="metaKey">class</span>=<span class="metaValue">12</span> <span class="metaKey">count</span>=<span class="metaValue">18</span>
 <span class="keyword">CLASS</span> <span class="className">STRUCTURE</span> <span class="metaKey">class</span>=<span class="metaValue">29</span> <span class="metaKey">count</span>=<span class="metaValue">2</span></pre>
 <hr>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gia/sample_4.gia</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">sample_4.gia</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gia</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">15167</span>
@@ -176,7 +188,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">beyond</span>
 <span class="metaKey">export_name</span>            <span class="metaValue">sample_4.gia</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">1</span>
 <span class="metaKey">primary</span>                <span class="metaValue">1</span>
 <span class="metaKey">dependencies</span>           <span class="metaValue">0</span>
@@ -189,7 +201,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">unresolved_node_types</span>  <span class="metaValue">0</span>
 <span class="keyword">CLASS</span> <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">9</span> <span class="metaKey">count</span>=<span class="metaValue">1</span></pre>
 <hr>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gia/sample_5.gia</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">sample_5.gia</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gia</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">1643</span>
@@ -197,7 +209,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">beyond</span>
 <span class="metaKey">export_name</span>            <span class="metaValue">sample_5.gia</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">1</span>
 <span class="metaKey">primary</span>                <span class="metaValue">1</span>
 <span class="metaKey">dependencies</span>           <span class="metaValue">0</span>
@@ -210,7 +222,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">unresolved_node_types</span>  <span class="metaValue">0</span>
 <span class="keyword">CLASS</span> <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">9</span> <span class="metaKey">count</span>=<span class="metaValue">1</span></pre>
 <hr>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gia/sample_6.gia</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">sample_6.gia</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gia</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">613</span>
@@ -218,7 +230,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">classic</span>
 <span class="metaKey">export_name</span>            <span class="metaValue">sample_6.gia</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">2</span>
 <span class="metaKey">primary</span>                <span class="metaValue">2</span>
 <span class="metaKey">dependencies</span>           <span class="metaValue">0</span>
@@ -232,7 +244,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="keyword">CLASS</span> <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">9</span> <span class="metaKey">count</span>=<span class="metaValue">1</span>
 <span class="keyword">CLASS</span> <span class="className">ITEM_NODE_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">46</span> <span class="metaKey">count</span>=<span class="metaValue">1</span></pre>
 <hr>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gia/sample_7.gia</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">sample_7.gia</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gia</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">3951</span>
@@ -240,7 +252,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">beyond</span>
 <span class="metaKey">export_name</span>            <span class="metaValue">sample_7.gia</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">7</span>
 <span class="metaKey">primary</span>                <span class="metaValue">7</span>
 <span class="metaKey">dependencies</span>           <span class="metaValue">0</span>
@@ -259,7 +271,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="keyword">CLASS</span> <span class="className">CREATION_STATUS_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">53</span> <span class="metaKey">count</span>=<span class="metaValue">1</span>
 <span class="keyword">CLASS</span> <span class="className">CHARACTER_CONTROL_SKILL_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">64</span> <span class="metaKey">count</span>=<span class="metaValue">1</span></pre>
 <hr>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gia/sample_8.gia</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">sample_8.gia</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gia</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">831</span>
@@ -267,7 +279,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">beyond</span>
 <span class="metaKey">export_name</span>            <span class="metaValue">sample_8.gia</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">1</span>
 <span class="metaKey">primary</span>                <span class="metaValue">1</span>
 <span class="metaKey">dependencies</span>           <span class="metaValue">0</span>
@@ -280,7 +292,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">unresolved_node_types</span>  <span class="metaValue">0</span>
 <span class="keyword">CLASS</span> <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">9</span> <span class="metaKey">count</span>=<span class="metaValue">1</span></pre>
 <hr>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gia/sample_9.gia</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">sample_9.gia</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gia</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">32048</span>
@@ -288,7 +300,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">beyond</span>
 <span class="metaKey">export_name</span>            <span class="metaValue">sample_0.gia</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">80</span>
 <span class="metaKey">primary</span>                <span class="metaValue">54</span>
 <span class="metaKey">dependencies</span>           <span class="metaValue">26</span>

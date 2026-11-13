@@ -1,4 +1,4 @@
-# FILE test/cases/gia/sample_1.gia
+# FILE sample_1.gia
 format                 gia
 detected_by            header
 file_size              2439
@@ -6,7 +6,7 @@ container_file_type    gia
 engine_version         7.0.0
 mode                   beyond
 export_name            sample_1.gia
-node_db_version        7.1.0
+node_db_version        7.2.0
 export_tag             658181221-1789913083-1073742390-\sample_1.gia
 uid                    658181221
 time                   1789913083

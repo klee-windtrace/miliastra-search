@@ -4,7 +4,7 @@ WARN  composite-definition-count-anomaly: composite "Create Composite Node(1)" h
 
 # limits
 composites: 33/1000 declared
-signals: 2/100 declared
+signals: 2/99 declared
 prefabs (OBJECT): 2/1000
 dynamic entities (OBJECT_ENTITY): 2/3000
 PRESET_POINT: 1/2000

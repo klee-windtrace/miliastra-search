@@ -4,6 +4,9 @@ import { pinKindName } from './model.mjs';
 
 const KIND_SYSCALL = 22000, KIND_STUB = 22001;
 export const MULTI_BRANCH = 3; // shell node id of "Multiple Branches": in.flow#0, in#0 = Control Expression, in#1 = valid_pin_list, out.flow#0 = Default, out.flow#k = branch k
+// Assembly List / Assembly Dictionary (every variant): the editor stores 100 slots (in#1..in#100) whatever the node holds, and the hidden
+// in#0 "Count" says how many of them the person added with the "+" button (a dictionary counts its keys and values, one each); it is stored only once changed, the database holds its default.
+const ASSEMBLY_NODES = new Set([169, 200049, 200191, 1788, 200152, 200228]);
 const VALID_PIN_LIST = { kind: 3, index: 1 };
 const isValidPinList = (p) => p.kind === VALID_PIN_LIST.kind && p.index === VALID_PIN_LIST.index;
 
@@ -77,6 +80,24 @@ export class Resolver {
       if (listPin && !listPin.conns.length && v?.k === 'list') info.branchValues = v.items.map(branchLabel);
     }
     return info;
+  }
+
+  /**
+   * How many slots an Assembly List / Dictionary holds: the stored Count, else the database's default (the editor stores Count only once it was changed),
+   * and never fewer than the highest slot that is wired.
+   */
+  assemblyCount(node, info) {
+    const c = node.pins.find((q) => q.kind === 3 && q.index === 0)?.value;
+    const v = c?.k === 'poly' ? c.inner : c;
+    let n = v?.k === 'int' ? v.v : this.db.pinDef(info.shellId, 'in_param', 0)?.default ?? 0;
+    for (const q of node.pins) if (q.kind === 3 && q.index > n && q.conns.length) n = q.index;
+    return n;
+  }
+
+  /** True for a slot of an Assembly List / Dictionary beyond its count: a placeholder the editor stores (or a slot the node does not have), not something the person added. */
+  isPlaceholderPin(node, info, pin) {
+    if (!ASSEMBLY_NODES.has(info?.shellId) || pin.kind !== 3 || pin.index < 1) return false;
+    return pin.index > this.assemblyCount(node, info);
   }
 
   /** True for the pin that carries a Multiple Branches node's (static) case list, which is redundant once the branches are named after it. */

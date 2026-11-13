@@ -32,6 +32,7 @@ td.right,th.right{text-align:right}td.center,th.center{text-align:center}
 .toc a{color:var(--accent);text-decoration:none;display:block;padding:.05rem 0;break-inside:avoid}.toc a:hover{text-decoration:underline}
 ul{padding-left:1.4rem}
 .q{color:var(--muted)}.muted{color:var(--muted)}
+pre a{text-decoration:none}pre a:hover{text-decoration:underline}[id]:target{background:#4a4a10;border-radius:2px}
 pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pre-wrap;word-break:break-word}
 .title{font-weight:700;color:#F2F2F2}
 .section{color:#61D6D6}
@@ -48,8 +49,10 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 .graphName{color:#C19C00}
 .graphTag{color:#F9F1A5}
 .key{color:#16C60C}
+.more{color:#B4009E}
 .folderName{color:#C50F1F}
 .declName{color:#16C60C}
+.variableName{color:#C19C00}
 .varName{color:#16C60C}
 .pinName{color:#13A10E}
 .pinLabel{color:#3A96DD}
@@ -65,11 +68,20 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 .typeName{color:#B4009E}
 .flag{color:#767676}
 .string{color:#C19C00}
-.number{color:#3A96DD}
+.number{color:#61D6D6}
 .bool{color:#3A96DD}
 .enumValue{color:#61D6D6}
 .idValue{color:#13A10E}
 .vector{color:#3A96DD}
+.jsKeyword{color:#B4009E}
+.jsSwitch{color:#3B78FF}
+.jsError{color:#C50F1F}
+.jsCall{color:#F9F1A5}
+.jsKey{color:#13A10E}
+.jsVar{color:#E74856}
+.jsOut{color:#3A96DD}
+.jsString{color:#C19C00}
+.jsComment{color:#767676}
 .kind{color:#881798}
 .role{color:#3B78FF}
 .count{color:#F2F2F2}
@@ -78,7 +90,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 </head>
 <body>
 <main>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gil/stage_0.gil</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">stage_0.gil</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gil</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">24989</span>
@@ -86,7 +98,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">beyond</span>
 <span class="metaKey">level_name</span>             <span class="metaValue">Настраиваемая вкладка_1_Сохранение_8</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">41</span>
 <span class="metaKey">graphs</span>                 <span class="metaValue">2</span>
 <span class="metaKey">nodes</span>                  <span class="metaValue">7</span>
@@ -124,7 +136,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="keyword">SECTION</span> <span class="metaValue">root.18</span> <span class="metaKey">resources</span>=<span class="metaValue">1</span> <span class="metaKey">description</span>='<span class="string">cameras</span>'
 <span class="keyword">FOLDER</span> /<span class="folderName">Импортированные ресурсы</span>/ <span class="metaKey">graphs</span>=<span class="metaValue">2</span></pre>
 <hr>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gil/stage_012379.gil</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">stage_012379.gil</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gil</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">72666</span>
@@ -132,7 +144,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">beyond</span>
 <span class="metaKey">level_name</span>             <span class="metaValue">Custom Tab_1_Save_2</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">165</span>
 <span class="metaKey">graphs</span>                 <span class="metaValue">27</span>
 <span class="metaKey">nodes</span>                  <span class="metaValue">67</span>
@@ -218,7 +230,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="keyword">FOLDER</span> /<span class="folderName">Import Assets</span>/ <span class="metaKey">graphs</span>=<span class="metaValue">25</span> <span class="metaKey">resources</span>=<span class="metaValue">7</span>
 <span class="keyword">FOLDER</span> /<span class="folderName">导入资产</span>/ <span class="metaKey">graphs</span>=<span class="metaValue">2</span></pre>
 <hr>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gil/stage_1.gil</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">stage_1.gil</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gil</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">23760</span>
@@ -226,7 +238,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">beyond</span>
 <span class="metaKey">level_name</span>             <span class="metaValue">Custom Tab_1_Save</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">44</span>
 <span class="metaKey">graphs</span>                 <span class="metaValue">3</span>
 <span class="metaKey">nodes</span>                  <span class="metaValue">15</span>
@@ -266,7 +278,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="keyword">SECTION</span> <span class="metaValue">root.18</span> <span class="metaKey">resources</span>=<span class="metaValue">1</span> <span class="metaKey">description</span>='<span class="string">cameras</span>'
 <span class="keyword">FOLDER</span> /<span class="folderName">(default)</span>/ <span class="metaKey">graphs</span>=<span class="metaValue">3</span></pre>
 <hr>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gil/stage_2.gil</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">stage_2.gil</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gil</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">28750</span>
@@ -274,7 +286,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">beyond</span>
 <span class="metaKey">level_name</span>             <span class="metaValue">Настраиваемая вкладка_1_Сохранение_3</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">48</span>
 <span class="metaKey">graphs</span>                 <span class="metaValue">3</span>
 <span class="metaKey">nodes</span>                  <span class="metaValue">10</span>
@@ -314,7 +326,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="keyword">SECTION</span> <span class="metaValue">root.18</span> <span class="metaKey">resources</span>=<span class="metaValue">1</span> <span class="metaKey">description</span>='<span class="string">cameras</span>'
 <span class="keyword">FOLDER</span> /<span class="folderName">(default)</span>/ <span class="metaKey">graphs</span>=<span class="metaValue">3</span></pre>
 <hr>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gil/stage_3.gil</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">stage_3.gil</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gil</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">31043</span>
@@ -322,7 +334,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">beyond</span>
 <span class="metaKey">level_name</span>             <span class="metaValue">Настраиваемая вкладка_1_Сохранение_4</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">60</span>
 <span class="metaKey">graphs</span>                 <span class="metaValue">1</span>
 <span class="metaKey">nodes</span>                  <span class="metaValue">7</span>
@@ -363,7 +375,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="keyword">SECTION</span> <span class="metaValue">root.18</span> <span class="metaKey">resources</span>=<span class="metaValue">1</span> <span class="metaKey">description</span>='<span class="string">cameras</span>'
 <span class="keyword">FOLDER</span> /<span class="folderName">(default)</span>/ <span class="metaKey">graphs</span>=<span class="metaValue">1</span></pre>
 <hr>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gil/stage_6.gil</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">stage_6.gil</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gil</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">18375</span>
@@ -371,7 +383,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">classic</span>
 <span class="metaKey">level_name</span>             <span class="metaValue">Настраиваемая вкладка_1_Сохранение_5</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">42</span>
 <span class="metaKey">graphs</span>                 <span class="metaValue">2</span>
 <span class="metaKey">nodes</span>                  <span class="metaValue">4</span>
@@ -407,7 +419,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="keyword">SECTION</span> <span class="metaValue">root.18</span> <span class="metaKey">resources</span>=<span class="metaValue">1</span> <span class="metaKey">description</span>='<span class="string">cameras</span>'
 <span class="keyword">FOLDER</span> /<span class="folderName">(default)</span>/ <span class="metaKey">graphs</span>=<span class="metaValue">2</span></pre>
 <hr>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gil/stage_7.gil</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">stage_7.gil</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gil</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">27679</span>
@@ -415,7 +427,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">beyond</span>
 <span class="metaKey">level_name</span>             <span class="metaValue">Настраиваемая вкладка_1_Сохранение_6</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">46</span>
 <span class="metaKey">graphs</span>                 <span class="metaValue">7</span>
 <span class="metaKey">nodes</span>                  <span class="metaValue">21</span>
@@ -458,7 +470,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="keyword">SECTION</span> <span class="metaValue">root.18</span> <span class="metaKey">resources</span>=<span class="metaValue">1</span> <span class="metaKey">description</span>='<span class="string">cameras</span>'
 <span class="keyword">FOLDER</span> /<span class="folderName">(default)</span>/ <span class="metaKey">graphs</span>=<span class="metaValue">7</span></pre>
 <hr>
-<h1><span class="heading">FILE</span> <span class="fileName">test/cases/gil/stage_9.gil</span></h1>
+<h1><span class="heading">FILE</span> <span class="fileName">stage_9.gil</span></h1>
 <pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gil</span>
 <span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
 <span class="metaKey">file_size</span>              <span class="metaValue">58507</span>
@@ -466,7 +478,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="metaKey">engine_version</span>         <span class="metaValue">7.0.0</span>
 <span class="metaKey">mode</span>                   <span class="metaValue">beyond</span>
 <span class="metaKey">level_name</span>             <span class="metaValue">Настраиваемая вкладка_1_Сохранение_7</span>
-<span class="metaKey">node_db_version</span>        <span class="metaValue">7.1.0</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
 <span class="metaKey">resources</span>              <span class="metaValue">121</span>
 <span class="metaKey">graphs</span>                 <span class="metaValue">11</span>
 <span class="metaKey">nodes</span>                  <span class="metaValue">7</span>

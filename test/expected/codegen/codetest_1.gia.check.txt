@@ -1,0 +1,4 @@
+== codetest_1.gia  gia  engine 7.1.0  mode beyond  resources 4 (1 not interpreted)
+   UNKNOWN FIELD AssetBundle.resources.graph_data.inner.graph.nodes.pins.value.val_poly.actual_value.type_def.client_side #3 wire 0 ×2 e.g. 2
+   UNKNOWN FIELD AssetBundle.resources.graph_data.inner.graph.nodes.pins.value.val_poly.actual_value.type_def.client_side #101 wire 2 ×2 e.g. 8 bytes 0x0801100320012802
+   opaque (known but uninterpreted) fields: resources.opaque_11×1

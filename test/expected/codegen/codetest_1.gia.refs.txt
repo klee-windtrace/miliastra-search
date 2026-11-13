@@ -1,0 +1,6 @@
+custom_variable  "list" (Dict)                      1 get: ['<filter>New Filter Node Graph'], 0 set: []
+custom_variable  "MyList" (L<Int>)                  1 get: ['New Node Graph'], 0 set: []
+custom_variable  "test" (Bol)                       1 get: ['<creation>New Creation Status Decision Node Graph'], 0 set: []
+custom_variable  "Test" (Dict)                      0 get: [], 1 set: ['New Node Graph']
+custom_variable  "Var1" (Ety)                       0 get: [], 1 set: ['New Node Graph']
+literal_id       "Pfb:1077936129" (OBJECT:"Empty Model") 1 Ref: ['New Node Graph']

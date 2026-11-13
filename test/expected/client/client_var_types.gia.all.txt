@@ -1,0 +1,57 @@
+# INFO
+# FILE client_var_types.gia
+format                 gia
+detected_by            header
+file_size              3730
+container_file_type    gia
+engine_version         7.1.0
+mode                   beyond
+export_name            client_var_types.gia
+node_db_version        7.2.0
+resources              1
+primary                1
+dependencies           0
+graphs                 1
+nodes                  23
+composite_bodies       0
+declarations           0
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS SKILL_NODE_GRAPH class=11 count=1
+
+# DUMP
+GRAPH '<skill>client_var_types' SKILL_NODE_GRAPH class=11 guid='1082130433' kind=21001 service=20002 nodes=23 entry_slot=1
+
+# REFS
+custom_variable  "var_bool" (Bol)                   1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_bool_list" (L<Bol>)           1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_config" (Cfg)                 1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_config_list" (L<Cfg>)         1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_dict_generic" (Dict)          1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_dict_prefab_to_factionlist" (Dict) 1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_entity" (Ety)                 1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_entity_list" (L<Ety>)         1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_faction" (Fct)                1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_faction_list" (L<Fct>)        1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_float" (Flt)                  1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_float_list" (L<Flt>)          1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_guid" (Gid)                   1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_guid_list" (L<Gid>)           1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_int" (Int)                    1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_int_list" (L<Int>)            1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_prefab" (Pfb)                 1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_prefab_list" (L<Pfb>)         1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_str" (Str)                    1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_str_list" (L<Str>)            1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_vector" (Vec)                 1 get: ['<skill>client_var_types'], 0 set: []
+custom_variable  "var_vector_list" (L<Vec>)         1 get: ['<skill>client_var_types'], 0 set: []
+
+# WARNS
+# findings
+(no findings)
+
+# limits
+
+top graphs by node count:
+'<skill>client_var_types': 23/3000 nodes

@@ -1,4 +1,4 @@
-# FILE test/cases/mounts/composite_folders.gil
+# FILE composite_folders.gil
 format                 gil
 detected_by            header
 file_size              133059
@@ -6,7 +6,7 @@ container_file_type    gil
 engine_version         7.1.0
 mode                   beyond
 level_name             composite_folders
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              126
 graphs                 30
 nodes                  0
@@ -53,7 +53,7 @@ FOLDER /G/ graphs=3
 FOLDER /H/ graphs=3
 FOLDER /I/ graphs=3
 
-# FILE test/cases/mounts/graph_folders.gil
+# FILE graph_folders.gil
 format                 gil
 detected_by            header
 file_size              44561
@@ -61,7 +61,7 @@ container_file_type    gil
 engine_version         7.1.0
 mode                   beyond
 level_name             graph_folders
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              101
 graphs                 30
 nodes                  11
@@ -138,7 +138,7 @@ FOLDER /Second status tab/ resources=2
 FOLDER /First prefab tab/ resources=2
 FOLDER /Second prefab tab/ resources=2
 
-# FILE test/cases/mounts/test_folders.gia
+# FILE test_folders.gia
 format                 gia
 detected_by            header
 file_size              21619
@@ -146,7 +146,7 @@ container_file_type    gia
 engine_version         7.1.0
 mode                   beyond
 export_name            test_folders.gia
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              61
 primary                41
 dependencies           20
@@ -155,7 +155,7 @@ nodes                  14
 composite_bodies       2
 declarations           6
 structs                0
-mounts                 0
+mounts                 4
 unresolved_node_types  0
 CLASS OBJECT_ENTITY class=3 count=4
 CLASS STATIC_ENTITY class=3 count=1
@@ -185,7 +185,7 @@ CLASS class#66 class=66 count=1
 CLASS class#67 class=67 count=1
 CLASS class#68 class=68 count=1
 
-# FILE test/cases/mounts/test_folders.gil
+# FILE test_folders.gil
 format                 gil
 detected_by            header
 file_size              29389
@@ -193,7 +193,7 @@ container_file_type    gil
 engine_version         7.1.0
 mode                   beyond
 level_name             test_folders
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              77
 graphs                 25
 nodes                  14
@@ -247,7 +247,7 @@ FOLDER /(default)/ graphs=12
 FOLDER /New Folder/ graphs=12
 FOLDER /My/ graphs=1
 
-# FILE test/cases/mounts/test_mount.gil
+# FILE test_mount.gil
 format                 gil
 detected_by            header
 file_size              57042
@@ -255,7 +255,7 @@ container_file_type    gil
 engine_version         7.1.0
 mode                   beyond
 level_name             test_mount
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              84
 graphs                 9
 nodes                  0

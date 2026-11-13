@@ -7,7 +7,7 @@ INFO  struct-never-used: struct "Structure" (guid=1077936129 fields=) is defined
 
 # limits
 composites: 2/1000 declared
-signals: 2/100 declared
+signals: 2/99 declared
 prefabs (OBJECT): 5/1000
 dynamic entities (OBJECT_ENTITY): 3/3000
 ENTITY_DEPLOYMENT_GROUP: 1/500

@@ -25,7 +25,7 @@ test('warns prints findings, limits and top graphs, and no reference tables', ()
   assert.match(out, /^# findings$/m);
   assert.match(out, /^INFO {2}catch-all-listener: /m);
   assert.match(out, /^# limits$/m);
-  assert.match(out, /^signals: 2\/100 declared$/m);
+  assert.match(out, /^signals: 2\/99 declared$/m);
   assert.match(out, /^top graphs by node count/m);
   assert.doesNotMatch(out, /^signal +"Signal_1"/m);
   assert.match(run(['warns', s2, '--format', 'markdown']), /^## Findings$/m);
@@ -55,13 +55,19 @@ test('warns --kind/--name keep only the matching findings (and print no limits);
   assert.equal(cli('warns', '--sort-desc', s2).stdout, cli('warns', s2).stdout);
 });
 
-test('--json: refs has only references, warns has findings and limits', () => {
-  const r = JSON.parse(spawnSync(process.execPath, [bin, 'refs', s2, '--json'], { encoding: 'utf8', cwd: path.join(here, '..') }).stdout);
-  assert.deepEqual(Object.keys(r), ['refs']);
-  const w = JSON.parse(spawnSync(process.execPath, [bin, 'warns', s2, '--json'], { encoding: 'utf8', cwd: path.join(here, '..') }).stdout);
-  assert.deepEqual(Object.keys(w), ['findings', 'limits']);
-  assert.ok(w.findings.length && w.limits.graphSizes.length);
-  assert.equal(cli('warns', s2, '--json', '--search', 'x').status, 2);
+test('--format json: refs has the overview and the references, warns has findings and limits (or only the findings of a selection)', () => {
+  const json = (...args) => JSON.parse(spawnSync(process.execPath, [bin, ...args, '--format', 'json'], { encoding: 'utf8', cwd: path.join(here, '..') }).stdout);
+  const r = json('refs', s2);
+  assert.deepEqual(Object.keys(r), ['header', 'refs']);
+  assert.equal(r.refs.view, 'overview'); assert.ok(r.refs.entries.length && r.refs.references.length);
+  assert.equal(json('refs', s2, '--name', 'Signal_1').refs.view, 'detail');
+  const w = json('warns', s2);
+  assert.deepEqual(Object.keys(w), ['header', 'warns']);
+  assert.deepEqual(Object.keys(w.warns), ['view', 'findings', 'limits']);
+  assert.ok(w.warns.findings.length && w.warns.limits.graph_sizes.length);
+  assert.equal(json('warns', s2, '--top-graphs', '1').warns.limits.graph_sizes.length, 1, 'the option that cuts the list is in the data');
+  assert.equal(json('warns', s2, '--kind', 'timer').warns.limits, null, 'a selection lists findings only');
+  assert.equal(spawnSync(process.execPath, [bin, 'warns', s2, '--format', 'json', '--search', 'x']).status, 2);
 });
 
 test('warns shows file names per finding when several files are scanned; grep works', () => {
@@ -74,9 +80,9 @@ test('warns shows file names per finding when several files are scanned; grep wo
 test('--help documents info and warns first-class and scopes the options', () => {
   const h = cli('--help').stdout;
   const modes = [...h.matchAll(/^  miliastra-search (\w+) /gm)].map((m) => m[1]);
-  assert.deepEqual(modes, ['info', 'dump', 'refs', 'warns', 'code', 'check', 'raw']);
-  assert.match(h, /^warns only:\n  --top-graphs/m);
-  assert.match(h, /^info only:\n  --show-tag/m);
-  assert.match(h, /^refs only:\n  --sort-desc/m);
+  assert.deepEqual(modes, ['info', 'dump', 'refs', 'warns', 'code', 'check', 'raw', 'all', 'llm']);
+  assert.match(h, /^warns, all:\n  --top-graphs/m);
+  assert.match(h, /^info, all:\n  --short[^\n]*\n  --show-tag/m);
+  assert.match(h, /^refs, all:\n  --sort-desc/m);
   assert.doesNotMatch(h, /limits section \(default 5\)\n\ncode only/);
 });

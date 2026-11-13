@@ -1,0 +1,148 @@
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH (guid 1073741829)
+'New Node Graph'/[1] When Entity Is Created (71) @(-221.14285,-138.42857)
+'New Node Graph'/[1] When Entity Is Created (71) out.flow#0 -> [2] Set Custom Variable (22/24) in.flow#0
+'New Node Graph'/[2] Set Custom Variable (22/24) variant=C<T:Ety> @(180,-141)
+'New Node Graph'/[2] Set Custom Variable (22/24) out.flow#0 -> [5] Set Preset Status (66) in.flow#0
+'New Node Graph'/[2] Set Custom Variable (22/24) in#0 "Target Entity" <- [1] When Entity Is Created (71) out#0 "Event Source Entity" : Ety
+'New Node Graph'/[2] Set Custom Variable (22/24) in#1 "Variable Name" = 'Var1' : Str
+'New Node Graph'/[2] Set Custom Variable (22/24) in#2 "Variable Value" <- [3] Get Owner Entity (744) out#0 "Owner Entity" : Ety
+'New Node Graph'/[2] Set Custom Variable (22/24) in#4 "Trigger Event" = No : Bol
+'New Node Graph'/[3] Get Owner Entity (744) @(175.77753,-337.94766)
+'New Node Graph'/[3] Get Owner Entity (744) in#0 "Target Entity" <- [4] Get Self Entity (73) out#0 "Self Entity" : Ety
+'New Node Graph'/[4] Get Self Entity (73) @(288.77753,-525.3762)
+'New Node Graph'/[5] Set Preset Status (66) @(702.2061,-140.80481)
+'New Node Graph'/[5] Set Preset Status (66) out.flow#0 -> [9] Double Branch (2) in.flow#0
+'New Node Graph'/[5] Set Preset Status (66) in#0 "Target Entity" <- [6] Get Self Entity (73) out#0 "Self Entity" : Ety
+'New Node Graph'/[5] Set Preset Status (66) in#1 "Preset Status Index" = 1 : Int
+'New Node Graph'/[5] Set Preset Status (66) in#2 "Preset Status Value" = 2 : Int
+'New Node Graph'/[6] Get Self Entity (73) @(730.7775,-307.94766)
+'New Node Graph'/[7] Get Entity Type (260) @(1066.4918,-723.3762)
+'New Node Graph'/[7] Get Entity Type (260) in#0 "Target Entity" <- [6] Get Self Entity (73) out#0 "Self Entity" : Ety
+'New Node Graph'/[8] Enumerations Equal (475/489) variant=C<T:E<15>> @(1080.4918,-473.37622)
+'New Node Graph'/[8] Enumerations Equal (475/489) in#0 "Enumeration 1" <- [7] Get Entity Type (260) out#0 "Entity Type" : Enum
+'New Node Graph'/[8] Enumerations Equal (475/489) in#0 "Enumeration 1" = enum:0«No | Default | None» : Enum (also wired)
+'New Node Graph'/[8] Enumerations Equal (475/489) in#1 "Enumeration 2" = enum:1402«Entity Type_Object | Object» : Enum
+'New Node Graph'/[9] Double Branch (2) @(1098.4918,-143.37624)
+'New Node Graph'/[9] Double Branch (2) out.flow#0 "Yes" -> [10] Set Local Variable (19/21) in.flow#0
+'New Node Graph'/[9] Double Branch (2) out.flow#1 "No" -> [12] Set Local Variable (19/21) in.flow#0
+'New Node Graph'/[9] Double Branch (2) in#0 "Condition" <- [8] Enumerations Equal (475/489) out#0 "Result" : Bol
+'New Node Graph'/[10] Set Local Variable (19/21) variant=C<T:Int> @(1616.4918,-441.37622)
+'New Node Graph'/[10] Set Local Variable (19/21) out.flow#0 -> [13] Print String (1) in.flow#0
+'New Node Graph'/[10] Set Local Variable (19/21) in#0 "Local Variable" <- [11] Get Local Variable (18) out#0 "Local Variable" : Loc
+'New Node Graph'/[10] Set Local Variable (19/21) in#1 "Value" = 1 : Int
+'New Node Graph'/[11] Get Local Variable (18) @(1130.4918,178.62376)
+'New Node Graph'/[11] Get Local Variable (18) in#0 "Initial Value" = No : Bol
+'New Node Graph'/[11] Get Local Variable (18) out#1 "Value" = No : Bol
+'New Node Graph'/[12] Set Local Variable (19/21) variant=C<T:Int> @(1620.4918,-111.376236)
+'New Node Graph'/[12] Set Local Variable (19/21) out.flow#0 -> [13] Print String (1) in.flow#0
+'New Node Graph'/[12] Set Local Variable (19/21) in#0 "Local Variable" <- [11] Get Local Variable (18) out#0 "Local Variable" : Loc
+'New Node Graph'/[12] Set Local Variable (19/21) in#1 "Value" = 2 : Int
+'New Node Graph'/[13] Print String (1) @(2179.8252,-118.376236)
+'New Node Graph'/[13] Print String (1) out.flow#0 -> [15] Finite Loop (5) in.flow#0
+'New Node Graph'/[13] Print String (1) in#0 "String" <- [14] Data Type Conversion (180/186) out#0 "Output" : Str
+'New Node Graph'/[14] Data Type Conversion (180/186) variant=C<K:Bol,V:Str> @(2154.8252,-375.0429)
+'New Node Graph'/[14] Data Type Conversion (180/186) in#0 "Input" <- [11] Get Local Variable (18) out#1 "Value" : Bol
+'New Node Graph'/[14] Data Type Conversion (180/186) in#0 "Input" = No : Bol (also wired)
+'New Node Graph'/[14] Data Type Conversion (180/186) out#0 "Output" = '' : Str
+'New Node Graph'/[15] Finite Loop (5) @(2639.8252,-121.70957)
+'New Node Graph'/[15] Finite Loop (5) out.flow#0 "Loop Body" -> [16] Set List Value (160) in.flow#0
+'New Node Graph'/[15] Finite Loop (5) out.flow#1 "Loop Complete" -> [24] Create Prefab (252) in.flow#0
+'New Node Graph'/[15] Finite Loop (5) in#0 "Loop Start Value" = 1 : Int
+'New Node Graph'/[15] Finite Loop (5) in#1 "Loop Termination Value" = 8 : Int
+'New Node Graph'/[16] Set List Value (160) @(3554.23,-215.93576)
+'New Node Graph'/[16] Set List Value (160) in#0 "List" <- [21] Get Custom Variable (50/57) out#0 "Variable Value" : L<Int>
+'New Node Graph'/[16] Set List Value (160) in#0 "List" = [] : L<Int> (also wired)
+'New Node Graph'/[16] Set List Value (160) in#1 "ID" <- [15] Finite Loop (5) out#0 "Current Loop Value" : Int
+'New Node Graph'/[16] Set List Value (160) in#2 "Value" <- [17] Multiplication (204) out#0 "Result" : Int
+'New Node Graph'/[16] Set List Value (160) in#2 "Value" = 0 : Int (also wired)
+'New Node Graph'/[17] Multiplication (204) @(3523.1584,-495.7572)
+'New Node Graph'/[17] Multiplication (204) in#0 <- [15] Finite Loop (5) out#0 "Current Loop Value" : Int
+'New Node Graph'/[17] Multiplication (204) in#0 = 0 : Int (also wired)
+'New Node Graph'/[17] Multiplication (204) in#1 <- [20] Get Random Integer (257) out#0 "Result" : Int
+'New Node Graph'/[17] Multiplication (204) in#1 = 0 : Int (also wired)
+'New Node Graph'/[17] Multiplication (204) out#0 "Result" = 0 : Int
+'New Node Graph'/[20] Get Random Integer (257) @(3574.372,-837.0729)
+'New Node Graph'/[20] Get Random Integer (257) in#0 "Lower Limit" <- [15] Finite Loop (5) out#0 "Current Loop Value" : Int
+'New Node Graph'/[20] Get Random Integer (257) in#1 "Upper Limit" <- [15] Finite Loop (5) out#0 "Current Loop Value" : Int
+'New Node Graph'/[21] Get Custom Variable (50/57) variant=C<T:L<Int>> @(2628.2412,-437.84668)
+'New Node Graph'/[21] Get Custom Variable (50/57) in#0 "Target Entity" <- [1] When Entity Is Created (71) out#0 "Event Source Entity" : Ety
+'New Node Graph'/[21] Get Custom Variable (50/57) in#1 "Variable Name" = 'MyList' : Str
+'New Node Graph'/[21] Get Custom Variable (50/57) out#0 "Variable Value" = [] : L<Int>
+'New Node Graph'/[24] Create Prefab (252) @(3536.408,360.48663)
+'New Node Graph'/[24] Create Prefab (252) out.flow#0 -> [29] Set Custom Variable (22/1928) in.flow#0
+'New Node Graph'/[24] Create Prefab (252) in#0 "Prefab ID" = id:1077936129 : Pfb {OBJECT:"Empty Model"}
+'New Node Graph'/[24] Create Prefab (252) in#1 "Location" <- [25] Get Entity Location and Rotation (99) out#0 "Location" : Vec
+'New Node Graph'/[24] Create Prefab (252) in#2 "Rotate" <- [25] Get Entity Location and Rotation (99) out#1 "Rotate" : Vec
+'New Node Graph'/[24] Create Prefab (252) in#3 "Owner Entity" <- [26] Get Local Variable (18/2657) out#1 "Value" : Ety
+'New Node Graph'/[24] Create Prefab (252) in#5 "Overwrite Level" = Yes : Bol
+'New Node Graph'/[24] Create Prefab (252) in#6 "Level" <- [27] Get List Length (142) out#0 "Length" : Int
+'New Node Graph'/[24] Create Prefab (252) in#7 "Unit Tag Index List" <- [28] Assembly List (169) out#0 "List" : L<Int>
+'New Node Graph'/[25] Get Entity Location and Rotation (99) @(3021.122,610.55804)
+'New Node Graph'/[25] Get Entity Location and Rotation (99) in#0 "Target Entity" <- [26] Get Local Variable (18/2657) out#1 "Value" : Ety
+'New Node Graph'/[26] Get Local Variable (18/2657) variant=C<T:Ety> @(2833.0745,813.48663)
+'New Node Graph'/[26] Get Local Variable (18/2657) in#0 "Initial Value" <- [1] When Entity Is Created (71) out#0 "Event Source Entity" : Ety
+'New Node Graph'/[26] Get Local Variable (18/2657) out#1 "Value" : Ety (no value, no wire)
+'New Node Graph'/[27] Get List Length (142) @(2987.765,400.33188)
+'New Node Graph'/[27] Get List Length (142) in#0 "List" <- [21] Get Custom Variable (50/57) out#0 "Variable Value" : L<Int>
+'New Node Graph'/[27] Get List Length (142) in#0 "List" = [] : L<Int> (also wired)
+'New Node Graph'/[28] Assembly List (169) @(3084.908,1128.9033)
+'New Node Graph'/[28] Assembly List (169) in#1 "0" = 0 : Int
+'New Node Graph'/[28] Assembly List (169) out#0 "List" = [] : L<Int>
+'New Node Graph'/[29] Set Custom Variable (22/1928) variant=C<T:D<Ety,Ety>> @(4250.622,341.76044)
+'New Node Graph'/[29] Set Custom Variable (22/1928) out.flow#0 -> [31] Double Branch (2) in.flow#0
+'New Node Graph'/[29] Set Custom Variable (22/1928) out.flow#0 -> [32] Print String (1) in.flow#0
+'New Node Graph'/[29] Set Custom Variable (22/1928) in#0 "Target Entity" <- [24] Create Prefab (252) out#0 "Created Entity" : Ety
+'New Node Graph'/[29] Set Custom Variable (22/1928) in#1 "Variable Name" = 'Test' : Str
+'New Node Graph'/[29] Set Custom Variable (22/1928) in#2 "Variable Value" <- [30] Assembly Dictionary (1788) out#0 "Dictionary" : Dict
+'New Node Graph'/[29] Set Custom Variable (22/1928) in#2 "Variable Value" = {} : Dict (also wired)
+'New Node Graph'/[29] Set Custom Variable (22/1928) in#4 "Trigger Event" = No : Bol
+'New Node Graph'/[30] Assembly Dictionary (1788) @(4238.003,19.855686)
+'New Node Graph'/[30] Assembly Dictionary (1788) in#1 "Key 0" <- [24] Create Prefab (252) out#0 "Created Entity" : Ety
+'New Node Graph'/[30] Assembly Dictionary (1788) in#2 "Value 0" <- [26] Get Local Variable (18/2657) out#1 "Value" : Ety
+'New Node Graph'/[30] Assembly Dictionary (1788) out#0 "Dictionary" = {} : Dict
+'New Node Graph'/[31] Double Branch (2) @(4832.8774,100.87852)
+'New Node Graph'/[31] Double Branch (2) out.flow#0 "Yes" -> [33] Destroy Entity (69) in.flow#0
+'New Node Graph'/[31] Double Branch (2) out.flow#1 "No" -> [32] Print String (1) in.flow#0
+'New Node Graph'/[31] Double Branch (2) in#0 "Condition" = Yes : Bol
+'New Node Graph'/[32] Print String (1) @(5249.5444,334.21185)
+'New Node Graph'/[32] Print String (1) out.flow#0 -> [33] Destroy Entity (69) in.flow#0
+'New Node Graph'/[32] Print String (1) in#0 "String" = '!' : Str
+'New Node Graph'/[33] Destroy Entity (69) @(5617.8774,97.54519)
+'New Node Graph'/[33] Destroy Entity (69) in#0 "Target Entity" <- [34] Query Entity by GUID (75) out#0 "Entity" : Ety
+'New Node Graph'/[34] Query Entity by GUID (75) @(5558.3374,-130.19812)
+'New Node Graph'/[34] Query Entity by GUID (75) in#0 "GUID" <- [1] When Entity Is Created (71) out#1 "Event Source GUID" : Gid
+GRAPH '<creation>New Creation Status Decision Node Graph' CREATION_STATUS_DECISION_GRAPH (guid 1082130435)
+'<creation>New Creation Status Decision Node Graph'/[1] Execute only by sequence (200126/4000) @(0,0) status_ext=1/4
+'<creation>New Creation Status Decision Node Graph'/[1] Execute only by sequence (200126/4000) out.flow#0 "1" -> [2] Switch to self execution status (200128/4011) in.flow#0
+'<creation>New Creation Status Decision Node Graph'/[1] Execute only by sequence (200126/4000) out.flow#1 "2" -> [3] Double Branch (200125/4001) in.flow#0
+'<creation>New Creation Status Decision Node Graph'/[1] Execute only by sequence (200126/4000) out.flow#2 "3" -> [3] Double Branch (200125/4001) in.flow#0
+'<creation>New Creation Status Decision Node Graph'/[2] Switch to self execution status (200128/4011) @(493,-144)
+'<creation>New Creation Status Decision Node Graph'/[2] Switch to self execution status (200128/4011) in#0 "Execute" = Yes : Bol (default)
+'<creation>New Creation Status Decision Node Graph'/[2] Switch to self execution status (200128/4011) in#1 "Status Node Graph Configuration ID" = id:0 : Cfg (default)
+'<creation>New Creation Status Decision Node Graph'/[2] Switch to self execution status (200128/4011) in#2 "Autonomous Logic Parameter ID" = 0 : Int (default)
+'<creation>New Creation Status Decision Node Graph'/[3] Double Branch (200125/4001) @(504.14285,248.42857)
+'<creation>New Creation Status Decision Node Graph'/[3] Double Branch (200125/4001) in#0 "Condition" <- [4] Get Custom Variable (200173/4200) out#0 "Variable Value" : Bol
+'<creation>New Creation Status Decision Node Graph'/[3] Double Branch (200125/4001) in#0 "Condition" = No : Bol (default) (also wired)
+'<creation>New Creation Status Decision Node Graph'/[4] Get Custom Variable (200173/4200) variant=C<T:Bol> @(68.42857,335.57144)
+'<creation>New Creation Status Decision Node Graph'/[4] Get Custom Variable (200173/4200) in#0 "Target Entity" = enum:6003«Self» : Enum
+'<creation>New Creation Status Decision Node Graph'/[4] Get Custom Variable (200173/4200) in#1 "Variable Name" = 'test' : Str
+'<creation>New Creation Status Decision Node Graph'/[4] Get Custom Variable (200173/4200) out#0 "Variable Value" = No : Bol
+GRAPH '<filter>New Filter Node Graph' INTEGER_FILTER_GRAPH (guid 1082130436)
+'<filter>New Filter Node Graph'/[1] Node Graph End (Integer) (200122) @(0,0)
+'<filter>New Filter Node Graph'/[1] Node Graph End (Integer) (200122) in#0 "Output Result (Integer)" <- [2] Get Maximum Value From List (200020/120) out#0 "Maximum Value" : Int
+'<filter>New Filter Node Graph'/[1] Node Graph End (Integer) (200122) in#0 "Output Result (Integer)" = 0 : Int (default) (also wired)
+'<filter>New Filter Node Graph'/[1] Node Graph End (Integer) (200122) in#1 "Filter Return Type" = enum:10000011«Return Integer» : Enum (default)
+'<filter>New Filter Node Graph'/[2] Get Maximum Value From List (200020/120) variant=C<T:Int> @(-691,6)
+'<filter>New Filter Node Graph'/[2] Get Maximum Value From List (200020/120) in#0 "List" <- [3] Get List of Values From Dictionary (200158/1055) out#0 "Value List" : L<Int>
+'<filter>New Filter Node Graph'/[2] Get Maximum Value From List (200020/120) in#0 "List" = [] : L<Int> (also wired)
+'<filter>New Filter Node Graph'/[2] Get Maximum Value From List (200020/120) out#0 "Maximum Value" = 0 : Int
+'<filter>New Filter Node Graph'/[3] Get List of Values From Dictionary (200158/1055) @(-1240.6666,62.666668)
+'<filter>New Filter Node Graph'/[3] Get List of Values From Dictionary (200158/1055) in#0 "Dictionary" <- [4] Get Custom Variable (200016/1056) out#0 "Variable Value" : Dict
+'<filter>New Filter Node Graph'/[3] Get List of Values From Dictionary (200158/1055) in#0 "Dictionary" = {} : Dict (also wired)
+'<filter>New Filter Node Graph'/[3] Get List of Values From Dictionary (200158/1055) out#0 "Value List" = [] : L<Int>
+'<filter>New Filter Node Graph'/[4] Get Custom Variable (200016/1056) @(-1768.6666,78.666664)
+'<filter>New Filter Node Graph'/[4] Get Custom Variable (200016/1056) in#0 "Target Entity" <- [5] Get Self Entity (200033/1013) out#0 "Self Entity" : Ety
+'<filter>New Filter Node Graph'/[4] Get Custom Variable (200016/1056) in#1 "Variable Name" = 'list' : Str
+'<filter>New Filter Node Graph'/[4] Get Custom Variable (200016/1056) out#0 "Variable Value" = {} : Dict
+'<filter>New Filter Node Graph'/[5] Get Self Entity (200033/1013) @(-1628.6666,-134.66667)
+'<filter>New Filter Node Graph'/[5] Get Self Entity (200033/1013) out#0 "Self Entity" = id:0 : Ety (default)

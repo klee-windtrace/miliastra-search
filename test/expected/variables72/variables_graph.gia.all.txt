@@ -1,0 +1,105 @@
+# INFO
+# FILE variables_graph.gia
+format                 gia
+detected_by            header
+file_size              7731
+container_file_type    gia
+engine_version         7.2.0
+mode                   beyond
+export_name            variables_graph.gia
+node_db_version        7.2.0
+resources              13
+primary                12
+dependencies           1
+graphs                 3
+nodes                  0
+composite_bodies       0
+declarations           0
+structs                0
+mounts                 9
+unresolved_node_types  0
+CLASS OBJECT class=1 count=3
+CLASS OBJECT_ENTITY class=3 count=5
+CLASS ENTITY_NODE_GRAPH class=9 count=2
+CLASS PLAYER_TEMPLATE class=18 count=1
+CLASS CHARACTER_TEMPLATE class=19 count=1
+CLASS STATUS_NODE_GRAPH class=22 count=1
+
+# DUMP
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=0
+GRAPH 'Test5' ENTITY_NODE_GRAPH class=9 guid='1073741826' kind=21001 service=20000 nodes=0
+GRAPH '<status>Status' STATUS_NODE_GRAPH class=22 guid='1073741827' kind=21001 service=20003 nodes=0
+RESOURCE "Default Template" PLAYER_TEMPLATE class=18 guid='1086324737'
+MOUNT 'New Node Graph' -> PLAYER_TEMPLATE "Default Template" player
+RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519041'
+MOUNT 'New Node Graph' -> CHARACTER_TEMPLATE "Default Template(Edit Character)" character
+MOUNT 'Test5' -> CHARACTER_TEMPLATE "Default Template(Edit Character)" character
+RESOURCE "Prefab_no_edits" OBJECT class=1 guid='1077936129' parent=(entities: 0)
+MOUNT 'New Node Graph' -> OBJECT "Prefab_no_edits" entity
+RESOURCE "Prefab_no_graph" OBJECT class=1 guid='1077936130' parent=(entities: 1)
+RESOURCE "Prefab_edited" OBJECT class=1 guid='1077936131' parent=(entities: 4)
+MOUNT 'New Node Graph' -> OBJECT "Prefab_edited" entity
+RESOURCE "Entity_no_graph" OBJECT_ENTITY class=3 guid='1077936132' parent=(1077936131:"Prefab_edited")
+RESOURCE "Entity_no_edits" OBJECT_ENTITY class=3 guid='1077936134' parent=(1077936131:"Prefab_edited")
+MOUNT 'New Node Graph' -> OBJECT_ENTITY "Entity_no_edits" entity
+RESOURCE "Prefab_no_graph" OBJECT_ENTITY class=3 guid='1077936137' parent=(1077936130:"Prefab_no_graph")
+MOUNT 'New Node Graph' -> OBJECT_ENTITY "Prefab_no_graph" entity
+RESOURCE "Prefab_edited" OBJECT_ENTITY class=3 guid='1077936138' parent=(1077936131:"Prefab_edited")
+MOUNT 'New Node Graph' -> OBJECT_ENTITY "Prefab_edited" entity
+RESOURCE "Entity_edited" OBJECT_ENTITY class=3 guid='1077936139' parent=(1077936131:"Prefab_edited")
+MOUNT 'New Node Graph' -> OBJECT_ENTITY "Entity_edited" entity
+GRAPH_VARIABLE 'New Node Graph' 'String' : Str (public) = 'graph'
+GRAPH_VARIABLE 'New Node Graph' 'Integer' : Int (public) = 0
+GRAPH_VARIABLE 'New Node Graph' 'Faction' : Fct (public) = id:1
+GRAPH_VARIABLE 'New Node Graph' 'Float' : Flt (public) = 2
+GRAPH_VARIABLE 'New Node Graph' 'Entity' : Ety (public) = id:0
+GRAPH_VARIABLE 'New Node Graph' 'Private' : Bol = Yes
+GRAPH_VARIABLE 'Test5' 'Faction' : Fct (public) = id:0
+GRAPH_VARIABLE '<status>Status' 'Status' : Dict<Str,Str> = {'Status': 'Status'}
+VARIABLE Player 1086324737:"Default Template" 'String' {'New Node Graph'} : Str = 'player'
+VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Faction' {'New Node Graph'} : Fct = id:5
+VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Faction' {'Test5'} : Fct = id:5
+VARIABLE 1077936131:"Prefab_edited" 'String' {'New Node Graph'} : Str = 'prefab'
+VARIABLE 1077936131:"Prefab_edited" 'Integer' {'New Node Graph'} : Int = 10
+VARIABLE 1077936131:"Prefab_edited" 'Faction' {'New Node Graph'} : Fct = id:0
+VARIABLE 1077936131:"Prefab_edited" 'Float' {'New Node Graph'} : Flt = 20
+VARIABLE_CHANGE 1077936138:"Prefab_edited" (1077936131:"Prefab_edited") 'String' {'New Node Graph'} edit: Str = 'graph'
+VARIABLE_CHANGE 1077936138:"Prefab_edited" (1077936131:"Prefab_edited") 'Integer' {'New Node Graph'} edit: Int = 0
+VARIABLE_CHANGE 1077936138:"Prefab_edited" (1077936131:"Prefab_edited") 'Faction' {'New Node Graph'} edit: Fct = id:1
+VARIABLE_CHANGE 1077936138:"Prefab_edited" (1077936131:"Prefab_edited") 'Float' {'New Node Graph'} edit: Flt = 2
+VARIABLE_CHANGE 1077936139:"Entity_edited" (1077936131:"Prefab_edited") 'String' {'New Node Graph'} edit: Str = 'entity'
+VARIABLE_CHANGE 1077936139:"Entity_edited" (1077936131:"Prefab_edited") 'Integer' {'New Node Graph'} edit: Int = 100
+VARIABLE_CHANGE 1077936139:"Entity_edited" (1077936131:"Prefab_edited") 'Faction' {'New Node Graph'} edit: Fct = id:200
+VARIABLE_CHANGE 1077936139:"Entity_edited" (1077936131:"Prefab_edited") 'Float' {'New Node Graph'} edit: Flt = 0
+
+# REFS
+graph_variable   "Entity" (Ety)                     ['New Node Graph']: 0 get, 0 set
+graph_variable   "Faction" (Fct)                    ['New Node Graph']: 0 get, 0 set
+graph_variable   "Float" (Flt)                      ['New Node Graph']: 0 get, 0 set
+graph_variable   "Integer" (Int)                    ['New Node Graph']: 0 get, 0 set
+graph_variable   "Private" (Bol)                    ['New Node Graph']: 0 get, 0 set
+graph_variable   "String" (Str)                     ['New Node Graph']: 0 get, 0 set
+graph_variable   "Faction" (Fct)                    ['Test5']: 0 get, 0 set
+graph_variable   "Status" (Dict)                    ['<status>Status']: 0 get, 0 set
+mount            'New Node Graph'                   1 player: PLAYER_TEMPLATE:"Default Template", 1 character: CHARACTER_TEMPLATE:"Default Template(Edit Character)", 6 entity: OBJECT:"Prefab_no_edits"; OBJECT:"Prefab_edited"; OBJECT_ENTITY:"Entity_no_edits"; OBJECT_ENTITY:"Prefab_no_graph"; OBJECT_ENTITY:"Prefab_edited"; OBJECT_ENTITY:"Entity_edited"
+mount            'Test5'                            1 character: CHARACTER_TEMPLATE:"Default Template(Edit Character)"
+
+# WARNS
+# findings
+INFO  declared-but-unused: graph variable "String" in graph 'New Node Graph' is declared but no node references it by literal name
+INFO  declared-but-unused: graph variable "Integer" in graph 'New Node Graph' is declared but no node references it by literal name
+INFO  declared-but-unused: graph variable "Faction" in graph 'New Node Graph' is declared but no node references it by literal name
+INFO  declared-but-unused: graph variable "Float" in graph 'New Node Graph' is declared but no node references it by literal name
+INFO  declared-but-unused: graph variable "Entity" in graph 'New Node Graph' is declared but no node references it by literal name
+INFO  declared-but-unused: graph variable "Private" in graph 'New Node Graph' is declared but no node references it by literal name
+INFO  declared-but-unused: graph variable "Faction" in graph 'Test5' is declared but no node references it by literal name
+INFO  declared-but-unused: graph variable "Status" in graph '<status>Status' is declared but no node references it by literal name
+
+# limits
+prefabs (OBJECT): 3/1000
+dynamic entities (OBJECT_ENTITY): 5/3000
+
+top graphs by node count:
+'New Node Graph': 0/3000 nodes
+'Test5': 0/3000 nodes
+'<status>Status': 0/3000 nodes

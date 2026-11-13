@@ -16,13 +16,15 @@ const ENTRY = 'src/web.mjs';
 const OUT = 'web/miliastra-search.bundle.js';
 const GLOBAL = 'MiliastraSearch';
 const VIRTUAL = 'miliastra:resources';
-const DATA_DIRS = [['data', /\.json$/], ['schema', /\.proto$/]];
+const DATA_DIRS = [['data', /\.json$/], ['schema', /\.(proto|json)$/]];
+const SINGLE_FILES = ['package.json']; // the version in every report header
 
 const read = (rel) => fs.readFileSync(path.join(root, rel), 'utf8').replace(/^\uFEFF/, '');
 
 function resources() {
   const r = {};
   for (const [dir, re] of DATA_DIRS) for (const n of fs.readdirSync(path.join(root, dir)).sort()) if (re.test(n)) r[`${dir}/${n}`] = read(`${dir}/${n}`);
+  for (const n of SINGLE_FILES) r[n] = read(n);
   return r;
 }
 

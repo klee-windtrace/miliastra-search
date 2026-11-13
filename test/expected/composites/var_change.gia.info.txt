@@ -1,4 +1,4 @@
-# FILE test/cases/composites/var_change.gia
+# FILE var_change.gia
 format                 gia
 detected_by            header
 file_size              2369
@@ -6,7 +6,7 @@ container_file_type    gia
 engine_version         7.1.0
 mode                   beyond
 export_name            var_change.gia
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              7
 primary                1
 dependencies           6

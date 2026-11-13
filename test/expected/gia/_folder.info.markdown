@@ -1,4 +1,4 @@
-﻿# File `test/cases/gia/sample_0_main.gia`
+﻿# File `sample_0_main.gia`
 
 ## File
 
@@ -11,7 +11,7 @@
 | engine\_version | 7.0.0 |
 | mode | beyond |
 | export\_name | node\_graphs.gia |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -37,7 +37,7 @@
 
 ---
 
-# File `test/cases/gia/sample_1.gia`
+# File `sample_1.gia`
 
 ## File
 
@@ -50,7 +50,7 @@
 | engine\_version | 7.0.0 |
 | mode | beyond |
 | export\_name | sample\_1.gia |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -76,7 +76,7 @@
 
 ---
 
-# File `test/cases/gia/sample_2.gia`
+# File `sample_2.gia`
 
 ## File
 
@@ -89,7 +89,7 @@
 | engine\_version | 7.0.0 |
 | mode | beyond |
 | export\_name | sample\_2.gia |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -116,7 +116,7 @@
 
 ---
 
-# File `test/cases/gia/sample_3.gia`
+# File `sample_3.gia`
 
 ## File
 
@@ -129,7 +129,7 @@
 | engine\_version | 7.0.0 |
 | mode | beyond |
 | export\_name | sample\_3.gia |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -156,7 +156,7 @@
 
 ---
 
-# File `test/cases/gia/sample_4.gia`
+# File `sample_4.gia`
 
 ## File
 
@@ -169,7 +169,7 @@
 | engine\_version | 7.0.0 |
 | mode | beyond |
 | export\_name | sample\_4.gia |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -194,7 +194,7 @@
 
 ---
 
-# File `test/cases/gia/sample_5.gia`
+# File `sample_5.gia`
 
 ## File
 
@@ -207,7 +207,7 @@
 | engine\_version | 7.0.0 |
 | mode | beyond |
 | export\_name | sample\_5.gia |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -232,7 +232,7 @@
 
 ---
 
-# File `test/cases/gia/sample_6.gia`
+# File `sample_6.gia`
 
 ## File
 
@@ -245,7 +245,7 @@
 | engine\_version | 7.0.0 |
 | mode | classic |
 | export\_name | sample\_6.gia |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -271,7 +271,7 @@
 
 ---
 
-# File `test/cases/gia/sample_7.gia`
+# File `sample_7.gia`
 
 ## File
 
@@ -284,7 +284,7 @@
 | engine\_version | 7.0.0 |
 | mode | beyond |
 | export\_name | sample\_7.gia |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -315,7 +315,7 @@
 
 ---
 
-# File `test/cases/gia/sample_8.gia`
+# File `sample_8.gia`
 
 ## File
 
@@ -328,7 +328,7 @@
 | engine\_version | 7.0.0 |
 | mode | beyond |
 | export\_name | sample\_8.gia |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -353,7 +353,7 @@
 
 ---
 
-# File `test/cases/gia/sample_9.gia`
+# File `sample_9.gia`
 
 ## File
 
@@ -366,7 +366,7 @@
 | engine\_version | 7.0.0 |
 | mode | beyond |
 | export\_name | sample\_0.gia |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 

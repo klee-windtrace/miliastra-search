@@ -1,0 +1,363 @@
+ServerGraphs['New Node Graph'] = async function Entity_1073741829($,node){
+  const GoTo = this.bind(this,$);
+  switch(node){
+    case 'event_0001':{
+      ({
+        Event_Source_Entity: $.Ety_001,
+        Event_Source_GUID: $.Gid_002,
+      } = await When_Entity_Is_Created({
+        Event: $.event,
+      }));
+      void "node_0002"; // Set_Custom_Variable
+    }
+    case 'node_0002':{ // called from 'event_0001: When_Entity_Is_Created'
+      const {
+        Self_Entity: Ety_01,
+      } = Get_Self_Entity();
+      const {
+        Owner_Entity: Ety_02,
+      } = Get_Owner_Entity({
+        Target_Entity: Ety_01, // Get_Self_Entity.Self_Entity
+      });
+
+      Set_Custom_Variable({
+        Target_Entity: $.Ety_001, // When_Entity_Is_Created.Event_Source_Entity
+        Variable_Name: "Var1",
+        Variable_Value: Ety_02, // Get_Owner_Entity.Owner_Entity
+        is_bp_var: Bol(0), // (default)
+        Trigger_Event: Bol(0),
+      });
+      void "node_0005"; // Set_Preset_Status
+    }
+    case 'node_0005':{ // called from 'node_0002: Set_Custom_Variable'
+      const {
+        Self_Entity: Ety_01,
+      } = Get_Self_Entity();
+
+      Set_Preset_Status({
+        Target_Entity: Ety_01, // Get_Self_Entity.Self_Entity
+        Preset_Status_Index: Int(1),
+        Preset_Status_Value: Int(2),
+      });
+      void "node_0009"; // Double_Branch
+    }
+    case 'node_0009':{ // called from 'node_0005: Set_Preset_Status'
+      const {
+        Self_Entity: Ety_01,
+      } = Get_Self_Entity();
+      const {
+        Entity_Type: Enum_02,
+      } = Get_Entity_Type({
+        Target_Entity: Ety_01, // Get_Self_Entity.Self_Entity
+      });
+      const {
+        Result: Bol_03,
+      } = Enumerations_Equal({
+        Enumeration_1: Enum_02, // Get_Entity_Type.Entity_Type
+        Enumeration_2: Enum("Entity Type", "Entity Type_Object"),
+      });
+
+      ({
+        Next: $.next,
+      } = Double_Branch({
+        Condition: Bol_03, // Enumerations_Equal.Result
+      }));
+      if($.next=="Yes"){
+        return GoTo("node_0010"); // Set_Local_Variable
+      }else{ // =="No"
+        return GoTo("node_0012"); // Set_Local_Variable
+      }
+    }
+    case 'node_0010':{ // called from 'node_0009: Double_Branch'
+      const {
+        Local_Variable: Loc_01,
+        Value: Bol_02,
+      } = Get_Local_Variable({
+        Initial_Value: Bol(0), // (default)
+      }, "Var_0001");
+
+      Set_Local_Variable({
+        Local_Variable: Loc_01, // Get_Local_Variable.Local_Variable
+        Value: Int(1),
+      });
+      void "node_0013"; // Print_String
+    }
+    case 'node_0013':{ // 2 callers: ['node_0010: Set_Local_Variable', 'node_0012: Set_Local_Variable']
+      const {
+        Local_Variable: Loc_01,
+        Value: Bol_02,
+      } = Get_Local_Variable({
+        Initial_Value: Bol(0), // (default)
+      }, "Var_0001");
+      const {
+        Output: Str_03,
+      } = Data_Type_Conversion({
+        Input: Bol_02, // Get_Local_Variable.Value
+        op: Enum("Type Conversions", 0), // (default)
+      });
+
+      Print_String({
+        String: Str_03, // Data_Type_Conversion.Output
+      });
+      $.input = "0";
+      void "node_0015"; // Finite_Loop
+    }
+    case 'node_0015':{ // called from 'node_0013: Print_String'
+      for ({
+        Next: $.next,
+        Current_Loop_Value: $.Int_003,
+      } of Finite_Loop({
+        Loop_Start_Value: Int(1),
+        Loop_Termination_Value: Int(8),
+      }, $.input)) {
+        switch($.next){
+          case "Loop_Body":
+            await GoTo("node_0016"); // Set_List_Value
+            break;
+          case "Loop_Complete":
+            await GoTo("node_0024"); // Create_Prefab
+            break;
+        }
+      }
+      return;
+    }
+    case 'node_0016':{ // called from 'node_0015: Finite_Loop'
+      const {
+        Variable_Value: LInt_01,
+      } = Get_Custom_Variable({
+        Target_Entity: $.Ety_001, // When_Entity_Is_Created.Event_Source_Entity
+        Variable_Name: "MyList",
+        is_bp_var: Bol(0), // (default)
+      });
+      const {
+        Result: Int_02,
+      } = Get_Random_Integer({
+        Lower_Limit: $.Int_003, // Finite_Loop.Current_Loop_Value
+        Upper_Limit: $.Int_003, // Finite_Loop.Current_Loop_Value
+      });
+      const {
+        Result: Int_03,
+      } = Multiplication({
+        _0: $.Int_003, // Finite_Loop.Current_Loop_Value
+        _1: Int_02, // Get_Random_Integer.Result
+        op: Enum("Mathematical Operators", "Mathematical Operators_Multiplication"), // (default)
+      });
+
+      Set_List_Value({
+        List: LInt_01, // Get_Custom_Variable.Variable_Value
+        ID: $.Int_003, // Finite_Loop.Current_Loop_Value
+        Value: Int_03, // Multiplication.Result
+      });
+      return Exit();
+    }
+    case 'node_0024':{ // called from 'node_0015: Finite_Loop'
+      const {
+        Local_Variable: Loc_01,
+        Value: Ety_02,
+      } = Get_Local_Variable({
+        Initial_Value: $.Ety_001, // When_Entity_Is_Created.Event_Source_Entity
+      }, "Var_0002");
+      const {
+        Location: Vec_03,
+        Rotate: Vec_04,
+      } = Get_Entity_Location_and_Rotation({
+        Target_Entity: Ety_02, // Get_Local_Variable.Value
+      });
+      const {
+        Variable_Value: LInt_05,
+      } = Get_Custom_Variable({
+        Target_Entity: $.Ety_001, // When_Entity_Is_Created.Event_Source_Entity
+        Variable_Name: "MyList",
+        is_bp_var: Bol(0), // (default)
+      });
+      const {
+        Length: Int_06,
+      } = Get_List_Length({
+        List: LInt_05, // Get_Custom_Variable.Variable_Value
+      });
+      const {
+        List: LInt_07,
+      } = Assembly_List({
+        Count: Int(1), // (default)
+        _0: Int(0), // (default)
+      });
+
+      ({
+        Created_Entity: $.Ety_004,
+      } = Create_Prefab({
+        Prefab_ID: Pfb(1077936129), // OBJECT:"Empty Model"
+        Location: Vec_03, // Get_Entity_Location_and_Rotation.Location
+        Rotate: Vec_04, // Get_Entity_Location_and_Rotation.Rotate
+        Owner_Entity: Ety_02, // Get_Local_Variable.Value
+        Follow_Target: Ety(0), // (default)
+        Overwrite_Level: Bol(1),
+        Level: Int_06, // Get_List_Length.Length
+        Unit_Tag_Index_List: LInt_07, // Assembly_List.List
+      }));
+      void "node_0029"; // Set_Custom_Variable
+    }
+    case 'node_0029':{ // called from 'node_0024: Create_Prefab'
+      const {
+        Local_Variable: Loc_01,
+        Value: Ety_02,
+      } = Get_Local_Variable({
+        Initial_Value: $.Ety_001, // When_Entity_Is_Created.Event_Source_Entity
+      }, "Var_0002");
+      const {
+        Dictionary: Dict_03,
+      } = Assembly_Dictionary({
+        Count: Int(2), // (default)
+        Key_0: $.Ety_004, // Create_Prefab.Created_Entity
+        Value_0: Ety_02, // Get_Local_Variable.Value
+      });
+
+      Set_Custom_Variable({
+        Target_Entity: $.Ety_004, // Create_Prefab.Created_Entity
+        Variable_Name: "Test",
+        Variable_Value: Dict_03, // Assembly_Dictionary.Dictionary
+        is_bp_var: Bol(0), // (default)
+        Trigger_Event: Bol(0),
+      });
+      await GoTo("node_0031"); // Double_Branch
+      return GoTo("node_0032"); // Print_String
+    }
+    case 'node_0031':{ // called from 'node_0029: Set_Custom_Variable'
+      ({
+        Next: $.next,
+      } = Double_Branch({
+        Condition: Bol(1),
+      }));
+      if($.next=="Yes"){
+        return GoTo("node_0033"); // Destroy_Entity
+      }else{ // =="No"
+        return GoTo("node_0032"); // Print_String
+      }
+    }
+    case 'node_0033':{ // 2 callers: ['node_0031: Double_Branch', 'node_0032: Print_String']
+      const {
+        Entity: Ety_01,
+      } = Query_Entity_by_GUID({
+        GUID: $.Gid_002, // When_Entity_Is_Created.Event_Source_GUID
+      });
+
+      Destroy_Entity({
+        Target_Entity: Ety_01, // Query_Entity_by_GUID.Entity
+      });
+      return Exit();
+    }
+    case 'node_0032':{ // 2 callers: ['node_0029: Set_Custom_Variable', 'node_0031: Double_Branch']
+      Print_String({
+        String: "!",
+      });
+      return GoTo("node_0033"); // Destroy_Entity
+    }
+    case 'node_0012':{ // called from 'node_0009: Double_Branch'
+      const {
+        Local_Variable: Loc_01,
+        Value: Bol_02,
+      } = Get_Local_Variable({
+        Initial_Value: Bol(0), // (default)
+      }, "Var_0001");
+
+      Set_Local_Variable({
+        Local_Variable: Loc_01, // Get_Local_Variable.Local_Variable
+        Value: Int(2),
+      });
+      return GoTo("node_0013"); // Print_String
+    }
+  }
+};
+
+ClientGraphs['New Creation Status Decision Node Graph'] = async function Creation_1082130435($,node){
+  const GoTo = this.bind(this,$);
+  switch(node){
+    case 'event_0001':{
+      for ({
+        Next: $.next,
+      } of await Execute_only_by_sequence({
+        Event: $.event,
+      })) {
+        switch($.next){
+          case "1":
+            await GoTo("node_0002"); // Switch_to_self_execution_status
+            break;
+          case "2":
+            await GoTo("node_0003"); // Double_Branch
+            break;
+          case "3":
+            await GoTo("node_0003"); // Double_Branch
+            break;
+          case "4":
+            break;
+          case "5":
+            break;
+          case "6":
+            break;
+          case "7":
+            break;
+          case "8":
+            break;
+          case "9":
+            break;
+          case "10":
+            break;
+        }
+      }
+      return;
+    }
+    case 'node_0002':{ // called from 'event_0001: Execute_only_by_sequence'
+      Switch_to_self_execution_status({
+        Execute: Bol(1), // (default)
+        Status_Node_Graph_Configuration_ID: Cfg(0), // (default)
+        Autonomous_Logic_Parameter_ID: Int(0), // (default)
+      });
+      return Exit();
+    }
+    case 'node_0003':{ // called from 'event_0001: Execute_only_by_sequence'
+      const {
+        Variable_Value: Bol_01,
+      } = Get_Custom_Variable({
+        Target_Entity: Enum("Target Entity", "Self"),
+        Variable_Name: "test",
+      });
+
+      ({
+        Next: $.next,
+      } = Double_Branch({
+        Condition: Bol_01, // Get_Custom_Variable.Variable_Value
+      }));
+      if($.next=="Yes"){
+        return Exit();
+      }else{ // =="No"
+        return Exit();
+      }
+    }
+  }
+};
+
+ClientGraphs['New Filter Node Graph'] = async function Filter_1082130436($,node){
+  const {
+    Self_Entity: Ety_01,
+  } = Get_Self_Entity();
+  const {
+    Variable_Value: Dict_02,
+  } = Get_Custom_Variable({
+    Target_Entity: Ety_01, // Get_Self_Entity.Self_Entity
+    Variable_Name: "list",
+  });
+  const {
+    Value_List: LInt_03,
+  } = Get_List_of_Values_From_Dictionary({
+    Dictionary: Dict_02, // Get_Custom_Variable.Variable_Value
+  });
+  const {
+    Maximum_Value: Int_04,
+  } = Get_Maximum_Value_From_List({
+    List: LInt_03, // Get_List_of_Values_From_Dictionary.Value_List
+  });
+
+  Node_Graph_End_Integer({
+    Output_Result_Integer: Int_04, // Get_Maximum_Value_From_List.Maximum_Value
+    Filter_Return_Type: Enum("Filter Return Type", "Return Integer"), // (default)
+  }, Flt(0.3));
+};

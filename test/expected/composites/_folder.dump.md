@@ -1,4 +1,4 @@
-﻿# FILE `test/cases/composites/test_All_Composite.gia`
+﻿# FILE `test_All_Composite.gia`
 
 **DECL** "**Static\_2**" SIGNAL\_NODE\_DECL guid='`1610612741`' role=dependency<br>
 **DECL** "**Static\_1**" SIGNAL\_NODE\_DECL guid='`1610612737`' role=dependency<br>
@@ -28,9 +28,10 @@
 **GRAPH** '<u>\<composite\></u>*Create Composite Node(1)*' ENTITY\_NODE\_GRAPH guid='`1610612738`' nodes=1 role=dependency<br>
 **GRAPH** '<u>\<composite\></u>*Create Composite Node(5)*' ENTITY\_NODE\_GRAPH guid='`1610612742`' nodes=1 role=dependency<br>
 **GRAPH** '<u>\<composite\></u>*Create Composite Node(3)*' ENTITY\_NODE\_GRAPH guid='`1610612740`' nodes=1 role=dependency<br>
-**GRAPH** '<u>\<composite\></u>*Create Composite Node(7)*' ENTITY\_NODE\_GRAPH guid='`1610612744`' nodes=1 role=dependency
+**GRAPH** '<u>\<composite\></u>*Create Composite Node(7)*' ENTITY\_NODE\_GRAPH guid='`1610612744`' nodes=1 role=dependency<br>
+**GRAPH\_VARIABLE** '*All\_Composite*' '**Static\_Graph**' : *L\<Gid\>* = \[\]
 
-# FILE `test/cases/composites/test_composite.gia`
+# FILE `test_composite.gia`
 
 **GRAPH** '*New Node Graph*' ENTITY\_NODE\_GRAPH guid='`1073741825`' nodes=7<br>
 **GRAPH** '<u>\<composite\></u>*Create Composite Node*' ENTITY\_NODE\_GRAPH guid='`1610612900`' nodes=4 role=dependency<br>
@@ -52,9 +53,10 @@
 **RESOURCE** "**Network Status**" UI\_CONTROL guid='`1073741836`'<br>
 **RESOURCE** "**Struggle Button**" UI\_CONTROL guid='`1073741837`'<br>
 **RESOURCE** "**Voice Chat Button**" UI\_CONTROL guid='`1073741838`'<br>
-**RESOURCE** "**Voice Chat Hint Queue**" UI\_CONTROL guid='`1073741839`'
+**RESOURCE** "**Voice Chat Hint Queue**" UI\_CONTROL guid='`1073741839`'<br>
+**GRAPH\_VARIABLE** '*New Node Graph*' '**Var\_1**' : *Int* = 1
 
-# FILE `test/cases/composites/test_composite.gil`
+# FILE `test_composite.gil`
 
 **GRAPH** /(default)/'*New Node Graph*' ENTITY\_NODE\_GRAPH guid='`1073741825`' nodes=7<br>
 **GRAPH** /(default)/'<u>\<composite\></u>*Create Composite Node*' ENTITY\_NODE\_GRAPH guid='`1610612900`' nodes=4<br>
@@ -102,9 +104,10 @@
 **RESOURCE** "**Network Status**" UI\_CONTROL guid='`1073741836`'<br>
 **RESOURCE** "**Struggle Button**" UI\_CONTROL guid='`1073741837`'<br>
 **RESOURCE** "**Voice Chat Button**" UI\_CONTROL guid='`1073741838`'<br>
-**RESOURCE** "**Voice Chat Hint Queue**" UI\_CONTROL guid='`1073741839`'
+**RESOURCE** "**Voice Chat Hint Queue**" UI\_CONTROL guid='`1073741839`'<br>
+**GRAPH\_VARIABLE** '*New Node Graph*' '**Var\_1**' : *Int* = 1
 
-# FILE `test/cases/composites/var_change.gia`
+# FILE `var_change.gia`
 
 **GRAPH** '*VAR\_TEST*' ENTITY\_NODE\_GRAPH guid='`1073741841`' nodes=7<br>
 **GRAPH** '<u>\<composite\></u>*VAR\_TEST\_1*' ENTITY\_NODE\_GRAPH guid='`1610612743`' nodes=1 role=dependency<br>

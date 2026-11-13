@@ -1,0 +1,16 @@
+# findings
+INFO  custom-variable-undeclared: custom variable "Var1" is used in ['New Node Graph'] but no entity, prefab or template declares it [codetest_1.gia]
+INFO  custom-variable-undeclared: custom variable "MyList" is used in ['New Node Graph'] but no entity, prefab or template declares it [codetest_1.gia]
+INFO  custom-variable-undeclared: custom variable "Test" is used in ['New Node Graph'] but no entity, prefab or template declares it [codetest_1.gia]
+INFO  custom-variable-undeclared: custom variable "test" is used in ['<creation>New Creation Status Decision Node Graph'] but no entity, prefab or template declares it [codetest_1.gia]
+INFO  custom-variable-undeclared: custom variable "list" is used in ['<filter>New Filter Node Graph'] but no entity, prefab or template declares it [codetest_1.gia]
+
+# limits
+composites: 10/1000 declared
+prefabs (OBJECT): 1/1000
+
+top graphs by node count:
+'<status>Status': 35/3000 nodes [codetest_2.gia]
+'New Node Graph': 30/3000 nodes [codetest_1.gia]
+'<filter>New Filter Node Graph': 5/3000 nodes [codetest_1.gia]
+'<creation>New Creation Status Decision Node Graph': 4/3000 nodes [codetest_1.gia]

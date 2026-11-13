@@ -6,8 +6,9 @@ import { parseBundle } from '../src/model.mjs';
 import { NodeDb } from '../src/nodedb.mjs';
 import { unwrapContainer, ContainerError } from '../src/container.mjs';
 import { parseProto } from '../src/protoparse.mjs';
-import { fileInfo, infoBlocks } from '../src/info.mjs';
-import { textLines, plain } from '../src/doc.mjs';
+import { fileInfo } from '../src/info.mjs';
+import { infoBlocks } from '../src/present/info.mjs';
+import { textLines, plain } from '../src/present/doc.mjs';
 import { renderText, readSample, sample, samples, here, appendToFirstEntry, varField, wrap, payloadOf } from './helpers.mjs';
 
 const db = new NodeDb();
@@ -47,7 +48,7 @@ test('main sample: ground truth', () => {
 });
 
 // The `info` mode as plain text (what `info` prints in the text format).
-const info = (name, opts = {}) => textLines(infoBlocks(fileInfo(parseBundle(readSample(name), { file: name }), db, opts), opts)).map(plain).join('\n') + '\n';
+const info = (name, opts = {}) => textLines(infoBlocks(fileInfo(parseBundle(readSample(name), { file: name }), db, { showTag: !!opts.showTag }), opts)).map(plain).join('\n') + '\n';
 
 test('UID is masked by default and shown only with info --show-tag; dump/code never print the export tag', () => {
   const t = info('sample_0_main.gia');
@@ -113,19 +114,19 @@ test('census: unknown field at top level and inside a nested message', () => {
 test('unknown node id: prints <node#ID>, keeps pins/values/wires, reports it', () => {
   const db2 = new NodeDb();
   delete db2.nodes[71]; delete db2.nodes[337];
-  const { lines, summary } = renderText(parseBundle(readSample('sample_0_main.gia')), db2);
+  const { lines, code } = renderText(parseBundle(readSample('sample_0_main.gia')), db2);
   const t = lines.join('\n');
   assert.match(t, /'Graph'\/\[1\] <node#71> \(71\) @/);
   assert.match(t, /\[4\] Double Branch \(2\) in#0 "Condition"|\[1\] <node#71> \(71\) out\.flow#0 -> \[4\] Double Branch/);
   assert.match(t, /'Graph'\/\[8\] <node#337> \(337\) in#0 = 'Graph_Var'/, 'literal must survive without names');
   assert.match(t, /<- \[8\] <node#337> \(337\) out#0/);
   assert.match(t, /UNRESOLVED node#71 x1/);
-  assert.equal(summary.unresolved.length, 2);
+  assert.equal(code.unresolved_nodes.length, 2);
 });
 test('unknown pin name / unknown enum degrade to indices and integers', () => {
   const db2 = new NodeDb(); db2.nodes[1].pins = {};
   assert.match(renderText(parseBundle(readSample('sample_0_main.gia')), db2).lines.join('\n'), /Print String \(1\) in#0 = 'Created'/);
-  const t = dump('sample_7.gia', { defaults: true });
+  const t = dump('sample_7.gia');
   assert.match(t, /enum:101«Less Than»|enum:101«/, 'known enum value gets its name');
   assert.match(t, /enum:\d+|<unknown-enum:\d+>/);
 });

@@ -10,7 +10,7 @@
 //
 // Everything here is by shell node id (see data/nodes.json); pin indices are the *shell* indices.
 
-import { S, T } from './doc.mjs';
+import { S, T } from './present/doc.mjs';
 
 const BODY_KIND = 21002; // composite body graph (see refs.mjs COMPOSITE_BODY_KIND)
 const N = { DOUBLE_BRANCH: 2, MULTI_BRANCH: 3, EQUAL: 14, GET_LOCAL: 18, GET_GRAPH_VAR: 337 };

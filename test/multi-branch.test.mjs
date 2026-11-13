@@ -32,7 +32,7 @@ test('branches are named after valid_pin_list values, and the list pin is not pr
 
 test('all-pins mode hides the list too; other nodes keep their own pins', () => {
   const b = load('resolution', 'test_All_Static.gia');
-  const lines = dump(b, { allPins: true, defaults: true });
+  const lines = dump(b, { allPins: true });
   assert.ok(!lines.some((l) => l.includes('valid_pin_list')));
   assert.ok(lines.some((l) => /Control Expression/.test(l)), 'the control expression pin is still shown');
 });

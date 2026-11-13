@@ -1,4 +1,4 @@
-﻿# File `test/cases/client/client_var_types.gia`
+﻿# File `client_var_types.gia`
 
 ## File
 
@@ -11,7 +11,7 @@
 | engine\_version | 7.1.0 |
 | mode | beyond |
 | export\_name | client\_var\_types.gia |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 

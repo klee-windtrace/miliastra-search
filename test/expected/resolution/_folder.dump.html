@@ -32,6 +32,7 @@ td.right,th.right{text-align:right}td.center,th.center{text-align:center}
 .toc a{color:var(--accent);text-decoration:none;display:block;padding:.05rem 0;break-inside:avoid}.toc a:hover{text-decoration:underline}
 ul{padding-left:1.4rem}
 .q{color:var(--muted)}.muted{color:var(--muted)}
+pre a{text-decoration:none}pre a:hover{text-decoration:underline}[id]:target{background:#4a4a10;border-radius:2px}
 pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pre-wrap;word-break:break-word}
 .title{font-weight:700;color:#F2F2F2}
 .section{color:#61D6D6}
@@ -48,8 +49,10 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 .graphName{color:#C19C00}
 .graphTag{color:#F9F1A5}
 .key{color:#16C60C}
+.more{color:#B4009E}
 .folderName{color:#C50F1F}
 .declName{color:#16C60C}
+.variableName{color:#C19C00}
 .varName{color:#16C60C}
 .pinName{color:#13A10E}
 .pinLabel{color:#3A96DD}
@@ -65,11 +68,20 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 .typeName{color:#B4009E}
 .flag{color:#767676}
 .string{color:#C19C00}
-.number{color:#3A96DD}
+.number{color:#61D6D6}
 .bool{color:#3A96DD}
 .enumValue{color:#61D6D6}
 .idValue{color:#13A10E}
 .vector{color:#3A96DD}
+.jsKeyword{color:#B4009E}
+.jsSwitch{color:#3B78FF}
+.jsError{color:#C50F1F}
+.jsCall{color:#F9F1A5}
+.jsKey{color:#13A10E}
+.jsVar{color:#E74856}
+.jsOut{color:#3A96DD}
+.jsString{color:#C19C00}
+.jsComment{color:#767676}
 .kind{color:#881798}
 .role{color:#3B78FF}
 .count{color:#F2F2F2}
@@ -78,15 +90,19 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 </head>
 <body>
 <main>
-<h1>File <span class="fileName">test/cases/resolution/test_All_Static.gia</span></h1>
-<nav class="toc"><a href="#declarations-2">Declarations (2)</a><a href="#graphs-1">Graphs (1)</a><a href="#graphs-5">Graphs (5)</a></nav>
+<h1>File <span class="fileName">test_All_Static.gia</span></h1>
+<nav class="toc"><a href="#declarations-2">Declarations (2)</a><a href="#graphs-1">Graphs (1)</a><a href="#variables">Variables</a><a href="#graphs-5">Graphs (5)</a><a href="#variables-2">Variables</a></nav>
 <h2 id="declarations-2">Declarations (2)</h2>
 <div class="tablewrap"><table><thead><tr><th>Name</th><th>Class</th><th>Guid</th><th>Role</th></tr></thead><tbody><tr><td>"<span class="declName">Static_1</span>"</td><td><span class="className">SIGNAL_NODE_DECL</span></td><td>'<span class="guid">1610612737</span>'</td><td>dependency</td></tr><tr><td>"<span class="declName">Static_2</span>"</td><td><span class="className">SIGNAL_NODE_DECL</span></td><td>'<span class="guid">1610612741</span>'</td><td>dependency</td></tr></tbody></table></div>
 <h2 id="graphs-1">Graphs (1)</h2>
 <div class="tablewrap"><table><thead><tr><th>Name</th><th>Class</th><th>Guid</th><th class="right">Nodes</th></tr></thead><tbody><tr><td>'<span class="graphName">All_Static</span>'</td><td><span class="className">ENTITY_NODE_GRAPH</span></td><td>'<span class="guid">1073741825</span>'</td><td class="right"><span class="count">26</span></td></tr></tbody></table></div>
-<h1>File <span class="fileName">test/cases/resolution/test_resolution.gia</span></h1>
+<h2 id="variables">Variables</h2>
+<div class="tablewrap"><table><thead><tr><th>Graph</th><th>Variable</th><th>Type</th><th>Value</th></tr></thead><tbody><tr><td>'<span class="graphName">All_Static</span>'</td><td>'<span class="variableName">Static_Graph</span>'</td><td><span class="typeName">L&lt;Gid&gt;</span></td><td>[]</td></tr></tbody></table></div>
+<h1>File <span class="fileName">test_resolution.gia</span></h1>
 <h2 id="graphs-5">Graphs (5)</h2>
 <div class="tablewrap"><table><thead><tr><th>Name</th><th>Class</th><th>Guid</th><th class="right">Nodes</th><th>Role</th></tr></thead><tbody><tr><td>'<span class="graphName">Dynamic</span>'</td><td><span class="className">ENTITY_NODE_GRAPH</span></td><td>'<span class="guid">1073741826</span>'</td><td class="right"><span class="count">30</span></td><td></td></tr><tr><td>'<span class="graphName">Indirect</span>'</td><td><span class="className">ENTITY_NODE_GRAPH</span></td><td>'<span class="guid">1073741827</span>'</td><td class="right"><span class="count">10</span></td><td></td></tr><tr><td>'<span class="graphName">Static</span>'</td><td><span class="className">ENTITY_NODE_GRAPH</span></td><td>'<span class="guid">1073741825</span>'</td><td class="right"><span class="count">28</span></td><td></td></tr><tr><td>'<span class="graphTag">&lt;composite&gt;</span><span class="graphName">Create Composite Node</span>'</td><td><span class="className">ENTITY_NODE_GRAPH</span></td><td>'<span class="guid">1610612737</span>'</td><td class="right"><span class="count">2</span></td><td>dependency</td></tr><tr><td>'<span class="graphTag">&lt;composite&gt;</span><span class="graphName">Create Composite Node(1)</span>'</td><td><span class="className">ENTITY_NODE_GRAPH</span></td><td>'<span class="guid">1610612738</span>'</td><td class="right"><span class="count">1</span></td><td>dependency</td></tr></tbody></table></div>
+<h2 id="variables-2">Variables</h2>
+<div class="tablewrap"><table><thead><tr><th>Graph</th><th>Variable</th><th>Type</th><th>Value</th></tr></thead><tbody><tr><td>'<span class="graphName">Dynamic</span>'</td><td>'<span class="variableName">name</span>'</td><td><span class="typeName">Str</span></td><td>'<span class="string">gvar3</span>'</td></tr><tr><td>'<span class="graphName">Indirect</span>'</td><td>'<span class="variableName">test2</span>'</td><td><span class="typeName">Str</span></td><td>'<span class="string">test4</span>'</td></tr><tr><td>'<span class="graphName">Static</span>'</td><td>'<span class="variableName">name</span>'</td><td><span class="typeName">Str</span></td><td>'<span class="string">gvar3</span>'</td></tr></tbody></table></div>
 </main>
 </body>
 </html>

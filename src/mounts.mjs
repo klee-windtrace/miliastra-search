@@ -10,6 +10,9 @@
 //   * Graph mount (entities, prefabs, templates, stage entity, classes): component kind 3, payload
 //       13: { 1: { 1: { 1: 1, 2: <graph guid>, 501: <graph service domain> } [, 501: "PlayerBP"|"AvatarBP"] } ... }
 //     The wrapper's 501 label exists only on classes: PlayerBP = graph runs on the Player, AvatarBP = on the Character.
+//     A host that changes the value of a published graph variable lists it in the slot as `2: variable` (the layout of a custom variable, see
+//     varscan.mjs), after the graph reference. Only the values that differ from the graph's own are listed; the entity of a prefab that edits
+//     a value stores the value it ends up with (the prefab's, if it did not change it), so a mount without `2` is a mount of the graph's defaults.
 //     A player / character *template* is two separate root-4 entries (band 3 / band 4 of the GUID), so there the host
 //     itself says which one it is.
 //   * Status graph (config type 1): component kind 6 -> field 21 -> 1 -> 1 -> 2 = { 1: 1, 2: <guid>, 501: 20003 };
@@ -18,6 +21,7 @@
 //     hit effects, unit status, ...). A static entity has none, or only a kind-1 component. Base config ids do not tell them apart (a static
 //     entity converted to dynamic keeps its static config id), the extra list does.
 import { walkRaw } from './decode.mjs';
+import { scanVariables, readVariable } from './varscan.mjs';
 
 const safe = (b) => { try { return walkRaw(b); } catch { return []; } };
 const first = (items, f) => items.find((x) => x.field === f);
@@ -34,26 +38,35 @@ export function isDynamic(f, dynField) {
 /** The id an entity was created from: `{ 1: id, 2: 1 }` in field 2 of its definition. A prefab's GUID, or the id of a native object. */
 const parentOf = (f) => { const p = first(f, 2); return p?.wire === 2 ? first(safe(p.value), 1)?.value ?? null : null; };
 
+/** Resource classes of a .gia whose definition is an entity (field 12) or a template (field 11); both are `{ 1: guid, 2: parent, 5-8: components }` (see scanGiaDefinitions). */
+const GIA_ENTITY_CLASSES = new Set([3, 4]), GIA_TEMPLATE_CLASSES = new Set([1, 2, 18, 19, 25]);
+
 /**
- * The same facts for a .gia: an entity resource (class 3) carries the entity definition in its field 12 (opaque in the
- * schema), `12 -> 1 = { 1: guid, 2: { 1: parent id, 2: 1 }, 5: [components], 6: [components], 7: [dynamic components], 8: base config }`,
- * i.e. the very layout of a root-5 entry of a .gil. Returns one value per resource in the order the decoder lists them
- * (all `resources`, then all `dependencies`): `{ dynamic, parent }` for an entity, null for everything else.
+ * The same facts for a .gia: an entity resource (class 3 object entity, 4 creation entity) carries the entity definition in its field 12 and a
+ * template (1 prefab, 2 creation, 18 player, 19 character, 25 projectile) the template definition in its field 11 (both opaque in the schema),
+ * `12 -> 1 = { 1: guid, 2: { 1: parent id, 2: 1 }, 5: [components], 6: [components], 7: [dynamic components], 8: base config }`,
+ * i.e. the very layout of a root-5 entry of a .gil; a template has its dynamic components in field 8 instead of 7, like a root-4 entry.
+ * Returns one value per resource in the order the decoder lists them (all `resources`, then all `dependencies`):
+ * `{ dynamic, parent, variables, graphs }` for an entity and `{ dynamic: null, parent: null, variables, graphs }` for a template (`dynamic` is only
+ * told for an object entity: a creation entity is always dynamic; `graphs` = the mounted graphs as in scanSection), null for everything else.
  */
-export function scanGiaEntities(payload) {
+export function scanGiaDefinitions(payload) {
   const root = walkRaw(payload);
   const entries = [...root.filter((x) => x.field === 1 && x.wire === 2), ...root.filter((x) => x.field === 2 && x.wire === 2)];
   return entries.map((e) => {
     const f = safe(e.value);
-    if (first(f, 5)?.value !== 3) return null; // ResourceClass OBJECT_ENTITY
-    const def = first(safe(first(f, 12)?.value ?? new Uint8Array()), 1);
+    const cls = first(f, 5)?.value;
+    const entity = GIA_ENTITY_CLASSES.has(cls);
+    if (!entity && !GIA_TEMPLATE_CLASSES.has(cls)) return null;
+    const def = first(safe(first(f, entity ? 12 : 11)?.value ?? new Uint8Array()), 1);
     if (def?.wire !== 2) return null;
     const d = safe(def.value);
-    return { dynamic: isDynamic(d, 7), parent: parentOf(d) };
+    if (!entity) return { dynamic: null, parent: null, variables: scanVariables(d, 8), graphs: mountsIn(d, [6, 7, 8]) };
+    return { dynamic: cls === 3 ? isDynamic(d, 7) : null, parent: parentOf(d), variables: scanVariables(d, 7), graphs: mountsIn(d, [5, 6, 7]) };
   });
 }
 
-/** [{ guid, service }] graph references inside the payload of a kind-3 component (field 13); `label` = class slot label. */
+/** [{ guid, service, label, edits }] graph references inside the payload of a kind-3 component (field 13); `label` = class slot label, `edits` = the variables the slot lists (readVariable). */
 function graphRefs(payload) {
   const out = [];
   for (const slot of safe(payload)) {          // repeated 1
@@ -65,16 +78,31 @@ function graphRefs(payload) {
     const r = safe(ref.value);
     const guid = first(r, 2)?.value;
     if (guid == null) continue;
-    out.push({ guid, service: first(r, 501)?.value ?? null, label: label?.wire === 2 ? new TextDecoder().decode(label.value) : null });
+    out.push({ guid, service: first(r, 501)?.value ?? null, label: label?.wire === 2 ? new TextDecoder().decode(label.value) : null,
+      edits: inner.filter((x) => x.field === 2 && x.wire === 2).map((x) => readVariable(x.value)) });
   }
   return out;
+}
+
+/** The graph mounts of a definition `f` (its decoded fields): the kind-3 components of the lists `compFields`, a graph listed once per label. */
+function mountsIn(f, compFields) {
+  const graphs = [];
+  for (const c of f.filter((x) => compFields.includes(x.field) && x.wire === 2)) {
+    const comp = safe(c.value);
+    if (first(comp, 1)?.value !== 3) continue;
+    const p = first(comp, 13);
+    if (p?.wire === 2) graphs.push(...graphRefs(p.value));
+  }
+  const seen = new Set();
+  return graphs.filter((g) => { const k = `${g.guid}/${g.label}`; return seen.has(k) ? false : (seen.add(k), true); });
 }
 
 /**
  * Raw facts per entry of one root section.
  * @param compFields  which fields of an entry are component lists (graph mounts are searched in all of them)
  * @param dynField    the field holding the dynamic component list (null if the section has none)
- * Returns Map(guid -> { graphs: [{guid, service, label}], dynamic: boolean|null, parent: id|null, statusGraph: {guid,service}|null|undefined }).
+ * Returns Map(guid -> { graphs: [{guid, service, label, edits}], dynamic: boolean|null, parent: id|null, statusGraph: {guid,service}|null|undefined,
+ *   variables: [custom variable] | null (a section without a dynamic list: see varscan.mjs) }).
  */
 export function scanSection(rootItems, section, { compFields, dynField = null, status = false }) {
   const out = new Map();
@@ -83,12 +111,10 @@ export function scanSection(rootItems, section, { compFields, dynField = null, s
       const f = safe(e.value);
       const guid = first(f, 1)?.value;
       if (guid == null) continue;
-      const graphs = [];
       let statusGraph;
       for (const c of f.filter((x) => compFields.includes(x.field) && x.wire === 2)) {
         const comp = safe(c.value);
         const kind = first(comp, 1)?.value;
-        if (kind === 3) { const p = first(comp, 13); if (p?.wire === 2) graphs.push(...graphRefs(p.value)); }
         if (status && kind === 6) {
           const p = first(comp, 21);
           const ref = p?.wire === 2 ? first(safe(first(safe(first(safe(p.value), 1)?.value ?? new Uint8Array()), 1)?.value ?? new Uint8Array()), 2) : null;
@@ -96,8 +122,8 @@ export function scanSection(rootItems, section, { compFields, dynField = null, s
         }
       }
       const dynamic = dynField == null ? null : isDynamic(f, dynField);
-      const seen = new Set();
-      out.set(guid, { parent: parentOf(f), graphs: graphs.filter((g) => { const k = `${g.guid}/${g.label}`; return seen.has(k) ? false : (seen.add(k), true); }), dynamic, statusGraph });
+      out.set(guid, { parent: parentOf(f), graphs: mountsIn(f, compFields), dynamic, statusGraph,
+        variables: dynField == null ? null : scanVariables(f, dynField) });
     }
   }
   return out;
@@ -209,7 +235,7 @@ export function scanLevel(payload) {
 }
 
 /**
- * Every graph mount of a bundle, joined to the graph resource: [{ host, slot, guid, service, graph|null }].
+ * Every graph mount of a bundle, joined to the graph resource: [{ host, slot, guid, service, graph|null, edits }] (`edits`: see the mount's layout above).
  * GIL GUIDs are unique per kind only, so the graph is looked up by GUID *and* service domain (the mount carries it);
  * composite bodies can never be mounted. `graph` is null when the file has no such graph (mount left dangling).
  */
@@ -218,7 +244,7 @@ export function mountsOf(bundle) {
   const out = [];
   for (const host of bundle.resources) for (const m of host.mounts || []) {
     const graph = graphs.find((g) => g.guid === m.graph && (m.service == null || g.graph.service === m.service)) ?? null;
-    out.push({ host, slot: m.slot, guid: m.graph, service: m.service, graph });
+    out.push({ host, slot: m.slot, guid: m.graph, service: m.service, graph, edits: m.edits ?? [] });
   }
   return out;
 }

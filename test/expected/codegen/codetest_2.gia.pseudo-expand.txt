@@ -1,0 +1,510 @@
+ServerGraphs['Status'] = async function Status_1073741830($,node){
+  const GoTo = this.bind(this,$);
+  switch(node){
+    case 'event_0001':{
+      ({
+        Event_Source_Entity: $.Ety_001,
+        Unit_Status_Config_ID: $.Cfg_003,
+        Applier_Entity: $.Ety_004,
+        Original_Status_Stacks: $.Int_008,
+      } = await When_Unit_Status_Changes({
+        Event: $.event,
+      }));
+      void "node_0002"; // Multiple_Branches
+    }
+    case 'node_0002':{ // called from 'event_0001: When_Unit_Status_Changes'
+      ({
+        Next: $.next,
+      } = Multiple_Branches({
+        Control_Expression: $.Int_008, // When_Unit_Status_Changes.Original_Status_Stacks
+      }));
+      switch($.next){
+        default: // "Default"
+          return Exit();
+        case "0":
+          return GoTo("node_0003"); // Remove_Unit_Status
+      }
+    }
+    case 'node_0003':{ // called from 'node_0002: Multiple_Branches'
+      Remove_Unit_Status({
+        Remove_Target_Entity: $.Ety_001, // When_Unit_Status_Changes.Event_Source_Entity
+        Unit_Status_Config_ID: $.Cfg_003, // When_Unit_Status_Changes.Unit_Status_Config_ID
+        Removal_Method: Enum("Unit Status Removal Strategy", "All Coexisting Statuses With the Same Name"),
+        Removal_Reason: Enum("Unit Status Removal Reason", "Dispelled"), // (default)
+        Remover_Entity: $.Ety_004, // When_Unit_Status_Changes.Applier_Entity
+      });
+      void "node_0005"; // Set_Node_Graph_Variable
+    }
+    case 'node_0005':{ // called from 'node_0003: Remove_Unit_Status'
+      const {
+        Value: Int_02,
+      } = Get_Local_Variable({
+        Initial_Value: Int(42),
+      }, "Comp_001_Var_0002");
+
+      Set_Node_Graph_Variable({
+        Variable_Name: "gvar",
+        Variable_Value: Int_02, // Get_Local_Variable.Value
+        Trigger_Event: Bol(0),
+      });
+      void "node_0012.node_0008"; // Set_Node_Graph_Variable
+    }
+    case 'node_0012.node_0008':{ // called from 'node_0005: Set_Node_Graph_Variable'
+      // in composite Linear Flow (node_0012)
+      Set_Node_Graph_Variable({
+        Variable_Name: "gvar",
+        Variable_Value: Int(0),
+        Trigger_Event: Bol(1),
+      });
+      await GoTo("node_0021.node_0018"); // Print_String
+      return GoTo("node_0025.node_0010"); // Double_Branch
+    }
+    case 'node_0021.node_0018':{ // called from 'node_0012.node_0008: Set_Node_Graph_Variable'
+      // in composite Two In One Out (node_0021)
+      Print_String({
+        String: "Second",
+      });
+      void "node_0029.node_0019"; // Double_Branch
+    }
+    case 'node_0029.node_0019':{ // 2 callers: ['node_0021.node_0017: Print_String', 'node_0021.node_0018: Print_String']
+      // in composite Calling Twice (node_0029)
+      ({
+        Next: $.next,
+      } = Double_Branch({
+        Condition: Bol(0),
+      }));
+      if($.next=="Yes"){
+        return Exit();
+      }else{ // =="No"
+        await GoTo("node_0029.node_0001"); // Double_Branch
+        return GoTo("node_0029.node_0022"); // Double_Branch
+      }
+    }
+    case 'node_0029.node_0001':{ // 2 callers: ['node_0029.node_0019: Double_Branch', 'node_0029.node_0022: Double_Branch']
+      // in composite Calling Twice (node_0029)
+      ({
+        Next: $.next,
+      } = Double_Branch({
+        Condition: Bol(0),
+      }));
+      if($.next=="Yes"){
+        return Exit();
+      }else{ // =="No"
+        return GoTo("node_0036.node_0032"); // Set_Custom_Variable
+      }
+    }
+    case 'node_0036.node_0032':{ // called from 'node_0029.node_0001: Double_Branch'
+      // in composite With Event (node_0036)
+      const {
+        Self_Entity: Ety_01,
+      } = Get_Self_Entity();
+
+      Set_Custom_Variable({
+        Target_Entity: Ety_01, // Get_Self_Entity.Self_Entity
+        Variable_Name: "none",
+        Variable_Value: Int(0), // (default)
+        Trigger_Event: Bol(1), // (default)
+      });
+      return Exit();
+    }
+    case 'node_0029.node_0022':{ // called from 'node_0029.node_0019: Double_Branch'
+      // in composite Calling Twice (node_0029)
+      ({
+        Next: $.next,
+      } = Double_Branch({
+        Condition: Bol(1),
+      }));
+      if($.next=="Yes"){
+        return GoTo("node_0029.node_0001"); // Double_Branch
+      }else{ // =="No"
+        return Exit();
+      }
+    }
+    case 'node_0025.node_0010':{ // called from 'node_0012.node_0008: Set_Node_Graph_Variable'
+      // in composite Two Exclusive Outs (node_0025)
+      ({
+        Next: $.next,
+      } = Double_Branch({
+        Condition: Bol(0),
+      }));
+      if($.next=="Yes"){
+        return GoTo("node_0015.node_0013"); // Break_Loop
+      }else{ // =="No"
+        return GoTo("node_0021.node_0017"); // Print_String
+      }
+    }
+    case 'node_0015.node_0013':{ // called from 'node_0025.node_0010: Double_Branch'
+      // in composite Terminal (node_0015)
+      Break_Loop();
+      return Exit();
+    }
+    case 'node_0021.node_0017':{ // called from 'node_0025.node_0010: Double_Branch'
+      // in composite Two In One Out (node_0021)
+      Print_String({
+        String: "First",
+      });
+      return GoTo("node_0029.node_0019"); // Double_Branch
+    }
+    case 'node_0036.event_0030':{
+      // in composite With Event (node_0036)
+      ({
+        Timer_Name: $.Str_012,
+      } = await When_Timer_Is_Triggered({
+        Event: $.event,
+      }));
+      void "node_0036.node_0031"; // Multiple_Branches
+    }
+    case 'node_0036.node_0031':{ // called from 'node_0036.event_0030: When_Timer_Is_Triggered'
+      // in composite With Event (node_0036)
+      ({
+        Next: $.next,
+      } = Multiple_Branches({
+        Control_Expression: $.Str_012, // When_Timer_Is_Triggered.Timer_Name
+      }));
+      switch($.next){
+        default: // "Default"
+          return Exit();
+        case "timer":
+          return GoTo("node_0034"); // Set_Custom_Variable
+      }
+    }
+    case 'node_0034':{ // called from 'node_0036.node_0031: Multiple_Branches'
+      const {
+        Value: Bol_02,
+      } = Get_Local_Variable({
+        Initial_Value: Bol(1),
+      }, "Comp_008_Var_0001");
+
+      Set_Custom_Variable({
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "x",
+        Variable_Value: Bol_02, // Get_Local_Variable.Value
+        Trigger_Event: Bol_02, // Get_Local_Variable.Value
+      });
+      void "node_0039"; // Set_Custom_Variable
+    }
+    case 'node_0039':{ // called from 'node_0034: Set_Custom_Variable'
+      Set_Custom_Variable({
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "y",
+        Variable_Value: $.Bol_016, // Consume_Gift_Box.Consume
+        Trigger_Event: $.Bol_016, // Consume_Gift_Box.Consume
+      });
+      void "node_0040"; // Set_Custom_Variable
+    }
+    case 'node_0040':{ // called from 'node_0039: Set_Custom_Variable'
+      const {
+        Result: Bol_01,
+      } = Greater_Than({
+        Left_Value: $.Int_018, // Add_Unit_Status.Slot_ID
+        Right_Value: $.Int_018, // Add_Unit_Status.Slot_ID
+        op: Enum("Comparison Operators", "Comparison Operators_Greater Than"), // (default)
+      });
+
+      Set_Custom_Variable({
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "z",
+        Variable_Value: Bol_01, // Greater_Than.Result
+        Trigger_Event: Bol_01, // Greater_Than.Result
+      });
+      return Exit();
+    }
+    case 'node_0042.node_0038':{ // no callers
+      throw 'unreachable';
+      // in composite Exposed Local (node_0042)
+      Forwarding_Event({
+        Target_Entity: Ety(0), // (default)
+      });
+      void "node_0046.node_0044"; // Consume_Gift_Box
+    }
+    case 'node_0046.node_0044':{ // called from 'node_0042.node_0038: Forwarding_Event'
+      throw 'unreachable';
+      // in composite Exposed Native (node_0046)
+      ({
+        Consume: $.Bol_016,
+      } = Consume_Gift_Box({
+        Player_Entity: Ety(0), // (default)
+        Gift_Box_Index: Int(1),
+        Consumption_Quantity: Int(1),
+      }));
+      void "node_0054.node_0048"; // Add_Unit_Status
+    }
+    case 'node_0054.node_0048':{ // called from 'node_0046.node_0044: Consume_Gift_Box'
+      throw 'unreachable';
+      // in composite Exposed Computed (node_0054)
+      ({
+        Slot_ID: $.Int_018,
+      } = Add_Unit_Status({
+        Applier_Entity: Ety(0), // (default)
+        Application_Target_Entity: Ety(0), // (default)
+        Unit_Status_Config_ID: Cfg(0), // (default)
+        Applied_Stacks: Int(0), // (default)
+        Unit_Status_Parameter_Dictionary: Dict([]), // (default)
+      }));
+      return Exit();
+    }
+  }
+};
+
+Composite['Calling Twice'] = function Composite_1610612743($,Comp,In = {},node){
+  let next;
+  return (async function* GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0019':{ // no callers
+        ({
+          Next: next,
+        } = Double_Branch({
+          Condition: Bol(0),
+        }));
+        if(next=="Yes"){
+          return Exit();
+        }else{ // =="No"
+          yield* GoTo("node_0001"); // Double_Branch
+          return yield* GoTo("node_0022"); // Double_Branch
+        }
+      }
+      case 'node_0001':{ // 2 callers: ['node_0019: Double_Branch', 'node_0022: Double_Branch']
+        ({
+          Next: next,
+        } = Double_Branch({
+          Condition: Bol(0),
+        }));
+        if(next=="Yes"){
+          return Exit();
+        }else{ // =="No"
+          return yield "0";
+        }
+      }
+      case 'node_0022':{ // called from 'node_0019: Double_Branch'
+        ({
+          Next: next,
+        } = Double_Branch({
+          Condition: Bol(1),
+        }));
+        if(next=="Yes"){
+          return yield* GoTo("node_0001"); // Double_Branch
+        }else{ // =="No"
+          return Exit();
+        }
+      }
+    }
+  })(node);
+};
+
+Composite['Exposed Computed'] = function Composite_1610612748($,Comp,In = {},node){
+  const $$ = $[Comp] ??= {};
+  if (!node){
+    const {
+      Result: Bol_01,
+    } = Greater_Than({
+      Left_Value: $$.Int_002, // Add_Unit_Status.Slot_ID
+      Right_Value: $$.Int_002, // Add_Unit_Status.Slot_ID
+      op: Enum("Comparison Operators", "Comparison Operators_Greater Than"), // (default)
+    });
+
+    return {
+      Result: Bol_01, // Greater_Than.Result
+    };
+  }
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0048':{ // no callers
+        ({
+          Slot_ID: $$.Int_002,
+        } = Add_Unit_Status({
+          Applier_Entity: Ety(0), // (default)
+          Application_Target_Entity: Ety(0), // (default)
+          Unit_Status_Config_ID: Cfg(0), // (default)
+          Applied_Stacks: Int(0), // (default)
+          Unit_Status_Parameter_Dictionary: Dict([]), // (default)
+        }));
+        return { Next: "0" };
+      }
+    }
+  })(node);
+};
+
+Composite['Exposed Local'] = function Composite_1610612745($,Comp,In = {
+  Target_Entity: Ety,
+},node){
+  if (!node){
+    const {
+      Value: Bol_02,
+    } = Get_Local_Variable({
+      Initial_Value: Bol(1),
+    }, Comp + "_Var_0001");
+
+    return {
+      Value: Bol_02, // Get_Local_Variable.Value
+    };
+  }
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0038':{ // no callers
+        Forwarding_Event({
+          Target_Entity: In.Target_Entity,
+        });
+        return { Next: "0" };
+      }
+    }
+  })(node);
+};
+
+Composite['Exposed Native'] = function Composite_1610612746($,Comp,In = {
+  Player_Entity: Ety,
+},node){
+  const $$ = $[Comp] ??= {};
+  if (!node){
+    return {
+      Consume: $$.Bol_001, // Consume_Gift_Box.Consume
+    };
+  }
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0044':{ // no callers
+        ({
+          Consume: $$.Bol_001,
+        } = Consume_Gift_Box({
+          Player_Entity: In.Player_Entity,
+          Gift_Box_Index: Int(1),
+          Consumption_Quantity: Int(1),
+        }));
+        return { Next: "0" };
+      }
+    }
+  })(node);
+};
+
+Composite['Linear Flow'] = function Composite_1610612738($,Comp,In = {},node){
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0008':{ // no callers
+        Set_Node_Graph_Variable({
+          Variable_Name: "gvar",
+          Variable_Value: Int(0),
+          Trigger_Event: Bol(1),
+        });
+        return { Next: "0" };
+      }
+    }
+  })(node);
+};
+
+Composite['Simple Data'] = function Composite_1610612737($,Comp,In = {},node){
+  if (!node){
+    const {
+      Value: Int_02,
+    } = Get_Local_Variable({
+      Initial_Value: Int(42),
+    }, Comp + "_Var_0002");
+
+    return {
+      Value: Int_02, // Get_Local_Variable.Value
+    };
+  }
+};
+
+Composite['Terminal'] = function Composite_1610612739($,Comp,In = {},node){
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0013':{ // no callers
+        Break_Loop();
+        return Exit();
+      }
+    }
+  })(node);
+};
+
+Composite['Two Exclusive Outs'] = function Composite_1610612742($,Comp,In = {
+  Condition: Bol,
+},node){
+  let next;
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0010':{ // no callers
+        ({
+          Next: next,
+        } = Double_Branch({
+          Condition: In.Condition,
+        }));
+        if(next=="Yes"){
+          return { Next: "Yes" };
+        }else{ // =="No"
+          return { Next: "No" };
+        }
+      }
+    }
+  })(node);
+};
+
+Composite['Two In One Out'] = function Composite_1610612741($,Comp,In = {},node){
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0017':{ // no callers
+        Print_String({
+          String: "First",
+        });
+        return { Next: "0" };
+      }
+      case 'input: 1':
+      case 'node_0018':{ // no callers
+        Print_String({
+          String: "Second",
+        });
+        return { Next: "0" };
+      }
+    }
+  })(node);
+};
+
+Composite['With Event'] = function Composite_1610612744($,Comp,In = {},node){
+  const $$ = $[Comp] ??= {};
+  let next;
+  return (async function* GoTo(node){
+    switch(node){
+      case 'event_0030':{
+        ({
+          Timer_Name: $$.Str_003,
+        } = await When_Timer_Is_Triggered({
+          Event: $.event,
+        }));
+        void "node_0031"; // Multiple_Branches
+      }
+      case 'node_0031':{ // called from 'event_0030: When_Timer_Is_Triggered'
+        ({
+          Next: next,
+        } = Multiple_Branches({
+          Control_Expression: $$.Str_003, // When_Timer_Is_Triggered.Timer_Name
+        }));
+        switch(next){
+          default: // "Default"
+            return Exit();
+          case "timer":
+            return yield "0";
+        }
+      }
+      case 'input: 0':
+      case 'node_0032':{ // no callers
+        const {
+          Self_Entity: Ety_01,
+        } = Get_Self_Entity();
+
+        Set_Custom_Variable({
+          Target_Entity: Ety_01, // Get_Self_Entity.Self_Entity
+          Variable_Name: "none",
+          Variable_Value: Int(0), // (default)
+          Trigger_Event: Bol(1), // (default)
+        });
+        return Exit();
+      }
+    }
+  })(node);
+};

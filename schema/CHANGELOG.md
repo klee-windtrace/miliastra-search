@@ -20,6 +20,13 @@ Fields and messages that need explaining beyond the comments in the file. Additi
 `opaque_*` fields are deliberately declared so they do not flood the unknown-field census; `miliastra-search check` lists them
 separately so they are never invisible.
 
+## Custom variables (7.2.0)
+`GilVariableComponent` and its dependants (`GilCustomVariable`, `GilVariableValue`, `GilVar*`) document the custom-variable component of the dynamic component list; the lists are opaque in
+`GilEntity` / `GilTemplate`, so `src/varscan.mjs` reads them and the messages are reference only. Layout: FORMAT.md, "Custom variables".
+
+## Graph mounts (7.2.0)
+The mount component (kind 3, payload 13) of the opaque component lists holds, per mounted graph, the values the host sets for the graph's published variables as repeated `2: GilCustomVariable`-shaped messages (no field 3, the type is the value's `1`); read by `src/mounts.mjs`. Layout: FORMAT.md, "Graph mounts".
+
 ## Verification
 `node --test` decodes all sample files with an **empty census** (no field in any file is unknown to this schema).
 

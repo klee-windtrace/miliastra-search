@@ -1,0 +1,34 @@
+codetest_1.gia:'New Node Graph'/[10] Set Local Variable (19/21) variant=C<T:Int> @(1616.4918,-441.37622)
+codetest_1.gia:'New Node Graph'/[10] Set Local Variable (19/21) out.flow#0 -> [13] Print String (1) in.flow#0
+codetest_1.gia:'New Node Graph'/[10] Set Local Variable (19/21) in#0 "Local Variable" <- [11] Get Local Variable (18) out#0 "Local Variable" : Loc
+--
+codetest_1.gia:'New Node Graph'/[12] Set Local Variable (19/21) variant=C<T:Int> @(1620.4918,-111.376236)
+codetest_1.gia:'New Node Graph'/[12] Set Local Variable (19/21) out.flow#0 -> [13] Print String (1) in.flow#0
+codetest_1.gia:'New Node Graph'/[12] Set Local Variable (19/21) in#0 "Local Variable" <- [11] Get Local Variable (18) out#0 "Local Variable" : Loc
+codetest_1.gia:'New Node Graph'/[12] Set Local Variable (19/21) in#1 "Value" = 2 : Int
+codetest_1.gia:'New Node Graph'/[13] Print String (1) @(2179.8252,-118.376236)
+codetest_1.gia:'New Node Graph'/[13] Print String (1) out.flow#0 -> [15] Finite Loop (5) in.flow#0
+codetest_1.gia:'New Node Graph'/[13] Print String (1) in#0 "String" <- [14] Data Type Conversion (180/186) out#0 "Output" : Str
+codetest_1.gia:'New Node Graph'/[14] Data Type Conversion (180/186) variant=C<K:Bol,V:Str> @(2154.8252,-375.0429)
+--
+codetest_1.gia:'New Node Graph'/[29] Set Custom Variable (22/1928) out.flow#0 -> [31] Double Branch (2) in.flow#0
+codetest_1.gia:'New Node Graph'/[29] Set Custom Variable (22/1928) out.flow#0 -> [32] Print String (1) in.flow#0
+codetest_1.gia:'New Node Graph'/[29] Set Custom Variable (22/1928) in#0 "Target Entity" <- [24] Create Prefab (252) out#0 "Created Entity" : Ety
+--
+codetest_1.gia:'New Node Graph'/[31] Double Branch (2) out.flow#0 "Yes" -> [33] Destroy Entity (69) in.flow#0
+codetest_1.gia:'New Node Graph'/[31] Double Branch (2) out.flow#1 "No" -> [32] Print String (1) in.flow#0
+codetest_1.gia:'New Node Graph'/[31] Double Branch (2) in#0 "Condition" = Yes : Bol
+codetest_1.gia:'New Node Graph'/[32] Print String (1) @(5249.5444,334.21185)
+codetest_1.gia:'New Node Graph'/[32] Print String (1) out.flow#0 -> [33] Destroy Entity (69) in.flow#0
+codetest_1.gia:'New Node Graph'/[32] Print String (1) in#0 "String" = '!' : Str
+codetest_1.gia:'New Node Graph'/[33] Destroy Entity (69) @(5617.8774,97.54519)
+codetest_2.gia:GRAPH '<composite>Two In One Out' ENTITY_NODE_GRAPH (guid 1610612741, decl 1610612741) role=dependency
+codetest_2.gia:'<composite>Two In One Out'/PORTMAP ext.in.flow#0 -> [17] Print String (1) in.flow#0
+codetest_2.gia:'<composite>Two In One Out'/PORTMAP ext.in.flow#1 -> [18] Print String (1) in.flow#0
+codetest_2.gia:'<composite>Two In One Out'/PORTMAP ext.out.flow#0 -> [18] Print String (1) out.flow#0
+codetest_2.gia:'<composite>Two In One Out'/PORTMAP ext.out.flow#0 -> [17] Print String (1) out.flow#0
+codetest_2.gia:'<composite>Two In One Out'/[17] Print String (1) @(2.142857,-114.28571)
+codetest_2.gia:'<composite>Two In One Out'/[17] Print String (1) in#0 "String" = 'First' : Str
+codetest_2.gia:'<composite>Two In One Out'/[18] Print String (1) @(-2.142857,114.28571)
+codetest_2.gia:'<composite>Two In One Out'/[18] Print String (1) in#0 "String" = 'Second' : Str
+codetest_2.gia:GRAPH '<composite>With Event' ENTITY_NODE_GRAPH (guid 1610612744, decl 1610612744) role=dependency

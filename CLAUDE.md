@@ -16,12 +16,14 @@ schema-less dump (`raw`). Users are content authors auditing their own node grap
 | `FORMAT.md` | The binary format: the source of truth for every format fact the code relies on. |
 | `schema/gia.merged.proto` + `schema/CHANGELOG.md` | Field and enum reference; check it before guessing what a number means. |
 
+| `JSON.md` + `schema/report.schema.json` | The JSON report every mode prints (`--format json`): the contract for third-party software. |
+
 A behaviour change to `refs`, `dump`, `code` or `check` comes with a test and a matching update to whichever document owns that fact.
 
 ## Layers (read in this order)
 
 `container.mjs` → `decode.mjs` / `protoparse.mjs` → `gil.mjs` + `mounts.mjs` → `model.mjs` → `nodedb.mjs` / `resolve.mjs` → `staticres.mjs` → `refs.mjs` /
-`render.mjs` / `info.mjs` → `doc.mjs` / `theme.mjs` / `output/` / `filter.mjs` / `report-refs.mjs` → `cli.mjs`. `refs.mjs` is by far the largest and most intricate file
+`analyze.mjs` → `info.mjs` / `dump.mjs` / `code.mjs` → `report.mjs` (the JSON report of a mode) → `present/` (renders a report; `doc.mjs`, `theme.mjs`, `output/`, `filter.mjs`, `saved.mjs` for a report saved as JSON) → `cli.mjs`. `refs.mjs` is by far the largest and most intricate file
 (composite attribution in particular): read its section of `TECHNICAL.md` before touching it, and re-derive the numbers in
 `test/composite-inheritance.test.mjs` by hand before trusting a refactor there.
 
@@ -32,14 +34,21 @@ A behaviour change to `refs`, `dump`, `code` or `check` comes with a test and a 
   `host-node.mjs` or `host-web.mjs`. Need a new capability? Add it to `host.mjs` and both hosts. No "am I in a browser" checks.
 * **After any change under `src/`, `data/` or `schema/`, run `npm run build-web`.** `test/web.test.mjs` fails on a stale bundle. The bundler supports only the
   import/export forms already in use (named imports, `export function|const|let|class`, no cycles) and fails loudly otherwise.
-* **Styling lives only in `src/theme.mjs`.** Builders say what a piece *is* (`S('key', …)`, `graph(…)`, `T` messages); nothing styles by pattern-matching text.
+* **Parsing and presentation are separate.** Everything that reads a `.gia` / `.gil` ends in a report object (`report.mjs`); `src/present/` renders it and must not import the decoder or touch a bundle. A report holds resolved data and roles (`{ role, text }`), never colors, quotes or layout. A renderer should do plain rendering, no joining by index.
+* **Keep `JSON.md` and `schema/report.schema.json` in step with every change to a report** (a new key, a renamed field, a new mode or view). `test/render-json.test.mjs` validates real reports against the schema and compares direct output with output rendered from the JSON; bump nothing silently, update both documents.
+* **Columns of a text line are separated with `sep()`** (`present/doc.mjs`), not with a literal space, so `--tab` can turn them into tabs.
+* **Styling lives only in `src/present/theme.mjs`.** Builders say what a piece *is* (`S('key', …)`, `graph(…)`, `T` messages); nothing styles by pattern-matching text.
 * **The `text` output is the contract people grep.** `test/expected/` is meant to fail when output changes: read the diff, then `npm run update-expected`.
 * **GUIDs are file-local, and per kind inside a `.gil`.** Never join across files or kinds by GUID; join signals/structs/composites by name, and graphs by GUID *and* service domain.
 * **Node pins are sparse.** Never assume a pin object exists; identify pins by `(kind, index)`. An absent pin is the node's default, which the file does not state (data: `triggerDefault` in `ref-rules.json`).
 * **Resources are listed in the editor's order** (`orderResources` in `model.mjs`, applied once in `parseBundle`); do not sort again in a printer.
 * **Which node pins carry names is data** (`data/ref-rules.json`), not code. Adding a named-pin node is usually one entry.
 * Adding a CLI option: update `HELP` in `cli.mjs` (grouped by the modes it affects), the web page's `TABS` if the page should expose it, and README.
-* Modes are always listed in the order `info, dump, code, refs, warns, check, raw`.
+* Modes are always listed in the order `info, dump, code, refs, warns, check, raw`, then `all` (the mode made of the others), then `llm` (`all` without warns and with fixed options; web tab last). The parts of an `all` report are `info, dump, refs, warns`, then `code` (`ALL_PARTS`, the order of the web tabs).
+* **Options that decide what a report holds** (`--show-tag`, `--kind`, ... : `present/options.mjs`) belong to the report builder and are recorded in `header.options`; a renderer reads them from the header. A new one goes into `options.mjs`, `reportOptions`, the schema and `JSON.md`. **Options that only choose what is shown** (`--details`, `--all-pins`, `--pseudocode`, `--optimize`, `--lazy`, `--dedup`, `--short`, `--tab`) are not recorded: the report always holds that data and `renderReport` takes them as render options (`all` always shows the details).
+* **A report is complete or there is none**: a file error or two files with the same name end the run before any output; an `--output` file is written only for exit code 0. Reports show file *names* only (`parseBundle` gets `basename`).
+* Pseudocode (`src/pseudocode.mjs`, `src/flow.mjs` for the execution type of every node and composite, `present/pseudocode.mjs`): all flow / data analysis in the engine, the renderer only prints (a search is the one exception: `searchedNodes` in `present/code.mjs` greps the plain listing, then the renderer keeps the found cases) (`--all-pins`, `--optimize`, `--lazy` are render options); suite tests on the `codegen` / `codegen72` fixtures (`test/codegen.test.mjs`, engine 7.1.0 / 7.2.0 files, hence their own categories).
+* The `code` report is the complete graph model (`src/code.mjs`, rendered by `present/code.mjs`); a new code style adds its derived data next to the model, never instead of it (TECHNICAL.md, "The code report").
 
 ## Workflow
 

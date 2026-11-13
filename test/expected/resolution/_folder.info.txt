@@ -1,4 +1,4 @@
-# FILE test/cases/resolution/test_All_Static.gia
+# FILE test_All_Static.gia
 format                 gia
 detected_by            header
 file_size              6905
@@ -6,7 +6,7 @@ container_file_type    gia
 engine_version         7.1.0
 mode                   beyond
 export_name            test_All_Static.gia
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              9
 primary                1
 dependencies           8
@@ -21,7 +21,7 @@ CLASS ENTITY_NODE_GRAPH class=9 count=1
 CLASS COMPOSITE_NODE_DECL class=12 count=4
 CLASS SIGNAL_NODE_DECL class=14 count=4
 
-# FILE test/cases/resolution/test_resolution.gia
+# FILE test_resolution.gia
 format                 gia
 detected_by            header
 file_size              8947
@@ -29,7 +29,7 @@ container_file_type    gia
 engine_version         7.1.0
 mode                   beyond
 export_name            test_resolution.gia
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              7
 primary                5
 dependencies           2

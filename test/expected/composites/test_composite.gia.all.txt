@@ -1,0 +1,73 @@
+# INFO
+# FILE test_composite.gia
+format                 gia
+detected_by            header
+file_size              6705
+container_file_type    gia
+engine_version         7.1.0
+mode                   beyond
+export_name            test_composite.gia
+node_db_version        7.2.0
+resources              23
+primary                7
+dependencies           16
+graphs                 3
+nodes                  12
+composite_bodies       2
+declarations           2
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS OBJECT class=1 count=1
+CLASS OBJECT_ENTITY class=3 count=1
+CLASS SKILL class=8 count=1
+CLASS ENTITY_NODE_GRAPH class=9 count=3
+CLASS COMPOSITE_NODE_DECL class=12 count=2
+CLASS UI_CONTROL class=15 count=14
+CLASS INTERFACE_LAYOUT class=20 count=1
+
+# DUMP
+GRAPH 'New Node Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=7
+GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH class=9 guid='1610612900' kind=21002 service=20000 nodes=4 role=dependency decl='1610613134'
+GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH class=9 guid='1610612901' kind=21002 service=20000 nodes=1 role=dependency decl='1610613135'
+RESOURCE "test_skill" SKILL class=8 guid='1098907649'
+RESOURCE "prefab_test" OBJECT class=1 guid='1077936129' parent=(entities: 1)
+RESOURCE "entity_test" OBJECT_ENTITY class=3 guid='1077936131' parent=(1077936129:"prefab_test")
+RESOURCE "Default Layout" INTERFACE_LAYOUT class=20 guid='1073741825'
+RESOURCE "Mini-Map" UI_CONTROL class=15 guid='1073741826'
+RESOURCE "Skill Area" UI_CONTROL class=15 guid='1073741827'
+RESOURCE "Team Information" UI_CONTROL class=15 guid='1073741828'
+RESOURCE "Character HP Bar" UI_CONTROL class=15 guid='1073741829'
+RESOURCE "Joystick" UI_CONTROL class=15 guid='1073741830'
+RESOURCE "Creation HP Bar" UI_CONTROL class=15 guid='1073741831'
+RESOURCE "Exit Button" UI_CONTROL class=15 guid='1073741832'
+RESOURCE "Voice-Over" UI_CONTROL class=15 guid='1073741833'
+RESOURCE "Tab" UI_CONTROL class=15 guid='1073741834'
+RESOURCE "Chat Button" UI_CONTROL class=15 guid='1073741835'
+RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741836'
+RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741837'
+RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741838'
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741839'
+GRAPH_VARIABLE 'New Node Graph' 'Var_1' : Int = 1
+
+# REFS
+composite        "Create Composite Node"            2 call: ['New Node Graph']
+composite        "Create Composite Node(1)"         1 call: ['<composite>Create Composite Node']
+graph_variable   "Var_1" (Int)                      ['New Node Graph']: 2 get, 2 set
+literal_id       "Cfg:1098907649" (SKILL:"test_skill") 1 Ref: ['New Node Graph']
+literal_id       "Gid:1077936131" (OBJECT_ENTITY:"entity_test") 1 Ref: ['New Node Graph']
+literal_id       "Int: 1073741825" (INTERFACE_LAYOUT:"Default Layout") 1 Ref: ['New Node Graph']
+literal_id       "Pfb:10005018"                     1 Ref: ['New Node Graph']
+
+# WARNS
+# findings
+(no findings)
+
+# limits
+composites: 2/1000 declared
+prefabs (OBJECT): 1/1000
+dynamic entities (OBJECT_ENTITY): 1/3000
+SKILL: 1/100
+
+top graphs by node count:
+'New Node Graph': 17/3000 nodes

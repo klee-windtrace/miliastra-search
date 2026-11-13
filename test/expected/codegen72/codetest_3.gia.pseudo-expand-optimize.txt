@@ -1,0 +1,709 @@
+ServerGraphs['Composite with event'] = async function Entity_1073741827($,node){
+  const GoTo = this.bind(this,$);
+  switch(node){
+    case 'node_0007.event_0001':{
+      // in composite Naive execution delay (node_0007)
+      $.Str_003 = (await When_Timer_Is_Triggered({
+        Event: $.event,
+      })).Timer_Name;
+      void "node_0007.node_0002"; // Double_Branch
+    }
+    case 'node_0007.node_0002':{ // called from 'node_0007.event_0001: When_Timer_Is_Triggered'
+      // in composite Naive execution delay (node_0007)
+      if(Double_Branch({
+        Condition: Bol(Equal({
+          Input_1: $.Str_003, // When_Timer_Is_Triggered.Timer_Name
+          Input_2: "1",
+        }).Result),
+      }).Next=="Yes"){
+        return GoTo("node_0018.node_0001"); // Set_Custom_Variable
+      }else{ // =="No"
+        return Exit();
+      }
+    }
+    case 'node_0018.node_0001':{ // called from 'node_0007.node_0002: Double_Branch'
+      // in composite Wrapped (Custom Variable) (node_0018)
+      Set_Custom_Variable({
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "X",
+        Variable_Value: Int(0),
+        Trigger_Event: Bol(1),
+      });
+      return Exit();
+    }
+    case 'event_0008':{
+      await When_Entity_Is_Created({
+        Event: $.event,
+      });
+      void "node_0007.node_0004"; // Start_Timer
+    }
+    case 'node_0007.node_0004':{ // called from 'event_0008: When_Entity_Is_Created'
+      // in composite Naive execution delay (node_0007)
+      Start_Timer({
+        Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+        Timer_Name: "1",
+        Loop: Bol(0),
+        Timer_Sequence: LFlt(Assembly_List({
+          Count: Int(1), // (default)
+          _0: Flt(1),
+        }).List),
+        context_GUID: Gid(0), // (default)
+      });
+      return Exit();
+    }
+    case 'node_0010.event_0001':{
+      // in composite Naive execution delay (node_0010)
+      $.Str_011 = (await When_Timer_Is_Triggered({
+        Event: $.event,
+      })).Timer_Name;
+      void "node_0010.node_0002"; // Double_Branch
+    }
+    case 'node_0010.node_0002':{ // called from 'node_0010.event_0001: When_Timer_Is_Triggered'
+      // in composite Naive execution delay (node_0010)
+      if(Double_Branch({
+        Condition: Bol(Equal({
+          Input_1: $.Str_011, // When_Timer_Is_Triggered.Timer_Name
+          Input_2: "2",
+        }).Result),
+      }).Next=="Yes"){
+        return Exit();
+      }else{ // =="No"
+        return Exit();
+      }
+    }
+    case 'node_0012.event_0001':{
+      // in composite Naive execution delay (node_0012)
+      $.Str_017 = (await When_Timer_Is_Triggered({
+        Event: $.event,
+      })).Timer_Name;
+      void "node_0012.node_0002"; // Double_Branch
+    }
+    case 'node_0012.node_0002':{ // called from 'node_0012.event_0001: When_Timer_Is_Triggered'
+      // in composite Naive execution delay (node_0012)
+      if(Double_Branch({
+        Condition: Bol(Equal({
+          Input_1: $.Str_017, // When_Timer_Is_Triggered.Timer_Name
+          Input_2: "3",
+        }).Result),
+      }).Next=="Yes"){
+        return GoTo("node_0020.node_0001"); // Set_Custom_Variable
+      }else{ // =="No"
+        return Exit();
+      }
+    }
+    case 'node_0020.node_0001':{ // 2 callers: ['node_0012.node_0002: Double_Branch', 'node_0013: Double_Branch']
+      // in composite Wrapped (Custom Variable) (node_0020)
+      Set_Custom_Variable({
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "Z",
+        Variable_Value: Int(0),
+        Trigger_Event: Bol(1),
+      });
+      return Exit();
+    }
+    case 'node_0021.event_0001':{
+      // in composite Naive execution delay (node_0021)
+      $.Str_023 = (await When_Timer_Is_Triggered({
+        Event: $.event,
+      })).Timer_Name;
+      void "node_0021.node_0002"; // Double_Branch
+    }
+    case 'node_0021.node_0002':{ // called from 'node_0021.event_0001: When_Timer_Is_Triggered'
+      // in composite Naive execution delay (node_0021)
+      if(Double_Branch({
+        Condition: Bol(Equal({
+          Input_1: $.Str_023, // When_Timer_Is_Triggered.Timer_Name
+          Input_2: "4",
+        }).Result),
+      }).Next=="Yes"){
+        return Exit();
+      }else{ // =="No"
+        return Exit();
+      }
+    }
+    case 'node_0013':{ // no callers
+      throw 'unreachable';
+      if(Double_Branch({
+        Condition: Bol(1),
+      }).Next=="Yes"){
+        return GoTo("node_0012.node_0004"); // Start_Timer
+      }else{ // =="No"
+        return GoTo("node_0020.node_0001"); // Set_Custom_Variable
+      }
+    }
+    case 'node_0012.node_0004':{ // called from 'node_0013: Double_Branch'
+      throw 'unreachable';
+      // in composite Naive execution delay (node_0012)
+      Start_Timer({
+        Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+        Timer_Name: "3",
+        Loop: Bol(0),
+        Timer_Sequence: LFlt(Assembly_List({
+          Count: Int(1), // (default)
+          _0: Flt(3),
+        }).List),
+        context_GUID: Gid(0), // (default)
+      });
+      return Exit();
+    }
+    case 'node_0019.node_0001':{ // no callers
+      throw 'unreachable';
+      // in composite Wrapped (Custom Variable) (node_0019)
+      Set_Custom_Variable({
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "Y",
+        Variable_Value: Int(0),
+        Trigger_Event: Bol(1),
+      });
+      void "node_0010.node_0004"; // Start_Timer
+    }
+    case 'node_0010.node_0004':{ // called from 'node_0019.node_0001: Set_Custom_Variable'
+      throw 'unreachable';
+      // in composite Naive execution delay (node_0010)
+      Start_Timer({
+        Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+        Timer_Name: "2",
+        Loop: Bol(0),
+        Timer_Sequence: LFlt(Assembly_List({
+          Count: Int(1), // (default)
+          _0: Flt(2),
+        }).List),
+        context_GUID: Gid(0), // (default)
+      });
+      return Exit();
+    }
+    case 'node_0021.node_0004':{ // no callers
+      throw 'unreachable';
+      // in composite Naive execution delay (node_0021)
+      Start_Timer({
+        Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+        Timer_Name: "4",
+        Loop: Bol(0),
+        Timer_Sequence: LFlt(Assembly_List({
+          Count: Int(1), // (default)
+          _0: Flt(4),
+        }).List),
+        context_GUID: Gid(0), // (default)
+      });
+      return Exit();
+    }
+  }
+};
+
+ServerGraphs['Cycle with no entry'] = async function Entity_1073741826($,node){
+  const GoTo = this.bind(this,$);
+  switch(node){
+    case 'event_0001':{
+      await When_Entity_Is_Created({
+        Event: $.event,
+      });
+      $.input = "0";
+      void "node_0003"; // Finite_Loop
+    }
+    case 'node_0003':{ // 2 callers: ['event_0001: When_Entity_Is_Created', 'node_0005: Break_Loop']
+      for ({
+        Next: $.next,
+        Current_Loop_Value: $.Int_003,
+      } of Finite_Loop({
+        Loop_Start_Value: Int(1),
+        Loop_Termination_Value: Int(5),
+      }, $.input)) {
+        switch($.next){
+          case "Loop_Body":
+            await GoTo("node_0002.node_0001"); // Set_Custom_Variable
+            break;
+          case "Loop_Complete":
+            await GoTo("node_0006"); // Settle_Stage
+            break;
+        }
+      }
+      return;
+    }
+    case 'node_0002.node_0001':{ // called from 'node_0003: Finite_Loop'
+      // in composite Wrapped (Custom Variable) (node_0002)
+      Set_Custom_Variable({
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "A",
+        Variable_Value: $.Int_003, // Finite_Loop.Current_Loop_Value
+        Trigger_Event: Bol(1),
+      });
+      void "node_0004"; // Multiple_Branches
+    }
+    case 'node_0004':{ // called from 'node_0002.node_0001: Set_Custom_Variable'
+      switch(Multiple_Branches({
+        Control_Expression: Int(Get_Custom_Variable({
+          Target_Entity: Ety(0), // (default)
+          Variable_Name: "A",
+        }).Variable_Value),
+      }).Next){
+        default: // "Default"
+          return Exit();
+        case "3":
+          return GoTo("node_0005"); // Break_Loop
+      }
+    }
+    case 'node_0005':{ // called from 'node_0004: Multiple_Branches'
+      Break_Loop();
+      $.input = "Break_Loop";
+      return GoTo("node_0003"); // Finite_Loop
+    }
+    case 'node_0006':{ // called from 'node_0003: Finite_Loop'
+      Settle_Stage({
+        Success: Bol(0), // (default)
+      });
+      return Exit();
+    }
+    case 'node_0007':{ // no callers
+      throw 'unreachable';
+      Clear_List({
+        List: undefined, // (default)
+      });
+      $.input = "0";
+      void "node_0016"; // Finite_Loop
+    }
+    case 'node_0016':{ // 2 callers: ['node_0007: Clear_List', 'node_0014: Break_Loop']
+      throw 'unreachable';
+      for ({
+        Next: $.next,
+        Current_Loop_Value: $.Int_004,
+      } of Finite_Loop({
+        Loop_Start_Value: Int(1),
+        Loop_Termination_Value: Int(5),
+      }, $.input)) {
+        switch($.next){
+          case "Loop_Body":
+            await GoTo("node_0017.node_0001"); // Set_Custom_Variable
+            break;
+          case "Loop_Complete":
+            await GoTo("node_0013"); // Settle_Stage
+            break;
+        }
+      }
+      return;
+    }
+    case 'node_0017.node_0001':{ // called from 'node_0016: Finite_Loop'
+      throw 'unreachable';
+      // in composite Wrapped (Custom Variable) (node_0017)
+      Set_Custom_Variable({
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "B",
+        Variable_Value: $.Int_004, // Finite_Loop.Current_Loop_Value
+        Trigger_Event: Bol(1),
+      });
+      void "node_0015"; // Multiple_Branches
+    }
+    case 'node_0015':{ // called from 'node_0017.node_0001: Set_Custom_Variable'
+      throw 'unreachable';
+      switch(Multiple_Branches({
+        Control_Expression: Int(Get_Custom_Variable({
+          Target_Entity: Ety(0), // (default)
+          Variable_Name: "B",
+        }).Variable_Value),
+      }).Next){
+        default: // "Default"
+          return Exit();
+        case "3":
+          return GoTo("node_0014"); // Break_Loop
+      }
+    }
+    case 'node_0014':{ // called from 'node_0015: Multiple_Branches'
+      throw 'unreachable';
+      Break_Loop();
+      $.input = "Break_Loop";
+      return GoTo("node_0016"); // Finite_Loop
+    }
+    case 'node_0013':{ // called from 'node_0016: Finite_Loop'
+      throw 'unreachable';
+      Settle_Stage({
+        Success: Bol(0), // (default)
+      });
+      return Exit();
+    }
+  }
+};
+
+ServerGraphs['Dead composite'] = async function Entity_1073741825($,node){
+  const GoTo = this.bind(this,$);
+  switch(node){
+    case 'event_0004':{
+      $.Ety_001 = (await When_Entity_Is_Created({
+        Event: $.event,
+      })).Event_Source_Entity;
+      void "node_0003.node_0001"; // Set_Custom_Variable
+    }
+    case 'node_0003.node_0001':{ // called from 'event_0004: When_Entity_Is_Created'
+      // in composite Wrapped (Custom Variable) (node_0003)
+      Set_Custom_Variable({
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "1",
+        Variable_Value: Int(1),
+        Trigger_Event: Bol(0),
+      });
+      void "node_0006"; // Print_String
+    }
+    case 'node_0006':{ // called from 'node_0003.node_0001: Set_Custom_Variable'
+      Print_String({
+        String: Str(Data_Type_Conversion({
+          Input: Int(Get_Custom_Variable({
+            Target_Entity: Ety(0), // (default)
+            Variable_Name: "2",
+          }).Variable_Value),
+          op: Enum("Type Conversions", 0), // (default)
+        }).Output),
+      });
+      return Exit();
+    }
+    case 'node_0008.node_0001':{ // no callers
+      throw 'unreachable';
+      // in composite Wrapped (Custom Variable) (node_0008)
+      Set_Custom_Variable({
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "2",
+        Variable_Value: Int(2),
+        Trigger_Event: Bol(0),
+      });
+      return Exit();
+    }
+    case 'node_0009.node_0001':{ // no callers
+      throw 'unreachable';
+      // in composite Wrapped (Custom Variable) (node_0009)
+      Set_Custom_Variable({
+        Target_Entity: $.Ety_001, // When_Entity_Is_Created.Event_Source_Entity
+        Variable_Name: Str(Data_Type_Conversion({
+          Input: Int(Get_Custom_Variable({
+            Target_Entity: Ety(0), // (default)
+            Variable_Name: "2",
+          }).Variable_Value),
+          op: Enum("Type Conversions", 0), // (default)
+        }).Output),
+        Variable_Value: Int(3),
+        Trigger_Event: Bol(0),
+      });
+      return Exit();
+    }
+    case 'node_0010.node_0001':{ // no callers
+      throw 'unreachable';
+      // in composite Wrapped (Custom Variable) (node_0010)
+      Set_Custom_Variable({
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "4",
+        Variable_Value: Int(4),
+        Trigger_Event: Bol(0),
+      });
+      return Exit();
+    }
+    case 'node_0011':{ // no callers
+      throw 'unreachable';
+      Print_String({
+        String: "", // (default)
+      });
+      void "node_0013.node_0001"; // Set_Custom_Variable
+    }
+    case 'node_0013.node_0001':{ // called from 'node_0011: Print_String'
+      throw 'unreachable';
+      // in composite Wrapped (Custom Variable) (node_0013)
+      Set_Custom_Variable({
+        Target_Entity: Ety(0), // (default)
+        Variable_Name: "5",
+        Variable_Value: Int(5),
+        Trigger_Event: Bol(0),
+      });
+      void "node_0014"; // Print_String
+    }
+    case 'node_0014':{ // called from 'node_0013.node_0001: Set_Custom_Variable'
+      throw 'unreachable';
+      Print_String({
+        String: "", // (default)
+      });
+      return Exit();
+    }
+  }
+};
+
+ServerGraphs['Nested event'] = async function Entity_1073741828($,node){
+  const GoTo = this.bind(this,$);
+  switch(node){
+    case 'node_0006.node_0002.event_0001':{
+      // in composite Test Delay Print (node_0006) > Naive execution delay (node_0002)
+      $.Str_003 = (await When_Timer_Is_Triggered({
+        Event: $.event,
+      })).Timer_Name;
+      void "node_0006.node_0002.node_0002"; // Double_Branch
+    }
+    case 'node_0006.node_0002.node_0002':{ // called from 'node_0006.node_0002.event_0001: When_Timer_Is_Triggered'
+      // in composite Test Delay Print (node_0006) > Naive execution delay (node_0002)
+      if(Double_Branch({
+        Condition: Bol(Equal({
+          Input_1: $.Str_003, // When_Timer_Is_Triggered.Timer_Name
+          Input_2: "Delay",
+        }).Result),
+      }).Next=="Yes"){
+        return GoTo("node_0006.node_0003"); // Print_String
+      }else{ // =="No"
+        return Exit();
+      }
+    }
+    case 'node_0006.node_0003':{ // called from 'node_0006.node_0002.node_0002: Double_Branch'
+      // in composite Test Delay Print (node_0006)
+      Print_String({
+        String: "Two",
+      });
+      return Exit();
+    }
+    case 'event_0007':{
+      await When_Entity_Is_Created({
+        Event: $.event,
+      });
+      void "node_0008.node_0004"; // Print_String
+    }
+    case 'node_0008.node_0004':{ // called from 'event_0007: When_Entity_Is_Created'
+      // in composite Test Delay Print (node_0008)
+      Print_String({
+        String: "One",
+      });
+      void "node_0008.node_0002.node_0004"; // Start_Timer
+    }
+    case 'node_0008.node_0002.node_0004':{ // called from 'node_0008.node_0004: Print_String'
+      // in composite Test Delay Print (node_0008) > Naive execution delay (node_0002)
+      Start_Timer({
+        Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+        Timer_Name: "Delay",
+        Loop: Bol(0),
+        Timer_Sequence: LFlt(Assembly_List({
+          Count: Int(1), // (default)
+          _0: Flt(2),
+        }).List),
+        context_GUID: Gid(0), // (default)
+      });
+      return Exit();
+    }
+    case 'node_0008.node_0002.event_0001':{
+      // in composite Test Delay Print (node_0008) > Naive execution delay (node_0002)
+      $.Str_011 = (await When_Timer_Is_Triggered({
+        Event: $.event,
+      })).Timer_Name;
+      void "node_0008.node_0002.node_0002"; // Double_Branch
+    }
+    case 'node_0008.node_0002.node_0002':{ // called from 'node_0008.node_0002.event_0001: When_Timer_Is_Triggered'
+      // in composite Test Delay Print (node_0008) > Naive execution delay (node_0002)
+      if(Double_Branch({
+        Condition: Bol(Equal({
+          Input_1: $.Str_011, // When_Timer_Is_Triggered.Timer_Name
+          Input_2: "Delay",
+        }).Result),
+      }).Next=="Yes"){
+        return GoTo("node_0008.node_0003"); // Print_String
+      }else{ // =="No"
+        return Exit();
+      }
+    }
+    case 'node_0008.node_0003':{ // called from 'node_0008.node_0002.node_0002: Double_Branch'
+      // in composite Test Delay Print (node_0008)
+      Print_String({
+        String: "Two",
+      });
+      void "node_0009.node_0004"; // Print_String
+    }
+    case 'node_0009.node_0004':{ // called from 'node_0008.node_0003: Print_String'
+      // in composite Test Delay Print (node_0009)
+      Print_String({
+        String: "One",
+      });
+      void "node_0009.node_0002.node_0004"; // Start_Timer
+    }
+    case 'node_0009.node_0002.node_0004':{ // called from 'node_0009.node_0004: Print_String'
+      // in composite Test Delay Print (node_0009) > Naive execution delay (node_0002)
+      Start_Timer({
+        Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+        Timer_Name: "Delay",
+        Loop: Bol(0),
+        Timer_Sequence: LFlt(Assembly_List({
+          Count: Int(1), // (default)
+          _0: Flt(3),
+        }).List),
+        context_GUID: Gid(0), // (default)
+      });
+      return Exit();
+    }
+    case 'node_0009.node_0002.event_0001':{
+      // in composite Test Delay Print (node_0009) > Naive execution delay (node_0002)
+      $.Str_017 = (await When_Timer_Is_Triggered({
+        Event: $.event,
+      })).Timer_Name;
+      void "node_0009.node_0002.node_0002"; // Double_Branch
+    }
+    case 'node_0009.node_0002.node_0002':{ // called from 'node_0009.node_0002.event_0001: When_Timer_Is_Triggered'
+      // in composite Test Delay Print (node_0009) > Naive execution delay (node_0002)
+      if(Double_Branch({
+        Condition: Bol(Equal({
+          Input_1: $.Str_017, // When_Timer_Is_Triggered.Timer_Name
+          Input_2: "Delay",
+        }).Result),
+      }).Next=="Yes"){
+        return GoTo("node_0009.node_0003"); // Print_String
+      }else{ // =="No"
+        return Exit();
+      }
+    }
+    case 'node_0009.node_0003':{ // called from 'node_0009.node_0002.node_0002: Double_Branch'
+      // in composite Test Delay Print (node_0009)
+      Print_String({
+        String: "Two",
+      });
+      return Exit();
+    }
+    case 'node_0006.node_0004':{ // no callers
+      throw 'unreachable';
+      // in composite Test Delay Print (node_0006)
+      Print_String({
+        String: "One",
+      });
+      void "node_0006.node_0002.node_0004"; // Start_Timer
+    }
+    case 'node_0006.node_0002.node_0004':{ // called from 'node_0006.node_0004: Print_String'
+      throw 'unreachable';
+      // in composite Test Delay Print (node_0006) > Naive execution delay (node_0002)
+      Start_Timer({
+        Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+        Timer_Name: "Delay",
+        Loop: Bol(0),
+        Timer_Sequence: LFlt(Assembly_List({
+          Count: Int(1), // (default)
+          _0: Flt(1),
+        }).List),
+        context_GUID: Gid(0), // (default)
+      });
+      return Exit();
+    }
+  }
+};
+
+Composite['Naive execution delay'] = function Composite_1610612738($,Comp,In = {
+  Delay: Flt,
+  Timer_Name: Str,
+},node){
+  const $$ = $[Comp] ??= {};
+  return (async function* GoTo(node){
+    switch(node){
+      case 'event_0001':{
+        $$.Str_003 = (await When_Timer_Is_Triggered({
+          Event: $.event,
+        })).Timer_Name;
+        void "node_0002"; // Double_Branch
+      }
+      case 'node_0002':{ // called from 'event_0001: When_Timer_Is_Triggered'
+        if(Double_Branch({
+          Condition: Bol(Equal({
+            Input_1: $$.Str_003, // When_Timer_Is_Triggered.Timer_Name
+            Input_2: In.Timer_Name,
+          }).Result),
+        }).Next=="Yes"){
+          return yield "0";
+        }else{ // =="No"
+          return Exit();
+        }
+      }
+      case 'input: 0':
+      case 'node_0004':{ // no callers
+        Start_Timer({
+          Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+          Timer_Name: In.Timer_Name,
+          Loop: Bol(0),
+          Timer_Sequence: LFlt(Assembly_List({
+            Count: Int(1), // (default)
+            _0: In.Delay,
+          }).List),
+          context_GUID: Gid(0), // (default)
+        });
+        return Exit();
+      }
+    }
+  })(node);
+};
+
+Composite['Test Delay Print'] = function Composite_1610612739($,Comp,In = {
+  Delay: Flt,
+},node){
+  const $$ = $[Comp] ??= {};
+  return (async function* GoTo(node){
+    switch(node){
+      case 'node_0002.event_0001':{
+        // in composite Naive execution delay (node_0002)
+        $$.Str_003 = (await When_Timer_Is_Triggered({
+          Event: $.event,
+        })).Timer_Name;
+        void "node_0002.node_0002"; // Double_Branch
+      }
+      case 'node_0002.node_0002':{ // called from 'node_0002.event_0001: When_Timer_Is_Triggered'
+        // in composite Naive execution delay (node_0002)
+        if(Double_Branch({
+          Condition: Bol(Equal({
+            Input_1: $$.Str_003, // When_Timer_Is_Triggered.Timer_Name
+            Input_2: "Delay",
+          }).Result),
+        }).Next=="Yes"){
+          return yield* GoTo("node_0003"); // Print_String
+        }else{ // =="No"
+          return Exit();
+        }
+      }
+      case 'node_0003':{ // called from 'node_0002.node_0002: Double_Branch'
+        Print_String({
+          String: "Two",
+        });
+        return yield "0";
+      }
+      case 'input: 0':
+      case 'node_0004':{ // no callers
+        Print_String({
+          String: "One",
+        });
+        void "node_0002.node_0004"; // Start_Timer
+      }
+      case 'node_0002.node_0004':{ // called from 'node_0004: Print_String'
+        // in composite Naive execution delay (node_0002)
+        Start_Timer({
+          Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+          Timer_Name: "Delay",
+          Loop: Bol(0),
+          Timer_Sequence: LFlt(Assembly_List({
+            Count: Int(1), // (default)
+            _0: In.Delay,
+          }).List),
+          context_GUID: Gid(0), // (default)
+        });
+        return Exit();
+      }
+    }
+  })(node);
+};
+
+Composite['Wrapped (Custom Variable)'] = function Composite_1610612737($,Comp,In = {
+  Target_Entity: Ety,
+  Variable_Name: Str,
+  Variable_Value: Int,
+  Trigger_Event: Bol,
+},node){
+  if (!node){
+    return {
+      Variable_Value: Int(Get_Custom_Variable({
+        Target_Entity: In.Target_Entity,
+        Variable_Name: In.Variable_Name,
+      }).Variable_Value),
+    };
+  }
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0001':{ // no callers
+        Set_Custom_Variable({
+          Target_Entity: In.Target_Entity,
+          Variable_Name: In.Variable_Name,
+          Variable_Value: In.Variable_Value,
+          Trigger_Event: In.Trigger_Event,
+        });
+        return { Next: "0" };
+      }
+    }
+  })(node);
+};

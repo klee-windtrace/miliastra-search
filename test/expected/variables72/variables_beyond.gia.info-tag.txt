@@ -1,0 +1,30 @@
+# FILE variables_beyond.gia
+format                 gia
+detected_by            header
+file_size              13187
+container_file_type    gia
+engine_version         7.2.0
+mode                   beyond
+export_name            variables_beyond.gia
+node_db_version        7.2.0
+export_tag             909814789-1794320179-1073741873-\variables_beyond.gia
+uid                    909814789
+time                   1794320179
+file_id                1073741873
+resources              16
+primary                14
+dependencies           2
+graphs                 0
+nodes                  0
+composite_bodies       0
+declarations           0
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS OBJECT class=1 count=1
+CLASS CREATION class=2 count=2
+CLASS OBJECT_ENTITY class=3 count=6
+CLASS CREATION_ENTITY class=4 count=2
+CLASS CLASS class=17 count=1
+CLASS PLAYER_TEMPLATE class=18 count=2
+CLASS CHARACTER_TEMPLATE class=19 count=2

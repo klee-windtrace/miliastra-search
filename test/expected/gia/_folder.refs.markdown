@@ -2,16 +2,16 @@
 
 Scanned 10 files:
 
-- `test/cases/gia/sample_0_main.gia`
-- `test/cases/gia/sample_1.gia`
-- `test/cases/gia/sample_2.gia`
-- `test/cases/gia/sample_3.gia`
-- `test/cases/gia/sample_4.gia`
-- `test/cases/gia/sample_5.gia`
-- `test/cases/gia/sample_6.gia`
-- `test/cases/gia/sample_7.gia`
-- `test/cases/gia/sample_8.gia`
-- `test/cases/gia/sample_9.gia`
+- `sample_0_main.gia`
+- `sample_1.gia`
+- `sample_2.gia`
+- `sample_3.gia`
+- `sample_4.gia`
+- `sample_5.gia`
+- `sample_6.gia`
+- `sample_7.gia`
+- `sample_8.gia`
+- `sample_9.gia`
 
 ## References
 

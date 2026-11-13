@@ -1,0 +1,12 @@
+GRAPH '<status>Status' STATUS_NODE_GRAPH guid='1073741830' nodes=17
+GRAPH '<composite>Calling Twice' ENTITY_NODE_GRAPH guid='1610612743' nodes=3 role=dependency
+GRAPH '<composite>Exposed Computed' ENTITY_NODE_GRAPH guid='1610612748' nodes=2 role=dependency
+GRAPH '<composite>Exposed Local' ENTITY_NODE_GRAPH guid='1610612745' nodes=2 role=dependency
+GRAPH '<composite>Exposed Native' ENTITY_NODE_GRAPH guid='1610612746' nodes=1 role=dependency
+GRAPH '<composite>Linear Flow' ENTITY_NODE_GRAPH guid='1610612738' nodes=1 role=dependency
+GRAPH '<composite>Simple Data' ENTITY_NODE_GRAPH guid='1610612737' nodes=1 role=dependency
+GRAPH '<composite>Terminal' ENTITY_NODE_GRAPH guid='1610612739' nodes=1 role=dependency
+GRAPH '<composite>Two Exclusive Outs' ENTITY_NODE_GRAPH guid='1610612742' nodes=1 role=dependency
+GRAPH '<composite>Two In One Out' ENTITY_NODE_GRAPH guid='1610612741' nodes=2 role=dependency
+GRAPH '<composite>With Event' ENTITY_NODE_GRAPH guid='1610612744' nodes=4 role=dependency
+GRAPH_VARIABLE '<status>Status' 'gvar' : Int = 1

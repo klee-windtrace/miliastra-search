@@ -1,0 +1,10 @@
+# findings
+INFO  custom-variable-type-conflict: custom variable "On_Prefab" is declared with 2 different types: Str on "Empty Model", "Same", "Value", +1 more; Int on "Type"
+
+# limits
+prefabs (OBJECT): 1/1000
+dynamic entities (OBJECT_ENTITY): 6/3000
+CLASS: 1/100
+
+top graphs by node count:
+(no graphs in the scanned files)

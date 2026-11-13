@@ -2,14 +2,14 @@
 
 Scanned 8 files:
 
-- `test/cases/gil/stage_0.gil`
-- `test/cases/gil/stage_012379.gil`
-- `test/cases/gil/stage_1.gil`
-- `test/cases/gil/stage_2.gil`
-- `test/cases/gil/stage_3.gil`
-- `test/cases/gil/stage_6.gil`
-- `test/cases/gil/stage_7.gil`
-- `test/cases/gil/stage_9.gil`
+- `stage_0.gil`
+- `stage_012379.gil`
+- `stage_1.gil`
+- `stage_2.gil`
+- `stage_3.gil`
+- `stage_6.gil`
+- `stage_7.gil`
+- `stage_9.gil`
 
 ## References
 

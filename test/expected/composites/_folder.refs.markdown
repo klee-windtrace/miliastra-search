@@ -2,10 +2,10 @@
 
 Scanned 4 files:
 
-- `test/cases/composites/test_All_Composite.gia`
-- `test/cases/composites/test_composite.gia`
-- `test/cases/composites/test_composite.gil`
-- `test/cases/composites/var_change.gia`
+- `test_All_Composite.gia`
+- `test_composite.gia`
+- `test_composite.gil`
+- `var_change.gia`
 
 ## References
 

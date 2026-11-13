@@ -2,7 +2,7 @@
 INFO  catch-all-listener: [5] When Timer Is Triggered in graph 'Send' also runs code for every name: [4] Send Signal runs for every name (not a name switch)
 
 # limits
-signals: 2/100 declared
+signals: 2/99 declared
 PRESET_POINT: 1/2000
 ENVIRONMENT_CONFIGURATION: 1/50
 CLASS: 1/100

@@ -2,10 +2,11 @@
 INFO  catch-all-listener: [5] When Timer Is Triggered in graph 'Send' also runs code for every name: [4] Send Signal runs for every name (not a name switch)
 INFO  signal-never-used: signal "Signal_3" is declared but never sent or listened to in the scanned graphs
 INFO  struct-never-used: struct "Structure_2" (guid=1077936131 fields=) is defined but never used in the scanned graphs
+INFO  custom-variable-undeclared: custom variable "test" is used in ['<filter>New Filter Node Graph_1'] but no entity, prefab or template declares it
 
 # limits
 composites: 2/1000 declared
-signals: 3/100 declared
+signals: 3/99 declared
 prefabs (OBJECT): 5/1000
 dynamic entities (OBJECT_ENTITY): 3/3000
 ENTITY_DEPLOYMENT_GROUP: 1/500

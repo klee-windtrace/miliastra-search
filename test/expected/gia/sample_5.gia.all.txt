@@ -1,0 +1,41 @@
+# INFO
+# FILE sample_5.gia
+format                 gia
+detected_by            header
+file_size              1643
+container_file_type    gia
+engine_version         7.0.0
+mode                   beyond
+export_name            sample_5.gia
+node_db_version        7.2.0
+resources              1
+primary                1
+dependencies           0
+graphs                 1
+nodes                  10
+composite_bodies       0
+declarations           0
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=1
+
+# DUMP
+GRAPH 'Variables' ENTITY_NODE_GRAPH class=9 guid='1073741831' kind=21001 service=20000 nodes=10
+GRAPH_VARIABLE 'Variables' 'Variable_1' : Bol = No
+
+# REFS
+custom_variable  "* (listener for any name)"        1 listen: ['Variables']
+custom_variable  "Test" (Int)                       1 get: ['Variables'], 0 set: [], 1 trigger: ['Variables']
+graph_variable   "* (listener for any name)"        1 listen: ['Variables']
+graph_variable   "Variable_1" (Bol)                 ['Variables']: 1 get, 1 set
+
+# WARNS
+# findings
+INFO  catch-all-listener: [1] When Custom Variable Changes in graph 'Variables' also runs code for every name: [6] Double Branch: condition is not an Equal comparison
+INFO  catch-all-listener: [3] When Node Graph Variable Changes in graph 'Variables' also runs code for every name: [5] Set Node Graph Variable runs for every name (not a name switch)
+
+# limits
+
+top graphs by node count:
+'Variables': 10/3000 nodes

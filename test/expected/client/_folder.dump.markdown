@@ -1,4 +1,4 @@
-﻿# File `test/cases/client/client_var_types.gia`
+﻿# File `client_var_types.gia`
 
 ## Graphs (1)
 

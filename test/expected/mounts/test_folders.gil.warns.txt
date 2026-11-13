@@ -5,7 +5,7 @@ INFO  composite-never-called: composite "Composite in custom" is defined but nev
 
 # limits
 composites: 2/1000 declared
-signals: 1/100 declared
+signals: 1/99 declared
 dynamic entities (OBJECT_ENTITY): 4/3000
 PRESET_POINT: 1/2000
 ENVIRONMENT_CONFIGURATION: 1/50

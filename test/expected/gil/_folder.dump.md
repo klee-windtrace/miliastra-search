@@ -1,4 +1,4 @@
-﻿# FILE `test/cases/gil/stage_0.gil`
+﻿# FILE `stage_0.gil`
 
 **GRAPH** /Импортированные ресурсы/'*Graph*' ENTITY\_NODE\_GRAPH guid='`1073741825`' nodes=7<br>
 **GRAPH** /Импортированные ресурсы/'<u>\<status\></u>*Empty*' STATUS\_NODE\_GRAPH guid='`1073741826`' nodes=0<br>
@@ -40,9 +40,10 @@
 **RESOURCE** "**Статус сети**" UI\_CONTROL guid='`1073741836`'<br>
 **RESOURCE** "**Кнопка сопротивления**" UI\_CONTROL guid='`1073741837`'<br>
 **RESOURCE** "**Кнопка голосового чата**" UI\_CONTROL guid='`1073741838`'<br>
-**RESOURCE** "**Очередь подсказок голосового чата**" UI\_CONTROL guid='`1073741839`'
+**RESOURCE** "**Очередь подсказок голосового чата**" UI\_CONTROL guid='`1073741839`'<br>
+**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = id:0
 
-# FILE `test/cases/gil/stage_012379.gil`
+# FILE `stage_012379.gil`
 
 **DECL** "**Signal\_2**" SIGNAL\_NODE\_DECL guid='`1073741831`'<br>
 **DECL** "**Signal\_1**" SIGNAL\_NODE\_DECL guid='`1073741828`'<br>
@@ -170,9 +171,10 @@
 **RESOURCE** "**Network Status**" UI\_CONTROL guid='`1073741854`'<br>
 **RESOURCE** "**Struggle Button**" UI\_CONTROL guid='`1073741855`'<br>
 **RESOURCE** "**Voice Chat Button**" UI\_CONTROL guid='`1073741856`'<br>
-**RESOURCE** "**Voice Chat Hint Queue**" UI\_CONTROL guid='`1073741857`'
+**RESOURCE** "**Voice Chat Hint Queue**" UI\_CONTROL guid='`1073741857`'<br>
+**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = id:0
 
-# FILE `test/cases/gil/stage_1.gil`
+# FILE `stage_1.gil`
 
 **GRAPH** /(default)/'*New Node Graph*' ENTITY\_NODE\_GRAPH guid='`1073741825`' nodes=7<br>
 **GRAPH** /(default)/'<u>\<composite\></u>*Create Composite Node*' ENTITY\_NODE\_GRAPH guid='`1073741826`' nodes=1<br>
@@ -217,7 +219,7 @@
 **RESOURCE** "**Voice Chat Button**" UI\_CONTROL guid='`1073741838`'<br>
 **RESOURCE** "**Voice Chat Hint Queue**" UI\_CONTROL guid='`1073741839`'
 
-# FILE `test/cases/gil/stage_2.gil`
+# FILE `stage_2.gil`
 
 **DECL** "**Signal\_2**" SIGNAL\_NODE\_DECL guid='`1073741829`'<br>
 **DECL** "**Signal\_1**" SIGNAL\_NODE\_DECL guid='`1073741826`'<br>
@@ -264,7 +266,7 @@
 **RESOURCE** "**Кнопка голосового чата**" UI\_CONTROL guid='`1073741838`'<br>
 **RESOURCE** "**Очередь подсказок голосового чата**" UI\_CONTROL guid='`1073741839`'
 
-# FILE `test/cases/gil/stage_3.gil`
+# FILE `stage_3.gil`
 
 **GRAPH** /(default)/'*Structs*' ENTITY\_NODE\_GRAPH guid='`1073741825`' nodes=7<br>
 **RESOURCE** "**Сущность уровня**" GIL\_LEVEL\_ENTITY guid='`1094713345`'<br>
@@ -307,7 +309,7 @@
 **RESOURCE** "**Кнопка голосового чата**" UI\_CONTROL guid='`1073741838`'<br>
 **RESOURCE** "**Очередь подсказок голосового чата**" UI\_CONTROL guid='`1073741839`'
 
-# FILE `test/cases/gil/stage_6.gil`
+# FILE `stage_6.gil`
 
 **GRAPH** /(default)/'*New Node Graph*' ENTITY\_NODE\_GRAPH guid='`1073741825`' nodes=2<br>
 **GRAPH** /(default)/'*New Node Graph\_1*' ITEM\_NODE\_GRAPH guid='`1073741826`' nodes=2<br>
@@ -352,7 +354,7 @@
 **RESOURCE** "**Кнопка голосового чата**" UI\_CONTROL guid='`1073741841`'<br>
 **RESOURCE** "**Очередь подсказок голосового чата**" UI\_CONTROL guid='`1073741842`'
 
-# FILE `test/cases/gil/stage_7.gil`
+# FILE `stage_7.gil`
 
 **GRAPH** /(default)/'<u>\<skill\></u>*New Character Skill Node Graph*' SKILL\_NODE\_GRAPH guid='`1082130435`' nodes=5<br>
 **GRAPH** /(default)/'<u>\<creation\></u>*New Creation Skill Node Graph*' CREATION\_SKILL\_GRAPH guid='`1082130436`' nodes=3<br>
@@ -401,7 +403,7 @@
 **RESOURCE** "**Кнопка голосового чата**" UI\_CONTROL guid='`1073741838`'<br>
 **RESOURCE** "**Очередь подсказок голосового чата**" UI\_CONTROL guid='`1073741839`'
 
-# FILE `test/cases/gil/stage_9.gil`
+# FILE `stage_9.gil`
 
 **DECL** "**Signal\_1**" SIGNAL\_NODE\_DECL guid='`1073741825`'<br>
 **GRAPH** /(default)/'*New Node Graph*' ENTITY\_NODE\_GRAPH guid='`1073741825`' nodes=0<br>

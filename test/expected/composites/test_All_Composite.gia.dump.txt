@@ -27,3 +27,4 @@ GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH guid='1610612738' 
 GRAPH '<composite>Create Composite Node(5)' ENTITY_NODE_GRAPH guid='1610612742' nodes=1 role=dependency
 GRAPH '<composite>Create Composite Node(3)' ENTITY_NODE_GRAPH guid='1610612740' nodes=1 role=dependency
 GRAPH '<composite>Create Composite Node(7)' ENTITY_NODE_GRAPH guid='1610612744' nodes=1 role=dependency
+GRAPH_VARIABLE 'All_Composite' 'Static_Graph' : L<Gid> = []

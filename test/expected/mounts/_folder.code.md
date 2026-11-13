@@ -1,4 +1,4 @@
-﻿# FILE `test/cases/mounts/composite_folders.gil`
+﻿# FILE `composite_folders.gil`
 
 **GRAPH** '<u>\<composite\></u>*01*' ENTITY\_NODE\_GRAPH (guid 1610612838, decl 1610613000)<br>
 **GRAPH** '<u>\<composite\></u>*02*' ENTITY\_NODE\_GRAPH (guid 1610612862, decl 1610613036)<br>
@@ -31,7 +31,7 @@
 **GRAPH** '<u>\<composite\></u>*I2*' ENTITY\_NODE\_GRAPH (guid 1610612755, decl 1610612752)<br>
 **GRAPH** '<u>\<composite\></u>*I3*' ENTITY\_NODE\_GRAPH (guid 1610612826, decl 1610612982)
 
-# FILE `test/cases/mounts/graph_folders.gil`
+# FILE `graph_folders.gil`
 
 **GRAPH** '*A - 01*' ENTITY\_NODE\_GRAPH (guid 1073741826)<br>
 **GRAPH** '*B - 02*' ENTITY\_NODE\_GRAPH (guid 1073741827)<br>
@@ -72,10 +72,14 @@
 '<u>\<skill\></u>*New Character Control Skill Node Graph*'/\[1\] **Node Graph Starts** (200042/2001) @(0,0)<br>
 **GRAPH** '<u>\<filter\></u>*New Filter Node Graph Bool*' BOOLEAN\_FILTER\_GRAPH (guid 1082130438)<br>
 '<u>\<filter\></u>*New Filter Node Graph Bool*'/\[1\] **Node Graph End (Boolean)** (200000) @(0,0)<br>
+'<u>\<filter\></u>*New Filter Node Graph Bool*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = No : *Bol* *(default)*<br>
+'<u>\<filter\></u>*New Filter Node Graph Bool*'/\[1\] **Node Graph End (Boolean)** (200000) `in#1` "Filter Return Type" = enum:1000010«Return Boolean» : *Enum* *(default)*<br>
 **GRAPH** '<u>\<filter\></u>*New Filter Node Graph Int*' INTEGER\_FILTER\_GRAPH (guid 1082130439)<br>
-'<u>\<filter\></u>*New Filter Node Graph Int*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)
+'<u>\<filter\></u>*New Filter Node Graph Int*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)<br>
+'<u>\<filter\></u>*New Filter Node Graph Int*'/\[1\] **Node Graph End (Integer)** (200122) `in#0` "Output Result (Integer)" = 0 : *Int* *(default)*<br>
+'<u>\<filter\></u>*New Filter Node Graph Int*'/\[1\] **Node Graph End (Integer)** (200122) `in#1` "Filter Return Type" = enum:10000011«Return Integer» : *Enum* *(default)*
 
-# FILE `test/cases/mounts/test_folders.gia`
+# FILE `test_folders.gia`
 
 **DECL** "**Signal\_Name**" SIGNAL\_NODE\_DECL guid='`1610613129`'<br>
 DECL/**Signal\_Name** SEND\_SIGNAL name='`Signal_Name`' server\_node=1610613130 client\_node=1610613131<br>
@@ -115,14 +119,22 @@ DECL/**Signal\_Name** `meta#0` "Signal Name" uid=2579<br>
 '<u>\<skill\></u>*Character control, default*'/\[1\] **Node Graph Starts** (200042/2001) @(0,0)<br>
 **GRAPH** '<u>\<filter\></u>*Boolean filter, custom*' BOOLEAN\_FILTER\_GRAPH (guid 1082130444)<br>
 '<u>\<filter\></u>*Boolean filter, custom*'/\[1\] **Node Graph End (Boolean)** (200000) @(0,0)<br>
+'<u>\<filter\></u>*Boolean filter, custom*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = No : *Bol* *(default)*<br>
+'<u>\<filter\></u>*Boolean filter, custom*'/\[1\] **Node Graph End (Boolean)** (200000) `in#1` "Filter Return Type" = enum:1000010«Return Boolean» : *Enum* *(default)*<br>
 **GRAPH** '<u>\<filter\></u>*Boolean filter, default*' BOOLEAN\_FILTER\_GRAPH (guid 1082130443)<br>
 '<u>\<filter\></u>*Boolean filter, default*'/\[1\] **Node Graph End (Boolean)** (200000) @(0,0)<br>
+'<u>\<filter\></u>*Boolean filter, default*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = No : *Bol* *(default)*<br>
+'<u>\<filter\></u>*Boolean filter, default*'/\[1\] **Node Graph End (Boolean)** (200000) `in#1` "Filter Return Type" = enum:1000010«Return Boolean» : *Enum* *(default)*<br>
 **GRAPH** '<u>\<filter\></u>*Integer filter, custom*' INTEGER\_FILTER\_GRAPH (guid 1082130446)<br>
 '<u>\<filter\></u>*Integer filter, custom*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)<br>
+'<u>\<filter\></u>*Integer filter, custom*'/\[1\] **Node Graph End (Integer)** (200122) `in#0` "Output Result (Integer)" = 0 : *Int* *(default)*<br>
+'<u>\<filter\></u>*Integer filter, custom*'/\[1\] **Node Graph End (Integer)** (200122) `in#1` "Filter Return Type" = enum:10000011«Return Integer» : *Enum* *(default)*<br>
 **GRAPH** '<u>\<filter\></u>*Integer filter, default*' INTEGER\_FILTER\_GRAPH (guid 1082130445)<br>
-'<u>\<filter\></u>*Integer filter, default*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)
+'<u>\<filter\></u>*Integer filter, default*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)<br>
+'<u>\<filter\></u>*Integer filter, default*'/\[1\] **Node Graph End (Integer)** (200122) `in#0` "Output Result (Integer)" = 0 : *Int* *(default)*<br>
+'<u>\<filter\></u>*Integer filter, default*'/\[1\] **Node Graph End (Integer)** (200122) `in#1` "Filter Return Type" = enum:10000011«Return Integer» : *Enum* *(default)*
 
-# FILE `test/cases/mounts/test_folders.gil`
+# FILE `test_folders.gil`
 
 **DECL** "**Signal\_Name**" SIGNAL\_NODE\_DECL guid='`1610613129`'<br>
 DECL/**Signal\_Name** SEND\_SIGNAL name='`Signal_Name`' server\_node=1610613130 client\_node=1610613131<br>
@@ -162,14 +174,22 @@ DECL/**Signal\_Name** `meta#0` "Signal Name" uid=2579<br>
 '<u>\<skill\></u>*Character control, custom*'/\[1\] **Node Graph Starts** (200042/2001) @(0,0)<br>
 **GRAPH** '<u>\<filter\></u>*Boolean filter, default*' BOOLEAN\_FILTER\_GRAPH (guid 1082130443)<br>
 '<u>\<filter\></u>*Boolean filter, default*'/\[1\] **Node Graph End (Boolean)** (200000) @(0,0)<br>
+'<u>\<filter\></u>*Boolean filter, default*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = No : *Bol* *(default)*<br>
+'<u>\<filter\></u>*Boolean filter, default*'/\[1\] **Node Graph End (Boolean)** (200000) `in#1` "Filter Return Type" = enum:1000010«Return Boolean» : *Enum* *(default)*<br>
 **GRAPH** '<u>\<filter\></u>*Boolean filter, custom*' BOOLEAN\_FILTER\_GRAPH (guid 1082130444)<br>
 '<u>\<filter\></u>*Boolean filter, custom*'/\[1\] **Node Graph End (Boolean)** (200000) @(0,0)<br>
+'<u>\<filter\></u>*Boolean filter, custom*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = No : *Bol* *(default)*<br>
+'<u>\<filter\></u>*Boolean filter, custom*'/\[1\] **Node Graph End (Boolean)** (200000) `in#1` "Filter Return Type" = enum:1000010«Return Boolean» : *Enum* *(default)*<br>
 **GRAPH** '<u>\<filter\></u>*Integer filter, default*' INTEGER\_FILTER\_GRAPH (guid 1082130445)<br>
 '<u>\<filter\></u>*Integer filter, default*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)<br>
+'<u>\<filter\></u>*Integer filter, default*'/\[1\] **Node Graph End (Integer)** (200122) `in#0` "Output Result (Integer)" = 0 : *Int* *(default)*<br>
+'<u>\<filter\></u>*Integer filter, default*'/\[1\] **Node Graph End (Integer)** (200122) `in#1` "Filter Return Type" = enum:10000011«Return Integer» : *Enum* *(default)*<br>
 **GRAPH** '<u>\<filter\></u>*Integer filter, custom*' INTEGER\_FILTER\_GRAPH (guid 1082130446)<br>
-'<u>\<filter\></u>*Integer filter, custom*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)
+'<u>\<filter\></u>*Integer filter, custom*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)<br>
+'<u>\<filter\></u>*Integer filter, custom*'/\[1\] **Node Graph End (Integer)** (200122) `in#0` "Output Result (Integer)" = 0 : *Int* *(default)*<br>
+'<u>\<filter\></u>*Integer filter, custom*'/\[1\] **Node Graph End (Integer)** (200122) `in#1` "Filter Return Type" = enum:10000011«Return Integer» : *Enum* *(default)*
 
-# FILE `test/cases/mounts/test_mount.gil`
+# FILE `test_mount.gil`
 
 **GRAPH** '*Mounted\_Character*' ENTITY\_NODE\_GRAPH (guid 1073741826)<br>
 **GRAPH** '*Mounted\_Creation*' ENTITY\_NODE\_GRAPH (guid 1073741830)<br>

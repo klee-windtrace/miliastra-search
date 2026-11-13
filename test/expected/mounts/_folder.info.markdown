@@ -1,4 +1,4 @@
-﻿# File `test/cases/mounts/composite_folders.gil`
+﻿# File `composite_folders.gil`
 
 ## File
 
@@ -11,7 +11,7 @@
 | engine\_version | 7.1.0 |
 | mode | beyond |
 | level\_name | composite\_folders |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -80,7 +80,7 @@
 
 ---
 
-# File `test/cases/mounts/graph_folders.gil`
+# File `graph_folders.gil`
 
 ## File
 
@@ -93,7 +93,7 @@
 | engine\_version | 7.1.0 |
 | mode | beyond |
 | level\_name | graph\_folders |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -192,7 +192,7 @@
 
 ---
 
-# File `test/cases/mounts/test_folders.gia`
+# File `test_folders.gia`
 
 ## File
 
@@ -205,7 +205,7 @@
 | engine\_version | 7.1.0 |
 | mode | beyond |
 | export\_name | test\_folders.gia |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -219,7 +219,7 @@
 | composite\_bodies | 2 |
 | declarations | 6 |
 | structs | 0 |
-| mounts | 0 |
+| mounts | 4 |
 | unresolved\_node\_types | 0 |
 
 ### Resources by class
@@ -256,7 +256,7 @@
 
 ---
 
-# File `test/cases/mounts/test_folders.gil`
+# File `test_folders.gil`
 
 ## File
 
@@ -269,7 +269,7 @@
 | engine\_version | 7.1.0 |
 | mode | beyond |
 | level\_name | test\_folders |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -345,7 +345,7 @@
 
 ---
 
-# File `test/cases/mounts/test_mount.gil`
+# File `test_mount.gil`
 
 ## File
 
@@ -358,7 +358,7 @@
 | engine\_version | 7.1.0 |
 | mode | beyond |
 | level\_name | test\_mount |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 

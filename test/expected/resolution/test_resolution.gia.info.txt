@@ -1,4 +1,4 @@
-# FILE test/cases/resolution/test_resolution.gia
+# FILE test_resolution.gia
 format                 gia
 detected_by            header
 file_size              8947
@@ -6,7 +6,7 @@ container_file_type    gia
 engine_version         7.1.0
 mode                   beyond
 export_name            test_resolution.gia
-node_db_version        7.1.0
+node_db_version        7.2.0
 resources              7
 primary                5
 dependencies           2

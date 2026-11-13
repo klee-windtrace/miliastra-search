@@ -1,4 +1,4 @@
-﻿# File `test/cases/composites/test_All_Composite.gia`
+﻿# File `test_All_Composite.gia`
 
 ## File
 
@@ -11,7 +11,7 @@
 | engine\_version | 7.1.0 |
 | mode | beyond |
 | export\_name | test\_All\_Composite.gia |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -38,7 +38,7 @@
 
 ---
 
-# File `test/cases/composites/test_composite.gia`
+# File `test_composite.gia`
 
 ## File
 
@@ -51,7 +51,7 @@
 | engine\_version | 7.1.0 |
 | mode | beyond |
 | export\_name | test\_composite.gia |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -82,7 +82,7 @@
 
 ---
 
-# File `test/cases/composites/test_composite.gil`
+# File `test_composite.gil`
 
 ## File
 
@@ -95,7 +95,7 @@
 | engine\_version | 7.1.0 |
 | mode | beyond |
 | level\_name | New Stage\_Save\_3 |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 
@@ -159,7 +159,7 @@
 
 ---
 
-# File `test/cases/composites/var_change.gia`
+# File `var_change.gia`
 
 ## File
 
@@ -172,7 +172,7 @@
 | engine\_version | 7.1.0 |
 | mode | beyond |
 | export\_name | var\_change.gia |
-| node\_db\_version | 7.1.0 |
+| node\_db\_version | 7.2.0 |
 
 ## Contents
 

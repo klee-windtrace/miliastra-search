@@ -1,0 +1,5 @@
+STRUCT "Struct" guid='1077936129' id=1077936129 version=2
+STRUCT/Struct FIELD#1 "Add variable 1" : Str
+STRUCT/Struct FIELD#2 "Add variable 2" : Int
+STRUCT/Struct FIELD#3 "Add variable 3" : Flt
+STRUCT/Struct FIELD#4 "Add variable 4" : Bol

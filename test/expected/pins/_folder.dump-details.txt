@@ -1,0 +1,46 @@
+GRAPH /(default)/'New Node Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=14
+GRAPH /(default)/'<status>New Node Graph_1' STATUS_NODE_GRAPH class=22 guid='1073741826' kind=21001 service=20003 nodes=11
+GRAPH /(default)/'<skill>New Character Skill Node Graph' SKILL_NODE_GRAPH class=11 guid='1082130433' kind=21001 service=20002 nodes=15 entry_slot=1
+GRAPH /(default)/'<creation>New Creation Status Node Graph' CREATION_STATUS_GRAPH class=53 guid='1082130435' kind=21001 service=20009 nodes=17 entry_slot=1
+GRAPH /(default)/'<creation>New Creation Status Decision Node Graph' CREATION_STATUS_DECISION_GRAPH class=51 guid='1082130434' kind=21001 service=20007 nodes=6 entry_slot=1
+RESOURCE "Stage Entity" GIL_LEVEL_ENTITY class=- guid='1094713345' section=root.5
+RESOURCE "Default Template" PLAYER_TEMPLATE class=18 guid='1086324737' section=root.4
+RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519041' section=root.4
+RESOURCE "Custom Class" CLASS class=17 guid='1090519041' section=root.15
+RESOURCE "Inventory Template" GIL_INVENTORY_TEMPLATE class=- guid='1119879169' section=root.15
+RESOURCE "Custom Camera" CAMERA class=13 guid='1073741825' section=root.18
+RESOURCE "Terrain01" TERRAIN_ENTITY class=5 guid='1073741825' section=root.7
+RESOURCE "Default Layout" INTERFACE_LAYOUT class=20 guid='1073741825' section=root.9
+RESOURCE "HierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741840' section=root.9
+RESOURCE "HierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741841' section=root.9
+RESOURCE "ExclusiveEleGroupHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741842' section=root.9
+RESOURCE "ClientUIRootHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741843' section=root.9
+RESOURCE "ClientUIPrototypeHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741844' section=root.9
+RESOURCE "Environment Configuration" ENVIRONMENT_CONFIGURATION class=49 guid='1186988033' section=root.15
+RESOURCE "Create Preset Point" PRESET_POINT class=6 guid='1073741825' section=root.11.5
+RESOURCE "Spawn Point1" GIL_RESPAWN_POINT class=- guid='1073741825' section=root.11.3
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324737' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324738' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324739' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324740' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324741' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324742' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324743' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324744' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324745' section=root.5
+RESOURCE "Default Template(Edit Character)" GIL_CHARACTER_ENTITY class=- guid='1090519041' section=root.5
+RESOURCE "Custom Growth Curve" GIL_GROWTH_CURVE class=- guid='1094713345' section=root.15
+RESOURCE "Mini-Map" UI_CONTROL class=15 guid='1073741826' section=root.9
+RESOURCE "Skill Area" UI_CONTROL class=15 guid='1073741827' section=root.9
+RESOURCE "Team Information" UI_CONTROL class=15 guid='1073741828' section=root.9
+RESOURCE "Character HP Bar" UI_CONTROL class=15 guid='1073741829' section=root.9
+RESOURCE "Joystick" UI_CONTROL class=15 guid='1073741830' section=root.9
+RESOURCE "Creation HP Bar" UI_CONTROL class=15 guid='1073741831' section=root.9
+RESOURCE "Exit Button" UI_CONTROL class=15 guid='1073741832' section=root.9
+RESOURCE "Voice-Over" UI_CONTROL class=15 guid='1073741833' section=root.9
+RESOURCE "Tab" UI_CONTROL class=15 guid='1073741834' section=root.9
+RESOURCE "Chat Button" UI_CONTROL class=15 guid='1073741835' section=root.9
+RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741836' section=root.9
+RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741837' section=root.9
+RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741838' section=root.9
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741839' section=root.9

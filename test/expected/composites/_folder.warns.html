@@ -32,6 +32,7 @@ td.right,th.right{text-align:right}td.center,th.center{text-align:center}
 .toc a{color:var(--accent);text-decoration:none;display:block;padding:.05rem 0;break-inside:avoid}.toc a:hover{text-decoration:underline}
 ul{padding-left:1.4rem}
 .q{color:var(--muted)}.muted{color:var(--muted)}
+pre a{text-decoration:none}pre a:hover{text-decoration:underline}[id]:target{background:#4a4a10;border-radius:2px}
 pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pre-wrap;word-break:break-word}
 .title{font-weight:700;color:#F2F2F2}
 .section{color:#61D6D6}
@@ -48,8 +49,10 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 .graphName{color:#C19C00}
 .graphTag{color:#F9F1A5}
 .key{color:#16C60C}
+.more{color:#B4009E}
 .folderName{color:#C50F1F}
 .declName{color:#16C60C}
+.variableName{color:#C19C00}
 .varName{color:#16C60C}
 .pinName{color:#13A10E}
 .pinLabel{color:#3A96DD}
@@ -65,11 +68,20 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 .typeName{color:#B4009E}
 .flag{color:#767676}
 .string{color:#C19C00}
-.number{color:#3A96DD}
+.number{color:#61D6D6}
 .bool{color:#3A96DD}
 .enumValue{color:#61D6D6}
 .idValue{color:#13A10E}
 .vector{color:#3A96DD}
+.jsKeyword{color:#B4009E}
+.jsSwitch{color:#3B78FF}
+.jsError{color:#C50F1F}
+.jsCall{color:#F9F1A5}
+.jsKey{color:#13A10E}
+.jsVar{color:#E74856}
+.jsOut{color:#3A96DD}
+.jsString{color:#C19C00}
+.jsComment{color:#767676}
 .kind{color:#881798}
 .role{color:#3B78FF}
 .count{color:#F2F2F2}
@@ -81,12 +93,12 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <h1>Warnings and limits</h1>
 <nav class="toc"><a href="#findings">Findings</a><a href="#limits">Limits</a><a href="#top-graphs-by-node-count">Top graphs by node count</a></nav>
 <p>Scanned 4 files:</p>
-<ul><li><span class="fileName">test/cases/composites/test_All_Composite.gia</span></li><li><span class="fileName">test/cases/composites/test_composite.gia</span></li><li><span class="fileName">test/cases/composites/test_composite.gil</span></li><li><span class="fileName">test/cases/composites/var_change.gia</span></li></ul>
+<ul><li><span class="fileName">test_All_Composite.gia</span></li><li><span class="fileName">test_composite.gia</span></li><li><span class="fileName">test_composite.gil</span></li><li><span class="fileName">var_change.gia</span></li></ul>
 <h2 id="findings">Findings</h2>
-<div class="tablewrap"><table><thead><tr><th>Level</th><th>Type</th><th>Message</th><th>File</th></tr></thead><tbody><tr><td><span class="warn">WARN </span></td><td><span class="findingType">composite-definition-count-anomaly</span></td><td>composite "<span class="key">Create Composite Node</span>" has <span class="count">3</span> definition(s) in the scanned files (expected exactly 1) – guid=1610612745; guid=1610613134; guid=1610613134; this points to a structural bug in the GIL/GIA or in how this tool parsed it</td><td><span class="fileName">test_All_Composite.gia</span></td></tr><tr><td><span class="warn">WARN </span></td><td><span class="findingType">composite-definition-count-anomaly</span></td><td>composite "<span class="key">Create Composite Node(1)</span>" has <span class="count">3</span> definition(s) in the scanned files (expected exactly 1) – guid=1610612746; guid=1610613135; guid=1610613135; this points to a structural bug in the GIL/GIA or in how this tool parsed it</td><td><span class="fileName">test_All_Composite.gia</span></td></tr></tbody></table></div>
+<div class="tablewrap"><table><thead><tr><th>Level</th><th>Type</th><th>Message</th><th>File</th></tr></thead><tbody><tr><td><span class="warn">WARN</span></td><td><span class="findingType">composite-definition-count-anomaly</span></td><td>composite "<span class="key">Create Composite Node</span>" has <span class="count">3</span> definition(s) in the scanned files (expected exactly 1) – guid=1610612745; guid=1610613134; guid=1610613134; this points to a structural bug in the GIL/GIA or in how this tool parsed it</td><td><span class="fileName">test_All_Composite.gia</span></td></tr><tr><td><span class="warn">WARN</span></td><td><span class="findingType">composite-definition-count-anomaly</span></td><td>composite "<span class="key">Create Composite Node(1)</span>" has <span class="count">3</span> definition(s) in the scanned files (expected exactly 1) – guid=1610612746; guid=1610613135; guid=1610613135; this points to a structural bug in the GIL/GIA or in how this tool parsed it</td><td><span class="fileName">test_All_Composite.gia</span></td></tr></tbody></table></div>
 <hr>
 <h2 id="limits">Limits</h2>
-<div class="tablewrap"><table><thead><tr><th>Resource</th><th class="right">Used / max</th></tr></thead><tbody><tr><td>composites (declared)</td><td class="right"><span class="limitOk">33/1000</span></td></tr><tr><td>signals (declared)</td><td class="right"><span class="limitOk">2/100</span></td></tr><tr><td>prefabs (OBJECT)</td><td class="right"><span class="limitOk">2/1000</span></td></tr><tr><td>dynamic entities (OBJECT_ENTITY)</td><td class="right"><span class="limitOk">2/3000</span></td></tr><tr><td>PRESET_POINT</td><td class="right"><span class="limitOk">1/2000</span></td></tr><tr><td>ENVIRONMENT_CONFIGURATION</td><td class="right"><span class="limitOk">1/50</span></td></tr><tr><td>CLASS</td><td class="right"><span class="limitOk">1/100</span></td></tr><tr><td>SKILL</td><td class="right"><span class="limitOk">2/100</span></td></tr><tr><td>TERRAIN_ENTITY</td><td class="right"><span class="limitOk">1/1200</span></td></tr></tbody></table></div>
+<div class="tablewrap"><table><thead><tr><th>Resource</th><th class="right">Used / max</th></tr></thead><tbody><tr><td>composites (declared)</td><td class="right"><span class="limitOk">33/1000</span></td></tr><tr><td>signals (declared)</td><td class="right"><span class="limitOk">2/99</span></td></tr><tr><td>prefabs (OBJECT)</td><td class="right"><span class="limitOk">2/1000</span></td></tr><tr><td>dynamic entities (OBJECT_ENTITY)</td><td class="right"><span class="limitOk">2/3000</span></td></tr><tr><td>PRESET_POINT</td><td class="right"><span class="limitOk">1/2000</span></td></tr><tr><td>ENVIRONMENT_CONFIGURATION</td><td class="right"><span class="limitOk">1/50</span></td></tr><tr><td>CLASS</td><td class="right"><span class="limitOk">1/100</span></td></tr><tr><td>SKILL</td><td class="right"><span class="limitOk">2/100</span></td></tr><tr><td>TERRAIN_ENTITY</td><td class="right"><span class="limitOk">1/1200</span></td></tr></tbody></table></div>
 <hr>
 <h2 id="top-graphs-by-node-count">Top graphs by node count</h2>
 <div class="tablewrap"><table><thead><tr><th>Graph</th><th class="right">Effective nodes</th><th>File</th></tr></thead><tbody><tr><td>'<span class="graphName">All_Composite</span>'</td><td class="right"><span class="limitOk">52/3000</span></td><td><span class="fileName">test_All_Composite.gia</span></td></tr><tr><td>'<span class="graphName">New Node Graph</span>'</td><td class="right"><span class="limitOk">17/3000</span></td><td><span class="fileName">test_composite.gia</span></td></tr><tr><td>'<span class="graphName">New Node Graph</span>'</td><td class="right"><span class="limitOk">17/3000</span></td><td><span class="fileName">test_composite.gil</span></td></tr><tr><td>'<span class="graphName">VAR_TEST</span>'</td><td class="right"><span class="limitOk">11/3000</span></td><td><span class="fileName">var_change.gia</span></td></tr></tbody></table></div>

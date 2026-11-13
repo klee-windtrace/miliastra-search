@@ -1,15 +1,16 @@
-﻿# FILE `test/cases/gia/sample_0_main.gia`
+﻿# FILE `sample_0_main.gia`
 
 **GRAPH** '*Graph*' ENTITY\_NODE\_GRAPH guid='`1073742366`' nodes=7<br>
-**GRAPH** '<u>\<status\></u>*Empty*' STATUS\_NODE\_GRAPH guid='`1073742384`' nodes=0
+**GRAPH** '<u>\<status\></u>*Empty*' STATUS\_NODE\_GRAPH guid='`1073742384`' nodes=0<br>
+**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = id:0
 
-# FILE `test/cases/gia/sample_1.gia`
+# FILE `sample_1.gia`
 
 **GRAPH** '*New Node Graph*' ENTITY\_NODE\_GRAPH guid='`1073741825`' nodes=7<br>
 **GRAPH** '<u>\<composite\></u>*Create Composite Node*' ENTITY\_NODE\_GRAPH guid='`1610612737`' nodes=1 role=dependency<br>
 **GRAPH** '<u>\<composite\></u>*Create Composite Node(1)*' ENTITY\_NODE\_GRAPH guid='`1610612738`' nodes=7 role=dependency
 
-# FILE `test/cases/gia/sample_2.gia`
+# FILE `sample_2.gia`
 
 **DECL** "**Signal\_1**" SIGNAL\_NODE\_DECL guid='`1610612739`'<br>
 **DECL** "**Signal\_2**" SIGNAL\_NODE\_DECL guid='`1610612742`'<br>
@@ -17,24 +18,25 @@
 **GRAPH** '*Receive*' ENTITY\_NODE\_GRAPH guid='`1073741826`' nodes=3<br>
 **GRAPH** '*Send*' ENTITY\_NODE\_GRAPH guid='`1073741827`' nodes=3
 
-# FILE `test/cases/gia/sample_3.gia`
+# FILE `sample_3.gia`
 
 **GRAPH** '*Structs*' ENTITY\_NODE\_GRAPH guid='`1073741829`' nodes=7
 
-# FILE `test/cases/gia/sample_4.gia`
+# FILE `sample_4.gia`
 
 **GRAPH** '*Lists*' ENTITY\_NODE\_GRAPH guid='`1073741830`' nodes=14
 
-# FILE `test/cases/gia/sample_5.gia`
+# FILE `sample_5.gia`
 
-**GRAPH** '*Variables*' ENTITY\_NODE\_GRAPH guid='`1073741831`' nodes=10
+**GRAPH** '*Variables*' ENTITY\_NODE\_GRAPH guid='`1073741831`' nodes=10<br>
+**GRAPH\_VARIABLE** '*Variables*' '**Variable\_1**' : *Bol* = No
 
-# FILE `test/cases/gia/sample_6.gia`
+# FILE `sample_6.gia`
 
 **GRAPH** '*New Node Graph*' ENTITY\_NODE\_GRAPH guid='`1073741827`' nodes=2<br>
 **GRAPH** '*New Node Graph\_1*' ITEM\_NODE\_GRAPH guid='`1073741828`' nodes=2
 
-# FILE `test/cases/gia/sample_7.gia`
+# FILE `sample_7.gia`
 
 **GRAPH** '<u>\<skill\></u>*New Character Skill Node Graph*' SKILL\_NODE\_GRAPH guid='`1082130433`' nodes=5<br>
 **GRAPH** '<u>\<creation\></u>*New Creation Skill Node Graph*' CREATION\_SKILL\_GRAPH guid='`1082130434`' nodes=3<br>
@@ -44,11 +46,12 @@
 **GRAPH** '<u>\<filter\></u>*New Filter Node Graph*' BOOLEAN\_FILTER\_GRAPH guid='`1082130438`' nodes=3<br>
 **GRAPH** '<u>\<filter\></u>*New Filter Node Graph\_1*' INTEGER\_FILTER\_GRAPH guid='`1082130439`' nodes=3
 
-# FILE `test/cases/gia/sample_8.gia`
+# FILE `sample_8.gia`
 
-**GRAPH** '*Graph*' ENTITY\_NODE\_GRAPH guid='`1073741832`' nodes=7
+**GRAPH** '*Graph*' ENTITY\_NODE\_GRAPH guid='`1073741832`' nodes=7<br>
+**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = id:0
 
-# FILE `test/cases/gia/sample_9.gia`
+# FILE `sample_9.gia`
 
 **DECL** "**Signal\_1**" SIGNAL\_NODE\_DECL guid='`1610612781`'<br>
 **GRAPH** '*New Node Graph*' ENTITY\_NODE\_GRAPH guid='`1073741825`' nodes=0<br>
@@ -91,8 +94,8 @@
 **RESOURCE** "**Stone Functional Platform**" OBJECT\_ENTITY guid='`1077936129`' parent=(1077936129:"**Stone Functional Platform**")<br>
 **RESOURCE** "**Challenge Coin Loot**" OBJECT\_ENTITY guid='`1077936136`' parent=(10007002)<br>
 **RESOURCE** "**Prefab Group**" OBJECT\_ENTITY guid='`1077936132`' parent=(1077936130:"**Prefab Group**")<br>
-**RESOURCE** "**Pyro Slime**" CREATION\_ENTITY guid='`1082130433`'<br>
-**RESOURCE** "**Hydro Slime**" CREATION\_ENTITY guid='`1082130434`'<br>
+**RESOURCE** "**Pyro Slime**" CREATION\_ENTITY guid='`1082130433`' parent=(30002007)<br>
+**RESOURCE** "**Hydro Slime**" CREATION\_ENTITY guid='`1082130434`' parent=(30007006)<br>
 **RESOURCE** "**Fabric-Roof Hut**" STATIC\_ENTITY guid='`1077936135`' parent=(20001485)<br>
 **RESOURCE** "**Terrain01**" TERRAIN\_ENTITY guid='`1073741825`'<br>
 **RESOURCE** "**Default Layout**" INTERFACE\_LAYOUT guid='`1073741825`'<br>

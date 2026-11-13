@@ -2,27 +2,29 @@
 
 Scanned 8 files:
 
-- `test/cases/gil/stage_0.gil`
-- `test/cases/gil/stage_012379.gil`
-- `test/cases/gil/stage_1.gil`
-- `test/cases/gil/stage_2.gil`
-- `test/cases/gil/stage_3.gil`
-- `test/cases/gil/stage_6.gil`
-- `test/cases/gil/stage_7.gil`
-- `test/cases/gil/stage_9.gil`
+- `stage_0.gil`
+- `stage_012379.gil`
+- `stage_1.gil`
+- `stage_2.gil`
+- `stage_3.gil`
+- `stage_6.gil`
+- `stage_7.gil`
+- `stage_9.gil`
 
 ## Findings
 
 | Level | Type | Message | File |
 | --- | --- | --- | --- |
-| *INFO*  | catch-all-listener | \[5\] **When Timer Is Triggered** in graph '*Send*' also runs code for every name: \[4\] **Send Signal** runs for every name (not a name switch) | `stage_012379.gil` |
-| *INFO*  | catch-all-listener | \[5\] **When Timer Is Triggered** in graph '*Send*' also runs code for every name: \[4\] **Send Signal** runs for every name (not a name switch) | `stage_2.gil` |
-| *INFO*  | signal-never-used | signal "**Signal\_3**" is declared but never sent or listened to in the scanned graphs | `stage_012379.gil` |
-| *INFO*  | signal-never-used | signal "**Signal\_1**" is declared but never sent or listened to in the scanned graphs | `stage_9.gil` |
-| **WARN**  | composite-definition-count-anomaly | composite "**Create Composite Node**" has **2** definition(s) in the scanned files (expected exactly 1) – guid=1073741825; guid=1073741825; this points to a structural bug in the GIL/GIA or in how this tool parsed it | `stage_012379.gil` |
-| **WARN**  | composite-definition-count-anomaly | composite "**Create Composite Node(1)**" has **2** definition(s) in the scanned files (expected exactly 1) – guid=1073741826; guid=1073741826; this points to a structural bug in the GIL/GIA or in how this tool parsed it | `stage_012379.gil` |
-| *INFO*  | struct-never-used | struct "**Structure\_2**" (guid=1077936131 fields=) is defined but never used in the scanned graphs | `stage_012379.gil` |
-| *INFO*  | struct-never-used | struct "**Structure**" (guid=1077936129 fields=) is defined but never used in the scanned graphs | `stage_9.gil` |
+| *INFO* | catch-all-listener | \[5\] **When Timer Is Triggered** in graph '*Send*' also runs code for every name: \[4\] **Send Signal** runs for every name (not a name switch) | `stage_012379.gil` |
+| *INFO* | catch-all-listener | \[5\] **When Timer Is Triggered** in graph '*Send*' also runs code for every name: \[4\] **Send Signal** runs for every name (not a name switch) | `stage_2.gil` |
+| *INFO* | signal-never-used | signal "**Signal\_3**" is declared but never sent or listened to in the scanned graphs | `stage_012379.gil` |
+| *INFO* | signal-never-used | signal "**Signal\_1**" is declared but never sent or listened to in the scanned graphs | `stage_9.gil` |
+| **WARN** | composite-definition-count-anomaly | composite "**Create Composite Node**" has **2** definition(s) in the scanned files (expected exactly 1) – guid=1073741825; guid=1073741825; this points to a structural bug in the GIL/GIA or in how this tool parsed it | `stage_012379.gil` |
+| **WARN** | composite-definition-count-anomaly | composite "**Create Composite Node(1)**" has **2** definition(s) in the scanned files (expected exactly 1) – guid=1073741826; guid=1073741826; this points to a structural bug in the GIL/GIA or in how this tool parsed it | `stage_012379.gil` |
+| *INFO* | struct-never-used | struct "**Structure\_2**" (guid=1077936131 fields=) is defined but never used in the scanned graphs | `stage_012379.gil` |
+| *INFO* | struct-never-used | struct "**Structure**" (guid=1077936129 fields=) is defined but never used in the scanned graphs | `stage_9.gil` |
+| *INFO* | custom-variable-undeclared | custom variable "**test**" is used in \['<u>\<filter\></u>*New Filter Node Graph\_1*'\] but no entity, prefab or template declares it | `stage_012379.gil` |
+| *INFO* | custom-variable-undeclared | custom variable "**test**" is used in \['<u>\<filter\></u>*New Filter Node Graph\_1*'\] but no entity, prefab or template declares it | `stage_7.gil` |
 
 ---
 
@@ -31,7 +33,7 @@ Scanned 8 files:
 | Resource | Used / max |
 | --- | ---: |
 | composites (declared) | 4/1000 |
-| signals (declared) | 3/100 |
+| signals (declared) | 3/99 |
 | prefabs (OBJECT) | 10/1000 |
 | dynamic entities (OBJECT\_ENTITY) | 6/3000 |
 | ENTITY\_DEPLOYMENT\_GROUP | 2/500 |

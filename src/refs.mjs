@@ -1,9 +1,9 @@
 ﻿// L4: reference index. Answers "where is X used?" across one or more bundles.
 import { Resolver } from './resolve.mjs';
 import { StaticResolver } from './staticres.mjs';
-import { baseGraphName, graphLabel, taggedGraphLabel, pinTypeLabel } from './render.mjs';
-import { S, graph, key as keySpan, join, plain, padSpans, T, Tjoin, spansOf, countEqual } from './doc.mjs';
-import { typeName, pinKindName } from './model.mjs';
+import { baseGraphName, graphLabel, taggedGraphLabel, pinTypeLabel } from './analyze.mjs';
+import { S, graph, key as keySpan, T, Tjoin, toRich, graphRef, countEqual } from './present/doc.mjs';
+import { typeName, pinKindName, variableTypeKey } from './model.mjs';
 import { mountsOf } from './mounts.mjs';
 import { host } from './host.mjs';
 
@@ -19,7 +19,7 @@ export const KINDS = ['graph_variable', 'custom_variable', 'timer', 'global_time
 // Miliastra editor limits (as of game 7.1.0): at most this many signals / composite declarations per stage,
 // this many nodes per graph (own + expanded composite calls) before the editor itself refuses to add more,
 // and this many of each of these other resource classes.
-export const LIMITS = { signals: 100, composites: 1000, nodesPerGraph: 3000 };
+export const LIMITS = { signals: 99, composites: 1000, nodesPerGraph: 3000 };
 export const RESOURCE_LIMITS = {
   OBJECT: 1000, OBJECT_ENTITY: 3000, ENTITY_DEPLOYMENT_GROUP: 500, PRESET_POINT: 2000,
   ENVIRONMENT_CONFIGURATION: 50, CLASS: 100, UNIT_STATUS: 1000, SKILL: 100,
@@ -33,7 +33,8 @@ const RESOURCE_LIMIT_LABELS = { OBJECT: 'prefabs (OBJECT)', OBJECT_ENTITY: 'dyna
  * by id (a global timer or a camera is accessed by its name). Add new classes here.
  */
 export const ID_SPACES = {
-  GUID: { pinType: 'Gid', classes: ['OBJECT_ENTITY', 'CREATION_ENTITY'] },
+  // the stage and the players are entities too: a Gid can name any of them
+  GUID: { pinType: 'Gid', classes: ['OBJECT_ENTITY', 'CREATION_ENTITY', 'GIL_LEVEL_ENTITY', 'GIL_PLAYER_ENTITY'] },
   PrefabID: { pinType: 'Pfb', classes: ['PROJECTILE', 'OBJECT', 'CREATION'] },
   // a plain integer (type Int) is only taken for an id when it is big, see the heuristic in buildRefs
   IntegerID: { pinType: 'Int', classes: ['SHOP_TEMPLATE', 'UNIT_TAG', 'SCAN_TAG', 'ENTITY_DEPLOYMENT_GROUP', 'INTERFACE_LAYOUT', 'UI_CONTROL_GROUP', 'ENVIRONMENT_CONFIGURATION', 'PATH', 'PRESET_POINT'] },
@@ -55,6 +56,34 @@ function findPin(n, descriptor) {
   return n.pins.find((p) => p.kind === kindNum && p.index === Number(idx)) || null;
 }
 
+/**
+ * The resources that literal ids might point at, by id space and guid: key `${pin type}:${guid}` -> { className, name } (see ID_SPACES). Graphs
+ * are not in it. Every style of code that names what an id points at asks this index (`literalResource`).
+ */
+export function resourceGuidIndexOf(bundle) {
+  const index = new Map();
+  for (const rr of bundle.resources) {
+    if (rr.guid == null || rr.kind === 'graph') continue;
+    for (const [ty, classes] of ID_SPACE_BY_PIN_TYPE) {
+      const key = `${ty}:${rr.guid}`;
+      if (classes.has(rr.className) && !index.has(key)) index.set(key, { className: rr.className, name: rr.iface?.name || rr.struct?.name || rr.name || '' });
+    }
+  }
+  return index;
+}
+
+/**
+ * The resource a literal (a model value of a pin) points at, or null: a typed id (not an entity's), or a plain Int big enough to be taken for an id.
+ * A list or struct is not looked into.
+ */
+export function literalResource(index, val) {
+  const v = val?.k === 'poly' ? val.inner : val;
+  if (!v || !v.set) return null;
+  if (v.k === 'id' && v.v !== 0 && v.ty !== 'Ety') return index.get(`${v.ty}:${v.v}`) ?? null;
+  if (v.k === 'int' && v.ty === 'Int' && Math.abs(v.v) > 1000000000) return index.get(`Int:${v.v}`) ?? null;
+  return null;
+}
+
 /** The resource a literal id of pin type `ty` points at: only resources of a class of that id space count (see ID_SPACES). */
 function resolveResourceName(resourceIndex, ty, guid) {
   const hit = resourceIndex.get(`${ty}:${guid}`);
@@ -67,7 +96,7 @@ function resolveResourceName(resourceIndex, ty, guid) {
  * refs: [{ file, kind, key, scope, graph, graphGuid, graphKindNum, node, nodeName, nodeId, pin, mode, role, note, ... }]
  * mode: literal | dynamic | unset | declaration | definition | usage
  * A name check found inside a composite body gets one copy per real calling graph (marked viaComposite), since an
- * exposed name is the caller's. The physical copy (rawCopy) is kept (--name / --json) but left out of buildOverviewRows and
+ * exposed name is the caller's. The physical copy (rawCopy) is kept (--name and the JSON references) but left out of buildOverviewRows and
  * of the declared/used findings. Custom variables, timers and global timers whose name is fixed inside the body
  * (OWN_NAME_KINDS) are owned by the composite instead: one copy, attributed to the body.
  */
@@ -86,15 +115,7 @@ export function buildRefs(bundles, db, { rules = loadRules() } = {}) {
     const seen = new Map(), dup = new Set();
     for (const r of graphs) { const n = baseGraphName(r, R); if (seen.has(n)) dup.add(n); seen.set(n, 1); }
     const graphGuids = new Map(graphs.filter((r) => r.graph.kind !== COMPOSITE_BODY_KIND).map((r) => [r.guid, r]));
-    // The resources that literal ids might point at, by id space and guid: key `${pin type}:${guid}` (see ID_SPACES).
-    const resourceGuidIndex = new Map();
-    for (const rr of b.resources) {
-      if (rr.guid == null || rr.kind === 'graph') continue;
-      for (const [ty, classes] of ID_SPACE_BY_PIN_TYPE) {
-        const key = `${ty}:${rr.guid}`;
-        if (classes.has(rr.className) && !resourceGuidIndex.has(key)) resourceGuidIndex.set(key, { className: rr.className, name: rr.iface?.name || rr.struct?.name || rr.name || '' });
-      }
-    }
+    const resourceGuidIndex = resourceGuidIndexOf(b);
 
     const SR = new StaticResolver(b, R, graphs);
     const add = (o) => refs.push({ file: b.file, node: null, nodeName: null, nodeId: null, pin: null, role: null, note: null, ...o });
@@ -141,7 +162,7 @@ export function buildRefs(bundles, db, { rules = loadRules() } = {}) {
     // Every "perspective" from which to evaluate a check physically located in graph `r`: for a real graph, just
     // itself; for a composite body, one entry per real caller (frames set, for re-resolving pins/listeners as
     // that caller would see them) plus a `raw` entry (frames: [], owner: the body itself) kept only so the
-    // physical node still has a ref for --name/--json introspection; it is not used for findings or the overview (see
+    // physical node still has a ref for --name and JSON introspection; it is not used for findings or the overview (see
     // the graphKindNum === COMPOSITE_BODY_KIND checks below and in buildOverviewRows).
     function attributionsFor(r) {
       if (r.graph.kind !== COMPOSITE_BODY_KIND) return [{ frames: [], owner: r, raw: false }];
@@ -388,7 +409,7 @@ export function buildRefs(bundles, db, { rules = loadRules() } = {}) {
   }
   // signals: cross-graph within scanned set, per file. Comment-suppressible on the sending node(s) (for
   // signal-sent-never-listened) / listening node(s) (for signal-listened-never-sent).
-  // Raw physical copies (rawCopy) are for --name/--json only and must not double-count here alongside their per-caller attributed copies.
+  // Raw physical copies (rawCopy) are for --name and the JSON references only and must not double-count here alongside their per-caller attributed copies.
   const notRawComposite = (r) => !r.rawCopy;
   const sigKeys = new Set(refs.filter((r) => r.kind === 'signal' && notRawComposite(r)).map((r) => r.scope + '\u0000' + r.key));
   for (const sk of sigKeys) {
@@ -416,6 +437,48 @@ export function buildRefs(bundles, db, { rules = loadRules() } = {}) {
   }
   // dynamic-reference, catch-all-listener and listener-no-handlers are raised inline where they are discovered (the
   // event-node and named-pin blocks above), once per real caller and with comment-based suppression.
+  // custom variables: the declarations of the entities and templates of a file against the names and datatypes the graphs use. A file without any entity or
+  // template (a .gia of graphs only) declares nothing the graphs could be checked against, so it is left out.
+  for (const b of bundles) {
+    const owners = b.resources.filter((r) => r.variables);
+    if (!owners.length) continue;
+    const R = new Resolver(b, db);
+    const declared = new Map(); // name -> [{ v, owner }]
+    for (const owner of owners) for (const v of owner.variables) { if (!declared.has(v.name)) declared.set(v.name, []); declared.get(v.name).push({ v, owner }); }
+    const typeMsg = (v) => T`${S('typeName', v.label)}${v.structId != null ? T` struct=${S('structName', R.structName(v.structId) ?? String(v.structId))}` : ''}`;
+    const ownersMsg = (list) => { const names = [...new Set(list.map((d) => d.owner.name))]; return Tjoin([...names.slice(0, 3).map((n) => T`${S('declName', n)}`), ...(names.length > 3 ? [`+${names.length - 3} more`] : [])], ', '); };
+    // the same name declared with different types: once per name
+    for (const [name, list] of declared) {
+      const byType = new Map();
+      for (const d of list) { const k = variableTypeKey(d.v); if (!byType.has(k)) byType.set(k, []); byType.get(k).push(d); }
+      if (byType.size < 2) continue;
+      const parts = [...byType.values()].map((ds) => T`${typeMsg(ds[0].v)} on ${ownersMsg(ds)}`);
+      findings.push({ level: 'info', type: 'custom-variable-type-conflict', kind: 'custom_variable', key: name, file: b.file, message: T`custom variable ${keySpan(name)} is declared with ${S('count', byType.size)} different types: ${Tjoin(parts, '; ')}` });
+    }
+    // the names the graphs use: no declaration at all, or no declaration of the datatype the node selects (the entity is only known at run time, so any declaration of that type will do)
+    const used = new Map(); // name -> refs
+    for (const r of refs) if (r.kind === 'custom_variable' && r.file === b.file && r.mode === 'literal' && r.key !== ANY_NAME_KEY && !r.rawCopy) { if (!used.has(r.key)) used.set(r.key, []); used.get(r.key).push(r); }
+    for (const [name, rs] of used) {
+      const decls = declared.get(name) || [], first = rs[0];
+      const flag = (type, group, bad, message, stale) => {
+        const suppressedHere = group.some((r) => suppressed(r.nodeComment, type));
+        if (bad && !suppressedHere) findings.push({ level: 'info', type, kind: 'custom_variable', key: name, file: b.file, graph: first.graph, message });
+        else if (!bad && suppressedHere) findings.push({ level: 'warn', type: 'stale-suppression-comment', kind: 'custom_variable', key: name, file: b.file, graph: first.graph, message: stale });
+      };
+      flag('custom-variable-undeclared', rs, !decls.length,
+        T`custom variable ${keySpan(name)} is used in ${fmtGraphList(rs)} but no entity, prefab or template declares it`,
+        T`custom variable ${keySpan(name)} has a comment mentioning ${S('findingType', 'custom-variable-undeclared')}, but it is declared – the comment may be stale`);
+      const declTypes = new Set(decls.map((d) => d.v.type));
+      for (const t of new Set(rs.map((r) => r.varType).filter(Boolean))) {
+        const group = rs.filter((r) => r.varType === t);
+        const bad = decls.length > 0 && !declTypes.has(t);
+        const as = [...new Map(decls.map((d) => [variableTypeKey(d.v), d])).values()];
+        flag('custom-variable-type-mismatch', group, bad,
+          T`custom variable ${keySpan(name)} is accessed as ${S('typeName', t)} in ${fmtGraphList(group)}, but declared as ${Tjoin(as.map((d) => T`${typeMsg(d.v)} on ${ownersMsg(decls.filter((x) => variableTypeKey(x.v) === variableTypeKey(d.v)))}`), '; ')}`,
+          T`custom variable ${keySpan(name)} accessed as ${S('typeName', t)} has a comment mentioning ${S('findingType', 'custom-variable-type-mismatch')}, but a declaration of that type exists – the comment may be stale`);
+      }
+    }
+  }
   for (const gs of graphSizes) if (gs.nodes > LIMITS.nodesPerGraph) findings.push({ level: 'warn', type: 'graph-node-count-exceeded', kind: 'graph', key: gs.graph, file: gs.file, graph: gs.graph, message: T`graph ${G(gs.graph)} is at ${S('count', gs.nodes)}/${LIMITS.nodesPerGraph} effective nodes (own nodes + every expanded composite call), over the editor's hard limit` });
 
   // ---- limits (Miliastra editor caps) ----
@@ -438,7 +501,7 @@ export function buildRefs(bundles, db, { rules = loadRules() } = {}) {
   return { refs, findings, limits };
 }
 
-/** Unique graph names referenced by a list of refs, in first-seen order, each single-quoted. */
+/** Unique graph names referenced by a list of refs, in first-seen order. */
 export function uniqGraphs(rs) {
   const seen = new Set(); const out = [];
   for (const r of rs) if (r.graph && !seen.has(r.graph)) { seen.add(r.graph); out.push(r.graph); }
@@ -446,41 +509,72 @@ export function uniqGraphs(rs) {
 }
 const fmtGraphList = (rs) => T`[${Tjoin(uniqGraphs(rs).map((n) => T`${G(n)}`), '; ')}]`;
 
-/**
- * One reference as structured pieces. Both the one-line text form and the md/html table rows
- * (report-refs.mjs) are derived from this, so they can't drift apart.
- */
-export function refParts(r) {
-  const loc = r.hostName != null ? [S('className', r.hostClass), ' ', keySpan(r.hostName)] : r.graph
-    ? [graph(r.graph), '/', r.node != null ? S('nodeIndex', `[${r.node}]`) : (r.mode === 'declaration' ? S('keyword', 'VAR') : '-'), r.nodeName ? [' ', S('nodeName', r.nodeName)] : '', r.nodeId != null ? [' ', S('nodeId', `(${r.nodeId})`)] : '']
-    : '(definition)';
-  const via = r.viaComposite?.length ? [' ', S('flag', '[inlined via'), ' ', join(r.viaComposite.map((c) => graph(c)), ' -> '), S('flag', ']')] : '';
-  const note = r.note ? spansOf(r.note) : '';
-  return { loc, via, note };
-}
-
 /** A Set whose Trigger Event pin is not statically false (true, wired, or unreadable) fires the variable's change event. */
 export const isTriggerRef = (r) => r.role === 'set' && r.trigger != null && r.trigger !== 'false';
 /** The role as shown to the user: such a Set is a `trigger`, not a plain `set`. */
 export const displayRole = (r) => (isTriggerRef(r) ? 'trigger' : r.role);
 
-/** The one-line form of a reference, as spans. */
-export function refLineSpans(r, { showFile = true } = {}) {
-  const { loc, via, note } = refParts(r);
-  return [showFile ? [S('fileName', r.file), ': '] : '', S('kind', r.kind), ' ', refKeySpan(r), ' ', S('mode', r.mode), r.role ? [' ', S('role', displayRole(r))] : '', ' @ ', loc, r.pin ? [' ', spansOf(r.pin)] : '', via, r.note ? [' – ', note] : ''];
-}
-
-/** The key of one reference as a span: a mounted graph is a graph name (single-quoted, with its <tag>), everything else a key. */
-export const refKeySpan = (r) => (r.kind === 'mount' ? graph(r.graphTagged) : keySpan(r.key));
-
-const KIND_COL = 16, KEY_COL = 34;
 const G = (label) => graph(label); // a graph name inside a message
 const GLOBAL_TIMER_ROLES = ['start', 'stop', 'pause', 'resume', 'modify', 'get-time', 'listen'];
 
 // Kinds whose name can also be fixed inside a composite body itself (then the composite owns the reference; see buildRefs).
 const OWN_NAME_KINDS = new Set(['custom_variable', 'timer', 'global_timer']);
 
-/** Grouped overview as row models: { kind, key, meta[], scope, parts:[{n, role, graphs|null, note|null}], defined, stacked }. */
+// ---- the JSON form (see JSON.md): everything a renderer shows is in these objects, already resolved ----
+
+/**
+ * One reference of the index as a report item. Graph names are { tag, name } (see graphRef), texts that carry structure are rich texts
+ * (see toRich), and every optional piece is present with null, so a reader never has to test for a missing key.
+ */
+export function referenceJson(r) {
+  return {
+    file: r.file,
+    kind: r.kind,
+    key: String(r.key),
+    key_graph: r.kind === 'mount' ? graphRef(r.graphTagged) : null, // a mounted graph is keyed by its plain name; this is the same graph with its <tag>
+    scope: r.scope ?? null,
+    mode: r.mode,
+    role: r.role ?? null,
+    display_role: r.role ? displayRole(r) : null,
+    var_type: r.varType ?? null,
+    trigger: r.trigger ?? null,
+    loop: r.loop ?? null,
+    graph: r.graph ? graphRef(r.graph) : null,
+    graph_guid: r.graphGuid ?? null,
+    graph_class: r.graphClass ?? null,
+    composite_body: r.graphKindNum === COMPOSITE_BODY_KIND,
+    node: r.node != null ? { index: r.node, name: r.nodeName ?? null, id: r.nodeId ?? null, comment: r.nodeComment ?? null } : null,
+    host: r.hostName != null ? { class_name: r.hostClass, name: r.hostName, guid: r.hostGuid ?? null } : null,
+    pin: r.pin ? toRich(r.pin) : null,
+    resolved: r.resolvedName ? toRich(r.resolvedName) : null,
+    resolved_via: (r.resolvedVia ?? []).map(toRich),
+    via_composite: (r.viaComposite ?? []).map(graphRef),
+    raw_copy: !!r.rawCopy,
+    note: r.note ? toRich(r.note) : null,
+  };
+}
+
+/** One finding as a report item. */
+export const findingJson = (f) => ({ level: f.level, type: f.type, kind: f.kind, key: String(f.key), file: f.file, graph: f.graph ? graphRef(f.graph) : null, message: toRich(f.message) });
+
+/** The limits section; `topGraphs` = how many of the biggest graphs to keep. */
+export function limitsJson(limits, topGraphs) {
+  return {
+    composites: { ...limits.composites },
+    signals: { ...limits.signals },
+    resources: limits.resources.map((x) => ({ class_name: x.className, label: x.label, used: x.used, max: x.max })),
+    static_entities: limits.staticEntities,
+    graph_node_max: LIMITS.nodesPerGraph,
+    graph_sizes: limits.graphSizes.slice(0, topGraphs).map((g) => ({ file: g.file, graph: graphRef(g.graph), nodes: g.nodes })),
+  };
+}
+
+/**
+ * The overview of `sel` (refs): one entry per group of references that share a key (and, for variables, their type and graph), in the
+ * order they are listed. An entry is { kind, key, key_graph, type, loop, resolved, graph, definition, parts }, where `parts` are
+ * { role, count, graphs, note }: "N role" followed by the graphs the references are in (an array, possibly empty), or by a note (a rich
+ * text), or by nothing (both null).
+ */
 export function buildOverviewRows(sel, { sortDesc = false } = {}) {
   const groups = new Map();
   const groupKey = (r) => {
@@ -490,8 +584,8 @@ export function buildOverviewRows(sel, { sortDesc = false } = {}) {
     return `${r.kind}\u0000${r.key}`;
   };
   for (const r of sel) {
-    // A composite cannot own these – its raw (physical) accesses are shown only via --name/--json (with their
-    // "inlined via" provenance); the summary only shows the hoisted copies attributed to real caller graphs.
+    // A composite cannot own these – its raw (physical) accesses are shown only one by one (--name), with their
+    // "inlined via" provenance; the summary only shows the hoisted copies attributed to real caller graphs.
     if (r.rawCopy) continue;
     const gk = groupKey(r);
     if (!groups.has(gk)) groups.set(gk, { kind: r.kind, key: r.key, varType: r.varType || null, rs: [] });
@@ -514,13 +608,13 @@ export function buildOverviewRows(sel, { sortDesc = false } = {}) {
   const byParts = (x, y) => { const p = x.split('\u0000'), q = y.split('\u0000'); for (let i = 0; i < p.length; i++) { const c = p[i].localeCompare(q[i] ?? ''); if (c) return c; } return 0; };
   const byBase = (a, b) => (a[1].kind === 'mount' ? Math.min(...a[1].rs.map((r) => r.order)) - Math.min(...b[1].rs.map((r) => r.order)) : 0) || byParts(a[0], b[0]);
   entries.sort((a, b) => a[1].kind.localeCompare(b[1].kind) || (sortDesc ? (b[1].rs.length - a[1].rs.length || byBase(a, b)) : byBase(a, b)));
-  return entries.map(([, grp]) => groupRow(grp));
+  return entries.map(([, grp]) => groupEntry(grp));
 }
 
-function groupRow({ kind, key, varType, rs }) {
-  const row = { kind, key, keyLabel: kind === 'mount' ? rs[0].graphTagged : null, meta: [], scope: null, parts: [], defined: null, stacked: false };
+function groupEntry({ kind, key, varType, rs }) {
+  const row = { kind, key: String(key), key_graph: kind === 'mount' ? graphRef(rs[0].graphTagged) : null, type: null, loop: null, resolved: null, graph: null, definition: null, parts: [] };
   // part: "N role: [graphs]" (graphs = unique graph names) or "N role" (graphs null) or "N role: note text"
-  const P = (list, role, withGraphs = true) => ({ n: list.length, role, graphs: withGraphs ? uniqGraphs(list) : null, note: null });
+  const P = (list, role, withGraphs = true) => ({ role, count: list.length, graphs: withGraphs ? uniqGraphs(list).map(graphRef) : null, note: null });
   const by = (role) => rs.filter((r) => r.role === role);
   // A "When ... Changes/Triggered" node listens for ANY name; keep it visible instead of falling through
   // to a kind-specific format that would silently print zeros for every real role.
@@ -530,9 +624,9 @@ function groupRow({ kind, key, varType, rs }) {
     case 'custom_variable': case 'graph_variable': {
       const gets = by('get'), listens = by('listen');
       const triggers = by('set').filter(isTriggerRef), sets = by('set').filter((r) => !isTriggerRef(r));
-      row.meta = [varType ? S('typeName', varType) : null].filter(Boolean);
-      const withGraphs = kind !== 'graph_variable'; // a graph variable has exactly one owning graph, shown as row.scope
-      if (!withGraphs) row.scope = rs[0]?.graph || '?';
+      row.type = varType;
+      const withGraphs = kind !== 'graph_variable'; // a graph variable has exactly one owning graph, shown as row.graph
+      if (!withGraphs) row.graph = graphRef(rs[0]?.graph || '?');
       row.parts = [P(gets, 'get', withGraphs), P(sets, 'set', withGraphs),
         ...(triggers.length ? [P(triggers, 'trigger', withGraphs)] : []),
         ...(listens.length ? [P(listens, 'listen', withGraphs)] : [])];
@@ -542,15 +636,14 @@ function groupRow({ kind, key, varType, rs }) {
     case 'timer': {
       const starts = by('start');
       const loops = starts.map((r) => r.loop).filter(Boolean);
-      const suffix = loops.length && loops.every((l) => l === 'false') ? 'onetime' : loops.length && loops.every((l) => l === 'true') ? 'looped' : '';
-      if (suffix) row.meta = [S('flag', suffix)];
+      row.loop = loops.length && loops.every((l) => l === 'false') ? 'onetime' : loops.length && loops.every((l) => l === 'true') ? 'looped' : null;
       row.parts = [P(starts, 'start'), P(by('stop'), 'stop'), ...['pause', 'resume', 'listen'].filter((role) => by(role).length).map((role) => P(by(role), role))];
       break;
     }
     case 'signal': row.parts = [P(by('listen'), 'listen'), P(by('send'), 'send')]; break;
     case 'literal_id': {
       const resolvedName = rs.find((r) => r.resolvedName)?.resolvedName;
-      if (resolvedName) row.meta = [spansOf(resolvedName)];
+      if (resolvedName) row.resolved = toRich(resolvedName);
       row.parts = [P(rs, 'Ref')]; // one role for every id type (the type is in the key): the document formats get a single column
       break;
     }
@@ -561,37 +654,22 @@ function groupRow({ kind, key, varType, rs }) {
         const hosts = rs.filter((r) => r.role === slot);
         // identical hosts (same class and name) are listed once with a count: CLASS:"name" (x3)
         const grouped = countEqual(hosts, (h) => `${h.hostClass}\0${h.hostName}`).map(({ item: h, n }) => T`${S('className', h.hostClass)}:${keySpan(h.hostName)}${n > 1 ? ` (x${n})` : ''}`);
-        row.parts.push({ n: hosts.length, role: slot, graphs: null, note: Tjoin(grouped, '; ') });
+        row.parts.push({ role: slot, count: hosts.length, graphs: null, note: toRich(Tjoin(grouped, '; ')) });
       }
       break;
     }
     case 'struct': {
       const defs = rs.filter((r) => r.mode === 'definition');
-      row.stacked = true;
-      row.defined = defs.length ? defs.map((d) => d.note).join('; ') : null;
+      row.definition = defs.length ? defs.map((d) => d.note).join('; ') : null;
       for (const role of [...new Set(rs.filter((r) => r.mode === 'usage').map((r) => r.role))]) {
         const rs2 = rs.filter((r) => r.mode === 'usage' && r.role === role);
         const withGraph = rs2.filter((r) => r.graph), withoutGraph = rs2.filter((r) => !r.graph);
         if (withGraph.length) row.parts.push(P(withGraph, role));
-        if (withoutGraph.length) row.parts.push({ n: withoutGraph.length, role, graphs: null, note: withoutGraph.map((r) => r.note).filter(Boolean).join('; ') || '(no further context)' });
+        if (withoutGraph.length) row.parts.push({ role, count: withoutGraph.length, graphs: null, note: toRich(withoutGraph.map((r) => r.note).filter(Boolean).join('; ') || '(no further context)') });
       }
       break;
     }
-    default: row.parts = [{ n: rs.length, role: 'ref(s)', graphs: null, note: null }];
+    default: row.parts = [{ role: 'ref(s)', count: rs.length, graphs: null, note: null }];
   }
   return row;
-}
-
-const graphListSpans = (names) => ['[', join(names.map((n) => graph(n)), '; '), ']'];
-export const rowPartSpans = (p) => [S('count', p.n), ' ', S('role', p.role), p.graphs ? [': ', graphListSpans(p.graphs)] : p.note != null ? [': ', spansOf(p.note)] : ''];
-export const rowKeySpans = (row) => [row.keyLabel != null ? graph(row.keyLabel) : keySpan(row.key), row.meta.length ? [' (', join(row.meta, ', '), ')'] : ''];
-
-/** The console lines (spans) of one overview row: kind column, key column (padded), then the details. */
-export function overviewRowLines(row) {
-  const head = [S('kind', row.kind), ' '.repeat(Math.max(0, KIND_COL - row.kind.length)), ' ', padSpans(rowKeySpans(row), KEY_COL), ' '];
-  if (row.stacked) {
-    const indent = ' '.repeat(KIND_COL + 1 + KEY_COL + 1);
-    return [[head, row.defined != null ? ['defined ', spansOf(row.defined)] : '(no definition found in the scanned files)'], ...row.parts.map((p) => [indent, rowPartSpans(p)])];
-  }
-  return [[head, row.scope != null ? ['[', graph(row.scope), ']: '] : '', join(row.parts.map(rowPartSpans), ', ')]];
 }

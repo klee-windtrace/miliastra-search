@@ -13,7 +13,7 @@
 ## limits
 
 composites: 2/1000 declared<br>
-signals: 2/100 declared<br>
+signals: 2/99 declared<br>
 prefabs (OBJECT): 5/1000<br>
 dynamic entities (OBJECT\_ENTITY): 3/3000<br>
 ENTITY\_DEPLOYMENT\_GROUP: 1/500<br>

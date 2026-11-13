@@ -1,0 +1,3 @@
+== variables_beyond.gia  gia  engine 7.2.0  mode beyond  resources 16 (16 not interpreted)
+   schema census: OK (every field in the file is known to the schema)
+   opaque (known but uninterpreted) fields: resources.opaque_11×5, resources.opaque_12×8, resources.opaque_15×1, dependencies.opaque_11×2

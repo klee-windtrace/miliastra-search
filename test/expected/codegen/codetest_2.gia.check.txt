@@ -1,0 +1,2 @@
+== codetest_2.gia  gia  engine 7.1.0  mode beyond  resources 21 (0 not interpreted)
+   schema census: OK (every field in the file is known to the schema)

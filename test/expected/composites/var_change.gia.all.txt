@@ -1,0 +1,45 @@
+# INFO
+# FILE var_change.gia
+format                 gia
+detected_by            header
+file_size              2369
+container_file_type    gia
+engine_version         7.1.0
+mode                   beyond
+export_name            var_change.gia
+node_db_version        7.2.0
+resources              7
+primary                1
+dependencies           6
+graphs                 4
+nodes                  11
+composite_bodies       3
+declarations           3
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=4
+CLASS COMPOSITE_NODE_DECL class=12 count=3
+
+# DUMP
+GRAPH 'VAR_TEST' ENTITY_NODE_GRAPH class=9 guid='1073741841' kind=21001 service=20000 nodes=7
+GRAPH '<composite>VAR_TEST_1' ENTITY_NODE_GRAPH class=9 guid='1610612743' kind=21002 service=20000 nodes=1 role=dependency decl='1610612743'
+GRAPH '<composite>VAR_TEST_2' ENTITY_NODE_GRAPH class=9 guid='1610612744' kind=21002 service=20000 nodes=1 role=dependency decl='1610612744'
+GRAPH '<composite>VAR_TEST_3' ENTITY_NODE_GRAPH class=9 guid='1610612745' kind=21002 service=20000 nodes=2 role=dependency decl='1610612745'
+
+# REFS
+composite        "VAR_TEST_1"                       1 call: ['VAR_TEST']
+composite        "VAR_TEST_2"                       1 call: ['VAR_TEST']
+composite        "VAR_TEST_3"                       1 call: ['VAR_TEST']
+custom_variable  "Var1" (Int)                       0 get: [], 0 set: [], 1 trigger: ['VAR_TEST'], 1 listen: ['VAR_TEST']
+custom_variable  "Var2" (Str)                       0 get: [], 0 set: [], 1 trigger: ['<composite>VAR_TEST_2'], 1 listen: ['<composite>VAR_TEST_3']
+
+# WARNS
+# findings
+(no findings)
+
+# limits
+composites: 3/1000 declared
+
+top graphs by node count:
+'VAR_TEST': 11/3000 nodes

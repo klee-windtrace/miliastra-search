@@ -1,4 +1,4 @@
-# FILE test/cases/gil/stage_0.gil
+# FILE stage_0.gil
 GRAPH /Импортированные ресурсы/'Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=7
 GRAPH /Импортированные ресурсы/'<status>Empty' STATUS_NODE_GRAPH class=22 guid='1073741826' kind=21001 service=20003 nodes=0
 RESOURCE "Сущность уровня" GIL_LEVEL_ENTITY class=- guid='1094713345' section=root.5
@@ -40,7 +40,8 @@ RESOURCE "Статус сети" UI_CONTROL class=15 guid='1073741836' section=r
 RESOURCE "Кнопка сопротивления" UI_CONTROL class=15 guid='1073741837' section=root.9
 RESOURCE "Кнопка голосового чата" UI_CONTROL class=15 guid='1073741838' section=root.9
 RESOURCE "Очередь подсказок голосового чата" UI_CONTROL class=15 guid='1073741839' section=root.9
-# FILE test/cases/gil/stage_012379.gil
+GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = id:0
+# FILE stage_012379.gil
 DECL "Signal_2" SIGNAL_NODE_DECL class=14 guid='1073741831' category=SEND_SIGNAL
 DECL "Signal_1" SIGNAL_NODE_DECL class=14 guid='1073741828' category=SEND_SIGNAL
 DECL "Signal_3" SIGNAL_NODE_DECL class=14 guid='1073741851' category=SEND_SIGNAL
@@ -55,8 +56,8 @@ GRAPH /Import Assets/'<status>Empty' STATUS_NODE_GRAPH class=22 guid='1073741826
 GRAPH /Import Assets/'<status>New Node Graph_1' STATUS_NODE_GRAPH class=22 guid='1073741835' kind=21001 service=20003 nodes=0
 GRAPH /Import Assets/'<class>New Node Graph_2_1' CLASS_NODE_GRAPH class=23 guid='1073741836' kind=21001 service=20004 nodes=0
 GRAPH /Import Assets/'New Node Graph_3' ITEM_NODE_GRAPH class=46 guid='1073741837' kind=21001 service=20005 nodes=0
-GRAPH /导入资产/'<composite>Create Composite Node' ENTITY_NODE_GRAPH class=9 guid='1073741828' kind=21002 service=20000 nodes=1 composite_body=true
-GRAPH /导入资产/'<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH class=9 guid='1073741829' kind=21002 service=20000 nodes=7 composite_body=true
+GRAPH /导入资产/'<composite>Create Composite Node' ENTITY_NODE_GRAPH class=9 guid='1073741828' kind=21002 service=20000 nodes=1 decl='1073741825'
+GRAPH /导入资产/'<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH class=9 guid='1073741829' kind=21002 service=20000 nodes=7 decl='1073741826'
 GRAPH /Import Assets/'<skill>New Character Skill Node Graph' SKILL_NODE_GRAPH class=11 guid='1082130435' kind=21001 service=20002 nodes=5 entry_slot=1
 GRAPH /Import Assets/'<skill>New Character Skill Node Graph_1' SKILL_NODE_GRAPH class=11 guid='1082130442' kind=21001 service=20002 nodes=1 entry_slot=1
 GRAPH /Import Assets/'<creation>New Creation Skill Node Graph' CREATION_SKILL_GRAPH class=52 guid='1082130436' kind=21001 service=20008 nodes=3 entry_slot=1
@@ -168,10 +169,11 @@ RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741854' section=root.9
 RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741855' section=root.9
 RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741856' section=root.9
 RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741857' section=root.9
-# FILE test/cases/gil/stage_1.gil
+GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = id:0
+# FILE stage_1.gil
 GRAPH /(default)/'New Node Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=7
-GRAPH /(default)/'<composite>Create Composite Node' ENTITY_NODE_GRAPH class=9 guid='1073741826' kind=21002 service=20000 nodes=1 composite_body=true
-GRAPH /(default)/'<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH class=9 guid='1073741827' kind=21002 service=20000 nodes=7 composite_body=true
+GRAPH /(default)/'<composite>Create Composite Node' ENTITY_NODE_GRAPH class=9 guid='1073741826' kind=21002 service=20000 nodes=1 decl='1073741825'
+GRAPH /(default)/'<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH class=9 guid='1073741827' kind=21002 service=20000 nodes=7 decl='1073741826'
 RESOURCE "Stage Entity" GIL_LEVEL_ENTITY class=- guid='1094713345' section=root.5
 RESOURCE "Default Template" PLAYER_TEMPLATE class=18 guid='1086324737' section=root.4
 RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519041' section=root.4
@@ -211,7 +213,7 @@ RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741836' section=root.9
 RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741837' section=root.9
 RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741838' section=root.9
 RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741839' section=root.9
-# FILE test/cases/gil/stage_2.gil
+# FILE stage_2.gil
 DECL "Signal_2" SIGNAL_NODE_DECL class=14 guid='1073741829' category=SEND_SIGNAL
 DECL "Signal_1" SIGNAL_NODE_DECL class=14 guid='1073741826' category=SEND_SIGNAL
 GRAPH /(default)/'Both' ENTITY_NODE_GRAPH class=9 guid='1073741827' kind=21001 service=20000 nodes=4
@@ -256,7 +258,7 @@ RESOURCE "Статус сети" UI_CONTROL class=15 guid='1073741836' section=r
 RESOURCE "Кнопка сопротивления" UI_CONTROL class=15 guid='1073741837' section=root.9
 RESOURCE "Кнопка голосового чата" UI_CONTROL class=15 guid='1073741838' section=root.9
 RESOURCE "Очередь подсказок голосового чата" UI_CONTROL class=15 guid='1073741839' section=root.9
-# FILE test/cases/gil/stage_3.gil
+# FILE stage_3.gil
 GRAPH /(default)/'Structs' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=7
 RESOURCE "Сущность уровня" GIL_LEVEL_ENTITY class=- guid='1094713345' section=root.5
 RESOURCE "Шаблон по умолчанию" PLAYER_TEMPLATE class=18 guid='1086324737' section=root.4
@@ -297,7 +299,7 @@ RESOURCE "Статус сети" UI_CONTROL class=15 guid='1073741836' section=r
 RESOURCE "Кнопка сопротивления" UI_CONTROL class=15 guid='1073741837' section=root.9
 RESOURCE "Кнопка голосового чата" UI_CONTROL class=15 guid='1073741838' section=root.9
 RESOURCE "Очередь подсказок голосового чата" UI_CONTROL class=15 guid='1073741839' section=root.9
-# FILE test/cases/gil/stage_6.gil
+# FILE stage_6.gil
 GRAPH /(default)/'New Node Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=2
 GRAPH /(default)/'New Node Graph_1' ITEM_NODE_GRAPH class=46 guid='1073741826' kind=21001 service=20005 nodes=2
 RESOURCE "Сущность уровня" GIL_LEVEL_ENTITY class=- guid='1094713345' section=root.5
@@ -340,7 +342,7 @@ RESOURCE "Кнопка сопротивления" UI_CONTROL class=15 guid='107
 RESOURCE "Чувство стихий" UI_CONTROL class=15 guid='1073741840' section=root.9
 RESOURCE "Кнопка голосового чата" UI_CONTROL class=15 guid='1073741841' section=root.9
 RESOURCE "Очередь подсказок голосового чата" UI_CONTROL class=15 guid='1073741842' section=root.9
-# FILE test/cases/gil/stage_7.gil
+# FILE stage_7.gil
 GRAPH /(default)/'<skill>New Character Skill Node Graph' SKILL_NODE_GRAPH class=11 guid='1082130435' kind=21001 service=20002 nodes=5 entry_slot=1
 GRAPH /(default)/'<creation>New Creation Skill Node Graph' CREATION_SKILL_GRAPH class=52 guid='1082130436' kind=21001 service=20008 nodes=3 entry_slot=1
 GRAPH /(default)/'<creation>New Creation Status Node Graph' CREATION_STATUS_GRAPH class=53 guid='1082130437' kind=21001 service=20009 nodes=2 entry_slot=1
@@ -387,7 +389,7 @@ RESOURCE "Статус сети" UI_CONTROL class=15 guid='1073741836' section=r
 RESOURCE "Кнопка сопротивления" UI_CONTROL class=15 guid='1073741837' section=root.9
 RESOURCE "Кнопка голосового чата" UI_CONTROL class=15 guid='1073741838' section=root.9
 RESOURCE "Очередь подсказок голосового чата" UI_CONTROL class=15 guid='1073741839' section=root.9
-# FILE test/cases/gil/stage_9.gil
+# FILE stage_9.gil
 DECL "Signal_1" SIGNAL_NODE_DECL class=14 guid='1073741825' category=SEND_SIGNAL
 GRAPH /(default)/'New Node Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=0
 GRAPH /(default)/'<status>New Node Graph_1' STATUS_NODE_GRAPH class=22 guid='1073741826' kind=21001 service=20003 nodes=0
