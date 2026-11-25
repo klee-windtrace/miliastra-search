@@ -154,14 +154,14 @@ RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073756701' section=root.
 RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073756702' section=root.9
 VARIABLE Stage 1094713345:"Stage Entity" 'Environment' : Int = 0
 VARIABLE Stage 1094713345:"Stage Entity" 'Phase' : Str = ''
-VARIABLE Stage 1094713345:"Stage Entity" 'Hunt_Weights' : Flt = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'Hunt_Weights' : Flt = 0.00
 VARIABLE Stage 1094713345:"Stage Entity" 'G_TotalPlayers' : Int = 0
-VARIABLE Stage 1094713345:"Stage Entity" 'Is_SinglePlayer' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'Is_SinglePlayer' : Bol = false
 VARIABLE Stage 1094713345:"Stage Entity" 'G_ReadyPlayers' : Dict<Int,Ety> = {}
 VARIABLE Stage 1094713345:"Stage Entity" 'Initial_Text' : Str = ''
 VARIABLE Stage 1094713345:"Stage Entity" 'Initial_Lines' : L<Str> = ['<color=#ACFF44>Waiting for players...</color>', '<color=#FFCC33>Choose your role!</color>', '', '<color=#FF5E41>You will be Hunter!</color>', '<color=#37FFFF>Two-player High Score Battle</color>', '??']
-VARIABLE Stage 1094713345:"Stage Entity" 'Total_Weight' : Flt = 0
-VARIABLE Stage 1094713345:"Stage Entity" 'G_NooneHunter' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'Total_Weight' : Flt = 0.00
+VARIABLE Stage 1094713345:"Stage Entity" 'G_NooneHunter' : Bol = false
 VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Timer' : L<Str> = ['initial', 'rebels', 'hunter', '']
 VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Prepare' : L<Str> = ['<color=#FFCC33>Hunting starts in:</color>', '<color=#FFCC33>Hunter released in:</color>', '', '']
 VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Hunt' : L<Str> = ['', '<color=#ACFF44>Time to repair:</color>', '<color=#ACFF44>Time till victory:</color>', '']
@@ -171,12 +171,12 @@ VARIABLE Stage 1094713345:"Stage Entity" 'Text_Who_Hunter' : Str = 'YOU ARE THE 
 VARIABLE Stage 1094713345:"Stage Entity" 'G_DevicesRepaired' : Int = 0
 VARIABLE Stage 1094713345:"Stage Entity" 'G_NeedRepair' : Int = 0
 VARIABLE Stage 1094713345:"Stage Entity" 'Game_Winner' : Str = ''
-VARIABLE Stage 1094713345:"Stage Entity" 'G_OneRebel' : Bol = No
-VARIABLE Stage 1094713345:"Stage Entity" 'G_HuntStarted' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'G_OneRebel' : Bol = false
+VARIABLE Stage 1094713345:"Stage Entity" 'G_HuntStarted' : Bol = false
 VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Hunters' : Int = 1
 VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Devices' : Int = -2
 VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Repair' : Int = 1
-VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Time' : Flt = 300
+VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Time' : Flt = 300.00
 VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Fixing' : Int = 30
 VARIABLE Stage 1094713345:"Stage Entity" 'G_Prison_Time' : Int = 10
 VARIABLE Stage 1094713345:"Stage Entity" 'G_Devices_Used' : Dict<Ety,Bol> = {}
@@ -186,16 +186,16 @@ VARIABLE Stage 1094713345:"Stage Entity" 'Roles' : Dict<Int,Str> = {}
 VARIABLE Stage 1094713345:"Stage Entity" 'G_CurrentScore' : Int = 0
 VARIABLE Stage 1094713345:"Stage Entity" 'V_PlayerConnection' : Dict<Int,Ety> = {}
 VARIABLE Stage 1094713345:"Stage Entity" 'OPT_Stamina' : Int = 300
-VARIABLE Stage 1094713345:"Stage Entity" 'Are_Two_Players' : Bol = No
-VARIABLE Stage 1094713345:"Stage Entity" 'G_Trace_CD' : Flt = 0
+VARIABLE Stage 1094713345:"Stage Entity" 'Are_Two_Players' : Bol = false
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Trace_CD' : Flt = 0.00
 VARIABLE Stage 1094713345:"Stage Entity" 'G_Tour_Round' : Int = 1
 VARIABLE Stage 1094713345:"Stage Entity" 'G_BestScore' : Int = 0
 VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Tour' : L<Str> = ['', '<color=#ACFF44>Round: </color>', '<color=#ACFF44>Round: </color>', '']
 VARIABLE Stage 1094713345:"Stage Entity" 'Tour_Nicknames' : L<Str> = ['', '']
-VARIABLE Stage 1094713345:"Stage Entity" 'Tour_Restart' : Bol = No
+VARIABLE Stage 1094713345:"Stage Entity" 'Tour_Restart' : Bol = false
 VARIABLE Stage 1094713345:"Stage Entity" 'C_Tasker_Task' : Str = ''
-VARIABLE Stage 1094713345:"Stage Entity" 'G_Have_Players' : Bol = No
-VARIABLE Stage 1094713345:"Stage Entity" 'C_ReadyPlayers' : Ety = id:0
+VARIABLE Stage 1094713345:"Stage Entity" 'G_Have_Players' : Bol = false
+VARIABLE Stage 1094713345:"Stage Entity" 'C_ReadyPlayers' : Ety = null
 VARIABLE Stage 1094713345:"Stage Entity" 'Current_Map' : Str = 'NONE'
 VARIABLE Stage 1094713345:"Stage Entity" 'C_Do_Restart' : Str = ''
 VARIABLE Stage 1094713345:"Stage Entity" 'Titles_Bad' : L<Str> = ['??', '??', '??', '??']

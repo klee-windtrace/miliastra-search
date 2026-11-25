@@ -38,14 +38,14 @@ ServerGraphs['Status'] = async function Status_1073741830($,node){
     case 'node_0005':{ // called from 'node_0003: Remove_Unit_Status'
       const {
         Value: Int_02,
-      } = Get_Local_Variable({
+      } = Get_Local_Variable("Comp_0007_Var_0004", {
         Initial_Value: Int(42),
-      }, "Comp_001_Var_0002");
+      });
 
       Set_Node_Graph_Variable({
         Variable_Name: "gvar",
         Variable_Value: Int_02, // Get_Local_Variable.Value
-        Trigger_Event: Bol(0),
+        Trigger_Event: Bol(false),
       });
       void "node_0012.node_0008"; // Set_Node_Graph_Variable
     }
@@ -54,7 +54,7 @@ ServerGraphs['Status'] = async function Status_1073741830($,node){
       Set_Node_Graph_Variable({
         Variable_Name: "gvar",
         Variable_Value: Int(0),
-        Trigger_Event: Bol(1),
+        Trigger_Event: Bol(true),
       });
       await GoTo("node_0021.node_0018"); // Print_String
       return GoTo("node_0025.node_0010"); // Double_Branch
@@ -71,13 +71,26 @@ ServerGraphs['Status'] = async function Status_1073741830($,node){
       ({
         Next: $.next,
       } = Double_Branch({
-        Condition: Bol(0),
+        Condition: Bol(false),
       }));
       if($.next=="Yes"){
         return Exit();
       }else{ // =="No"
-        await GoTo("node_0029.node_0001"); // Double_Branch
-        return GoTo("node_0029.node_0022"); // Double_Branch
+        await GoTo("node_0029.node_0022"); // Double_Branch
+        return GoTo("node_0029.node_0001"); // Double_Branch
+      }
+    }
+    case 'node_0029.node_0022':{ // called from 'node_0029.node_0019: Double_Branch'
+      // in composite Calling Twice (node_0029)
+      ({
+        Next: $.next,
+      } = Double_Branch({
+        Condition: Bol(true),
+      }));
+      if($.next=="Yes"){
+        return GoTo("node_0029.node_0001"); // Double_Branch
+      }else{ // =="No"
+        return Exit();
       }
     }
     case 'node_0029.node_0001':{ // 2 callers: ['node_0029.node_0019: Double_Branch', 'node_0029.node_0022: Double_Branch']
@@ -85,7 +98,7 @@ ServerGraphs['Status'] = async function Status_1073741830($,node){
       ({
         Next: $.next,
       } = Double_Branch({
-        Condition: Bol(0),
+        Condition: Bol(false),
       }));
       if($.next=="Yes"){
         return Exit();
@@ -97,35 +110,22 @@ ServerGraphs['Status'] = async function Status_1073741830($,node){
       // in composite With Event (node_0036)
       const {
         Self_Entity: Ety_01,
-      } = Get_Self_Entity();
+      } = Get_Self_Entity("node_0036.data_0033", {});
 
       Set_Custom_Variable({
         Target_Entity: Ety_01, // Get_Self_Entity.Self_Entity
         Variable_Name: "none",
-        Variable_Value: Int(0), // (default)
-        Trigger_Event: Bol(1), // (default)
+        Variable_Value: undefined, // (default)
+        Trigger_Event: Bol(true), // (default)
       });
       return Exit();
-    }
-    case 'node_0029.node_0022':{ // called from 'node_0029.node_0019: Double_Branch'
-      // in composite Calling Twice (node_0029)
-      ({
-        Next: $.next,
-      } = Double_Branch({
-        Condition: Bol(1),
-      }));
-      if($.next=="Yes"){
-        return GoTo("node_0029.node_0001"); // Double_Branch
-      }else{ // =="No"
-        return Exit();
-      }
     }
     case 'node_0025.node_0010':{ // called from 'node_0012.node_0008: Set_Node_Graph_Variable'
       // in composite Two Exclusive Outs (node_0025)
       ({
         Next: $.next,
       } = Double_Branch({
-        Condition: Bol(0),
+        Condition: Bol(false),
       }));
       if($.next=="Yes"){
         return GoTo("node_0015.node_0013"); // Break_Loop
@@ -171,12 +171,12 @@ ServerGraphs['Status'] = async function Status_1073741830($,node){
     case 'node_0034':{ // called from 'node_0036.node_0031: Multiple_Branches'
       const {
         Value: Bol_02,
-      } = Get_Local_Variable({
-        Initial_Value: Bol(1),
-      }, "Comp_008_Var_0001");
+      } = Get_Local_Variable("Comp_0042_Var_0037", {
+        Initial_Value: Bol(true),
+      });
 
       Set_Custom_Variable({
-        Target_Entity: Ety(0), // (default)
+        Target_Entity: Ety(null), // (default)
         Variable_Name: "x",
         Variable_Value: Bol_02, // Get_Local_Variable.Value
         Trigger_Event: Bol_02, // Get_Local_Variable.Value
@@ -185,7 +185,7 @@ ServerGraphs['Status'] = async function Status_1073741830($,node){
     }
     case 'node_0039':{ // called from 'node_0034: Set_Custom_Variable'
       Set_Custom_Variable({
-        Target_Entity: Ety(0), // (default)
+        Target_Entity: Ety(null), // (default)
         Variable_Name: "y",
         Variable_Value: $.Bol_016, // Consume_Gift_Box.Consume
         Trigger_Event: $.Bol_016, // Consume_Gift_Box.Consume
@@ -195,14 +195,13 @@ ServerGraphs['Status'] = async function Status_1073741830($,node){
     case 'node_0040':{ // called from 'node_0039: Set_Custom_Variable'
       const {
         Result: Bol_01,
-      } = Greater_Than({
+      } = Greater_Than("node_0054.data_0047", {
         Left_Value: $.Int_018, // Add_Unit_Status.Slot_ID
         Right_Value: $.Int_018, // Add_Unit_Status.Slot_ID
-        op: Enum("Comparison Operators", "Comparison Operators_Greater Than"), // (default)
       });
 
       Set_Custom_Variable({
-        Target_Entity: Ety(0), // (default)
+        Target_Entity: Ety(null), // (default)
         Variable_Name: "z",
         Variable_Value: Bol_01, // Greater_Than.Result
         Trigger_Event: Bol_01, // Greater_Than.Result
@@ -213,7 +212,7 @@ ServerGraphs['Status'] = async function Status_1073741830($,node){
       throw 'unreachable';
       // in composite Exposed Local (node_0042)
       Forwarding_Event({
-        Target_Entity: Ety(0), // (default)
+        Target_Entity: Ety(null), // (default)
       });
       void "node_0046.node_0044"; // Consume_Gift_Box
     }
@@ -223,7 +222,7 @@ ServerGraphs['Status'] = async function Status_1073741830($,node){
       ({
         Consume: $.Bol_016,
       } = Consume_Gift_Box({
-        Player_Entity: Ety(0), // (default)
+        Player_Entity: Ety(null), // (default)
         Gift_Box_Index: Int(1),
         Consumption_Quantity: Int(1),
       }));
@@ -235,11 +234,11 @@ ServerGraphs['Status'] = async function Status_1073741830($,node){
       ({
         Slot_ID: $.Int_018,
       } = Add_Unit_Status({
-        Applier_Entity: Ety(0), // (default)
-        Application_Target_Entity: Ety(0), // (default)
+        Applier_Entity: Ety(null), // (default)
+        Application_Target_Entity: Ety(null), // (default)
         Unit_Status_Config_ID: Cfg(0), // (default)
         Applied_Stacks: Int(0), // (default)
-        Unit_Status_Parameter_Dictionary: Dict([]), // (default)
+        Unit_Status_Parameter_Dictionary: Dict(Str,Int,[]), // (default)
       }));
       return Exit();
     }
@@ -255,37 +254,37 @@ Composite['Calling Twice'] = function Composite_1610612743($,Comp,In = {},node){
         ({
           Next: next,
         } = Double_Branch({
-          Condition: Bol(0),
+          Condition: Bol(false),
         }));
         if(next=="Yes"){
           return Exit();
         }else{ // =="No"
-          yield* GoTo("node_0001"); // Double_Branch
-          return yield* GoTo("node_0022"); // Double_Branch
-        }
-      }
-      case 'node_0001':{ // 2 callers: ['node_0019: Double_Branch', 'node_0022: Double_Branch']
-        ({
-          Next: next,
-        } = Double_Branch({
-          Condition: Bol(0),
-        }));
-        if(next=="Yes"){
-          return Exit();
-        }else{ // =="No"
-          return yield "0";
+          yield* GoTo("node_0022"); // Double_Branch
+          return yield* GoTo("node_0001"); // Double_Branch
         }
       }
       case 'node_0022':{ // called from 'node_0019: Double_Branch'
         ({
           Next: next,
         } = Double_Branch({
-          Condition: Bol(1),
+          Condition: Bol(true),
         }));
         if(next=="Yes"){
           return yield* GoTo("node_0001"); // Double_Branch
         }else{ // =="No"
           return Exit();
+        }
+      }
+      case 'node_0001':{ // 2 callers: ['node_0019: Double_Branch', 'node_0022: Double_Branch']
+        ({
+          Next: next,
+        } = Double_Branch({
+          Condition: Bol(false),
+        }));
+        if(next=="Yes"){
+          return Exit();
+        }else{ // =="No"
+          return yield "0";
         }
       }
     }
@@ -297,10 +296,9 @@ Composite['Exposed Computed'] = function Composite_1610612748($,Comp,In = {},nod
   if (!node){
     const {
       Result: Bol_01,
-    } = Greater_Than({
+    } = Greater_Than("data_0047", {
       Left_Value: $$.Int_002, // Add_Unit_Status.Slot_ID
       Right_Value: $$.Int_002, // Add_Unit_Status.Slot_ID
-      op: Enum("Comparison Operators", "Comparison Operators_Greater Than"), // (default)
     });
 
     return {
@@ -314,11 +312,11 @@ Composite['Exposed Computed'] = function Composite_1610612748($,Comp,In = {},nod
         ({
           Slot_ID: $$.Int_002,
         } = Add_Unit_Status({
-          Applier_Entity: Ety(0), // (default)
-          Application_Target_Entity: Ety(0), // (default)
+          Applier_Entity: Ety(null), // (default)
+          Application_Target_Entity: Ety(null), // (default)
           Unit_Status_Config_ID: Cfg(0), // (default)
           Applied_Stacks: Int(0), // (default)
-          Unit_Status_Parameter_Dictionary: Dict([]), // (default)
+          Unit_Status_Parameter_Dictionary: Dict(Str,Int,[]), // (default)
         }));
         return { Next: "0" };
       }
@@ -332,9 +330,9 @@ Composite['Exposed Local'] = function Composite_1610612745($,Comp,In = {
   if (!node){
     const {
       Value: Bol_02,
-    } = Get_Local_Variable({
-      Initial_Value: Bol(1),
-    }, Comp + "_Var_0001");
+    } = Get_Local_Variable(Comp + "_Var_0037", {
+      Initial_Value: Bol(true),
+    });
 
     return {
       Value: Bol_02, // Get_Local_Variable.Value
@@ -387,7 +385,7 @@ Composite['Linear Flow'] = function Composite_1610612738($,Comp,In = {},node){
         Set_Node_Graph_Variable({
           Variable_Name: "gvar",
           Variable_Value: Int(0),
-          Trigger_Event: Bol(1),
+          Trigger_Event: Bol(true),
         });
         return { Next: "0" };
       }
@@ -399,9 +397,9 @@ Composite['Simple Data'] = function Composite_1610612737($,Comp,In = {},node){
   if (!node){
     const {
       Value: Int_02,
-    } = Get_Local_Variable({
+    } = Get_Local_Variable(Comp + "_Var_0004", {
       Initial_Value: Int(42),
-    }, Comp + "_Var_0002");
+    });
 
     return {
       Value: Int_02, // Get_Local_Variable.Value
@@ -495,13 +493,13 @@ Composite['With Event'] = function Composite_1610612744($,Comp,In = {},node){
       case 'node_0032':{ // no callers
         const {
           Self_Entity: Ety_01,
-        } = Get_Self_Entity();
+        } = Get_Self_Entity("data_0033", {});
 
         Set_Custom_Variable({
           Target_Entity: Ety_01, // Get_Self_Entity.Self_Entity
           Variable_Name: "none",
-          Variable_Value: Int(0), // (default)
-          Trigger_Event: Bol(1), // (default)
+          Variable_Value: undefined, // (default)
+          Trigger_Event: Bol(true), // (default)
         });
         return Exit();
       }

@@ -14,11 +14,11 @@ STRUCT/**Struct** FIELD#4 "**Add variable 4**" : *Bol*
 '*New Node Graph*'/VAR **String** : *Str* public=true = '`graph`'<br>
 '*New Node Graph*'/VAR **Integer** : *Int* public=true = 0<br>
 '*New Node Graph*'/VAR **Faction** : *Fct* public=true = id:1<br>
-'*New Node Graph*'/VAR **Float** : *Flt* public=true = 2<br>
-'*New Node Graph*'/VAR **Entity** : *Ety* public=true = id:0<br>
-'*New Node Graph*'/VAR **Private** : *Bol* public=false = Yes<br>
+'*New Node Graph*'/VAR **Float** : *Flt* public=true = 2.00<br>
+'*New Node Graph*'/VAR **Entity** : *Ety* public=true = null<br>
+'*New Node Graph*'/VAR **Private** : *Bol* public=false = true<br>
 **GRAPH** '*Test5*' ENTITY\_NODE\_GRAPH (guid 1073741826)<br>
-'*Test5*'/VAR **Faction** : *Fct* public=true = id:0<br>
+'*Test5*'/VAR **Faction** : *Fct* public=true = null<br>
 **GRAPH** '<u>\<status\></u>*Status*' STATUS\_NODE\_GRAPH (guid 1073741827)<br>
 '<u>\<status\></u>*Status*'/VAR **Status** : *Dict* public=false = {'`Status`': '`Status`'}
 

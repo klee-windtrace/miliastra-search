@@ -1,0 +1,104 @@
+# INFO
+# FILE data_order.gia
+format                 gia
+detected_by            header
+file_size              2445
+container_file_type    gia
+engine_version         7.2.0
+mode                   beyond
+export_name            data_order.gia
+node_db_version        7.2.0
+export_tag             909814789-1795594143-1073741886-\data_order.gia
+uid                    909814789
+time                   1795594143
+file_id                1073741886
+resources              5
+primary                1
+dependencies           4
+graphs                 3
+nodes                  27
+composite_bodies       2
+declarations           2
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=3
+CLASS COMPOSITE_NODE_DECL class=12 count=2
+
+# DUMP
+GRAPH 'Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=23
+GRAPH '<composite>Composite_data' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=2 role=dependency decl='1610612737'
+GRAPH '<composite>Composite_exec' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=2 role=dependency decl='1610612738'
+
+# REFS
+composite        "Composite_data"                   1 call: ['Graph']
+composite        "Composite_exec"                   1 call: ['Graph']
+custom_variable  "<dynamic>" (Int)                  1 get: ['Graph'], 0 set: []
+timer            "<unset>"                          1 start: ['Graph'], 0 stop: []
+
+# WARNS
+# findings
+INFO  listener-no-handlers: [2] When Custom Variable Changes in graph 'Graph' has no name switch and no code after it: it reacts to nothing
+INFO  dynamic-reference: [6] Get Custom Variable in#1 "Variable Name" in graph 'Graph': name is computed at runtime (wired from [7] Query Dictionary Value by Key; Query Dictionary Value by Key output "Value" is computed at runtime); cannot be resolved statically
+
+# limits
+composites: 2/1000 declared
+
+top graphs by node count:
+'Graph': 27/3000 nodes
+
+# CODE
+GRAPH 'Graph' ENTITY_NODE_GRAPH (guid 1073741825)
+'Graph'/[1] Get Local Variable (18) @(-386.57144,-200.57143)
+'Graph'/[2] When Custom Variable Changes (36) @(-388.57144,48.57143)
+'Graph'/[3] Monitor Signal (300001) @(-385.7143,457.14285)
+'Graph'/[4] Assembly List (169) @(88.57143,-277.14285)
+'Graph'/[5] Assembly Dictionary (1788) @(450,-295.7143)
+'Graph'/[6] Get Custom Variable (50) @(498.57144,41.42857)
+'Graph'/[6] Get Custom Variable (50) in#1 "Variable Name" <- [7] Query Dictionary Value by Key (1158) out#0 "Value" : Str
+'Graph'/[6] Get Custom Variable (50) out#0 "Variable Value" = 0 : Int
+'Graph'/[7] Query Dictionary Value by Key (1158) @(110,70)
+'Graph'/[7] Query Dictionary Value by Key (1158) out#0 "Value" = '' : Str
+'Graph'/[9] Query If Dictionary Contains Specific Key (1368) @(1108.5714,45.714287)
+'Graph'/[9] Query If Dictionary Contains Specific Key (1368) in#1 "Key" <- [6] Get Custom Variable (50) out#0 "Variable Value" : Int
+'Graph'/[9] Query If Dictionary Contains Specific Key (1368) in#1 "Key" = 0 : Int (also wired)
+'Graph'/[11] Get Local Variable (18) @(215,359.7619)
+'Graph'/[12] Set Local Variable (19) @(656.6667,329.7619)
+'Graph'/[12] Set Local Variable (19) in#0 "Local Variable" <- [11] Get Local Variable (18) out#0 "Local Variable" : Loc
+'Graph'/[13] Greater Than (232) @(173.33333,623.0952)
+'Graph'/[14] Enumerations Equal (475) @(665,661.4286)
+'Graph'/[15] Take Larger Value (211/212) variant=C<T:Flt> @(1615,466.42856)
+'Graph'/[15] Take Larger Value (211/212) in#0 "Input 1" <- [17] Sign Operation (218/219) out#0 "Result" : Flt
+'Graph'/[15] Take Larger Value (211/212) in#0 "Input 1" = 0.00 : Flt (also wired)
+'Graph'/[15] Take Larger Value (211/212) in#1 "Input 2" <- [16] Split 3D Vector (9) out#0 "X-Component" : Flt
+'Graph'/[15] Take Larger Value (211/212) in#1 "Input 2" = 0.00 : Flt (also wired)
+'Graph'/[15] Take Larger Value (211/212) out#0 "Larger Value" = 0.00 : Flt
+'Graph'/[16] Split 3D Vector (9) @(1108.3334,603.0952)
+'Graph'/[16] Split 3D Vector (9) in#0 "3D Vector" <- [18] 3D Vector Normalization (74) out#0 "Result" : Vec
+'Graph'/[17] Sign Operation (218/219) variant=C<T:Flt> @(1130,384.7619)
+'Graph'/[17] Sign Operation (218/219) in#0 "Input" <- [16] Split 3D Vector (9) out#2 "Z-Component" : Flt
+'Graph'/[17] Sign Operation (218/219) in#0 "Input" = 0.00 : Flt (also wired)
+'Graph'/[17] Sign Operation (218/219) out#0 "Result" = 0.00 : Flt
+'Graph'/[18] 3D Vector Normalization (74) @(890,893.0952)
+'Graph'/[19] Start Timer (79) @(123.333336,869.2857)
+'Graph'/[21] Get Self Entity (73) @(1087.738,-477.0238)
+'Graph'/[24] Get Self Entity (73) @(1102.738,-260.35715)
+'Graph'/[25] Composite_data (1610612737) user=COMPOSITE @(1437.738,-457.0238)
+'Graph'/[25] Composite_data (1610612737) in#0 "Player Entity" <- [21] Get Self Entity (73) out#0 "Self Entity" : Ety
+'Graph'/[25] Composite_data (1610612737) in#1 "Target Entity" <- [24] Get Self Entity (73) out#0 "Self Entity" : Ety
+'Graph'/[26] Get Self Entity (73) @(1992.738,-395.9127)
+'Graph'/[27] Get Self Entity (73) @(1977.738,-612.57935)
+'Graph'/[32] Composite_exec (1610612738) user=COMPOSITE @(2329.738,-456.07938)
+'Graph'/[32] Composite_exec (1610612738) in#0 "Player Entity" <- [27] Get Self Entity (73) out#0 "Self Entity" : Ety
+'Graph'/[32] Composite_exec (1610612738) in#1 "Target Entity" <- [26] Get Self Entity (73) out#0 "Self Entity" : Ety
+GRAPH '<composite>Composite_data' ENTITY_NODE_GRAPH (guid 1610612737, decl 1610612737) role=dependency
+'<composite>Composite_data'/PORTMAP ext.in#0 "Player Entity" -> [20] Set Player Revive Time (278) in#0 "Player Entity"
+'<composite>Composite_data'/PORTMAP ext.in#1 "Target Entity" -> [1] Get Entity Forward Vector (516) in#0 "Target Entity"
+'<composite>Composite_data'/[1] Get Entity Forward Vector (516) @(4,273)
+'<composite>Composite_data'/[20] Set Player Revive Time (278) @(0,0)
+GRAPH '<composite>Composite_exec' ENTITY_NODE_GRAPH (guid 1610612738, decl 1610612738) role=dependency
+'<composite>Composite_exec'/PORTMAP ext.in.flow#0 -> [29] Set Player Revive Time (278) in.flow#0
+'<composite>Composite_exec'/PORTMAP ext.in#0 "Player Entity" -> [29] Set Player Revive Time (278) in#0 "Player Entity"
+'<composite>Composite_exec'/PORTMAP ext.in#1 "Target Entity" -> [30] Get Entity Forward Vector (516) in#0 "Target Entity"
+'<composite>Composite_exec'/[29] Set Player Revive Time (278) @(-2,-136.5)
+'<composite>Composite_exec'/[30] Get Entity Forward Vector (516) @(2,136.5)

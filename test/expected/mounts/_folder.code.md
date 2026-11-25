@@ -72,7 +72,7 @@
 '<u>\<skill\></u>*New Character Control Skill Node Graph*'/\[1\] **Node Graph Starts** (200042/2001) @(0,0)<br>
 **GRAPH** '<u>\<filter\></u>*New Filter Node Graph Bool*' BOOLEAN\_FILTER\_GRAPH (guid 1082130438)<br>
 '<u>\<filter\></u>*New Filter Node Graph Bool*'/\[1\] **Node Graph End (Boolean)** (200000) @(0,0)<br>
-'<u>\<filter\></u>*New Filter Node Graph Bool*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = No : *Bol* *(default)*<br>
+'<u>\<filter\></u>*New Filter Node Graph Bool*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = false : *Bol* *(default)*<br>
 '<u>\<filter\></u>*New Filter Node Graph Bool*'/\[1\] **Node Graph End (Boolean)** (200000) `in#1` "Filter Return Type" = enum:1000010«Return Boolean» : *Enum* *(default)*<br>
 **GRAPH** '<u>\<filter\></u>*New Filter Node Graph Int*' INTEGER\_FILTER\_GRAPH (guid 1082130439)<br>
 '<u>\<filter\></u>*New Filter Node Graph Int*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)<br>
@@ -119,11 +119,11 @@ DECL/**Signal\_Name** `meta#0` "Signal Name" uid=2579<br>
 '<u>\<skill\></u>*Character control, default*'/\[1\] **Node Graph Starts** (200042/2001) @(0,0)<br>
 **GRAPH** '<u>\<filter\></u>*Boolean filter, custom*' BOOLEAN\_FILTER\_GRAPH (guid 1082130444)<br>
 '<u>\<filter\></u>*Boolean filter, custom*'/\[1\] **Node Graph End (Boolean)** (200000) @(0,0)<br>
-'<u>\<filter\></u>*Boolean filter, custom*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = No : *Bol* *(default)*<br>
+'<u>\<filter\></u>*Boolean filter, custom*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = false : *Bol* *(default)*<br>
 '<u>\<filter\></u>*Boolean filter, custom*'/\[1\] **Node Graph End (Boolean)** (200000) `in#1` "Filter Return Type" = enum:1000010«Return Boolean» : *Enum* *(default)*<br>
 **GRAPH** '<u>\<filter\></u>*Boolean filter, default*' BOOLEAN\_FILTER\_GRAPH (guid 1082130443)<br>
 '<u>\<filter\></u>*Boolean filter, default*'/\[1\] **Node Graph End (Boolean)** (200000) @(0,0)<br>
-'<u>\<filter\></u>*Boolean filter, default*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = No : *Bol* *(default)*<br>
+'<u>\<filter\></u>*Boolean filter, default*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = false : *Bol* *(default)*<br>
 '<u>\<filter\></u>*Boolean filter, default*'/\[1\] **Node Graph End (Boolean)** (200000) `in#1` "Filter Return Type" = enum:1000010«Return Boolean» : *Enum* *(default)*<br>
 **GRAPH** '<u>\<filter\></u>*Integer filter, custom*' INTEGER\_FILTER\_GRAPH (guid 1082130446)<br>
 '<u>\<filter\></u>*Integer filter, custom*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)<br>
@@ -174,11 +174,11 @@ DECL/**Signal\_Name** `meta#0` "Signal Name" uid=2579<br>
 '<u>\<skill\></u>*Character control, custom*'/\[1\] **Node Graph Starts** (200042/2001) @(0,0)<br>
 **GRAPH** '<u>\<filter\></u>*Boolean filter, default*' BOOLEAN\_FILTER\_GRAPH (guid 1082130443)<br>
 '<u>\<filter\></u>*Boolean filter, default*'/\[1\] **Node Graph End (Boolean)** (200000) @(0,0)<br>
-'<u>\<filter\></u>*Boolean filter, default*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = No : *Bol* *(default)*<br>
+'<u>\<filter\></u>*Boolean filter, default*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = false : *Bol* *(default)*<br>
 '<u>\<filter\></u>*Boolean filter, default*'/\[1\] **Node Graph End (Boolean)** (200000) `in#1` "Filter Return Type" = enum:1000010«Return Boolean» : *Enum* *(default)*<br>
 **GRAPH** '<u>\<filter\></u>*Boolean filter, custom*' BOOLEAN\_FILTER\_GRAPH (guid 1082130444)<br>
 '<u>\<filter\></u>*Boolean filter, custom*'/\[1\] **Node Graph End (Boolean)** (200000) @(0,0)<br>
-'<u>\<filter\></u>*Boolean filter, custom*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = No : *Bol* *(default)*<br>
+'<u>\<filter\></u>*Boolean filter, custom*'/\[1\] **Node Graph End (Boolean)** (200000) `in#0` "Output Result (Boolean)" = false : *Bol* *(default)*<br>
 '<u>\<filter\></u>*Boolean filter, custom*'/\[1\] **Node Graph End (Boolean)** (200000) `in#1` "Filter Return Type" = enum:1000010«Return Boolean» : *Enum* *(default)*<br>
 **GRAPH** '<u>\<filter\></u>*Integer filter, default*' INTEGER\_FILTER\_GRAPH (guid 1082130445)<br>
 '<u>\<filter\></u>*Integer filter, default*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)<br>

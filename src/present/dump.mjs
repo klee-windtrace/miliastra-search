@@ -83,10 +83,11 @@ function resourcesBlocks(rows, details, { dedup = false } = {}) {
   const list = entries.map((e) => e.x);
   const withMounts = list.some((x) => x.mounts.length), withFolders = entries.some((e) => e.x.folder != null || e.more), withParent = list.some((x) => flat(parentSpans(x)).length);
   const moreSpan = (n) => S('more', `+${n} more`); // the number of the resources left out
-  const mountLine = (m) => [kw('MOUNT'), sep(), mountedSpans(m), ' ', S('arrow', '->'), sep(), hostSpans(m.host)];
+  // a deduplicated resource's mounts stand for the mounts of the others too, so they carry the count as well
+  const mountLine = (m, more) => [kw('MOUNT'), sep(), mountedSpans(m), ' ', S('arrow', '->'), sep(), hostSpans(m.host), more ? [sep(), moreSpan(more)] : ''];
   const line = ({ x, more }) => [S('heading', 'RESOURCE'), sep(), folderSpan(x.folder), S('declName', x.name), sep(), S('className', x.class_name), details ? field('class', x.class_id ?? '-') : '', field('guid', S('guid', x.guid)),
     flat(parentSpans(x)).length ? field('parent', parentSpans(x)) : '', details && x.section ? field('section', x.section) : '', more ? [sep(), moreSpan(more)] : ''];
-  const lines = entries.map((e) => [line(e), ...e.x.mounts.map(mountLine)]);
+  const lines = entries.map((e) => [line(e), ...e.x.mounts.map((m) => mountLine(m, e.more))]);
   return [
     { t: 'heading', level: 2, spans: `Resources (${rows.length})`, recount: (n) => `Resources (${n})`, text: null },
     { t: 'table', cols: [{ title: 'Name' }, { title: 'Class' }, ...(details ? [{ title: 'Class id', align: 'right' }] : []), { title: 'Guid' }, ...(details ? [{ title: 'Section' }] : []), ...(withParent ? [{ title: 'Parent' }] : []), ...(withFolders ? [{ title: 'Folder' }] : []), ...(withMounts ? [{ title: 'Mounted graphs' }] : [])],

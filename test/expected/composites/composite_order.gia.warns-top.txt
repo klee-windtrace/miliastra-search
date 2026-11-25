@@ -1,0 +1,9 @@
+# findings
+(no findings)
+
+# limits
+composites: 7/1000 declared
+dynamic entities (OBJECT_ENTITY): 3/3000
+
+top graphs by node count:
+'Flows': 15/3000 nodes

@@ -51,7 +51,7 @@ export const STYLES = {
   // ---- values (dump) ----
   string:     { ansi: ['yellow'],              md: 'code',   quote: "'" },  // 'Created'
   number:     { ansi: ['brightCyan'],                md: 'none' },      // 5, 2.5
-  bool:       { ansi: ['cyan'],                md: 'none' },      // Yes / No
+  bool:       { ansi: ['cyan'],                md: 'none' },      // true / false / null
   enumValue:  { ansi: ['brightCyan'],          md: 'none' },      // enum:5«Name»
   idValue:    { ansi: ['green'],               md: 'none' },      // id:123
   vector:     { ansi: ['cyan'],                md: 'none' },      // (1, 2, 3)

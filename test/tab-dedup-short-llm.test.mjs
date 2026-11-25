@@ -95,7 +95,19 @@ test('--dedup dump: equal resources without a folder are one line with the small
   assert.match(cli(['all', stage, '--format', 'text', '--dedup']).out, / \+\d+ more$/m, 'all takes it too');
 });
 
-test('llm: the all report without warns, as short deduplicated tab-separated pseudocode; it takes no options', () => {
+test('--dedup dump: the MOUNT line of a deduplicated resource carries the same "+N more"', () => {
+  const folders = 'test/cases/mounts/test_folders.gia';
+  const plain = lines(cli(['dump', folders, '--format', 'text']));
+  assert.equal(plain.filter((x) => x.startsWith('MOUNT ') && x.includes('"Wireframe Cuboid"')).length, 3);
+  const dd = lines(cli(['dump', folders, '--format', 'text', '--dedup']));
+  const at = dd.findIndex((x) => x.startsWith('RESOURCE "Wireframe Cuboid"'));
+  assert.match(dd[at], / \+2 more$/);
+  assert.match(dd[at + 1], /^MOUNT 'Saved to folder \(My\)' -> OBJECT_ENTITY "Wireframe Cuboid" entity \+2 more$/);
+  assert.doesNotMatch(dd[at + 3], /more/, 'a resource nothing was merged into has none: ' + dd[at + 3]);
+  assert.doesNotMatch(plain.join('\n'), / \+\d+ more/);
+});
+
+test('llm: the all report without warns, as short deduplicated tab-separated pseudocode; it takes only --lang', () => {
   const r = cli(['llm', stage]);
   assert.equal(r.code, 0);
   assert.match(r.out, /^# INFO$/m); assert.match(r.out, /^# DUMP$/m); assert.match(r.out, /^# REFS$/m); assert.match(r.out, /^# CODE$/m); assert.match(r.out, /^# END$/m);
@@ -106,10 +118,16 @@ test('llm: the all report without warns, as short deduplicated tab-separated pse
   assert.match(r.out, /\t\+\d+ more$/m, 'dedup');
   const manual = cli(['all', stage, '--lenient', '--lang', 'EN', '--format', 'text', '--short', '--dedup', '--tab', '--pseudocode', '--optimize', '--lazy', '--with-code']).out;
   assert.equal(r.out, manual.slice(0, manual.indexOf('# REFS')).replace(/(\tclass=(\d+|-))|(\tcategory=\w+)|(\tkind=\d+\tservice=\d+)|(\tentry_slot=\d+)|(\tevaluation_interval=[0-9.]+)|(\tsection=\w+(\.\d+)+)|(\tdecl='\d+')/g,'') + manual.slice(manual.indexOf('# REFS'), manual.indexOf('# WARNS')) + manual.slice(manual.indexOf('# CODE')) + '\n# END\n', 'the all output minus the warns, stripped details');
-  for (const bad of [['--tab'], ['--dedup'], ['--format', 'json'], ['--lang', 'DE'], ['--short'], ['--search', 'x'], ['-o', 'x.txt']]) {
+  for (const bad of [['--tab'], ['--dedup'], ['--format', 'json'], ['--short'], ['--search', 'x'], ['-o', 'x.txt']]) {
     const e = cli(['llm', stage, ...bad]);
-    assert.equal(e.code, 2, bad.join(' ')); assert.match(e.err, /llm takes no options/);
+    assert.equal(e.code, 2, bad.join(' ')); assert.match(e.err, /llm takes no options but --lang/);
   }
+  // the language of the names is the one option, like in `all`
+  const de = cli(['llm', stage, '--lang', 'DE']);
+  assert.equal(de.code, 0);
+  assert.match(de.out, /^# END$/m);
+  assert.notEqual(de.out, r.out, 'the names are German');
+  assert.equal(cli(['llm', stage, '--lang', 'XX']).code, 2);
   assert.equal(cli(['llm', 'test/cases/gil']).code, 0);
   assert.match(cli(['--help']).out, /miliastra-search llm /);
 });

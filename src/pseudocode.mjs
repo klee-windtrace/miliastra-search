@@ -9,6 +9,8 @@
 //   * a composite body shown on its own is a function of its own: the data pins it hands out, and the cases a flow can enter at,
 //   * names (functions, keys, variables) are plain identifiers, numbered per case (intermediates) and per graph (outputs of execution nodes); the names
 //     of flow pins are strings, so an unnamed one is just its index,
+//   * every call of a data node says which node it is (`id`): the id of the node as the editor shows it, `data_0007`, `Var_0005` for a Get Local Variable
+//     (one variable per node), and the instance of a composite call is `Comp_0012`; an execution node is known by the id of its case,
 //   * every output says how many times it is read (`uses`), and every read of a variable names the node and pin it comes from (`from`), so a style can
 //     leave out what nobody reads or write a value where it is used.
 //   * the cases are ordered by the flow: from each event (a composite that has events inside is one) the cases its flow reaches, depth first, in pin and
@@ -38,7 +40,9 @@ function codegenRules() {
   const r = JSON.parse(host.data('data/codegen-rules.json'));
   const choice = new Map(r.choice.flatMap((c) => c.nodes.map((id) => [id, { form: c.form, defaultFirst: c.default === 'first' }])));
   const hidden = new Map(r.hiddenInputs.flatMap((h) => h.nodes.map((id) => [id, new Set(h.pins)])));
-  return { choice, hidden, graphEnd: new Set(r.graphEnd), localVariable: new Set(r.localVariable) };
+  const redundant = new Map(r.redundantInputs.flatMap((h) => h.nodes.map((id) => [id, new Set(h.pins)])));
+  const fixedDicts = new Map(r.fixedDicts.map((f) => [`${f.node}:${f.pin}`, { key: f.key, value: f.value }]));
+  return { choice, hidden, redundant, fixedDicts, redundantEnums: new Set(r.redundantEnums), graphEnd: new Set(r.graphEnd), localVariable: new Set(r.localVariable) };
 }
 // the interval of a filter graph when the file does not store one (seconds)
 const DEFAULT_EVALUATION_INTERVAL = 0.3;
@@ -117,6 +121,21 @@ function dbType(t, params) {
   return t;
 }
 
+/**
+ * What a dictionary maps, `{ key, value }` as datatype words, from the database's type of a pin (`D<R<K>,R<V>>`) and the node's bound parameters; a parameter
+ * nobody bound is `Any`. null when the pin is not a dictionary of the database.
+ */
+function dictOfDb(t, params) {
+  const bound = /^R<(\w+)>$/.exec(t ?? '');
+  if (bound) return params.$dict?.[bound[1]] ?? null; // a generic pin that carries a dictionary
+  const m = /^D<(.*)>$/.exec(t ?? '');
+  if (!m) return null;
+  const [k, v] = splitTop(m[1]).map((x) => typeWord(dbType(x.trim(), params)) ?? 'Any');
+  return k && v ? { key: k, value: v } : null;
+}
+/** What a value or a declared pin says it maps (datatype words), or null. */
+const dictOfNames = (key, value) => (key && value && key !== 'Unk' && value !== 'Unk' ? { key: typeWord(key), value: typeWord(value) } : null);
+
 const ID_TYPES = new Set(['Ety', 'Gid', 'Cfg', 'Fct', 'Pfb']);
 /**
  * The model value (`{ k, ... }`, as the file would store it) of a pin nobody edited: the game's default when the database has one, else the zero value of
@@ -142,17 +161,6 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
   const rules = codegenRules();
   const bodyByDecl = new Map();
   for (const r of bundle.resources) if (r.kind === 'graph' && r.graph?.kind === COMPOSITE_BODY_KIND) { const d = R.declForBody(r); if (d) bodyByDecl.set(d.guid, r); }
-
-  // Every Get Local Variable node of the file has a number of its own, in the order of the resources and of the nodes: the variable is the node's, so the
-  // number does not depend on where the graph is called from or shown.
-  const varNo = new Map();
-  for (const r of bundle.resources) {
-    if (r.kind !== 'graph' || !r.graph) continue;
-    for (const n of [...r.graph.nodes].sort((a, b) => a.index - b.index)) {
-      const info = nodeLabel.get(r.graph)?.get(n.index);
-      if (info && !info.user && rules.localVariable.has(info.shellId)) varNo.set(`${r.gkey}|${n.index}`, varNo.size + 1);
-    }
-  }
 
   const infoCache = new Map();
   const pinRef = (kind, index, name) => ({ kind: pinKindName(kind), index, name: name ?? null });
@@ -194,6 +202,45 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
   };
 
   // ---- what a node is: its pins (also the ones the file does not store), and whether it runs ------------------------------------------------------
+  /**
+   * Binds the generic parameters (and what a dictionary maps) nobody stored from the pins this node is wired to: the type of what feeds an input, and what the
+   * inputs of the nodes an output feeds make of their own parameters. A node that is still being described (a loop of wires) says nothing.
+   */
+  function inferFromWires(gi, n, d, params) {
+    const def = db.node(d.info.shellId)?.pins ?? {};
+    const bind = (name, word, dict) => {
+      if (word == null || word === 'Any' || word === 'Unk') return;
+      params[name] ??= word;
+      if (word === 'Dict' && dict) { params.$dict ??= {}; params.$dict[name] ??= dict; }
+    };
+    const unify = (t, word, dict) => { // the database's type of a pin met a type that is known
+      let m;
+      if ((m = /^R<(\w+)>$/.exec(t))) bind(m[1], word, dict);
+      else if ((m = /^L<R<(\w+)>>$/.exec(t)) && /^L.+/.test(word ?? '')) bind(m[1], word.slice(1));
+      else if ((m = /^D<R<(\w+)>,R<(\w+)>>$/.exec(t)) && dict) { if (dict.key !== 'Any') bind(m[1], dict.key); if (dict.value !== 'Any') bind(m[2], dict.value); }
+    };
+    for (const [key, pin] of Object.entries(def)) {
+      const [kind, idx] = key.split(':'), index = Number(idx), t = pin.type;
+      if (!/R<|D</.test(t ?? '')) continue;
+      if (kind === 'in_param') {
+        for (const from of gi.dataIn.get(`${n.index}:${index}`) ?? []) {
+          const src = gi.byIdx.get(from.node);
+          const o = src ? describe(gi, src).outData.find((x) => x.index === from.index) : null;
+          if (o) unify(t, o.type, o.dict);
+        }
+      } else if (kind === 'out_param') {
+        for (const e of gi.g.edges) {
+          if (e.from.node !== n.index || e.from.kind !== OUT_PARAM || e.from.index !== index || e.to.kind !== IN_PARAM) continue;
+          const c = gi.byIdx.get(e.to.node), cd = c ? describe(gi, c) : null;
+          const ct = cd?.params && !cd.info.user ? db.pinDef(cd.info.shellId, 'in_param', e.to.index)?.type : null;
+          let m;
+          if (!ct) continue;
+          if ((m = /^R<(\w+)>$/.exec(ct))) unify(t, cd.params[m[1]] == null ? null : typeWord(dbType(ct, cd.params)), cd.params.$dict?.[m[1]]);
+          else if (/^D<.*>$/.test(ct)) unify(t, 'Dict', dictOfDb(ct, cd.params));
+        }
+      }
+    }
+  }
   function describe(gi, n) {
     let d = gi.descs.get(n);
     if (d) return d;
@@ -228,6 +275,7 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
     const rule = info.user ? null : info.shellId;
     d.choice = rules.choice.get(rule) ?? null;
     d.hidden = rules.hidden.get(rule) ?? null;
+    d.redundant = rules.redundant.get(rule) ?? null;
     d.end = rules.graphEnd.has(rule);
     d.localVar = rules.localVariable.has(rule);
     d.exec = d.inFlow.length > 0 || d.outFlow.length > 0 || d.end; // a graph's end node has no flow pins, it is still what the graph runs
@@ -242,12 +290,16 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
         const t = def[`${pinKindName(p.kind)}:${p.index}`]?.type, label = p.typeId == null ? null : pinTypeLabel(p, gi.g);
         let m;
         if (!t || !label) continue;
+        if ((m = /^D<R<(\w+)>,R<(\w+)>>$/.exec(t)) && p.value?.keyType && p.value.keyType !== 'Unk') { params[m[1]] ??= p.value.keyType; params[m[2]] ??= p.value.valueType; }
         if ((m = /^R<(\w+)>$/.exec(t))) params[m[1]] ??= label;
         else if ((m = /^L<R<(\w+)>>$/.exec(t)) && /^L<(.*)>$/.test(label)) params[m[1]] ??= /^L<(.*)>$/.exec(label)[1];
       }
-      Object.assign(params, constraintParams(variant));
+      // a node whose kernel is its shell is the generic node itself or its first variant, which the file does not tell apart: only the types its stored pins
+      // state count then, so a generic pin nobody typed stays `Any`
+      if (info.kernelId !== info.shellId) Object.assign(params, constraintParams(variant));
     }
     d.params = params;
+    if (info.shellId != null) inferFromWires(gi, n, d, params);
     const backend = info.user?.iface.id?.shell && SERVER_SERVICES.includes(info.user.iface.id.shell.service) ? 1 : 2;
     const outType = (index) => {
       const p = stored(OUT_PARAM).find((q) => q.index === index);
@@ -255,7 +307,16 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
       if (info.user) { const t = info.user.iface.outputs.find((q) => q.index === index)?.type; return t?.shell != null ? typeName(backend, t.shell) : 'Unk'; }
       return dbType(db.pinDef(info.shellId, 'out_param', index)?.type, params) ?? 'Unk';
     };
-    d.outData = keyed(indexes(OUT_PARAM, gi.outRefs.get(n.index) ?? []).map((index) => ({ index, name: pinName(OUT_PARAM, index), key: null, type: typeWord(outType(index)) })));
+    // what a dictionary output maps: what the pin's own value or the declaration says, else what the database's type of the pin makes of the bound parameters
+    const outDict = (index) => {
+      const type = typeWord(outType(index));
+      if (type !== 'Dict') return null;
+      const p = stored(OUT_PARAM).find((q) => q.index === index);
+      if (p?.value?.keyType) return dictOfNames(p.value.keyType, p.value.valueType);
+      if (info.user) { const t = info.user.iface.outputs.find((q) => q.index === index)?.type; return t?.mapKey != null ? dictOfNames(typeName(backend, t.mapKey), typeName(backend, t.mapValue)) : null; }
+      return rules.fixedDicts.get(`${info.shellId}:out_param:${index}`) ?? dictOfDb(db.pinDef(info.shellId, 'out_param', index)?.type, params);
+    };
+    d.outData = keyed(indexes(OUT_PARAM, gi.outRefs.get(n.index) ?? []).map((index) => ({ index, name: pinName(OUT_PARAM, index), key: null, type: typeWord(outType(index)), dict: outDict(index) })));
     // what the node is given: every input it has (the file stores a pin only for the ones that were wired or edited), and the meta pins (a signal node's
     // "Signal Name" is one). The slots a node does not have are no inputs: Assembly List beyond its count, the case list of a Multiple Branches that is named
     // by its branches.
@@ -357,9 +418,8 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
     function instance(r, parent, callNode) {
       const gi = graphInfo(r);
       // A call node is an instance of its composite, and the instance owns what the composite keeps (the outputs of its execution nodes, its local
-      // variables): the callers name it, `Comp_001` by the position of the call node among the calls of its graph, behind the names of the instances
-      // it is expanded from (`tag`)
-      const comp = new Map([...gi.g.nodes].sort((a, b) => a.index - b.index).filter((n) => describe(gi, n).callee).map((n, i) => [n.index, `Comp_${pad(i + 1, 3)}`]));
+      // variables): the callers name it by the id of the call node, `Comp_0012`, behind the names of the instances it is expanded from (`tag`)
+      const comp = new Map([...gi.g.nodes].filter((n) => describe(gi, n).callee).map((n) => [n.index, `Comp_${pad(n.index, 4)}`]));
       return {
         gi, parent, callNode, children: new Map(), comp,
         tag: parent ? `${parent.tag}${parent.comp.get(callNode.index)}_` : '',
@@ -377,12 +437,13 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
     const root = instance(res, null, null);
 
     // 1. the execution nodes, in node order with a composite call replaced by its body
-    const execs = [], exByKey = new Map();
+    const execs = [], exByKey = new Map(), datas = [], printed = new Set(); // every data node there is, and the ones a case or an output writes
     (function walk(inst) {
       for (const n of [...inst.gi.g.nodes].sort((a, b) => a.index - b.index)) {
         const d = describe(inst.gi, n);
         if (canExpand(inst, d)) walk(childOf(inst, n, d));
-        else if (d.exec) {
+        else if (!d.exec) datas.push({ inst, n, d, key: `${inst.key}/${n.index}` });
+        else {
           const ex = { inst, n, d, id: `${inst.prefix}${d.event ? 'event' : 'node'}_${pad(n.index, 4)}`, globals: new Map(), recs: [], reads: new Map() };
           execs.push(ex); exByKey.set(`${inst.key}/${n.index}`, ex);
         }
@@ -425,10 +486,9 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
     }
 
     // 3. what the pins of a node are fed with, while one case collects the data nodes it needs
-    const blank = { name: null, type: null, value: null, node: null, pin: null, enum: null, resource: null, from: null };
+    const blank = { name: null, type: null, dict: null, value: null, node: null, pin: null, enum: null, resource: null, from: null };
     // the enum family a pin takes its values from: the pin's own, else the only family that has the value
-    function enumOf(d, pin, value) {
-      if (value.kind !== 'enum') return null;
+    function enumFamily(d, pin, value) {
       let fam = null;
       if (d.info.user) { const f = d.info.user.iface, list = pin.kind === IN_PARAM ? f.inputs : pin.kind === OUT_PARAM ? f.outputs : f.metaPins; fam = list.find((p) => p.index === pin.index)?.type?.enumId ?? null; }
       else {
@@ -439,14 +499,26 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
         fam = e ? Number(e[1]) : null;
       }
       if (fam == null) { const fams = [...new Set(db.enumCandidates(value.value).map((x) => x.family))]; if (fams.length === 1) fam = fams[0]; }
+      return fam;
+    }
+    function enumOf(d, pin, value) {
+      if (value.kind !== 'enum') return null;
+      const fam = enumFamily(d, pin, value);
       const entry = fam != null ? db.enums[fam] : null;
       const family = entry ? db.pick(entry) ?? null : null, name = entry ? db.pick(entry.values?.[value.value]) ?? null : value.names.join(' | ') || null;
       return family == null && name == null ? null : { family, name };
     }
+    /** What a dictionary input maps (datatype words): the value's own binding, else the declaration of the pin; null for any other value. */
+    function inputDict(d, index, raw) {
+      if (raw?.keyType) return dictOfNames(raw.keyType, raw.valueType);
+      if (d.info.user) { const t = d.info.user.iface.inputs.find((q) => q.index === index)?.type; const backend = d.info.user.iface.id?.shell && SERVER_SERVICES.includes(d.info.user.iface.id.shell.service) ? 1 : 2; return t?.mapKey != null ? dictOfNames(typeName(backend, t.mapKey), typeName(backend, t.mapValue)) : null; }
+      return rules.fixedDicts.get(`${d.info.shellId}:in_param:${index}`) ?? dictOfDb(db.pinDef(d.info.shellId, 'in_param', index)?.type, d.params);
+    }
     const literalOf = (inst, n, pin) => {
       const value = valueJson(pin?.value, db);
       if (!value) return null;
-      return { kind: 'literal', ...blank, type: pin.typeId == null ? null : typeWord(pinTypeLabel(pin, inst.gi.g)), value, enum: enumOf(describe(inst.gi, n), pin, value), resource: resourceOf(pin.value) };
+      const d = describe(inst.gi, n);
+      return { kind: 'literal', ...blank, type: pin.typeId == null ? null : typeWord(pinTypeLabel(pin, inst.gi.g)), dict: value.kind === 'map' ? inputDict(d, pin.index, pin.value) : null, value, enum: enumOf(d, pin, value), resource: resourceOf(pin.value) };
     };
     /** What an input pin holds that nobody edited and nothing is wired to: the default of the pin (the node's own declaration for a composite), else the zero of its type. */
     function defaultOf(inst, n, index) {
@@ -466,7 +538,7 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
       if (!value) { raw = defaultValueOf(type, undefined); value = raw ? valueJson(raw, db) : null; }
       if (!value) return { kind: 'unset', ...blank, type: typeWord(type) };
       value.set = false;
-      return { kind: 'literal', ...blank, type: typeWord(type), value, enum: enumOf(d, pin, value), resource: null };
+      return { kind: 'literal', ...blank, type: typeWord(type), dict: value.kind === 'map' ? inputDict(d, index, null) : null, value, enum: enumOf(d, pin, value), resource: null };
     }
     function inputExpr(inst, n, index, st, kind = IN_PARAM) {
       if (kind !== IN_PARAM) return literalOf(inst, n, n.pins.find((p) => p.kind === kind && p.index === index));
@@ -505,6 +577,7 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
         recs = new Map();
         for (const o of call.outputs) { const rec = { type: o.type, num: ++st.count, objs: [o] }; st.recs.push(rec); recs.set(o.pin.index, rec); }
         st.data.push(call);
+        printed.add(key);
         st.visiting.delete(key);
         st.memo.set(key, recs);
       }
@@ -515,15 +588,18 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
       return e;
     }
     /**
-     * The constant a few nodes take as an argument after their pins, or null. A Get Local Variable makes a variable of its own wherever it is placed (the
-     * variable is what its output pin points at), so each one is named: the n-th in the file, behind the instance of the composite it is in (an expanded body). A filter graph's end
-     * node is given the graph's evaluation interval.
+     * Which node a call of a data node is (the execution nodes are known by the id of their case): `data_0007`, behind the ids of the calls an expanded
+     * body is inside of. A Get Local Variable makes a variable of its own wherever it is placed (the variable is what its output pin points at), so it is
+     * `Var_0005`, behind the names of the instances it is in. A composite call is named by its instance instead.
      */
+    function idOf(inst, n, d, data) {
+      if (d.localVar) return { kind: 'var', name: `${inst.tag}Var_${pad(n.index, 4)}` };
+      if (data && !d.callee) return { kind: 'data', name: `${inst.prefix}data_${pad(n.index, 4)}` };
+      return null;
+    }
+    /** The constant a filter graph's end node takes as an argument after its pins, the graph's evaluation interval, or null. */
     function extraOf(inst, n, d) {
       const lit = (type, value) => ({ kind: 'literal', ...blank, type, value, resource: null });
-      if (d.localVar) {
-        return lit(null, { kind: 'str', set: true, value: `${inst.tag}Var_${pad(varNo.get(`${inst.gi.res.gkey}|${n.index}`), 4)}` });
-      }
       if (d.end) {
         const interval = inst.gi.g.evaluationInterval;
         return lit('Flt', { kind: 'float', set: interval != null, value: interval ?? DEFAULT_EVALUATION_INTERVAL });
@@ -561,13 +637,16 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
       pins.sort((x, y) => x.kind - y.kind || x.index - y.index);
       for (const a of pins) {
         const expr = inputExpr(inst, n, a.index, st, a.kind);
-        // an input the game hides in its editor is only worth a line when it holds something other than its default
-        const hidden = a.kind === IN_PARAM && !!d.hidden?.has(a.index) && expr?.kind === 'literal' && !expr.value.set;
+        // an input the game hides in its editor is only worth a line when it holds something other than its default; one that says what the node's title or
+        // its other pins already say (the operator of a math node, the Count of an assembly) is never
+        const hidden = a.kind === IN_PARAM && expr?.kind === 'literal' && !!(
+          (d.hidden?.has(a.index) && !expr.value.set) || d.redundant?.has(a.index)
+          || (!d.info.user && expr.value.kind === 'enum' && rules.redundantEnums.has(enumFamily(d, { kind: IN_PARAM, index: a.index }, expr.value))));
         args.push({ pin: pinRef(a.kind, a.index, a.name), key: a.key, expr, hidden });
       }
       return {
-        node: nodeRef(inst.gi, n.index), graph: graphKey(inst.gi.res), via: inst.via, comment: n.comment ?? null, function: d.fn, composite: d.callee ? { name: d.callee.name, instance: `${inst.tag}${inst.comp.get(n.index)}` } : null, input: d.input && !data, args, extra: extraOf(inst, n, d),
-        outputs: d.outData.map((o) => ({ pin: pinRef(OUT_PARAM, o.index, o.name), key: o.key, type: o.type, name: null, global: false, uses: 0 })),
+        node: nodeRef(inst.gi, n.index), graph: graphKey(inst.gi.res), via: inst.via, comment: n.comment ?? null, function: d.fn, composite: d.callee ? { name: d.callee.name, instance: `${inst.tag}${inst.comp.get(n.index)}` } : null, id: idOf(inst, n, d, data), input: d.input && !data, args, extra: extraOf(inst, n, d),
+        outputs: d.outData.map((o) => ({ pin: pinRef(OUT_PARAM, o.index, o.name), key: o.key, type: o.type, dict: o.dict, name: null, global: false, uses: 0 })),
       };
     }
 
@@ -606,20 +685,71 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
       if (!f) return null;
       const backend = f.id?.shell && SERVER_SERVICES.includes(f.id.shell.service) ? 1 : 2;
       const typeOf = (p) => typeWord(p.type?.shell != null ? typeName(backend, p.type.shell) : 'Unk');
+      const dictOf = (p) => (p.type?.mapKey != null ? dictOfNames(typeName(backend, p.type.mapKey), typeName(backend, p.type.mapValue)) : null);
       const st = { data: [], memo: new Map(), visiting: new Set(), recs: [], count: 0, bodies: new Set() };
       const keys = root.gi.keys;
-      const inputs = f.inputs.map((p) => ({ pin: pinRef(IN_PARAM, p.index, p.name || null), key: keys.inputs.get(p.index), type: typeOf(p) }));
+      const inputs = f.inputs.map((p) => ({ pin: pinRef(IN_PARAM, p.index, p.name || null), key: keys.inputs.get(p.index), type: typeOf(p), dict: dictOf(p) }));
       const outputs = f.outputs.map((p) => {
         const at = root.gi.outDataPorts.get(p.index);
-        return { pin: pinRef(OUT_PARAM, p.index, p.name || null), key: keys.outputs.get(p.index), type: typeOf(p), expr: at ? outputExpr(root, at.node, at.pin, st) : null };
+        return { pin: pinRef(OUT_PARAM, p.index, p.name || null), key: keys.outputs.get(p.index), type: typeOf(p), dict: dictOf(p), expr: at ? outputExpr(root, at.node, at.pin, st) : null };
       });
       nameLocals(st);
       faceBodies = st.bodies;
       return { inputs, data: st.data, outputs };
     }
+    /**
+     * The data nodes no case writes and no output of a composite is made of, as chains: the node that comes last of the longest chain of data wires among the
+     * nodes left is written by itself (nothing reads it, so it assigns nothing), behind the data nodes it needs that are not written yet; then the search is
+     * made again, until every node is written. A composite call needs all of its inputs, whatever its body does with them. Null when nothing is left.
+     */
+    function orphanChains() {
+      let left = datas.filter((x) => !printed.has(x.key));
+      if (!left.length) return null;
+      const providers = new Map(); // key -> the keys of the data nodes of the same instance that its inputs are wired to
+      for (const x of datas) {
+        if (providers.has(x.key)) continue;
+        for (const e of x.inst.gi.g.edges) if (e.from.kind === OUT_PARAM && e.to.kind === IN_PARAM) {
+          const to = `${x.inst.key}/${e.to.node}`, from = `${x.inst.key}/${e.from.node}`;
+          if (!providers.has(to)) providers.set(to, new Set());
+          if (to !== from) providers.get(to).add(from);
+        }
+        if (!providers.has(x.key)) providers.set(x.key, new Set());
+      }
+      const st = { data: [], memo: new Map(), visiting: new Set(), recs: [], count: 0, bodies: new Set() };
+      const chains = [];
+      while (left.length) {
+        const inLeft = new Set(left.map((x) => x.key)), depth = new Map(), open = new Set(), read = new Set();
+        const deep = (key) => {
+          if (depth.has(key)) return depth.get(key);
+          if (open.has(key)) return 0; // a data loop
+          open.add(key);
+          let longest = 0;
+          for (const p of providers.get(key) ?? []) if (inLeft.has(p)) { read.add(p); longest = Math.max(longest, deep(p)); }
+          open.delete(key);
+          depth.set(key, longest + 1);
+          return longest + 1;
+        };
+        for (const x of left) deep(x.key);
+        const ends = left.filter((x) => !read.has(x.key));
+        let best = null;
+        for (const x of ends.length ? ends : left) if (!best || depth.get(x.key) > depth.get(best.key)) best = x;
+        const before = st.data.length;
+        st.visiting.add(best.key);
+        const call = callOf(best.inst, best.n, best.d, st, { data: true });
+        st.visiting.delete(best.key);
+        st.memo.set(best.key, new Map());
+        printed.add(best.key);
+        chains.push({ data: st.data.slice(before), call });
+        st.data.push(call);
+        left = left.filter((x) => !printed.has(x.key));
+      }
+      nameLocals(st);
+      return chains;
+    }
     const cases = execs.map(buildCase);
     // what a composite hands out reads the outputs of its execution nodes too, so it is built before the reads are counted
     const face = g.kind === COMPOSITE_BODY_KIND ? interfaceOf() : null;
+    const orphans = orphanChains();
     // the output of an execution node is read by cases anywhere in the graph, so it is counted once all of them are built
     cases.forEach((c, i) => { for (const o of c.call.outputs) o.uses = execs[i].reads.get(o.pin.index) ?? 0; });
 
@@ -662,10 +792,10 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
     }
     const word = composite ? 'Composite' : SERVICE_WORD[g.service] ?? 'Graph';
     // a graph that is one expression ending in the graph's end node (a filter graph) needs no switch between cases
-    const flat = cases.length === 1 && cases[0].kind === 'end';
+    const flat = cases.length === 1 && cases[0].kind === 'end' && !orphans;
     const ps = {
       tag: word, namespace: composite ? 'Composite' : SERVER_SERVICES.includes(g.service) ? 'ServerGraphs' : 'ClientGraphs', function: `${word}_${res.guid}`,
-      flat, unreachable: false, flow: composite ? bodyFlow() : null, interface: face, cases: ordered,
+      flat, unreachable: false, flow: composite ? bodyFlow() : null, interface: face, cases: ordered, orphans,
     };
     uses.set(ps, { bodiesOf, faceBodies });
     return ps;

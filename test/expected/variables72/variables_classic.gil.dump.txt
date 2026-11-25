@@ -43,41 +43,41 @@ RESOURCE "Voice Chat Hint Queue" UI_CONTROL guid='1073741842'
 VARIABLE Stage 1094713345:"Stage Entity" 'On_Stage' : Str = '0'
 VARIABLE Stage 1094713345:"Stage Entity" 'String' : Dict<Str,Str> = {'1': '1', '2': '2', '3': '3'}
 VARIABLE Stage 1094713345:"Stage Entity" 'String_List' : Dict<Str,L<Str>> = {'1': ['1.1', '1.2', '1.3'], '2': ['2.1', '2.2', '2.3'], '3': ['3.1', '3.2', '3.3']}
-VARIABLE Stage 1094713345:"Stage Entity" 'Struct' : Dict<Str,Struct> = {'1': struct{'0', 0, 0, No}}
-VARIABLE Stage 1094713345:"Stage Entity" 'Struct_List' : Dict<Str,L<Struct>> = {'1': [struct{'', 0, 0, No}], '2': [struct{'1', 1, 1, Yes}, struct{'', 0, 0, No}]}
+VARIABLE Stage 1094713345:"Stage Entity" 'Struct' : Dict<Str,Struct> = {'1': struct{'0', 0, 0.00, false}}
+VARIABLE Stage 1094713345:"Stage Entity" 'Struct_List' : Dict<Str,L<Struct>> = {'1': [struct{'', 0, 0.00, false}], '2': [struct{'1', 1, 1.00, true}, struct{'', 0, 0.00, false}]}
 VARIABLE Player 1086324737:"Default Template" 'String' : Str = ''
 VARIABLE Player 1086324737:"Default Template" 'String_0' : L<Str> = []
 VARIABLE Player 1086324737:"Default Template" 'String_2' : L<Str> = ['', '']
 VARIABLE Player 1086324737:"Default Template" 'Integer' : Int = 0
 VARIABLE Player 1086324737:"Default Template" 'Integer_0' : L<Int> = []
 VARIABLE Player 1086324737:"Default Template" 'Integer_2' : L<Int> = [0, 0]
-VARIABLE Player 1086324737:"Default Template" 'Float' : Flt = 0
+VARIABLE Player 1086324737:"Default Template" 'Float' : Flt = 0.00
 VARIABLE Player 1086324737:"Default Template" 'Float_0' : L<Flt> = []
-VARIABLE Player 1086324737:"Default Template" 'Float_2' : L<Flt> = [0, 0]
-VARIABLE Player 1086324737:"Default Template" 'Boolean' : Bol = No
+VARIABLE Player 1086324737:"Default Template" 'Float_2' : L<Flt> = [0.00, 0.00]
+VARIABLE Player 1086324737:"Default Template" 'Boolean' : Bol = false
 VARIABLE Player 1086324737:"Default Template" 'Boolean_0' : L<Bol> = []
-VARIABLE Player 1086324737:"Default Template" 'Boolean_2' : L<Bol> = [No, No]
+VARIABLE Player 1086324737:"Default Template" 'Boolean_2' : L<Bol> = [false, false]
 VARIABLE Player 1086324737:"Default Template" 'Vector' : Vec = (0, 0, 0)
 VARIABLE Player 1086324737:"Default Template" 'Vector_0' : L<Vec> = []
 VARIABLE Player 1086324737:"Default Template" 'Vector_2' : L<Vec> = [(0, 0, 0), (0, 0, 0)]
-VARIABLE Player 1086324737:"Default Template" 'Entity' : Ety = id:0
+VARIABLE Player 1086324737:"Default Template" 'Entity' : Ety = null
 VARIABLE Player 1086324737:"Default Template" 'Entity_0' : L<Ety> = []
-VARIABLE Player 1086324737:"Default Template" 'Entity_2' : L<Ety> = [id:0, id:0]
-VARIABLE Player 1086324737:"Default Template" 'GUID' : Gid = id:0
+VARIABLE Player 1086324737:"Default Template" 'Entity_2' : L<Ety> = [null, null]
+VARIABLE Player 1086324737:"Default Template" 'GUID' : Gid = null
 VARIABLE Player 1086324737:"Default Template" 'GUID_0' : L<Gid> = []
-VARIABLE Player 1086324737:"Default Template" 'GUID_2' : L<Gid> = [id:0, id:0]
-VARIABLE Player 1086324737:"Default Template" 'Config' : Cfg = id:0
+VARIABLE Player 1086324737:"Default Template" 'GUID_2' : L<Gid> = [null, null]
+VARIABLE Player 1086324737:"Default Template" 'Config' : Cfg = null
 VARIABLE Player 1086324737:"Default Template" 'Config_0' : L<Cfg> = []
-VARIABLE Player 1086324737:"Default Template" 'Config_2' : L<Cfg> = [id:0, id:0]
-VARIABLE Player 1086324737:"Default Template" 'Prefab' : Pfb = id:0
+VARIABLE Player 1086324737:"Default Template" 'Config_2' : L<Cfg> = [null, null]
+VARIABLE Player 1086324737:"Default Template" 'Prefab' : Pfb = null
 VARIABLE Player 1086324737:"Default Template" 'Prefab_0' : L<Pfb> = []
-VARIABLE Player 1086324737:"Default Template" 'Prefab_2' : L<Pfb> = [id:0, id:0]
-VARIABLE Player 1086324737:"Default Template" 'Faction' : Fct = id:0
+VARIABLE Player 1086324737:"Default Template" 'Prefab_2' : L<Pfb> = [null, null]
+VARIABLE Player 1086324737:"Default Template" 'Faction' : Fct = null
 VARIABLE Player 1086324737:"Default Template" 'Faction_0' : L<Fct> = []
-VARIABLE Player 1086324737:"Default Template" 'Faction_2' : L<Fct> = [id:0, id:0]
-VARIABLE Player 1086324737:"Default Template" 'Struct' : Struct struct=Struct = struct{'', 0, 0, No}
+VARIABLE Player 1086324737:"Default Template" 'Faction_2' : L<Fct> = [null, null]
+VARIABLE Player 1086324737:"Default Template" 'Struct' : Struct struct=Struct = struct{'', 0, 0.00, false}
 VARIABLE Player 1086324737:"Default Template" 'Struct_0' : L<Struct> struct=Struct = []
-VARIABLE Player 1086324737:"Default Template" 'Struct_2' : L<Struct> struct=Struct = [struct{'', 0, 0, No}, struct{'', 0, 0, No}]
+VARIABLE Player 1086324737:"Default Template" 'Struct_2' : L<Struct> struct=Struct = [struct{'', 0, 0.00, false}, struct{'', 0, 0.00, false}]
 VARIABLE Player 1086324737:"Default Template" 'String_Dict' : Dict<Str,Str> = {'1': ''}
 VARIABLE Player 1086324737:"Default Template" 'Integer_Dict' : Dict<Int,Str> = {1: ''}
 VARIABLE Player 1086324737:"Default Template" 'GUID_Dict' : Dict<Gid,Str> = {id:1: ''}
@@ -91,18 +91,18 @@ VARIABLE Character 1090519041:"Default Template(Edit Character)" 'String_2' : L<
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Integer' : Int = 1
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Integer_0' : L<Int> = []
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Integer_2' : L<Int> = [1, 1]
-VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Float' : Flt = 1
+VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Float' : Flt = 1.00
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Float_0' : L<Flt> = []
-VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Float_2' : L<Flt> = [1, 1]
-VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Boolean' : Bol = Yes
+VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Float_2' : L<Flt> = [1.00, 1.00]
+VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Boolean' : Bol = true
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Boolean_0' : L<Bol> = []
-VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Boolean_2' : L<Bol> = [Yes, Yes]
+VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Boolean_2' : L<Bol> = [true, true]
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Vector' : Vec = (1, 1, 1)
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Vector_0' : L<Vec> = []
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Vector_2' : L<Vec> = [(1, 1, 1), (1, 1, 1)]
-VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Entity' : Ety = id:0
+VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Entity' : Ety = null
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Entity_0' : L<Ety> = []
-VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Entity_2' : L<Ety> = [id:0, id:0]
+VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Entity_2' : L<Ety> = [null, null]
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'GUID' : Gid = id:1
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'GUID_0' : L<Gid> = []
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'GUID_2' : L<Gid> = [id:1, id:1]
@@ -115,9 +115,9 @@ VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Prefab_2' : L<
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Faction' : Fct = id:1
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Faction_0' : L<Fct> = []
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Faction_2' : L<Fct> = [id:1, id:1]
-VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Struct' : Struct struct=Struct = struct{'1', 1, 1, Yes}
+VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Struct' : Struct struct=Struct = struct{'1', 1, 1.00, true}
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Struct_0' : L<Struct> struct=Struct = []
-VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Struct_2' : L<Struct> struct=Struct = [struct{'1', 1, 1, Yes}, struct{'1', 1, 1, Yes}]
+VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Struct_2' : L<Struct> struct=Struct = [struct{'1', 1, 1.00, true}, struct{'1', 1, 1.00, true}]
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'String_Dict' : Dict<Str,Str> = {'1': '1'}
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'Integer_Dict' : Dict<Int,Str> = {1: '1'}
 VARIABLE Character 1090519041:"Default Template(Edit Character)" 'GUID_Dict' : Dict<Gid,Str> = {id:1: '1'}

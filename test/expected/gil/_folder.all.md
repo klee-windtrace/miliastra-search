@@ -541,7 +541,7 @@ FOLDER /(default)/ graphs=11 resources=7
 **RESOURCE** "**Кнопка сопротивления**" UI\_CONTROL class=15 guid='`1073741837`' section=root.9<br>
 **RESOURCE** "**Кнопка голосового чата**" UI\_CONTROL class=15 guid='`1073741838`' section=root.9<br>
 **RESOURCE** "**Очередь подсказок голосового чата**" UI\_CONTROL class=15 guid='`1073741839`' section=root.9<br>
-**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = id:0
+**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = null
 
 ## FILE `stage_012379.gil`
 
@@ -672,7 +672,7 @@ FOLDER /(default)/ graphs=11 resources=7
 **RESOURCE** "**Struggle Button**" UI\_CONTROL class=15 guid='`1073741855`' section=root.9<br>
 **RESOURCE** "**Voice Chat Button**" UI\_CONTROL class=15 guid='`1073741856`' section=root.9<br>
 **RESOURCE** "**Voice Chat Hint Queue**" UI\_CONTROL class=15 guid='`1073741857`' section=root.9<br>
-**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = id:0
+**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = null
 
 ## FILE `stage_1.gil`
 

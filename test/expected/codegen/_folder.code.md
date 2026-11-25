@@ -8,7 +8,7 @@
 '*New Node Graph*'/\[2\] **Set Custom Variable** (22/24) `in#0` "Target Entity" \<- \[1\] **When Entity Is Created** (71) `out#0` "Event Source Entity" : *Ety*<br>
 '*New Node Graph*'/\[2\] **Set Custom Variable** (22/24) `in#1` "Variable Name" = '`Var1`' : *Str*<br>
 '*New Node Graph*'/\[2\] **Set Custom Variable** (22/24) `in#2` "Variable Value" \<- \[3\] **Get Owner Entity** (744) `out#0` "Owner Entity" : *Ety*<br>
-'*New Node Graph*'/\[2\] **Set Custom Variable** (22/24) `in#4` "Trigger Event" = No : *Bol*<br>
+'*New Node Graph*'/\[2\] **Set Custom Variable** (22/24) `in#4` "Trigger Event" = false : *Bol*<br>
 '*New Node Graph*'/\[3\] **Get Owner Entity** (744) @(175.77753,-337.94766)<br>
 '*New Node Graph*'/\[3\] **Get Owner Entity** (744) `in#0` "Target Entity" \<- \[4\] **Get Self Entity** (73) `out#0` "Self Entity" : *Ety*<br>
 '*New Node Graph*'/\[4\] **Get Self Entity** (73) @(288.77753,-525.3762)<br>
@@ -33,8 +33,8 @@
 '*New Node Graph*'/\[10\] **Set Local Variable** (19/21) `in#0` "Local Variable" \<- \[11\] **Get Local Variable** (18) `out#0` "Local Variable" : *Loc*<br>
 '*New Node Graph*'/\[10\] **Set Local Variable** (19/21) `in#1` "Value" = 1 : *Int*<br>
 '*New Node Graph*'/\[11\] **Get Local Variable** (18) @(1130.4918,178.62376)<br>
-'*New Node Graph*'/\[11\] **Get Local Variable** (18) `in#0` "Initial Value" = No : *Bol*<br>
-'*New Node Graph*'/\[11\] **Get Local Variable** (18) `out#1` "Value" = No : *Bol*<br>
+'*New Node Graph*'/\[11\] **Get Local Variable** (18) `in#0` "Initial Value" = false : *Bol*<br>
+'*New Node Graph*'/\[11\] **Get Local Variable** (18) `out#1` "Value" = false : *Bol*<br>
 '*New Node Graph*'/\[12\] **Set Local Variable** (19/21) variant=C\<T:Int\> @(1620.4918,-111.376236)<br>
 '*New Node Graph*'/\[12\] **Set Local Variable** (19/21) `out.flow#0` -\> \[13\] **Print String** (1) `in.flow#0`<br>
 '*New Node Graph*'/\[12\] **Set Local Variable** (19/21) `in#0` "Local Variable" \<- \[11\] **Get Local Variable** (18) `out#0` "Local Variable" : *Loc*<br>
@@ -44,7 +44,7 @@
 '*New Node Graph*'/\[13\] **Print String** (1) `in#0` "String" \<- \[14\] **Data Type Conversion** (180/186) `out#0` "Output" : *Str*<br>
 '*New Node Graph*'/\[14\] **Data Type Conversion** (180/186) variant=C\<K:Bol,V:Str\> @(2154.8252,-375.0429)<br>
 '*New Node Graph*'/\[14\] **Data Type Conversion** (180/186) `in#0` "Input" \<- \[11\] **Get Local Variable** (18) `out#1` "Value" : *Bol*<br>
-'*New Node Graph*'/\[14\] **Data Type Conversion** (180/186) `in#0` "Input" = No : *Bol* *(also wired)*<br>
+'*New Node Graph*'/\[14\] **Data Type Conversion** (180/186) `in#0` "Input" = false : *Bol* *(also wired)*<br>
 '*New Node Graph*'/\[14\] **Data Type Conversion** (180/186) `out#0` "Output" = '' : *Str*<br>
 '*New Node Graph*'/\[15\] **Finite Loop** (5) @(2639.8252,-121.70957)<br>
 '*New Node Graph*'/\[15\] **Finite Loop** (5) `out.flow#0` "Loop Body" -\> \[16\] **Set List Value** (160) `in.flow#0`<br>
@@ -76,7 +76,7 @@
 '*New Node Graph*'/\[24\] **Create Prefab** (252) `in#1` "Location" \<- \[25\] **Get Entity Location and Rotation** (99) `out#0` "Location" : *Vec*<br>
 '*New Node Graph*'/\[24\] **Create Prefab** (252) `in#2` "Rotate" \<- \[25\] **Get Entity Location and Rotation** (99) `out#1` "Rotate" : *Vec*<br>
 '*New Node Graph*'/\[24\] **Create Prefab** (252) `in#3` "Owner Entity" \<- \[26\] **Get Local Variable** (18/2657) `out#1` "Value" : *Ety*<br>
-'*New Node Graph*'/\[24\] **Create Prefab** (252) `in#5` "Overwrite Level" = Yes : *Bol*<br>
+'*New Node Graph*'/\[24\] **Create Prefab** (252) `in#5` "Overwrite Level" = true : *Bol*<br>
 '*New Node Graph*'/\[24\] **Create Prefab** (252) `in#6` "Level" \<- \[27\] **Get List Length** (142) `out#0` "Length" : *Int*<br>
 '*New Node Graph*'/\[24\] **Create Prefab** (252) `in#7` "Unit Tag Index List" \<- \[28\] **Assembly List** (169) `out#0` "List" : *L\<Int\>*<br>
 '*New Node Graph*'/\[25\] **Get Entity Location and Rotation** (99) @(3021.122,610.55804)<br>
@@ -96,7 +96,7 @@
 '*New Node Graph*'/\[29\] **Set Custom Variable** (22/1928) `in#1` "Variable Name" = '`Test`' : *Str*<br>
 '*New Node Graph*'/\[29\] **Set Custom Variable** (22/1928) `in#2` "Variable Value" \<- \[30\] **Assembly Dictionary** (1788) `out#0` "Dictionary" : *Dict*<br>
 '*New Node Graph*'/\[29\] **Set Custom Variable** (22/1928) `in#2` "Variable Value" = {} : *Dict* *(also wired)*<br>
-'*New Node Graph*'/\[29\] **Set Custom Variable** (22/1928) `in#4` "Trigger Event" = No : *Bol*<br>
+'*New Node Graph*'/\[29\] **Set Custom Variable** (22/1928) `in#4` "Trigger Event" = false : *Bol*<br>
 '*New Node Graph*'/\[30\] **Assembly Dictionary** (1788) @(4238.003,19.855686)<br>
 '*New Node Graph*'/\[30\] **Assembly Dictionary** (1788) `in#1` "Key 0" \<- \[24\] **Create Prefab** (252) `out#0` "Created Entity" : *Ety*<br>
 '*New Node Graph*'/\[30\] **Assembly Dictionary** (1788) `in#2` "Value 0" \<- \[26\] **Get Local Variable** (18/2657) `out#1` "Value" : *Ety*<br>
@@ -104,7 +104,7 @@
 '*New Node Graph*'/\[31\] **Double Branch** (2) @(4832.8774,100.87852)<br>
 '*New Node Graph*'/\[31\] **Double Branch** (2) `out.flow#0` "Yes" -\> \[33\] **Destroy Entity** (69) `in.flow#0`<br>
 '*New Node Graph*'/\[31\] **Double Branch** (2) `out.flow#1` "No" -\> \[32\] **Print String** (1) `in.flow#0`<br>
-'*New Node Graph*'/\[31\] **Double Branch** (2) `in#0` "Condition" = Yes : *Bol*<br>
+'*New Node Graph*'/\[31\] **Double Branch** (2) `in#0` "Condition" = true : *Bol*<br>
 '*New Node Graph*'/\[32\] **Print String** (1) @(5249.5444,334.21185)<br>
 '*New Node Graph*'/\[32\] **Print String** (1) `out.flow#0` -\> \[33\] **Destroy Entity** (69) `in.flow#0`<br>
 '*New Node Graph*'/\[32\] **Print String** (1) `in#0` "String" = '`!`' : *Str*<br>
@@ -118,16 +118,16 @@
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[1\] **Execute only by sequence** (200126/4000) `out.flow#1` "2" -\> \[3\] **Double Branch** (200125/4001) `in.flow#0`<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[1\] **Execute only by sequence** (200126/4000) `out.flow#2` "3" -\> \[3\] **Double Branch** (200125/4001) `in.flow#0`<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[2\] **Switch to self execution status** (200128/4011) @(493,-144)<br>
-'<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[2\] **Switch to self execution status** (200128/4011) `in#0` "Execute" = Yes : *Bol* *(default)*<br>
-'<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[2\] **Switch to self execution status** (200128/4011) `in#1` "Status Node Graph Configuration ID" = id:0 : *Cfg* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[2\] **Switch to self execution status** (200128/4011) `in#0` "Execute" = true : *Bol* *(default)*<br>
+'<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[2\] **Switch to self execution status** (200128/4011) `in#1` "Status Node Graph Configuration ID" = null : *Cfg* *(default)*<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[2\] **Switch to self execution status** (200128/4011) `in#2` "Autonomous Logic Parameter ID" = 0 : *Int* *(default)*<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[3\] **Double Branch** (200125/4001) @(504.14285,248.42857)<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[3\] **Double Branch** (200125/4001) `in#0` "Condition" \<- \[4\] **Get Custom Variable** (200173/4200) `out#0` "Variable Value" : *Bol*<br>
-'<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[3\] **Double Branch** (200125/4001) `in#0` "Condition" = No : *Bol* *(default)* *(also wired)*<br>
+'<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[3\] **Double Branch** (200125/4001) `in#0` "Condition" = false : *Bol* *(default)* *(also wired)*<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[4\] **Get Custom Variable** (200173/4200) variant=C\<T:Bol\> @(68.42857,335.57144)<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[4\] **Get Custom Variable** (200173/4200) `in#0` "Target Entity" = enum:6003«Self» : *Enum*<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[4\] **Get Custom Variable** (200173/4200) `in#1` "Variable Name" = '`test`' : *Str*<br>
-'<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[4\] **Get Custom Variable** (200173/4200) `out#0` "Variable Value" = No : *Bol*<br>
+'<u>\<creation\></u>*New Creation Status Decision Node Graph*'/\[4\] **Get Custom Variable** (200173/4200) `out#0` "Variable Value" = false : *Bol*<br>
 **GRAPH** '<u>\<filter\></u>*New Filter Node Graph*' INTEGER\_FILTER\_GRAPH (guid 1082130436)<br>
 '<u>\<filter\></u>*New Filter Node Graph*'/\[1\] **Node Graph End (Integer)** (200122) @(0,0)<br>
 '<u>\<filter\></u>*New Filter Node Graph*'/\[1\] **Node Graph End (Integer)** (200122) `in#0` "Output Result (Integer)" \<- \[2\] **Get Maximum Value From List** (200020/120) `out#0` "Maximum Value" : *Int*<br>
@@ -146,7 +146,7 @@
 '<u>\<filter\></u>*New Filter Node Graph*'/\[4\] **Get Custom Variable** (200016/1056) `in#1` "Variable Name" = '`list`' : *Str*<br>
 '<u>\<filter\></u>*New Filter Node Graph*'/\[4\] **Get Custom Variable** (200016/1056) `out#0` "Variable Value" = {} : *Dict*<br>
 '<u>\<filter\></u>*New Filter Node Graph*'/\[5\] **Get Self Entity** (200033/1013) @(-1628.6666,-134.66667)<br>
-'<u>\<filter\></u>*New Filter Node Graph*'/\[5\] **Get Self Entity** (200033/1013) `out#0` "Self Entity" = id:0 : *Ety* *(default)*
+'<u>\<filter\></u>*New Filter Node Graph*'/\[5\] **Get Self Entity** (200033/1013) `out#0` "Self Entity" = null : *Ety* *(default)*
 
 # FILE `codetest_2.gia`
 
@@ -169,7 +169,7 @@
 '<u>\<status\></u>*Status*'/\[5\] **Set Node Graph Variable** (323) `in#0` "Variable Name" = '`gvar`' : *Str*<br>
 '<u>\<status\></u>*Status*'/\[5\] **Set Node Graph Variable** (323) `in#1` "Variable Value" \<- \[7\] **Simple Data** (1610612737) `out#0` "Value" : *Int*<br>
 '<u>\<status\></u>*Status*'/\[5\] **Set Node Graph Variable** (323) `in#1` "Variable Value" = 0 : *Int* *(also wired)*<br>
-'<u>\<status\></u>*Status*'/\[5\] **Set Node Graph Variable** (323) `in#2` "Trigger Event" = No : *Bol*<br>
+'<u>\<status\></u>*Status*'/\[5\] **Set Node Graph Variable** (323) `in#2` "Trigger Event" = false : *Bol*<br>
 '<u>\<status\></u>*Status*'/\[7\] **Simple Data** (1610612737) user=COMPOSITE @(1474.7142,-142.28572)<br>
 '<u>\<status\></u>*Status*'/\[12\] **Linear Flow** (1610612738) user=COMPOSITE @(1889.4166,88.36905)<br>
 '<u>\<status\></u>*Status*'/\[12\] **Linear Flow** (1610612738) `out.flow#0` -\> \[21\] **Two In One Out** (1610612741) `in.flow#1`<br>
@@ -180,14 +180,14 @@
 '<u>\<status\></u>*Status*'/\[25\] **Two Exclusive Outs** (1610612742) user=COMPOSITE @(2280.0715,-157.7619)<br>
 '<u>\<status\></u>*Status*'/\[25\] **Two Exclusive Outs** (1610612742) `out.flow#0` "Yes" -\> \[15\] **Terminal** (1610612739) `in.flow#0`<br>
 '<u>\<status\></u>*Status*'/\[25\] **Two Exclusive Outs** (1610612742) `out.flow#1` "No" -\> \[21\] **Two In One Out** (1610612741) `in.flow#0`<br>
-'<u>\<status\></u>*Status*'/\[25\] **Two Exclusive Outs** (1610612742) `in#0` "Condition" = No : *Bol*<br>
+'<u>\<status\></u>*Status*'/\[25\] **Two Exclusive Outs** (1610612742) `in#0` "Condition" = false : *Bol*<br>
 '<u>\<status\></u>*Status*'/\[29\] **Calling Twice** (1610612743) user=COMPOSITE @(3124.5952,34.261906)<br>
 '<u>\<status\></u>*Status*'/\[29\] **Calling Twice** (1610612743) `out.flow#0` -\> \[36\] **With Event** (1610612744) `in.flow#0`<br>
 '<u>\<status\></u>*Status*'/\[34\] **Set Custom Variable** (22/28) variant=C\<T:Bol\> @(3877.5952,36.714287)<br>
 '<u>\<status\></u>*Status*'/\[34\] **Set Custom Variable** (22/28) `out.flow#0` -\> \[39\] **Set Custom Variable** (22/28) `in.flow#0`<br>
 '<u>\<status\></u>*Status*'/\[34\] **Set Custom Variable** (22/28) `in#1` "Variable Name" = '`x`' : *Str*<br>
 '<u>\<status\></u>*Status*'/\[34\] **Set Custom Variable** (22/28) `in#2` "Variable Value" \<- \[42\] **Exposed Local** (1610612745) `out#0` "Value" : *Bol*<br>
-'<u>\<status\></u>*Status*'/\[34\] **Set Custom Variable** (22/28) `in#2` "Variable Value" = Yes : *Bol* *(also wired)*<br>
+'<u>\<status\></u>*Status*'/\[34\] **Set Custom Variable** (22/28) `in#2` "Variable Value" = true : *Bol* *(also wired)*<br>
 '<u>\<status\></u>*Status*'/\[34\] **Set Custom Variable** (22/28) `in#4` "Trigger Event" \<- \[42\] **Exposed Local** (1610612745) `out#0` "Value" : *Bol*<br>
 '<u>\<status\></u>*Status*'/\[36\] **With Event** (1610612744) user=COMPOSITE @(3528.6577,41.24107)<br>
 '<u>\<status\></u>*Status*'/\[36\] **With Event** (1610612744) `out.flow#0` -\> \[34\] **Set Custom Variable** (22/28) `in.flow#0`<br>
@@ -195,12 +195,12 @@
 '<u>\<status\></u>*Status*'/\[39\] **Set Custom Variable** (22/28) `out.flow#0` -\> \[40\] **Set Custom Variable** (22/28) `in.flow#0`<br>
 '<u>\<status\></u>*Status*'/\[39\] **Set Custom Variable** (22/28) `in#1` "Variable Name" = '`y`' : *Str*<br>
 '<u>\<status\></u>*Status*'/\[39\] **Set Custom Variable** (22/28) `in#2` "Variable Value" \<- \[46\] **Exposed Native** (1610612746) `out#0` "Consume?" : *Bol*<br>
-'<u>\<status\></u>*Status*'/\[39\] **Set Custom Variable** (22/28) `in#2` "Variable Value" = Yes : *Bol* *(also wired)*<br>
+'<u>\<status\></u>*Status*'/\[39\] **Set Custom Variable** (22/28) `in#2` "Variable Value" = true : *Bol* *(also wired)*<br>
 '<u>\<status\></u>*Status*'/\[39\] **Set Custom Variable** (22/28) `in#4` "Trigger Event" \<- \[46\] **Exposed Native** (1610612746) `out#0` "Consume?" : *Bol*<br>
 '<u>\<status\></u>*Status*'/\[40\] **Set Custom Variable** (22/28) variant=C\<T:Bol\> @(4663.643,34.440475)<br>
 '<u>\<status\></u>*Status*'/\[40\] **Set Custom Variable** (22/28) `in#1` "Variable Name" = '`z`' : *Str*<br>
 '<u>\<status\></u>*Status*'/\[40\] **Set Custom Variable** (22/28) `in#2` "Variable Value" \<- \[54\] **Exposed Computed** (1610612748) `out#0` "Result" : *Bol*<br>
-'<u>\<status\></u>*Status*'/\[40\] **Set Custom Variable** (22/28) `in#2` "Variable Value" = Yes : *Bol* *(also wired)*<br>
+'<u>\<status\></u>*Status*'/\[40\] **Set Custom Variable** (22/28) `in#2` "Variable Value" = true : *Bol* *(also wired)*<br>
 '<u>\<status\></u>*Status*'/\[40\] **Set Custom Variable** (22/28) `in#4` "Trigger Event" \<- \[54\] **Exposed Computed** (1610612748) `out#0` "Result" : *Bol*<br>
 '<u>\<status\></u>*Status*'/\[42\] **Exposed Local** (1610612745) user=COMPOSITE @(3867.1223,-274.70096)<br>
 '<u>\<status\></u>*Status*'/\[42\] **Exposed Local** (1610612745) `out.flow#0` -\> \[46\] **Exposed Native** (1610612746) `in.flow#0`<br>
@@ -211,14 +211,14 @@
 '<u>\<composite\></u>*Calling Twice*'/PORTMAP `ext.in.flow#0` -\> \[19\] **Double Branch** (2) `in.flow#0`<br>
 '<u>\<composite\></u>*Calling Twice*'/PORTMAP `ext.out.flow#0` -\> \[1\] **Double Branch** (2) `out.flow#1` "No"<br>
 '<u>\<composite\></u>*Calling Twice*'/\[1\] **Double Branch** (2) @(485,-41)<br>
-'<u>\<composite\></u>*Calling Twice*'/\[1\] **Double Branch** (2) `in#0` "Condition" = No : *Bol*<br>
+'<u>\<composite\></u>*Calling Twice*'/\[1\] **Double Branch** (2) `in#0` "Condition" = false : *Bol*<br>
 '<u>\<composite\></u>*Calling Twice*'/\[19\] **Double Branch** (2) @(-160,-85)<br>
 '<u>\<composite\></u>*Calling Twice*'/\[19\] **Double Branch** (2) `out.flow#1` "No" -\> \[22\] **Double Branch** (2) `in.flow#0`<br>
 '<u>\<composite\></u>*Calling Twice*'/\[19\] **Double Branch** (2) `out.flow#1` "No" -\> \[1\] **Double Branch** (2) `in.flow#0`<br>
-'<u>\<composite\></u>*Calling Twice*'/\[19\] **Double Branch** (2) `in#0` "Condition" = No : *Bol*<br>
+'<u>\<composite\></u>*Calling Twice*'/\[19\] **Double Branch** (2) `in#0` "Condition" = false : *Bol*<br>
 '<u>\<composite\></u>*Calling Twice*'/\[22\] **Double Branch** (2) @(160,85)<br>
 '<u>\<composite\></u>*Calling Twice*'/\[22\] **Double Branch** (2) `out.flow#0` "Yes" -\> \[1\] **Double Branch** (2) `in.flow#0`<br>
-'<u>\<composite\></u>*Calling Twice*'/\[22\] **Double Branch** (2) `in#0` "Condition" = Yes : *Bol*<br>
+'<u>\<composite\></u>*Calling Twice*'/\[22\] **Double Branch** (2) `in#0` "Condition" = true : *Bol*<br>
 **GRAPH** '<u>\<composite\></u>*Exposed Computed*' ENTITY\_NODE\_GRAPH (guid 1610612748, decl 1610612748) role=dependency<br>
 '<u>\<composite\></u>*Exposed Computed*'/PORTMAP `ext.in.flow#0` -\> \[48\] **Add Unit Status** (297) `in.flow#0`<br>
 '<u>\<composite\></u>*Exposed Computed*'/PORTMAP `ext.out.flow#0` -\> \[48\] **Add Unit Status** (297) `out.flow#0`<br>
@@ -235,8 +235,8 @@
 '<u>\<composite\></u>*Exposed Local*'/PORTMAP `ext.in#0` "Target Entity" -\> \[38\] **Forwarding Event** (190) `in#0` "Target Entity"<br>
 '<u>\<composite\></u>*Exposed Local*'/PORTMAP `ext.out#0` "Value" -\> \[37\] **Get Local Variable** (18) `out#1` "Value"<br>
 '<u>\<composite\></u>*Exposed Local*'/\[37\] **Get Local Variable** (18) @(-12.646014,109.14144)<br>
-'<u>\<composite\></u>*Exposed Local*'/\[37\] **Get Local Variable** (18) `in#0` "Initial Value" = Yes : *Bol*<br>
-'<u>\<composite\></u>*Exposed Local*'/\[37\] **Get Local Variable** (18) `out#1` "Value" = No : *Bol*<br>
+'<u>\<composite\></u>*Exposed Local*'/\[37\] **Get Local Variable** (18) `in#0` "Initial Value" = true : *Bol*<br>
+'<u>\<composite\></u>*Exposed Local*'/\[37\] **Get Local Variable** (18) `out#1` "Value" = false : *Bol*<br>
 '<u>\<composite\></u>*Exposed Local*'/\[38\] **Forwarding Event** (190) @(12.646014,-109.14144)<br>
 **GRAPH** '<u>\<composite\></u>*Exposed Native*' ENTITY\_NODE\_GRAPH (guid 1610612746, decl 1610612746) role=dependency<br>
 '<u>\<composite\></u>*Exposed Native*'/PORTMAP `ext.in.flow#0` -\> \[44\] **Consume Gift Box** (772) `in.flow#0`<br>
@@ -252,7 +252,7 @@
 '<u>\<composite\></u>*Linear Flow*'/\[8\] **Set Node Graph Variable** (323) @(0,0)<br>
 '<u>\<composite\></u>*Linear Flow*'/\[8\] **Set Node Graph Variable** (323) `in#0` "Variable Name" = '`gvar`' : *Str*<br>
 '<u>\<composite\></u>*Linear Flow*'/\[8\] **Set Node Graph Variable** (323) `in#1` "Variable Value" = 0 : *Int*<br>
-'<u>\<composite\></u>*Linear Flow*'/\[8\] **Set Node Graph Variable** (323) `in#2` "Trigger Event" = Yes : *Bol*<br>
+'<u>\<composite\></u>*Linear Flow*'/\[8\] **Set Node Graph Variable** (323) `in#2` "Trigger Event" = true : *Bol*<br>
 **GRAPH** '<u>\<composite\></u>*Simple Data*' ENTITY\_NODE\_GRAPH (guid 1610612737, decl 1610612737) role=dependency<br>
 '<u>\<composite\></u>*Simple Data*'/PORTMAP `ext.out#0` "Value" -\> \[4\] **Get Local Variable** (18/20) `out#1` "Value"<br>
 '<u>\<composite\></u>*Simple Data*'/\[4\] **Get Local Variable** (18/20) variant=C\<T:Int\> @(0,0)<br>
@@ -288,3 +288,60 @@
 '<u>\<composite\></u>*With Event*'/\[32\] **Set Custom Variable** (22) `in#0` "Target Entity" \<- \[33\] **Get Self Entity** (73) `out#0` "Self Entity" : *Ety*<br>
 '<u>\<composite\></u>*With Event*'/\[32\] **Set Custom Variable** (22) `in#1` "Variable Name" = '`none`' : *Str*<br>
 '<u>\<composite\></u>*With Event*'/\[33\] **Get Self Entity** (73) @(-206.5625,-110.3125)
+
+# FILE `data_order.gia`
+
+**GRAPH** '*Graph*' ENTITY\_NODE\_GRAPH (guid 1073741825)<br>
+'*Graph*'/\[1\] **Get Local Variable** (18) @(-386.57144,-200.57143)<br>
+'*Graph*'/\[2\] **When Custom Variable Changes** (36) @(-388.57144,48.57143)<br>
+'*Graph*'/\[3\] **Monitor Signal** (300001) @(-385.7143,457.14285)<br>
+'*Graph*'/\[4\] **Assembly List** (169) @(88.57143,-277.14285)<br>
+'*Graph*'/\[5\] **Assembly Dictionary** (1788) @(450,-295.7143)<br>
+'*Graph*'/\[6\] **Get Custom Variable** (50) @(498.57144,41.42857)<br>
+'*Graph*'/\[6\] **Get Custom Variable** (50) `in#1` "Variable Name" \<- \[7\] **Query Dictionary Value by Key** (1158) `out#0` "Value" : *Str*<br>
+'*Graph*'/\[6\] **Get Custom Variable** (50) `out#0` "Variable Value" = 0 : *Int*<br>
+'*Graph*'/\[7\] **Query Dictionary Value by Key** (1158) @(110,70)<br>
+'*Graph*'/\[7\] **Query Dictionary Value by Key** (1158) `out#0` "Value" = '' : *Str*<br>
+'*Graph*'/\[9\] **Query If Dictionary Contains Specific Key** (1368) @(1108.5714,45.714287)<br>
+'*Graph*'/\[9\] **Query If Dictionary Contains Specific Key** (1368) `in#1` "Key" \<- \[6\] **Get Custom Variable** (50) `out#0` "Variable Value" : *Int*<br>
+'*Graph*'/\[9\] **Query If Dictionary Contains Specific Key** (1368) `in#1` "Key" = 0 : *Int* *(also wired)*<br>
+'*Graph*'/\[11\] **Get Local Variable** (18) @(215,359.7619)<br>
+'*Graph*'/\[12\] **Set Local Variable** (19) @(656.6667,329.7619)<br>
+'*Graph*'/\[12\] **Set Local Variable** (19) `in#0` "Local Variable" \<- \[11\] **Get Local Variable** (18) `out#0` "Local Variable" : *Loc*<br>
+'*Graph*'/\[13\] **Greater Than** (232) @(173.33333,623.0952)<br>
+'*Graph*'/\[14\] **Enumerations Equal** (475) @(665,661.4286)<br>
+'*Graph*'/\[15\] **Take Larger Value** (211/212) variant=C\<T:Flt\> @(1615,466.42856)<br>
+'*Graph*'/\[15\] **Take Larger Value** (211/212) `in#0` "Input 1" \<- \[17\] **Sign Operation** (218/219) `out#0` "Result" : *Flt*<br>
+'*Graph*'/\[15\] **Take Larger Value** (211/212) `in#0` "Input 1" = 0.00 : *Flt* *(also wired)*<br>
+'*Graph*'/\[15\] **Take Larger Value** (211/212) `in#1` "Input 2" \<- \[16\] **Split 3D Vector** (9) `out#0` "X-Component" : *Flt*<br>
+'*Graph*'/\[15\] **Take Larger Value** (211/212) `in#1` "Input 2" = 0.00 : *Flt* *(also wired)*<br>
+'*Graph*'/\[15\] **Take Larger Value** (211/212) `out#0` "Larger Value" = 0.00 : *Flt*<br>
+'*Graph*'/\[16\] **Split 3D Vector** (9) @(1108.3334,603.0952)<br>
+'*Graph*'/\[16\] **Split 3D Vector** (9) `in#0` "3D Vector" \<- \[18\] **3D Vector Normalization** (74) `out#0` "Result" : *Vec*<br>
+'*Graph*'/\[17\] **Sign Operation** (218/219) variant=C\<T:Flt\> @(1130,384.7619)<br>
+'*Graph*'/\[17\] **Sign Operation** (218/219) `in#0` "Input" \<- \[16\] **Split 3D Vector** (9) `out#2` "Z-Component" : *Flt*<br>
+'*Graph*'/\[17\] **Sign Operation** (218/219) `in#0` "Input" = 0.00 : *Flt* *(also wired)*<br>
+'*Graph*'/\[17\] **Sign Operation** (218/219) `out#0` "Result" = 0.00 : *Flt*<br>
+'*Graph*'/\[18\] **3D Vector Normalization** (74) @(890,893.0952)<br>
+'*Graph*'/\[19\] **Start Timer** (79) @(123.333336,869.2857)<br>
+'*Graph*'/\[21\] **Get Self Entity** (73) @(1087.738,-477.0238)<br>
+'*Graph*'/\[24\] **Get Self Entity** (73) @(1102.738,-260.35715)<br>
+'*Graph*'/\[25\] **Composite\_data** (1610612737) user=COMPOSITE @(1437.738,-457.0238)<br>
+'*Graph*'/\[25\] **Composite\_data** (1610612737) `in#0` "Player Entity" \<- \[21\] **Get Self Entity** (73) `out#0` "Self Entity" : *Ety*<br>
+'*Graph*'/\[25\] **Composite\_data** (1610612737) `in#1` "Target Entity" \<- \[24\] **Get Self Entity** (73) `out#0` "Self Entity" : *Ety*<br>
+'*Graph*'/\[26\] **Get Self Entity** (73) @(1992.738,-395.9127)<br>
+'*Graph*'/\[27\] **Get Self Entity** (73) @(1977.738,-612.57935)<br>
+'*Graph*'/\[32\] **Composite\_exec** (1610612738) user=COMPOSITE @(2329.738,-456.07938)<br>
+'*Graph*'/\[32\] **Composite\_exec** (1610612738) `in#0` "Player Entity" \<- \[27\] **Get Self Entity** (73) `out#0` "Self Entity" : *Ety*<br>
+'*Graph*'/\[32\] **Composite\_exec** (1610612738) `in#1` "Target Entity" \<- \[26\] **Get Self Entity** (73) `out#0` "Self Entity" : *Ety*<br>
+**GRAPH** '<u>\<composite\></u>*Composite\_data*' ENTITY\_NODE\_GRAPH (guid 1610612737, decl 1610612737) role=dependency<br>
+'<u>\<composite\></u>*Composite\_data*'/PORTMAP `ext.in#0` "Player Entity" -\> \[20\] **Set Player Revive Time** (278) `in#0` "Player Entity"<br>
+'<u>\<composite\></u>*Composite\_data*'/PORTMAP `ext.in#1` "Target Entity" -\> \[1\] **Get Entity Forward Vector** (516) `in#0` "Target Entity"<br>
+'<u>\<composite\></u>*Composite\_data*'/\[1\] **Get Entity Forward Vector** (516) @(4,273)<br>
+'<u>\<composite\></u>*Composite\_data*'/\[20\] **Set Player Revive Time** (278) @(0,0)<br>
+**GRAPH** '<u>\<composite\></u>*Composite\_exec*' ENTITY\_NODE\_GRAPH (guid 1610612738, decl 1610612738) role=dependency<br>
+'<u>\<composite\></u>*Composite\_exec*'/PORTMAP `ext.in.flow#0` -\> \[29\] **Set Player Revive Time** (278) `in.flow#0`<br>
+'<u>\<composite\></u>*Composite\_exec*'/PORTMAP `ext.in#0` "Player Entity" -\> \[29\] **Set Player Revive Time** (278) `in#0` "Player Entity"<br>
+'<u>\<composite\></u>*Composite\_exec*'/PORTMAP `ext.in#1` "Target Entity" -\> \[30\] **Get Entity Forward Vector** (516) `in#0` "Target Entity"<br>
+'<u>\<composite\></u>*Composite\_exec*'/\[29\] **Set Player Revive Time** (278) @(-2,-136.5)<br>
+'<u>\<composite\></u>*Composite\_exec*'/\[30\] **Get Entity Forward Vector** (516) @(2,136.5)

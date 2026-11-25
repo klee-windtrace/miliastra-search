@@ -1,7 +1,7 @@
 # FILE sample_0_main.gia
 GRAPH 'Graph' ENTITY_NODE_GRAPH class=9 guid='1073742366' kind=21001 service=20000 nodes=7
 GRAPH '<status>Empty' STATUS_NODE_GRAPH class=22 guid='1073742384' kind=21001 service=20003 nodes=0
-GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = id:0
+GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = null
 # FILE sample_1.gia
 GRAPH 'New Node Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=7
 GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=1 role=dependency decl='1610612737'
@@ -18,7 +18,7 @@ GRAPH 'Structs' ENTITY_NODE_GRAPH class=9 guid='1073741829' kind=21001 service=2
 GRAPH 'Lists' ENTITY_NODE_GRAPH class=9 guid='1073741830' kind=21001 service=20000 nodes=14
 # FILE sample_5.gia
 GRAPH 'Variables' ENTITY_NODE_GRAPH class=9 guid='1073741831' kind=21001 service=20000 nodes=10
-GRAPH_VARIABLE 'Variables' 'Variable_1' : Bol = No
+GRAPH_VARIABLE 'Variables' 'Variable_1' : Bol = false
 # FILE sample_6.gia
 GRAPH 'New Node Graph' ENTITY_NODE_GRAPH class=9 guid='1073741827' kind=21001 service=20000 nodes=2
 GRAPH 'New Node Graph_1' ITEM_NODE_GRAPH class=46 guid='1073741828' kind=21001 service=20005 nodes=2
@@ -32,7 +32,7 @@ GRAPH '<filter>New Filter Node Graph' BOOLEAN_FILTER_GRAPH class=10 guid='108213
 GRAPH '<filter>New Filter Node Graph_1' INTEGER_FILTER_GRAPH class=47 guid='1082130439' kind=21001 service=20006 nodes=3 entry_slot=1 evaluation_interval=0.1
 # FILE sample_8.gia
 GRAPH 'Graph' ENTITY_NODE_GRAPH class=9 guid='1073741832' kind=21001 service=20000 nodes=7
-GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = id:0
+GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = null
 # FILE sample_9.gia
 DECL "Signal_1" SIGNAL_NODE_DECL class=14 guid='1610612781' category=SEND_SIGNAL
 GRAPH 'New Node Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=0

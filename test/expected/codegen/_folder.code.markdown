@@ -21,7 +21,7 @@
 | `in#0` | "Target Entity" | \<- | \[1\] **When Entity Is Created** (71) `out#0` "Event Source Entity" | *Ety* |   |
 | `in#1` | "Variable Name" | = | '`Var1`' | *Str* |   |
 | `in#2` | "Variable Value" | \<- | \[3\] **Get Owner Entity** (744) `out#0` "Owner Entity" | *Ety* |   |
-| `in#4` | "Trigger Event" | = | No | *Bol* |   |
+| `in#4` | "Trigger Event" | = | false | *Bol* |   |
 
 \[3\] **Get Owner Entity** (744) @(175.77753,-337.94766)
 
@@ -76,8 +76,8 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Initial Value" | = | No | *Bol* |   |
-| `out#1` | "Value" | = | No | *Bol* |   |
+| `in#0` | "Initial Value" | = | false | *Bol* |   |
+| `out#1` | "Value" | = | false | *Bol* |   |
 
 \[12\] **Set Local Variable** (19/21) variant=C\<T:Int\> @(1620.4918,-111.376236)
 
@@ -99,7 +99,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Input" | \<- | \[11\] **Get Local Variable** (18) `out#1` "Value" | *Bol* |   |
-| `in#0` | "Input" | = | No | *Bol* | also wired |
+| `in#0` | "Input" | = | false | *Bol* | also wired |
 | `out#0` | "Output" | = | '' | *Str* |   |
 
 \[15\] **Finite Loop** (5) @(2639.8252,-121.70957)
@@ -155,7 +155,7 @@
 | `in#1` | "Location" | \<- | \[25\] **Get Entity Location and Rotation** (99) `out#0` "Location" | *Vec* |   |
 | `in#2` | "Rotate" | \<- | \[25\] **Get Entity Location and Rotation** (99) `out#1` "Rotate" | *Vec* |   |
 | `in#3` | "Owner Entity" | \<- | \[26\] **Get Local Variable** (18/2657) `out#1` "Value" | *Ety* |   |
-| `in#5` | "Overwrite Level" | = | Yes | *Bol* |   |
+| `in#5` | "Overwrite Level" | = | true | *Bol* |   |
 | `in#6` | "Level" | \<- | \[27\] **Get List Length** (142) `out#0` "Length" | *Int* |   |
 | `in#7` | "Unit Tag Index List" | \<- | \[28\] **Assembly List** (169) `out#0` "List" | *L\<Int\>* |   |
 
@@ -195,7 +195,7 @@
 | `in#1` | "Variable Name" | = | '`Test`' | *Str* |   |
 | `in#2` | "Variable Value" | \<- | \[30\] **Assembly Dictionary** (1788) `out#0` "Dictionary" | *Dict* |   |
 | `in#2` | "Variable Value" | = | {} | *Dict* | also wired |
-| `in#4` | "Trigger Event" | = | No | *Bol* |   |
+| `in#4` | "Trigger Event" | = | false | *Bol* |   |
 
 \[30\] **Assembly Dictionary** (1788) @(4238.003,19.855686)
 
@@ -211,7 +211,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` | "Yes" | -\> | \[33\] **Destroy Entity** (69) `in.flow#0` |   |   |
 | `out.flow#1` | "No" | -\> | \[32\] **Print String** (1) `in.flow#0` |   |   |
-| `in#0` | "Condition" | = | Yes | *Bol* |   |
+| `in#0` | "Condition" | = | true | *Bol* |   |
 
 \[32\] **Print String** (1) @(5249.5444,334.21185)
 
@@ -251,8 +251,8 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Execute" | = | Yes | *Bol* | default |
-| `in#1` | "Status Node Graph Configuration ID" | = | id:0 | *Cfg* | default |
+| `in#0` | "Execute" | = | true | *Bol* | default |
+| `in#1` | "Status Node Graph Configuration ID" | = | null | *Cfg* | default |
 | `in#2` | "Autonomous Logic Parameter ID" | = | 0 | *Int* | default |
 
 \[3\] **Double Branch** (200125/4001) @(504.14285,248.42857)
@@ -260,7 +260,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Condition" | \<- | \[4\] **Get Custom Variable** (200173/4200) `out#0` "Variable Value" | *Bol* |   |
-| `in#0` | "Condition" | = | No | *Bol* | default, also wired |
+| `in#0` | "Condition" | = | false | *Bol* | default, also wired |
 
 \[4\] **Get Custom Variable** (200173/4200) variant=C\<T:Bol\> @(68.42857,335.57144)
 
@@ -268,7 +268,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Target Entity" | = | enum:6003«Self» | *Enum* |   |
 | `in#1` | "Variable Name" | = | '`test`' | *Str* |   |
-| `out#0` | "Variable Value" | = | No | *Bol* |   |
+| `out#0` | "Variable Value" | = | false | *Bol* |   |
 
 ## Graph '<u>\<filter\></u>*New Filter Node Graph*'
 
@@ -313,7 +313,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `out#0` | "Self Entity" | = | id:0 | *Ety* | default |
+| `out#0` | "Self Entity" | = | null | *Ety* | default |
 
 # File `codetest_2.gia`
 
@@ -362,7 +362,7 @@
 | `in#0` | "Variable Name" | = | '`gvar`' | *Str* |   |
 | `in#1` | "Variable Value" | \<- | \[7\] **Simple Data** (1610612737) `out#0` "Value" | *Int* |   |
 | `in#1` | "Variable Value" | = | 0 | *Int* | also wired |
-| `in#2` | "Trigger Event" | = | No | *Bol* |   |
+| `in#2` | "Trigger Event" | = | false | *Bol* |   |
 
 \[7\] **Simple Data** (1610612737) user=COMPOSITE @(1474.7142,-142.28572)
 
@@ -387,7 +387,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` | "Yes" | -\> | \[15\] **Terminal** (1610612739) `in.flow#0` |   |   |
 | `out.flow#1` | "No" | -\> | \[21\] **Two In One Out** (1610612741) `in.flow#0` |   |   |
-| `in#0` | "Condition" | = | No | *Bol* |   |
+| `in#0` | "Condition" | = | false | *Bol* |   |
 
 \[29\] **Calling Twice** (1610612743) user=COMPOSITE @(3124.5952,34.261906)
 
@@ -402,7 +402,7 @@
 | `out.flow#0` |   | -\> | \[39\] **Set Custom Variable** (22/28) `in.flow#0` |   |   |
 | `in#1` | "Variable Name" | = | '`x`' | *Str* |   |
 | `in#2` | "Variable Value" | \<- | \[42\] **Exposed Local** (1610612745) `out#0` "Value" | *Bol* |   |
-| `in#2` | "Variable Value" | = | Yes | *Bol* | also wired |
+| `in#2` | "Variable Value" | = | true | *Bol* | also wired |
 | `in#4` | "Trigger Event" | \<- | \[42\] **Exposed Local** (1610612745) `out#0` "Value" | *Bol* |   |
 
 \[36\] **With Event** (1610612744) user=COMPOSITE @(3528.6577,41.24107)
@@ -418,7 +418,7 @@
 | `out.flow#0` |   | -\> | \[40\] **Set Custom Variable** (22/28) `in.flow#0` |   |   |
 | `in#1` | "Variable Name" | = | '`y`' | *Str* |   |
 | `in#2` | "Variable Value" | \<- | \[46\] **Exposed Native** (1610612746) `out#0` "Consume?" | *Bol* |   |
-| `in#2` | "Variable Value" | = | Yes | *Bol* | also wired |
+| `in#2` | "Variable Value" | = | true | *Bol* | also wired |
 | `in#4` | "Trigger Event" | \<- | \[46\] **Exposed Native** (1610612746) `out#0` "Consume?" | *Bol* |   |
 
 \[40\] **Set Custom Variable** (22/28) variant=C\<T:Bol\> @(4663.643,34.440475)
@@ -427,7 +427,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Variable Name" | = | '`z`' | *Str* |   |
 | `in#2` | "Variable Value" | \<- | \[54\] **Exposed Computed** (1610612748) `out#0` "Result" | *Bol* |   |
-| `in#2` | "Variable Value" | = | Yes | *Bol* | also wired |
+| `in#2` | "Variable Value" | = | true | *Bol* | also wired |
 | `in#4` | "Trigger Event" | \<- | \[54\] **Exposed Computed** (1610612748) `out#0` "Result" | *Bol* |   |
 
 \[42\] **Exposed Local** (1610612745) user=COMPOSITE @(3867.1223,-274.70096)
@@ -464,7 +464,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Condition" | = | No | *Bol* |   |
+| `in#0` | "Condition" | = | false | *Bol* |   |
 
 \[19\] **Double Branch** (2) @(-160,-85)
 
@@ -472,14 +472,14 @@
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#1` | "No" | -\> | \[22\] **Double Branch** (2) `in.flow#0` |   |   |
 | `out.flow#1` | "No" | -\> | \[1\] **Double Branch** (2) `in.flow#0` |   |   |
-| `in#0` | "Condition" | = | No | *Bol* |   |
+| `in#0` | "Condition" | = | false | *Bol* |   |
 
 \[22\] **Double Branch** (2) @(160,85)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` | "Yes" | -\> | \[1\] **Double Branch** (2) `in.flow#0` |   |   |
-| `in#0` | "Condition" | = | Yes | *Bol* |   |
+| `in#0` | "Condition" | = | true | *Bol* |   |
 
 ## Graph '<u>\<composite\></u>*Exposed Computed*'
 
@@ -531,8 +531,8 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Initial Value" | = | Yes | *Bol* |   |
-| `out#1` | "Value" | = | No | *Bol* |   |
+| `in#0` | "Initial Value" | = | true | *Bol* |   |
+| `out#1` | "Value" | = | false | *Bol* |   |
 
 \[38\] **Forwarding Event** (190) @(12.646014,-109.14144)
 
@@ -583,7 +583,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Variable Name" | = | '`gvar`' | *Str* |   |
 | `in#1` | "Variable Value" | = | 0 | *Int* |   |
-| `in#2` | "Trigger Event" | = | Yes | *Bol* |   |
+| `in#2` | "Trigger Event" | = | true | *Bol* |   |
 
 ## Graph '<u>\<composite\></u>*Simple Data*'
 
@@ -711,3 +711,145 @@
 | `in#1` | "Variable Name" | = | '`none`' | *Str* |   |
 
 \[33\] **Get Self Entity** (73) @(-206.5625,-110.3125)
+
+# File `data_order.gia`
+
+## Graph '*Graph*'
+
+- **type**: ENTITY\_NODE\_GRAPH
+- **guid**: '`1073741825`'
+
+### Nodes
+
+\[1\] **Get Local Variable** (18) @(-386.57144,-200.57143)
+
+\[2\] **When Custom Variable Changes** (36) @(-388.57144,48.57143)
+
+\[3\] **Monitor Signal** (300001) @(-385.7143,457.14285)
+
+\[4\] **Assembly List** (169) @(88.57143,-277.14285)
+
+\[5\] **Assembly Dictionary** (1788) @(450,-295.7143)
+
+\[6\] **Get Custom Variable** (50) @(498.57144,41.42857)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#1` | "Variable Name" | \<- | \[7\] **Query Dictionary Value by Key** (1158) `out#0` "Value" | *Str* |   |
+| `out#0` | "Variable Value" | = | 0 | *Int* |   |
+
+\[7\] **Query Dictionary Value by Key** (1158) @(110,70)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out#0` | "Value" | = | '' | *Str* |   |
+
+\[9\] **Query If Dictionary Contains Specific Key** (1368) @(1108.5714,45.714287)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#1` | "Key" | \<- | \[6\] **Get Custom Variable** (50) `out#0` "Variable Value" | *Int* |   |
+| `in#1` | "Key" | = | 0 | *Int* | also wired |
+
+\[11\] **Get Local Variable** (18) @(215,359.7619)
+
+\[12\] **Set Local Variable** (19) @(656.6667,329.7619)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Local Variable" | \<- | \[11\] **Get Local Variable** (18) `out#0` "Local Variable" | *Loc* |   |
+
+\[13\] **Greater Than** (232) @(173.33333,623.0952)
+
+\[14\] **Enumerations Equal** (475) @(665,661.4286)
+
+\[15\] **Take Larger Value** (211/212) variant=C\<T:Flt\> @(1615,466.42856)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Input 1" | \<- | \[17\] **Sign Operation** (218/219) `out#0` "Result" | *Flt* |   |
+| `in#0` | "Input 1" | = | 0.00 | *Flt* | also wired |
+| `in#1` | "Input 2" | \<- | \[16\] **Split 3D Vector** (9) `out#0` "X-Component" | *Flt* |   |
+| `in#1` | "Input 2" | = | 0.00 | *Flt* | also wired |
+| `out#0` | "Larger Value" | = | 0.00 | *Flt* |   |
+
+\[16\] **Split 3D Vector** (9) @(1108.3334,603.0952)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "3D Vector" | \<- | \[18\] **3D Vector Normalization** (74) `out#0` "Result" | *Vec* |   |
+
+\[17\] **Sign Operation** (218/219) variant=C\<T:Flt\> @(1130,384.7619)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Input" | \<- | \[16\] **Split 3D Vector** (9) `out#2` "Z-Component" | *Flt* |   |
+| `in#0` | "Input" | = | 0.00 | *Flt* | also wired |
+| `out#0` | "Result" | = | 0.00 | *Flt* |   |
+
+\[18\] **3D Vector Normalization** (74) @(890,893.0952)
+
+\[19\] **Start Timer** (79) @(123.333336,869.2857)
+
+\[21\] **Get Self Entity** (73) @(1087.738,-477.0238)
+
+\[24\] **Get Self Entity** (73) @(1102.738,-260.35715)
+
+\[25\] **Composite\_data** (1610612737) user=COMPOSITE @(1437.738,-457.0238)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Player Entity" | \<- | \[21\] **Get Self Entity** (73) `out#0` "Self Entity" | *Ety* |   |
+| `in#1` | "Target Entity" | \<- | \[24\] **Get Self Entity** (73) `out#0` "Self Entity" | *Ety* |   |
+
+\[26\] **Get Self Entity** (73) @(1992.738,-395.9127)
+
+\[27\] **Get Self Entity** (73) @(1977.738,-612.57935)
+
+\[32\] **Composite\_exec** (1610612738) user=COMPOSITE @(2329.738,-456.07938)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "Player Entity" | \<- | \[27\] **Get Self Entity** (73) `out#0` "Self Entity" | *Ety* |   |
+| `in#1` | "Target Entity" | \<- | \[26\] **Get Self Entity** (73) `out#0` "Self Entity" | *Ety* |   |
+
+## Graph '<u>\<composite\></u>*Composite\_data*'
+
+- **type**: ENTITY\_NODE\_GRAPH
+- **guid**: '`1610612737`'
+- **declaration guid**: '`1610612737`'
+- **role**: dependency
+
+### Port mappings
+
+| External pin | Name | Internal node | Internal pin | Name |
+| --- | --- | --- | --- | --- |
+| `ext.in#0` | "Player Entity" | \[20\] **Set Player Revive Time** (278) | `in#0` | "Player Entity" |
+| `ext.in#1` | "Target Entity" | \[1\] **Get Entity Forward Vector** (516) | `in#0` | "Target Entity" |
+
+### Nodes
+
+\[1\] **Get Entity Forward Vector** (516) @(4,273)
+
+\[20\] **Set Player Revive Time** (278) @(0,0)
+
+## Graph '<u>\<composite\></u>*Composite\_exec*'
+
+- **type**: ENTITY\_NODE\_GRAPH
+- **guid**: '`1610612738`'
+- **declaration guid**: '`1610612738`'
+- **role**: dependency
+
+### Port mappings
+
+| External pin | Name | Internal node | Internal pin | Name |
+| --- | --- | --- | --- | --- |
+| `ext.in.flow#0` |   | \[29\] **Set Player Revive Time** (278) | `in.flow#0` |   |
+| `ext.in#0` | "Player Entity" | \[29\] **Set Player Revive Time** (278) | `in#0` | "Player Entity" |
+| `ext.in#1` | "Target Entity" | \[30\] **Get Entity Forward Vector** (516) | `in#0` | "Target Entity" |
+
+### Nodes
+
+\[29\] **Set Player Revive Time** (278) @(-2,-136.5)
+
+\[30\] **Get Entity Forward Vector** (516) @(2,136.5)

@@ -1,4 +1,27 @@
-﻿# File `test_All_Composite.gia`
+﻿# File `composite_order.gia`
+
+## Graphs (8)
+
+| Name | Class | Guid | Nodes | Role |
+| --- | --- | --- | ---: | --- |
+| '*Flows*' | ENTITY\_NODE\_GRAPH | '`1073741825`' | **8** |   |
+| '<u>\<composite\></u>*C1*' | ENTITY\_NODE\_GRAPH | '`1610612737`' | **1** | dependency |
+| '<u>\<composite\></u>*C2*' | ENTITY\_NODE\_GRAPH | '`1610612738`' | **1** | dependency |
+| '<u>\<composite\></u>*C3*' | ENTITY\_NODE\_GRAPH | '`1610612739`' | **1** | dependency |
+| '<u>\<composite\></u>*C4*' | ENTITY\_NODE\_GRAPH | '`1610612740`' | **1** | dependency |
+| '<u>\<composite\></u>*C5*' | ENTITY\_NODE\_GRAPH | '`1610612741`' | **1** | dependency |
+| '<u>\<composite\></u>*C6*' | ENTITY\_NODE\_GRAPH | '`1610612742`' | **1** | dependency |
+| '<u>\<composite\></u>*C7*' | ENTITY\_NODE\_GRAPH | '`1610612743`' | **1** | dependency |
+
+## Resources (3)
+
+| Name | Class | Guid | Parent | Mounted graphs |
+| --- | --- | --- | --- | --- |
+| "**Empty Model**" | OBJECT\_ENTITY | '`1077936129`' | (10005018) | entity: '*Flows*' |
+| "**Empty Model**" | OBJECT\_ENTITY | '`1077936130`' | (10005018) | entity: '*Flows*' |
+| "**Empty Model**" | OBJECT\_ENTITY | '`1077936131`' | (10005018) | entity: '*Flows*' |
+
+# File `test_All_Composite.gia`
 
 ## Declarations (2)
 

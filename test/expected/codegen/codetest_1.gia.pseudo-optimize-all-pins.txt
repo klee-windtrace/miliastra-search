@@ -14,17 +14,17 @@ ServerGraphs['New Node Graph'] = async function Entity_1073741829($,node){
       Set_Custom_Variable({
         Target_Entity: $.Ety_001, // When_Entity_Is_Created.Event_Source_Entity
         Variable_Name: "Var1",
-        Variable_Value: Ety(Get_Owner_Entity({
-          Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+        Variable_Value: Ety(Get_Owner_Entity("data_0003", {
+          Target_Entity: Ety(Get_Self_Entity("data_0004", {}).Self_Entity),
         }).Owner_Entity),
-        is_bp_var: Bol(0), // (default)
-        Trigger_Event: Bol(0),
+        is_bp_var: Bol(false), // (default)
+        Trigger_Event: Bol(false),
       });
       void "node_0005"; // Set_Preset_Status
     }
     case 'node_0005':{ // called from 'node_0002: Set_Custom_Variable'
       Set_Preset_Status({
-        Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+        Target_Entity: Ety(Get_Self_Entity("data_0006", {}).Self_Entity),
         Preset_Status_Index: Int(1),
         Preset_Status_Value: Int(2),
       });
@@ -32,9 +32,9 @@ ServerGraphs['New Node Graph'] = async function Entity_1073741829($,node){
     }
     case 'node_0009':{ // called from 'node_0005: Set_Preset_Status'
       if(Double_Branch({
-        Condition: Bol(Enumerations_Equal({
-          Enumeration_1: Enum(Get_Entity_Type({
-            Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+        Condition: Bol(Enumerations_Equal("data_0008", {
+          Enumeration_1: Enum(Get_Entity_Type("data_0007", {
+            Target_Entity: Ety(Get_Self_Entity("data_0006", {}).Self_Entity),
           }).Entity_Type),
           Enumeration_2: Enum("Entity Type", "Entity Type_Object"),
         }).Result),
@@ -48,9 +48,9 @@ ServerGraphs['New Node Graph'] = async function Entity_1073741829($,node){
       const {
         Local_Variable: Loc_01,
         Value: Bol_02,
-      } = Get_Local_Variable({
-        Initial_Value: Bol(0), // (default)
-      }, "Var_0001");
+      } = Get_Local_Variable("Var_0011", {
+        Initial_Value: Bol(false), // (default)
+      });
 
       Set_Local_Variable({
         Local_Variable: Loc_01, // Get_Local_Variable.Local_Variable
@@ -62,12 +62,12 @@ ServerGraphs['New Node Graph'] = async function Entity_1073741829($,node){
       const {
         Local_Variable: Loc_01,
         Value: Bol_02,
-      } = Get_Local_Variable({
-        Initial_Value: Bol(0), // (default)
-      }, "Var_0001");
+      } = Get_Local_Variable("Var_0011", {
+        Initial_Value: Bol(false), // (default)
+      });
 
       Print_String({
-        String: Str(Data_Type_Conversion({
+        String: Str(Data_Type_Conversion("data_0014", {
           Input: Bol_02, // Get_Local_Variable.Value
           op: Enum("Type Conversions", 0), // (default)
         }).Output),
@@ -96,15 +96,15 @@ ServerGraphs['New Node Graph'] = async function Entity_1073741829($,node){
     }
     case 'node_0016':{ // called from 'node_0015: Finite_Loop'
       Set_List_Value({
-        List: LInt(Get_Custom_Variable({
+        List: LInt(Get_Custom_Variable("data_0021", {
           Target_Entity: $.Ety_001, // When_Entity_Is_Created.Event_Source_Entity
           Variable_Name: "MyList",
-          is_bp_var: Bol(0), // (default)
+          is_bp_var: Bol(false), // (default)
         }).Variable_Value),
         ID: $.Int_003, // Finite_Loop.Current_Loop_Value
-        Value: Int(Multiplication({
+        Value: Int(Multiplication("data_0017", {
           _0: $.Int_003, // Finite_Loop.Current_Loop_Value
-          _1: Int(Get_Random_Integer({
+          _1: Int(Get_Random_Integer("data_0020", {
             Lower_Limit: $.Int_003, // Finite_Loop.Current_Loop_Value
             Upper_Limit: $.Int_003, // Finite_Loop.Current_Loop_Value
           }).Result),
@@ -117,13 +117,13 @@ ServerGraphs['New Node Graph'] = async function Entity_1073741829($,node){
       const {
         Local_Variable: Loc_01,
         Value: Ety_02,
-      } = Get_Local_Variable({
+      } = Get_Local_Variable("Var_0026", {
         Initial_Value: $.Ety_001, // When_Entity_Is_Created.Event_Source_Entity
-      }, "Var_0002");
+      });
       const {
         Location: Vec_03,
         Rotate: Vec_04,
-      } = Get_Entity_Location_and_Rotation({
+      } = Get_Entity_Location_and_Rotation("data_0025", {
         Target_Entity: Ety_02, // Get_Local_Variable.Value
       });
 
@@ -132,16 +132,16 @@ ServerGraphs['New Node Graph'] = async function Entity_1073741829($,node){
         Location: Vec_03, // Get_Entity_Location_and_Rotation.Location
         Rotate: Vec_04, // Get_Entity_Location_and_Rotation.Rotate
         Owner_Entity: Ety_02, // Get_Local_Variable.Value
-        Follow_Target: Ety(0), // (default)
-        Overwrite_Level: Bol(1),
-        Level: Int(Get_List_Length({
-          List: LInt(Get_Custom_Variable({
+        Follow_Target: Ety(null), // (default)
+        Overwrite_Level: Bol(true),
+        Level: Int(Get_List_Length("data_0027", {
+          List: LInt(Get_Custom_Variable("data_0021", {
             Target_Entity: $.Ety_001, // When_Entity_Is_Created.Event_Source_Entity
             Variable_Name: "MyList",
-            is_bp_var: Bol(0), // (default)
+            is_bp_var: Bol(false), // (default)
           }).Variable_Value),
         }).Length),
-        Unit_Tag_Index_List: LInt(Assembly_List({
+        Unit_Tag_Index_List: LInt(Assembly_List("data_0028", {
           Count: Int(1), // (default)
           _0: Int(0), // (default)
         }).List),
@@ -152,27 +152,27 @@ ServerGraphs['New Node Graph'] = async function Entity_1073741829($,node){
       const {
         Local_Variable: Loc_01,
         Value: Ety_02,
-      } = Get_Local_Variable({
+      } = Get_Local_Variable("Var_0026", {
         Initial_Value: $.Ety_001, // When_Entity_Is_Created.Event_Source_Entity
-      }, "Var_0002");
+      });
 
       Set_Custom_Variable({
         Target_Entity: $.Ety_004, // Create_Prefab.Created_Entity
         Variable_Name: "Test",
-        Variable_Value: Dict(Assembly_Dictionary({
+        Variable_Value: Dict(Ety,Ety,Assembly_Dictionary("data_0030", {
           Count: Int(2), // (default)
           Key_0: $.Ety_004, // Create_Prefab.Created_Entity
           Value_0: Ety_02, // Get_Local_Variable.Value
         }).Dictionary),
-        is_bp_var: Bol(0), // (default)
-        Trigger_Event: Bol(0),
+        is_bp_var: Bol(false), // (default)
+        Trigger_Event: Bol(false),
       });
       await GoTo("node_0031"); // Double_Branch
       return GoTo("node_0032"); // Print_String
     }
     case 'node_0031':{ // called from 'node_0029: Set_Custom_Variable'
       if(Double_Branch({
-        Condition: Bol(1),
+        Condition: Bol(true),
       }).Next=="Yes"){
         return GoTo("node_0033"); // Destroy_Entity
       }else{ // =="No"
@@ -181,7 +181,7 @@ ServerGraphs['New Node Graph'] = async function Entity_1073741829($,node){
     }
     case 'node_0033':{ // 2 callers: ['node_0031: Double_Branch', 'node_0032: Print_String']
       Destroy_Entity({
-        Target_Entity: Ety(Query_Entity_by_GUID({
+        Target_Entity: Ety(Query_Entity_by_GUID("data_0034", {
           GUID: $.Gid_002, // When_Entity_Is_Created.Event_Source_GUID
         }).Entity),
       });
@@ -197,9 +197,9 @@ ServerGraphs['New Node Graph'] = async function Entity_1073741829($,node){
       const {
         Local_Variable: Loc_01,
         Value: Bol_02,
-      } = Get_Local_Variable({
-        Initial_Value: Bol(0), // (default)
-      }, "Var_0001");
+      } = Get_Local_Variable("Var_0011", {
+        Initial_Value: Bol(false), // (default)
+      });
 
       Set_Local_Variable({
         Local_Variable: Loc_01, // Get_Local_Variable.Local_Variable
@@ -249,7 +249,7 @@ ClientGraphs['New Creation Status Decision Node Graph'] = async function Creatio
     }
     case 'node_0002':{ // called from 'event_0001: Execute_only_by_sequence'
       Switch_to_self_execution_status({
-        Execute: Bol(1), // (default)
+        Execute: Bol(true), // (default)
         Status_Node_Graph_Configuration_ID: Cfg(0), // (default)
         Autonomous_Logic_Parameter_ID: Int(0), // (default)
       });
@@ -257,7 +257,7 @@ ClientGraphs['New Creation Status Decision Node Graph'] = async function Creatio
     }
     case 'node_0003':{ // called from 'event_0001: Execute_only_by_sequence'
       if(Double_Branch({
-        Condition: Bol(Get_Custom_Variable({
+        Condition: Bol(Get_Custom_Variable("data_0004", {
           Target_Entity: Enum("Target Entity", "Self"),
           Variable_Name: "test",
         }).Variable_Value),
@@ -272,14 +272,14 @@ ClientGraphs['New Creation Status Decision Node Graph'] = async function Creatio
 
 ClientGraphs['New Filter Node Graph'] = async function Filter_1082130436($,node){
   Node_Graph_End_Integer({
-    Output_Result_Integer: Int(Get_Maximum_Value_From_List({
-      List: LInt(Get_List_of_Values_From_Dictionary({
-        Dictionary: Dict(Get_Custom_Variable({
-          Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+    Output_Result_Integer: Int(Get_Maximum_Value_From_List("data_0002", {
+      List: LInt(Get_List_of_Values_From_Dictionary("data_0003", {
+        Dictionary: Dict(Any,Int,Get_Custom_Variable("data_0004", {
+          Target_Entity: Ety(Get_Self_Entity("data_0005", {}).Self_Entity),
           Variable_Name: "list",
         }).Variable_Value),
       }).Value_List),
     }).Maximum_Value),
     Filter_Return_Type: Enum("Filter Return Type", "Return Integer"), // (default)
-  }, Flt(0.3));
+  }, Flt(0.30));
 };

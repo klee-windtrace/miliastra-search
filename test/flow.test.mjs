@@ -109,7 +109,7 @@ test('a choice of three ways out is a switch whose `default` is last: the droppe
 });
 test('one way out and a dropped flow is an if / else', () => {
   const text = written((c) => { c.flow = { type: 'choice', form: 'if', terminal: true, default: null }; c.next.pop(); }, { optimize: true });
-  assert.match(text, /if\(\(await Composite\['Two Exclusive Outs'\]\(\$, "Comp_005", \{\n\s+Condition: Bol\(0\),\n\s+\}, \$\.input\)\)\.Next=="Yes"\)\{\n[^]*?\}else\{ \/\/ terminal\n\s+return;\n\s+\}/);
+  assert.match(text, /if\(\(await Composite\['Two Exclusive Outs'\]\(\$, "Comp_0025", \{\n\s+Condition: Bol\(false\),\n\s+\}, \$\.input\)\)\.Next=="Yes"\)\{\n[^]*?\}else\{ \/\/ terminal\n\s+return;\n\s+\}/);
 });
 test('Multiple Branches: the first output is the `default`, listed first with its name; Double Branch has no throw', () => {
   const text = run(['code', TWO, '--pseudocode', '--format', 'text']);
@@ -137,7 +137,7 @@ test('a found data node finds the nodes that read it, up to the execution node',
   // the position of the call node of Simple Data is on no other line, and the node has no flow pins
   const text = search('--search', '1474.7142');
   assert.deepEqual(cases(text), ['node_0005']);
-  assert.match(text, /Composite\['Simple Data'\]\(\$, "Comp_001", \{\}\);/);
+  assert.match(text, /Composite\['Simple Data'\]\(\$, "Comp_0007", \{\}\);/);
 });
 test('the search is made on the listing, not on the pseudocode', () => {
   // `Exit` and `GoTo` are words of the pseudocode only

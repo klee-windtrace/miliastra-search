@@ -12,7 +12,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` |   | -\> | \[18\] **Wrapped (Custom Variable)** (1610612737) `in.flow#0` |   |   |
-| `in#0` | "Delay" | = | 1 | *Flt* |   |
+| `in#0` | "Delay" | = | 1.00 | *Flt* |   |
 | `in#1` | "Timer Name" | = | '`1`' | *Str* |   |
 
 \[8\] **When Entity Is Created** (71) @(-741.4286,-167.5238)
@@ -25,7 +25,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Delay" | = | 2 | *Flt* |   |
+| `in#0` | "Delay" | = | 2.00 | *Flt* |   |
 | `in#1` | "Timer Name" | = | '`2`' | *Str* |   |
 
 \[12\] **Naive execution delay** (1610612738) user=COMPOSITE @(555.7143,339.33334)
@@ -33,7 +33,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` |   | -\> | \[20\] **Wrapped (Custom Variable)** (1610612737) `in.flow#0` |   |   |
-| `in#0` | "Delay" | = | 3 | *Flt* |   |
+| `in#0` | "Delay" | = | 3.00 | *Flt* |   |
 | `in#1` | "Timer Name" | = | '`3`' | *Str* |   |
 
 \[13\] **Double Branch** (2) @(198.57143,549.3333)
@@ -42,7 +42,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` | "Yes" | -\> | \[12\] **Naive execution delay** (1610612738) `in.flow#0` |   |   |
 | `out.flow#1` | "No" | -\> | \[20\] **Wrapped (Custom Variable)** (1610612737) `in.flow#0` |   |   |
-| `in#0` | "Condition" | = | Yes | *Bol* |   |
+| `in#0` | "Condition" | = | true | *Bol* |   |
 
 \[18\] **Wrapped (Custom Variable)** (1610612737) user=COMPOSITE @(165,-167.5)
 
@@ -50,7 +50,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Variable Name" | = | '`X`' | *Str* |   |
 | `in#2` | "Variable Value" | = | 0 | *Int* |   |
-| `in#3` | "Trigger Event" | = | Yes | *Bol* |   |
+| `in#3` | "Trigger Event" | = | true | *Bol* |   |
 
 \[19\] **Wrapped (Custom Variable)** (1610612737) user=COMPOSITE @(-769.6667,429.5)
 
@@ -59,7 +59,7 @@
 | `out.flow#0` |   | -\> | \[10\] **Naive execution delay** (1610612738) `in.flow#0` |   |   |
 | `in#1` | "Variable Name" | = | '`Y`' | *Str* |   |
 | `in#2` | "Variable Value" | = | 0 | *Int* |   |
-| `in#3` | "Trigger Event" | = | Yes | *Bol* |   |
+| `in#3` | "Trigger Event" | = | true | *Bol* |   |
 
 \[20\] **Wrapped (Custom Variable)** (1610612737) user=COMPOSITE @(934.3333,583.5)
 
@@ -67,13 +67,13 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Variable Name" | = | '`Z`' | *Str* |   |
 | `in#2` | "Variable Value" | = | 0 | *Int* |   |
-| `in#3` | "Trigger Event" | = | Yes | *Bol* |   |
+| `in#3` | "Trigger Event" | = | true | *Bol* |   |
 
 \[21\] **Naive execution delay** (1610612738) user=COMPOSITE @(847,-151.83333)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Delay" | = | 4 | *Flt* |   |
+| `in#0` | "Delay" | = | 4.00 | *Flt* |   |
 | `in#1` | "Timer Name" | = | '`4`' | *Str* |   |
 
 ## Graph '*Cycle with no entry*'
@@ -96,7 +96,7 @@
 | `out.flow#0` |   | -\> | \[4\] **Multiple Branches** (3) `in.flow#0` |   |   |
 | `in#1` | "Variable Name" | = | '`A`' | *Str* |   |
 | `in#2` | "Variable Value" | \<- | \[3\] **Finite Loop** (5) `out#0` "Current Loop Value" | *Int* |   |
-| `in#3` | "Trigger Event" | = | Yes | *Bol* |   |
+| `in#3` | "Trigger Event" | = | true | *Bol* |   |
 
 \[3\] **Finite Loop** (5) @(224.57143,-81.14286)
 
@@ -161,7 +161,7 @@
 | `out.flow#0` |   | -\> | \[15\] **Multiple Branches** (3) `in.flow#0` |   |   |
 | `in#1` | "Variable Name" | = | '`B`' | *Str* |   |
 | `in#2` | "Variable Value" | \<- | \[16\] **Finite Loop** (5) `out#0` "Current Loop Value" | *Int* |   |
-| `in#3` | "Trigger Event" | = | Yes | *Bol* |   |
+| `in#3` | "Trigger Event" | = | true | *Bol* |   |
 
 ## Graph '*Dead composite*'
 
@@ -177,7 +177,7 @@
 | `out.flow#0` |   | -\> | \[6\] **Print String** (1) `in.flow#0` |   |   |
 | `in#1` | "Variable Name" | = | '`1`' | *Str* |   |
 | `in#2` | "Variable Value" | = | 1 | *Int* |   |
-| `in#3` | "Trigger Event" | = | No | *Bol* |   |
+| `in#3` | "Trigger Event" | = | false | *Bol* |   |
 
 \[4\] **When Entity Is Created** (71) @(-467.66666,283.33334)
 
@@ -205,7 +205,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Variable Name" | = | '`2`' | *Str* |   |
 | `in#2` | "Variable Value" | = | 2 | *Int* |   |
-| `in#3` | "Trigger Event" | = | No | *Bol* |   |
+| `in#3` | "Trigger Event" | = | false | *Bol* |   |
 
 \[9\] **Wrapped (Custom Variable)** (1610612737) user=COMPOSITE @(967.1695,279.901)
 
@@ -215,7 +215,7 @@
 | `in#1` | "Variable Name" | \<- | \[7\] **Data Type Conversion** (180/182) `out#0` "Output" | *Str* |   |
 | `in#1` | "Variable Name" | = | '`3`' | *Str* | also wired |
 | `in#2` | "Variable Value" | = | 3 | *Int* |   |
-| `in#3` | "Trigger Event" | = | No | *Bol* |   |
+| `in#3` | "Trigger Event" | = | false | *Bol* |   |
 
 \[10\] **Wrapped (Custom Variable)** (1610612737) user=COMPOSITE @(-45.330517,840.901)
 
@@ -223,7 +223,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Variable Name" | = | '`4`' | *Str* |   |
 | `in#2` | "Variable Value" | = | 4 | *Int* |   |
-| `in#3` | "Trigger Event" | = | No | *Bol* |   |
+| `in#3` | "Trigger Event" | = | false | *Bol* |   |
 
 \[11\] **Print String** (1) @(515.6695,846.401)
 
@@ -238,7 +238,7 @@
 | `out.flow#0` |   | -\> | \[14\] **Print String** (1) `in.flow#0` |   |   |
 | `in#1` | "Variable Name" | = | '`5`' | *Str* |   |
 | `in#2` | "Variable Value" | = | 5 | *Int* |   |
-| `in#3` | "Trigger Event" | = | No | *Bol* |   |
+| `in#3` | "Trigger Event" | = | false | *Bol* |   |
 
 \[14\] **Print String** (1) @(1457.3362,852.2343)
 
@@ -253,7 +253,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Delay" | = | 1 | *Flt* |   |
+| `in#0` | "Delay" | = | 1.00 | *Flt* |   |
 
 \[7\] **When Entity Is Created** (71) @(-421.66666,120.333336)
 
@@ -266,13 +266,13 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` |   | -\> | \[9\] **Test Delay Print** (1610612739) `in.flow#0` |   |   |
-| `in#0` | "Delay" | = | 2 | *Flt* |   |
+| `in#0` | "Delay" | = | 2.00 | *Flt* |   |
 
 \[9\] **Test Delay Print** (1610612739) user=COMPOSITE @(400,122)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Delay" | = | 3 | *Flt* |   |
+| `in#0` | "Delay" | = | 3.00 | *Flt* |   |
 
 ## Graph '<u>\<composite\></u>*Naive execution delay*'
 
@@ -318,14 +318,14 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Target Entity" | \<- | \[6\] **Get Self Entity** (73) `out#0` "Self Entity" | *Ety* |   |
-| `in#2` | "Loop" | = | No | *Bol* |   |
+| `in#2` | "Loop" | = | false | *Bol* |   |
 | `in#3` | "Timer Sequence" | \<- | \[5\] **Assembly List** (169/173) `out#0` "List" | *L\<Flt\>* |   |
 
 \[5\] **Assembly List** (169/173) variant=C\<T:Flt\> @(-431.45715,-185.08571)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#1` | "0" | = | 0 | *Flt* |   |
+| `in#1` | "0" | = | 0.00 | *Flt* |   |
 | `out#0` | "List" | = | \[\] | *L\<Flt\>* |   |
 
 \[6\] **Get Self Entity** (73) @(-765,146.19048)

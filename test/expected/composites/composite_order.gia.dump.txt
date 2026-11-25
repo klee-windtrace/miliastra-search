@@ -1,0 +1,14 @@
+GRAPH 'Flows' ENTITY_NODE_GRAPH guid='1073741825' nodes=8
+GRAPH '<composite>C1' ENTITY_NODE_GRAPH guid='1610612737' nodes=1 role=dependency
+GRAPH '<composite>C2' ENTITY_NODE_GRAPH guid='1610612738' nodes=1 role=dependency
+GRAPH '<composite>C3' ENTITY_NODE_GRAPH guid='1610612739' nodes=1 role=dependency
+GRAPH '<composite>C4' ENTITY_NODE_GRAPH guid='1610612740' nodes=1 role=dependency
+GRAPH '<composite>C5' ENTITY_NODE_GRAPH guid='1610612741' nodes=1 role=dependency
+GRAPH '<composite>C6' ENTITY_NODE_GRAPH guid='1610612742' nodes=1 role=dependency
+GRAPH '<composite>C7' ENTITY_NODE_GRAPH guid='1610612743' nodes=1 role=dependency
+RESOURCE "Empty Model" OBJECT_ENTITY guid='1077936129' parent=(10005018)
+MOUNT 'Flows' -> OBJECT_ENTITY "Empty Model" entity
+RESOURCE "Empty Model" OBJECT_ENTITY guid='1077936130' parent=(10005018)
+MOUNT 'Flows' -> OBJECT_ENTITY "Empty Model" entity
+RESOURCE "Empty Model" OBJECT_ENTITY guid='1077936131' parent=(10005018)
+MOUNT 'Flows' -> OBJECT_ENTITY "Empty Model" entity

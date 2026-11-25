@@ -7,25 +7,25 @@
 'Dead composite'/[6] Print String (1) in#0 "String" <- [7] Data Type Conversion (180/182) out#0 "Output" : Str
 'Dead composite'/[7] Data Type Conversion (180/182) variant=C<K:Int,V:Str> @(449.33334,19.333334)
 --
-'Dead composite'/[10] Wrapped (Custom Variable) (1610612737) in#3 "Trigger Event" = No : Bol
+'Dead composite'/[10] Wrapped (Custom Variable) (1610612737) in#3 "Trigger Event" = false : Bol
 'Dead composite'/[11] Print String (1) @(515.6695,846.401)
 'Dead composite'/[11] Print String (1) out.flow#0 -> [13] Wrapped (Custom Variable) (1610612737) in.flow#0
 'Dead composite'/[13] Wrapped (Custom Variable) (1610612737) user=COMPOSITE @(938.1695,851.401)
 'Dead composite'/[13] Wrapped (Custom Variable) (1610612737) out.flow#0 -> [14] Print String (1) in.flow#0
 'Dead composite'/[13] Wrapped (Custom Variable) (1610612737) in#1 "Variable Name" = '5' : Str
 --
-'Dead composite'/[13] Wrapped (Custom Variable) (1610612737) in#3 "Trigger Event" = No : Bol
+'Dead composite'/[13] Wrapped (Custom Variable) (1610612737) in#3 "Trigger Event" = false : Bol
 'Dead composite'/[14] Print String (1) @(1457.3362,852.2343)
 GRAPH 'Nested event' ENTITY_NODE_GRAPH (guid 1073741828)
 'Nested event'/[6] Test Delay Print (1610612739) user=COMPOSITE @(48,-245.77777)
-'Nested event'/[6] Test Delay Print (1610612739) in#0 "Delay" = 1 : Flt
+'Nested event'/[6] Test Delay Print (1610612739) in#0 "Delay" = 1.00 : Flt
 'Nested event'/[7] When Entity Is Created (71) @(-421.66666,120.333336)
 'Nested event'/[7] When Entity Is Created (71) out.flow#0 -> [8] Test Delay Print (1610612739) in.flow#0
 'Nested event'/[8] Test Delay Print (1610612739) user=COMPOSITE @(2.2737368e-13,123.666664)
 'Nested event'/[8] Test Delay Print (1610612739) out.flow#0 -> [9] Test Delay Print (1610612739) in.flow#0
-'Nested event'/[8] Test Delay Print (1610612739) in#0 "Delay" = 2 : Flt
+'Nested event'/[8] Test Delay Print (1610612739) in#0 "Delay" = 2.00 : Flt
 'Nested event'/[9] Test Delay Print (1610612739) user=COMPOSITE @(400,122)
-'Nested event'/[9] Test Delay Print (1610612739) in#0 "Delay" = 3 : Flt
+'Nested event'/[9] Test Delay Print (1610612739) in#0 "Delay" = 3.00 : Flt
 GRAPH '<composite>Naive execution delay' ENTITY_NODE_GRAPH (guid 1610612738, decl 1610612738) role=dependency
 --
 GRAPH '<composite>Test Delay Print' ENTITY_NODE_GRAPH (guid 1610612739, decl 1610612739) role=dependency

@@ -1,0 +1,8 @@
+composite        "C1"                               1 call: ['Flows']
+composite        "C2"                               1 call: ['Flows']
+composite        "C3"                               1 call: ['Flows']
+composite        "C4"                               1 call: ['Flows']
+composite        "C5"                               1 call: ['Flows']
+composite        "C6"                               1 call: ['Flows']
+composite        "C7"                               1 call: ['Flows']
+mount            'Flows'                            3 entity: OBJECT_ENTITY:"Empty Model" (x3)

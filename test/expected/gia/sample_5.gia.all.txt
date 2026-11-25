@@ -22,7 +22,7 @@ CLASS ENTITY_NODE_GRAPH class=9 count=1
 
 # DUMP
 GRAPH 'Variables' ENTITY_NODE_GRAPH class=9 guid='1073741831' kind=21001 service=20000 nodes=10
-GRAPH_VARIABLE 'Variables' 'Variable_1' : Bol = No
+GRAPH_VARIABLE 'Variables' 'Variable_1' : Bol = false
 
 # REFS
 custom_variable  "* (listener for any name)"        1 listen: ['Variables']

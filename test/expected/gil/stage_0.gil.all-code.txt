@@ -88,7 +88,7 @@ RESOURCE "Статус сети" UI_CONTROL class=15 guid='1073741836' section=r
 RESOURCE "Кнопка сопротивления" UI_CONTROL class=15 guid='1073741837' section=root.9
 RESOURCE "Кнопка голосового чата" UI_CONTROL class=15 guid='1073741838' section=root.9
 RESOURCE "Очередь подсказок голосового чата" UI_CONTROL class=15 guid='1073741839' section=root.9
-GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = id:0
+GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = null
 
 # REFS
 graph_variable   "Graph_Var" (Ety)                  ['Graph']: 1 get, 0 set
@@ -109,7 +109,7 @@ top graphs by node count:
 
 # CODE
 GRAPH 'Graph' ENTITY_NODE_GRAPH (guid 1073741825)
-'Graph'/VAR Graph_Var : Ety public=false = id:0
+'Graph'/VAR Graph_Var : Ety public=false = null
 'Graph'/COMMENT 'Comment' @(-193,-100)
 'Graph'/[1] When Entity Is Created (71) @(-219,48)
 'Graph'/[1] When Entity Is Created (71) out.flow#0 -> [4] Double Branch (2) in.flow#0

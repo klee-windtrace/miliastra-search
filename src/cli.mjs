@@ -20,7 +20,7 @@ modes:
   miliastra-search raw   <file>          [options]   schema-less protobuf dump (works even if the schema is outdated)
   miliastra-search all   <files|dirs...> [options]   info, dump (always with --details), refs and warns one after the other (code too with --with-code)
   miliastra-search llm   <files|dirs...>             everything for a language model to read: the all report without warns, in plain text, as short
-                       pseudocode. It takes no options (it sets --lenient --lang EN --format text --short --dedup --tab --pseudocode --optimize
+                       pseudocode. It takes only --lang (it sets --lenient --format text --short --dedup --tab --pseudocode --optimize
                        --lazy --with-code itself) and no saved report
 
 Files are shown by their name only (no directory). A file that cannot be read or decoded stops the run: nothing is printed or written, and
@@ -90,6 +90,7 @@ code:
                        read once is not declared: the call stands where the value is read, in a typecast: Ety(Get_Self_Entity().Self_Entity)
   --lazy             with --pseudocode: the values that cross a composite's boundary are lazy: lazy(()=> Node()) for a data node whose value goes into a
                        composite, unlz(value) where a native node reads a lazy value, and the helpers written once as a comment. Native code is not touched
+                       (a comment block that explains the conventions of the code opens the document)
 
 all only:
   --with-code        also the code view (heavy, rarely needed): after the other parts. --pseudocode, --expand, --optimize and --lazy apply to it as in code
@@ -127,8 +128,8 @@ class UsageError extends Error {}
 // Modes are always listed in this order; `all` is the mode made of the others.
 const MODES = ['info', 'dump', 'code', 'refs', 'warns', 'check', 'raw'];
 const COMMANDS = [...MODES, 'all', 'llm'];
-// `llm` is `all` with these options and without the warns part; it takes no option itself
-const LLM_OPTIONS = { lenient: true, lang: 'EN', format: 'text', short: true, dedup: true, tab: true, pseudocode: true, optimize: true, lazy: true, 'with-code': true };
+// `llm` is `all` with these options and without the warns part; the language is its only option of its own
+const LLM_OPTIONS = { lenient: true, format: 'text', short: true, dedup: true, tab: true, pseudocode: true, optimize: true, lazy: true, 'with-code': true };
 
 const FLAG_OPTIONS = new Set(['strict', 'all-pins', 'show-tag', 'lenient', 'help', 'no-file-prefix', 'sort-desc', 'details', 'with-code', 'pseudocode', 'optimize', 'lazy', 'expand', 'dedup', 'short', 'tab']);
 const VALUE_OPTIONS = new Set(['name', 'key', 'kind', 'search', 'match', 'input', 'output', 'format', 'db', 'lang', 'context', 'top-graphs']);
@@ -222,9 +223,9 @@ export function main(argv, io) {
   if (!COMMANDS.includes(cmd)) { err(`unknown command "${cmd}"\n`); io.err(HELP); return 2; }
   const llm = cmd === 'llm';
   if (llm) {
-    const other = Object.keys(o).filter((k) => k !== '_');
-    if (other.length) { err(`error: llm takes no options, got ${other.map((k) => '--' + k).join(', ')}`); return 2; }
-    o = { _: o._, ...LLM_OPTIONS };
+    const other = Object.keys(o).filter((k) => k !== '_' && k !== 'lang');
+    if (other.length) { err(`error: llm takes no options but --lang, got ${other.map((k) => '--' + k).join(', ')}`); return 2; }
+    o = { _: o._, ...(o.lang != null ? { lang: o.lang } : {}), ...LLM_OPTIONS };
     cmd = 'all';
   }
   if (o.input != null && !/^(gia|gil)$/.test(o.input)) { err(`error: --input must be gia or gil, got "${o.input}"`); return 2; }

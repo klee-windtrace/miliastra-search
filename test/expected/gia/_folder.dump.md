@@ -2,7 +2,7 @@
 
 **GRAPH** '*Graph*' ENTITY\_NODE\_GRAPH guid='`1073742366`' nodes=7<br>
 **GRAPH** '<u>\<status\></u>*Empty*' STATUS\_NODE\_GRAPH guid='`1073742384`' nodes=0<br>
-**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = id:0
+**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = null
 
 # FILE `sample_1.gia`
 
@@ -29,7 +29,7 @@
 # FILE `sample_5.gia`
 
 **GRAPH** '*Variables*' ENTITY\_NODE\_GRAPH guid='`1073741831`' nodes=10<br>
-**GRAPH\_VARIABLE** '*Variables*' '**Variable\_1**' : *Bol* = No
+**GRAPH\_VARIABLE** '*Variables*' '**Variable\_1**' : *Bol* = false
 
 # FILE `sample_6.gia`
 
@@ -49,7 +49,7 @@
 # FILE `sample_8.gia`
 
 **GRAPH** '*Graph*' ENTITY\_NODE\_GRAPH guid='`1073741832`' nodes=7<br>
-**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = id:0
+**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = null
 
 # FILE `sample_9.gia`
 

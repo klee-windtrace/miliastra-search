@@ -40,7 +40,7 @@ RESOURCE "Статус сети" UI_CONTROL class=15 guid='1073741836' section=r
 RESOURCE "Кнопка сопротивления" UI_CONTROL class=15 guid='1073741837' section=root.9
 RESOURCE "Кнопка голосового чата" UI_CONTROL class=15 guid='1073741838' section=root.9
 RESOURCE "Очередь подсказок голосового чата" UI_CONTROL class=15 guid='1073741839' section=root.9
-GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = id:0
+GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = null
 # FILE stage_012379.gil
 DECL "Signal_2" SIGNAL_NODE_DECL class=14 guid='1073741831' category=SEND_SIGNAL
 DECL "Signal_1" SIGNAL_NODE_DECL class=14 guid='1073741828' category=SEND_SIGNAL
@@ -169,7 +169,7 @@ RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741854' section=root.9
 RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741855' section=root.9
 RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741856' section=root.9
 RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741857' section=root.9
-GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = id:0
+GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = null
 # FILE stage_1.gil
 GRAPH /(default)/'New Node Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=7
 GRAPH /(default)/'<composite>Create Composite Node' ENTITY_NODE_GRAPH class=9 guid='1073741826' kind=21002 service=20000 nodes=1 decl='1073741825'

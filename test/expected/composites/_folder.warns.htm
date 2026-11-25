@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>warns test_All_Composite.gia, test_composite.gia, test_composite.gil, var_change.gia</title>
+<title>warns composite_order.gia, test_All_Composite.gia, test_composite.gia, test_composite.gil, var_change.gia</title>
 <style>
 :root{color-scheme:dark;--bg:#0C0C0C;--panel:#161616;--line:#2e2e2e;--fg:#CCCCCC;--muted:#767676;--accent:#61D6D6}
 *{box-sizing:border-box}
@@ -96,10 +96,10 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="warn">WARN</span>  <span class="findingType">composite-definition-count-anomaly</span>: composite "<span class="key">Create Composite Node(1)</span>" has <span class="count">3</span> definition(s) in the scanned files (expected exactly 1) – guid=1610612746; guid=1610613135; guid=1610613135; this points to a structural bug in the GIL/GIA or in how this tool parsed it [<span class="fileName">test_All_Composite.gia</span>]</pre>
 <hr>
 <h2><span class="section">limits</span></h2>
-<pre class="lines">composites: <span class="limitOk">33/1000</span> declared
+<pre class="lines">composites: <span class="limitOk">40/1000</span> declared
 signals: <span class="limitOk">2/99</span> declared
 prefabs (OBJECT): <span class="limitOk">2/1000</span>
-dynamic entities (OBJECT_ENTITY): <span class="limitOk">2/3000</span>
+dynamic entities (OBJECT_ENTITY): <span class="limitOk">5/3000</span>
 PRESET_POINT: <span class="limitOk">1/2000</span>
 ENVIRONMENT_CONFIGURATION: <span class="limitOk">1/50</span>
 CLASS: <span class="limitOk">1/100</span>
@@ -110,6 +110,7 @@ TERRAIN_ENTITY: <span class="limitOk">1/1200</span></pre>
 <pre class="lines">'<span class="graphName">All_Composite</span>': <span class="limitOk">52/3000</span> nodes [<span class="fileName">test_All_Composite.gia</span>]
 '<span class="graphName">New Node Graph</span>': <span class="limitOk">17/3000</span> nodes [<span class="fileName">test_composite.gia</span>]
 '<span class="graphName">New Node Graph</span>': <span class="limitOk">17/3000</span> nodes [<span class="fileName">test_composite.gil</span>]
+'<span class="graphName">Flows</span>': <span class="limitOk">15/3000</span> nodes [<span class="fileName">composite_order.gia</span>]
 '<span class="graphName">VAR_TEST</span>': <span class="limitOk">11/3000</span> nodes [<span class="fileName">var_change.gia</span>]</pre>
 </main>
 </body>

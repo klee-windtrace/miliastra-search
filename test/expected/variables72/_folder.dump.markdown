@@ -99,41 +99,41 @@
 | Stage 1094713345:"**Stage Entity**" | '**On\_Stage**' | *Str* | '`0`' |
 | Stage 1094713345:"**Stage Entity**" | '**String**' | *Dict\<Str,Str\>* | {'`1`': '`1`', '`2`': '`2`', '`3`': '`3`'} |
 | Stage 1094713345:"**Stage Entity**" | '**String\_List**' | *Dict\<Str,L\<Str\>\>* | {'`1`': \['`1.1`', '`1.2`', '`1.3`'\], '`2`': \['`2.1`', '`2.2`', '`2.3`'\], '`3`': \['`3.1`', '`3.2`', '`3.3`'\]} |
-| Stage 1094713345:"**Stage Entity**" | '**Struct**' | *Dict\<Str,Struct\>* | {'`1`': struct{'`0`', 0, 0, No}} |
-| Stage 1094713345:"**Stage Entity**" | '**Struct\_List**' | *Dict\<Str,L\<Struct\>\>* | {'`1`': \[struct{'', 0, 0, No}\], '`2`': \[struct{'`1`', 1, 1, Yes}, struct{'', 0, 0, No}\]} |
+| Stage 1094713345:"**Stage Entity**" | '**Struct**' | *Dict\<Str,Struct\>* | {'`1`': struct{'`0`', 0, 0.00, false}} |
+| Stage 1094713345:"**Stage Entity**" | '**Struct\_List**' | *Dict\<Str,L\<Struct\>\>* | {'`1`': \[struct{'', 0, 0.00, false}\], '`2`': \[struct{'`1`', 1, 1.00, true}, struct{'', 0, 0.00, false}\]} |
 | Player 1086324737:"**Default Template**" | '**String**' | *Str* | '' |
 | Player 1086324737:"**Default Template**" | '**String\_0**' | *L\<Str\>* | \[\] |
 | Player 1086324737:"**Default Template**" | '**String\_2**' | *L\<Str\>* | \['', ''\] |
 | Player 1086324737:"**Default Template**" | '**Integer**' | *Int* | 0 |
 | Player 1086324737:"**Default Template**" | '**Integer\_0**' | *L\<Int\>* | \[\] |
 | Player 1086324737:"**Default Template**" | '**Integer\_2**' | *L\<Int\>* | \[0, 0\] |
-| Player 1086324737:"**Default Template**" | '**Float**' | *Flt* | 0 |
+| Player 1086324737:"**Default Template**" | '**Float**' | *Flt* | 0.00 |
 | Player 1086324737:"**Default Template**" | '**Float\_0**' | *L\<Flt\>* | \[\] |
-| Player 1086324737:"**Default Template**" | '**Float\_2**' | *L\<Flt\>* | \[0, 0\] |
-| Player 1086324737:"**Default Template**" | '**Boolean**' | *Bol* | No |
+| Player 1086324737:"**Default Template**" | '**Float\_2**' | *L\<Flt\>* | \[0.00, 0.00\] |
+| Player 1086324737:"**Default Template**" | '**Boolean**' | *Bol* | false |
 | Player 1086324737:"**Default Template**" | '**Boolean\_0**' | *L\<Bol\>* | \[\] |
-| Player 1086324737:"**Default Template**" | '**Boolean\_2**' | *L\<Bol\>* | \[No, No\] |
+| Player 1086324737:"**Default Template**" | '**Boolean\_2**' | *L\<Bol\>* | \[false, false\] |
 | Player 1086324737:"**Default Template**" | '**Vector**' | *Vec* | (0, 0, 0) |
 | Player 1086324737:"**Default Template**" | '**Vector\_0**' | *L\<Vec\>* | \[\] |
 | Player 1086324737:"**Default Template**" | '**Vector\_2**' | *L\<Vec\>* | \[(0, 0, 0), (0, 0, 0)\] |
-| Player 1086324737:"**Default Template**" | '**Entity**' | *Ety* | id:0 |
+| Player 1086324737:"**Default Template**" | '**Entity**' | *Ety* | null |
 | Player 1086324737:"**Default Template**" | '**Entity\_0**' | *L\<Ety\>* | \[\] |
-| Player 1086324737:"**Default Template**" | '**Entity\_2**' | *L\<Ety\>* | \[id:0, id:0\] |
-| Player 1086324737:"**Default Template**" | '**GUID**' | *Gid* | id:0 |
+| Player 1086324737:"**Default Template**" | '**Entity\_2**' | *L\<Ety\>* | \[null, null\] |
+| Player 1086324737:"**Default Template**" | '**GUID**' | *Gid* | null |
 | Player 1086324737:"**Default Template**" | '**GUID\_0**' | *L\<Gid\>* | \[\] |
-| Player 1086324737:"**Default Template**" | '**GUID\_2**' | *L\<Gid\>* | \[id:0, id:0\] |
-| Player 1086324737:"**Default Template**" | '**Config**' | *Cfg* | id:0 |
+| Player 1086324737:"**Default Template**" | '**GUID\_2**' | *L\<Gid\>* | \[null, null\] |
+| Player 1086324737:"**Default Template**" | '**Config**' | *Cfg* | null |
 | Player 1086324737:"**Default Template**" | '**Config\_0**' | *L\<Cfg\>* | \[\] |
-| Player 1086324737:"**Default Template**" | '**Config\_2**' | *L\<Cfg\>* | \[id:0, id:0\] |
-| Player 1086324737:"**Default Template**" | '**Prefab**' | *Pfb* | id:0 |
+| Player 1086324737:"**Default Template**" | '**Config\_2**' | *L\<Cfg\>* | \[null, null\] |
+| Player 1086324737:"**Default Template**" | '**Prefab**' | *Pfb* | null |
 | Player 1086324737:"**Default Template**" | '**Prefab\_0**' | *L\<Pfb\>* | \[\] |
-| Player 1086324737:"**Default Template**" | '**Prefab\_2**' | *L\<Pfb\>* | \[id:0, id:0\] |
-| Player 1086324737:"**Default Template**" | '**Faction**' | *Fct* | id:0 |
+| Player 1086324737:"**Default Template**" | '**Prefab\_2**' | *L\<Pfb\>* | \[null, null\] |
+| Player 1086324737:"**Default Template**" | '**Faction**' | *Fct* | null |
 | Player 1086324737:"**Default Template**" | '**Faction\_0**' | *L\<Fct\>* | \[\] |
-| Player 1086324737:"**Default Template**" | '**Faction\_2**' | *L\<Fct\>* | \[id:0, id:0\] |
-| Player 1086324737:"**Default Template**" | '**Struct**' | *Struct* struct=Struct | struct{'', 0, 0, No} |
+| Player 1086324737:"**Default Template**" | '**Faction\_2**' | *L\<Fct\>* | \[null, null\] |
+| Player 1086324737:"**Default Template**" | '**Struct**' | *Struct* struct=Struct | struct{'', 0, 0.00, false} |
 | Player 1086324737:"**Default Template**" | '**Struct\_0**' | *L\<Struct\>* struct=Struct | \[\] |
-| Player 1086324737:"**Default Template**" | '**Struct\_2**' | *L\<Struct\>* struct=Struct | \[struct{'', 0, 0, No}, struct{'', 0, 0, No}\] |
+| Player 1086324737:"**Default Template**" | '**Struct\_2**' | *L\<Struct\>* struct=Struct | \[struct{'', 0, 0.00, false}, struct{'', 0, 0.00, false}\] |
 | Player 1086324737:"**Default Template**" | '**String\_Dict**' | *Dict\<Str,Str\>* | {'`1`': ''} |
 | Player 1086324737:"**Default Template**" | '**Integer\_Dict**' | *Dict\<Int,Str\>* | {1: ''} |
 | Player 1086324737:"**Default Template**" | '**GUID\_Dict**' | *Dict\<Gid,Str\>* | {id:1: ''} |
@@ -147,18 +147,18 @@
 | Character 1090519041:"**Default Template(Edit Character)**" | '**Integer**' | *Int* | 1 |
 | Character 1090519041:"**Default Template(Edit Character)**" | '**Integer\_0**' | *L\<Int\>* | \[\] |
 | Character 1090519041:"**Default Template(Edit Character)**" | '**Integer\_2**' | *L\<Int\>* | \[1, 1\] |
-| Character 1090519041:"**Default Template(Edit Character)**" | '**Float**' | *Flt* | 1 |
+| Character 1090519041:"**Default Template(Edit Character)**" | '**Float**' | *Flt* | 1.00 |
 | Character 1090519041:"**Default Template(Edit Character)**" | '**Float\_0**' | *L\<Flt\>* | \[\] |
-| Character 1090519041:"**Default Template(Edit Character)**" | '**Float\_2**' | *L\<Flt\>* | \[1, 1\] |
-| Character 1090519041:"**Default Template(Edit Character)**" | '**Boolean**' | *Bol* | Yes |
+| Character 1090519041:"**Default Template(Edit Character)**" | '**Float\_2**' | *L\<Flt\>* | \[1.00, 1.00\] |
+| Character 1090519041:"**Default Template(Edit Character)**" | '**Boolean**' | *Bol* | true |
 | Character 1090519041:"**Default Template(Edit Character)**" | '**Boolean\_0**' | *L\<Bol\>* | \[\] |
-| Character 1090519041:"**Default Template(Edit Character)**" | '**Boolean\_2**' | *L\<Bol\>* | \[Yes, Yes\] |
+| Character 1090519041:"**Default Template(Edit Character)**" | '**Boolean\_2**' | *L\<Bol\>* | \[true, true\] |
 | Character 1090519041:"**Default Template(Edit Character)**" | '**Vector**' | *Vec* | (1, 1, 1) |
 | Character 1090519041:"**Default Template(Edit Character)**" | '**Vector\_0**' | *L\<Vec\>* | \[\] |
 | Character 1090519041:"**Default Template(Edit Character)**" | '**Vector\_2**' | *L\<Vec\>* | \[(1, 1, 1), (1, 1, 1)\] |
-| Character 1090519041:"**Default Template(Edit Character)**" | '**Entity**' | *Ety* | id:0 |
+| Character 1090519041:"**Default Template(Edit Character)**" | '**Entity**' | *Ety* | null |
 | Character 1090519041:"**Default Template(Edit Character)**" | '**Entity\_0**' | *L\<Ety\>* | \[\] |
-| Character 1090519041:"**Default Template(Edit Character)**" | '**Entity\_2**' | *L\<Ety\>* | \[id:0, id:0\] |
+| Character 1090519041:"**Default Template(Edit Character)**" | '**Entity\_2**' | *L\<Ety\>* | \[null, null\] |
 | Character 1090519041:"**Default Template(Edit Character)**" | '**GUID**' | *Gid* | id:1 |
 | Character 1090519041:"**Default Template(Edit Character)**" | '**GUID\_0**' | *L\<Gid\>* | \[\] |
 | Character 1090519041:"**Default Template(Edit Character)**" | '**GUID\_2**' | *L\<Gid\>* | \[id:1, id:1\] |
@@ -171,9 +171,9 @@
 | Character 1090519041:"**Default Template(Edit Character)**" | '**Faction**' | *Fct* | id:1 |
 | Character 1090519041:"**Default Template(Edit Character)**" | '**Faction\_0**' | *L\<Fct\>* | \[\] |
 | Character 1090519041:"**Default Template(Edit Character)**" | '**Faction\_2**' | *L\<Fct\>* | \[id:1, id:1\] |
-| Character 1090519041:"**Default Template(Edit Character)**" | '**Struct**' | *Struct* struct=Struct | struct{'`1`', 1, 1, Yes} |
+| Character 1090519041:"**Default Template(Edit Character)**" | '**Struct**' | *Struct* struct=Struct | struct{'`1`', 1, 1.00, true} |
 | Character 1090519041:"**Default Template(Edit Character)**" | '**Struct\_0**' | *L\<Struct\>* struct=Struct | \[\] |
-| Character 1090519041:"**Default Template(Edit Character)**" | '**Struct\_2**' | *L\<Struct\>* struct=Struct | \[struct{'`1`', 1, 1, Yes}, struct{'`1`', 1, 1, Yes}\] |
+| Character 1090519041:"**Default Template(Edit Character)**" | '**Struct\_2**' | *L\<Struct\>* struct=Struct | \[struct{'`1`', 1, 1.00, true}, struct{'`1`', 1, 1.00, true}\] |
 | Character 1090519041:"**Default Template(Edit Character)**" | '**String\_Dict**' | *Dict\<Str,Str\>* | {'`1`': '`1`'} |
 | Character 1090519041:"**Default Template(Edit Character)**" | '**Integer\_Dict**' | *Dict\<Int,Str\>* | {1: '`1`'} |
 | Character 1090519041:"**Default Template(Edit Character)**" | '**GUID\_Dict**' | *Dict\<Gid,Str\>* | {id:1: '`1`'} |
@@ -214,10 +214,10 @@
 | '*New Node Graph*' | '**String**' | *Str* (public) | '`graph`' |
 | '*New Node Graph*' | '**Integer**' | *Int* (public) | 0 |
 | '*New Node Graph*' | '**Faction**' | *Fct* (public) | id:1 |
-| '*New Node Graph*' | '**Float**' | *Flt* (public) | 2 |
-| '*New Node Graph*' | '**Entity**' | *Ety* (public) | id:0 |
-| '*New Node Graph*' | '**Private**' | *Bol* | Yes |
-| '*Test5*' | '**Faction**' | *Fct* (public) | id:0 |
+| '*New Node Graph*' | '**Float**' | *Flt* (public) | 2.00 |
+| '*New Node Graph*' | '**Entity**' | *Ety* (public) | null |
+| '*New Node Graph*' | '**Private**' | *Bol* | true |
+| '*Test5*' | '**Faction**' | *Fct* (public) | null |
 | '<u>\<status\></u>*Status*' | '**Status**' | *Dict\<Str,Str\>* | {'`Status`': '`Status`'} |
 
 | Prefab | Variable | Type | Value |
@@ -227,19 +227,19 @@
 | Character 1090519041:"**Default Template(Edit Character)**" | '**Faction**' {'*Test5*'} | *Fct* | id:5 |
 | 1077936131:"**Prefab\_edited**" | '**String**' {'*New Node Graph*'} | *Str* | '`prefab`' |
 | 1077936131:"**Prefab\_edited**" | '**Integer**' {'*New Node Graph*'} | *Int* | 10 |
-| 1077936131:"**Prefab\_edited**" | '**Faction**' {'*New Node Graph*'} | *Fct* | id:0 |
-| 1077936131:"**Prefab\_edited**" | '**Float**' {'*New Node Graph*'} | *Flt* | 20 |
+| 1077936131:"**Prefab\_edited**" | '**Faction**' {'*New Node Graph*'} | *Fct* | null |
+| 1077936131:"**Prefab\_edited**" | '**Float**' {'*New Node Graph*'} | *Flt* | 20.00 |
 
 | Entity | Prefab | Variable | Change | Value |
 | --- | --- | --- | --- | --- |
 | 1077936138:"**Prefab\_edited**" | (1077936131:"**Prefab\_edited**") | '**String**' {'*New Node Graph*'} | edit: *Str* | '`graph`' |
 | 1077936138:"**Prefab\_edited**" | (1077936131:"**Prefab\_edited**") | '**Integer**' {'*New Node Graph*'} | edit: *Int* | 0 |
 | 1077936138:"**Prefab\_edited**" | (1077936131:"**Prefab\_edited**") | '**Faction**' {'*New Node Graph*'} | edit: *Fct* | id:1 |
-| 1077936138:"**Prefab\_edited**" | (1077936131:"**Prefab\_edited**") | '**Float**' {'*New Node Graph*'} | edit: *Flt* | 2 |
+| 1077936138:"**Prefab\_edited**" | (1077936131:"**Prefab\_edited**") | '**Float**' {'*New Node Graph*'} | edit: *Flt* | 2.00 |
 | 1077936139:"**Entity\_edited**" | (1077936131:"**Prefab\_edited**") | '**String**' {'*New Node Graph*'} | edit: *Str* | '`entity`' |
 | 1077936139:"**Entity\_edited**" | (1077936131:"**Prefab\_edited**") | '**Integer**' {'*New Node Graph*'} | edit: *Int* | 100 |
 | 1077936139:"**Entity\_edited**" | (1077936131:"**Prefab\_edited**") | '**Faction**' {'*New Node Graph*'} | edit: *Fct* | id:200 |
-| 1077936139:"**Entity\_edited**" | (1077936131:"**Prefab\_edited**") | '**Float**' {'*New Node Graph*'} | edit: *Flt* | 0 |
+| 1077936139:"**Entity\_edited**" | (1077936131:"**Prefab\_edited**") | '**Float**' {'*New Node Graph*'} | edit: *Flt* | 0.00 |
 
 # File `variables_ref.gil`
 
@@ -301,4 +301,4 @@
 | Stage 1094713345:"**Stage Entity**" | '**Config**' | *Cfg* | id:1090519041 {CLASS:"**Custom Class**"} |
 | Stage 1094713345:"**Stage Entity**" | '**Prefab**' | *Pfb* | id:1077936129 {OBJECT:"**Empty Model**"} |
 | Stage 1094713345:"**Stage Entity**" | '**Dict**' | *Dict\<Gid,Pfb\>* | {id:1094713345 {GIL\_LEVEL\_ENTITY:"**Stage Entity**"}: id:1077936129 {OBJECT:"**Empty Model**"}} |
-| Stage 1094713345:"**Stage Entity**" | '**Entity**' | *Ety* | id:0 |
+| Stage 1094713345:"**Stage Entity**" | '**Entity**' | *Ety* | null |

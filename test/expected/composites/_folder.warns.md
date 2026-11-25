@@ -9,10 +9,10 @@
 
 ## limits
 
-composites: 33/1000 declared<br>
+composites: 40/1000 declared<br>
 signals: 2/99 declared<br>
 prefabs (OBJECT): 2/1000<br>
-dynamic entities (OBJECT\_ENTITY): 2/3000<br>
+dynamic entities (OBJECT\_ENTITY): 5/3000<br>
 PRESET\_POINT: 1/2000<br>
 ENVIRONMENT\_CONFIGURATION: 1/50<br>
 CLASS: 1/100<br>
@@ -26,4 +26,5 @@ TERRAIN\_ENTITY: 1/1200
 '*All\_Composite*': 52/3000 nodes \[`test_All_Composite.gia`\]<br>
 '*New Node Graph*': 17/3000 nodes \[`test_composite.gia`\]<br>
 '*New Node Graph*': 17/3000 nodes \[`test_composite.gil`\]<br>
+'*Flows*': 15/3000 nodes \[`composite_order.gia`\]<br>
 '*VAR\_TEST*': 11/3000 nodes \[`var_change.gia`\]

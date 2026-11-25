@@ -39,4 +39,4 @@ RESOURCE "Статус сети" UI_CONTROL guid='1073741836'
 RESOURCE "Кнопка сопротивления" UI_CONTROL guid='1073741837'
 RESOURCE "Кнопка голосового чата" UI_CONTROL guid='1073741838'
 RESOURCE "Очередь подсказок голосового чата" UI_CONTROL guid='1073741839'
-GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = id:0
+GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = null

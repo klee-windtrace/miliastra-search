@@ -3,12 +3,12 @@ GRAPH 'New Node Graph' ENTITY_NODE_GRAPH (guid 1073741825)
 'New Node Graph'/[2] Play Timed Effects (93) @(-367,-264.5)
 'New Node Graph'/[2] Play Timed Effects (93) in#0 "Special Effects Asset" = id:2 : Cfg
 'New Node Graph'/[2] Play Timed Effects (93) in#2 "Attachment Point Name" = 'GI_RootNode' : Str
-'New Node Graph'/[2] Play Timed Effects (93) in#3 "Move With the Target" = No : Bol
-'New Node Graph'/[2] Play Timed Effects (93) in#4 "Rotate With the Target" = No : Bol
+'New Node Graph'/[2] Play Timed Effects (93) in#3 "Move With the Target" = false : Bol
+'New Node Graph'/[2] Play Timed Effects (93) in#4 "Rotate With the Target" = false : Bol
 'New Node Graph'/[2] Play Timed Effects (93) in#5 "Location Offset" = (0, 0, 0) : Vec
 'New Node Graph'/[2] Play Timed Effects (93) in#6 "Rotation Offset" = (1, 1, 1) : Vec
-'New Node Graph'/[2] Play Timed Effects (93) in#7 "Zoom Multiplier" = 2 : Flt
-'New Node Graph'/[2] Play Timed Effects (93) in#8 "Play Built-In Sound Effect" = No : Bol
+'New Node Graph'/[2] Play Timed Effects (93) in#7 "Zoom Multiplier" = 2.00 : Flt
+'New Node Graph'/[2] Play Timed Effects (93) in#8 "Play Built-In Sound Effect" = false : Bol
 'New Node Graph'/[3] Play Timed Effects (93) @(580.8571,-245.64285)
 'New Node Graph'/[3] Play Timed Effects (93) out.flow#0 -> [5] Settle Stage (77) in.flow#0
 'New Node Graph'/[3] Play Timed Effects (93) in#0 "Special Effects Asset" <- [9] Get Node Graph Variable (337/538) out#0 "Variable Value" : Cfg
@@ -24,22 +24,22 @@ GRAPH 'New Node Graph' ENTITY_NODE_GRAPH (guid 1073741825)
 'New Node Graph'/[4] Settle Stage (77) out.flow#0 -> [3] Play Timed Effects (93) in.flow#0
 'New Node Graph'/[5] Settle Stage (77) @(916.5714,-412.7857)
 'New Node Graph'/[9] Get Node Graph Variable (337/538) variant=C<T:Cfg> @(22.714285,-512.2857)
-'New Node Graph'/[9] Get Node Graph Variable (337/538) out#0 "Variable Value" = id:0 : Cfg
+'New Node Graph'/[9] Get Node Graph Variable (337/538) out#0 "Variable Value" = null : Cfg
 'New Node Graph'/[10] Get Node Graph Variable (337/342) variant=C<T:Str> @(106.71429,-22.285715)
 'New Node Graph'/[10] Get Node Graph Variable (337/342) out#0 "Variable Value" = '' : Str
 'New Node Graph'/[11] Get Node Graph Variable (337/340) variant=C<T:Bol> @(86.71429,181.71428)
-'New Node Graph'/[11] Get Node Graph Variable (337/340) out#0 "Variable Value" = No : Bol
+'New Node Graph'/[11] Get Node Graph Variable (337/340) out#0 "Variable Value" = false : Bol
 'New Node Graph'/[12] Get Node Graph Variable (337) @(58.714287,-238.28572)
 'New Node Graph'/[13] Get Node Graph Variable (337/340) variant=C<T:Bol> @(74.71429,369.7143)
-'New Node Graph'/[13] Get Node Graph Variable (337/340) out#0 "Variable Value" = No : Bol
+'New Node Graph'/[13] Get Node Graph Variable (337/340) out#0 "Variable Value" = false : Bol
 'New Node Graph'/[14] Get Node Graph Variable (337/348) variant=C<T:Vec> @(42.714287,583.7143)
 'New Node Graph'/[14] Get Node Graph Variable (337/348) out#0 "Variable Value" = (0, 0, 0) : Vec
 'New Node Graph'/[15] Get Node Graph Variable (337/348) variant=C<T:Vec> @(-23.285715,799.7143)
 'New Node Graph'/[15] Get Node Graph Variable (337/348) out#0 "Variable Value" = (0, 0, 0) : Vec
 'New Node Graph'/[16] Get Node Graph Variable (337/341) variant=C<T:Flt> @(552.7143,595.7143)
-'New Node Graph'/[16] Get Node Graph Variable (337/341) out#0 "Variable Value" = 0 : Flt
+'New Node Graph'/[16] Get Node Graph Variable (337/341) out#0 "Variable Value" = 0.00 : Flt
 'New Node Graph'/[17] Get Node Graph Variable (337/340) variant=C<T:Bol> @(518.7143,819.7143)
-'New Node Graph'/[17] Get Node Graph Variable (337/340) out#0 "Variable Value" = No : Bol
+'New Node Graph'/[17] Get Node Graph Variable (337/340) out#0 "Variable Value" = false : Bol
 GRAPH '<status>New Node Graph_1' STATUS_NODE_GRAPH (guid 1073741826)
 '<status>New Node Graph_1'/[1] Assembly List (169) @(-404.2857,-210)
 '<status>New Node Graph_1'/[2] Assembly Dictionary (1788) @(-15.714286,-215.71428)
@@ -149,7 +149,7 @@ GRAPH '<skill>New Character Skill Node Graph' SKILL_NODE_GRAPH (guid 1082130433)
 '<skill>New Character Skill Node Graph'/[2] Get Ray Detection Result (200109/1047) @(350.42856,-332.14285)
 '<skill>New Character Skill Node Graph'/[2] Get Ray Detection Result (200109/1047) in#1 "Launch Location" = (0, 0, 0) : Vec (default)
 '<skill>New Character Skill Node Graph'/[2] Get Ray Detection Result (200109/1047) in#2 "Launch Direction" = (0, 0, 0) : Vec (default)
-'<skill>New Character Skill Node Graph'/[2] Get Ray Detection Result (200109/1047) in#3 "Max Ray Length" = 0 : Flt (default)
+'<skill>New Character Skill Node Graph'/[2] Get Ray Detection Result (200109/1047) in#3 "Max Ray Length" = 0.00 : Flt (default)
 '<skill>New Character Skill Node Graph'/[2] Get Ray Detection Result (200109/1047) in#4 "Faction Filter" = enum:0«No | Default | None» : Enum (default)
 '<skill>New Character Skill Node Graph'/[2] Get Ray Detection Result (200109/1047) in#5 "Entity Type Filter" = [] : L<Enum> (default)
 '<skill>New Character Skill Node Graph'/[2] Get Ray Detection Result (200109/1047) in#6 "Hit Layer Filter" = [] : L<Enum> (default)
@@ -157,7 +157,7 @@ GRAPH '<skill>New Character Skill Node Graph' SKILL_NODE_GRAPH (guid 1082130433)
 '<skill>New Character Skill Node Graph'/[3] Get Ray Detection Result (200109/1047) @(881.4286,-330)
 '<skill>New Character Skill Node Graph'/[3] Get Ray Detection Result (200109/1047) in#1 "Launch Location" = (0, 0, 0) : Vec
 '<skill>New Character Skill Node Graph'/[3] Get Ray Detection Result (200109/1047) in#2 "Launch Direction" = (1, 1, 1) : Vec
-'<skill>New Character Skill Node Graph'/[3] Get Ray Detection Result (200109/1047) in#3 "Max Ray Length" = 2 : Flt
+'<skill>New Character Skill Node Graph'/[3] Get Ray Detection Result (200109/1047) in#3 "Max Ray Length" = 2.00 : Flt
 '<skill>New Character Skill Node Graph'/[3] Get Ray Detection Result (200109/1047) in#4 "Faction Filter" = enum:2005«All» : Enum
 '<skill>New Character Skill Node Graph'/[3] Get Ray Detection Result (200109/1047) in#5 "Entity Type Filter" = [] : L<Enum> (default)
 '<skill>New Character Skill Node Graph'/[3] Get Ray Detection Result (200109/1047) in#6 "Hit Layer Filter" = [] : L<Enum> (default)
@@ -177,7 +177,7 @@ GRAPH '<skill>New Character Skill Node Graph' SKILL_NODE_GRAPH (guid 1082130433)
 '<skill>New Character Skill Node Graph'/[9] Get Ray Detection Result (200109/1047) in#2 "Launch Direction" <- [7] Get Local Variable (200082/1036) out#0 "Variable Value" : Vec
 '<skill>New Character Skill Node Graph'/[9] Get Ray Detection Result (200109/1047) in#2 "Launch Direction" = (0, 0, 0) : Vec (default) (also wired)
 '<skill>New Character Skill Node Graph'/[9] Get Ray Detection Result (200109/1047) in#3 "Max Ray Length" <- [10] Get Local Variable (200082/1036) out#0 "Variable Value" : Flt
-'<skill>New Character Skill Node Graph'/[9] Get Ray Detection Result (200109/1047) in#3 "Max Ray Length" = 0 : Flt (default) (also wired)
+'<skill>New Character Skill Node Graph'/[9] Get Ray Detection Result (200109/1047) in#3 "Max Ray Length" = 0.00 : Flt (default) (also wired)
 '<skill>New Character Skill Node Graph'/[9] Get Ray Detection Result (200109/1047) in#4 "Faction Filter" = enum:2000«None | Don't Find Target» : Enum
 '<skill>New Character Skill Node Graph'/[9] Get Ray Detection Result (200109/1047) in#5 "Entity Type Filter" <- [11] Get Entity Type List (200050/1031) out#0 "List" : L<Enum>
 '<skill>New Character Skill Node Graph'/[9] Get Ray Detection Result (200109/1047) in#5 "Entity Type Filter" = [] : L<Enum> (default) (also wired)
@@ -186,7 +186,7 @@ GRAPH '<skill>New Character Skill Node Graph' SKILL_NODE_GRAPH (guid 1082130433)
 '<skill>New Character Skill Node Graph'/[9] Get Ray Detection Result (200109/1047) out#0 "On-Hit Location" = (0, 0, 0) : Vec (default)
 '<skill>New Character Skill Node Graph'/[10] Get Local Variable (200082/1036) @(1448.5714,-62.857143)
 '<skill>New Character Skill Node Graph'/[10] Get Local Variable (200082/1036) in#0 "Variable Name" = '' : Str (default)
-'<skill>New Character Skill Node Graph'/[10] Get Local Variable (200082/1036) out#0 "Variable Value" = 0 : Flt
+'<skill>New Character Skill Node Graph'/[10] Get Local Variable (200082/1036) out#0 "Variable Value" = 0.00 : Flt
 '<skill>New Character Skill Node Graph'/[11] Get Entity Type List (200050/1031) @(1490,132.85715)
 '<skill>New Character Skill Node Graph'/[11] Get Entity Type List (200050/1031) in#0 "Count" = 1 : Int (default)
 '<skill>New Character Skill Node Graph'/[11] Get Entity Type List (200050/1031) in#1 "0" = enum:0«No | Default | None» : Enum (default)
@@ -219,85 +219,85 @@ GRAPH '<skill>New Character Skill Node Graph' SKILL_NODE_GRAPH (guid 1082130433)
 '<skill>New Character Skill Node Graph'/[14] Taunt Target (200089/2000) in#1 "Target Entity" <- [16] Get Self Entity (200033/1013) out#0 "Self Entity" : Ety
 '<skill>New Character Skill Node Graph'/[14] Taunt Target (200089/2000) meta.rpc#0 = 0 : Int (default)
 '<skill>New Character Skill Node Graph'/[15] Get Self Entity (200033/1013) @(440.31747,416.5873)
-'<skill>New Character Skill Node Graph'/[15] Get Self Entity (200033/1013) out#0 "Self Entity" = id:0 : Ety (default)
+'<skill>New Character Skill Node Graph'/[15] Get Self Entity (200033/1013) out#0 "Self Entity" = null : Ety (default)
 '<skill>New Character Skill Node Graph'/[16] Get Self Entity (200033/1013) @(436.98413,555.4762)
-'<skill>New Character Skill Node Graph'/[16] Get Self Entity (200033/1013) out#0 "Self Entity" = id:0 : Ety (default)
+'<skill>New Character Skill Node Graph'/[16] Get Self Entity (200033/1013) out#0 "Self Entity" = null : Ety (default)
 '<skill>New Character Skill Node Graph'/[17] Get Self Entity (200033/1013) @(448.09525,247.69841)
-'<skill>New Character Skill Node Graph'/[17] Get Self Entity (200033/1013) out#0 "Self Entity" = id:0 : Ety (default)
+'<skill>New Character Skill Node Graph'/[17] Get Self Entity (200033/1013) out#0 "Self Entity" = null : Ety (default)
 GRAPH '<creation>New Creation Status Node Graph' CREATION_STATUS_GRAPH (guid 1082130435)
 '<creation>New Creation Status Node Graph'/[1] Execute only by sequence (200126/4000) @(0,0) status_ext=1/1
 '<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) @(489,-153)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#0 "Execute" = Yes : Bol (default)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#1 "Escape Trigger Distance" = 0 : Flt (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#0 "Execute" = true : Bol (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#1 "Escape Trigger Distance" = 0.00 : Flt (default)
 '<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#2 "Movement Speed" = enum:3601«Walk» : Enum (default)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#3 "Maximum Escape Angle" = 0 : Flt (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#3 "Maximum Escape Angle" = 0.00 : Flt (default)
 '<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#4 "Minimum Escape Segments" = 0 : Int (default)
 '<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#5 "Maximum Escape Segments" = 0 : Int (default)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#6 "Minimum Escape Distance" = 0 : Flt (default)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#7 "Maximum Escape Distance" = 0 : Flt (default)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#8 "Escape Trigger CD" = 1 : Flt (default)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#9 "Clear aggro and cancel tactic after countdown" = 0 : Flt (default)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#10 "Whether restricted by territory" = Yes : Bol (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#6 "Minimum Escape Distance" = 0.00 : Flt (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#7 "Maximum Escape Distance" = 0.00 : Flt (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#8 "Escape Trigger CD" = 1.00 : Flt (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#9 "Clear aggro and cancel tactic after countdown" = 0.00 : Flt (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#10 "Whether restricted by territory" = true : Bol (default)
 '<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#11 "Tactical Context" = '' : Str (default)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#12 "Can skill be interrupted" = No : Bol (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#12 "Can skill be interrupted" = false : Bol (default)
 '<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) @(2220.5715,-276.0238)
 '<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) out.flow#0 "Failed Execution" -> [5] Double Branch (200125/4001) in.flow#0
 '<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#0 "Execute" <- [7] Equal (200179) out#0 "Result" : Bol
-'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#0 "Execute" = Yes : Bol (default) (also wired)
+'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#0 "Execute" = true : Bol (default) (also wired)
 '<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#1 "Escape Trigger Distance" <- [8] Addition (200184/31) out#0 "Result" : Flt
-'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#1 "Escape Trigger Distance" = 0 : Flt (default) (also wired)
+'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#1 "Escape Trigger Distance" = 0.00 : Flt (default) (also wired)
 '<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#2 "Movement Speed" = enum:3602«Run» : Enum
 '<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#3 "Maximum Escape Angle" <- [9] Addition (200184/31) out#0 "Result" : Flt
-'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#3 "Maximum Escape Angle" = 0 : Flt (default) (also wired)
+'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#3 "Maximum Escape Angle" = 0.00 : Flt (default) (also wired)
 '<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#4 "Minimum Escape Segments" <- [10] Addition (200184/30) out#0 "Result" : Int
 '<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#4 "Minimum Escape Segments" = 0 : Int (default) (also wired)
 '<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#5 "Maximum Escape Segments" <- [11] Addition (200184/30) out#0 "Result" : Int
 '<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#5 "Maximum Escape Segments" = 0 : Int (default) (also wired)
 '<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#6 "Minimum Escape Distance" <- [12] Addition (200184/31) out#0 "Result" : Flt
-'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#6 "Minimum Escape Distance" = 0 : Flt (default) (also wired)
+'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#6 "Minimum Escape Distance" = 0.00 : Flt (default) (also wired)
 '<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#7 "Maximum Escape Distance" <- [13] Addition (200184/31) out#0 "Result" : Flt
-'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#7 "Maximum Escape Distance" = 0 : Flt (default) (also wired)
+'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#7 "Maximum Escape Distance" = 0.00 : Flt (default) (also wired)
 '<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#8 "Escape Trigger CD" <- [14] Addition (200184/31) out#0 "Result" : Flt
-'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#8 "Escape Trigger CD" = 1 : Flt (default) (also wired)
+'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#8 "Escape Trigger CD" = 1.00 : Flt (default) (also wired)
 '<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#9 "Clear aggro and cancel tactic after countdown" <- [15] Addition (200184/31) out#0 "Result" : Flt
-'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#9 "Clear aggro and cancel tactic after countdown" = 0 : Flt (default) (also wired)
+'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#9 "Clear aggro and cancel tactic after countdown" = 0.00 : Flt (default) (also wired)
 '<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#10 "Whether restricted by territory" <- [16] Equal (200179) out#0 "Result" : Bol
-'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#10 "Whether restricted by territory" = Yes : Bol (default) (also wired)
+'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#10 "Whether restricted by territory" = true : Bol (default) (also wired)
 '<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#11 "Tactical Context" = ' ' : Str
 '<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#12 "Can skill be interrupted" <- [17] Equal (200179) out#0 "Result" : Bol
-'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#12 "Can skill be interrupted" = No : Bol (default) (also wired)
+'<creation>New Creation Status Node Graph'/[3] Tactic: Ground Escape (200138/4019) in#12 "Can skill be interrupted" = false : Bol (default) (also wired)
 '<creation>New Creation Status Node Graph'/[4] Double Branch (200125/4001) @(1874.8572,-600.3095)
 '<creation>New Creation Status Node Graph'/[4] Double Branch (200125/4001) out.flow#1 "No" -> [3] Tactic: Ground Escape (200138/4019) in.flow#0
-'<creation>New Creation Status Node Graph'/[4] Double Branch (200125/4001) in#0 "Condition" = No : Bol (default)
+'<creation>New Creation Status Node Graph'/[4] Double Branch (200125/4001) in#0 "Condition" = false : Bol (default)
 '<creation>New Creation Status Node Graph'/[5] Double Branch (200125/4001) @(2734.8572,-537.4524)
-'<creation>New Creation Status Node Graph'/[5] Double Branch (200125/4001) in#0 "Condition" = No : Bol (default)
+'<creation>New Creation Status Node Graph'/[5] Double Branch (200125/4001) in#0 "Condition" = false : Bol (default)
 '<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) @(1096.5238,-125.666664)
-'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#0 "Execute" = No : Bol
-'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#1 "Escape Trigger Distance" = 1 : Flt
+'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#0 "Execute" = false : Bol
+'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#1 "Escape Trigger Distance" = 1.00 : Flt
 '<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#2 "Movement Speed" = enum:3602«Run» : Enum
-'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#3 "Maximum Escape Angle" = 2 : Flt
+'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#3 "Maximum Escape Angle" = 2.00 : Flt
 '<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#4 "Minimum Escape Segments" = 3 : Int
 '<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#5 "Maximum Escape Segments" = 4 : Int
-'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#6 "Minimum Escape Distance" = 5 : Flt
-'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#7 "Maximum Escape Distance" = 6 : Flt
-'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#8 "Escape Trigger CD" = 7 : Flt
-'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#9 "Clear aggro and cancel tactic after countdown" = 8 : Flt
-'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#10 "Whether restricted by territory" = No : Bol
+'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#6 "Minimum Escape Distance" = 5.00 : Flt
+'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#7 "Maximum Escape Distance" = 6.00 : Flt
+'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#8 "Escape Trigger CD" = 7.00 : Flt
+'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#9 "Clear aggro and cancel tactic after countdown" = 8.00 : Flt
+'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#10 "Whether restricted by territory" = false : Bol
 '<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#11 "Tactical Context" = '9' : Str
-'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#12 "Can skill be interrupted" = Yes : Bol
+'<creation>New Creation Status Node Graph'/[6] Tactic: Ground Escape (200138/4019) in#12 "Can skill be interrupted" = true : Bol
 '<creation>New Creation Status Node Graph'/[7] Equal (200179) @(1786.381,-363.66666)
 '<creation>New Creation Status Node Graph'/[7] Equal (200179) in#0 "op" = enum:100«Comparison Operators_Equal To» : Enum (default)
-'<creation>New Creation Status Node Graph'/[7] Equal (200179) out#0 "Result" = No : Bol (default)
+'<creation>New Creation Status Node Graph'/[7] Equal (200179) out#0 "Result" = false : Bol (default)
 '<creation>New Creation Status Node Graph'/[8] Addition (200184/31) variant=C<T:Flt> @(1626.8572,-108.42857)
 '<creation>New Creation Status Node Graph'/[8] Addition (200184/31) in#0 "op" = enum:300«Mathematical Operators_Addition» : Enum (default)
-'<creation>New Creation Status Node Graph'/[8] Addition (200184/31) in#1 = 0 : Flt
-'<creation>New Creation Status Node Graph'/[8] Addition (200184/31) in#2 = 0 : Flt
-'<creation>New Creation Status Node Graph'/[8] Addition (200184/31) out#0 "Result" = 0 : Flt
+'<creation>New Creation Status Node Graph'/[8] Addition (200184/31) in#1 = 0.00 : Flt
+'<creation>New Creation Status Node Graph'/[8] Addition (200184/31) in#2 = 0.00 : Flt
+'<creation>New Creation Status Node Graph'/[8] Addition (200184/31) out#0 "Result" = 0.00 : Flt
 '<creation>New Creation Status Node Graph'/[9] Addition (200184/31) variant=C<T:Flt> @(1663.0476,59.666668)
 '<creation>New Creation Status Node Graph'/[9] Addition (200184/31) in#0 "op" = enum:300«Mathematical Operators_Addition» : Enum (default)
-'<creation>New Creation Status Node Graph'/[9] Addition (200184/31) in#1 = 0 : Flt
-'<creation>New Creation Status Node Graph'/[9] Addition (200184/31) in#2 = 0 : Flt
-'<creation>New Creation Status Node Graph'/[9] Addition (200184/31) out#0 "Result" = 0 : Flt
+'<creation>New Creation Status Node Graph'/[9] Addition (200184/31) in#1 = 0.00 : Flt
+'<creation>New Creation Status Node Graph'/[9] Addition (200184/31) in#2 = 0.00 : Flt
+'<creation>New Creation Status Node Graph'/[9] Addition (200184/31) out#0 "Result" = 0.00 : Flt
 '<creation>New Creation Status Node Graph'/[10] Addition (200184/30) variant=C<T:Int> @(1633.0476,233)
 '<creation>New Creation Status Node Graph'/[10] Addition (200184/30) in#0 "op" = enum:300«Mathematical Operators_Addition» : Enum (default)
 '<creation>New Creation Status Node Graph'/[10] Addition (200184/30) in#1 = 0 : Int
@@ -310,30 +310,30 @@ GRAPH '<creation>New Creation Status Node Graph' CREATION_STATUS_GRAPH (guid 108
 '<creation>New Creation Status Node Graph'/[11] Addition (200184/30) out#0 "Result" = 0 : Int
 '<creation>New Creation Status Node Graph'/[12] Addition (200184/31) variant=C<T:Flt> @(1623.0476,618)
 '<creation>New Creation Status Node Graph'/[12] Addition (200184/31) in#0 "op" = enum:300«Mathematical Operators_Addition» : Enum (default)
-'<creation>New Creation Status Node Graph'/[12] Addition (200184/31) in#1 = 0 : Flt
-'<creation>New Creation Status Node Graph'/[12] Addition (200184/31) in#2 = 0 : Flt
-'<creation>New Creation Status Node Graph'/[12] Addition (200184/31) out#0 "Result" = 0 : Flt
+'<creation>New Creation Status Node Graph'/[12] Addition (200184/31) in#1 = 0.00 : Flt
+'<creation>New Creation Status Node Graph'/[12] Addition (200184/31) in#2 = 0.00 : Flt
+'<creation>New Creation Status Node Graph'/[12] Addition (200184/31) out#0 "Result" = 0.00 : Flt
 '<creation>New Creation Status Node Graph'/[13] Addition (200184/31) variant=C<T:Flt> @(1644.7142,833)
 '<creation>New Creation Status Node Graph'/[13] Addition (200184/31) in#0 "op" = enum:300«Mathematical Operators_Addition» : Enum (default)
-'<creation>New Creation Status Node Graph'/[13] Addition (200184/31) in#1 = 0 : Flt
-'<creation>New Creation Status Node Graph'/[13] Addition (200184/31) in#2 = 0 : Flt
-'<creation>New Creation Status Node Graph'/[13] Addition (200184/31) out#0 "Result" = 0 : Flt
+'<creation>New Creation Status Node Graph'/[13] Addition (200184/31) in#1 = 0.00 : Flt
+'<creation>New Creation Status Node Graph'/[13] Addition (200184/31) in#2 = 0.00 : Flt
+'<creation>New Creation Status Node Graph'/[13] Addition (200184/31) out#0 "Result" = 0.00 : Flt
 '<creation>New Creation Status Node Graph'/[14] Addition (200184/31) variant=C<T:Flt> @(1623.0476,1056.3334)
 '<creation>New Creation Status Node Graph'/[14] Addition (200184/31) in#0 "op" = enum:300«Mathematical Operators_Addition» : Enum (default)
-'<creation>New Creation Status Node Graph'/[14] Addition (200184/31) in#1 = 0 : Flt
-'<creation>New Creation Status Node Graph'/[14] Addition (200184/31) in#2 = 0 : Flt
-'<creation>New Creation Status Node Graph'/[14] Addition (200184/31) out#0 "Result" = 0 : Flt
+'<creation>New Creation Status Node Graph'/[14] Addition (200184/31) in#1 = 0.00 : Flt
+'<creation>New Creation Status Node Graph'/[14] Addition (200184/31) in#2 = 0.00 : Flt
+'<creation>New Creation Status Node Graph'/[14] Addition (200184/31) out#0 "Result" = 0.00 : Flt
 '<creation>New Creation Status Node Graph'/[15] Addition (200184/31) variant=C<T:Flt> @(2238.0476,843)
 '<creation>New Creation Status Node Graph'/[15] Addition (200184/31) in#0 "op" = enum:300«Mathematical Operators_Addition» : Enum (default)
-'<creation>New Creation Status Node Graph'/[15] Addition (200184/31) in#1 = 0 : Flt
-'<creation>New Creation Status Node Graph'/[15] Addition (200184/31) in#2 = 0 : Flt
-'<creation>New Creation Status Node Graph'/[15] Addition (200184/31) out#0 "Result" = 0 : Flt
+'<creation>New Creation Status Node Graph'/[15] Addition (200184/31) in#1 = 0.00 : Flt
+'<creation>New Creation Status Node Graph'/[15] Addition (200184/31) in#2 = 0.00 : Flt
+'<creation>New Creation Status Node Graph'/[15] Addition (200184/31) out#0 "Result" = 0.00 : Flt
 '<creation>New Creation Status Node Graph'/[16] Equal (200179) @(2274.7144,1053)
 '<creation>New Creation Status Node Graph'/[16] Equal (200179) in#0 "op" = enum:100«Comparison Operators_Equal To» : Enum (default)
-'<creation>New Creation Status Node Graph'/[16] Equal (200179) out#0 "Result" = No : Bol (default)
+'<creation>New Creation Status Node Graph'/[16] Equal (200179) out#0 "Result" = false : Bol (default)
 '<creation>New Creation Status Node Graph'/[17] Equal (200179) @(2704.7144,1138)
 '<creation>New Creation Status Node Graph'/[17] Equal (200179) in#0 "op" = enum:100«Comparison Operators_Equal To» : Enum (default)
-'<creation>New Creation Status Node Graph'/[17] Equal (200179) out#0 "Result" = No : Bol (default)
+'<creation>New Creation Status Node Graph'/[17] Equal (200179) out#0 "Result" = false : Bol (default)
 GRAPH '<creation>New Creation Status Decision Node Graph' CREATION_STATUS_DECISION_GRAPH (guid 1082130434)
 '<creation>New Creation Status Decision Node Graph'/[1] Execute only by sequence (200126/4000) @(0,0) status_ext=1/1
 '<creation>New Creation Status Decision Node Graph'/[2] Multiple Branches (200127) @(447,-38)

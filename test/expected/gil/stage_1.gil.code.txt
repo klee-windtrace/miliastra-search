@@ -18,7 +18,7 @@ GRAPH 'New Node Graph' ENTITY_NODE_GRAPH (guid 1073741825)
 'New Node Graph'/[15] Create Composite Node(1) (1073741826) in#1 "3D Vector" = (1, 2, 3) : Vec
 'New Node Graph'/[16] Set Local Variable (19/2677) variant=C<T:Flt> @(1517.8572,305.2857)
 'New Node Graph'/[16] Set Local Variable (19/2677) in#1 "Value" <- [15] Create Composite Node(1) (1073741826) out#0 "X-Component" : Flt
-'New Node Graph'/[16] Set Local Variable (19/2677) in#1 "Value" = 0 : Flt (also wired)
+'New Node Graph'/[16] Set Local Variable (19/2677) in#1 "Value" = 0.00 : Flt (also wired)
 GRAPH '<composite>Create Composite Node' ENTITY_NODE_GRAPH (guid 1073741826, decl 1073741825)
 '<composite>Create Composite Node'/PORTMAP ext.out#0 "Value" -> [1] Get Local Variable (18/20) out#1 "Value"
 '<composite>Create Composite Node'/[1] Get Local Variable (18/20) variant=C<T:Int> @(-128,-138)

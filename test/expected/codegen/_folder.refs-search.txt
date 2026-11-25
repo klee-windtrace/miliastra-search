@@ -1,4 +1,5 @@
 composite        "With Event"                       1 call: ['<status>Status']
+custom_variable  "<dynamic>" (Int)                  1 get: ['Graph'], 0 set: []
 custom_variable  "list" (Dict)                      1 get: ['<filter>New Filter Node Graph'], 0 set: []
 custom_variable  "MyList" (L<Int>)                  1 get: ['New Node Graph'], 0 set: []
 custom_variable  "none"                             0 get: [], 0 set: [], 1 trigger: ['<composite>With Event']

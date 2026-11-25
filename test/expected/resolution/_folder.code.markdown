@@ -46,8 +46,8 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` |   | -\> | \[2\] **Multiple Branches** (3/4) `in.flow#0` |   |   |
-| `out#3` | "Pre-Change Value" | = | 0 | *Flt* |   |
-| `out#4` | "Post-Change Value" | = | 0 | *Flt* |   |
+| `out#3` | "Pre-Change Value" | = | 0.00 | *Flt* |   |
+| `out#4` | "Post-Change Value" | = | 0.00 | *Flt* |   |
 
 \[2\] **Multiple Branches** (3/4) variant=C\<T:Str\> @(117,-156)
 
@@ -156,7 +156,7 @@
 | `out.flow#0` |   | -\> | \[35\] **Stop Timer** (82) `in.flow#0` |   |   |
 | `in#0` | "Target Entity" | \<- | \[6\] **When Timer Is Triggered** (83) `out#0` "Event Source Entity" | *Ety* |   |
 | `in#1` | "Timer Name" | = | '`Static_Timer`' | *Str* |   |
-| `in#2` | "Loop" | = | No | *Bol* |   |
+| `in#2` | "Loop" | = | false | *Bol* |   |
 
 \[35\] **Stop Timer** (82) @(1113.0952,-488.09128)
 
@@ -179,7 +179,7 @@
 | `out.flow#0` |   | -\> | \[38\] **Set Custom Variable** (22/26) `in.flow#0` |   |   |
 | `in#0` | "Target Entity" | \<- | \[1\] **When Custom Variable Changes** (36/40) `out#0` "Event Source Entity" | *Ety* |   |
 | `in#1` | "Variable Name" | = | '`Static_Var`' | *Str* |   |
-| `in#2` | "Variable Value" | = | 0 | *Flt* |   |
+| `in#2` | "Variable Value" | = | 0.00 | *Flt* |   |
 
 \[38\] **Set Custom Variable** (22/26) variant=C\<T:Flt\> @(1238.631,19.587301)
 
@@ -189,8 +189,8 @@
 | `in#1` | "Variable Name" | \<- | \[39\] **Get Local Variable** (18/2656) `out#1` "Value" | *Str* |   |
 | `in#1` | "Variable Name" | = | '`Static_Var`' | *Str* | also wired |
 | `in#2` | "Variable Value" | \<- | \[40\] **Get Custom Variable** (50/54) `out#0` "Variable Value" | *Flt* |   |
-| `in#2` | "Variable Value" | = | 0 | *Flt* | also wired |
-| `in#4` | "Trigger Event" | = | No | *Bol* |   |
+| `in#2` | "Variable Value" | = | 0.00 | *Flt* | also wired |
+| `in#4` | "Trigger Event" | = | false | *Bol* |   |
 
 \[39\] **Get Local Variable** (18/2656) variant=C\<T:Str\> @(1241.488,-193.26984)
 
@@ -206,7 +206,7 @@
 | `in#0` | "Target Entity" | \<- | \[1\] **When Custom Variable Changes** (36/40) `out#0` "Event Source Entity" | *Ety* |   |
 | `in#1` | "Variable Name" | \<- | \[39\] **Get Local Variable** (18/2656) `out#1` "Value" | *Str* |   |
 | `in#1` | "Variable Name" | = | '`Static_Var`' | *Str* | also wired |
-| `out#0` | "Variable Value" | = | 0 | *Flt* |   |
+| `out#0` | "Variable Value" | = | 0.00 | *Flt* |   |
 
 \[41\] **Set Node Graph Variable** (323) @(716.1427,526.788)
 
@@ -222,7 +222,7 @@
 | `in#0` | "Variable Name" | \<- | \[43\] **Get Local Variable** (18/2656) `out#1` "Value" | *Str* |   |
 | `in#1` | "Variable Value" | \<- | \[44\] **Get Node Graph Variable** (337/343) `out#0` "Variable Value" | *L\<Gid\>* |   |
 | `in#1` | "Variable Value" | = | \[\] | *L\<Gid\>* | also wired |
-| `in#2` | "Trigger Event" | = | No | *Bol* |   |
+| `in#2` | "Trigger Event" | = | false | *Bol* |   |
 
 \[43\] **Get Local Variable** (18/2656) variant=C\<T:Str\> @(1173.4641,895.1809)
 

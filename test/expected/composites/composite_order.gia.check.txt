@@ -1,0 +1,3 @@
+== composite_order.gia  gia  engine 7.2.0  mode beyond  resources 18 (3 not interpreted)
+   schema census: OK (every field in the file is known to the schema)
+   opaque (known but uninterpreted) fields: resources.opaque_12×3

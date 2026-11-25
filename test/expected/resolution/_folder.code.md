@@ -14,8 +14,8 @@ DECL/**Static\_2** `meta#0` "Signal Name" uid=19<br>
 '*All\_Static*'/VAR **Static\_Graph** : *L\<Gid\>* public=false = \[\]<br>
 '*All\_Static*'/\[1\] **When Custom Variable Changes** (36/40) variant=C\<T:Flt\> @(-335,-156)<br>
 '*All\_Static*'/\[1\] **When Custom Variable Changes** (36/40) `out.flow#0` -\> \[2\] **Multiple Branches** (3/4) `in.flow#0`<br>
-'*All\_Static*'/\[1\] **When Custom Variable Changes** (36/40) `out#3` "Pre-Change Value" = 0 : *Flt*<br>
-'*All\_Static*'/\[1\] **When Custom Variable Changes** (36/40) `out#4` "Post-Change Value" = 0 : *Flt*<br>
+'*All\_Static*'/\[1\] **When Custom Variable Changes** (36/40) `out#3` "Pre-Change Value" = 0.00 : *Flt*<br>
+'*All\_Static*'/\[1\] **When Custom Variable Changes** (36/40) `out#4` "Post-Change Value" = 0.00 : *Flt*<br>
 '*All\_Static*'/\[2\] **Multiple Branches** (3/4) variant=C\<T:Str\> @(117,-156)<br>
 '*All\_Static*'/\[2\] **Multiple Branches** (3/4) `out.flow#1` "Static\_Var" -\> \[37\] **Set Custom Variable** (22/26) `in.flow#0`<br>
 '*All\_Static*'/\[2\] **Multiple Branches** (3/4) `in#0` "Control Expression" \<- \[1\] **When Custom Variable Changes** (36/40) `out#2` "Variable Name" : *Str*<br>
@@ -64,7 +64,7 @@ DECL/**Static\_2** `meta#0` "Signal Name" uid=19<br>
 '*All\_Static*'/\[34\] **Start Timer** (79) `out.flow#0` -\> \[35\] **Stop Timer** (82) `in.flow#0`<br>
 '*All\_Static*'/\[34\] **Start Timer** (79) `in#0` "Target Entity" \<- \[6\] **When Timer Is Triggered** (83) `out#0` "Event Source Entity" : *Ety*<br>
 '*All\_Static*'/\[34\] **Start Timer** (79) `in#1` "Timer Name" = '`Static_Timer`' : *Str*<br>
-'*All\_Static*'/\[34\] **Start Timer** (79) `in#2` "Loop" = No : *Bol*<br>
+'*All\_Static*'/\[34\] **Start Timer** (79) `in#2` "Loop" = false : *Bol*<br>
 '*All\_Static*'/\[35\] **Stop Timer** (82) @(1113.0952,-488.09128)<br>
 '*All\_Static*'/\[35\] **Stop Timer** (82) `in#0` "Target Entity" \<- \[6\] **When Timer Is Triggered** (83) `out#0` "Event Source Entity" : *Ety*<br>
 '*All\_Static*'/\[35\] **Stop Timer** (82) `in#1` "Timer Name" \<- \[36\] **Get Local Variable** (18/2656) `out#1` "Value" : *Str*<br>
@@ -75,14 +75,14 @@ DECL/**Static\_2** `meta#0` "Signal Name" uid=19<br>
 '*All\_Static*'/\[37\] **Set Custom Variable** (22/26) `out.flow#0` -\> \[38\] **Set Custom Variable** (22/26) `in.flow#0`<br>
 '*All\_Static*'/\[37\] **Set Custom Variable** (22/26) `in#0` "Target Entity" \<- \[1\] **When Custom Variable Changes** (36/40) `out#0` "Event Source Entity" : *Ety*<br>
 '*All\_Static*'/\[37\] **Set Custom Variable** (22/26) `in#1` "Variable Name" = '`Static_Var`' : *Str*<br>
-'*All\_Static*'/\[37\] **Set Custom Variable** (22/26) `in#2` "Variable Value" = 0 : *Flt*<br>
+'*All\_Static*'/\[37\] **Set Custom Variable** (22/26) `in#2` "Variable Value" = 0.00 : *Flt*<br>
 '*All\_Static*'/\[38\] **Set Custom Variable** (22/26) variant=C\<T:Flt\> @(1238.631,19.587301)<br>
 '*All\_Static*'/\[38\] **Set Custom Variable** (22/26) `in#0` "Target Entity" \<- \[1\] **When Custom Variable Changes** (36/40) `out#0` "Event Source Entity" : *Ety*<br>
 '*All\_Static*'/\[38\] **Set Custom Variable** (22/26) `in#1` "Variable Name" \<- \[39\] **Get Local Variable** (18/2656) `out#1` "Value" : *Str*<br>
 '*All\_Static*'/\[38\] **Set Custom Variable** (22/26) `in#1` "Variable Name" = '`Static_Var`' : *Str* *(also wired)*<br>
 '*All\_Static*'/\[38\] **Set Custom Variable** (22/26) `in#2` "Variable Value" \<- \[40\] **Get Custom Variable** (50/54) `out#0` "Variable Value" : *Flt*<br>
-'*All\_Static*'/\[38\] **Set Custom Variable** (22/26) `in#2` "Variable Value" = 0 : *Flt* *(also wired)*<br>
-'*All\_Static*'/\[38\] **Set Custom Variable** (22/26) `in#4` "Trigger Event" = No : *Bol*<br>
+'*All\_Static*'/\[38\] **Set Custom Variable** (22/26) `in#2` "Variable Value" = 0.00 : *Flt* *(also wired)*<br>
+'*All\_Static*'/\[38\] **Set Custom Variable** (22/26) `in#4` "Trigger Event" = false : *Bol*<br>
 '*All\_Static*'/\[39\] **Get Local Variable** (18/2656) variant=C\<T:Str\> @(1241.488,-193.26984)<br>
 '*All\_Static*'/\[39\] **Get Local Variable** (18/2656) `in#0` "Initial Value" = '`Static_Var`' : *Str*<br>
 '*All\_Static*'/\[39\] **Get Local Variable** (18/2656) `out#1` "Value" = '' : *Str*<br>
@@ -90,7 +90,7 @@ DECL/**Static\_2** `meta#0` "Signal Name" uid=19<br>
 '*All\_Static*'/\[40\] **Get Custom Variable** (50/54) `in#0` "Target Entity" \<- \[1\] **When Custom Variable Changes** (36/40) `out#0` "Event Source Entity" : *Ety*<br>
 '*All\_Static*'/\[40\] **Get Custom Variable** (50/54) `in#1` "Variable Name" \<- \[39\] **Get Local Variable** (18/2656) `out#1` "Value" : *Str*<br>
 '*All\_Static*'/\[40\] **Get Custom Variable** (50/54) `in#1` "Variable Name" = '`Static_Var`' : *Str* *(also wired)*<br>
-'*All\_Static*'/\[40\] **Get Custom Variable** (50/54) `out#0` "Variable Value" = 0 : *Flt*<br>
+'*All\_Static*'/\[40\] **Get Custom Variable** (50/54) `out#0` "Variable Value" = 0.00 : *Flt*<br>
 '*All\_Static*'/\[41\] **Set Node Graph Variable** (323) @(716.1427,526.788)<br>
 '*All\_Static*'/\[41\] **Set Node Graph Variable** (323) `out.flow#0` -\> \[42\] **Set Node Graph Variable** (323/329) `in.flow#0`<br>
 '*All\_Static*'/\[41\] **Set Node Graph Variable** (323) `in#0` "Variable Name" = '`Static_Graph`' : *Str*<br>
@@ -98,7 +98,7 @@ DECL/**Static\_2** `meta#0` "Signal Name" uid=19<br>
 '*All\_Static*'/\[42\] **Set Node Graph Variable** (323/329) `in#0` "Variable Name" \<- \[43\] **Get Local Variable** (18/2656) `out#1` "Value" : *Str*<br>
 '*All\_Static*'/\[42\] **Set Node Graph Variable** (323/329) `in#1` "Variable Value" \<- \[44\] **Get Node Graph Variable** (337/343) `out#0` "Variable Value" : *L\<Gid\>*<br>
 '*All\_Static*'/\[42\] **Set Node Graph Variable** (323/329) `in#1` "Variable Value" = \[\] : *L\<Gid\>* *(also wired)*<br>
-'*All\_Static*'/\[42\] **Set Node Graph Variable** (323/329) `in#2` "Trigger Event" = No : *Bol*<br>
+'*All\_Static*'/\[42\] **Set Node Graph Variable** (323/329) `in#2` "Trigger Event" = false : *Bol*<br>
 '*All\_Static*'/\[43\] **Get Local Variable** (18/2656) variant=C\<T:Str\> @(1173.4641,895.1809)<br>
 '*All\_Static*'/\[43\] **Get Local Variable** (18/2656) `in#0` "Initial Value" = '`Static_Graph`' : *Str*<br>
 '*All\_Static*'/\[43\] **Get Local Variable** (18/2656) `out#1` "Value" = '' : *Str*<br>

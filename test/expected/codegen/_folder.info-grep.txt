@@ -5,3 +5,5 @@ codetest_1.gia:CLASS CREATION_STATUS_DECISION_GRAPH class=51 count=1
 codetest_2.gia:CLASS ENTITY_NODE_GRAPH class=9 count=10
 codetest_2.gia:CLASS COMPOSITE_NODE_DECL class=12 count=10
 codetest_2.gia:CLASS STATUS_NODE_GRAPH class=22 count=1
+data_order.gia:CLASS ENTITY_NODE_GRAPH class=9 count=3
+data_order.gia:CLASS COMPOSITE_NODE_DECL class=12 count=2

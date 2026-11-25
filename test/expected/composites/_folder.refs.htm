@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>refs test_All_Composite.gia, test_composite.gia, test_composite.gil, var_change.gia</title>
+<title>refs composite_order.gia, test_All_Composite.gia, test_composite.gia, test_composite.gil, var_change.gia</title>
 <style>
 :root{color-scheme:dark;--bg:#0C0C0C;--panel:#161616;--line:#2e2e2e;--fg:#CCCCCC;--muted:#767676;--accent:#61D6D6}
 *{box-sizing:border-box}
@@ -91,7 +91,14 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <body>
 <main>
 <h1>Reference index</h1>
-<pre class="lines"><span class="kind">composite</span>        "<span class="key">Create Composite Node</span>"            <span class="count">5</span> <span class="role">call</span>: ['<span class="graphName">All_Composite</span>'; '<span class="graphName">New Node Graph</span>']
+<pre class="lines"><span class="kind">composite</span>        "<span class="key">C1</span>"                               <span class="count">1</span> <span class="role">call</span>: ['<span class="graphName">Flows</span>']
+<span class="kind">composite</span>        "<span class="key">C2</span>"                               <span class="count">1</span> <span class="role">call</span>: ['<span class="graphName">Flows</span>']
+<span class="kind">composite</span>        "<span class="key">C3</span>"                               <span class="count">1</span> <span class="role">call</span>: ['<span class="graphName">Flows</span>']
+<span class="kind">composite</span>        "<span class="key">C4</span>"                               <span class="count">1</span> <span class="role">call</span>: ['<span class="graphName">Flows</span>']
+<span class="kind">composite</span>        "<span class="key">C5</span>"                               <span class="count">1</span> <span class="role">call</span>: ['<span class="graphName">Flows</span>']
+<span class="kind">composite</span>        "<span class="key">C6</span>"                               <span class="count">1</span> <span class="role">call</span>: ['<span class="graphName">Flows</span>']
+<span class="kind">composite</span>        "<span class="key">C7</span>"                               <span class="count">1</span> <span class="role">call</span>: ['<span class="graphName">Flows</span>']
+<span class="kind">composite</span>        "<span class="key">Create Composite Node</span>"            <span class="count">5</span> <span class="role">call</span>: ['<span class="graphName">All_Composite</span>'; '<span class="graphName">New Node Graph</span>']
 <span class="kind">composite</span>        "<span class="key">Create Composite Node(1)</span>"         <span class="count">3</span> <span class="role">call</span>: ['<span class="graphName">All_Composite</span>'; '<span class="graphTag">&lt;composite&gt;</span><span class="graphName">Create Composite Node</span>']
 <span class="kind">composite</span>        "<span class="key">Create Composite Node(10)</span>"        <span class="count">1</span> <span class="role">call</span>: ['<span class="graphName">All_Composite</span>']
 <span class="kind">composite</span>        "<span class="key">Create Composite Node(11)</span>"        <span class="count">1</span> <span class="role">call</span>: ['<span class="graphName">All_Composite</span>']
@@ -131,6 +138,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="kind">literal_id</span>       "<span class="key">Gid:1077936131</span>" (<span class="className">OBJECT_ENTITY</span>:"<span class="key">entity_test</span>") <span class="count">2</span> <span class="role">Ref</span>: ['<span class="graphName">New Node Graph</span>']
 <span class="kind">literal_id</span>       "<span class="key">Int: 1073741825</span>" (<span class="className">INTERFACE_LAYOUT</span>:"<span class="key">Default Layout</span>") <span class="count">2</span> <span class="role">Ref</span>: ['<span class="graphName">New Node Graph</span>']
 <span class="kind">literal_id</span>       "<span class="key">Pfb:10005018</span>"                     <span class="count">2</span> <span class="role">Ref</span>: ['<span class="graphName">New Node Graph</span>']
+<span class="kind">mount</span>            '<span class="graphName">Flows</span>'                            <span class="count">3</span> <span class="role">entity</span>: <span class="className">OBJECT_ENTITY</span>:"<span class="key">Empty Model</span>" (x3)
 <span class="kind">signal</span>           "<span class="key">Static_1</span>"                         <span class="count">1</span> <span class="role">listen</span>: ['<span class="graphName">All_Composite</span>'], <span class="count">1</span> <span class="role">send</span>: ['<span class="graphName">All_Composite</span>']
 <span class="kind">signal</span>           "<span class="key">Static_2</span>"                         <span class="count">1</span> <span class="role">listen</span>: ['<span class="graphName">All_Composite</span>'], <span class="count">1</span> <span class="role">send</span>: ['<span class="graphName">All_Composite</span>']
 <span class="kind">timer</span>            "<span class="key">Static_Timer</span>" (<span class="flag">onetime</span>)           <span class="count">1</span> <span class="role">start</span>: ['<span class="graphTag">&lt;composite&gt;</span><span class="graphName">Create Composite Node(4)</span>'], <span class="count">1</span> <span class="role">stop</span>: ['<span class="graphName">All_Composite</span>'], <span class="count">1</span> <span class="role">listen</span>: ['<span class="graphName">All_Composite</span>']</pre>

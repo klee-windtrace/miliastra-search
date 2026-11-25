@@ -1,2 +1,2 @@
 GRAPH 'Graph' ENTITY_NODE_GRAPH guid='1073741832' nodes=7
-GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = id:0
+GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = null

@@ -87,7 +87,7 @@ RESOURCE "Статус сети" UI_CONTROL class=15 guid='1073741836' section=r
 RESOURCE "Кнопка сопротивления" UI_CONTROL class=15 guid='1073741837' section=root.9
 RESOURCE "Кнопка голосового чата" UI_CONTROL class=15 guid='1073741838' section=root.9
 RESOURCE "Очередь подсказок голосового чата" UI_CONTROL class=15 guid='1073741839' section=root.9
-GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = id:0
+GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = null
 
 # REFS
 graph_variable   "Graph_Var" (Ety)                  ['Graph']: 1 get, 0 set

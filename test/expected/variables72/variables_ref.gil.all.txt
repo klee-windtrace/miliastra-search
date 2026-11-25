@@ -92,7 +92,7 @@ VARIABLE Stage 1094713345:"Stage Entity" 'GUID' : Gid = id:1094713345 {GIL_LEVEL
 VARIABLE Stage 1094713345:"Stage Entity" 'Config' : Cfg = id:1090519041 {CLASS:"Custom Class"}
 VARIABLE Stage 1094713345:"Stage Entity" 'Prefab' : Pfb = id:1077936129 {OBJECT:"Empty Model"}
 VARIABLE Stage 1094713345:"Stage Entity" 'Dict' : Dict<Gid,Pfb> = {id:1094713345 {GIL_LEVEL_ENTITY:"Stage Entity"}: id:1077936129 {OBJECT:"Empty Model"}}
-VARIABLE Stage 1094713345:"Stage Entity" 'Entity' : Ety = id:0
+VARIABLE Stage 1094713345:"Stage Entity" 'Entity' : Ety = null
 
 # REFS
 

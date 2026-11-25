@@ -1,3 +1,5 @@
+INFO  listener-no-handlers: [2] When Custom Variable Changes in graph 'Graph' has no name switch and no code after it: it reacts to nothing [data_order.gia]
+INFO  dynamic-reference: [6] Get Custom Variable in#1 "Variable Name" in graph 'Graph': name is computed at runtime (wired from [7] Query Dictionary Value by Key; Query Dictionary Value by Key output "Value" is computed at runtime); cannot be resolved statically [data_order.gia]
 INFO  custom-variable-undeclared: custom variable "Var1" is used in ['New Node Graph'] but no entity, prefab or template declares it [codetest_1.gia]
 INFO  custom-variable-undeclared: custom variable "MyList" is used in ['New Node Graph'] but no entity, prefab or template declares it [codetest_1.gia]
 INFO  custom-variable-undeclared: custom variable "Test" is used in ['New Node Graph'] but no entity, prefab or template declares it [codetest_1.gia]

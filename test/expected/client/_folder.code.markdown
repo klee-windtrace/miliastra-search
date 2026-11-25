@@ -14,7 +14,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Variable Name" | = | '`var_bool`' | *Str* |   |
-| `out#0` | "Variable Value" | = | No | *Bol* |   |
+| `out#0` | "Variable Value" | = | false | *Bol* |   |
 
 \[3\] **Get Custom Variable** (200016/41) variant=C\<T:Int\> @(427,-44)
 
@@ -28,7 +28,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Variable Name" | = | '`var_float`' | *Str* |   |
-| `out#0` | "Variable Value" | = | 0 | *Flt* |   |
+| `out#0` | "Variable Value" | = | 0.00 | *Flt* |   |
 
 \[5\] **Get Custom Variable** (200016/43) variant=C\<T:Str\> @(881,-60)
 
@@ -42,7 +42,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Variable Name" | = | '`var_guid`' | *Str* |   |
-| `out#0` | "Variable Value" | = | id:0 | *Gid* |   |
+| `out#0` | "Variable Value" | = | null | *Gid* |   |
 
 \[7\] **Get Custom Variable** (200016/45) variant=C\<T:Ety\> @(1372,-44)
 
@@ -111,14 +111,14 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Variable Name" | = | '`var_config`' | *Str* |   |
-| `out#0` | "Variable Value" | = | id:0 | *Cfg* |   |
+| `out#0` | "Variable Value" | = | null | *Cfg* |   |
 
 \[17\] **Get Custom Variable** (200016/55) variant=C\<T:Pfb\> @(1788,-303)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Variable Name" | = | '`var_prefab`' | *Str* |   |
-| `out#0` | "Variable Value" | = | id:0 | *Pfb* |   |
+| `out#0` | "Variable Value" | = | null | *Pfb* |   |
 
 \[18\] **Get Custom Variable** (200016/56) variant=C\<T:L\<Cfg\>\> @(2223,-318)
 
@@ -139,7 +139,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Variable Name" | = | '`var_faction`' | *Str* |   |
-| `out#0` | "Variable Value" | = | id:0 | *Fct* |   |
+| `out#0` | "Variable Value" | = | null | *Fct* |   |
 
 \[21\] **Get Custom Variable** (200016/59) variant=C\<T:L\<Fct\>\> @(2303,397)
 

@@ -71,6 +71,8 @@ export function normValue(tv) {
   const out = { k: 'unset', set: !!tv.is_value_set, widget: tv.widget || 0 };
   if (tag !== undefined) { out.ty = typeName(backend, tag); out.tyId = tag; out.backend = backend; }
   if (td?.server_side?.struct_ref) out.structId = td.server_side.struct_ref.schema_id ?? null;
+  const binding = td?.server_side?.map_binding; // what a dictionary maps (a type that is left out is Unk)
+  if (binding) { out.keyType = typeName(1, binding.key_type ?? 0); out.valueType = typeName(1, binding.value_type ?? 0); }
   if (tv.tracker?.identity) out.trackerIndex = tv.tracker.identity.local_index;
   if (tv.client_inline) out.clientInline = tv.client_inline;
   if ('val_id' in tv) { out.k = 'id'; out.v = tv.val_id.id ?? 0; }
@@ -152,27 +154,35 @@ function buildGraph(g, res) {
   return graph;
 }
 
-/** Normalise connections to source -> target, deduplicated. Anomalies are kept in graph.anomalies. */
+/**
+ * Normalise connections to source -> target, deduplicated. The wires of one output pin keep the order the file stores them in (the order the game runs
+ * the targets in), so the output pins' connection lists are read before the others, which only add a wire the output side does not list.
+ * Anomalies are kept in graph.anomalies.
+ */
 function buildEdges(graph) {
   const edges = new Map();
   graph.anomalies = [];
   const byIdx = new Map(graph.nodes.map((n) => [n.index, n]));
-  for (const n of graph.nodes) {
-    for (const p of n.pins) {
-      for (const c of p.conns) {
-        let from, to;
-        const owner = { node: n.index, kind: p.kind, index: p.index };
-        const other = { node: c.node, kind: c.kind, index: c.index };
-        if (p.kind === 2 || p.kind === 4) { from = owner; to = other; }          // out_flow / out_param own -> targets
-        else if (p.kind === 3 || p.kind === 1) { from = other; to = owner; }      // in_param / in_flow own <- sources
-        else { from = owner; to = other; graph.anomalies.push(`connection on unusual pin kind ${p.kind} at [${n.index}]`); }
-        if (!byIdx.has(c.node)) graph.anomalies.push(`connection from [${n.index}] points at missing node [${c.node}]`);
-        const key = `${from.node}:${from.kind}:${from.index}>${to.node}:${to.kind}:${to.index}`;
-        if (!edges.has(key)) edges.set(key, { from, to });
+  for (const outputs of [true, false]) {
+    for (const n of graph.nodes) {
+      for (const p of n.pins) {
+        if ((p.kind === 2 || p.kind === 4) !== outputs) continue;
+        for (const c of p.conns) {
+          let from, to;
+          const owner = { node: n.index, kind: p.kind, index: p.index };
+          const other = { node: c.node, kind: c.kind, index: c.index };
+          if (p.kind === 2 || p.kind === 4) { from = owner; to = other; }          // out_flow / out_param own -> targets
+          else if (p.kind === 3 || p.kind === 1) { from = other; to = owner; }      // in_param / in_flow own <- sources
+          else { from = owner; to = other; graph.anomalies.push(`connection on unusual pin kind ${p.kind} at [${n.index}]`); }
+          if (!byIdx.has(c.node)) graph.anomalies.push(`connection from [${n.index}] points at missing node [${c.node}]`);
+          const key = `${from.node}:${from.kind}:${from.index}>${to.node}:${to.kind}:${to.index}`;
+          if (!edges.has(key)) edges.set(key, { from, to });
+        }
       }
     }
   }
-  return [...edges.values()].sort((a, b) => a.from.node - b.from.node || a.from.kind - b.from.kind || a.from.index - b.from.index || a.to.node - b.to.node || a.to.index - b.to.index);
+  // grouped by source pin; the sort is stable, so the wires of one pin stay in the file's order
+  return [...edges.values()].sort((a, b) => a.from.node - b.from.node || a.from.kind - b.from.kind || a.from.index - b.from.index);
 }
 
 function buildPinIface(pi) {
@@ -186,6 +196,7 @@ function buildPinIface(pi) {
       uiClass: pi.type.ui_class ?? null,
       enumId: pi.type.enum_id?.val ?? null, structId: pi.type.struct_id?.val ?? null,
       hasList: !!pi.type.list_item_type, hasMap: !!pi.type.map_type,
+      mapKey: pi.type.map_type?.key ?? null, mapValue: pi.type.map_type?.value ?? null,
       placeholder: pi.type.placeholder?.text ?? null,
       defaultValue: normValue(pi.type.default_value),
     } : null,

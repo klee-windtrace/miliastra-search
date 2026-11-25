@@ -1,4 +1,60 @@
-﻿# FILE `test_All_Composite.gia`
+﻿# FILE `composite_order.gia`
+
+**GRAPH** '*Flows*' ENTITY\_NODE\_GRAPH (guid 1073741825)<br>
+'*Flows*'/\[10\] **C2** (1610612738) user=COMPOSITE @(-134,-374)<br>
+'*Flows*'/\[10\] **C2** (1610612738) `out.flow#0` -\> \[14\] **C4** (1610612740) `in.flow#0`<br>
+'*Flows*'/\[12\] **C3** (1610612739) user=COMPOSITE @(-130,-20)<br>
+'*Flows*'/\[12\] **C3** (1610612739) `out.flow#0` -\> \[14\] **C4** (1610612740) `in.flow#0`<br>
+'*Flows*'/\[14\] **C4** (1610612740) user=COMPOSITE @(222,-184)<br>
+'*Flows*'/\[14\] **C4** (1610612740) `out.flow#0` -\> \[26\] **C5** (1610612741) `in.flow#0`<br>
+'*Flows*'/\[14\] **C4** (1610612740) `out.flow#0` -\> \[25\] **C6** (1610612742) `in.flow#0`<br>
+'*Flows*'/\[21\] **C1** (1610612737) user=COMPOSITE @(-505,-180)<br>
+'*Flows*'/\[21\] **C1** (1610612737) `out.flow#0` -\> \[10\] **C2** (1610612738) `in.flow#0`<br>
+'*Flows*'/\[21\] **C1** (1610612737) `out.flow#0` -\> \[12\] **C3** (1610612739) `in.flow#0`<br>
+'*Flows*'/\[22\] **C7** (1610612743) user=COMPOSITE @(982,-184)<br>
+'*Flows*'/\[23\] **When Entity Is Removed/Destroyed** (72) @(-922.5,-182.75)<br>
+'*Flows*'/\[23\] **When Entity Is Removed/Destroyed** (72) `out.flow#0` -\> \[21\] **C1** (1610612737) `in.flow#0`<br>
+'*Flows*'/\[25\] **C6** (1610612742) user=COMPOSITE @(598.25,2)<br>
+'*Flows*'/\[25\] **C6** (1610612742) `out.flow#0` -\> \[22\] **C7** (1610612743) `in.flow#0`<br>
+'*Flows*'/\[26\] **C5** (1610612741) user=COMPOSITE @(603.75,-372.75)<br>
+'*Flows*'/\[26\] **C5** (1610612741) `out.flow#0` -\> \[22\] **C7** (1610612743) `in.flow#0`<br>
+**GRAPH** '<u>\<composite\></u>*C1*' ENTITY\_NODE\_GRAPH (guid 1610612737, decl 1610612737) role=dependency<br>
+'<u>\<composite\></u>*C1*'/PORTMAP `ext.in.flow#0` -\> \[1\] **Print String** (1) `in.flow#0`<br>
+'<u>\<composite\></u>*C1*'/PORTMAP `ext.out.flow#0` -\> \[1\] **Print String** (1) `out.flow#0`<br>
+'<u>\<composite\></u>*C1*'/\[1\] **Print String** (1) @(0,0)<br>
+'<u>\<composite\></u>*C1*'/\[1\] **Print String** (1) `in#0` "String" = '`1`' : *Str*<br>
+**GRAPH** '<u>\<composite\></u>*C2*' ENTITY\_NODE\_GRAPH (guid 1610612738, decl 1610612738) role=dependency<br>
+'<u>\<composite\></u>*C2*'/PORTMAP `ext.in.flow#0` -\> \[2\] **Print String** (1) `in.flow#0`<br>
+'<u>\<composite\></u>*C2*'/PORTMAP `ext.out.flow#0` -\> \[2\] **Print String** (1) `out.flow#0`<br>
+'<u>\<composite\></u>*C2*'/\[2\] **Print String** (1) @(0,0)<br>
+'<u>\<composite\></u>*C2*'/\[2\] **Print String** (1) `in#0` "String" = '`2`' : *Str*<br>
+**GRAPH** '<u>\<composite\></u>*C3*' ENTITY\_NODE\_GRAPH (guid 1610612739, decl 1610612739) role=dependency<br>
+'<u>\<composite\></u>*C3*'/PORTMAP `ext.in.flow#0` -\> \[3\] **Print String** (1) `in.flow#0`<br>
+'<u>\<composite\></u>*C3*'/PORTMAP `ext.out.flow#0` -\> \[3\] **Print String** (1) `out.flow#0`<br>
+'<u>\<composite\></u>*C3*'/\[3\] **Print String** (1) @(0,0)<br>
+'<u>\<composite\></u>*C3*'/\[3\] **Print String** (1) `in#0` "String" = '`3`' : *Str*<br>
+**GRAPH** '<u>\<composite\></u>*C4*' ENTITY\_NODE\_GRAPH (guid 1610612740, decl 1610612740) role=dependency<br>
+'<u>\<composite\></u>*C4*'/PORTMAP `ext.in.flow#0` -\> \[4\] **Print String** (1) `in.flow#0`<br>
+'<u>\<composite\></u>*C4*'/PORTMAP `ext.out.flow#0` -\> \[4\] **Print String** (1) `out.flow#0`<br>
+'<u>\<composite\></u>*C4*'/\[4\] **Print String** (1) @(0,0)<br>
+'<u>\<composite\></u>*C4*'/\[4\] **Print String** (1) `in#0` "String" = '`4`' : *Str*<br>
+**GRAPH** '<u>\<composite\></u>*C5*' ENTITY\_NODE\_GRAPH (guid 1610612741, decl 1610612741) role=dependency<br>
+'<u>\<composite\></u>*C5*'/PORTMAP `ext.in.flow#0` -\> \[6\] **Print String** (1) `in.flow#0`<br>
+'<u>\<composite\></u>*C5*'/PORTMAP `ext.out.flow#0` -\> \[6\] **Print String** (1) `out.flow#0`<br>
+'<u>\<composite\></u>*C5*'/\[6\] **Print String** (1) @(0,0)<br>
+'<u>\<composite\></u>*C5*'/\[6\] **Print String** (1) `in#0` "String" = '`5`' : *Str*<br>
+**GRAPH** '<u>\<composite\></u>*C6*' ENTITY\_NODE\_GRAPH (guid 1610612742, decl 1610612742) role=dependency<br>
+'<u>\<composite\></u>*C6*'/PORTMAP `ext.in.flow#0` -\> \[5\] **Print String** (1) `in.flow#0`<br>
+'<u>\<composite\></u>*C6*'/PORTMAP `ext.out.flow#0` -\> \[5\] **Print String** (1) `out.flow#0`<br>
+'<u>\<composite\></u>*C6*'/\[5\] **Print String** (1) @(0,0)<br>
+'<u>\<composite\></u>*C6*'/\[5\] **Print String** (1) `in#0` "String" = '`6`' : *Str*<br>
+**GRAPH** '<u>\<composite\></u>*C7*' ENTITY\_NODE\_GRAPH (guid 1610612743, decl 1610612743) role=dependency<br>
+'<u>\<composite\></u>*C7*'/PORTMAP `ext.in.flow#0` -\> \[7\] **Print String** (1) `in.flow#0`<br>
+'<u>\<composite\></u>*C7*'/PORTMAP `ext.out.flow#0` -\> \[7\] **Print String** (1) `out.flow#0`<br>
+'<u>\<composite\></u>*C7*'/\[7\] **Print String** (1) @(0,0)<br>
+'<u>\<composite\></u>*C7*'/\[7\] **Print String** (1) `in#0` "String" = '`7`' : *Str*
+
+# FILE `test_All_Composite.gia`
 
 **DECL** "**Static\_2**" SIGNAL\_NODE\_DECL guid='`1610612741`' role=dependency<br>
 DECL/**Static\_2** SEND\_SIGNAL name='`Static_2`' server\_node=1610612742 client\_node=1610612743<br>
@@ -76,8 +132,8 @@ DECL/**Static\_1** `meta#0` "Signal Name" uid=3<br>
 '<u>\<composite\></u>*Create Composite Node*'/PORTMAP `ext.out#0` "Event Source Entity" -\> \[1\] **When Custom Variable Changes** (36/40) `out#0` "Event Source Entity"<br>
 '<u>\<composite\></u>*Create Composite Node*'/PORTMAP `ext.out#1` "Variable Name" -\> \[1\] **When Custom Variable Changes** (36/40) `out#2` "Variable Name"<br>
 '<u>\<composite\></u>*Create Composite Node*'/\[1\] **When Custom Variable Changes** (36/40) variant=C\<T:Flt\> @(0,0)<br>
-'<u>\<composite\></u>*Create Composite Node*'/\[1\] **When Custom Variable Changes** (36/40) `out#3` "Pre-Change Value" = 0 : *Flt*<br>
-'<u>\<composite\></u>*Create Composite Node*'/\[1\] **When Custom Variable Changes** (36/40) `out#4` "Post-Change Value" = 0 : *Flt*<br>
+'<u>\<composite\></u>*Create Composite Node*'/\[1\] **When Custom Variable Changes** (36/40) `out#3` "Pre-Change Value" = 0.00 : *Flt*<br>
+'<u>\<composite\></u>*Create Composite Node*'/\[1\] **When Custom Variable Changes** (36/40) `out#4` "Post-Change Value" = 0.00 : *Flt*<br>
 **GRAPH** '<u>\<composite\></u>*Create Composite Node(2)*' ENTITY\_NODE\_GRAPH (guid 1610612739, decl 1610612747) role=dependency<br>
 '<u>\<composite\></u>*Create Composite Node(2)*'/PORTMAP `ext.out.flow#0` -\> \[6\] **When Timer Is Triggered** (83) `out.flow#0`<br>
 '<u>\<composite\></u>*Create Composite Node(2)*'/PORTMAP `ext.out#0` "Event Source Entity" -\> \[6\] **When Timer Is Triggered** (83) `out#0` "Event Source Entity"<br>
@@ -89,7 +145,7 @@ DECL/**Static\_1** `meta#0` "Signal Name" uid=3<br>
 '<u>\<composite\></u>*Create Composite Node(4)*'/PORTMAP `ext.in#0` "Target Entity" -\> \[34\] **Start Timer** (79) `in#0` "Target Entity"<br>
 '<u>\<composite\></u>*Create Composite Node(4)*'/\[34\] **Start Timer** (79) @(0,0)<br>
 '<u>\<composite\></u>*Create Composite Node(4)*'/\[34\] **Start Timer** (79) `in#1` "Timer Name" = '`Static_Timer`' : *Str*<br>
-'<u>\<composite\></u>*Create Composite Node(4)*'/\[34\] **Start Timer** (79) `in#2` "Loop" = No : *Bol*<br>
+'<u>\<composite\></u>*Create Composite Node(4)*'/\[34\] **Start Timer** (79) `in#2` "Loop" = false : *Bol*<br>
 **GRAPH** '<u>\<composite\></u>*Create Composite Node(6)*' ENTITY\_NODE\_GRAPH (guid 1610612743, decl 1610612751) role=dependency<br>
 '<u>\<composite\></u>*Create Composite Node(6)*'/PORTMAP `ext.in.flow#0` -\> \[11\] **Multiple Branches** (3/4) `in.flow#0`<br>
 '<u>\<composite\></u>*Create Composite Node(6)*'/PORTMAP `ext.out.flow#0` "1" -\> \[11\] **Multiple Branches** (3/4) `out.flow#1` "Static\_Global"<br>
@@ -126,22 +182,22 @@ DECL/**Static\_1** `meta#0` "Signal Name" uid=3<br>
 '<u>\<composite\></u>*Create Composite Node(13)*'/PORTMAP `ext.in#1` "Variable Name" -\> \[40\] **Get Custom Variable** (50/54) `in#1` "Variable Name"<br>
 '<u>\<composite\></u>*Create Composite Node(13)*'/PORTMAP `ext.out#0` "Variable Value" -\> \[40\] **Get Custom Variable** (50/54) `out#0` "Variable Value"<br>
 '<u>\<composite\></u>*Create Composite Node(13)*'/\[40\] **Get Custom Variable** (50/54) variant=C\<T:Flt\> @(0,0)<br>
-'<u>\<composite\></u>*Create Composite Node(13)*'/\[40\] **Get Custom Variable** (50/54) `out#0` "Variable Value" = 0 : *Flt*<br>
+'<u>\<composite\></u>*Create Composite Node(13)*'/\[40\] **Get Custom Variable** (50/54) `out#0` "Variable Value" = 0.00 : *Flt*<br>
 **GRAPH** '<u>\<composite\></u>*Create Composite Node(14)*' ENTITY\_NODE\_GRAPH (guid 1610612751, decl 1610612759) role=dependency<br>
 '<u>\<composite\></u>*Create Composite Node(14)*'/PORTMAP `ext.in.flow#0` -\> \[38\] **Set Custom Variable** (22/26) `in.flow#0`<br>
 '<u>\<composite\></u>*Create Composite Node(14)*'/PORTMAP `ext.in#0` "Variable Value" -\> \[38\] **Set Custom Variable** (22/26) `in#2` "Variable Value"<br>
 '<u>\<composite\></u>*Create Composite Node(14)*'/PORTMAP `ext.in#1` "Variable Name" -\> \[38\] **Set Custom Variable** (22/26) `in#1` "Variable Name"<br>
 '<u>\<composite\></u>*Create Composite Node(14)*'/PORTMAP `ext.in#2` "Target Entity" -\> \[38\] **Set Custom Variable** (22/26) `in#0` "Target Entity"<br>
 '<u>\<composite\></u>*Create Composite Node(14)*'/\[38\] **Set Custom Variable** (22/26) variant=C\<T:Flt\> @(0,0)<br>
-'<u>\<composite\></u>*Create Composite Node(14)*'/\[38\] **Set Custom Variable** (22/26) `in#2` "Variable Value" = 0 : *Flt*<br>
-'<u>\<composite\></u>*Create Composite Node(14)*'/\[38\] **Set Custom Variable** (22/26) `in#4` "Trigger Event" = No : *Bol*<br>
+'<u>\<composite\></u>*Create Composite Node(14)*'/\[38\] **Set Custom Variable** (22/26) `in#2` "Variable Value" = 0.00 : *Flt*<br>
+'<u>\<composite\></u>*Create Composite Node(14)*'/\[38\] **Set Custom Variable** (22/26) `in#4` "Trigger Event" = false : *Bol*<br>
 **GRAPH** '<u>\<composite\></u>*Create Composite Node(15)*' ENTITY\_NODE\_GRAPH (guid 1610612752, decl 1610612760) role=dependency<br>
 '<u>\<composite\></u>*Create Composite Node(15)*'/PORTMAP `ext.in.flow#0` -\> \[37\] **Set Custom Variable** (22/26) `in.flow#0`<br>
 '<u>\<composite\></u>*Create Composite Node(15)*'/PORTMAP `ext.out.flow#0` -\> \[37\] **Set Custom Variable** (22/26) `out.flow#0`<br>
 '<u>\<composite\></u>*Create Composite Node(15)*'/PORTMAP `ext.in#0` "Target Entity" -\> \[37\] **Set Custom Variable** (22/26) `in#0` "Target Entity"<br>
 '<u>\<composite\></u>*Create Composite Node(15)*'/\[37\] **Set Custom Variable** (22/26) variant=C\<T:Flt\> @(0,0)<br>
 '<u>\<composite\></u>*Create Composite Node(15)*'/\[37\] **Set Custom Variable** (22/26) `in#1` "Variable Name" = '`Static_Var`' : *Str*<br>
-'<u>\<composite\></u>*Create Composite Node(15)*'/\[37\] **Set Custom Variable** (22/26) `in#2` "Variable Value" = 0 : *Flt*<br>
+'<u>\<composite\></u>*Create Composite Node(15)*'/\[37\] **Set Custom Variable** (22/26) `in#2` "Variable Value" = 0.00 : *Flt*<br>
 **GRAPH** '<u>\<composite\></u>*Create Composite Node(16)*' ENTITY\_NODE\_GRAPH (guid 1610612753, decl 1610612761) role=dependency<br>
 '<u>\<composite\></u>*Create Composite Node(16)*'/PORTMAP `ext.out.flow#0` -\> \[4\] **When Node Graph Variable Changes** (351/357) `out.flow#0`<br>
 '<u>\<composite\></u>*Create Composite Node(16)*'/PORTMAP `ext.out#0` "Variable Name" -\> \[4\] **When Node Graph Variable Changes** (351/357) `out#2` "Variable Name"<br>
@@ -173,7 +229,7 @@ DECL/**Static\_1** `meta#0` "Signal Name" uid=3<br>
 '<u>\<composite\></u>*Create Composite Node(21)*'/PORTMAP `ext.in#1` "Variable Value" -\> \[42\] **Set Node Graph Variable** (323/329) `in#1` "Variable Value"<br>
 '<u>\<composite\></u>*Create Composite Node(21)*'/\[42\] **Set Node Graph Variable** (323/329) variant=C\<T:L\<Gid\>\> @(0,0)<br>
 '<u>\<composite\></u>*Create Composite Node(21)*'/\[42\] **Set Node Graph Variable** (323/329) `in#1` "Variable Value" = \[\] : *L\<Gid\>*<br>
-'<u>\<composite\></u>*Create Composite Node(21)*'/\[42\] **Set Node Graph Variable** (323/329) `in#2` "Trigger Event" = No : *Bol*<br>
+'<u>\<composite\></u>*Create Composite Node(21)*'/\[42\] **Set Node Graph Variable** (323/329) `in#2` "Trigger Event" = false : *Bol*<br>
 **GRAPH** '<u>\<composite\></u>*Create Composite Node(22)*' ENTITY\_NODE\_GRAPH (guid 1610612759, decl 1610612767) role=dependency<br>
 '<u>\<composite\></u>*Create Composite Node(22)*'/PORTMAP `ext.in#0` "Variable Name" -\> \[44\] **Get Node Graph Variable** (337/343) `in#0` "Variable Name"<br>
 '<u>\<composite\></u>*Create Composite Node(22)*'/PORTMAP `ext.out#0` "Variable Value" -\> \[44\] **Get Node Graph Variable** (337/343) `out#0` "Variable Value"<br>
@@ -253,7 +309,7 @@ DECL/**Static\_1** `meta#0` "Signal Name" uid=3<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[1\] **Set Node Graph Variable** (323) @(0,0)<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[1\] **Set Node Graph Variable** (323) `in#0` "Variable Name" = '`Var_1`' : *Str*<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[1\] **Set Node Graph Variable** (323) `in#1` "Variable Value" = 0 : *Int*<br>
-'<u>\<composite\></u>*Create Composite Node(1)*'/\[1\] **Set Node Graph Variable** (323) `in#2` "Trigger Event" = No : *Bol*
+'<u>\<composite\></u>*Create Composite Node(1)*'/\[1\] **Set Node Graph Variable** (323) `in#2` "Trigger Event" = false : *Bol*
 
 # FILE `test_composite.gil`
 
@@ -292,7 +348,7 @@ DECL/**Static\_1** `meta#0` "Signal Name" uid=3<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[1\] **Set Node Graph Variable** (323) @(0,0)<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[1\] **Set Node Graph Variable** (323) `in#0` "Variable Name" = '`Var_1`' : *Str*<br>
 '<u>\<composite\></u>*Create Composite Node(1)*'/\[1\] **Set Node Graph Variable** (323) `in#1` "Variable Value" = 0 : *Int*<br>
-'<u>\<composite\></u>*Create Composite Node(1)*'/\[1\] **Set Node Graph Variable** (323) `in#2` "Trigger Event" = No : *Bol*
+'<u>\<composite\></u>*Create Composite Node(1)*'/\[1\] **Set Node Graph Variable** (323) `in#2` "Trigger Event" = false : *Bol*
 
 # FILE `var_change.gia`
 

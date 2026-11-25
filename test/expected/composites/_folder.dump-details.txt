@@ -1,3 +1,18 @@
+# FILE composite_order.gia
+GRAPH 'Flows' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=8
+GRAPH '<composite>C1' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=1 role=dependency decl='1610612737'
+GRAPH '<composite>C2' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=1 role=dependency decl='1610612738'
+GRAPH '<composite>C3' ENTITY_NODE_GRAPH class=9 guid='1610612739' kind=21002 service=20000 nodes=1 role=dependency decl='1610612739'
+GRAPH '<composite>C4' ENTITY_NODE_GRAPH class=9 guid='1610612740' kind=21002 service=20000 nodes=1 role=dependency decl='1610612740'
+GRAPH '<composite>C5' ENTITY_NODE_GRAPH class=9 guid='1610612741' kind=21002 service=20000 nodes=1 role=dependency decl='1610612741'
+GRAPH '<composite>C6' ENTITY_NODE_GRAPH class=9 guid='1610612742' kind=21002 service=20000 nodes=1 role=dependency decl='1610612742'
+GRAPH '<composite>C7' ENTITY_NODE_GRAPH class=9 guid='1610612743' kind=21002 service=20000 nodes=1 role=dependency decl='1610612743'
+RESOURCE "Empty Model" OBJECT_ENTITY class=3 guid='1077936129' parent=(10005018)
+MOUNT 'Flows' -> OBJECT_ENTITY "Empty Model" entity
+RESOURCE "Empty Model" OBJECT_ENTITY class=3 guid='1077936130' parent=(10005018)
+MOUNT 'Flows' -> OBJECT_ENTITY "Empty Model" entity
+RESOURCE "Empty Model" OBJECT_ENTITY class=3 guid='1077936131' parent=(10005018)
+MOUNT 'Flows' -> OBJECT_ENTITY "Empty Model" entity
 # FILE test_All_Composite.gia
 DECL "Static_2" SIGNAL_NODE_DECL class=14 guid='1610612741' category=SEND_SIGNAL role=dependency
 DECL "Static_1" SIGNAL_NODE_DECL class=14 guid='1610612737' category=SEND_SIGNAL role=dependency

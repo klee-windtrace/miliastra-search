@@ -417,14 +417,14 @@ FOLDER /(default)/ graphs=9 resources=7
 **RESOURCE** "**Voice Chat Hint Queue**" UI\_CONTROL class=15 guid='`1073756702`' section=root.9<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Environment**' : *Int* = 0<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Phase**' : *Str* = ''<br>
-**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Hunt\_Weights**' : *Flt* = 0<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Hunt\_Weights**' : *Flt* = 0.00<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_TotalPlayers**' : *Int* = 0<br>
-**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Is\_SinglePlayer**' : *Bol* = No<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Is\_SinglePlayer**' : *Bol* = false<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_ReadyPlayers**' : *Dict\<Int,Ety\>* = {}<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Initial\_Text**' : *Str* = ''<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Initial\_Lines**' : *L\<Str\>* = \['`<color=#ACFF44>Waiting for players...</color>`', '`<color=#FFCC33>Choose your role!</color>`', '', '`<color=#FF5E41>You will be Hunter!</color>`', '`<color=#37FFFF>Two-player High Score Battle</color>`', '`??`'\]<br>
-**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Total\_Weight**' : *Flt* = 0<br>
-**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_NooneHunter**' : *Bol* = No<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Total\_Weight**' : *Flt* = 0.00<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_NooneHunter**' : *Bol* = false<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Titles\_Timer**' : *L\<Str\>* = \['`initial`', '`rebels`', '`hunter`', ''\]<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Titles\_Prepare**' : *L\<Str\>* = \['`<color=#FFCC33>Hunting starts in:</color>`', '`<color=#FFCC33>Hunter released in:</color>`', '', ''\]<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Titles\_Hunt**' : *L\<Str\>* = \['', '`<color=#ACFF44>Time to repair:</color>`', '`<color=#ACFF44>Time till victory:</color>`', ''\]<br>
@@ -434,12 +434,12 @@ FOLDER /(default)/ graphs=9 resources=7
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_DevicesRepaired**' : *Int* = 0<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_NeedRepair**' : *Int* = 0<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Game\_Winner**' : *Str* = ''<br>
-**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_OneRebel**' : *Bol* = No<br>
-**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_HuntStarted**' : *Bol* = No<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_OneRebel**' : *Bol* = false<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_HuntStarted**' : *Bol* = false<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**OPT\_Hunters**' : *Int* = 1<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**OPT\_Devices**' : *Int* = -2<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**OPT\_Repair**' : *Int* = 1<br>
-**VARIABLE** Stage 1094713345:"**Stage Entity**" '**OPT\_Time**' : *Flt* = 300<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**OPT\_Time**' : *Flt* = 300.00<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**OPT\_Fixing**' : *Int* = 30<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_Prison\_Time**' : *Int* = 10<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_Devices\_Used**' : *Dict\<Ety,Bol\>* = {}<br>
@@ -449,16 +449,16 @@ FOLDER /(default)/ graphs=9 resources=7
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_CurrentScore**' : *Int* = 0<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**V\_PlayerConnection**' : *Dict\<Int,Ety\>* = {}<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**OPT\_Stamina**' : *Int* = 300<br>
-**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Are\_Two\_Players**' : *Bol* = No<br>
-**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_Trace\_CD**' : *Flt* = 0<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Are\_Two\_Players**' : *Bol* = false<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_Trace\_CD**' : *Flt* = 0.00<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_Tour\_Round**' : *Int* = 1<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_BestScore**' : *Int* = 0<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Titles\_Tour**' : *L\<Str\>* = \['', '`<color=#ACFF44>Round: </color>`', '`<color=#ACFF44>Round: </color>`', ''\]<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Tour\_Nicknames**' : *L\<Str\>* = \['', ''\]<br>
-**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Tour\_Restart**' : *Bol* = No<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Tour\_Restart**' : *Bol* = false<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**C\_Tasker\_Task**' : *Str* = ''<br>
-**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_Have\_Players**' : *Bol* = No<br>
-**VARIABLE** Stage 1094713345:"**Stage Entity**" '**C\_ReadyPlayers**' : *Ety* = id:0<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**G\_Have\_Players**' : *Bol* = false<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**C\_ReadyPlayers**' : *Ety* = null<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Current\_Map**' : *Str* = '`NONE`'<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**C\_Do\_Restart**' : *Str* = ''<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Titles\_Bad**' : *L\<Str\>* = \['`??`', '`??`', '`??`', '`??`'\]<br>

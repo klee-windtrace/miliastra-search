@@ -112,14 +112,14 @@
 | --- | --- | --- | --- |
 | Stage 1094713345:"**Stage Entity**" | '**Environment**' | *Int* | 0 |
 | Stage 1094713345:"**Stage Entity**" | '**Phase**' | *Str* | '' |
-| Stage 1094713345:"**Stage Entity**" | '**Hunt\_Weights**' | *Flt* | 0 |
+| Stage 1094713345:"**Stage Entity**" | '**Hunt\_Weights**' | *Flt* | 0.00 |
 | Stage 1094713345:"**Stage Entity**" | '**G\_TotalPlayers**' | *Int* | 0 |
-| Stage 1094713345:"**Stage Entity**" | '**Is\_SinglePlayer**' | *Bol* | No |
+| Stage 1094713345:"**Stage Entity**" | '**Is\_SinglePlayer**' | *Bol* | false |
 | Stage 1094713345:"**Stage Entity**" | '**G\_ReadyPlayers**' | *Dict\<Int,Ety\>* | {} |
 | Stage 1094713345:"**Stage Entity**" | '**Initial\_Text**' | *Str* | '' |
 | Stage 1094713345:"**Stage Entity**" | '**Initial\_Lines**' | *L\<Str\>* | \['`<color=#ACFF44>Waiting for players...</color>`', '`<color=#FFCC33>Choose your role!</color>`', '', '`<color=#FF5E41>You will be Hunter!</color>`', '`<color=#37FFFF>Two-player High Score Battle</color>`', '`??`'\] |
-| Stage 1094713345:"**Stage Entity**" | '**Total\_Weight**' | *Flt* | 0 |
-| Stage 1094713345:"**Stage Entity**" | '**G\_NooneHunter**' | *Bol* | No |
+| Stage 1094713345:"**Stage Entity**" | '**Total\_Weight**' | *Flt* | 0.00 |
+| Stage 1094713345:"**Stage Entity**" | '**G\_NooneHunter**' | *Bol* | false |
 | Stage 1094713345:"**Stage Entity**" | '**Titles\_Timer**' | *L\<Str\>* | \['`initial`', '`rebels`', '`hunter`', ''\] |
 | Stage 1094713345:"**Stage Entity**" | '**Titles\_Prepare**' | *L\<Str\>* | \['`<color=#FFCC33>Hunting starts in:</color>`', '`<color=#FFCC33>Hunter released in:</color>`', '', ''\] |
 | Stage 1094713345:"**Stage Entity**" | '**Titles\_Hunt**' | *L\<Str\>* | \['', '`<color=#ACFF44>Time to repair:</color>`', '`<color=#ACFF44>Time till victory:</color>`', ''\] |
@@ -129,12 +129,12 @@
 | Stage 1094713345:"**Stage Entity**" | '**G\_DevicesRepaired**' | *Int* | 0 |
 | Stage 1094713345:"**Stage Entity**" | '**G\_NeedRepair**' | *Int* | 0 |
 | Stage 1094713345:"**Stage Entity**" | '**Game\_Winner**' | *Str* | '' |
-| Stage 1094713345:"**Stage Entity**" | '**G\_OneRebel**' | *Bol* | No |
-| Stage 1094713345:"**Stage Entity**" | '**G\_HuntStarted**' | *Bol* | No |
+| Stage 1094713345:"**Stage Entity**" | '**G\_OneRebel**' | *Bol* | false |
+| Stage 1094713345:"**Stage Entity**" | '**G\_HuntStarted**' | *Bol* | false |
 | Stage 1094713345:"**Stage Entity**" | '**OPT\_Hunters**' | *Int* | 1 |
 | Stage 1094713345:"**Stage Entity**" | '**OPT\_Devices**' | *Int* | -2 |
 | Stage 1094713345:"**Stage Entity**" | '**OPT\_Repair**' | *Int* | 1 |
-| Stage 1094713345:"**Stage Entity**" | '**OPT\_Time**' | *Flt* | 300 |
+| Stage 1094713345:"**Stage Entity**" | '**OPT\_Time**' | *Flt* | 300.00 |
 | Stage 1094713345:"**Stage Entity**" | '**OPT\_Fixing**' | *Int* | 30 |
 | Stage 1094713345:"**Stage Entity**" | '**G\_Prison\_Time**' | *Int* | 10 |
 | Stage 1094713345:"**Stage Entity**" | '**G\_Devices\_Used**' | *Dict\<Ety,Bol\>* | {} |
@@ -144,16 +144,16 @@
 | Stage 1094713345:"**Stage Entity**" | '**G\_CurrentScore**' | *Int* | 0 |
 | Stage 1094713345:"**Stage Entity**" | '**V\_PlayerConnection**' | *Dict\<Int,Ety\>* | {} |
 | Stage 1094713345:"**Stage Entity**" | '**OPT\_Stamina**' | *Int* | 300 |
-| Stage 1094713345:"**Stage Entity**" | '**Are\_Two\_Players**' | *Bol* | No |
-| Stage 1094713345:"**Stage Entity**" | '**G\_Trace\_CD**' | *Flt* | 0 |
+| Stage 1094713345:"**Stage Entity**" | '**Are\_Two\_Players**' | *Bol* | false |
+| Stage 1094713345:"**Stage Entity**" | '**G\_Trace\_CD**' | *Flt* | 0.00 |
 | Stage 1094713345:"**Stage Entity**" | '**G\_Tour\_Round**' | *Int* | 1 |
 | Stage 1094713345:"**Stage Entity**" | '**G\_BestScore**' | *Int* | 0 |
 | Stage 1094713345:"**Stage Entity**" | '**Titles\_Tour**' | *L\<Str\>* | \['', '`<color=#ACFF44>Round: </color>`', '`<color=#ACFF44>Round: </color>`', ''\] |
 | Stage 1094713345:"**Stage Entity**" | '**Tour\_Nicknames**' | *L\<Str\>* | \['', ''\] |
-| Stage 1094713345:"**Stage Entity**" | '**Tour\_Restart**' | *Bol* | No |
+| Stage 1094713345:"**Stage Entity**" | '**Tour\_Restart**' | *Bol* | false |
 | Stage 1094713345:"**Stage Entity**" | '**C\_Tasker\_Task**' | *Str* | '' |
-| Stage 1094713345:"**Stage Entity**" | '**G\_Have\_Players**' | *Bol* | No |
-| Stage 1094713345:"**Stage Entity**" | '**C\_ReadyPlayers**' | *Ety* | id:0 |
+| Stage 1094713345:"**Stage Entity**" | '**G\_Have\_Players**' | *Bol* | false |
+| Stage 1094713345:"**Stage Entity**" | '**C\_ReadyPlayers**' | *Ety* | null |
 | Stage 1094713345:"**Stage Entity**" | '**Current\_Map**' | *Str* | '`NONE`' |
 | Stage 1094713345:"**Stage Entity**" | '**C\_Do\_Restart**' | *Str* | '' |
 | Stage 1094713345:"**Stage Entity**" | '**Titles\_Bad**' | *L\<Str\>* | \['`??`', '`??`', '`??`', '`??`'\] |

@@ -1,0 +1,53 @@
+GRAPH 'Flows' ENTITY_NODE_GRAPH (guid 1073741825)
+'Flows'/[10] C2 (1610612738) user=COMPOSITE @(-134,-374)
+'Flows'/[10] C2 (1610612738) out.flow#0 -> [14] C4 (1610612740) in.flow#0
+'Flows'/[12] C3 (1610612739) user=COMPOSITE @(-130,-20)
+'Flows'/[12] C3 (1610612739) out.flow#0 -> [14] C4 (1610612740) in.flow#0
+'Flows'/[14] C4 (1610612740) user=COMPOSITE @(222,-184)
+'Flows'/[14] C4 (1610612740) out.flow#0 -> [26] C5 (1610612741) in.flow#0
+'Flows'/[14] C4 (1610612740) out.flow#0 -> [25] C6 (1610612742) in.flow#0
+'Flows'/[21] C1 (1610612737) user=COMPOSITE @(-505,-180)
+'Flows'/[21] C1 (1610612737) out.flow#0 -> [10] C2 (1610612738) in.flow#0
+'Flows'/[21] C1 (1610612737) out.flow#0 -> [12] C3 (1610612739) in.flow#0
+'Flows'/[22] C7 (1610612743) user=COMPOSITE @(982,-184)
+'Flows'/[23] When Entity Is Removed/Destroyed (72) @(-922.5,-182.75)
+'Flows'/[23] When Entity Is Removed/Destroyed (72) out.flow#0 -> [21] C1 (1610612737) in.flow#0
+'Flows'/[25] C6 (1610612742) user=COMPOSITE @(598.25,2)
+'Flows'/[25] C6 (1610612742) out.flow#0 -> [22] C7 (1610612743) in.flow#0
+'Flows'/[26] C5 (1610612741) user=COMPOSITE @(603.75,-372.75)
+'Flows'/[26] C5 (1610612741) out.flow#0 -> [22] C7 (1610612743) in.flow#0
+GRAPH '<composite>C1' ENTITY_NODE_GRAPH (guid 1610612737, decl 1610612737) role=dependency
+'<composite>C1'/PORTMAP ext.in.flow#0 -> [1] Print String (1) in.flow#0
+'<composite>C1'/PORTMAP ext.out.flow#0 -> [1] Print String (1) out.flow#0
+'<composite>C1'/[1] Print String (1) @(0,0)
+'<composite>C1'/[1] Print String (1) in#0 "String" = '1' : Str
+GRAPH '<composite>C2' ENTITY_NODE_GRAPH (guid 1610612738, decl 1610612738) role=dependency
+'<composite>C2'/PORTMAP ext.in.flow#0 -> [2] Print String (1) in.flow#0
+'<composite>C2'/PORTMAP ext.out.flow#0 -> [2] Print String (1) out.flow#0
+'<composite>C2'/[2] Print String (1) @(0,0)
+'<composite>C2'/[2] Print String (1) in#0 "String" = '2' : Str
+GRAPH '<composite>C3' ENTITY_NODE_GRAPH (guid 1610612739, decl 1610612739) role=dependency
+'<composite>C3'/PORTMAP ext.in.flow#0 -> [3] Print String (1) in.flow#0
+'<composite>C3'/PORTMAP ext.out.flow#0 -> [3] Print String (1) out.flow#0
+'<composite>C3'/[3] Print String (1) @(0,0)
+'<composite>C3'/[3] Print String (1) in#0 "String" = '3' : Str
+GRAPH '<composite>C4' ENTITY_NODE_GRAPH (guid 1610612740, decl 1610612740) role=dependency
+'<composite>C4'/PORTMAP ext.in.flow#0 -> [4] Print String (1) in.flow#0
+'<composite>C4'/PORTMAP ext.out.flow#0 -> [4] Print String (1) out.flow#0
+'<composite>C4'/[4] Print String (1) @(0,0)
+'<composite>C4'/[4] Print String (1) in#0 "String" = '4' : Str
+GRAPH '<composite>C5' ENTITY_NODE_GRAPH (guid 1610612741, decl 1610612741) role=dependency
+'<composite>C5'/PORTMAP ext.in.flow#0 -> [6] Print String (1) in.flow#0
+'<composite>C5'/PORTMAP ext.out.flow#0 -> [6] Print String (1) out.flow#0
+'<composite>C5'/[6] Print String (1) @(0,0)
+'<composite>C5'/[6] Print String (1) in#0 "String" = '5' : Str
+GRAPH '<composite>C6' ENTITY_NODE_GRAPH (guid 1610612742, decl 1610612742) role=dependency
+'<composite>C6'/PORTMAP ext.in.flow#0 -> [5] Print String (1) in.flow#0
+'<composite>C6'/PORTMAP ext.out.flow#0 -> [5] Print String (1) out.flow#0
+'<composite>C6'/[5] Print String (1) @(0,0)
+'<composite>C6'/[5] Print String (1) in#0 "String" = '6' : Str
+GRAPH '<composite>C7' ENTITY_NODE_GRAPH (guid 1610612743, decl 1610612743) role=dependency
+'<composite>C7'/PORTMAP ext.in.flow#0 -> [7] Print String (1) in.flow#0
+'<composite>C7'/PORTMAP ext.out.flow#0 -> [7] Print String (1) out.flow#0
+'<composite>C7'/[7] Print String (1) @(0,0)
+'<composite>C7'/[7] Print String (1) in#0 "String" = '7' : Str

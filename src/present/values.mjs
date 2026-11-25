@@ -7,6 +7,13 @@ export function f32(v) {
   for (let p = 1; p <= 9; p++) { const s = Number(v.toPrecision(p)); if (Math.fround(s) === v) return String(s); }
   return String(v);
 }
+/** A float with at least two decimals (`0` is `0.00`); more of them are kept as they are. */
+export function flt(x) {
+  const s = f32(x);
+  if (/[eE]|^-?(Infinity|NaN)$/.test(s)) return s;
+  const [whole, frac = ''] = s.split('.');
+  return frac.length >= 2 ? s : `${whole}.${frac.padEnd(2, '0')}`;
+}
 /** Inner text of a quoted string literal (escapes \\, ' and newline); the theme adds the quotes. */
 export const qi = (s) => String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, '\\n');
 export const qs = (s) => S('string', qi(s));
@@ -31,11 +38,12 @@ function plainSpans(val) {
   const list = (items) => join(items.map(sub), ', ');
   switch (val.kind) {
     case 'int': return S('number', val.value);
-    case 'float': return S('number', f32(val.value));
+    case 'float': return S('number', flt(val.value));
     case 'str': return qs(val.value);
-    case 'id': return S('idValue', `id:${val.value}`);
+    // an id of 0 points at nothing: it reads like the other keywords of a value
+    case 'id': return val.value === 0 ? S('bool', 'null') : S('idValue', `id:${val.value}`);
     case 'vec': return S('vector', `(${val.value.map(f32).join(', ')})`);
-    case 'bool': return S('bool', val.value ? 'Yes' : 'No');
+    case 'bool': return S('bool', val.value ? 'true' : 'false');
     case 'enum': {
       const { names } = val;
       if (names.length === 1) return S('enumValue', `enum:${val.value}«${names[0]}»`);

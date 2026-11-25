@@ -1,0 +1,22 @@
+# FILE composite_order.gia
+format                 gia
+detected_by            header
+file_size              4647
+container_file_type    gia
+engine_version         7.2.0
+mode                   beyond
+export_name            composite_order.gia
+node_db_version        7.2.0
+resources              18
+primary                4
+dependencies           14
+graphs                 8
+nodes                  15
+composite_bodies       7
+declarations           7
+structs                0
+mounts                 3
+unresolved_node_types  0
+CLASS OBJECT_ENTITY class=3 count=3
+CLASS ENTITY_NODE_GRAPH class=9 count=8
+CLASS COMPOSITE_NODE_DECL class=12 count=7

@@ -45,7 +45,7 @@ GRAPH 'Both' ENTITY_NODE_GRAPH (guid 1073741832)
 'Both'/[7] Monitor Signal (1073741830) out.flow#0 -> [6] Send Signal (1073741831) in.flow#0
 'Both'/[7] Monitor Signal (1073741830) meta.rpc#0 "Signal Name" = 'Signal_2'
 GRAPH 'Graph' ENTITY_NODE_GRAPH (guid 1073741825)
-'Graph'/VAR Graph_Var : Ety public=false = id:0
+'Graph'/VAR Graph_Var : Ety public=false = null
 'Graph'/COMMENT 'Comment' @(-193,-100)
 'Graph'/[1] When Entity Is Created (71) @(-219,48)
 'Graph'/[1] When Entity Is Created (71) out.flow#0 -> [4] Double Branch (2) in.flow#0
@@ -83,7 +83,7 @@ GRAPH 'New Node Graph' ENTITY_NODE_GRAPH (guid 1073741827)
 'New Node Graph'/[15] Create Composite Node(1) (1073741826) in#1 "3D Vector" = (1, 2, 3) : Vec
 'New Node Graph'/[16] Set Local Variable (19/2677) variant=C<T:Flt> @(1517.8572,305.2857)
 'New Node Graph'/[16] Set Local Variable (19/2677) in#1 "Value" <- [15] Create Composite Node(1) (1073741826) out#0 "X-Component" : Flt
-'New Node Graph'/[16] Set Local Variable (19/2677) in#1 "Value" = 0 : Flt (also wired)
+'New Node Graph'/[16] Set Local Variable (19/2677) in#1 "Value" = 0.00 : Flt (also wired)
 GRAPH 'New Node Graph_2' ENTITY_NODE_GRAPH (guid 1073741834)
 GRAPH 'Receive' ENTITY_NODE_GRAPH (guid 1073741830)
 'Receive'/[2] Monitor Signal (1073741827) user=LISTEN_SIGNAL signal='Signal_1' @(-286,-207) sigver=1
@@ -98,9 +98,9 @@ GRAPH 'Send' ENTITY_NODE_GRAPH (guid 1073741831)
 'Send'/[2] Send Signal (1073741828) meta.rpc#0 "Signal Name" = 'Signal_1'
 'Send'/[4] Send Signal (1073741831) user=SEND_SIGNAL signal='Signal_2' @(-197,-101) sigver=3
 'Send'/[4] Send Signal (1073741831) in#0 "Parameter_1" <- [5] When Timer Is Triggered (83) out#3 "Timer Sequence ID" : Int
-'Send'/[4] Send Signal (1073741831) in#1 "Parameter_2" = 4 : Flt
+'Send'/[4] Send Signal (1073741831) in#1 "Parameter_2" = 4.00 : Flt
 'Send'/[4] Send Signal (1073741831) in#2 "Parameter_3" = (1, 2, 3) : Vec
-'Send'/[4] Send Signal (1073741831) in#3 "Parameter_4" = Yes : Bol
+'Send'/[4] Send Signal (1073741831) in#3 "Parameter_4" = true : Bol
 'Send'/[4] Send Signal (1073741831) in#4 "Parameter_5" <- [5] When Timer Is Triggered (83) out#1 "Event Source GUID" : Gid
 'Send'/[4] Send Signal (1073741831) in#5 "Parameter_6" <- [5] When Timer Is Triggered (83) out#0 "Event Source Entity" : Ety
 'Send'/[4] Send Signal (1073741831) in#6 "Parameter_7" = id:5 : Pfb
@@ -114,7 +114,7 @@ GRAPH 'Structs' ENTITY_NODE_GRAPH (guid 1073741833)
 'Structs'/[2] Modify Structure (1073741835) out.flow#0 -> [10] Modify Structure (1073741844) in.flow#0
 'Structs'/[2] Modify Structure (1073741835) in#0 "Structure" <- [4] Assemble Structure (1073741833) out#0 "Structure" : Struct
 'Structs'/[2] Modify Structure (1073741835) in#2 "是否设置_Add variable 1" <- [6] Split Structure (1073741834) out#0 "Add variable 1" : Str
-'Structs'/[2] Modify Structure (1073741835) in#3 "是否设置_Add variable 1" = Yes : Bol
+'Structs'/[2] Modify Structure (1073741835) in#3 "是否设置_Add variable 1" = true : Bol
 'Structs'/[4] Assemble Structure (1073741833) user=STRUCT_ASSEMBLY struct='Structure' @(-1207,-226)
 'Structs'/[4] Assemble Structure (1073741833) in#0 "Add variable 1" = '9' : Str
 'Structs'/[6] Split Structure (1073741834) user=STRUCT_SPLIT struct='Structure' @(-788,-86)
@@ -123,11 +123,11 @@ GRAPH 'Structs' ENTITY_NODE_GRAPH (guid 1073741833)
 'Structs'/[8] When Entity Is Removed/Destroyed (72) out.flow#0 -> [2] Modify Structure (1073741835) in.flow#0
 'Structs'/[10] Modify Structure (1073741844) user=STRUCT_MODIFY struct='Structure_1' @(150.14285,-270.42856)
 'Structs'/[10] Modify Structure (1073741844) in#2 "是否设置_Add variable 1" <- [14] Split Structure (1073741843) out#0 "Add variable 1" : L<Str>
-'Structs'/[10] Modify Structure (1073741844) in#3 "Add variable 2" = Yes : Bol
-'Structs'/[10] Modify Structure (1073741844) in#5 "Add variable 3" = No : Bol
+'Structs'/[10] Modify Structure (1073741844) in#3 "Add variable 2" = true : Bol
+'Structs'/[10] Modify Structure (1073741844) in#5 "Add variable 3" = false : Bol
 'Structs'/[10] Modify Structure (1073741844) in#6 "是否设置_Add variable 3" <- [4] Assemble Structure (1073741833) out#0 "Structure" : Struct
-'Structs'/[10] Modify Structure (1073741844) in#7 "Add variable 4" = Yes : Bol
-'Structs'/[10] Modify Structure (1073741844) in#9 "是否设置_Add variable 4" = No : Bol
+'Structs'/[10] Modify Structure (1073741844) in#7 "Add variable 4" = true : Bol
+'Structs'/[10] Modify Structure (1073741844) in#9 "是否设置_Add variable 4" = false : Bol
 'Structs'/[13] Assemble Structure (1073741842) user=STRUCT_ASSEMBLY struct='Structure_1' @(-790.7857,146.71428)
 'Structs'/[13] Assemble Structure (1073741842) in#1 "Add variable 2" = 8 : Int
 'Structs'/[14] Split Structure (1073741843) user=STRUCT_SPLIT struct='Structure_1' @(-313.2143,141)
@@ -177,25 +177,25 @@ GRAPH '<skill>New Character Skill Node Graph' SKILL_NODE_GRAPH (guid 1082130435)
 '<skill>New Character Skill Node Graph'/[3] Play Timed Effects (200038/2000) in#1 "Location" = (0, 0, 0) : Vec (default) (also wired)
 '<skill>New Character Skill Node Graph'/[3] Play Timed Effects (200038/2000) in#2 "Rotate" <- [5] Get Ray Detection Result (200109/1047) out#0 "On-Hit Location" : Vec
 '<skill>New Character Skill Node Graph'/[3] Play Timed Effects (200038/2000) in#2 "Rotate" = (0, 0, 0) : Vec (default) (also wired)
-'<skill>New Character Skill Node Graph'/[3] Play Timed Effects (200038/2000) in#3 "Zoom Multiplier" = 0 : Flt (default)
+'<skill>New Character Skill Node Graph'/[3] Play Timed Effects (200038/2000) in#3 "Zoom Multiplier" = 0.00 : Flt (default)
 '<skill>New Character Skill Node Graph'/[3] Play Timed Effects (200038/2000) in#4 "Special Effects Asset" = 0 : Int (default)
-'<skill>New Character Skill Node Graph'/[3] Play Timed Effects (200038/2000) in#5 "Play Default Sound Effect" = Yes : Bol (default)
+'<skill>New Character Skill Node Graph'/[3] Play Timed Effects (200038/2000) in#5 "Play Default Sound Effect" = true : Bol (default)
 '<skill>New Character Skill Node Graph'/[3] Play Timed Effects (200038/2000) meta.rpc#0 = 0 : Int (default)
 '<skill>New Character Skill Node Graph'/[4] 3D Vector Zoom (200066/134) @(-42,195)
-'<skill>New Character Skill Node Graph'/[4] 3D Vector Zoom (200066/134) in#0 "Zoom Multiplier" = 0 : Flt (default)
+'<skill>New Character Skill Node Graph'/[4] 3D Vector Zoom (200066/134) in#0 "Zoom Multiplier" = 0.00 : Flt (default)
 '<skill>New Character Skill Node Graph'/[4] 3D Vector Zoom (200066/134) in#1 "3D Vector" = (0, 0, 0) : Vec (default)
 '<skill>New Character Skill Node Graph'/[4] 3D Vector Zoom (200066/134) out#0 "Result" = (0, 0, 0) : Vec (default)
 '<skill>New Character Skill Node Graph'/[5] Get Ray Detection Result (200109/1047) @(-113.25,499.25)
 '<skill>New Character Skill Node Graph'/[5] Get Ray Detection Result (200109/1047) in#0 "Detect Initiator Entity" <- [6] Get Self Entity (200033/1013) out#0 "Self Entity" : Ety
 '<skill>New Character Skill Node Graph'/[5] Get Ray Detection Result (200109/1047) in#1 "Launch Location" = (0, 0, 0) : Vec (default)
 '<skill>New Character Skill Node Graph'/[5] Get Ray Detection Result (200109/1047) in#2 "Launch Direction" = (0, 0, 0) : Vec (default)
-'<skill>New Character Skill Node Graph'/[5] Get Ray Detection Result (200109/1047) in#3 "Max Ray Length" = 0 : Flt (default)
+'<skill>New Character Skill Node Graph'/[5] Get Ray Detection Result (200109/1047) in#3 "Max Ray Length" = 0.00 : Flt (default)
 '<skill>New Character Skill Node Graph'/[5] Get Ray Detection Result (200109/1047) in#4 "Faction Filter" = enum:0«No | Default | None» : Enum (default)
 '<skill>New Character Skill Node Graph'/[5] Get Ray Detection Result (200109/1047) in#5 "Entity Type Filter" = [] : L<Enum> (default)
 '<skill>New Character Skill Node Graph'/[5] Get Ray Detection Result (200109/1047) in#6 "Hit Layer Filter" = [] : L<Enum> (default)
 '<skill>New Character Skill Node Graph'/[5] Get Ray Detection Result (200109/1047) out#0 "On-Hit Location" = (0, 0, 0) : Vec (default)
 '<skill>New Character Skill Node Graph'/[6] Get Self Entity (200033/1013) @(-415.5,510.25)
-'<skill>New Character Skill Node Graph'/[6] Get Self Entity (200033/1013) out#0 "Self Entity" = id:0 : Ety (default)
+'<skill>New Character Skill Node Graph'/[6] Get Self Entity (200033/1013) out#0 "Self Entity" = null : Ety (default)
 GRAPH '<skill>New Character Skill Node Graph_1' SKILL_NODE_GRAPH (guid 1082130442)
 '<skill>New Character Skill Node Graph_1'/[1] Node Graph Starts (200042/2001) @(0,0)
 GRAPH '<creation>New Creation Skill Node Graph' CREATION_SKILL_GRAPH (guid 1082130436)
@@ -206,26 +206,26 @@ GRAPH '<creation>New Creation Skill Node Graph' CREATION_SKILL_GRAPH (guid 10821
 '<creation>New Creation Skill Node Graph'/[2] Taunt Target (200089/2000) meta.rpc#0 = 0 : Int (default)
 '<creation>New Creation Skill Node Graph'/[4] Traverse Entity List (200055/2000) @(26,195)
 '<creation>New Creation Skill Node Graph'/[4] Traverse Entity List (200055/2000) in#0 "Entity List" = [] : L<Ety> (default)
-'<creation>New Creation Skill Node Graph'/[4] Traverse Entity List (200055/2000) out#0 "Current Entity" = id:0 : Ety (default)
+'<creation>New Creation Skill Node Graph'/[4] Traverse Entity List (200055/2000) out#0 "Current Entity" = null : Ety (default)
 GRAPH '<creation>New Creation Skill Node Graph_1' CREATION_SKILL_GRAPH (guid 1082130443)
 '<creation>New Creation Skill Node Graph_1'/[1] Node Graph Starts (200042/2001) @(0,0)
 GRAPH '<creation>New Creation Status Node Graph' CREATION_STATUS_GRAPH (guid 1082130437)
 '<creation>New Creation Status Node Graph'/[1] Execute only by sequence (200126/4000) @(0,0) status_ext=1/1
 '<creation>New Creation Status Node Graph'/[1] Execute only by sequence (200126/4000) out.flow#0 "1" -> [2] Tactic: Ground Escape (200138/4019) in.flow#0
 '<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) @(431,-2)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#0 "Execute" = Yes : Bol (default)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#1 "Escape Trigger Distance" = 0 : Flt (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#0 "Execute" = true : Bol (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#1 "Escape Trigger Distance" = 0.00 : Flt (default)
 '<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#2 "Movement Speed" = enum:3601«Walk» : Enum (default)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#3 "Maximum Escape Angle" = 0 : Flt (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#3 "Maximum Escape Angle" = 0.00 : Flt (default)
 '<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#4 "Minimum Escape Segments" = 0 : Int (default)
 '<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#5 "Maximum Escape Segments" = 0 : Int (default)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#6 "Minimum Escape Distance" = 0 : Flt (default)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#7 "Maximum Escape Distance" = 0 : Flt (default)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#8 "Escape Trigger CD" = 1 : Flt (default)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#9 "Clear aggro and cancel tactic after countdown" = 0 : Flt (default)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#10 "Whether restricted by territory" = Yes : Bol (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#6 "Minimum Escape Distance" = 0.00 : Flt (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#7 "Maximum Escape Distance" = 0.00 : Flt (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#8 "Escape Trigger CD" = 1.00 : Flt (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#9 "Clear aggro and cancel tactic after countdown" = 0.00 : Flt (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#10 "Whether restricted by territory" = true : Bol (default)
 '<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#11 "Tactical Context" = '' : Str (default)
-'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#12 "Can skill be interrupted" = No : Bol (default)
+'<creation>New Creation Status Node Graph'/[2] Tactic: Ground Escape (200138/4019) in#12 "Can skill be interrupted" = false : Bol (default)
 GRAPH '<creation>New Creation Status Node Graph_1' CREATION_STATUS_GRAPH (guid 1082130444)
 '<creation>New Creation Status Node Graph_1'/[1] Execute only by sequence (200126/4000) @(0,0) status_ext=1/1
 GRAPH '<creation>New Creation Status Decision Node Graph' CREATION_STATUS_DECISION_GRAPH (guid 1082130439)
@@ -234,7 +234,7 @@ GRAPH '<creation>New Creation Status Decision Node Graph' CREATION_STATUS_DECISI
 '<creation>New Creation Status Decision Node Graph'/[2] Multiple Branches (200127) @(445,39)
 '<creation>New Creation Status Decision Node Graph'/[2] Multiple Branches (200127) out.flow#0 "Default" -> [3] Switch to self execution status (200128/4011) in.flow#0
 '<creation>New Creation Status Decision Node Graph'/[3] Switch to self execution status (200128/4011) @(883,144)
-'<creation>New Creation Status Decision Node Graph'/[3] Switch to self execution status (200128/4011) in#0 "Execute" = Yes : Bol (default)
+'<creation>New Creation Status Decision Node Graph'/[3] Switch to self execution status (200128/4011) in#0 "Execute" = true : Bol (default)
 '<creation>New Creation Status Decision Node Graph'/[3] Switch to self execution status (200128/4011) in#1 "Status Node Graph Configuration ID" = id:1082130437 : Cfg
 '<creation>New Creation Status Decision Node Graph'/[3] Switch to self execution status (200128/4011) in#2 "Autonomous Logic Parameter ID" = 0 : Int
 GRAPH '<creation>New Creation Status Decision Node Graph_1' CREATION_STATUS_DECISION_GRAPH (guid 1082130446)
@@ -248,19 +248,19 @@ GRAPH '<skill>New Character Control Skill Node Graph_1' CHARACTER_CONTROL_SKILL_
 GRAPH '<filter>New Filter Node Graph' BOOLEAN_FILTER_GRAPH (guid 1082130433)
 '<filter>New Filter Node Graph'/[1] Node Graph End (Boolean) (200000) @(0,0)
 '<filter>New Filter Node Graph'/[1] Node Graph End (Boolean) (200000) in#0 "Output Result (Boolean)" <- [2] Less Than (200008/12) out#0 "Result" : Bol
-'<filter>New Filter Node Graph'/[1] Node Graph End (Boolean) (200000) in#0 "Output Result (Boolean)" = No : Bol (default) (also wired)
+'<filter>New Filter Node Graph'/[1] Node Graph End (Boolean) (200000) in#0 "Output Result (Boolean)" = false : Bol (default) (also wired)
 '<filter>New Filter Node Graph'/[1] Node Graph End (Boolean) (200000) in#1 "Filter Return Type" = enum:1000010«Return Boolean» : Enum (default)
 '<filter>New Filter Node Graph'/[2] Less Than (200008/12) variant=C<T:Int> @(-531,-5)
 '<filter>New Filter Node Graph'/[2] Less Than (200008/12) in#0 "op" = enum:101«Comparison Operators_Less Than» : Enum (default)
 '<filter>New Filter Node Graph'/[2] Less Than (200008/12) in#1 <- [3] Get List Length (200018) out#0 "Length" : Int
 '<filter>New Filter Node Graph'/[2] Less Than (200008/12) in#1 = 0 : Int (also wired)
 '<filter>New Filter Node Graph'/[2] Less Than (200008/12) in#2 = 0 : Int
-'<filter>New Filter Node Graph'/[2] Less Than (200008/12) out#0 "Result" = No : Bol (default)
+'<filter>New Filter Node Graph'/[2] Less Than (200008/12) out#0 "Result" = false : Bol (default)
 '<filter>New Filter Node Graph'/[3] Get List Length (200018) @(-935,5)
 '<filter>New Filter Node Graph'/[3] Get List Length (200018) out#0 "Length" = 0 : Int (default)
 GRAPH '<filter>New Filter Node Graph_2' BOOLEAN_FILTER_GRAPH (guid 1082130440)
 '<filter>New Filter Node Graph_2'/[1] Node Graph End (Boolean) (200000) @(0,0)
-'<filter>New Filter Node Graph_2'/[1] Node Graph End (Boolean) (200000) in#0 "Output Result (Boolean)" = No : Bol (default)
+'<filter>New Filter Node Graph_2'/[1] Node Graph End (Boolean) (200000) in#0 "Output Result (Boolean)" = false : Bol (default)
 '<filter>New Filter Node Graph_2'/[1] Node Graph End (Boolean) (200000) in#1 "Filter Return Type" = enum:1000010«Return Boolean» : Enum (default)
 GRAPH '<filter>New Filter Node Graph_1' INTEGER_FILTER_GRAPH (guid 1082130434)
 '<filter>New Filter Node Graph_1'/[1] Node Graph End (Integer) (200122) @(0,0)
@@ -272,7 +272,7 @@ GRAPH '<filter>New Filter Node Graph_1' INTEGER_FILTER_GRAPH (guid 1082130434)
 '<filter>New Filter Node Graph_1'/[2] Get Custom Variable (200016/41) in#1 "Variable Name" = 'test' : Str
 '<filter>New Filter Node Graph_1'/[2] Get Custom Variable (200016/41) out#0 "Variable Value" = 0 : Int
 '<filter>New Filter Node Graph_1'/[3] Get Self Entity (200033/1013) @(-413,-166)
-'<filter>New Filter Node Graph_1'/[3] Get Self Entity (200033/1013) out#0 "Self Entity" = id:0 : Ety (default)
+'<filter>New Filter Node Graph_1'/[3] Get Self Entity (200033/1013) out#0 "Self Entity" = null : Ety (default)
 GRAPH '<filter>New Filter Node Graph_1_1' INTEGER_FILTER_GRAPH (guid 1082130441)
 '<filter>New Filter Node Graph_1_1'/[1] Node Graph End (Integer) (200122) @(0,0)
 '<filter>New Filter Node Graph_1_1'/[1] Node Graph End (Integer) (200122) in#0 "Output Result (Integer)" = 0 : Int (default)

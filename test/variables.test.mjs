@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import { run } from './expected.mjs';
 import { parseBundle, buildVariable } from '../src/model.mjs';
 import { scanVariables } from '../src/varscan.mjs';
 import { walkRaw } from '../src/decode.mjs';
@@ -319,9 +320,20 @@ test('dump: an entity is compared with the graph values of its prefab; a graph i
 test('dump text: GRAPH_VARIABLE lines with (public), the graph in braces on the rows of a host', () => {
   const lines = textLines(dumpBlocks(dump(graphFile))).map(plain);
   assert.ok(lines.includes('GRAPH_VARIABLE \'New Node Graph\' \'String\' : Str (public) = \'graph\''));
-  assert.ok(lines.includes('GRAPH_VARIABLE \'New Node Graph\' \'Private\' : Bol = Yes'));
+  assert.ok(lines.includes('GRAPH_VARIABLE \'New Node Graph\' \'Private\' : Bol = true'));
   assert.ok(lines.includes('GRAPH_VARIABLE \'<status>Status\' \'Status\' : Dict<Str,Str> = {\'Status\': \'Status\'}'));
   assert.ok(lines.includes('VARIABLE Player 1086324737:"Default Template" \'String\' {\'New Node Graph\'} : Str = \'player\''));
   assert.ok(lines.includes('VARIABLE_CHANGE 1077936139:"Entity_edited" (1077936131:"Prefab_edited") \'Faction\' {\'New Node Graph\'} edit: Fct = id:200'));
   assert.ok(lines.findIndex((l) => l.startsWith('GRAPH_VARIABLE ')) < lines.findIndex((l) => l.startsWith('VARIABLE ')));
+});
+
+test('values read alike in dump and code: true / false, null for an empty id, floats with two decimals at least', () => {
+  const dump = run(['dump', 'test/cases/variables72/variables_graph.gia', '--format', 'text']);
+  assert.match(dump, /: Ety \(public\) = null$/m);
+  assert.match(dump, /: Bol = true$/m);
+  assert.doesNotMatch(dump, /id:0\b|= (Yes|No)$/m);
+  const code = run(['code', 'test/cases/gia/sample_0_main.gia', '--format', 'text']);
+  assert.match(code, /VAR Graph_Var : Ety public=false = null/);
+  assert.doesNotMatch(code, /\bid:0\b|= (Yes|No)\b/);
+  assert.match(run(['code', 'test/cases/client/client_var_types.gia', '--format', 'text']), /= 0\.00 : Flt/);
 });

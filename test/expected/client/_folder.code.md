@@ -4,19 +4,19 @@
 '<u>\<skill\></u>*client\_var\_types*'/\[1\] **Node Graph Starts** (200042/2001) @(0,0)<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[2\] **Get Custom Variable** (200016/40) variant=C\<T:Bol\> @(394,-266)<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[2\] **Get Custom Variable** (200016/40) `in#1` "Variable Name" = '`var_bool`' : *Str*<br>
-'<u>\<skill\></u>*client\_var\_types*'/\[2\] **Get Custom Variable** (200016/40) `out#0` "Variable Value" = No : *Bol*<br>
+'<u>\<skill\></u>*client\_var\_types*'/\[2\] **Get Custom Variable** (200016/40) `out#0` "Variable Value" = false : *Bol*<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[3\] **Get Custom Variable** (200016/41) variant=C\<T:Int\> @(427,-44)<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[3\] **Get Custom Variable** (200016/41) `in#1` "Variable Name" = '`var_int`' : *Str*<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[3\] **Get Custom Variable** (200016/41) `out#0` "Variable Value" = 0 : *Int*<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[4\] **Get Custom Variable** (200016/42) variant=C\<T:Flt\> @(865,-280)<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[4\] **Get Custom Variable** (200016/42) `in#1` "Variable Name" = '`var_float`' : *Str*<br>
-'<u>\<skill\></u>*client\_var\_types*'/\[4\] **Get Custom Variable** (200016/42) `out#0` "Variable Value" = 0 : *Flt*<br>
+'<u>\<skill\></u>*client\_var\_types*'/\[4\] **Get Custom Variable** (200016/42) `out#0` "Variable Value" = 0.00 : *Flt*<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[5\] **Get Custom Variable** (200016/43) variant=C\<T:Str\> @(881,-60)<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[5\] **Get Custom Variable** (200016/43) `in#1` "Variable Name" = '`var_str`' : *Str*<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[5\] **Get Custom Variable** (200016/43) `out#0` "Variable Value" = '' : *Str*<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[6\] **Get Custom Variable** (200016/44) variant=C\<T:Gid\> @(1324,-281)<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[6\] **Get Custom Variable** (200016/44) `in#1` "Variable Name" = '`var_guid`' : *Str*<br>
-'<u>\<skill\></u>*client\_var\_types*'/\[6\] **Get Custom Variable** (200016/44) `out#0` "Variable Value" = id:0 : *Gid*<br>
+'<u>\<skill\></u>*client\_var\_types*'/\[6\] **Get Custom Variable** (200016/44) `out#0` "Variable Value" = null : *Gid*<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[7\] **Get Custom Variable** (200016/45) variant=C\<T:Ety\> @(1372,-44)<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[7\] **Get Custom Variable** (200016/45) `in#1` "Variable Name" = '`var_entity`' : *Str*<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[8\] **Get Custom Variable** (200016/46) variant=C\<T:Vec\> @(410,218)<br>
@@ -45,10 +45,10 @@
 '<u>\<skill\></u>*client\_var\_types*'/\[15\] **Get Custom Variable** (200016/53) `out#0` "Variable Value" = \[\] : *L\<Bol\>*<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[16\] **Get Custom Variable** (200016/54) variant=C\<T:Cfg\> @(1799,-81)<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[16\] **Get Custom Variable** (200016/54) `in#1` "Variable Name" = '`var_config`' : *Str*<br>
-'<u>\<skill\></u>*client\_var\_types*'/\[16\] **Get Custom Variable** (200016/54) `out#0` "Variable Value" = id:0 : *Cfg*<br>
+'<u>\<skill\></u>*client\_var\_types*'/\[16\] **Get Custom Variable** (200016/54) `out#0` "Variable Value" = null : *Cfg*<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[17\] **Get Custom Variable** (200016/55) variant=C\<T:Pfb\> @(1788,-303)<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[17\] **Get Custom Variable** (200016/55) `in#1` "Variable Name" = '`var_prefab`' : *Str*<br>
-'<u>\<skill\></u>*client\_var\_types*'/\[17\] **Get Custom Variable** (200016/55) `out#0` "Variable Value" = id:0 : *Pfb*<br>
+'<u>\<skill\></u>*client\_var\_types*'/\[17\] **Get Custom Variable** (200016/55) `out#0` "Variable Value" = null : *Pfb*<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[18\] **Get Custom Variable** (200016/56) variant=C\<T:L\<Cfg\>\> @(2223,-318)<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[18\] **Get Custom Variable** (200016/56) `in#1` "Variable Name" = '`var_config_list`' : *Str*<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[18\] **Get Custom Variable** (200016/56) `out#0` "Variable Value" = \[\] : *L\<Cfg\>*<br>
@@ -57,7 +57,7 @@
 '<u>\<skill\></u>*client\_var\_types*'/\[19\] **Get Custom Variable** (200016/57) `out#0` "Variable Value" = \[\] : *L\<Pfb\>*<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[20\] **Get Custom Variable** (200016/58) variant=C\<T:Fct\> @(2289,146)<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[20\] **Get Custom Variable** (200016/58) `in#1` "Variable Name" = '`var_faction`' : *Str*<br>
-'<u>\<skill\></u>*client\_var\_types*'/\[20\] **Get Custom Variable** (200016/58) `out#0` "Variable Value" = id:0 : *Fct*<br>
+'<u>\<skill\></u>*client\_var\_types*'/\[20\] **Get Custom Variable** (200016/58) `out#0` "Variable Value" = null : *Fct*<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[21\] **Get Custom Variable** (200016/59) variant=C\<T:L\<Fct\>\> @(2303,397)<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[21\] **Get Custom Variable** (200016/59) `in#1` "Variable Name" = '`var_faction_list`' : *Str*<br>
 '<u>\<skill\></u>*client\_var\_types*'/\[21\] **Get Custom Variable** (200016/59) `out#0` "Variable Value" = \[\] : *L\<Fct\>*<br>

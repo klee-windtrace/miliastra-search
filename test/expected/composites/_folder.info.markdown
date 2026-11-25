@@ -1,4 +1,44 @@
-﻿# File `test_All_Composite.gia`
+﻿# File `composite_order.gia`
+
+## File
+
+| Property | Value |
+| --- | --- |
+| format | gia |
+| detected\_by | header |
+| file\_size | 4647 |
+| container\_file\_type | gia |
+| engine\_version | 7.2.0 |
+| mode | beyond |
+| export\_name | composite\_order.gia |
+| node\_db\_version | 7.2.0 |
+
+## Contents
+
+| Property | Value |
+| --- | --- |
+| resources | 18 |
+| primary | 4 |
+| dependencies | 14 |
+| graphs | 8 |
+| nodes | 15 |
+| composite\_bodies | 7 |
+| declarations | 7 |
+| structs | 0 |
+| mounts | 3 |
+| unresolved\_node\_types | 0 |
+
+### Resources by class
+
+| Class | Class id | Count |
+| --- | ---: | ---: |
+| OBJECT\_ENTITY | 3 | **3** |
+| ENTITY\_NODE\_GRAPH | 9 | **8** |
+| COMPOSITE\_NODE\_DECL | 12 | **7** |
+
+---
+
+# File `test_All_Composite.gia`
 
 ## File
 

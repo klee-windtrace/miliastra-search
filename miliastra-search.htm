@@ -73,7 +73,7 @@ const TABS = {
   all: [{ opt: 'kind', type: 'text' }, { opt: 'name', type: 'text' }, ...GREP, { opt: 'no-file-prefix', type: 'flag' }, { opt: 'show-tag', type: 'flag' }, { opt: 'sort-desc', type: 'flag' }, { opt: 'top-graphs', type: 'number' }, { opt: 'dedup', type: 'flag', title: 'list resources that differ in their guid only once, with a +N more label' },
     { opt: 'with-code', type: 'flag', title: 'also the code view (heavy)' }, { opt: 'all-pins', type: 'flag' },
     { opt: 'pseudocode', type: 'flag', title: 'the code view as one function per graph' }, { opt: 'expand', type: 'flag', title: 'with pseudocode: write a composite call as the nodes of its body' }, { opt: 'optimize', type: 'flag', title: 'with pseudocode: shorter code' }, { opt: 'lazy', type: 'flag', title: 'with pseudocode: lazy values across composites' }],
-  // everything for a language model to read: no options, the result goes into a text area (see the llm branch below)
+  // everything for a language model to read: the only option is the language chosen on the Input tab, the result goes into a text area (see the llm branch below)
   llm: [],
 };
 // Options that apply to every file and every mode: they live on the Input tab and are appended to every command line.
@@ -129,9 +129,10 @@ const globalInputs = GLOBAL_OPTS.map((o) => {
   $('#globalopts').append(el('label', {}, a, b));
   return [o, input];
 });
-function globalArgs() {
+function globalArgs(only) {
   const argv = [];
   for (const [o, input] of globalInputs) {
+    if (only && !only.includes(o.opt)) continue;
     if (o.type === 'flag') { if (input.checked) argv.push('--' + o.opt); }
     else if (input.value !== '') argv.push('--' + o.opt, input.value);
   }
@@ -189,14 +190,14 @@ function showTab(name) {
 for (const t of tabNames) $('#tabs').append(el('button', { textContent: t === 'llm' ? 'LLM' : t[0].toUpperCase() + t.slice(1), onclick: () => showTab(t) }));
 for (const [mode, options] of Object.entries(TABS)) {
   const section = el('section', { id: `tab-${mode}` });
-  if (mode === 'llm') { // no options and no format: the text of the `llm` mode in a text area, to copy or to download as a .txt file
+  if (mode === 'llm') { // no options of its own and no format: the text of the `llm` mode in a text area, to copy or to download as a .txt file
     const status = el('pre', { className: 'status' });
     const area = el('textarea', { className: 'llm', readOnly: true, spellcheck: false, wrap: 'off' });
     const go = el('button', { textContent: 'Process!' });
     const save = el('button', { textContent: 'download' });
     const door = el('table', { className: 'door' }, el('tr', {}, el('td', { width: 1 }, go), el('td', {}, status), el('td', { width: 1 }, save)));
     const runLlm = () => {
-      const argv = [mode, ...files.keys()];
+      const argv = [mode, ...files.keys(), ...globalArgs(['lang'])]; // the other global options are set by the mode itself
       const r = MS.run(argv, files);
       area.value = r.out ?? '';
       status.textContent = `$ miliastra-search ${argv.map((a) => (/[\s'"|*?]/.test(a) ? JSON.stringify(a) : a)).join(' ')}\nexit code ${r.code}${r.err ? '\n' + r.err.trimEnd() : ''}`;

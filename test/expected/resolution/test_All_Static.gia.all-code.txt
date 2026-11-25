@@ -65,8 +65,8 @@ GRAPH 'All_Static' ENTITY_NODE_GRAPH (guid 1073741825)
 'All_Static'/VAR Static_Graph : L<Gid> public=false = []
 'All_Static'/[1] When Custom Variable Changes (36/40) variant=C<T:Flt> @(-335,-156)
 'All_Static'/[1] When Custom Variable Changes (36/40) out.flow#0 -> [2] Multiple Branches (3/4) in.flow#0
-'All_Static'/[1] When Custom Variable Changes (36/40) out#3 "Pre-Change Value" = 0 : Flt
-'All_Static'/[1] When Custom Variable Changes (36/40) out#4 "Post-Change Value" = 0 : Flt
+'All_Static'/[1] When Custom Variable Changes (36/40) out#3 "Pre-Change Value" = 0.00 : Flt
+'All_Static'/[1] When Custom Variable Changes (36/40) out#4 "Post-Change Value" = 0.00 : Flt
 'All_Static'/[2] Multiple Branches (3/4) variant=C<T:Str> @(117,-156)
 'All_Static'/[2] Multiple Branches (3/4) out.flow#1 "Static_Var" -> [37] Set Custom Variable (22/26) in.flow#0
 'All_Static'/[2] Multiple Branches (3/4) in#0 "Control Expression" <- [1] When Custom Variable Changes (36/40) out#2 "Variable Name" : Str
@@ -115,7 +115,7 @@ GRAPH 'All_Static' ENTITY_NODE_GRAPH (guid 1073741825)
 'All_Static'/[34] Start Timer (79) out.flow#0 -> [35] Stop Timer (82) in.flow#0
 'All_Static'/[34] Start Timer (79) in#0 "Target Entity" <- [6] When Timer Is Triggered (83) out#0 "Event Source Entity" : Ety
 'All_Static'/[34] Start Timer (79) in#1 "Timer Name" = 'Static_Timer' : Str
-'All_Static'/[34] Start Timer (79) in#2 "Loop" = No : Bol
+'All_Static'/[34] Start Timer (79) in#2 "Loop" = false : Bol
 'All_Static'/[35] Stop Timer (82) @(1113.0952,-488.09128)
 'All_Static'/[35] Stop Timer (82) in#0 "Target Entity" <- [6] When Timer Is Triggered (83) out#0 "Event Source Entity" : Ety
 'All_Static'/[35] Stop Timer (82) in#1 "Timer Name" <- [36] Get Local Variable (18/2656) out#1 "Value" : Str
@@ -126,14 +126,14 @@ GRAPH 'All_Static' ENTITY_NODE_GRAPH (guid 1073741825)
 'All_Static'/[37] Set Custom Variable (22/26) out.flow#0 -> [38] Set Custom Variable (22/26) in.flow#0
 'All_Static'/[37] Set Custom Variable (22/26) in#0 "Target Entity" <- [1] When Custom Variable Changes (36/40) out#0 "Event Source Entity" : Ety
 'All_Static'/[37] Set Custom Variable (22/26) in#1 "Variable Name" = 'Static_Var' : Str
-'All_Static'/[37] Set Custom Variable (22/26) in#2 "Variable Value" = 0 : Flt
+'All_Static'/[37] Set Custom Variable (22/26) in#2 "Variable Value" = 0.00 : Flt
 'All_Static'/[38] Set Custom Variable (22/26) variant=C<T:Flt> @(1238.631,19.587301)
 'All_Static'/[38] Set Custom Variable (22/26) in#0 "Target Entity" <- [1] When Custom Variable Changes (36/40) out#0 "Event Source Entity" : Ety
 'All_Static'/[38] Set Custom Variable (22/26) in#1 "Variable Name" <- [39] Get Local Variable (18/2656) out#1 "Value" : Str
 'All_Static'/[38] Set Custom Variable (22/26) in#1 "Variable Name" = 'Static_Var' : Str (also wired)
 'All_Static'/[38] Set Custom Variable (22/26) in#2 "Variable Value" <- [40] Get Custom Variable (50/54) out#0 "Variable Value" : Flt
-'All_Static'/[38] Set Custom Variable (22/26) in#2 "Variable Value" = 0 : Flt (also wired)
-'All_Static'/[38] Set Custom Variable (22/26) in#4 "Trigger Event" = No : Bol
+'All_Static'/[38] Set Custom Variable (22/26) in#2 "Variable Value" = 0.00 : Flt (also wired)
+'All_Static'/[38] Set Custom Variable (22/26) in#4 "Trigger Event" = false : Bol
 'All_Static'/[39] Get Local Variable (18/2656) variant=C<T:Str> @(1241.488,-193.26984)
 'All_Static'/[39] Get Local Variable (18/2656) in#0 "Initial Value" = 'Static_Var' : Str
 'All_Static'/[39] Get Local Variable (18/2656) out#1 "Value" = '' : Str
@@ -141,7 +141,7 @@ GRAPH 'All_Static' ENTITY_NODE_GRAPH (guid 1073741825)
 'All_Static'/[40] Get Custom Variable (50/54) in#0 "Target Entity" <- [1] When Custom Variable Changes (36/40) out#0 "Event Source Entity" : Ety
 'All_Static'/[40] Get Custom Variable (50/54) in#1 "Variable Name" <- [39] Get Local Variable (18/2656) out#1 "Value" : Str
 'All_Static'/[40] Get Custom Variable (50/54) in#1 "Variable Name" = 'Static_Var' : Str (also wired)
-'All_Static'/[40] Get Custom Variable (50/54) out#0 "Variable Value" = 0 : Flt
+'All_Static'/[40] Get Custom Variable (50/54) out#0 "Variable Value" = 0.00 : Flt
 'All_Static'/[41] Set Node Graph Variable (323) @(716.1427,526.788)
 'All_Static'/[41] Set Node Graph Variable (323) out.flow#0 -> [42] Set Node Graph Variable (323/329) in.flow#0
 'All_Static'/[41] Set Node Graph Variable (323) in#0 "Variable Name" = 'Static_Graph' : Str
@@ -149,7 +149,7 @@ GRAPH 'All_Static' ENTITY_NODE_GRAPH (guid 1073741825)
 'All_Static'/[42] Set Node Graph Variable (323/329) in#0 "Variable Name" <- [43] Get Local Variable (18/2656) out#1 "Value" : Str
 'All_Static'/[42] Set Node Graph Variable (323/329) in#1 "Variable Value" <- [44] Get Node Graph Variable (337/343) out#0 "Variable Value" : L<Gid>
 'All_Static'/[42] Set Node Graph Variable (323/329) in#1 "Variable Value" = [] : L<Gid> (also wired)
-'All_Static'/[42] Set Node Graph Variable (323/329) in#2 "Trigger Event" = No : Bol
+'All_Static'/[42] Set Node Graph Variable (323/329) in#2 "Trigger Event" = false : Bol
 'All_Static'/[43] Get Local Variable (18/2656) variant=C<T:Str> @(1173.4641,895.1809)
 'All_Static'/[43] Get Local Variable (18/2656) in#0 "Initial Value" = 'Static_Graph' : Str
 'All_Static'/[43] Get Local Variable (18/2656) out#1 "Value" = '' : Str

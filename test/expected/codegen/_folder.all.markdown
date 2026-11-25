@@ -81,6 +81,45 @@
 
 ---
 
+## File `data_order.gia`
+
+## File
+
+| Property | Value |
+| --- | --- |
+| format | gia |
+| detected\_by | header |
+| file\_size | 2445 |
+| container\_file\_type | gia |
+| engine\_version | 7.2.0 |
+| mode | beyond |
+| export\_name | data\_order.gia |
+| node\_db\_version | 7.2.0 |
+
+## Contents
+
+| Property | Value |
+| --- | --- |
+| resources | 5 |
+| primary | 1 |
+| dependencies | 4 |
+| graphs | 3 |
+| nodes | 27 |
+| composite\_bodies | 2 |
+| declarations | 2 |
+| structs | 0 |
+| mounts | 0 |
+| unresolved\_node\_types | 0 |
+
+### Resources by class
+
+| Class | Class id | Count |
+| --- | ---: | ---: |
+| ENTITY\_NODE\_GRAPH | 9 | **3** |
+| COMPOSITE\_NODE\_DECL | 12 | **2** |
+
+---
+
 # Dump
 
 ## File `codetest_1.gia`
@@ -123,24 +162,37 @@
 | --- | --- | --- | --- |
 | '<u>\<status\></u>*Status*' | '**gvar**' | *Int* | 1 |
 
+## File `data_order.gia`
+
+## Graphs (3)
+
+| Name | Class | Class id | Guid | Kind | Service | Nodes | Declaration | Role |
+| --- | --- | ---: | --- | ---: | ---: | ---: | --- | --- |
+| '*Graph*' | ENTITY\_NODE\_GRAPH | 9 | '`1073741825`' | 21001 | 20000 | **23** |   |   |
+| '<u>\<composite\></u>*Composite\_data*' | ENTITY\_NODE\_GRAPH | 9 | '`1610612737`' | 21002 | 20000 | **2** | '`1610612737`' | dependency |
+| '<u>\<composite\></u>*Composite\_exec*' | ENTITY\_NODE\_GRAPH | 9 | '`1610612738`' | 21002 | 20000 | **2** | '`1610612738`' | dependency |
+
 ---
 
 # Refs
 
 ## Reference index
 
-Scanned 2 files:
+Scanned 3 files:
 
 - `codetest_1.gia`
 - `codetest_2.gia`
+- `data_order.gia`
 
 ## References
 
-### `composite` (10)
+### `composite` (12)
 
 | composite | call |
 | --- | --- |
 | "**Calling Twice**" | **1**<br>'<u>\<status\></u>*Status*' |
+| "**Composite\_data**" | **1**<br>'*Graph*' |
+| "**Composite\_exec**" | **1**<br>'*Graph*' |
 | "**Exposed Computed**" | **1**<br>'<u>\<status\></u>*Status*' |
 | "**Exposed Local**" | **1**<br>'<u>\<status\></u>*Status*' |
 | "**Exposed Native**" | **1**<br>'<u>\<status\></u>*Status*' |
@@ -151,10 +203,11 @@ Scanned 2 files:
 | "**Two In One Out**" | **1**<br>'<u>\<status\></u>*Status*' |
 | "**With Event**" | **1**<br>'<u>\<status\></u>*Status*' |
 
-### `custom_variable` (9)
+### `custom_variable` (10)
 
 | custom\_variable | Type | get | set | trigger |
 | --- | --- | --- | --- | --- |
+| "**\<dynamic\>**" | *Int* | **1**<br>'*Graph*' | **0** |   |
 | "**list**" | *Dict* | **1**<br>'<u>\<filter\></u>*New Filter Node Graph*' | **0** |   |
 | "**MyList**" | *L\<Int\>* | **1**<br>'*New Node Graph*' | **0** |   |
 | "**none**" |   | **0** | **0** | **1**<br>'<u>\<composite\></u>*With Event*' |
@@ -177,10 +230,11 @@ Scanned 2 files:
 | --- | --- | --- |
 | "**Pfb:1077936129**" | OBJECT:"**Empty Model**" | **1**<br>'*New Node Graph*' |
 
-### `timer` (1)
+### `timer` (2)
 
 | timer | start | stop | listen |
 | --- | --- | --- | --- |
+| "**\<unset\>**" | **1**<br>'*Graph*' | **0** |   |
 | "**timer**" | **0** | **0** | **1**<br>'<u>\<composite\></u>*With Event*' |
 
 ---
@@ -189,15 +243,18 @@ Scanned 2 files:
 
 ## Warnings and limits
 
-Scanned 2 files:
+Scanned 3 files:
 
 - `codetest_1.gia`
 - `codetest_2.gia`
+- `data_order.gia`
 
 ## Findings
 
 | Level | Type | Message | File |
 | --- | --- | --- | --- |
+| *INFO* | listener-no-handlers | \[2\] **When Custom Variable Changes** in graph '*Graph*' has no name switch and no code after it: it reacts to nothing | `data_order.gia` |
+| *INFO* | dynamic-reference | \[6\] **Get Custom Variable** `in#1` "Variable Name" in graph '*Graph*': name is computed at runtime (wired from \[7\] **Query Dictionary Value by Key**; Query Dictionary Value by Key output "Value" is computed at runtime); cannot be resolved statically | `data_order.gia` |
 | *INFO* | custom-variable-undeclared | custom variable "**Var1**" is used in \['*New Node Graph*'\] but no entity, prefab or template declares it | `codetest_1.gia` |
 | *INFO* | custom-variable-undeclared | custom variable "**MyList**" is used in \['*New Node Graph*'\] but no entity, prefab or template declares it | `codetest_1.gia` |
 | *INFO* | custom-variable-undeclared | custom variable "**Test**" is used in \['*New Node Graph*'\] but no entity, prefab or template declares it | `codetest_1.gia` |
@@ -210,7 +267,7 @@ Scanned 2 files:
 
 | Resource | Used / max |
 | --- | ---: |
-| composites (declared) | 10/1000 |
+| composites (declared) | 12/1000 |
 | prefabs (OBJECT) | 1/1000 |
 
 ---
@@ -221,5 +278,6 @@ Scanned 2 files:
 | --- | ---: | --- |
 | '<u>\<status\></u>*Status*' | 35/3000 | `codetest_2.gia` |
 | '*New Node Graph*' | 30/3000 | `codetest_1.gia` |
+| '*Graph*' | 27/3000 | `data_order.gia` |
 | '<u>\<filter\></u>*New Filter Node Graph*' | 5/3000 | `codetest_1.gia` |
 | '<u>\<creation\></u>*New Creation Status Decision Node Graph*' | 4/3000 | `codetest_1.gia` |

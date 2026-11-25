@@ -1,4 +1,213 @@
-﻿# File `test_All_Composite.gia`
+﻿# File `composite_order.gia`
+
+## Graph '*Flows*'
+
+- **type**: ENTITY\_NODE\_GRAPH
+- **guid**: '`1073741825`'
+
+### Nodes
+
+\[10\] **C2** (1610612738) user=COMPOSITE @(-134,-374)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out.flow#0` |   | -\> | \[14\] **C4** (1610612740) `in.flow#0` |   |   |
+
+\[12\] **C3** (1610612739) user=COMPOSITE @(-130,-20)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out.flow#0` |   | -\> | \[14\] **C4** (1610612740) `in.flow#0` |   |   |
+
+\[14\] **C4** (1610612740) user=COMPOSITE @(222,-184)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out.flow#0` |   | -\> | \[26\] **C5** (1610612741) `in.flow#0` |   |   |
+| `out.flow#0` |   | -\> | \[25\] **C6** (1610612742) `in.flow#0` |   |   |
+
+\[21\] **C1** (1610612737) user=COMPOSITE @(-505,-180)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out.flow#0` |   | -\> | \[10\] **C2** (1610612738) `in.flow#0` |   |   |
+| `out.flow#0` |   | -\> | \[12\] **C3** (1610612739) `in.flow#0` |   |   |
+
+\[22\] **C7** (1610612743) user=COMPOSITE @(982,-184)
+
+\[23\] **When Entity Is Removed/Destroyed** (72) @(-922.5,-182.75)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out.flow#0` |   | -\> | \[21\] **C1** (1610612737) `in.flow#0` |   |   |
+
+\[25\] **C6** (1610612742) user=COMPOSITE @(598.25,2)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out.flow#0` |   | -\> | \[22\] **C7** (1610612743) `in.flow#0` |   |   |
+
+\[26\] **C5** (1610612741) user=COMPOSITE @(603.75,-372.75)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `out.flow#0` |   | -\> | \[22\] **C7** (1610612743) `in.flow#0` |   |   |
+
+## Graph '<u>\<composite\></u>*C1*'
+
+- **type**: ENTITY\_NODE\_GRAPH
+- **guid**: '`1610612737`'
+- **declaration guid**: '`1610612737`'
+- **role**: dependency
+
+### Port mappings
+
+| External pin | Name | Internal node | Internal pin | Name |
+| --- | --- | --- | --- | --- |
+| `ext.in.flow#0` |   | \[1\] **Print String** (1) | `in.flow#0` |   |
+| `ext.out.flow#0` |   | \[1\] **Print String** (1) | `out.flow#0` |   |
+
+### Nodes
+
+\[1\] **Print String** (1) @(0,0)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "String" | = | '`1`' | *Str* |   |
+
+## Graph '<u>\<composite\></u>*C2*'
+
+- **type**: ENTITY\_NODE\_GRAPH
+- **guid**: '`1610612738`'
+- **declaration guid**: '`1610612738`'
+- **role**: dependency
+
+### Port mappings
+
+| External pin | Name | Internal node | Internal pin | Name |
+| --- | --- | --- | --- | --- |
+| `ext.in.flow#0` |   | \[2\] **Print String** (1) | `in.flow#0` |   |
+| `ext.out.flow#0` |   | \[2\] **Print String** (1) | `out.flow#0` |   |
+
+### Nodes
+
+\[2\] **Print String** (1) @(0,0)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "String" | = | '`2`' | *Str* |   |
+
+## Graph '<u>\<composite\></u>*C3*'
+
+- **type**: ENTITY\_NODE\_GRAPH
+- **guid**: '`1610612739`'
+- **declaration guid**: '`1610612739`'
+- **role**: dependency
+
+### Port mappings
+
+| External pin | Name | Internal node | Internal pin | Name |
+| --- | --- | --- | --- | --- |
+| `ext.in.flow#0` |   | \[3\] **Print String** (1) | `in.flow#0` |   |
+| `ext.out.flow#0` |   | \[3\] **Print String** (1) | `out.flow#0` |   |
+
+### Nodes
+
+\[3\] **Print String** (1) @(0,0)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "String" | = | '`3`' | *Str* |   |
+
+## Graph '<u>\<composite\></u>*C4*'
+
+- **type**: ENTITY\_NODE\_GRAPH
+- **guid**: '`1610612740`'
+- **declaration guid**: '`1610612740`'
+- **role**: dependency
+
+### Port mappings
+
+| External pin | Name | Internal node | Internal pin | Name |
+| --- | --- | --- | --- | --- |
+| `ext.in.flow#0` |   | \[4\] **Print String** (1) | `in.flow#0` |   |
+| `ext.out.flow#0` |   | \[4\] **Print String** (1) | `out.flow#0` |   |
+
+### Nodes
+
+\[4\] **Print String** (1) @(0,0)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "String" | = | '`4`' | *Str* |   |
+
+## Graph '<u>\<composite\></u>*C5*'
+
+- **type**: ENTITY\_NODE\_GRAPH
+- **guid**: '`1610612741`'
+- **declaration guid**: '`1610612741`'
+- **role**: dependency
+
+### Port mappings
+
+| External pin | Name | Internal node | Internal pin | Name |
+| --- | --- | --- | --- | --- |
+| `ext.in.flow#0` |   | \[6\] **Print String** (1) | `in.flow#0` |   |
+| `ext.out.flow#0` |   | \[6\] **Print String** (1) | `out.flow#0` |   |
+
+### Nodes
+
+\[6\] **Print String** (1) @(0,0)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "String" | = | '`5`' | *Str* |   |
+
+## Graph '<u>\<composite\></u>*C6*'
+
+- **type**: ENTITY\_NODE\_GRAPH
+- **guid**: '`1610612742`'
+- **declaration guid**: '`1610612742`'
+- **role**: dependency
+
+### Port mappings
+
+| External pin | Name | Internal node | Internal pin | Name |
+| --- | --- | --- | --- | --- |
+| `ext.in.flow#0` |   | \[5\] **Print String** (1) | `in.flow#0` |   |
+| `ext.out.flow#0` |   | \[5\] **Print String** (1) | `out.flow#0` |   |
+
+### Nodes
+
+\[5\] **Print String** (1) @(0,0)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "String" | = | '`6`' | *Str* |   |
+
+## Graph '<u>\<composite\></u>*C7*'
+
+- **type**: ENTITY\_NODE\_GRAPH
+- **guid**: '`1610612743`'
+- **declaration guid**: '`1610612743`'
+- **role**: dependency
+
+### Port mappings
+
+| External pin | Name | Internal node | Internal pin | Name |
+| --- | --- | --- | --- | --- |
+| `ext.in.flow#0` |   | \[7\] **Print String** (1) | `in.flow#0` |   |
+| `ext.out.flow#0` |   | \[7\] **Print String** (1) | `out.flow#0` |   |
+
+### Nodes
+
+\[7\] **Print String** (1) @(0,0)
+
+| Pin | Name | Dir | Target / value | Type | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `in#0` | "String" | = | '`7`' | *Str* |   |
+
+# File `test_All_Composite.gia`
 
 ## Decl "**Static\_2**"
 
@@ -207,8 +416,8 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `out#3` | "Pre-Change Value" | = | 0 | *Flt* |   |
-| `out#4` | "Post-Change Value" | = | 0 | *Flt* |   |
+| `out#3` | "Pre-Change Value" | = | 0.00 | *Flt* |   |
+| `out#4` | "Post-Change Value" | = | 0.00 | *Flt* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(2)*'
 
@@ -251,7 +460,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Timer Name" | = | '`Static_Timer`' | *Str* |   |
-| `in#2` | "Loop" | = | No | *Bol* |   |
+| `in#2` | "Loop" | = | false | *Bol* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(6)*'
 
@@ -401,7 +610,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `out#0` | "Variable Value" | = | 0 | *Flt* |   |
+| `out#0` | "Variable Value" | = | 0.00 | *Flt* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(14)*'
 
@@ -425,8 +634,8 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#2` | "Variable Value" | = | 0 | *Flt* |   |
-| `in#4` | "Trigger Event" | = | No | *Bol* |   |
+| `in#2` | "Variable Value" | = | 0.00 | *Flt* |   |
+| `in#4` | "Trigger Event" | = | false | *Bol* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(15)*'
 
@@ -450,7 +659,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Variable Name" | = | '`Static_Var`' | *Str* |   |
-| `in#2` | "Variable Value" | = | 0 | *Flt* |   |
+| `in#2` | "Variable Value" | = | 0.00 | *Flt* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(16)*'
 
@@ -584,7 +793,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Variable Value" | = | \[\] | *L\<Gid\>* |   |
-| `in#2` | "Trigger Event" | = | No | *Bol* |   |
+| `in#2` | "Trigger Event" | = | false | *Bol* |   |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node(22)*'
 
@@ -878,7 +1087,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Variable Name" | = | '`Var_1`' | *Str* |   |
 | `in#1` | "Variable Value" | = | 0 | *Int* |   |
-| `in#2` | "Trigger Event" | = | No | *Bol* |   |
+| `in#2` | "Trigger Event" | = | false | *Bol* |   |
 
 # File `test_composite.gil`
 
@@ -996,7 +1205,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Variable Name" | = | '`Var_1`' | *Str* |   |
 | `in#1` | "Variable Value" | = | 0 | *Int* |   |
-| `in#2` | "Trigger Event" | = | No | *Bol* |   |
+| `in#2` | "Trigger Event" | = | false | *Bol* |   |
 
 # File `var_change.gia`
 

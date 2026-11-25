@@ -41,7 +41,7 @@
 **RESOURCE** "**Кнопка сопротивления**" UI\_CONTROL guid='`1073741837`'<br>
 **RESOURCE** "**Кнопка голосового чата**" UI\_CONTROL guid='`1073741838`'<br>
 **RESOURCE** "**Очередь подсказок голосового чата**" UI\_CONTROL guid='`1073741839`'<br>
-**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = id:0
+**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = null
 
 # FILE `stage_012379.gil`
 
@@ -172,7 +172,7 @@
 **RESOURCE** "**Struggle Button**" UI\_CONTROL guid='`1073741855`'<br>
 **RESOURCE** "**Voice Chat Button**" UI\_CONTROL guid='`1073741856`'<br>
 **RESOURCE** "**Voice Chat Hint Queue**" UI\_CONTROL guid='`1073741857`'<br>
-**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = id:0
+**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = null
 
 # FILE `stage_1.gil`
 

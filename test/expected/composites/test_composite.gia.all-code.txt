@@ -112,4 +112,4 @@ GRAPH '<composite>Create Composite Node(1)' ENTITY_NODE_GRAPH (guid 1610612901, 
 '<composite>Create Composite Node(1)'/[1] Set Node Graph Variable (323) @(0,0)
 '<composite>Create Composite Node(1)'/[1] Set Node Graph Variable (323) in#0 "Variable Name" = 'Var_1' : Str
 '<composite>Create Composite Node(1)'/[1] Set Node Graph Variable (323) in#1 "Variable Value" = 0 : Int
-'<composite>Create Composite Node(1)'/[1] Set Node Graph Variable (323) in#2 "Trigger Event" = No : Bol
+'<composite>Create Composite Node(1)'/[1] Set Node Graph Variable (323) in#2 "Trigger Event" = false : Bol

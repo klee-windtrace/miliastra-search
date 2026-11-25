@@ -4,7 +4,7 @@ GRAPH 'Lists' ENTITY_NODE_GRAPH (guid 1073741830)
 'Lists'/[1] Clear List (107/111) in#0 "List" <- [2] Assembly List (169/173) out#0 "List" : L<Flt>
 'Lists'/[1] Clear List (107/111) in#0 "List" = [] : L<Flt> (also wired)
 'Lists'/[2] Assembly List (169/173) variant=C<T:Flt> @(-992,-180)
-'Lists'/[2] Assembly List (169/173) in#1 "0" = 0 : Flt
+'Lists'/[2] Assembly List (169/173) in#1 "0" = 0.00 : Flt
 'Lists'/[2] Assembly List (169/173) out#0 "List" = [] : L<Flt>
 'Lists'/[3] Concatenate List (100/101) variant=C<T:Str> @(-101,51)
 'Lists'/[3] Concatenate List (100/101) out.flow#0 -> [5] Clear Dictionary (1718/1777) in.flow#0
@@ -39,8 +39,8 @@ GRAPH 'Lists' ENTITY_NODE_GRAPH (guid 1073741830)
 'Lists'/[10] Split 3D Vector (9) in#0 "3D Vector" <- [9] 3D Vector: Zero Vector (192) out#0 "(0, 0, 0)" : Vec
 'Lists'/[11] Create 3D Vector (225) @(-262.85715,806.7143)
 'Lists'/[11] Create 3D Vector (225) in#0 "X-Component" <- [10] Split 3D Vector (9) out#0 "X-Component" : Flt
-'Lists'/[11] Create 3D Vector (225) in#1 "Y-Component" = 44 : Flt
-'Lists'/[11] Create 3D Vector (225) in#2 "Z-Component" = 55 : Flt
+'Lists'/[11] Create 3D Vector (225) in#1 "Y-Component" = 44.00 : Flt
+'Lists'/[11] Create 3D Vector (225) in#2 "Z-Component" = 55.00 : Flt
 'Lists'/[12] 3D Vector Dot Product (505) @(292.85715,812.4286)
 'Lists'/[12] 3D Vector Dot Product (505) in#0 "3D Vector 1" <- [11] Create 3D Vector (225) out#0 "3D Vector" : Vec
 'Lists'/[12] 3D Vector Dot Product (505) in#1 "3D Vector 2" <- [11] Create 3D Vector (225) out#0 "3D Vector" : Vec
@@ -49,6 +49,6 @@ GRAPH 'Lists' ENTITY_NODE_GRAPH (guid 1073741830)
 'Lists'/[13] Insert Value Into List (135/139) in#0 "List" = [] : L<Flt> (also wired)
 'Lists'/[13] Insert Value Into List (135/139) in#1 "Insert ID" = 0 : Int
 'Lists'/[13] Insert Value Into List (135/139) in#2 "Insert Value" <- [12] 3D Vector Dot Product (505) out#0 "Result" : Flt
-'Lists'/[13] Insert Value Into List (135/139) in#2 "Insert Value" = 0 : Flt (also wired)
+'Lists'/[13] Insert Value Into List (135/139) in#2 "Insert Value" = 0.00 : Flt (also wired)
 'Lists'/[14] When Character Revives (281) @(-900.8571,-418.7143)
 'Lists'/[14] When Character Revives (281) out.flow#0 -> [1] Clear List (107/111) in.flow#0

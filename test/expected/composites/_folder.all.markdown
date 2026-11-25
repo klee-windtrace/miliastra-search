@@ -1,5 +1,45 @@
 ﻿# Info
 
+## File `composite_order.gia`
+
+## File
+
+| Property | Value |
+| --- | --- |
+| format | gia |
+| detected\_by | header |
+| file\_size | 4647 |
+| container\_file\_type | gia |
+| engine\_version | 7.2.0 |
+| mode | beyond |
+| export\_name | composite\_order.gia |
+| node\_db\_version | 7.2.0 |
+
+## Contents
+
+| Property | Value |
+| --- | --- |
+| resources | 18 |
+| primary | 4 |
+| dependencies | 14 |
+| graphs | 8 |
+| nodes | 15 |
+| composite\_bodies | 7 |
+| declarations | 7 |
+| structs | 0 |
+| mounts | 3 |
+| unresolved\_node\_types | 0 |
+
+### Resources by class
+
+| Class | Class id | Count |
+| --- | ---: | ---: |
+| OBJECT\_ENTITY | 3 | **3** |
+| ENTITY\_NODE\_GRAPH | 9 | **8** |
+| COMPOSITE\_NODE\_DECL | 12 | **7** |
+
+---
+
 ## File `test_All_Composite.gia`
 
 ## File
@@ -202,6 +242,29 @@
 
 # Dump
 
+## File `composite_order.gia`
+
+## Graphs (8)
+
+| Name | Class | Class id | Guid | Kind | Service | Nodes | Declaration | Role |
+| --- | --- | ---: | --- | ---: | ---: | ---: | --- | --- |
+| '*Flows*' | ENTITY\_NODE\_GRAPH | 9 | '`1073741825`' | 21001 | 20000 | **8** |   |   |
+| '<u>\<composite\></u>*C1*' | ENTITY\_NODE\_GRAPH | 9 | '`1610612737`' | 21002 | 20000 | **1** | '`1610612737`' | dependency |
+| '<u>\<composite\></u>*C2*' | ENTITY\_NODE\_GRAPH | 9 | '`1610612738`' | 21002 | 20000 | **1** | '`1610612738`' | dependency |
+| '<u>\<composite\></u>*C3*' | ENTITY\_NODE\_GRAPH | 9 | '`1610612739`' | 21002 | 20000 | **1** | '`1610612739`' | dependency |
+| '<u>\<composite\></u>*C4*' | ENTITY\_NODE\_GRAPH | 9 | '`1610612740`' | 21002 | 20000 | **1** | '`1610612740`' | dependency |
+| '<u>\<composite\></u>*C5*' | ENTITY\_NODE\_GRAPH | 9 | '`1610612741`' | 21002 | 20000 | **1** | '`1610612741`' | dependency |
+| '<u>\<composite\></u>*C6*' | ENTITY\_NODE\_GRAPH | 9 | '`1610612742`' | 21002 | 20000 | **1** | '`1610612742`' | dependency |
+| '<u>\<composite\></u>*C7*' | ENTITY\_NODE\_GRAPH | 9 | '`1610612743`' | 21002 | 20000 | **1** | '`1610612743`' | dependency |
+
+## Resources (3)
+
+| Name | Class | Class id | Guid | Section | Parent | Mounted graphs |
+| --- | --- | ---: | --- | --- | --- | --- |
+| "**Empty Model**" | OBJECT\_ENTITY | 3 | '`1077936129`' |   | (10005018) | entity: '*Flows*' |
+| "**Empty Model**" | OBJECT\_ENTITY | 3 | '`1077936130`' |   | (10005018) | entity: '*Flows*' |
+| "**Empty Model**" | OBJECT\_ENTITY | 3 | '`1077936131`' |   | (10005018) | entity: '*Flows*' |
+
 ## File `test_All_Composite.gia`
 
 ## Declarations (2)
@@ -370,8 +433,9 @@
 
 ## Reference index
 
-Scanned 4 files:
+Scanned 5 files:
 
+- `composite_order.gia`
 - `test_All_Composite.gia`
 - `test_composite.gia`
 - `test_composite.gil`
@@ -379,10 +443,17 @@ Scanned 4 files:
 
 ## References
 
-### `composite` (29)
+### `composite` (36)
 
 | composite | call |
 | --- | --- |
+| "**C1**" | **1**<br>'*Flows*' |
+| "**C2**" | **1**<br>'*Flows*' |
+| "**C3**" | **1**<br>'*Flows*' |
+| "**C4**" | **1**<br>'*Flows*' |
+| "**C5**" | **1**<br>'*Flows*' |
+| "**C6**" | **1**<br>'*Flows*' |
+| "**C7**" | **1**<br>'*Flows*' |
 | "**Create Composite Node**" | **5**<br>'*All\_Composite*'<br>'*New Node Graph*' |
 | "**Create Composite Node(1)**" | **3**<br>'*All\_Composite*'<br>'<u>\<composite\></u>*Create Composite Node*' |
 | "**Create Composite Node(10)**" | **1**<br>'*All\_Composite*' |
@@ -444,6 +515,12 @@ Scanned 4 files:
 | "**Int: 1073741825**" | INTERFACE\_LAYOUT:"**Default Layout**" | **2**<br>'*New Node Graph*' |
 | "**Pfb:10005018**" |   | **2**<br>'*New Node Graph*' |
 
+### `mount` (1)
+
+| mount | entity |
+| --- | --- |
+| '*Flows*' | **3**<br>OBJECT\_ENTITY:"**Empty Model**" (x3) |
+
 ### `signal` (2)
 
 | signal | listen | send |
@@ -463,8 +540,9 @@ Scanned 4 files:
 
 ## Warnings and limits
 
-Scanned 4 files:
+Scanned 5 files:
 
+- `composite_order.gia`
 - `test_All_Composite.gia`
 - `test_composite.gia`
 - `test_composite.gil`
@@ -483,10 +561,10 @@ Scanned 4 files:
 
 | Resource | Used / max |
 | --- | ---: |
-| composites (declared) | 33/1000 |
+| composites (declared) | 40/1000 |
 | signals (declared) | 2/99 |
 | prefabs (OBJECT) | 2/1000 |
-| dynamic entities (OBJECT\_ENTITY) | 2/3000 |
+| dynamic entities (OBJECT\_ENTITY) | 5/3000 |
 | PRESET\_POINT | 1/2000 |
 | ENVIRONMENT\_CONFIGURATION | 1/50 |
 | CLASS | 1/100 |
@@ -502,4 +580,5 @@ Scanned 4 files:
 | '*All\_Composite*' | 52/3000 | `test_All_Composite.gia` |
 | '*New Node Graph*' | 17/3000 | `test_composite.gia` |
 | '*New Node Graph*' | 17/3000 | `test_composite.gil` |
+| '*Flows*' | 15/3000 | `composite_order.gia` |
 | '*VAR\_TEST*' | 11/3000 | `var_change.gia` |

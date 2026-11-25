@@ -306,7 +306,7 @@ CLASS CONTROL\_SKILL class=65 count=1
 
 **GRAPH** '*Graph*' ENTITY\_NODE\_GRAPH class=9 guid='`1073742366`' kind=21001 service=20000 nodes=7<br>
 **GRAPH** '<u>\<status\></u>*Empty*' STATUS\_NODE\_GRAPH class=22 guid='`1073742384`' kind=21001 service=20003 nodes=0<br>
-**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = id:0
+**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = null
 
 ## FILE `sample_1.gia`
 
@@ -333,7 +333,7 @@ CLASS CONTROL\_SKILL class=65 count=1
 ## FILE `sample_5.gia`
 
 **GRAPH** '*Variables*' ENTITY\_NODE\_GRAPH class=9 guid='`1073741831`' kind=21001 service=20000 nodes=10<br>
-**GRAPH\_VARIABLE** '*Variables*' '**Variable\_1**' : *Bol* = No
+**GRAPH\_VARIABLE** '*Variables*' '**Variable\_1**' : *Bol* = false
 
 ## FILE `sample_6.gia`
 
@@ -353,7 +353,7 @@ CLASS CONTROL\_SKILL class=65 count=1
 ## FILE `sample_8.gia`
 
 **GRAPH** '*Graph*' ENTITY\_NODE\_GRAPH class=9 guid='`1073741832`' kind=21001 service=20000 nodes=7<br>
-**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = id:0
+**GRAPH\_VARIABLE** '*Graph*' '**Graph\_Var**' : *Ety* = null
 
 ## FILE `sample_9.gia`
 

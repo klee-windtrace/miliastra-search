@@ -375,7 +375,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Output Result (Boolean)" | = | No | *Bol* | default |
+| `in#0` | "Output Result (Boolean)" | = | false | *Bol* | default |
 | `in#1` | "Filter Return Type" | = | enum:1000010«Return Boolean» | *Enum* | default |
 
 ## Graph '<u>\<filter\></u>*New Filter Node Graph Int*'
@@ -568,7 +568,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Output Result (Boolean)" | = | No | *Bol* | default |
+| `in#0` | "Output Result (Boolean)" | = | false | *Bol* | default |
 | `in#1` | "Filter Return Type" | = | enum:1000010«Return Boolean» | *Enum* | default |
 
 ## Graph '<u>\<filter\></u>*Boolean filter, default*'
@@ -582,7 +582,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Output Result (Boolean)" | = | No | *Bol* | default |
+| `in#0` | "Output Result (Boolean)" | = | false | *Bol* | default |
 | `in#1` | "Filter Return Type" | = | enum:1000010«Return Boolean» | *Enum* | default |
 
 ## Graph '<u>\<filter\></u>*Integer filter, custom*'
@@ -787,7 +787,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Output Result (Boolean)" | = | No | *Bol* | default |
+| `in#0` | "Output Result (Boolean)" | = | false | *Bol* | default |
 | `in#1` | "Filter Return Type" | = | enum:1000010«Return Boolean» | *Enum* | default |
 
 ## Graph '<u>\<filter\></u>*Boolean filter, custom*'
@@ -801,7 +801,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Output Result (Boolean)" | = | No | *Bol* | default |
+| `in#0` | "Output Result (Boolean)" | = | false | *Bol* | default |
 | `in#1` | "Filter Return Type" | = | enum:1000010«Return Boolean» | *Enum* | default |
 
 ## Graph '<u>\<filter\></u>*Integer filter, default*'

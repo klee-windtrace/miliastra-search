@@ -11,7 +11,7 @@ ServerGraphs['Composite with event'] = async function Entity_1073741827($,node){
     case 'node_0007.node_0002':{ // called from 'node_0007.event_0001: When_Timer_Is_Triggered'
       // in composite Naive execution delay (node_0007)
       if(Double_Branch({
-        Condition: Bol(Equal({
+        Condition: Bol(Equal("node_0007.data_0003", {
           Input_1: $.Str_003, // When_Timer_Is_Triggered.Timer_Name
           Input_2: "1",
         }).Result),
@@ -24,10 +24,10 @@ ServerGraphs['Composite with event'] = async function Entity_1073741827($,node){
     case 'node_0018.node_0001':{ // called from 'node_0007.node_0002: Double_Branch'
       // in composite Wrapped (Custom Variable) (node_0018)
       Set_Custom_Variable({
-        Target_Entity: Ety(0), // (default)
+        Target_Entity: Ety(null), // (default)
         Variable_Name: "X",
         Variable_Value: Int(0),
-        Trigger_Event: Bol(1),
+        Trigger_Event: Bol(true),
       });
       return Exit();
     }
@@ -40,14 +40,12 @@ ServerGraphs['Composite with event'] = async function Entity_1073741827($,node){
     case 'node_0007.node_0004':{ // called from 'event_0008: When_Entity_Is_Created'
       // in composite Naive execution delay (node_0007)
       Start_Timer({
-        Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+        Target_Entity: Ety(Get_Self_Entity("node_0007.data_0006", {}).Self_Entity),
         Timer_Name: "1",
-        Loop: Bol(0),
-        Timer_Sequence: LFlt(Assembly_List({
-          Count: Int(1), // (default)
-          _0: Flt(1),
+        Loop: Bol(false),
+        Timer_Sequence: LFlt(Assembly_List("node_0007.data_0005", {
+          _0: Flt(1.00),
         }).List),
-        context_GUID: Gid(0), // (default)
       });
       return Exit();
     }
@@ -61,7 +59,7 @@ ServerGraphs['Composite with event'] = async function Entity_1073741827($,node){
     case 'node_0010.node_0002':{ // called from 'node_0010.event_0001: When_Timer_Is_Triggered'
       // in composite Naive execution delay (node_0010)
       if(Double_Branch({
-        Condition: Bol(Equal({
+        Condition: Bol(Equal("node_0010.data_0003", {
           Input_1: $.Str_011, // When_Timer_Is_Triggered.Timer_Name
           Input_2: "2",
         }).Result),
@@ -81,7 +79,7 @@ ServerGraphs['Composite with event'] = async function Entity_1073741827($,node){
     case 'node_0012.node_0002':{ // called from 'node_0012.event_0001: When_Timer_Is_Triggered'
       // in composite Naive execution delay (node_0012)
       if(Double_Branch({
-        Condition: Bol(Equal({
+        Condition: Bol(Equal("node_0012.data_0003", {
           Input_1: $.Str_017, // When_Timer_Is_Triggered.Timer_Name
           Input_2: "3",
         }).Result),
@@ -94,10 +92,10 @@ ServerGraphs['Composite with event'] = async function Entity_1073741827($,node){
     case 'node_0020.node_0001':{ // 2 callers: ['node_0012.node_0002: Double_Branch', 'node_0013: Double_Branch']
       // in composite Wrapped (Custom Variable) (node_0020)
       Set_Custom_Variable({
-        Target_Entity: Ety(0), // (default)
+        Target_Entity: Ety(null), // (default)
         Variable_Name: "Z",
         Variable_Value: Int(0),
-        Trigger_Event: Bol(1),
+        Trigger_Event: Bol(true),
       });
       return Exit();
     }
@@ -111,7 +109,7 @@ ServerGraphs['Composite with event'] = async function Entity_1073741827($,node){
     case 'node_0021.node_0002':{ // called from 'node_0021.event_0001: When_Timer_Is_Triggered'
       // in composite Naive execution delay (node_0021)
       if(Double_Branch({
-        Condition: Bol(Equal({
+        Condition: Bol(Equal("node_0021.data_0003", {
           Input_1: $.Str_023, // When_Timer_Is_Triggered.Timer_Name
           Input_2: "4",
         }).Result),
@@ -124,7 +122,7 @@ ServerGraphs['Composite with event'] = async function Entity_1073741827($,node){
     case 'node_0013':{ // no callers
       throw 'unreachable';
       if(Double_Branch({
-        Condition: Bol(1),
+        Condition: Bol(true),
       }).Next=="Yes"){
         return GoTo("node_0012.node_0004"); // Start_Timer
       }else{ // =="No"
@@ -135,14 +133,12 @@ ServerGraphs['Composite with event'] = async function Entity_1073741827($,node){
       throw 'unreachable';
       // in composite Naive execution delay (node_0012)
       Start_Timer({
-        Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+        Target_Entity: Ety(Get_Self_Entity("node_0012.data_0006", {}).Self_Entity),
         Timer_Name: "3",
-        Loop: Bol(0),
-        Timer_Sequence: LFlt(Assembly_List({
-          Count: Int(1), // (default)
-          _0: Flt(3),
+        Loop: Bol(false),
+        Timer_Sequence: LFlt(Assembly_List("node_0012.data_0005", {
+          _0: Flt(3.00),
         }).List),
-        context_GUID: Gid(0), // (default)
       });
       return Exit();
     }
@@ -150,10 +146,10 @@ ServerGraphs['Composite with event'] = async function Entity_1073741827($,node){
       throw 'unreachable';
       // in composite Wrapped (Custom Variable) (node_0019)
       Set_Custom_Variable({
-        Target_Entity: Ety(0), // (default)
+        Target_Entity: Ety(null), // (default)
         Variable_Name: "Y",
         Variable_Value: Int(0),
-        Trigger_Event: Bol(1),
+        Trigger_Event: Bol(true),
       });
       void "node_0010.node_0004"; // Start_Timer
     }
@@ -161,14 +157,12 @@ ServerGraphs['Composite with event'] = async function Entity_1073741827($,node){
       throw 'unreachable';
       // in composite Naive execution delay (node_0010)
       Start_Timer({
-        Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+        Target_Entity: Ety(Get_Self_Entity("node_0010.data_0006", {}).Self_Entity),
         Timer_Name: "2",
-        Loop: Bol(0),
-        Timer_Sequence: LFlt(Assembly_List({
-          Count: Int(1), // (default)
-          _0: Flt(2),
+        Loop: Bol(false),
+        Timer_Sequence: LFlt(Assembly_List("node_0010.data_0005", {
+          _0: Flt(2.00),
         }).List),
-        context_GUID: Gid(0), // (default)
       });
       return Exit();
     }
@@ -176,16 +170,32 @@ ServerGraphs['Composite with event'] = async function Entity_1073741827($,node){
       throw 'unreachable';
       // in composite Naive execution delay (node_0021)
       Start_Timer({
-        Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+        Target_Entity: Ety(Get_Self_Entity("node_0021.data_0006", {}).Self_Entity),
         Timer_Name: "4",
-        Loop: Bol(0),
-        Timer_Sequence: LFlt(Assembly_List({
-          Count: Int(1), // (default)
-          _0: Flt(4),
+        Loop: Bol(false),
+        Timer_Sequence: LFlt(Assembly_List("node_0021.data_0005", {
+          _0: Flt(4.00),
         }).List),
-        context_GUID: Gid(0), // (default)
       });
       return Exit();
+    }
+    case 'orphaned':{
+      throw 'unreachable';
+
+      Get_Custom_Variable("node_0018.data_0002", {
+        Target_Entity: Ety(null), // (default)
+        Variable_Name: "X",
+      });
+
+      Get_Custom_Variable("node_0019.data_0002", {
+        Target_Entity: Ety(null), // (default)
+        Variable_Name: "Y",
+      });
+
+      Get_Custom_Variable("node_0020.data_0002", {
+        Target_Entity: Ety(null), // (default)
+        Variable_Name: "Z",
+      });
     }
   }
 };
@@ -222,17 +232,17 @@ ServerGraphs['Cycle with no entry'] = async function Entity_1073741826($,node){
     case 'node_0002.node_0001':{ // called from 'node_0003: Finite_Loop'
       // in composite Wrapped (Custom Variable) (node_0002)
       Set_Custom_Variable({
-        Target_Entity: Ety(0), // (default)
+        Target_Entity: Ety(null), // (default)
         Variable_Name: "A",
         Variable_Value: $.Int_003, // Finite_Loop.Current_Loop_Value
-        Trigger_Event: Bol(1),
+        Trigger_Event: Bol(true),
       });
       void "node_0004"; // Multiple_Branches
     }
     case 'node_0004':{ // called from 'node_0002.node_0001: Set_Custom_Variable'
       switch(Multiple_Branches({
-        Control_Expression: Int(Get_Custom_Variable({
-          Target_Entity: Ety(0), // (default)
+        Control_Expression: Int(Get_Custom_Variable("node_0002.data_0002", {
+          Target_Entity: Ety(null), // (default)
           Variable_Name: "A",
         }).Variable_Value),
       }).Next){
@@ -249,7 +259,7 @@ ServerGraphs['Cycle with no entry'] = async function Entity_1073741826($,node){
     }
     case 'node_0006':{ // called from 'node_0003: Finite_Loop'
       Settle_Stage({
-        Success: Bol(0), // (default)
+        Success: Bol(false), // (default)
       });
       return Exit();
     }
@@ -285,18 +295,18 @@ ServerGraphs['Cycle with no entry'] = async function Entity_1073741826($,node){
       throw 'unreachable';
       // in composite Wrapped (Custom Variable) (node_0017)
       Set_Custom_Variable({
-        Target_Entity: Ety(0), // (default)
+        Target_Entity: Ety(null), // (default)
         Variable_Name: "B",
         Variable_Value: $.Int_004, // Finite_Loop.Current_Loop_Value
-        Trigger_Event: Bol(1),
+        Trigger_Event: Bol(true),
       });
       void "node_0015"; // Multiple_Branches
     }
     case 'node_0015':{ // called from 'node_0017.node_0001: Set_Custom_Variable'
       throw 'unreachable';
       switch(Multiple_Branches({
-        Control_Expression: Int(Get_Custom_Variable({
-          Target_Entity: Ety(0), // (default)
+        Control_Expression: Int(Get_Custom_Variable("node_0017.data_0002", {
+          Target_Entity: Ety(null), // (default)
           Variable_Name: "B",
         }).Variable_Value),
       }).Next){
@@ -315,7 +325,7 @@ ServerGraphs['Cycle with no entry'] = async function Entity_1073741826($,node){
     case 'node_0013':{ // called from 'node_0016: Finite_Loop'
       throw 'unreachable';
       Settle_Stage({
-        Success: Bol(0), // (default)
+        Success: Bol(false), // (default)
       });
       return Exit();
     }
@@ -334,21 +344,20 @@ ServerGraphs['Dead composite'] = async function Entity_1073741825($,node){
     case 'node_0003.node_0001':{ // called from 'event_0004: When_Entity_Is_Created'
       // in composite Wrapped (Custom Variable) (node_0003)
       Set_Custom_Variable({
-        Target_Entity: Ety(0), // (default)
+        Target_Entity: Ety(null), // (default)
         Variable_Name: "1",
         Variable_Value: Int(1),
-        Trigger_Event: Bol(0),
+        Trigger_Event: Bol(false),
       });
       void "node_0006"; // Print_String
     }
     case 'node_0006':{ // called from 'node_0003.node_0001: Set_Custom_Variable'
       Print_String({
-        String: Str(Data_Type_Conversion({
-          Input: Int(Get_Custom_Variable({
-            Target_Entity: Ety(0), // (default)
+        String: Str(Data_Type_Conversion("data_0007", {
+          Input: Int(Get_Custom_Variable("node_0008.data_0002", {
+            Target_Entity: Ety(null), // (default)
             Variable_Name: "2",
           }).Variable_Value),
-          op: Enum("Type Conversions", 0), // (default)
         }).Output),
       });
       return Exit();
@@ -357,10 +366,10 @@ ServerGraphs['Dead composite'] = async function Entity_1073741825($,node){
       throw 'unreachable';
       // in composite Wrapped (Custom Variable) (node_0008)
       Set_Custom_Variable({
-        Target_Entity: Ety(0), // (default)
+        Target_Entity: Ety(null), // (default)
         Variable_Name: "2",
         Variable_Value: Int(2),
-        Trigger_Event: Bol(0),
+        Trigger_Event: Bol(false),
       });
       return Exit();
     }
@@ -369,15 +378,14 @@ ServerGraphs['Dead composite'] = async function Entity_1073741825($,node){
       // in composite Wrapped (Custom Variable) (node_0009)
       Set_Custom_Variable({
         Target_Entity: $.Ety_001, // When_Entity_Is_Created.Event_Source_Entity
-        Variable_Name: Str(Data_Type_Conversion({
-          Input: Int(Get_Custom_Variable({
-            Target_Entity: Ety(0), // (default)
+        Variable_Name: Str(Data_Type_Conversion("data_0007", {
+          Input: Int(Get_Custom_Variable("node_0008.data_0002", {
+            Target_Entity: Ety(null), // (default)
             Variable_Name: "2",
           }).Variable_Value),
-          op: Enum("Type Conversions", 0), // (default)
         }).Output),
         Variable_Value: Int(3),
-        Trigger_Event: Bol(0),
+        Trigger_Event: Bol(false),
       });
       return Exit();
     }
@@ -385,10 +393,10 @@ ServerGraphs['Dead composite'] = async function Entity_1073741825($,node){
       throw 'unreachable';
       // in composite Wrapped (Custom Variable) (node_0010)
       Set_Custom_Variable({
-        Target_Entity: Ety(0), // (default)
+        Target_Entity: Ety(null), // (default)
         Variable_Name: "4",
         Variable_Value: Int(4),
-        Trigger_Event: Bol(0),
+        Trigger_Event: Bol(false),
       });
       return Exit();
     }
@@ -403,10 +411,10 @@ ServerGraphs['Dead composite'] = async function Entity_1073741825($,node){
       throw 'unreachable';
       // in composite Wrapped (Custom Variable) (node_0013)
       Set_Custom_Variable({
-        Target_Entity: Ety(0), // (default)
+        Target_Entity: Ety(null), // (default)
         Variable_Name: "5",
         Variable_Value: Int(5),
-        Trigger_Event: Bol(0),
+        Trigger_Event: Bol(false),
       });
       void "node_0014"; // Print_String
     }
@@ -416,6 +424,34 @@ ServerGraphs['Dead composite'] = async function Entity_1073741825($,node){
         String: "", // (default)
       });
       return Exit();
+    }
+    case 'orphaned':{
+      throw 'unreachable';
+
+      Get_Custom_Variable("node_0003.data_0002", {
+        Target_Entity: Ety(null), // (default)
+        Variable_Name: "1",
+      });
+
+      Get_Custom_Variable("node_0009.data_0002", {
+        Target_Entity: $.Ety_001, // When_Entity_Is_Created.Event_Source_Entity
+        Variable_Name: Str(Data_Type_Conversion("data_0007", {
+          Input: Int(Get_Custom_Variable("node_0008.data_0002", {
+            Target_Entity: Ety(null), // (default)
+            Variable_Name: "2",
+          }).Variable_Value),
+        }).Output),
+      });
+
+      Get_Custom_Variable("node_0010.data_0002", {
+        Target_Entity: Ety(null), // (default)
+        Variable_Name: "4",
+      });
+
+      Get_Custom_Variable("node_0013.data_0002", {
+        Target_Entity: Ety(null), // (default)
+        Variable_Name: "5",
+      });
     }
   }
 };
@@ -433,7 +469,7 @@ ServerGraphs['Nested event'] = async function Entity_1073741828($,node){
     case 'node_0006.node_0002.node_0002':{ // called from 'node_0006.node_0002.event_0001: When_Timer_Is_Triggered'
       // in composite Test Delay Print (node_0006) > Naive execution delay (node_0002)
       if(Double_Branch({
-        Condition: Bol(Equal({
+        Condition: Bol(Equal("node_0006.node_0002.data_0003", {
           Input_1: $.Str_003, // When_Timer_Is_Triggered.Timer_Name
           Input_2: "Delay",
         }).Result),
@@ -466,14 +502,12 @@ ServerGraphs['Nested event'] = async function Entity_1073741828($,node){
     case 'node_0008.node_0002.node_0004':{ // called from 'node_0008.node_0004: Print_String'
       // in composite Test Delay Print (node_0008) > Naive execution delay (node_0002)
       Start_Timer({
-        Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+        Target_Entity: Ety(Get_Self_Entity("node_0008.node_0002.data_0006", {}).Self_Entity),
         Timer_Name: "Delay",
-        Loop: Bol(0),
-        Timer_Sequence: LFlt(Assembly_List({
-          Count: Int(1), // (default)
-          _0: Flt(2),
+        Loop: Bol(false),
+        Timer_Sequence: LFlt(Assembly_List("node_0008.node_0002.data_0005", {
+          _0: Flt(2.00),
         }).List),
-        context_GUID: Gid(0), // (default)
       });
       return Exit();
     }
@@ -487,7 +521,7 @@ ServerGraphs['Nested event'] = async function Entity_1073741828($,node){
     case 'node_0008.node_0002.node_0002':{ // called from 'node_0008.node_0002.event_0001: When_Timer_Is_Triggered'
       // in composite Test Delay Print (node_0008) > Naive execution delay (node_0002)
       if(Double_Branch({
-        Condition: Bol(Equal({
+        Condition: Bol(Equal("node_0008.node_0002.data_0003", {
           Input_1: $.Str_011, // When_Timer_Is_Triggered.Timer_Name
           Input_2: "Delay",
         }).Result),
@@ -514,14 +548,12 @@ ServerGraphs['Nested event'] = async function Entity_1073741828($,node){
     case 'node_0009.node_0002.node_0004':{ // called from 'node_0009.node_0004: Print_String'
       // in composite Test Delay Print (node_0009) > Naive execution delay (node_0002)
       Start_Timer({
-        Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+        Target_Entity: Ety(Get_Self_Entity("node_0009.node_0002.data_0006", {}).Self_Entity),
         Timer_Name: "Delay",
-        Loop: Bol(0),
-        Timer_Sequence: LFlt(Assembly_List({
-          Count: Int(1), // (default)
-          _0: Flt(3),
+        Loop: Bol(false),
+        Timer_Sequence: LFlt(Assembly_List("node_0009.node_0002.data_0005", {
+          _0: Flt(3.00),
         }).List),
-        context_GUID: Gid(0), // (default)
       });
       return Exit();
     }
@@ -535,7 +567,7 @@ ServerGraphs['Nested event'] = async function Entity_1073741828($,node){
     case 'node_0009.node_0002.node_0002':{ // called from 'node_0009.node_0002.event_0001: When_Timer_Is_Triggered'
       // in composite Test Delay Print (node_0009) > Naive execution delay (node_0002)
       if(Double_Branch({
-        Condition: Bol(Equal({
+        Condition: Bol(Equal("node_0009.node_0002.data_0003", {
           Input_1: $.Str_017, // When_Timer_Is_Triggered.Timer_Name
           Input_2: "Delay",
         }).Result),
@@ -564,14 +596,12 @@ ServerGraphs['Nested event'] = async function Entity_1073741828($,node){
       throw 'unreachable';
       // in composite Test Delay Print (node_0006) > Naive execution delay (node_0002)
       Start_Timer({
-        Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+        Target_Entity: Ety(Get_Self_Entity("node_0006.node_0002.data_0006", {}).Self_Entity),
         Timer_Name: "Delay",
-        Loop: Bol(0),
-        Timer_Sequence: LFlt(Assembly_List({
-          Count: Int(1), // (default)
-          _0: Flt(1),
+        Loop: Bol(false),
+        Timer_Sequence: LFlt(Assembly_List("node_0006.node_0002.data_0005", {
+          _0: Flt(1.00),
         }).List),
-        context_GUID: Gid(0), // (default)
       });
       return Exit();
     }
@@ -593,7 +623,7 @@ Composite['Naive execution delay'] = function Composite_1610612738($,Comp,In = {
       }
       case 'node_0002':{ // called from 'event_0001: When_Timer_Is_Triggered'
         if(Double_Branch({
-          Condition: Bol(Equal({
+          Condition: Bol(Equal("data_0003", {
             Input_1: $$.Str_003, // When_Timer_Is_Triggered.Timer_Name
             Input_2: In.Timer_Name,
           }).Result),
@@ -606,14 +636,12 @@ Composite['Naive execution delay'] = function Composite_1610612738($,Comp,In = {
       case 'input: 0':
       case 'node_0004':{ // no callers
         Start_Timer({
-          Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+          Target_Entity: Ety(Get_Self_Entity("data_0006", {}).Self_Entity),
           Timer_Name: In.Timer_Name,
-          Loop: Bol(0),
-          Timer_Sequence: LFlt(Assembly_List({
-            Count: Int(1), // (default)
+          Loop: Bol(false),
+          Timer_Sequence: LFlt(Assembly_List("data_0005", {
             _0: In.Delay,
           }).List),
-          context_GUID: Gid(0), // (default)
         });
         return Exit();
       }
@@ -637,7 +665,7 @@ Composite['Test Delay Print'] = function Composite_1610612739($,Comp,In = {
       case 'node_0002.node_0002':{ // called from 'node_0002.event_0001: When_Timer_Is_Triggered'
         // in composite Naive execution delay (node_0002)
         if(Double_Branch({
-          Condition: Bol(Equal({
+          Condition: Bol(Equal("node_0002.data_0003", {
             Input_1: $$.Str_003, // When_Timer_Is_Triggered.Timer_Name
             Input_2: "Delay",
           }).Result),
@@ -663,14 +691,12 @@ Composite['Test Delay Print'] = function Composite_1610612739($,Comp,In = {
       case 'node_0002.node_0004':{ // called from 'node_0004: Print_String'
         // in composite Naive execution delay (node_0002)
         Start_Timer({
-          Target_Entity: Ety(Get_Self_Entity().Self_Entity),
+          Target_Entity: Ety(Get_Self_Entity("node_0002.data_0006", {}).Self_Entity),
           Timer_Name: "Delay",
-          Loop: Bol(0),
-          Timer_Sequence: LFlt(Assembly_List({
-            Count: Int(1), // (default)
+          Loop: Bol(false),
+          Timer_Sequence: LFlt(Assembly_List("node_0002.data_0005", {
             _0: In.Delay,
           }).List),
-          context_GUID: Gid(0), // (default)
         });
         return Exit();
       }
@@ -686,7 +712,7 @@ Composite['Wrapped (Custom Variable)'] = function Composite_1610612737($,Comp,In
 },node){
   if (!node){
     return {
-      Variable_Value: Int(Get_Custom_Variable({
+      Variable_Value: Int(Get_Custom_Variable("data_0002", {
         Target_Entity: In.Target_Entity,
         Variable_Name: In.Variable_Name,
       }).Variable_Value),

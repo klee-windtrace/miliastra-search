@@ -53,6 +53,31 @@ CLASS STATUS\_NODE\_GRAPH class=22 count=1
 
 ---
 
+## FILE `data_order.gia`
+
+format&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gia<br>
+detected\_by&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header<br>
+file\_size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2445<br>
+container\_file\_type&nbsp;&nbsp;&nbsp;&nbsp;gia<br>
+engine\_version&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.2.0<br>
+mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beyond<br>
+export\_name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data\_order.gia<br>
+node\_db\_version&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.2.0<br>
+resources&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<br>
+primary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br>
+dependencies&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4<br>
+graphs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3<br>
+nodes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;27<br>
+composite\_bodies&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2<br>
+declarations&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2<br>
+structs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br>
+mounts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br>
+unresolved\_node\_types&nbsp;&nbsp;0<br>
+CLASS ENTITY\_NODE\_GRAPH class=9 count=3<br>
+CLASS COMPOSITE\_NODE\_DECL class=12 count=2
+
+---
+
 # DUMP
 
 ## FILE `codetest_1.gia`
@@ -77,11 +102,19 @@ CLASS STATUS\_NODE\_GRAPH class=22 count=1
 **GRAPH** '<u>\<composite\></u>*With Event*' ENTITY\_NODE\_GRAPH class=9 guid='`1610612744`' kind=21002 service=20000 nodes=4 role=dependency decl='`1610612744`'<br>
 **GRAPH\_VARIABLE** '<u>\<status\></u>*Status*' '**gvar**' : *Int* = 1
 
+## FILE `data_order.gia`
+
+**GRAPH** '*Graph*' ENTITY\_NODE\_GRAPH class=9 guid='`1073741825`' kind=21001 service=20000 nodes=23<br>
+**GRAPH** '<u>\<composite\></u>*Composite\_data*' ENTITY\_NODE\_GRAPH class=9 guid='`1610612737`' kind=21002 service=20000 nodes=2 role=dependency decl='`1610612737`'<br>
+**GRAPH** '<u>\<composite\></u>*Composite\_exec*' ENTITY\_NODE\_GRAPH class=9 guid='`1610612738`' kind=21002 service=20000 nodes=2 role=dependency decl='`1610612738`'
+
 ---
 
 # REFS
 
 `composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Calling Twice**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** call: \['<u>\<status\></u>*Status*'\]<br>
+`composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Composite\_data**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** call: \['*Graph*'\]<br>
+`composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Composite\_exec**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** call: \['*Graph*'\]<br>
 `composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Exposed Computed**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** call: \['<u>\<status\></u>*Status*'\]<br>
 `composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Exposed Local**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** call: \['<u>\<status\></u>*Status*'\]<br>
 `composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Exposed Native**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** call: \['<u>\<status\></u>*Status*'\]<br>
@@ -91,6 +124,7 @@ CLASS STATUS\_NODE\_GRAPH class=22 count=1
 `composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Two Exclusive Outs**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** call: \['<u>\<status\></u>*Status*'\]<br>
 `composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Two In One Out**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** call: \['<u>\<status\></u>*Status*'\]<br>
 `composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**With Event**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** call: \['<u>\<status\></u>*Status*'\]<br>
+`custom_variable`  "**\<dynamic\>**" (*Int*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** get: \['*Graph*'\], **0** set: \[\]<br>
 `custom_variable`  "**list**" (*Dict*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** get: \['<u>\<filter\></u>*New Filter Node Graph*'\], **0** set: \[\]<br>
 `custom_variable`  "**MyList**" (*L\<Int\>*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** get: \['*New Node Graph*'\], **0** set: \[\]<br>
 `custom_variable`  "**none**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **0** get: \[\], **0** set: \[\], **1** trigger: \['<u>\<composite\></u>*With Event*'\]<br>
@@ -102,6 +136,7 @@ CLASS STATUS\_NODE\_GRAPH class=22 count=1
 `custom_variable`  "**z**" (*Bol*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **0** get: \[\], **0** set: \[\], **1** trigger: \['<u>\<status\></u>*Status*'\]<br>
 `graph_variable`&nbsp;&nbsp; "**gvar**" (*Int*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \['<u>\<status\></u>*Status*'\]: **0** get, **1** set, **1** trigger<br>
 `literal_id`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Pfb:1077936129**" (OBJECT:"**Empty Model**") **1** Ref: \['*New Node Graph*'\]<br>
+`timer`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**\<unset\>**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** start: \['*Graph*'\], **0** stop: \[\]<br>
 `timer`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**timer**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **0** start: \[\], **0** stop: \[\], **1** listen: \['<u>\<composite\></u>*With Event*'\]
 
 ---
@@ -110,6 +145,8 @@ CLASS STATUS\_NODE\_GRAPH class=22 count=1
 
 ## findings
 
+*INFO*  listener-no-handlers: \[2\] **When Custom Variable Changes** in graph '*Graph*' has no name switch and no code after it: it reacts to nothing \[`data_order.gia`\]<br>
+*INFO*  dynamic-reference: \[6\] **Get Custom Variable** `in#1` "Variable Name" in graph '*Graph*': name is computed at runtime (wired from \[7\] **Query Dictionary Value by Key**; Query Dictionary Value by Key output "Value" is computed at runtime); cannot be resolved statically \[`data_order.gia`\]<br>
 *INFO*  custom-variable-undeclared: custom variable "**Var1**" is used in \['*New Node Graph*'\] but no entity, prefab or template declares it \[`codetest_1.gia`\]<br>
 *INFO*  custom-variable-undeclared: custom variable "**MyList**" is used in \['*New Node Graph*'\] but no entity, prefab or template declares it \[`codetest_1.gia`\]<br>
 *INFO*  custom-variable-undeclared: custom variable "**Test**" is used in \['*New Node Graph*'\] but no entity, prefab or template declares it \[`codetest_1.gia`\]<br>
@@ -120,7 +157,7 @@ CLASS STATUS\_NODE\_GRAPH class=22 count=1
 
 ## limits
 
-composites: 10/1000 declared<br>
+composites: 12/1000 declared<br>
 prefabs (OBJECT): 1/1000
 
 ---
@@ -129,5 +166,6 @@ prefabs (OBJECT): 1/1000
 
 '<u>\<status\></u>*Status*': 35/3000 nodes \[`codetest_2.gia`\]<br>
 '*New Node Graph*': 30/3000 nodes \[`codetest_1.gia`\]<br>
+'*Graph*': 27/3000 nodes \[`data_order.gia`\]<br>
 '<u>\<filter\></u>*New Filter Node Graph*': 5/3000 nodes \[`codetest_1.gia`\]<br>
 '<u>\<creation\></u>*New Creation Status Decision Node Graph*': 4/3000 nodes \[`codetest_1.gia`\]

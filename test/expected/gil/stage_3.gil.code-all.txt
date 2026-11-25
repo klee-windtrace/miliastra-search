@@ -10,7 +10,7 @@ GRAPH 'Structs' ENTITY_NODE_GRAPH (guid 1073741825)
 'Structs'/[2] Modify Structure (1073741827) out.flow#0 -> [10] Modify Structure (1073741836) in.flow#0
 'Structs'/[2] Modify Structure (1073741827) in#0 "Structure" <- [4] Assemble Structure (1073741825) out#0 "Structure" : Struct
 'Structs'/[2] Modify Structure (1073741827) in#2 "是否设置_Add variable 1" <- [6] Split Structure (1073741826) out#0 "Add variable 1" : Str
-'Structs'/[2] Modify Structure (1073741827) in#3 "是否设置_Add variable 1" = Yes : Bol
+'Structs'/[2] Modify Structure (1073741827) in#3 "是否设置_Add variable 1" = true : Bol
 'Structs'/[4] Assemble Structure (1073741825) user=STRUCT_ASSEMBLY struct='Structure' @(-1207,-226)
 'Structs'/[4] Assemble Structure (1073741825) in#0 "Add variable 1" = '9' : Str
 'Structs'/[6] Split Structure (1073741826) user=STRUCT_SPLIT struct='Structure' @(-788,-86)
@@ -19,11 +19,11 @@ GRAPH 'Structs' ENTITY_NODE_GRAPH (guid 1073741825)
 'Structs'/[8] When Entity Is Removed/Destroyed (72) out.flow#0 -> [2] Modify Structure (1073741827) in.flow#0
 'Structs'/[10] Modify Structure (1073741836) user=STRUCT_MODIFY struct='Structure_1' @(150.14285,-270.42856)
 'Structs'/[10] Modify Structure (1073741836) in#2 "是否设置_Add variable 1" <- [14] Split Structure (1073741835) out#0 "Add variable 1" : L<Str>
-'Structs'/[10] Modify Structure (1073741836) in#3 "Add variable 2" = Yes : Bol
-'Structs'/[10] Modify Structure (1073741836) in#5 "Add variable 3" = No : Bol
+'Structs'/[10] Modify Structure (1073741836) in#3 "Add variable 2" = true : Bol
+'Structs'/[10] Modify Structure (1073741836) in#5 "Add variable 3" = false : Bol
 'Structs'/[10] Modify Structure (1073741836) in#6 "是否设置_Add variable 3" <- [4] Assemble Structure (1073741825) out#0 "Structure" : Struct
-'Structs'/[10] Modify Structure (1073741836) in#7 "Add variable 4" = Yes : Bol
-'Structs'/[10] Modify Structure (1073741836) in#9 "是否设置_Add variable 4" = No : Bol
+'Structs'/[10] Modify Structure (1073741836) in#7 "Add variable 4" = true : Bol
+'Structs'/[10] Modify Structure (1073741836) in#9 "是否设置_Add variable 4" = false : Bol
 'Structs'/[13] Assemble Structure (1073741834) user=STRUCT_ASSEMBLY struct='Structure_1' @(-790.7857,146.71428)
 'Structs'/[13] Assemble Structure (1073741834) in#1 "Add variable 2" = 8 : Int
 'Structs'/[14] Split Structure (1073741835) user=STRUCT_SPLIT struct='Structure_1' @(-313.2143,141)

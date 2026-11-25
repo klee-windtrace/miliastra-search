@@ -17,7 +17,7 @@ codetest_1.gia:'New Node Graph'/[29] Set Custom Variable (22/1928) in#0 "Target 
 --
 codetest_1.gia:'New Node Graph'/[31] Double Branch (2) out.flow#0 "Yes" -> [33] Destroy Entity (69) in.flow#0
 codetest_1.gia:'New Node Graph'/[31] Double Branch (2) out.flow#1 "No" -> [32] Print String (1) in.flow#0
-codetest_1.gia:'New Node Graph'/[31] Double Branch (2) in#0 "Condition" = Yes : Bol
+codetest_1.gia:'New Node Graph'/[31] Double Branch (2) in#0 "Condition" = true : Bol
 codetest_1.gia:'New Node Graph'/[32] Print String (1) @(5249.5444,334.21185)
 codetest_1.gia:'New Node Graph'/[32] Print String (1) out.flow#0 -> [33] Destroy Entity (69) in.flow#0
 codetest_1.gia:'New Node Graph'/[32] Print String (1) in#0 "String" = '!' : Str

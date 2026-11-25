@@ -942,15 +942,22 @@
       "description": "The graph as a function: `tag` (Entity, Status, Class, Item, Filter, Skill, Creation, Composite, or Graph for another service domain), `namespace` (ServerGraphs, ClientGraphs or Composite: where a renderer files the function) and `function` (`TAG_GUID`, an identifier), and a case per execution node (a node with flow pins), in the order of the flow: from each entry point (an event, a composite call with events inside, in a composite body the flow inputs) depth first in pin and wire order, then what no entry point reaches. A composite call is a node like any other (a case when the composite has flow pins, a data node otherwise); with the option `expand` it is replaced by the nodes of the composite's body as if they stood where the call is.",
       "type": "object",
       "additionalProperties": false,
-      "required": ["tag", "namespace", "function", "flat", "unreachable", "flow", "interface", "cases"],
+      "required": ["tag", "namespace", "function", "flat", "unreachable", "flow", "interface", "cases", "orphans"],
       "properties": {
         "tag": { "$ref": "#/$defs/str" }, "namespace": { "enum": ["ServerGraphs", "ClientGraphs", "Composite"] }, "function": { "$ref": "#/$defs/str" },
         "flat": { "description": "The graph is one case that ends in the graph's end node (a filter graph): it is one expression, written without a switch between cases.", "type": "boolean" },
         "unreachable": { "description": "A composite body that no reachable code makes use of: no reachable case enters one of its instances or has an event inside it, and no reachable calculation reads one of its data outputs. Always false for a graph that is not a composite body.", "type": "boolean" },
         "flow": { "description": "A composite body: how the flow leaves it, found by following every path of its body. `type`: single (it always leaves through one flow output, once), choice (through exactly one of several, once, or through none: `terminal`), generic (anything else: it leaves any number of times, does something after it left, has events of its own, calls itself, or has no flow input); `pins`: the labels of the flow outputs it may leave through (single, choice; empty for generic); `terminal`: it may end without leaving through any. Null for any other graph.", "oneOf": [{ "$ref": "#/$defs/pseudoBodyFlow" }, { "type": "null" }] },
         "interface": { "description": "A composite body: its data pins. Null for any other graph.", "oneOf": [{ "$ref": "#/$defs/pseudoInterface" }, { "type": "null" }] },
-        "cases": { "type": "array", "items": { "$ref": "#/$defs/pseudoCase" } }
+        "cases": { "type": "array", "items": { "$ref": "#/$defs/pseudoCase" } },
+        "orphans": { "description": "The data nodes that no case writes and no output of a composite is made of (nothing reads them), as chains in the order they are written; null when there are none. A renderer writes them in one last case that is never entered (`case 'orphaned'`). Each chain is found by taking, among the nodes not written yet, the node that ends the longest chain of data wires (the first one on a tie): `call` is that node, which nothing reads, so it assigns nothing (its outputs have no name and no uses), and `data` the data nodes it needs that were not written before it (a composite call needs all of its inputs, whatever its body does with them), in the order they are written. The names of the intermediates are numbered over all the chains, as the ones of a case.", "oneOf": [{ "type": "array", "minItems": 1, "items": { "type": "object", "additionalProperties": false, "required": ["data", "call"], "properties": { "data": { "type": "array", "items": { "$ref": "#/$defs/pseudoCall" } }, "call": { "$ref": "#/$defs/pseudoCall" } } } }, { "type": "null" }] }
       }
+    },
+    "pseudoDict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "value"],
+      "properties": { "key": { "$ref": "#/$defs/str" }, "value": { "$ref": "#/$defs/str" } }
     },
     "pseudoBodyFlow": {
       "type": "object",
@@ -971,9 +978,9 @@
       "additionalProperties": false,
       "required": ["inputs", "data", "outputs"],
       "properties": {
-        "inputs": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["pin", "key", "type"], "properties": { "pin": { "$ref": "#/$defs/pinRef" }, "key": { "$ref": "#/$defs/str" }, "type": { "$ref": "#/$defs/str" } } } },
+        "inputs": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["pin", "key", "type", "dict"], "properties": { "pin": { "$ref": "#/$defs/pinRef" }, "key": { "$ref": "#/$defs/str" }, "type": { "$ref": "#/$defs/str" }, "dict": { "description": "A dictionary: what it maps, as datatype words (`Ety`, `LInt`; `Any` for a generic type nobody chose), or null when the type is not a dictionary or what it maps is not known. A renderer writes `Dict(k,v,value)`.", "oneOf": [{ "$ref": "#/$defs/pseudoDict" }, { "type": "null" }] } } } },
         "data": { "type": "array", "items": { "$ref": "#/$defs/pseudoCall" } },
-        "outputs": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["pin", "key", "type", "expr"], "properties": { "pin": { "$ref": "#/$defs/pinRef" }, "key": { "$ref": "#/$defs/str" }, "type": { "$ref": "#/$defs/str" }, "expr": { "oneOf": [{ "$ref": "#/$defs/pseudoExpr" }, { "type": "null" }] } } } }
+        "outputs": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["pin", "key", "type", "dict", "expr"], "properties": { "pin": { "$ref": "#/$defs/pinRef" }, "key": { "$ref": "#/$defs/str" }, "type": { "$ref": "#/$defs/str" }, "dict": { "description": "A dictionary: what it maps, as datatype words (`Ety`, `LInt`; `Any` for a generic type nobody chose), or null when the type is not a dictionary or what it maps is not known. A renderer writes `Dict(k,v,value)`.", "oneOf": [{ "$ref": "#/$defs/pseudoDict" }, { "type": "null" }] }, "expr": { "oneOf": [{ "$ref": "#/$defs/pseudoExpr" }, { "type": "null" }] } } } }
       }
     },
     "pseudoCase": {
@@ -1012,22 +1019,23 @@
       "description": "A node as a call of the function that stands for it: `function` is an identifier; `args` are the inputs the file stores (an event gets `Event` first); `composite`: the node is a call of a composite that is not expanded, written `Composite['name']($, { inputs }, $.input)`, with every input the composite declares among `args`; `input`: the node has several flow inputs, or is a composite call with a flow input, and takes the name of the one the flow came through as a last argument (`$.input`; a composite call that only reads data pins has none); `outputs` are all outputs the node can have, named by `name` (`global`: a variable of the whole graph, written `$.name`; else an intermediate of the case); `uses`: how many reads of the variable there are (in the case, or for a global in the whole graph).",
       "type": "object",
       "additionalProperties": false,
-      "required": ["node", "graph", "via", "comment", "function", "composite", "input", "args", "extra", "outputs"],
+      "required": ["node", "graph", "via", "comment", "function", "composite", "id", "input", "args", "extra", "outputs"],
       "properties": {
         "node": { "$ref": "#/$defs/nodeRef" },
         "graph": { "description": "The graph `node` is a node of: the graph itself, or the body of a composite when the node is expanded from it.", "$ref": "#/$defs/pseudoGraphKey" },
         "via": { "type": "array", "items": { "$ref": "#/$defs/pseudoVia" } },
         "comment": { "$ref": "#/$defs/strOrNull" },
         "function": { "$ref": "#/$defs/str" },
-        "composite": { "description": "Set when the node is a call of a composite that is not expanded: `name` is the name the composite's body is filed under (the `name` of its graph, in the namespace `Composite`); `instance` names the instance the call stands for (`Comp_001`: the position of the call node among the composite calls of its graph, behind the names of the instances it is expanded from), which the composite files what it keeps under.", "oneOf": [{ "type": "object", "additionalProperties": false, "required": ["name", "instance"], "properties": { "name": { "$ref": "#/$defs/str" }, "instance": { "$ref": "#/$defs/str" } } }, { "type": "null" }] },
+        "composite": { "description": "Set when the node is a call of a composite that is not expanded: `name` is the name the composite's body is filed under (the `name` of its graph, in the namespace `Composite`); `instance` names the instance the call stands for (`Comp_0012`: the index of the call node, 4 digits, behind the names of the instances it is expanded from), which the composite files what it keeps under.", "oneOf": [{ "type": "object", "additionalProperties": false, "required": ["name", "instance"], "properties": { "name": { "$ref": "#/$defs/str" }, "instance": { "$ref": "#/$defs/str" } } }, { "type": "null" }] },
+        "id": { "description": "Which node a call of a data node is: `data` is a data node that is not a composite call (`data_0007`: the node index, 4 digits; behind the ids of the calls an expanded body is inside of, `node_0005.data_0007`), `var` a Get Local Variable (`Var_0005`: one variable per node; in an expanded composite behind the names of its instances, `Comp_0012_Var_0005`; a composite body shown on its own writes it behind the name of its own instance). Null for an execution node (the id of its case names it) and for a composite call (its instance names it).", "oneOf": [{ "type": "object", "additionalProperties": false, "required": ["kind", "name"], "properties": { "kind": { "enum": ["data", "var"] }, "name": { "$ref": "#/$defs/str" } } }, { "type": "null" }] },
         "input": { "type": "boolean" },
         "args": { "type": "array", "items": { "$ref": "#/$defs/pseudoArg" } },
-        "extra": { "description": "A constant the node is given as an argument after its pins (a literal expression), or null: the name of a Get Local Variable's variable (`Var_0001`: the n-th such node of the file; in an expanded composite behind the names of its instances, `Comp_001_Var_0001`; a composite body shown on its own writes it behind the name of its own instance), the evaluation interval of a filter graph for its end node.", "oneOf": [{ "$ref": "#/$defs/pseudoExpr" }, { "type": "null" }] },
+        "extra": { "description": "A constant the node is given as an argument after its pins (a literal expression), or null: the evaluation interval of a filter graph for its end node.", "oneOf": [{ "$ref": "#/$defs/pseudoExpr" }, { "type": "null" }] },
         "outputs": { "type": "array", "items": { "$ref": "#/$defs/pseudoOutput" } }
       }
     },
     "pseudoArg": {
-      "description": "An input: `key` is an identifier; `pin` is null for the `Event` of an event; `expr` is null for a pin with neither value nor wire; `hidden`: the game hides the pin, and it holds nothing but its default (`is_bp_var` of the custom variable nodes), so a style leaves it out unless it shows every pin.",
+      "description": "An input: `key` is an identifier; `pin` is null for the `Event` of an event; `expr` is null for a pin with neither value nor wire; `hidden`: the pin is left out unless a style shows every pin: the game hides it and it holds nothing but its default (`is_bp_var` of the custom variable nodes), or it says nothing the node does not say already, whatever it holds (the operator of a math or comparison node, the Count of an assembly, the context GUID of Start Timer).",
       "type": "object",
       "additionalProperties": false,
       "required": ["pin", "key", "expr", "hidden"],
@@ -1036,18 +1044,19 @@
     "pseudoOutput": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["pin", "key", "type", "name", "global", "uses"],
-      "properties": { "pin": { "$ref": "#/$defs/pinRef" }, "key": { "$ref": "#/$defs/str" }, "type": { "$ref": "#/$defs/str" }, "name": { "$ref": "#/$defs/strOrNull" }, "global": { "type": "boolean" }, "uses": { "$ref": "#/$defs/int" } }
+      "required": ["pin", "key", "type", "dict", "name", "global", "uses"],
+      "properties": { "pin": { "$ref": "#/$defs/pinRef" }, "key": { "$ref": "#/$defs/str" }, "type": { "$ref": "#/$defs/str" }, "dict": { "description": "A dictionary: what it maps, as datatype words (`Ety`, `LInt`; `Any` for a generic type nobody chose), or null when the type is not a dictionary or what it maps is not known. A renderer writes `Dict(k,v,value)`.", "oneOf": [{ "$ref": "#/$defs/pseudoDict" }, { "type": "null" }] }, "name": { "$ref": "#/$defs/strOrNull" }, "global": { "type": "boolean" }, "uses": { "$ref": "#/$defs/int" } }
     },
     "pseudoExpr": {
       "description": "What an input is fed with. `kind`: var (`name`: an intermediate of the case), global (`name`: the output of an execution node), literal (`type`: the word of its datatype or null, `value`; `value.set` false is the game's default, which a pin the file does not store has too), unset (an input whose type is not known, so it has no default value to give), port (`name`, `pin`: an input of the composite when its body is shown on its own), event (the event being handled), missing (`node`: the wire leads to a node the graph does not have). A literal also has `enum` (the titles of the enum family and of the value, either may be null, when the value is an enum the database knows) and `resource` (what an id points at). For var and global, `node` and `pin` are the node and the output that the variable is read from and `from` is `Function.Key` of them. Keys that do not belong to the kind are null.",
       "type": "object",
       "additionalProperties": false,
-      "required": ["kind", "name", "type", "value", "enum", "resource", "node", "pin", "from"],
+      "required": ["kind", "name", "type", "dict", "value", "enum", "resource", "node", "pin", "from"],
       "properties": {
         "kind": { "enum": ["var", "global", "literal", "unset", "port", "event", "missing"] },
         "name": { "$ref": "#/$defs/strOrNull" },
         "type": { "$ref": "#/$defs/strOrNull" },
+        "dict": { "description": "A dictionary: what it maps, as datatype words (`Ety`, `LInt`; `Any` for a generic type nobody chose), or null when the type is not a dictionary or what it maps is not known. A renderer writes `Dict(k,v,value)`.", "oneOf": [{ "$ref": "#/$defs/pseudoDict" }, { "type": "null" }] },
         "value": { "$ref": "#/$defs/valueOrNull" },
         "enum": { "oneOf": [{ "type": "object", "additionalProperties": false, "required": ["family", "name"], "properties": { "family": { "$ref": "#/$defs/strOrNull" }, "name": { "$ref": "#/$defs/strOrNull" } } }, { "type": "null" }] },
         "resource": { "$ref": "#/$defs/resourceOrNull" },

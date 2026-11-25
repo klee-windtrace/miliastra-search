@@ -1,0 +1,205 @@
+ServerGraphs['Graph'] = async function Entity_1073741825($,node){
+  const GoTo = this.bind(this,$);
+  switch(node){
+    case 'event_0002':{
+      ({
+        Event_Source_Entity: $.Ety_001,
+        Event_Source_GUID: $.Gid_002,
+        Variable_Name: $.Str_003,
+        Pre_Change_Value: $.Any_004,
+        Post_Change_Value: $.Any_005,
+      } = await When_Custom_Variable_Changes({
+        Event: $.event,
+      }));
+      return Exit();
+    }
+    case 'event_0003':{
+      ({
+        Event_Source_Entity: $.Ety_006,
+        Event_Source_GUID: $.Gid_007,
+        Signal_Source_Entity: $.Ety_008,
+      } = await Monitor_Signal({
+        Event: $.event,
+      }));
+      return Exit();
+    }
+    case 'node_0012':{ // no callers
+      throw 'unreachable';
+      const {
+        Local_Variable: Loc_01,
+        Value: Any_02,
+      } = Get_Local_Variable("Var_0011", {
+        Initial_Value: undefined, // (default)
+      });
+
+      Set_Local_Variable({
+        Local_Variable: Loc_01, // Get_Local_Variable.Local_Variable
+        Value: undefined, // (default)
+      });
+      return Exit();
+    }
+    case 'node_0019':{ // no callers
+      throw 'unreachable';
+      Start_Timer({
+        Target_Entity: Ety(null), // (default)
+        Timer_Name: "", // (default)
+        Loop: Bol(false), // (default)
+        Timer_Sequence: undefined, // (default)
+        context_GUID: Gid(0), // (default)
+      });
+      return Exit();
+    }
+    case 'node_0032':{ // no callers
+      throw 'unreachable';
+      const {
+        Self_Entity: Ety_01,
+      } = Get_Self_Entity("data_0027", {});
+      const {
+        Self_Entity: Ety_02,
+      } = Get_Self_Entity("data_0026", {});
+
+      await Composite['Composite_exec']($, "Comp_0032", {
+        Player_Entity: Ety_01, // Get_Self_Entity.Self_Entity
+        Target_Entity: Ety_02, // Get_Self_Entity.Self_Entity
+      }, $.input); // terminal
+      return;
+    }
+    case 'orphaned':{
+      throw 'unreachable';
+
+      const {
+        Result: Vec_01,
+      } = _3D_Vector_Normalization("data_0018", {
+        _3D_Vector: Vec(0, 0, 0), // (default)
+      });
+      const {
+        X_Component: Flt_02,
+        Y_Component: Flt_03,
+        Z_Component: Flt_04,
+      } = Split_3D_Vector("data_0016", {
+        _3D_Vector: Vec_01, // _3D_Vector_Normalization.Result
+      });
+      const {
+        Result: Flt_05,
+      } = Sign_Operation("data_0017", {
+        Input: Flt_04, // Split_3D_Vector.Z_Component
+        op: Enum("Mathematical Operators", 310), // (default)
+      });
+
+      Take_Larger_Value("data_0015", {
+        Input_1: Flt_05, // Sign_Operation.Result
+        Input_2: Flt_02, // Split_3D_Vector.X_Component
+        op: Enum("Mathematical Operators", "Mathematical Operators_Get Maximum Value"), // (default)
+      });
+
+      const {
+        Value: Str_06,
+      } = Query_Dictionary_Value_by_Key("data_0007", {
+        Dictionary: Dict(Any,Str,[]), // (default)
+        Key: undefined, // (default)
+      });
+      const {
+        Variable_Value: Int_07,
+      } = Get_Custom_Variable("data_0006", {
+        Target_Entity: Ety(null), // (default)
+        Variable_Name: Str_06, // Query_Dictionary_Value_by_Key.Value
+        is_bp_var: Bol(false), // (default)
+      });
+
+      Query_If_Dictionary_Contains_Specific_Key("data_0009", {
+        Dictionary: Dict(Int,Any,[]), // (default)
+        Key: Int_07, // Get_Custom_Variable.Variable_Value
+      });
+
+      const {
+        Self_Entity: Ety_08,
+      } = Get_Self_Entity("data_0021", {});
+      const {
+        Self_Entity: Ety_09,
+      } = Get_Self_Entity("data_0024", {});
+
+      Composite['Composite_data']($, "Comp_0025", {
+        Player_Entity: Ety_08, // Get_Self_Entity.Self_Entity
+        Target_Entity: Ety_09, // Get_Self_Entity.Self_Entity
+      });
+
+      Get_Local_Variable("Var_0001", {
+        Initial_Value: undefined, // (default)
+      });
+
+      Assembly_List("data_0004", {
+        Count: Int(1), // (default)
+        _0: undefined, // (default)
+      });
+
+      Assembly_Dictionary("data_0005", {
+        Count: Int(2), // (default)
+        Key_0: undefined, // (default)
+        Value_0: undefined, // (default)
+      });
+
+      Greater_Than("data_0013", {
+        Left_Value: undefined, // (default)
+        Right_Value: undefined, // (default)
+        op: Enum("Comparison Operators", "Comparison Operators_Greater Than"), // (default)
+      });
+
+      Enumerations_Equal("data_0014", {
+        Enumeration_1: undefined, // (default)
+        Enumeration_2: undefined, // (default)
+      });
+    }
+  }
+};
+
+Composite['Composite_data'] = function Composite_1610612737($,Comp,In = {
+  Player_Entity: Ety,
+  Target_Entity: Ety,
+},node){
+  throw 'unreachable';
+  return (async function* GoTo(node){
+    switch(node){
+      case 'node_0020':{ // no callers
+        throw 'unreachable';
+        Set_Player_Revive_Time({
+          Player_Entity: In.Player_Entity,
+          Duration: Int(0), // (default)
+        });
+        return Exit();
+      }
+      case 'orphaned':{
+        throw 'unreachable';
+
+        Get_Entity_Forward_Vector("data_0001", {
+          Target_Entity: In.Target_Entity,
+        });
+      }
+    }
+  })(node);
+};
+
+Composite['Composite_exec'] = function Composite_1610612738($,Comp,In = {
+  Player_Entity: Ety,
+  Target_Entity: Ety,
+},node){
+  throw 'unreachable';
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0029':{ // no callers
+        Set_Player_Revive_Time({
+          Player_Entity: In.Player_Entity,
+          Duration: Int(0), // (default)
+        });
+        return Exit();
+      }
+      case 'orphaned':{
+        throw 'unreachable';
+
+        Get_Entity_Forward_Vector("data_0030", {
+          Target_Entity: In.Target_Entity,
+        });
+      }
+    }
+  })(node);
+};

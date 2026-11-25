@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>refs codetest_1.gia, codetest_2.gia</title>
+<title>refs codetest_1.gia, codetest_2.gia, data_order.gia</title>
 <style>
 :root{color-scheme:dark;--bg:#0C0C0C;--panel:#161616;--line:#2e2e2e;--fg:#CCCCCC;--muted:#767676;--accent:#61D6D6}
 *{box-sizing:border-box}
@@ -92,6 +92,8 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <main>
 <h1>Reference index</h1>
 <pre class="lines"><span class="kind">composite</span>        "<span class="key">Calling Twice</span>"                    <span class="count">1</span> <span class="role">call</span>: ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']
+<span class="kind">composite</span>        "<span class="key">Composite_data</span>"                   <span class="count">1</span> <span class="role">call</span>: ['<span class="graphName">Graph</span>']
+<span class="kind">composite</span>        "<span class="key">Composite_exec</span>"                   <span class="count">1</span> <span class="role">call</span>: ['<span class="graphName">Graph</span>']
 <span class="kind">composite</span>        "<span class="key">Exposed Computed</span>"                 <span class="count">1</span> <span class="role">call</span>: ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']
 <span class="kind">composite</span>        "<span class="key">Exposed Local</span>"                    <span class="count">1</span> <span class="role">call</span>: ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']
 <span class="kind">composite</span>        "<span class="key">Exposed Native</span>"                   <span class="count">1</span> <span class="role">call</span>: ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']
@@ -101,6 +103,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="kind">composite</span>        "<span class="key">Two Exclusive Outs</span>"               <span class="count">1</span> <span class="role">call</span>: ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']
 <span class="kind">composite</span>        "<span class="key">Two In One Out</span>"                   <span class="count">1</span> <span class="role">call</span>: ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']
 <span class="kind">composite</span>        "<span class="key">With Event</span>"                       <span class="count">1</span> <span class="role">call</span>: ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']
+<span class="kind">custom_variable</span>  "<span class="key">&lt;dynamic&gt;</span>" (<span class="typeName">Int</span>)                  <span class="count">1</span> <span class="role">get</span>: ['<span class="graphName">Graph</span>'], <span class="count">0</span> <span class="role">set</span>: []
 <span class="kind">custom_variable</span>  "<span class="key">list</span>" (<span class="typeName">Dict</span>)                      <span class="count">1</span> <span class="role">get</span>: ['<span class="graphTag">&lt;filter&gt;</span><span class="graphName">New Filter Node Graph</span>'], <span class="count">0</span> <span class="role">set</span>: []
 <span class="kind">custom_variable</span>  "<span class="key">MyList</span>" (<span class="typeName">L&lt;Int&gt;</span>)                  <span class="count">1</span> <span class="role">get</span>: ['<span class="graphName">New Node Graph</span>'], <span class="count">0</span> <span class="role">set</span>: []
 <span class="kind">custom_variable</span>  "<span class="key">none</span>"                             <span class="count">0</span> <span class="role">get</span>: [], <span class="count">0</span> <span class="role">set</span>: [], <span class="count">1</span> <span class="role">trigger</span>: ['<span class="graphTag">&lt;composite&gt;</span><span class="graphName">With Event</span>']
@@ -112,6 +115,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="kind">custom_variable</span>  "<span class="key">z</span>" (<span class="typeName">Bol</span>)                          <span class="count">0</span> <span class="role">get</span>: [], <span class="count">0</span> <span class="role">set</span>: [], <span class="count">1</span> <span class="role">trigger</span>: ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']
 <span class="kind">graph_variable</span>   "<span class="key">gvar</span>" (<span class="typeName">Int</span>)                       ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']: <span class="count">0</span> <span class="role">get</span>, <span class="count">1</span> <span class="role">set</span>, <span class="count">1</span> <span class="role">trigger</span>
 <span class="kind">literal_id</span>       "<span class="key">Pfb:1077936129</span>" (<span class="className">OBJECT</span>:"<span class="key">Empty Model</span>") <span class="count">1</span> <span class="role">Ref</span>: ['<span class="graphName">New Node Graph</span>']
+<span class="kind">timer</span>            "<span class="key">&lt;unset&gt;</span>"                          <span class="count">1</span> <span class="role">start</span>: ['<span class="graphName">Graph</span>'], <span class="count">0</span> <span class="role">stop</span>: []
 <span class="kind">timer</span>            "<span class="key">timer</span>"                            <span class="count">0</span> <span class="role">start</span>: [], <span class="count">0</span> <span class="role">stop</span>: [], <span class="count">1</span> <span class="role">listen</span>: ['<span class="graphTag">&lt;composite&gt;</span><span class="graphName">With Event</span>']</pre>
 </main>
 </body>

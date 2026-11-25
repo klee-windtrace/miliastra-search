@@ -16,3 +16,7 @@ GRAPH '<composite>Two Exclusive Outs' ENTITY_NODE_GRAPH class=9 guid='1610612742
 GRAPH '<composite>Two In One Out' ENTITY_NODE_GRAPH class=9 guid='1610612741' kind=21002 service=20000 nodes=2 role=dependency decl='1610612741'
 GRAPH '<composite>With Event' ENTITY_NODE_GRAPH class=9 guid='1610612744' kind=21002 service=20000 nodes=4 role=dependency decl='1610612744'
 GRAPH_VARIABLE '<status>Status' 'gvar' : Int = 1
+# FILE data_order.gia
+GRAPH 'Graph' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=23
+GRAPH '<composite>Composite_data' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=2 role=dependency decl='1610612737'
+GRAPH '<composite>Composite_exec' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=2 role=dependency decl='1610612738'

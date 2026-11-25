@@ -17,14 +17,15 @@
 // at all when it drops the flow. A caller is written after that type: a single composite is just called (`// .Next=="0"` says where the flow goes), one that
 // chooses is an `if` / `switch` on `.Next` like Double Branch and Multiple Branches, and only a generic one is a `for await` over what it yields.
 // Every call is an instance of the composite, which
-// the caller names (`Comp`, `Comp_001` in a graph); what the instance keeps (the outputs of its execution nodes, `$$.Ety_001`, and its local variables)
+// the caller names (`Comp`, `Comp_0012` in a graph: the id of the call node); what the instance keeps (the outputs of its execution nodes, `$$.Ety_001`, and its local variables)
 // is filed under that name, so the callers that read an instance see what its own execution nodes gave out. `next` / `input` are variables of the function.
 // An input the game hides (`is_bp_var` of the custom variable nodes) is written only when it holds more than its default, or with `allPins`.
 // A flow that runs into an output nothing is wired to ends the case with `return Exit();`; `return;` is the end of a flow that has no output to leave through.
 // With `--search` / `--match` (`found`, from `searchedNodes` of code.mjs) only the cases of the nodes the search found are written, and only the graphs that have one.
 import { S, anchor, graph, graphLabelOf, join, plain, gap } from './doc.mjs';
-import { f32, qi, qd } from './values.mjs';
+import { f32, flt, qi, qd } from './values.mjs';
 import { openingBlocks } from './notes.mjs';
+import { PSEUDOCODE_INTRO } from './pseudocode-intro.mjs';
 
 const kw = (t) => S('jsKeyword', t);
 const sw = (t) => S('jsSwitch', t);
@@ -50,8 +51,8 @@ function bare(v) {
   if (!v) return 'undefined';
   switch (v.kind) {
     case 'int': case 'id': return num(v.value);
-    case 'float': return num(f32(v.value));
-    case 'bool': return num(v.value ? 1 : 0);
+    case 'float': return num(flt(v.value));
+    case 'bool': return num(v.value ? 'true' : 'false');
     case 'str': return str(v.value);
     case 'vec': return [cast('Vec'), '(', join(v.value.map((x) => num(f32(x))), ', '), ')'];
     case 'enum': return [cast('Enum'), '(', enumArgs(v.value, { family: null, name: v.names.join(' | ') || null }), ')'];
@@ -64,12 +65,18 @@ function bare(v) {
 }
 const DEFAULT_CAST = { int: 'Int', float: 'Flt', bool: 'Bol', id: 'Id', list: 'List', struct: 'Struct', map: 'Dict' };
 /** A literal of the report as `Type(value)`; a string is just a quoted string, a vector is its own cast, an enum names itself. */
-function literal({ type, value: v, enum: e }) {
+function literal({ type, dict, value: v, enum: e }) {
   if (v.kind === 'enum') return [cast('Enum'), '(', enumArgs(v.value, e), ')'];
   if (v.kind === 'str' || v.kind === 'vec') return bare(v);
+  // the only value an entity constant can have is no entity
+  if (v.kind === 'id' && type === 'Ety' && v.value === 0) return [cast('Ety'), '(', num('null'), ')'];
   const inner = v.kind === 'struct' ? ['[', join(v.items.map(bare), ', '), ']'] : bare(v);
-  return [cast(type ?? DEFAULT_CAST[v.kind] ?? 'Any'), '(', inner, ')'];
+  return [castOpen(type ?? DEFAULT_CAST[v.kind] ?? 'Any', dict), inner, ')'];
 }
+/** `Type(` of a typecast; a dictionary says what it maps: `Dict(Ety,Int,`. */
+const castOpen = (type, dict) => [cast(type), '(', dict ? [cast(dict.key), ',', cast(dict.value), ','] : ''];
+/** A datatype as a declaration: `Ety`, `Dict(Ety,Int)`. */
+const typeDecl = (type, dict) => (dict ? [cast(type), '(', cast(dict.key), ',', cast(dict.value), ')'] : cast(type));
 
 // ---- anchors (the html formats: a variable's use links to where it is declared, a jump to its case) ----------------------------------------------
 const san = (t) => String(t).replace(/[^A-Za-z0-9_]/g, '_');
@@ -153,7 +160,7 @@ function exprParts(e, level, opts, { ctx = 'native' } = {}) {
         const before = def.call.comment != null ? [comment(oneLine(def.call.comment))] : [];
         // a composite's output is lazy already; a native node is called where the value is wanted, or inside the lazy value that is handed on
         if (def.call.composite) return { lines: real(lines), notes: [], before };
-        const typed = wrap(lines, [cast(def.out.type), '('], ')');
+        const typed = wrap(lines, castOpen(def.out.type, def.out.dict), ')');
         if (lazyValue && ctx === 'lazy') { opts.used.lazy = true; return { lines: wrap(typed, 'lazy(()=> ', ')'), notes: [], before }; }
         return { lines: typed, notes: [], before };
       }
@@ -197,12 +204,15 @@ function callBody(call, level, opts, { event = false, select = null, entry = nul
   const comp = call.composite;
   const args = argLines(call.args, level + 1, opts, comp ? { ctx: 'lazy' } : {});
   // what follows the pins: the flow input the node was entered through, and the constant a few nodes are given (`extra`)
-  // a Get Local Variable names its variable; in a composite the name is behind the name of the instance
-  const extra = !call.extra ? [] : opts.def && call.extra.value.kind === 'str' ? [['Comp + ', str(`_${call.extra.value.value}`)]] : [literal(call.extra)];
+  const extra = !call.extra ? [] : [literal(call.extra)];
   const tail = [...(entry ?? (call.input ? [inputVar(opts)] : [])), ...extra].map((t) => [', ', t]);
   const head = comp ? registry('Composite', comp.name, opts) : S('jsCall', call.function);
+  // what stands in front of the pins: a composite's `$` and instance, the id of a data node, the variable of a Get Local Variable (in a composite body that
+  // name is behind the name of the instance)
+  const id = call.id ? [call.id.kind === 'var' && opts.def ? ['Comp + ', str(`_${call.id.name}`)] : str(call.id.name), ', '] : '';
+  const front = comp ? ['$, ', instanceRef(opts, comp.instance), ', '] : id;
   let lines;
-  if (comp) lines = args.length ? [[head, '($, ', instanceRef(opts, comp.instance), ', {'], ...args, [ind(level), '}', ...tail, ')']] : [[head, '($, ', instanceRef(opts, comp.instance), ', {}', ...tail, ')']];
+  if (comp || id) lines = args.length ? [[head, '(', front, '{'], ...args, [ind(level), '}', ...tail, ')']] : [[head, '(', front, '{}', ...tail, ')']];
   else if (!args.length) lines = [[head, tail.length ? ['({}', ...tail, ')'] : '()']];
   else lines = [[head, '({'], ...args, [ind(level), '}', ...tail, ')']];
   if (event) lines = wrap(lines, [select != null ? '(' : '', kw('await'), ' '], select != null ? ')' : '');
@@ -217,6 +227,12 @@ function callBody(call, level, opts, { event = false, select = null, entry = nul
 function callLines(call, level, opts, { form, event = false, next = false, after = '' }) {
   const { a, caseId } = opts;
   const lines = [];
+  // `bare`: a data node nothing reads, written as a statement that assigns nothing
+  if (form === 'bare') {
+    if (call.comment != null) lines.push([ind(level), comment(oneLine(call.comment))]);
+    lines.push(...place(level, '', callBody(call, level, opts), ';'));
+    return lines;
+  }
   const outs = shownOutputs(call, opts);
   const target = (o) => (o.global ? store(opts, anchor('jsOut', o.name, { id: a.globalId(o.name) })) : anchor('jsVar', o.name, { id: a.localId(caseId, o.name) }));
   const note = call.comment != null ? comment(oneLine(call.comment)) : null;
@@ -406,6 +422,23 @@ function outputLines(face, opts) {
 }
 
 /**
+ * The case of the data nodes nothing reads (`orphans` of the graph): never entered, so it starts with `throw`. Each chain is the data nodes its last node needs,
+ * then that node written by itself.
+ */
+function orphanLines(chains, o) {
+  const D = o.def ? 1 : 0, L = 3 + D;
+  const all = chains.flatMap((c) => [...c.data, c.call]), defs = definitions({ data: all });
+  const opts = { ...o, caseId: 'orphaned', defs, lazyCalls: lazyCallsOf(all, [], defs, o) };
+  const lines = [[ind(2 + D), kw('case'), ' ', anchor('string', 'orphaned', { id: o.a.caseId('orphaned') }), ':{'], [ind(L), err('throw'), ' ', S('string', qi('unreachable')), ';'], ''];
+  chains.forEach((c, i) => {
+    if (i) lines.push('');
+    lines.push(...dataLines(c.data, L, opts), ...callLines(c.call, L, opts, { form: 'bare' }));
+  });
+  lines.push([ind(2 + D), '}']);
+  return lines;
+}
+
+/**
  * The helpers of the lazy values, as one block comment. They are top-level functions, so they are available in the whole file whatever their place; they
  * stand in front of the first composite, which is where the lazy values cross a boundary.
  */
@@ -435,6 +468,13 @@ function shownCases(ps, found) {
   const has = (g, index) => found.get(graphKeyOf(g))?.has(index) ?? false;
   return ps.cases.filter((c) => has(c.call.graph, c.node.index) || c.via.some((v) => has(v.graph, v.index)));
 }
+/** The chains of data nodes nothing reads that are written when a search is on: the ones that have a found node. */
+function shownOrphans(ps, found) {
+  const chains = ps.orphans ?? [];
+  if (!found) return chains;
+  const has = (call) => found.get(graphKeyOf(call.graph))?.has(call.node.index) ?? false;
+  return chains.filter((c) => [...c.data, c.call].some(has));
+}
 /** Whether what a composite hands out is written: the search found a data node of the expressions of its outputs, or a node one of them reads. */
 function shownFace(x, found) {
   if (!found) return true;
@@ -447,7 +487,7 @@ function shownFace(x, found) {
 function functionLines(x, file, multi, opts, found) {
   const label = S('string', qi(x.name.name)); // the tag is in the namespace (the kind of graph)
   const ps = x.pseudocode, { flat, interface: face } = ps;
-  const cases = shownCases(ps, found);
+  const cases = shownCases(ps, found), orphans = shownOrphans(ps, found);
   const def = x.composite_body;
   // a composite body that leaves once is a function, one that leaves any number of times a generator
   const o = { ...opts, def, file, multi, plain: def && ps.flow.type !== 'generic' };
@@ -462,6 +502,7 @@ function functionLines(x, file, multi, opts, found) {
     else {
       lines.push([ind(1), kw('switch'), '(node){']);
       cases.forEach((c, i) => lines.push(...caseLines(c, o, cases[i + 1]?.id)));
+      if (orphans.length) lines.push(...orphanLines(orphans, o));
       lines.push([ind(1), '}']);
     }
     lines.push('};');
@@ -470,15 +511,16 @@ function functionLines(x, file, multi, opts, found) {
   // `In` says what the callers give (the pins and their types; callers fill every one on each call)
   const inputs = face?.inputs ?? [];
   const head = [target, ' = ', kw('function'), ' ', S('jsCall', ps.function), '($,Comp,In = {'];
-  if (inputs.length) lines.push([head], ...inputs.map((p) => [ind(1), S('jsKey', p.key), ': ', cast(p.type), ',']), ['},node){']);
+  if (inputs.length) lines.push([head], ...inputs.map((p) => [ind(1), S('jsKey', p.key), ': ', typeDecl(p.type, p.dict), ',']), ['},node){']);
   else lines.push([head, '},node){']);
   if (ps.unreachable) lines.push([ind(1), err('throw'), ' ', S('string', qi('unreachable')), ';']);
   lines.push(...comments);
   const body = [];
   if (face?.outputs.length && shownFace(x, found)) body.push(...outputLines(face, o));
-  if (cases.length) {
+  if (cases.length || orphans.length) {
     body.push([ind(1), kw('return'), ' (', kw('async'), ' ', kw('function'), o.plain ? ' ' : '* ', 'GoTo(node){'], [ind(2), kw('switch'), '(node){']);
     cases.forEach((c, i) => body.push(...caseLines(c, o, cases[i + 1]?.id)));
+    if (orphans.length) body.push(...orphanLines(orphans, o));
     body.push([ind(2), '}'], [ind(1), '})(node);']);
   }
   // the instance's bucket holds what its execution nodes give out; which way the flow goes is a variable of one run
@@ -514,11 +556,14 @@ export function pseudocodeDocument(report, { allPins = false, optimize = false, 
   const needed = parts.some((p) => p.used && (p.used.lazy || p.used.unlz));
   const at = parts.findIndex((p) => p.x?.composite_body);
   if (needed) parts.splice(at >= 0 ? at : parts.length, 0, { helpers: true });
+  // the explanation of the format stands in front of the first graph; a search shows pieces of the code, which it would only get in the way of
+  if (parts.length && !found && lazy) parts.splice(1, 0, { intro: true });
   const blocks = [];
   let count = 0;
   const pre = (lines) => blocks.push({ t: 'pre', lines: lines.map(plain), rich: lines, text: blocks.some((b) => b.t === 'pre') ? ['', ...lines] : lines });
   for (const p of parts) {
     if (p.blocks) blocks.push(...p.blocks);
+    else if (p.intro) pre(['/*', ...PSEUDOCODE_INTRO, '*/'].map((l) => S('jsComment', l)));
     else if (p.helpers) { blocks.push({ t: 'heading', level: 2, spans: ['Lazy values'], text: null }); pre(helperLines()); }
     else { blocks.push({ t: 'heading', level: 2, spans: ['Graph ', graph(graphLabelOf(p.x.name))], text: null }); pre(p.lines); count++; }
   }

@@ -1,4 +1,21 @@
-﻿# FILE `test_All_Composite.gia`
+﻿# FILE `composite_order.gia`
+
+**GRAPH** '*Flows*' ENTITY\_NODE\_GRAPH guid='`1073741825`' nodes=8<br>
+**GRAPH** '<u>\<composite\></u>*C1*' ENTITY\_NODE\_GRAPH guid='`1610612737`' nodes=1 role=dependency<br>
+**GRAPH** '<u>\<composite\></u>*C2*' ENTITY\_NODE\_GRAPH guid='`1610612738`' nodes=1 role=dependency<br>
+**GRAPH** '<u>\<composite\></u>*C3*' ENTITY\_NODE\_GRAPH guid='`1610612739`' nodes=1 role=dependency<br>
+**GRAPH** '<u>\<composite\></u>*C4*' ENTITY\_NODE\_GRAPH guid='`1610612740`' nodes=1 role=dependency<br>
+**GRAPH** '<u>\<composite\></u>*C5*' ENTITY\_NODE\_GRAPH guid='`1610612741`' nodes=1 role=dependency<br>
+**GRAPH** '<u>\<composite\></u>*C6*' ENTITY\_NODE\_GRAPH guid='`1610612742`' nodes=1 role=dependency<br>
+**GRAPH** '<u>\<composite\></u>*C7*' ENTITY\_NODE\_GRAPH guid='`1610612743`' nodes=1 role=dependency<br>
+**RESOURCE** "**Empty Model**" OBJECT\_ENTITY guid='`1077936129`' parent=(10005018)<br>
+MOUNT '*Flows*' -\> OBJECT\_ENTITY "**Empty Model**" entity<br>
+**RESOURCE** "**Empty Model**" OBJECT\_ENTITY guid='`1077936130`' parent=(10005018)<br>
+MOUNT '*Flows*' -\> OBJECT\_ENTITY "**Empty Model**" entity<br>
+**RESOURCE** "**Empty Model**" OBJECT\_ENTITY guid='`1077936131`' parent=(10005018)<br>
+MOUNT '*Flows*' -\> OBJECT\_ENTITY "**Empty Model**" entity
+
+# FILE `test_All_Composite.gia`
 
 **DECL** "**Static\_2**" SIGNAL\_NODE\_DECL guid='`1610612741`' role=dependency<br>
 **DECL** "**Static\_1**" SIGNAL\_NODE\_DECL guid='`1610612737`' role=dependency<br>

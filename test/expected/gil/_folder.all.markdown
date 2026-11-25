@@ -747,7 +747,7 @@
 
 | Graph | Variable | Type | Value |
 | --- | --- | --- | --- |
-| '*Graph*' | '**Graph\_Var**' | *Ety* | id:0 |
+| '*Graph*' | '**Graph\_Var**' | *Ety* | null |
 
 ## File `stage_012379.gil`
 
@@ -897,7 +897,7 @@
 
 | Graph | Variable | Type | Value |
 | --- | --- | --- | --- |
-| '*Graph*' | '**Graph\_Var**' | *Ety* | id:0 |
+| '*Graph*' | '**Graph\_Var**' | *Ety* | null |
 
 ## File `stage_1.gil`
 

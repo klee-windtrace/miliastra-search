@@ -9,7 +9,7 @@
 
 | Name | Type | Public | Struct | Value |
 | --- | --- | --- | --- | --- |
-| **Graph\_Var** | *Ety* | false |   | id:0 |
+| **Graph\_Var** | *Ety* | false |   | null |
 
 ### Comments
 
@@ -112,7 +112,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Value" | \<- | \[15\] **Create Composite Node(1)** (1610612738) `out#0` "X-Component" | *Flt* |   |
-| `in#1` | "Value" | = | 0 | *Flt* | also wired |
+| `in#1` | "Value" | = | 0.00 | *Flt* | also wired |
 
 ## Graph '<u>\<composite\></u>*Create Composite Node*'
 
@@ -318,9 +318,9 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Parameter\_1" | \<- | \[5\] **When Timer Is Triggered** (83) `out#3` "Timer Sequence ID" | *Int* |   |
-| `in#1` | "Parameter\_2" | = | 4 | *Flt* |   |
+| `in#1` | "Parameter\_2" | = | 4.00 | *Flt* |   |
 | `in#2` | "Parameter\_3" | = | (1, 2, 3) | *Vec* |   |
-| `in#3` | "Parameter\_4" | = | Yes | *Bol* |   |
+| `in#3` | "Parameter\_4" | = | true | *Bol* |   |
 | `in#4` | "Parameter\_5" | \<- | \[5\] **When Timer Is Triggered** (83) `out#1` "Event Source GUID" | *Gid* |   |
 | `in#5` | "Parameter\_6" | \<- | \[5\] **When Timer Is Triggered** (83) `out#0` "Event Source Entity" | *Ety* |   |
 | `in#6` | "Parameter\_7" | = | id:5 | *Pfb* |   |
@@ -373,7 +373,7 @@
 | `out.flow#0` |   | -\> | \[10\] **Modify Structure** (1610612756) `in.flow#0` |   |   |
 | `in#0` | "Structure" | \<- | \[4\] **Assemble Structure** (1610612745) `out#0` "Structure" | *Struct* |   |
 | `in#2` | "是否设置\_Add variable 1" | \<- | \[6\] **Split Structure** (1610612746) `out#0` "Add variable 1" | *Str* |   |
-| `in#3` | "是否设置\_Add variable 1" | = | Yes | *Bol* |   |
+| `in#3` | "是否设置\_Add variable 1" | = | true | *Bol* |   |
 
 \[4\] **Assemble Structure** (1610612745) user=STRUCT\_ASSEMBLY struct='`Structure`' @(-1207,-226)
 
@@ -398,11 +398,11 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#2` | "是否设置\_Add variable 1" | \<- | \[14\] **Split Structure** (1610612755) `out#0` "Add variable 1" | *L\<Str\>* |   |
-| `in#3` | "Add variable 2" | = | Yes | *Bol* |   |
-| `in#5` | "Add variable 3" | = | No | *Bol* |   |
+| `in#3` | "Add variable 2" | = | true | *Bol* |   |
+| `in#5` | "Add variable 3" | = | false | *Bol* |   |
 | `in#6` | "是否设置\_Add variable 3" | \<- | \[4\] **Assemble Structure** (1610612745) `out#0` "Structure" | *Struct* |   |
-| `in#7` | "Add variable 4" | = | Yes | *Bol* |   |
-| `in#9` | "是否设置\_Add variable 4" | = | No | *Bol* |   |
+| `in#7` | "Add variable 4" | = | true | *Bol* |   |
+| `in#9` | "是否设置\_Add variable 4" | = | false | *Bol* |   |
 
 \[13\] **Assemble Structure** (1610612754) user=STRUCT\_ASSEMBLY struct='`Structure_1`' @(-790.7857,146.71428)
 
@@ -437,7 +437,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#1` | "0" | = | 0 | *Flt* |   |
+| `in#1` | "0" | = | 0.00 | *Flt* |   |
 | `out#0` | "List" | = | \[\] | *L\<Flt\>* |   |
 
 \[3\] **Concatenate List** (100/101) variant=C\<T:Str\> @(-101,51)
@@ -505,8 +505,8 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "X-Component" | \<- | \[10\] **Split 3D Vector** (9) `out#0` "X-Component" | *Flt* |   |
-| `in#1` | "Y-Component" | = | 44 | *Flt* |   |
-| `in#2` | "Z-Component" | = | 55 | *Flt* |   |
+| `in#1` | "Y-Component" | = | 44.00 | *Flt* |   |
+| `in#2` | "Z-Component" | = | 55.00 | *Flt* |   |
 
 \[12\] **3D Vector Dot Product** (505) @(292.85715,812.4286)
 
@@ -523,7 +523,7 @@
 | `in#0` | "List" | = | \[\] | *L\<Flt\>* | also wired |
 | `in#1` | "Insert ID" | = | 0 | *Int* |   |
 | `in#2` | "Insert Value" | \<- | \[12\] **3D Vector Dot Product** (505) `out#0` "Result" | *Flt* |   |
-| `in#2` | "Insert Value" | = | 0 | *Flt* | also wired |
+| `in#2` | "Insert Value" | = | 0.00 | *Flt* | also wired |
 
 \[14\] **When Character Revives** (281) @(-900.8571,-418.7143)
 
@@ -542,7 +542,7 @@
 
 | Name | Type | Public | Struct | Value |
 | --- | --- | --- | --- | --- |
-| **Variable\_1** | *Bol* | false |   | No |
+| **Variable\_1** | *Bol* | false |   | false |
 
 ### Nodes
 
@@ -559,8 +559,8 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` |   | -\> | \[4\] **Multiple Branches** (3/4) `in.flow#0` |   |   |
-| `out#3` | "Pre-Change Value" | = | No | *Bol* |   |
-| `out#4` | "Post-Change Value" | = | No | *Bol* |   |
+| `out#3` | "Pre-Change Value" | = | false | *Bol* |   |
+| `out#4` | "Post-Change Value" | = | false | *Bol* |   |
 
 \[4\] **Multiple Branches** (3/4) variant=C\<T:Str\> @(71.14286,82.42857)
 
@@ -576,8 +576,8 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Variable Name" | = | '`Variable_1`' | *Str* |   |
 | `in#1` | "Variable Value" | \<- | \[3\] **When Node Graph Variable Changes** (351/354) `out#4` "Post-Change Value" | *Bol* |   |
-| `in#1` | "Variable Value" | = | Yes | *Bol* | also wired |
-| `in#2` | "Trigger Event" | = | No | *Bol* |   |
+| `in#1` | "Variable Value" | = | true | *Bol* | also wired |
+| `in#2` | "Trigger Event" | = | false | *Bol* |   |
 
 \[6\] **Double Branch** (2) @(75.14286,-316.57144)
 
@@ -591,7 +591,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Variable Name" | = | '`Variable_1`' | *Str* |   |
-| `out#0` | "Variable Value" | = | No | *Bol* |   |
+| `out#0` | "Variable Value" | = | false | *Bol* |   |
 
 \[8\] **Set Local Variable** (19/21) variant=C\<T:Int\> @(658,-313.7143)
 
@@ -692,16 +692,16 @@
 | `in#1` | "Location" | = | (0, 0, 0) | *Vec* | default, also wired |
 | `in#2` | "Rotate" | \<- | \[5\] **Get Ray Detection Result** (200109/1047) `out#0` "On-Hit Location" | *Vec* |   |
 | `in#2` | "Rotate" | = | (0, 0, 0) | *Vec* | default, also wired |
-| `in#3` | "Zoom Multiplier" | = | 0 | *Flt* | default |
+| `in#3` | "Zoom Multiplier" | = | 0.00 | *Flt* | default |
 | `in#4` | "Special Effects Asset" | = | 0 | *Int* | default |
-| `in#5` | "Play Default Sound Effect" | = | Yes | *Bol* | default |
+| `in#5` | "Play Default Sound Effect" | = | true | *Bol* | default |
 | `meta.rpc#0` |   | = | 0 | *Int* | default |
 
 \[4\] **3D Vector Zoom** (200066/134) @(-42,195)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Zoom Multiplier" | = | 0 | *Flt* | default |
+| `in#0` | "Zoom Multiplier" | = | 0.00 | *Flt* | default |
 | `in#1` | "3D Vector" | = | (0, 0, 0) | *Vec* | default |
 | `out#0` | "Result" | = | (0, 0, 0) | *Vec* | default |
 
@@ -712,7 +712,7 @@
 | `in#0` | "Detect Initiator Entity" | \<- | \[6\] **Get Self Entity** (200033/1013) `out#0` "Self Entity" | *Ety* |   |
 | `in#1` | "Launch Location" | = | (0, 0, 0) | *Vec* | default |
 | `in#2` | "Launch Direction" | = | (0, 0, 0) | *Vec* | default |
-| `in#3` | "Max Ray Length" | = | 0 | *Flt* | default |
+| `in#3` | "Max Ray Length" | = | 0.00 | *Flt* | default |
 | `in#4` | "Faction Filter" | = | enum:0«No \| Default \| None» | *Enum* | default |
 | `in#5` | "Entity Type Filter" | = | \[\] | *L\<Enum\>* | default |
 | `in#6` | "Hit Layer Filter" | = | \[\] | *L\<Enum\>* | default |
@@ -722,7 +722,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `out#0` | "Self Entity" | = | id:0 | *Ety* | default |
+| `out#0` | "Self Entity" | = | null | *Ety* | default |
 
 ## Graph '<u>\<creation\></u>*New Creation Skill Node Graph*'
 
@@ -749,7 +749,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Entity List" | = | \[\] | *L\<Ety\>* | default |
-| `out#0` | "Current Entity" | = | id:0 | *Ety* | default |
+| `out#0` | "Current Entity" | = | null | *Ety* | default |
 
 ## Graph '<u>\<creation\></u>*New Creation Status Node Graph*'
 
@@ -768,19 +768,19 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Execute" | = | Yes | *Bol* | default |
-| `in#1` | "Escape Trigger Distance" | = | 0 | *Flt* | default |
+| `in#0` | "Execute" | = | true | *Bol* | default |
+| `in#1` | "Escape Trigger Distance" | = | 0.00 | *Flt* | default |
 | `in#2` | "Movement Speed" | = | enum:3601«Walk» | *Enum* | default |
-| `in#3` | "Maximum Escape Angle" | = | 0 | *Flt* | default |
+| `in#3` | "Maximum Escape Angle" | = | 0.00 | *Flt* | default |
 | `in#4` | "Minimum Escape Segments" | = | 0 | *Int* | default |
 | `in#5` | "Maximum Escape Segments" | = | 0 | *Int* | default |
-| `in#6` | "Minimum Escape Distance" | = | 0 | *Flt* | default |
-| `in#7` | "Maximum Escape Distance" | = | 0 | *Flt* | default |
-| `in#8` | "Escape Trigger CD" | = | 1 | *Flt* | default |
-| `in#9` | "Clear aggro and cancel tactic after countdown" | = | 0 | *Flt* | default |
-| `in#10` | "Whether restricted by territory" | = | Yes | *Bol* | default |
+| `in#6` | "Minimum Escape Distance" | = | 0.00 | *Flt* | default |
+| `in#7` | "Maximum Escape Distance" | = | 0.00 | *Flt* | default |
+| `in#8` | "Escape Trigger CD" | = | 1.00 | *Flt* | default |
+| `in#9` | "Clear aggro and cancel tactic after countdown" | = | 0.00 | *Flt* | default |
+| `in#10` | "Whether restricted by territory" | = | true | *Bol* | default |
 | `in#11` | "Tactical Context" | = | '' | *Str* | default |
-| `in#12` | "Can skill be interrupted" | = | No | *Bol* | default |
+| `in#12` | "Can skill be interrupted" | = | false | *Bol* | default |
 
 ## Graph '<u>\<creation\></u>*New Creation Status Decision Node Graph*'
 
@@ -805,7 +805,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Execute" | = | Yes | *Bol* | default |
+| `in#0` | "Execute" | = | true | *Bol* | default |
 | `in#1` | "Status Node Graph Configuration ID" | = | id:1082130435 | *Cfg* |   |
 | `in#2` | "Autonomous Logic Parameter ID" | = | 0 | *Int* |   |
 
@@ -836,7 +836,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Output Result (Boolean)" | \<- | \[2\] **Less Than** (200008/12) `out#0` "Result" | *Bol* |   |
-| `in#0` | "Output Result (Boolean)" | = | No | *Bol* | default, also wired |
+| `in#0` | "Output Result (Boolean)" | = | false | *Bol* | default, also wired |
 | `in#1` | "Filter Return Type" | = | enum:1000010«Return Boolean» | *Enum* | default |
 
 \[2\] **Less Than** (200008/12) variant=C\<T:Int\> @(-531,-5)
@@ -847,7 +847,7 @@
 | `in#1` |   | \<- | \[3\] **Get List Length** (200018) `out#0` "Length" | *Int* |   |
 | `in#1` |   | = | 0 | *Int* | also wired |
 | `in#2` |   | = | 0 | *Int* |   |
-| `out#0` | "Result" | = | No | *Bol* | default |
+| `out#0` | "Result" | = | false | *Bol* | default |
 
 \[3\] **Get List Length** (200018) @(-935,5)
 
@@ -882,7 +882,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `out#0` | "Self Entity" | = | id:0 | *Ety* | default |
+| `out#0` | "Self Entity" | = | null | *Ety* | default |
 
 # File `sample_8.gia`
 
@@ -895,7 +895,7 @@
 
 | Name | Type | Public | Struct | Value |
 | --- | --- | --- | --- | --- |
-| **Graph\_Var** | *Ety* | false |   | id:0 |
+| **Graph\_Var** | *Ety* | false |   | null |
 
 ### Comments
 
@@ -1041,7 +1041,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Output Result (Boolean)" | = | No | *Bol* | default |
+| `in#0` | "Output Result (Boolean)" | = | false | *Bol* | default |
 | `in#1` | "Filter Return Type" | = | enum:1000010«Return Boolean» | *Enum* | default |
 
 ## Graph '<u>\<filter\></u>*New Filter Node Graph\_1*'

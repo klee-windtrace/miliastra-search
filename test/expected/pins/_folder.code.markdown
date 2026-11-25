@@ -15,12 +15,12 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Special Effects Asset" | = | id:2 | *Cfg* |   |
 | `in#2` | "Attachment Point Name" | = | '`GI_RootNode`' | *Str* |   |
-| `in#3` | "Move With the Target" | = | No | *Bol* |   |
-| `in#4` | "Rotate With the Target" | = | No | *Bol* |   |
+| `in#3` | "Move With the Target" | = | false | *Bol* |   |
+| `in#4` | "Rotate With the Target" | = | false | *Bol* |   |
 | `in#5` | "Location Offset" | = | (0, 0, 0) | *Vec* |   |
 | `in#6` | "Rotation Offset" | = | (1, 1, 1) | *Vec* |   |
-| `in#7` | "Zoom Multiplier" | = | 2 | *Flt* |   |
-| `in#8` | "Play Built-In Sound Effect" | = | No | *Bol* |   |
+| `in#7` | "Zoom Multiplier" | = | 2.00 | *Flt* |   |
+| `in#8` | "Play Built-In Sound Effect" | = | false | *Bol* |   |
 
 \[3\] **Play Timed Effects** (93) @(580.8571,-245.64285)
 
@@ -49,7 +49,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `out#0` | "Variable Value" | = | id:0 | *Cfg* |   |
+| `out#0` | "Variable Value" | = | null | *Cfg* |   |
 
 \[10\] **Get Node Graph Variable** (337/342) variant=C\<T:Str\> @(106.71429,-22.285715)
 
@@ -61,7 +61,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `out#0` | "Variable Value" | = | No | *Bol* |   |
+| `out#0` | "Variable Value" | = | false | *Bol* |   |
 
 \[12\] **Get Node Graph Variable** (337) @(58.714287,-238.28572)
 
@@ -69,7 +69,7 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `out#0` | "Variable Value" | = | No | *Bol* |   |
+| `out#0` | "Variable Value" | = | false | *Bol* |   |
 
 \[14\] **Get Node Graph Variable** (337/348) variant=C\<T:Vec\> @(42.714287,583.7143)
 
@@ -87,13 +87,13 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `out#0` | "Variable Value" | = | 0 | *Flt* |   |
+| `out#0` | "Variable Value" | = | 0.00 | *Flt* |   |
 
 \[17\] **Get Node Graph Variable** (337/340) variant=C\<T:Bol\> @(518.7143,819.7143)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `out#0` | "Variable Value" | = | No | *Bol* |   |
+| `out#0` | "Variable Value" | = | false | *Bol* |   |
 
 ## Graph '<u>\<status\></u>*New Node Graph\_1*'
 
@@ -258,7 +258,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Launch Location" | = | (0, 0, 0) | *Vec* | default |
 | `in#2` | "Launch Direction" | = | (0, 0, 0) | *Vec* | default |
-| `in#3` | "Max Ray Length" | = | 0 | *Flt* | default |
+| `in#3` | "Max Ray Length" | = | 0.00 | *Flt* | default |
 | `in#4` | "Faction Filter" | = | enum:0«No \| Default \| None» | *Enum* | default |
 | `in#5` | "Entity Type Filter" | = | \[\] | *L\<Enum\>* | default |
 | `in#6` | "Hit Layer Filter" | = | \[\] | *L\<Enum\>* | default |
@@ -270,7 +270,7 @@
 | --- | --- | --- | --- | --- | --- |
 | `in#1` | "Launch Location" | = | (0, 0, 0) | *Vec* |   |
 | `in#2` | "Launch Direction" | = | (1, 1, 1) | *Vec* |   |
-| `in#3` | "Max Ray Length" | = | 2 | *Flt* |   |
+| `in#3` | "Max Ray Length" | = | 2.00 | *Flt* |   |
 | `in#4` | "Faction Filter" | = | enum:2005«All» | *Enum* |   |
 | `in#5` | "Entity Type Filter" | = | \[\] | *L\<Enum\>* | default |
 | `in#6` | "Hit Layer Filter" | = | \[\] | *L\<Enum\>* | default |
@@ -306,7 +306,7 @@
 | `in#2` | "Launch Direction" | \<- | \[7\] **Get Local Variable** (200082/1036) `out#0` "Variable Value" | *Vec* |   |
 | `in#2` | "Launch Direction" | = | (0, 0, 0) | *Vec* | default, also wired |
 | `in#3` | "Max Ray Length" | \<- | \[10\] **Get Local Variable** (200082/1036) `out#0` "Variable Value" | *Flt* |   |
-| `in#3` | "Max Ray Length" | = | 0 | *Flt* | default, also wired |
+| `in#3` | "Max Ray Length" | = | 0.00 | *Flt* | default, also wired |
 | `in#4` | "Faction Filter" | = | enum:2000«None \| Don't Find Target» | *Enum* |   |
 | `in#5` | "Entity Type Filter" | \<- | \[11\] **Get Entity Type List** (200050/1031) `out#0` "List" | *L\<Enum\>* |   |
 | `in#5` | "Entity Type Filter" | = | \[\] | *L\<Enum\>* | default, also wired |
@@ -319,7 +319,7 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "Variable Name" | = | '' | *Str* | default |
-| `out#0` | "Variable Value" | = | 0 | *Flt* |   |
+| `out#0` | "Variable Value" | = | 0.00 | *Flt* |   |
 
 \[11\] **Get Entity Type List** (200050/1031) @(1490,132.85715)
 
@@ -372,19 +372,19 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `out#0` | "Self Entity" | = | id:0 | *Ety* | default |
+| `out#0` | "Self Entity" | = | null | *Ety* | default |
 
 \[16\] **Get Self Entity** (200033/1013) @(436.98413,555.4762)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `out#0` | "Self Entity" | = | id:0 | *Ety* | default |
+| `out#0` | "Self Entity" | = | null | *Ety* | default |
 
 \[17\] **Get Self Entity** (200033/1013) @(448.09525,247.69841)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `out#0` | "Self Entity" | = | id:0 | *Ety* | default |
+| `out#0` | "Self Entity" | = | null | *Ety* | default |
 
 ## Graph '<u>\<creation\></u>*New Creation Status Node Graph*'
 
@@ -399,19 +399,19 @@
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Execute" | = | Yes | *Bol* | default |
-| `in#1` | "Escape Trigger Distance" | = | 0 | *Flt* | default |
+| `in#0` | "Execute" | = | true | *Bol* | default |
+| `in#1` | "Escape Trigger Distance" | = | 0.00 | *Flt* | default |
 | `in#2` | "Movement Speed" | = | enum:3601«Walk» | *Enum* | default |
-| `in#3` | "Maximum Escape Angle" | = | 0 | *Flt* | default |
+| `in#3` | "Maximum Escape Angle" | = | 0.00 | *Flt* | default |
 | `in#4` | "Minimum Escape Segments" | = | 0 | *Int* | default |
 | `in#5` | "Maximum Escape Segments" | = | 0 | *Int* | default |
-| `in#6` | "Minimum Escape Distance" | = | 0 | *Flt* | default |
-| `in#7` | "Maximum Escape Distance" | = | 0 | *Flt* | default |
-| `in#8` | "Escape Trigger CD" | = | 1 | *Flt* | default |
-| `in#9` | "Clear aggro and cancel tactic after countdown" | = | 0 | *Flt* | default |
-| `in#10` | "Whether restricted by territory" | = | Yes | *Bol* | default |
+| `in#6` | "Minimum Escape Distance" | = | 0.00 | *Flt* | default |
+| `in#7` | "Maximum Escape Distance" | = | 0.00 | *Flt* | default |
+| `in#8` | "Escape Trigger CD" | = | 1.00 | *Flt* | default |
+| `in#9` | "Clear aggro and cancel tactic after countdown" | = | 0.00 | *Flt* | default |
+| `in#10` | "Whether restricted by territory" | = | true | *Bol* | default |
 | `in#11` | "Tactical Context" | = | '' | *Str* | default |
-| `in#12` | "Can skill be interrupted" | = | No | *Bol* | default |
+| `in#12` | "Can skill be interrupted" | = | false | *Bol* | default |
 
 \[3\] **Tactic: Ground Escape** (200138/4019) @(2220.5715,-276.0238)
 
@@ -419,85 +419,85 @@
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#0` | "Failed Execution" | -\> | \[5\] **Double Branch** (200125/4001) `in.flow#0` |   |   |
 | `in#0` | "Execute" | \<- | \[7\] **Equal** (200179) `out#0` "Result" | *Bol* |   |
-| `in#0` | "Execute" | = | Yes | *Bol* | default, also wired |
+| `in#0` | "Execute" | = | true | *Bol* | default, also wired |
 | `in#1` | "Escape Trigger Distance" | \<- | \[8\] **Addition** (200184/31) `out#0` "Result" | *Flt* |   |
-| `in#1` | "Escape Trigger Distance" | = | 0 | *Flt* | default, also wired |
+| `in#1` | "Escape Trigger Distance" | = | 0.00 | *Flt* | default, also wired |
 | `in#2` | "Movement Speed" | = | enum:3602«Run» | *Enum* |   |
 | `in#3` | "Maximum Escape Angle" | \<- | \[9\] **Addition** (200184/31) `out#0` "Result" | *Flt* |   |
-| `in#3` | "Maximum Escape Angle" | = | 0 | *Flt* | default, also wired |
+| `in#3` | "Maximum Escape Angle" | = | 0.00 | *Flt* | default, also wired |
 | `in#4` | "Minimum Escape Segments" | \<- | \[10\] **Addition** (200184/30) `out#0` "Result" | *Int* |   |
 | `in#4` | "Minimum Escape Segments" | = | 0 | *Int* | default, also wired |
 | `in#5` | "Maximum Escape Segments" | \<- | \[11\] **Addition** (200184/30) `out#0` "Result" | *Int* |   |
 | `in#5` | "Maximum Escape Segments" | = | 0 | *Int* | default, also wired |
 | `in#6` | "Minimum Escape Distance" | \<- | \[12\] **Addition** (200184/31) `out#0` "Result" | *Flt* |   |
-| `in#6` | "Minimum Escape Distance" | = | 0 | *Flt* | default, also wired |
+| `in#6` | "Minimum Escape Distance" | = | 0.00 | *Flt* | default, also wired |
 | `in#7` | "Maximum Escape Distance" | \<- | \[13\] **Addition** (200184/31) `out#0` "Result" | *Flt* |   |
-| `in#7` | "Maximum Escape Distance" | = | 0 | *Flt* | default, also wired |
+| `in#7` | "Maximum Escape Distance" | = | 0.00 | *Flt* | default, also wired |
 | `in#8` | "Escape Trigger CD" | \<- | \[14\] **Addition** (200184/31) `out#0` "Result" | *Flt* |   |
-| `in#8` | "Escape Trigger CD" | = | 1 | *Flt* | default, also wired |
+| `in#8` | "Escape Trigger CD" | = | 1.00 | *Flt* | default, also wired |
 | `in#9` | "Clear aggro and cancel tactic after countdown" | \<- | \[15\] **Addition** (200184/31) `out#0` "Result" | *Flt* |   |
-| `in#9` | "Clear aggro and cancel tactic after countdown" | = | 0 | *Flt* | default, also wired |
+| `in#9` | "Clear aggro and cancel tactic after countdown" | = | 0.00 | *Flt* | default, also wired |
 | `in#10` | "Whether restricted by territory" | \<- | \[16\] **Equal** (200179) `out#0` "Result" | *Bol* |   |
-| `in#10` | "Whether restricted by territory" | = | Yes | *Bol* | default, also wired |
+| `in#10` | "Whether restricted by territory" | = | true | *Bol* | default, also wired |
 | `in#11` | "Tactical Context" | = | '` `' | *Str* |   |
 | `in#12` | "Can skill be interrupted" | \<- | \[17\] **Equal** (200179) `out#0` "Result" | *Bol* |   |
-| `in#12` | "Can skill be interrupted" | = | No | *Bol* | default, also wired |
+| `in#12` | "Can skill be interrupted" | = | false | *Bol* | default, also wired |
 
 \[4\] **Double Branch** (200125/4001) @(1874.8572,-600.3095)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `out.flow#1` | "No" | -\> | \[3\] **Tactic: Ground Escape** (200138/4019) `in.flow#0` |   |   |
-| `in#0` | "Condition" | = | No | *Bol* | default |
+| `in#0` | "Condition" | = | false | *Bol* | default |
 
 \[5\] **Double Branch** (200125/4001) @(2734.8572,-537.4524)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Condition" | = | No | *Bol* | default |
+| `in#0` | "Condition" | = | false | *Bol* | default |
 
 \[6\] **Tactic: Ground Escape** (200138/4019) @(1096.5238,-125.666664)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `in#0` | "Execute" | = | No | *Bol* |   |
-| `in#1` | "Escape Trigger Distance" | = | 1 | *Flt* |   |
+| `in#0` | "Execute" | = | false | *Bol* |   |
+| `in#1` | "Escape Trigger Distance" | = | 1.00 | *Flt* |   |
 | `in#2` | "Movement Speed" | = | enum:3602«Run» | *Enum* |   |
-| `in#3` | "Maximum Escape Angle" | = | 2 | *Flt* |   |
+| `in#3` | "Maximum Escape Angle" | = | 2.00 | *Flt* |   |
 | `in#4` | "Minimum Escape Segments" | = | 3 | *Int* |   |
 | `in#5` | "Maximum Escape Segments" | = | 4 | *Int* |   |
-| `in#6` | "Minimum Escape Distance" | = | 5 | *Flt* |   |
-| `in#7` | "Maximum Escape Distance" | = | 6 | *Flt* |   |
-| `in#8` | "Escape Trigger CD" | = | 7 | *Flt* |   |
-| `in#9` | "Clear aggro and cancel tactic after countdown" | = | 8 | *Flt* |   |
-| `in#10` | "Whether restricted by territory" | = | No | *Bol* |   |
+| `in#6` | "Minimum Escape Distance" | = | 5.00 | *Flt* |   |
+| `in#7` | "Maximum Escape Distance" | = | 6.00 | *Flt* |   |
+| `in#8` | "Escape Trigger CD" | = | 7.00 | *Flt* |   |
+| `in#9` | "Clear aggro and cancel tactic after countdown" | = | 8.00 | *Flt* |   |
+| `in#10` | "Whether restricted by territory" | = | false | *Bol* |   |
 | `in#11` | "Tactical Context" | = | '`9`' | *Str* |   |
-| `in#12` | "Can skill be interrupted" | = | Yes | *Bol* |   |
+| `in#12` | "Can skill be interrupted" | = | true | *Bol* |   |
 
 \[7\] **Equal** (200179) @(1786.381,-363.66666)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "op" | = | enum:100«Comparison Operators\_Equal To» | *Enum* | default |
-| `out#0` | "Result" | = | No | *Bol* | default |
+| `out#0` | "Result" | = | false | *Bol* | default |
 
 \[8\] **Addition** (200184/31) variant=C\<T:Flt\> @(1626.8572,-108.42857)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "op" | = | enum:300«Mathematical Operators\_Addition» | *Enum* | default |
-| `in#1` |   | = | 0 | *Flt* |   |
-| `in#2` |   | = | 0 | *Flt* |   |
-| `out#0` | "Result" | = | 0 | *Flt* |   |
+| `in#1` |   | = | 0.00 | *Flt* |   |
+| `in#2` |   | = | 0.00 | *Flt* |   |
+| `out#0` | "Result" | = | 0.00 | *Flt* |   |
 
 \[9\] **Addition** (200184/31) variant=C\<T:Flt\> @(1663.0476,59.666668)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "op" | = | enum:300«Mathematical Operators\_Addition» | *Enum* | default |
-| `in#1` |   | = | 0 | *Flt* |   |
-| `in#2` |   | = | 0 | *Flt* |   |
-| `out#0` | "Result" | = | 0 | *Flt* |   |
+| `in#1` |   | = | 0.00 | *Flt* |   |
+| `in#2` |   | = | 0.00 | *Flt* |   |
+| `out#0` | "Result" | = | 0.00 | *Flt* |   |
 
 \[10\] **Addition** (200184/30) variant=C\<T:Int\> @(1633.0476,233)
 
@@ -522,50 +522,50 @@
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "op" | = | enum:300«Mathematical Operators\_Addition» | *Enum* | default |
-| `in#1` |   | = | 0 | *Flt* |   |
-| `in#2` |   | = | 0 | *Flt* |   |
-| `out#0` | "Result" | = | 0 | *Flt* |   |
+| `in#1` |   | = | 0.00 | *Flt* |   |
+| `in#2` |   | = | 0.00 | *Flt* |   |
+| `out#0` | "Result" | = | 0.00 | *Flt* |   |
 
 \[13\] **Addition** (200184/31) variant=C\<T:Flt\> @(1644.7142,833)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "op" | = | enum:300«Mathematical Operators\_Addition» | *Enum* | default |
-| `in#1` |   | = | 0 | *Flt* |   |
-| `in#2` |   | = | 0 | *Flt* |   |
-| `out#0` | "Result" | = | 0 | *Flt* |   |
+| `in#1` |   | = | 0.00 | *Flt* |   |
+| `in#2` |   | = | 0.00 | *Flt* |   |
+| `out#0` | "Result" | = | 0.00 | *Flt* |   |
 
 \[14\] **Addition** (200184/31) variant=C\<T:Flt\> @(1623.0476,1056.3334)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "op" | = | enum:300«Mathematical Operators\_Addition» | *Enum* | default |
-| `in#1` |   | = | 0 | *Flt* |   |
-| `in#2` |   | = | 0 | *Flt* |   |
-| `out#0` | "Result" | = | 0 | *Flt* |   |
+| `in#1` |   | = | 0.00 | *Flt* |   |
+| `in#2` |   | = | 0.00 | *Flt* |   |
+| `out#0` | "Result" | = | 0.00 | *Flt* |   |
 
 \[15\] **Addition** (200184/31) variant=C\<T:Flt\> @(2238.0476,843)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "op" | = | enum:300«Mathematical Operators\_Addition» | *Enum* | default |
-| `in#1` |   | = | 0 | *Flt* |   |
-| `in#2` |   | = | 0 | *Flt* |   |
-| `out#0` | "Result" | = | 0 | *Flt* |   |
+| `in#1` |   | = | 0.00 | *Flt* |   |
+| `in#2` |   | = | 0.00 | *Flt* |   |
+| `out#0` | "Result" | = | 0.00 | *Flt* |   |
 
 \[16\] **Equal** (200179) @(2274.7144,1053)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "op" | = | enum:100«Comparison Operators\_Equal To» | *Enum* | default |
-| `out#0` | "Result" | = | No | *Bol* | default |
+| `out#0` | "Result" | = | false | *Bol* | default |
 
 \[17\] **Equal** (200179) @(2704.7144,1138)
 
 | Pin | Name | Dir | Target / value | Type | Notes |
 | --- | --- | --- | --- | --- | --- |
 | `in#0` | "op" | = | enum:100«Comparison Operators\_Equal To» | *Enum* | default |
-| `out#0` | "Result" | = | No | *Bol* | default |
+| `out#0` | "Result" | = | false | *Bol* | default |
 
 ## Graph '<u>\<creation\></u>*New Creation Status Decision Node Graph*'
 

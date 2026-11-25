@@ -221,7 +221,7 @@ RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741854' section=root.9
 RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741855' section=root.9
 RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741856' section=root.9
 RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741857' section=root.9
-GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = id:0
+GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = null
 
 # REFS
 composite        "Create Composite Node"            2 call: ['New Node Graph']

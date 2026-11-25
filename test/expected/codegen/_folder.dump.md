@@ -19,3 +19,9 @@
 **GRAPH** '<u>\<composite\></u>*Two In One Out*' ENTITY\_NODE\_GRAPH guid='`1610612741`' nodes=2 role=dependency<br>
 **GRAPH** '<u>\<composite\></u>*With Event*' ENTITY\_NODE\_GRAPH guid='`1610612744`' nodes=4 role=dependency<br>
 **GRAPH\_VARIABLE** '<u>\<status\></u>*Status*' '**gvar**' : *Int* = 1
+
+# FILE `data_order.gia`
+
+**GRAPH** '*Graph*' ENTITY\_NODE\_GRAPH guid='`1073741825`' nodes=23<br>
+**GRAPH** '<u>\<composite\></u>*Composite\_data*' ENTITY\_NODE\_GRAPH guid='`1610612737`' nodes=2 role=dependency<br>
+**GRAPH** '<u>\<composite\></u>*Composite\_exec*' ENTITY\_NODE\_GRAPH guid='`1610612738`' nodes=2 role=dependency

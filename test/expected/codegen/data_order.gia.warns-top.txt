@@ -1,0 +1,9 @@
+# findings
+INFO  listener-no-handlers: [2] When Custom Variable Changes in graph 'Graph' has no name switch and no code after it: it reacts to nothing
+INFO  dynamic-reference: [6] Get Custom Variable in#1 "Variable Name" in graph 'Graph': name is computed at runtime (wired from [7] Query Dictionary Value by Key; Query Dictionary Value by Key output "Value" is computed at runtime); cannot be resolved statically
+
+# limits
+composites: 2/1000 declared
+
+top graphs by node count:
+'Graph': 27/3000 nodes

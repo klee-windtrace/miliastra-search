@@ -29,9 +29,9 @@
 | **String** | *Str* | true |   | '`graph`' |
 | **Integer** | *Int* | true |   | 0 |
 | **Faction** | *Fct* | true |   | id:1 |
-| **Float** | *Flt* | true |   | 2 |
-| **Entity** | *Ety* | true |   | id:0 |
-| **Private** | *Bol* | false |   | Yes |
+| **Float** | *Flt* | true |   | 2.00 |
+| **Entity** | *Ety* | true |   | null |
+| **Private** | *Bol* | false |   | true |
 
 ## Graph '*Test5*'
 
@@ -42,7 +42,7 @@
 
 | Name | Type | Public | Struct | Value |
 | --- | --- | --- | --- | --- |
-| **Faction** | *Fct* | true |   | id:0 |
+| **Faction** | *Fct* | true |   | null |
 
 ## Graph '<u>\<status\></u>*Status*'
 

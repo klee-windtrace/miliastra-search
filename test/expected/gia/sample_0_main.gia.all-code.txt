@@ -28,7 +28,7 @@ CLASS STATUS_NODE_GRAPH class=22 count=1
 # DUMP
 GRAPH 'Graph' ENTITY_NODE_GRAPH class=9 guid='1073742366' kind=21001 service=20000 nodes=7
 GRAPH '<status>Empty' STATUS_NODE_GRAPH class=22 guid='1073742384' kind=21001 service=20003 nodes=0
-GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = id:0
+GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = null
 
 # REFS
 graph_variable   "Graph_Var" (Ety)                  ['Graph']: 1 get, 0 set
@@ -45,7 +45,7 @@ top graphs by node count:
 
 # CODE
 GRAPH 'Graph' ENTITY_NODE_GRAPH (guid 1073742366)
-'Graph'/VAR Graph_Var : Ety public=false = id:0
+'Graph'/VAR Graph_Var : Ety public=false = null
 'Graph'/COMMENT 'Comment' @(-193,-100)
 'Graph'/[1] When Entity Is Created (71) @(-219,48)
 'Graph'/[1] When Entity Is Created (71) out.flow#0 -> [4] Double Branch (2) in.flow#0

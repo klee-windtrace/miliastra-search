@@ -24,7 +24,7 @@ CLASS STATUS_NODE_GRAPH class=22 count=1
 # DUMP
 GRAPH 'Graph' ENTITY_NODE_GRAPH class=9 guid='1073742366' kind=21001 service=20000 nodes=7
 GRAPH '<status>Empty' STATUS_NODE_GRAPH class=22 guid='1073742384' kind=21001 service=20003 nodes=0
-GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = id:0
+GRAPH_VARIABLE 'Graph' 'Graph_Var' : Ety = null
 
 # REFS
 graph_variable   "Graph_Var" (Ety)                  ['Graph']: 1 get, 0 set

@@ -1,5 +1,31 @@
 ﻿# INFO
 
+## FILE `composite_order.gia`
+
+format&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gia<br>
+detected\_by&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header<br>
+file\_size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4647<br>
+container\_file\_type&nbsp;&nbsp;&nbsp;&nbsp;gia<br>
+engine\_version&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.2.0<br>
+mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beyond<br>
+export\_name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;composite\_order.gia<br>
+node\_db\_version&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.2.0<br>
+resources&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18<br>
+primary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4<br>
+dependencies&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14<br>
+graphs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8<br>
+nodes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15<br>
+composite\_bodies&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7<br>
+declarations&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7<br>
+structs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br>
+mounts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3<br>
+unresolved\_node\_types&nbsp;&nbsp;0<br>
+CLASS OBJECT\_ENTITY class=3 count=3<br>
+CLASS ENTITY\_NODE\_GRAPH class=9 count=8<br>
+CLASS COMPOSITE\_NODE\_DECL class=12 count=7
+
+---
+
 ## FILE `test_All_Composite.gia`
 
 format&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gia<br>
@@ -136,6 +162,23 @@ CLASS COMPOSITE\_NODE\_DECL class=12 count=3
 
 # DUMP
 
+## FILE `composite_order.gia`
+
+**GRAPH** '*Flows*' ENTITY\_NODE\_GRAPH class=9 guid='`1073741825`' kind=21001 service=20000 nodes=8<br>
+**GRAPH** '<u>\<composite\></u>*C1*' ENTITY\_NODE\_GRAPH class=9 guid='`1610612737`' kind=21002 service=20000 nodes=1 role=dependency decl='`1610612737`'<br>
+**GRAPH** '<u>\<composite\></u>*C2*' ENTITY\_NODE\_GRAPH class=9 guid='`1610612738`' kind=21002 service=20000 nodes=1 role=dependency decl='`1610612738`'<br>
+**GRAPH** '<u>\<composite\></u>*C3*' ENTITY\_NODE\_GRAPH class=9 guid='`1610612739`' kind=21002 service=20000 nodes=1 role=dependency decl='`1610612739`'<br>
+**GRAPH** '<u>\<composite\></u>*C4*' ENTITY\_NODE\_GRAPH class=9 guid='`1610612740`' kind=21002 service=20000 nodes=1 role=dependency decl='`1610612740`'<br>
+**GRAPH** '<u>\<composite\></u>*C5*' ENTITY\_NODE\_GRAPH class=9 guid='`1610612741`' kind=21002 service=20000 nodes=1 role=dependency decl='`1610612741`'<br>
+**GRAPH** '<u>\<composite\></u>*C6*' ENTITY\_NODE\_GRAPH class=9 guid='`1610612742`' kind=21002 service=20000 nodes=1 role=dependency decl='`1610612742`'<br>
+**GRAPH** '<u>\<composite\></u>*C7*' ENTITY\_NODE\_GRAPH class=9 guid='`1610612743`' kind=21002 service=20000 nodes=1 role=dependency decl='`1610612743`'<br>
+**RESOURCE** "**Empty Model**" OBJECT\_ENTITY class=3 guid='`1077936129`' parent=(10005018)<br>
+MOUNT '*Flows*' -\> OBJECT\_ENTITY "**Empty Model**" entity<br>
+**RESOURCE** "**Empty Model**" OBJECT\_ENTITY class=3 guid='`1077936130`' parent=(10005018)<br>
+MOUNT '*Flows*' -\> OBJECT\_ENTITY "**Empty Model**" entity<br>
+**RESOURCE** "**Empty Model**" OBJECT\_ENTITY class=3 guid='`1077936131`' parent=(10005018)<br>
+MOUNT '*Flows*' -\> OBJECT\_ENTITY "**Empty Model**" entity
+
 ## FILE `test_All_Composite.gia`
 
 **DECL** "**Static\_2**" SIGNAL\_NODE\_DECL class=14 guid='`1610612741`' category=SEND\_SIGNAL role=dependency<br>
@@ -256,6 +299,13 @@ CLASS COMPOSITE\_NODE\_DECL class=12 count=3
 
 # REFS
 
+`composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**C1**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** call: \['*Flows*'\]<br>
+`composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**C2**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** call: \['*Flows*'\]<br>
+`composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**C3**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** call: \['*Flows*'\]<br>
+`composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**C4**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** call: \['*Flows*'\]<br>
+`composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**C5**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** call: \['*Flows*'\]<br>
+`composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**C6**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** call: \['*Flows*'\]<br>
+`composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**C7**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** call: \['*Flows*'\]<br>
 `composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Create Composite Node**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **5** call: \['*All\_Composite*'; '*New Node Graph*'\]<br>
 `composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Create Composite Node(1)**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **3** call: \['*All\_Composite*'; '<u>\<composite\></u>*Create Composite Node*'\]<br>
 `composite`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Create Composite Node(10)**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** call: \['*All\_Composite*'\]<br>
@@ -296,6 +346,7 @@ CLASS COMPOSITE\_NODE\_DECL class=12 count=3
 `literal_id`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Gid:1077936131**" (OBJECT\_ENTITY:"**entity\_test**") **2** Ref: \['*New Node Graph*'\]<br>
 `literal_id`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Int: 1073741825**" (INTERFACE\_LAYOUT:"**Default Layout**") **2** Ref: \['*New Node Graph*'\]<br>
 `literal_id`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Pfb:10005018**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **2** Ref: \['*New Node Graph*'\]<br>
+`mount`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '*Flows*'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **3** entity: OBJECT\_ENTITY:"**Empty Model**" (x3)<br>
 `signal`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Static\_1**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** listen: \['*All\_Composite*'\], **1** send: \['*All\_Composite*'\]<br>
 `signal`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Static\_2**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** listen: \['*All\_Composite*'\], **1** send: \['*All\_Composite*'\]<br>
 `timer`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Static\_Timer**" (*onetime*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** start: \['<u>\<composite\></u>*Create Composite Node(4)*'\], **1** stop: \['*All\_Composite*'\], **1** listen: \['*All\_Composite*'\]
@@ -313,10 +364,10 @@ CLASS COMPOSITE\_NODE\_DECL class=12 count=3
 
 ## limits
 
-composites: 33/1000 declared<br>
+composites: 40/1000 declared<br>
 signals: 2/99 declared<br>
 prefabs (OBJECT): 2/1000<br>
-dynamic entities (OBJECT\_ENTITY): 2/3000<br>
+dynamic entities (OBJECT\_ENTITY): 5/3000<br>
 PRESET\_POINT: 1/2000<br>
 ENVIRONMENT\_CONFIGURATION: 1/50<br>
 CLASS: 1/100<br>
@@ -330,4 +381,5 @@ TERRAIN\_ENTITY: 1/1200
 '*All\_Composite*': 52/3000 nodes \[`test_All_Composite.gia`\]<br>
 '*New Node Graph*': 17/3000 nodes \[`test_composite.gia`\]<br>
 '*New Node Graph*': 17/3000 nodes \[`test_composite.gil`\]<br>
+'*Flows*': 15/3000 nodes \[`composite_order.gia`\]<br>
 '*VAR\_TEST*': 11/3000 nodes \[`var_change.gia`\]

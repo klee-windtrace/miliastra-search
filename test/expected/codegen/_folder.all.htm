@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>all codetest_1.gia, codetest_2.gia</title>
+<title>all codetest_1.gia, codetest_2.gia, data_order.gia</title>
 <style>
 :root{color-scheme:dark;--bg:#0C0C0C;--panel:#161616;--line:#2e2e2e;--fg:#CCCCCC;--muted:#767676;--accent:#61D6D6}
 *{box-sizing:border-box}
@@ -138,6 +138,28 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="keyword">CLASS</span> <span class="className">COMPOSITE_NODE_DECL</span> <span class="metaKey">class</span>=<span class="metaValue">12</span> <span class="metaKey">count</span>=<span class="metaValue">10</span>
 <span class="keyword">CLASS</span> <span class="className">STATUS_NODE_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">22</span> <span class="metaKey">count</span>=<span class="metaValue">1</span></pre>
 <hr>
+<h2><span class="heading">FILE</span> <span class="fileName">data_order.gia</span></h2>
+<pre class="lines"><span class="metaKey">format</span>                 <span class="metaValue">gia</span>
+<span class="metaKey">detected_by</span>            <span class="metaValue">header</span>
+<span class="metaKey">file_size</span>              <span class="metaValue">2445</span>
+<span class="metaKey">container_file_type</span>    <span class="metaValue">gia</span>
+<span class="metaKey">engine_version</span>         <span class="metaValue">7.2.0</span>
+<span class="metaKey">mode</span>                   <span class="metaValue">beyond</span>
+<span class="metaKey">export_name</span>            <span class="metaValue">data_order.gia</span>
+<span class="metaKey">node_db_version</span>        <span class="metaValue">7.2.0</span>
+<span class="metaKey">resources</span>              <span class="metaValue">5</span>
+<span class="metaKey">primary</span>                <span class="metaValue">1</span>
+<span class="metaKey">dependencies</span>           <span class="metaValue">4</span>
+<span class="metaKey">graphs</span>                 <span class="metaValue">3</span>
+<span class="metaKey">nodes</span>                  <span class="metaValue">27</span>
+<span class="metaKey">composite_bodies</span>       <span class="metaValue">2</span>
+<span class="metaKey">declarations</span>           <span class="metaValue">2</span>
+<span class="metaKey">structs</span>                <span class="metaValue">0</span>
+<span class="metaKey">mounts</span>                 <span class="metaValue">0</span>
+<span class="metaKey">unresolved_node_types</span>  <span class="metaValue">0</span>
+<span class="keyword">CLASS</span> <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">9</span> <span class="metaKey">count</span>=<span class="metaValue">3</span>
+<span class="keyword">CLASS</span> <span class="className">COMPOSITE_NODE_DECL</span> <span class="metaKey">class</span>=<span class="metaValue">12</span> <span class="metaKey">count</span>=<span class="metaValue">2</span></pre>
+<hr>
 <h1><span class="heading">DUMP</span></h1>
 <h2><span class="heading">FILE</span> <span class="fileName">codetest_1.gia</span></h2>
 <pre class="lines"><span class="heading">GRAPH</span> '<span class="graphName">New Node Graph</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">9</span> <span class="metaKey">guid</span>='<span class="guid">1073741829</span>' <span class="metaKey">kind</span>=<span class="metaValue">21001</span> <span class="metaKey">service</span>=<span class="metaValue">20000</span> <span class="metaKey">nodes</span>=<span class="metaValue">30</span>
@@ -157,9 +179,15 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="heading">GRAPH</span> '<span class="graphTag">&lt;composite&gt;</span><span class="graphName">Two In One Out</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">9</span> <span class="metaKey">guid</span>='<span class="guid">1610612741</span>' <span class="metaKey">kind</span>=<span class="metaValue">21002</span> <span class="metaKey">service</span>=<span class="metaValue">20000</span> <span class="metaKey">nodes</span>=<span class="metaValue">2</span> <span class="metaKey">role</span>=<span class="metaValue">dependency</span> <span class="metaKey">decl</span>='<span class="guid">1610612741</span>'
 <span class="heading">GRAPH</span> '<span class="graphTag">&lt;composite&gt;</span><span class="graphName">With Event</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">9</span> <span class="metaKey">guid</span>='<span class="guid">1610612744</span>' <span class="metaKey">kind</span>=<span class="metaValue">21002</span> <span class="metaKey">service</span>=<span class="metaValue">20000</span> <span class="metaKey">nodes</span>=<span class="metaValue">4</span> <span class="metaKey">role</span>=<span class="metaValue">dependency</span> <span class="metaKey">decl</span>='<span class="guid">1610612744</span>'
 <span class="heading">GRAPH_VARIABLE</span> '<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>' '<span class="variableName">gvar</span>' : <span class="typeName">Int</span> <span class="arrow">=</span> <span class="number">1</span></pre>
+<h2><span class="heading">FILE</span> <span class="fileName">data_order.gia</span></h2>
+<pre class="lines"><span class="heading">GRAPH</span> '<span class="graphName">Graph</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">9</span> <span class="metaKey">guid</span>='<span class="guid">1073741825</span>' <span class="metaKey">kind</span>=<span class="metaValue">21001</span> <span class="metaKey">service</span>=<span class="metaValue">20000</span> <span class="metaKey">nodes</span>=<span class="metaValue">23</span>
+<span class="heading">GRAPH</span> '<span class="graphTag">&lt;composite&gt;</span><span class="graphName">Composite_data</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">9</span> <span class="metaKey">guid</span>='<span class="guid">1610612737</span>' <span class="metaKey">kind</span>=<span class="metaValue">21002</span> <span class="metaKey">service</span>=<span class="metaValue">20000</span> <span class="metaKey">nodes</span>=<span class="metaValue">2</span> <span class="metaKey">role</span>=<span class="metaValue">dependency</span> <span class="metaKey">decl</span>='<span class="guid">1610612737</span>'
+<span class="heading">GRAPH</span> '<span class="graphTag">&lt;composite&gt;</span><span class="graphName">Composite_exec</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">class</span>=<span class="metaValue">9</span> <span class="metaKey">guid</span>='<span class="guid">1610612738</span>' <span class="metaKey">kind</span>=<span class="metaValue">21002</span> <span class="metaKey">service</span>=<span class="metaValue">20000</span> <span class="metaKey">nodes</span>=<span class="metaValue">2</span> <span class="metaKey">role</span>=<span class="metaValue">dependency</span> <span class="metaKey">decl</span>='<span class="guid">1610612738</span>'</pre>
 <hr>
 <h1><span class="heading">REFS</span></h1>
 <pre class="lines"><span class="kind">composite</span>        "<span class="key">Calling Twice</span>"                    <span class="count">1</span> <span class="role">call</span>: ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']
+<span class="kind">composite</span>        "<span class="key">Composite_data</span>"                   <span class="count">1</span> <span class="role">call</span>: ['<span class="graphName">Graph</span>']
+<span class="kind">composite</span>        "<span class="key">Composite_exec</span>"                   <span class="count">1</span> <span class="role">call</span>: ['<span class="graphName">Graph</span>']
 <span class="kind">composite</span>        "<span class="key">Exposed Computed</span>"                 <span class="count">1</span> <span class="role">call</span>: ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']
 <span class="kind">composite</span>        "<span class="key">Exposed Local</span>"                    <span class="count">1</span> <span class="role">call</span>: ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']
 <span class="kind">composite</span>        "<span class="key">Exposed Native</span>"                   <span class="count">1</span> <span class="role">call</span>: ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']
@@ -169,6 +197,7 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="kind">composite</span>        "<span class="key">Two Exclusive Outs</span>"               <span class="count">1</span> <span class="role">call</span>: ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']
 <span class="kind">composite</span>        "<span class="key">Two In One Out</span>"                   <span class="count">1</span> <span class="role">call</span>: ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']
 <span class="kind">composite</span>        "<span class="key">With Event</span>"                       <span class="count">1</span> <span class="role">call</span>: ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']
+<span class="kind">custom_variable</span>  "<span class="key">&lt;dynamic&gt;</span>" (<span class="typeName">Int</span>)                  <span class="count">1</span> <span class="role">get</span>: ['<span class="graphName">Graph</span>'], <span class="count">0</span> <span class="role">set</span>: []
 <span class="kind">custom_variable</span>  "<span class="key">list</span>" (<span class="typeName">Dict</span>)                      <span class="count">1</span> <span class="role">get</span>: ['<span class="graphTag">&lt;filter&gt;</span><span class="graphName">New Filter Node Graph</span>'], <span class="count">0</span> <span class="role">set</span>: []
 <span class="kind">custom_variable</span>  "<span class="key">MyList</span>" (<span class="typeName">L&lt;Int&gt;</span>)                  <span class="count">1</span> <span class="role">get</span>: ['<span class="graphName">New Node Graph</span>'], <span class="count">0</span> <span class="role">set</span>: []
 <span class="kind">custom_variable</span>  "<span class="key">none</span>"                             <span class="count">0</span> <span class="role">get</span>: [], <span class="count">0</span> <span class="role">set</span>: [], <span class="count">1</span> <span class="role">trigger</span>: ['<span class="graphTag">&lt;composite&gt;</span><span class="graphName">With Event</span>']
@@ -180,23 +209,27 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="kind">custom_variable</span>  "<span class="key">z</span>" (<span class="typeName">Bol</span>)                          <span class="count">0</span> <span class="role">get</span>: [], <span class="count">0</span> <span class="role">set</span>: [], <span class="count">1</span> <span class="role">trigger</span>: ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']
 <span class="kind">graph_variable</span>   "<span class="key">gvar</span>" (<span class="typeName">Int</span>)                       ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']: <span class="count">0</span> <span class="role">get</span>, <span class="count">1</span> <span class="role">set</span>, <span class="count">1</span> <span class="role">trigger</span>
 <span class="kind">literal_id</span>       "<span class="key">Pfb:1077936129</span>" (<span class="className">OBJECT</span>:"<span class="key">Empty Model</span>") <span class="count">1</span> <span class="role">Ref</span>: ['<span class="graphName">New Node Graph</span>']
+<span class="kind">timer</span>            "<span class="key">&lt;unset&gt;</span>"                          <span class="count">1</span> <span class="role">start</span>: ['<span class="graphName">Graph</span>'], <span class="count">0</span> <span class="role">stop</span>: []
 <span class="kind">timer</span>            "<span class="key">timer</span>"                            <span class="count">0</span> <span class="role">start</span>: [], <span class="count">0</span> <span class="role">stop</span>: [], <span class="count">1</span> <span class="role">listen</span>: ['<span class="graphTag">&lt;composite&gt;</span><span class="graphName">With Event</span>']</pre>
 <hr>
 <h1><span class="heading">WARNS</span></h1>
 <h2><span class="section">findings</span></h2>
-<pre class="lines"><span class="info">INFO</span>  <span class="findingType">custom-variable-undeclared</span>: custom variable "<span class="key">Var1</span>" is used in ['<span class="graphName">New Node Graph</span>'] but no entity, prefab or template declares it [<span class="fileName">codetest_1.gia</span>]
+<pre class="lines"><span class="info">INFO</span>  <span class="findingType">listener-no-handlers</span>: <span class="nodeIndex">[2]</span> <span class="nodeName">When Custom Variable Changes</span> in graph '<span class="graphName">Graph</span>' has no name switch and no code after it: it reacts to nothing [<span class="fileName">data_order.gia</span>]
+<span class="info">INFO</span>  <span class="findingType">dynamic-reference</span>: <span class="nodeIndex">[6]</span> <span class="nodeName">Get Custom Variable</span> <span class="pinLabel">in#1</span> "<span class="pinName">Variable Name</span>" in graph '<span class="graphName">Graph</span>': name is computed at runtime (wired from <span class="nodeIndex">[7]</span> <span class="nodeName">Query Dictionary Value by Key</span>; Query Dictionary Value by Key output "<span class="pinName">Value</span>" is computed at runtime); cannot be resolved statically [<span class="fileName">data_order.gia</span>]
+<span class="info">INFO</span>  <span class="findingType">custom-variable-undeclared</span>: custom variable "<span class="key">Var1</span>" is used in ['<span class="graphName">New Node Graph</span>'] but no entity, prefab or template declares it [<span class="fileName">codetest_1.gia</span>]
 <span class="info">INFO</span>  <span class="findingType">custom-variable-undeclared</span>: custom variable "<span class="key">MyList</span>" is used in ['<span class="graphName">New Node Graph</span>'] but no entity, prefab or template declares it [<span class="fileName">codetest_1.gia</span>]
 <span class="info">INFO</span>  <span class="findingType">custom-variable-undeclared</span>: custom variable "<span class="key">Test</span>" is used in ['<span class="graphName">New Node Graph</span>'] but no entity, prefab or template declares it [<span class="fileName">codetest_1.gia</span>]
 <span class="info">INFO</span>  <span class="findingType">custom-variable-undeclared</span>: custom variable "<span class="key">test</span>" is used in ['<span class="graphTag">&lt;creation&gt;</span><span class="graphName">New Creation Status Decision Node Graph</span>'] but no entity, prefab or template declares it [<span class="fileName">codetest_1.gia</span>]
 <span class="info">INFO</span>  <span class="findingType">custom-variable-undeclared</span>: custom variable "<span class="key">list</span>" is used in ['<span class="graphTag">&lt;filter&gt;</span><span class="graphName">New Filter Node Graph</span>'] but no entity, prefab or template declares it [<span class="fileName">codetest_1.gia</span>]</pre>
 <hr>
 <h2><span class="section">limits</span></h2>
-<pre class="lines">composites: <span class="limitOk">10/1000</span> declared
+<pre class="lines">composites: <span class="limitOk">12/1000</span> declared
 prefabs (OBJECT): <span class="limitOk">1/1000</span></pre>
 <hr>
 <h2><span class="section">top graphs by node count</span>:</h2>
 <pre class="lines">'<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>': <span class="limitOk">35/3000</span> nodes [<span class="fileName">codetest_2.gia</span>]
 '<span class="graphName">New Node Graph</span>': <span class="limitOk">30/3000</span> nodes [<span class="fileName">codetest_1.gia</span>]
+'<span class="graphName">Graph</span>': <span class="limitOk">27/3000</span> nodes [<span class="fileName">data_order.gia</span>]
 '<span class="graphTag">&lt;filter&gt;</span><span class="graphName">New Filter Node Graph</span>': <span class="limitOk">5/3000</span> nodes [<span class="fileName">codetest_1.gia</span>]
 '<span class="graphTag">&lt;creation&gt;</span><span class="graphName">New Creation Status Decision Node Graph</span>': <span class="limitOk">4/3000</span> nodes [<span class="fileName">codetest_1.gia</span>]</pre>
 </main>

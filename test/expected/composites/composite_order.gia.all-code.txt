@@ -1,0 +1,119 @@
+# INFO
+# FILE composite_order.gia
+format                 gia
+detected_by            header
+file_size              4647
+container_file_type    gia
+engine_version         7.2.0
+mode                   beyond
+export_name            composite_order.gia
+node_db_version        7.2.0
+export_tag             909814789-1795557534-1073741897-\composite_order.gia
+uid                    909814789
+time                   1795557534
+file_id                1073741897
+resources              18
+primary                4
+dependencies           14
+graphs                 8
+nodes                  15
+composite_bodies       7
+declarations           7
+structs                0
+mounts                 3
+unresolved_node_types  0
+CLASS OBJECT_ENTITY class=3 count=3
+CLASS ENTITY_NODE_GRAPH class=9 count=8
+CLASS COMPOSITE_NODE_DECL class=12 count=7
+
+# DUMP
+GRAPH 'Flows' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=8
+GRAPH '<composite>C1' ENTITY_NODE_GRAPH class=9 guid='1610612737' kind=21002 service=20000 nodes=1 role=dependency decl='1610612737'
+GRAPH '<composite>C2' ENTITY_NODE_GRAPH class=9 guid='1610612738' kind=21002 service=20000 nodes=1 role=dependency decl='1610612738'
+GRAPH '<composite>C3' ENTITY_NODE_GRAPH class=9 guid='1610612739' kind=21002 service=20000 nodes=1 role=dependency decl='1610612739'
+GRAPH '<composite>C4' ENTITY_NODE_GRAPH class=9 guid='1610612740' kind=21002 service=20000 nodes=1 role=dependency decl='1610612740'
+GRAPH '<composite>C5' ENTITY_NODE_GRAPH class=9 guid='1610612741' kind=21002 service=20000 nodes=1 role=dependency decl='1610612741'
+GRAPH '<composite>C6' ENTITY_NODE_GRAPH class=9 guid='1610612742' kind=21002 service=20000 nodes=1 role=dependency decl='1610612742'
+GRAPH '<composite>C7' ENTITY_NODE_GRAPH class=9 guid='1610612743' kind=21002 service=20000 nodes=1 role=dependency decl='1610612743'
+RESOURCE "Empty Model" OBJECT_ENTITY class=3 guid='1077936129' parent=(10005018)
+MOUNT 'Flows' -> OBJECT_ENTITY "Empty Model" entity
+RESOURCE "Empty Model" OBJECT_ENTITY class=3 guid='1077936130' parent=(10005018)
+MOUNT 'Flows' -> OBJECT_ENTITY "Empty Model" entity
+RESOURCE "Empty Model" OBJECT_ENTITY class=3 guid='1077936131' parent=(10005018)
+MOUNT 'Flows' -> OBJECT_ENTITY "Empty Model" entity
+
+# REFS
+composite        "C1"                               1 call: ['Flows']
+composite        "C2"                               1 call: ['Flows']
+composite        "C3"                               1 call: ['Flows']
+composite        "C4"                               1 call: ['Flows']
+composite        "C5"                               1 call: ['Flows']
+composite        "C6"                               1 call: ['Flows']
+composite        "C7"                               1 call: ['Flows']
+mount            'Flows'                            3 entity: OBJECT_ENTITY:"Empty Model" (x3)
+
+# WARNS
+# findings
+(no findings)
+
+# limits
+composites: 7/1000 declared
+dynamic entities (OBJECT_ENTITY): 3/3000
+
+top graphs by node count:
+'Flows': 15/3000 nodes
+
+# CODE
+GRAPH 'Flows' ENTITY_NODE_GRAPH (guid 1073741825)
+'Flows'/[10] C2 (1610612738) user=COMPOSITE @(-134,-374)
+'Flows'/[10] C2 (1610612738) out.flow#0 -> [14] C4 (1610612740) in.flow#0
+'Flows'/[12] C3 (1610612739) user=COMPOSITE @(-130,-20)
+'Flows'/[12] C3 (1610612739) out.flow#0 -> [14] C4 (1610612740) in.flow#0
+'Flows'/[14] C4 (1610612740) user=COMPOSITE @(222,-184)
+'Flows'/[14] C4 (1610612740) out.flow#0 -> [26] C5 (1610612741) in.flow#0
+'Flows'/[14] C4 (1610612740) out.flow#0 -> [25] C6 (1610612742) in.flow#0
+'Flows'/[21] C1 (1610612737) user=COMPOSITE @(-505,-180)
+'Flows'/[21] C1 (1610612737) out.flow#0 -> [10] C2 (1610612738) in.flow#0
+'Flows'/[21] C1 (1610612737) out.flow#0 -> [12] C3 (1610612739) in.flow#0
+'Flows'/[22] C7 (1610612743) user=COMPOSITE @(982,-184)
+'Flows'/[23] When Entity Is Removed/Destroyed (72) @(-922.5,-182.75)
+'Flows'/[23] When Entity Is Removed/Destroyed (72) out.flow#0 -> [21] C1 (1610612737) in.flow#0
+'Flows'/[25] C6 (1610612742) user=COMPOSITE @(598.25,2)
+'Flows'/[25] C6 (1610612742) out.flow#0 -> [22] C7 (1610612743) in.flow#0
+'Flows'/[26] C5 (1610612741) user=COMPOSITE @(603.75,-372.75)
+'Flows'/[26] C5 (1610612741) out.flow#0 -> [22] C7 (1610612743) in.flow#0
+GRAPH '<composite>C1' ENTITY_NODE_GRAPH (guid 1610612737, decl 1610612737) role=dependency
+'<composite>C1'/PORTMAP ext.in.flow#0 -> [1] Print String (1) in.flow#0
+'<composite>C1'/PORTMAP ext.out.flow#0 -> [1] Print String (1) out.flow#0
+'<composite>C1'/[1] Print String (1) @(0,0)
+'<composite>C1'/[1] Print String (1) in#0 "String" = '1' : Str
+GRAPH '<composite>C2' ENTITY_NODE_GRAPH (guid 1610612738, decl 1610612738) role=dependency
+'<composite>C2'/PORTMAP ext.in.flow#0 -> [2] Print String (1) in.flow#0
+'<composite>C2'/PORTMAP ext.out.flow#0 -> [2] Print String (1) out.flow#0
+'<composite>C2'/[2] Print String (1) @(0,0)
+'<composite>C2'/[2] Print String (1) in#0 "String" = '2' : Str
+GRAPH '<composite>C3' ENTITY_NODE_GRAPH (guid 1610612739, decl 1610612739) role=dependency
+'<composite>C3'/PORTMAP ext.in.flow#0 -> [3] Print String (1) in.flow#0
+'<composite>C3'/PORTMAP ext.out.flow#0 -> [3] Print String (1) out.flow#0
+'<composite>C3'/[3] Print String (1) @(0,0)
+'<composite>C3'/[3] Print String (1) in#0 "String" = '3' : Str
+GRAPH '<composite>C4' ENTITY_NODE_GRAPH (guid 1610612740, decl 1610612740) role=dependency
+'<composite>C4'/PORTMAP ext.in.flow#0 -> [4] Print String (1) in.flow#0
+'<composite>C4'/PORTMAP ext.out.flow#0 -> [4] Print String (1) out.flow#0
+'<composite>C4'/[4] Print String (1) @(0,0)
+'<composite>C4'/[4] Print String (1) in#0 "String" = '4' : Str
+GRAPH '<composite>C5' ENTITY_NODE_GRAPH (guid 1610612741, decl 1610612741) role=dependency
+'<composite>C5'/PORTMAP ext.in.flow#0 -> [6] Print String (1) in.flow#0
+'<composite>C5'/PORTMAP ext.out.flow#0 -> [6] Print String (1) out.flow#0
+'<composite>C5'/[6] Print String (1) @(0,0)
+'<composite>C5'/[6] Print String (1) in#0 "String" = '5' : Str
+GRAPH '<composite>C6' ENTITY_NODE_GRAPH (guid 1610612742, decl 1610612742) role=dependency
+'<composite>C6'/PORTMAP ext.in.flow#0 -> [5] Print String (1) in.flow#0
+'<composite>C6'/PORTMAP ext.out.flow#0 -> [5] Print String (1) out.flow#0
+'<composite>C6'/[5] Print String (1) @(0,0)
+'<composite>C6'/[5] Print String (1) in#0 "String" = '6' : Str
+GRAPH '<composite>C7' ENTITY_NODE_GRAPH (guid 1610612743, decl 1610612743) role=dependency
+'<composite>C7'/PORTMAP ext.in.flow#0 -> [7] Print String (1) in.flow#0
+'<composite>C7'/PORTMAP ext.out.flow#0 -> [7] Print String (1) out.flow#0
+'<composite>C7'/[7] Print String (1) @(0,0)
+'<composite>C7'/[7] Print String (1) in#0 "String" = '7' : Str

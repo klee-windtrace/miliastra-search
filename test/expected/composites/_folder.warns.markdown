@@ -1,7 +1,8 @@
 ﻿# Warnings and limits
 
-Scanned 4 files:
+Scanned 5 files:
 
+- `composite_order.gia`
 - `test_All_Composite.gia`
 - `test_composite.gia`
 - `test_composite.gil`
@@ -20,10 +21,10 @@ Scanned 4 files:
 
 | Resource | Used / max |
 | --- | ---: |
-| composites (declared) | 33/1000 |
+| composites (declared) | 40/1000 |
 | signals (declared) | 2/99 |
 | prefabs (OBJECT) | 2/1000 |
-| dynamic entities (OBJECT\_ENTITY) | 2/3000 |
+| dynamic entities (OBJECT\_ENTITY) | 5/3000 |
 | PRESET\_POINT | 1/2000 |
 | ENVIRONMENT\_CONFIGURATION | 1/50 |
 | CLASS | 1/100 |
@@ -39,4 +40,5 @@ Scanned 4 files:
 | '*All\_Composite*' | 52/3000 | `test_All_Composite.gia` |
 | '*New Node Graph*' | 17/3000 | `test_composite.gia` |
 | '*New Node Graph*' | 17/3000 | `test_composite.gil` |
+| '*Flows*' | 15/3000 | `composite_order.gia` |
 | '*VAR\_TEST*' | 11/3000 | `var_change.gia` |

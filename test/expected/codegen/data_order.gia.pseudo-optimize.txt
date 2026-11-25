@@ -1,0 +1,155 @@
+ServerGraphs['Graph'] = async function Entity_1073741825($,node){
+  const GoTo = this.bind(this,$);
+  switch(node){
+    case 'event_0002':{
+      await When_Custom_Variable_Changes({
+        Event: $.event,
+      });
+      return Exit();
+    }
+    case 'event_0003':{
+      await Monitor_Signal({
+        Event: $.event,
+      });
+      return Exit();
+    }
+    case 'node_0012':{ // no callers
+      throw 'unreachable';
+      Set_Local_Variable({
+        Local_Variable: Loc(Get_Local_Variable("Var_0011", {
+          Initial_Value: undefined, // (default)
+        }).Local_Variable),
+        Value: undefined, // (default)
+      });
+      return Exit();
+    }
+    case 'node_0019':{ // no callers
+      throw 'unreachable';
+      Start_Timer({
+        Target_Entity: Ety(null), // (default)
+        Timer_Name: "", // (default)
+        Loop: Bol(false), // (default)
+        Timer_Sequence: undefined, // (default)
+      });
+      return Exit();
+    }
+    case 'node_0032':{ // no callers
+      throw 'unreachable';
+      await Composite['Composite_exec']($, "Comp_0032", {
+        Player_Entity: Ety(Get_Self_Entity("data_0027", {}).Self_Entity),
+        Target_Entity: Ety(Get_Self_Entity("data_0026", {}).Self_Entity),
+      }, $.input); // terminal
+      return;
+    }
+    case 'orphaned':{
+      throw 'unreachable';
+
+      const {
+        X_Component: Flt_02,
+        Z_Component: Flt_04,
+      } = Split_3D_Vector("data_0016", {
+        _3D_Vector: Vec(_3D_Vector_Normalization("data_0018", {
+          _3D_Vector: Vec(0, 0, 0), // (default)
+        }).Result),
+      });
+
+      Take_Larger_Value("data_0015", {
+        Input_1: Flt(Sign_Operation("data_0017", {
+          Input: Flt_04, // Split_3D_Vector.Z_Component
+        }).Result),
+        Input_2: Flt_02, // Split_3D_Vector.X_Component
+      });
+
+      Query_If_Dictionary_Contains_Specific_Key("data_0009", {
+        Dictionary: Dict(Int,Any,[]), // (default)
+        Key: Int(Get_Custom_Variable("data_0006", {
+          Target_Entity: Ety(null), // (default)
+          Variable_Name: Str(Query_Dictionary_Value_by_Key("data_0007", {
+            Dictionary: Dict(Any,Str,[]), // (default)
+            Key: undefined, // (default)
+          }).Value),
+        }).Variable_Value),
+      });
+
+      Composite['Composite_data']($, "Comp_0025", {
+        Player_Entity: Ety(Get_Self_Entity("data_0021", {}).Self_Entity),
+        Target_Entity: Ety(Get_Self_Entity("data_0024", {}).Self_Entity),
+      });
+
+      Get_Local_Variable("Var_0001", {
+        Initial_Value: undefined, // (default)
+      });
+
+      Assembly_List("data_0004", {
+        _0: undefined, // (default)
+      });
+
+      Assembly_Dictionary("data_0005", {
+        Key_0: undefined, // (default)
+        Value_0: undefined, // (default)
+      });
+
+      Greater_Than("data_0013", {
+        Left_Value: undefined, // (default)
+        Right_Value: undefined, // (default)
+      });
+
+      Enumerations_Equal("data_0014", {
+        Enumeration_1: undefined, // (default)
+        Enumeration_2: undefined, // (default)
+      });
+    }
+  }
+};
+
+Composite['Composite_data'] = function Composite_1610612737($,Comp,In = {
+  Player_Entity: Ety,
+  Target_Entity: Ety,
+},node){
+  throw 'unreachable';
+  return (async function* GoTo(node){
+    switch(node){
+      case 'node_0020':{ // no callers
+        throw 'unreachable';
+        Set_Player_Revive_Time({
+          Player_Entity: In.Player_Entity,
+          Duration: Int(0), // (default)
+        });
+        return Exit();
+      }
+      case 'orphaned':{
+        throw 'unreachable';
+
+        Get_Entity_Forward_Vector("data_0001", {
+          Target_Entity: In.Target_Entity,
+        });
+      }
+    }
+  })(node);
+};
+
+Composite['Composite_exec'] = function Composite_1610612738($,Comp,In = {
+  Player_Entity: Ety,
+  Target_Entity: Ety,
+},node){
+  throw 'unreachable';
+  return (async function GoTo(node){
+    switch(node){
+      case 'input: 0':
+      case 'node_0029':{ // no callers
+        Set_Player_Revive_Time({
+          Player_Entity: In.Player_Entity,
+          Duration: Int(0), // (default)
+        });
+        return Exit();
+      }
+      case 'orphaned':{
+        throw 'unreachable';
+
+        Get_Entity_Forward_Vector("data_0030", {
+          Target_Entity: In.Target_Entity,
+        });
+      }
+    }
+  })(node);
+};

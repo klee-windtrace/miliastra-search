@@ -1,3 +1,6 @@
+composite_order.gia:CLASS OBJECT_ENTITY class=3 count=3
+composite_order.gia:CLASS ENTITY_NODE_GRAPH class=9 count=8
+composite_order.gia:CLASS COMPOSITE_NODE_DECL class=12 count=7
 test_All_Composite.gia:CLASS ENTITY_NODE_GRAPH class=9 count=27
 test_All_Composite.gia:CLASS COMPOSITE_NODE_DECL class=12 count=30
 test_All_Composite.gia:CLASS SIGNAL_NODE_DECL class=14 count=4

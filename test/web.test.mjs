@@ -86,9 +86,13 @@ test('web run == cli: llm, and the page has an LLM tab (last) with a text area, 
     assert.equal(w.code, 0);
     assert.equal(w.out, c.out.replace(/(gia|gil)\//g, ''));
     assert.ok(w.out.includes('# CODE') && !w.out.includes('# WARNS'));
+    const wd = web.run(['llm', 'sample_1.gia', 'stage_1.gil', '--lang', 'DE'], vfs);
+    assert.equal(wd.code, 0);
+    assert.equal(wd.out, cli(['llm', 'gia/sample_1.gia', 'gil/stage_1.gil', '--lang', 'DE']).out.replace(/(gia|gil)\//g, ''));
   }
   const page = fs.readFileSync(path.join(root, 'miliastra-search.htm'), 'utf8');
   assert.match(page, /\bllm: \[\]/);
+  assert.match(page, /globalArgs\(\['lang'\]\)/, 'the LLM tab passes the chosen language and nothing else');
   assert.ok(page.indexOf('  all: [') < page.indexOf('  llm: []'), 'LLM tab comes after All');
   assert.equal(page.match(/opt: 'dedup'/g).length, 2);
   assert.match(page, /createElement|el\('textarea'/);

@@ -233,41 +233,41 @@ FOLDER /(default)/ resources=1
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**On\_Stage**' : *Str* = '`0`'<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**String**' : *Dict\<Str,Str\>* = {'`1`': '`1`', '`2`': '`2`', '`3`': '`3`'}<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**String\_List**' : *Dict\<Str,L\<Str\>\>* = {'`1`': \['`1.1`', '`1.2`', '`1.3`'\], '`2`': \['`2.1`', '`2.2`', '`2.3`'\], '`3`': \['`3.1`', '`3.2`', '`3.3`'\]}<br>
-**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Struct**' : *Dict\<Str,Struct\>* = {'`1`': struct{'`0`', 0, 0, No}}<br>
-**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Struct\_List**' : *Dict\<Str,L\<Struct\>\>* = {'`1`': \[struct{'', 0, 0, No}\], '`2`': \[struct{'`1`', 1, 1, Yes}, struct{'', 0, 0, No}\]}<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Struct**' : *Dict\<Str,Struct\>* = {'`1`': struct{'`0`', 0, 0.00, false}}<br>
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Struct\_List**' : *Dict\<Str,L\<Struct\>\>* = {'`1`': \[struct{'', 0, 0.00, false}\], '`2`': \[struct{'`1`', 1, 1.00, true}, struct{'', 0, 0.00, false}\]}<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**String**' : *Str* = ''<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**String\_0**' : *L\<Str\>* = \[\]<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**String\_2**' : *L\<Str\>* = \['', ''\]<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**Integer**' : *Int* = 0<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**Integer\_0**' : *L\<Int\>* = \[\]<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**Integer\_2**' : *L\<Int\>* = \[0, 0\]<br>
-**VARIABLE** Player 1086324737:"**Default Template**" '**Float**' : *Flt* = 0<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Float**' : *Flt* = 0.00<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**Float\_0**' : *L\<Flt\>* = \[\]<br>
-**VARIABLE** Player 1086324737:"**Default Template**" '**Float\_2**' : *L\<Flt\>* = \[0, 0\]<br>
-**VARIABLE** Player 1086324737:"**Default Template**" '**Boolean**' : *Bol* = No<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Float\_2**' : *L\<Flt\>* = \[0.00, 0.00\]<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Boolean**' : *Bol* = false<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**Boolean\_0**' : *L\<Bol\>* = \[\]<br>
-**VARIABLE** Player 1086324737:"**Default Template**" '**Boolean\_2**' : *L\<Bol\>* = \[No, No\]<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Boolean\_2**' : *L\<Bol\>* = \[false, false\]<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**Vector**' : *Vec* = (0, 0, 0)<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**Vector\_0**' : *L\<Vec\>* = \[\]<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**Vector\_2**' : *L\<Vec\>* = \[(0, 0, 0), (0, 0, 0)\]<br>
-**VARIABLE** Player 1086324737:"**Default Template**" '**Entity**' : *Ety* = id:0<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Entity**' : *Ety* = null<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**Entity\_0**' : *L\<Ety\>* = \[\]<br>
-**VARIABLE** Player 1086324737:"**Default Template**" '**Entity\_2**' : *L\<Ety\>* = \[id:0, id:0\]<br>
-**VARIABLE** Player 1086324737:"**Default Template**" '**GUID**' : *Gid* = id:0<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Entity\_2**' : *L\<Ety\>* = \[null, null\]<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**GUID**' : *Gid* = null<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**GUID\_0**' : *L\<Gid\>* = \[\]<br>
-**VARIABLE** Player 1086324737:"**Default Template**" '**GUID\_2**' : *L\<Gid\>* = \[id:0, id:0\]<br>
-**VARIABLE** Player 1086324737:"**Default Template**" '**Config**' : *Cfg* = id:0<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**GUID\_2**' : *L\<Gid\>* = \[null, null\]<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Config**' : *Cfg* = null<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**Config\_0**' : *L\<Cfg\>* = \[\]<br>
-**VARIABLE** Player 1086324737:"**Default Template**" '**Config\_2**' : *L\<Cfg\>* = \[id:0, id:0\]<br>
-**VARIABLE** Player 1086324737:"**Default Template**" '**Prefab**' : *Pfb* = id:0<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Config\_2**' : *L\<Cfg\>* = \[null, null\]<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Prefab**' : *Pfb* = null<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**Prefab\_0**' : *L\<Pfb\>* = \[\]<br>
-**VARIABLE** Player 1086324737:"**Default Template**" '**Prefab\_2**' : *L\<Pfb\>* = \[id:0, id:0\]<br>
-**VARIABLE** Player 1086324737:"**Default Template**" '**Faction**' : *Fct* = id:0<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Prefab\_2**' : *L\<Pfb\>* = \[null, null\]<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Faction**' : *Fct* = null<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**Faction\_0**' : *L\<Fct\>* = \[\]<br>
-**VARIABLE** Player 1086324737:"**Default Template**" '**Faction\_2**' : *L\<Fct\>* = \[id:0, id:0\]<br>
-**VARIABLE** Player 1086324737:"**Default Template**" '**Struct**' : *Struct* struct=Struct = struct{'', 0, 0, No}<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Faction\_2**' : *L\<Fct\>* = \[null, null\]<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Struct**' : *Struct* struct=Struct = struct{'', 0, 0.00, false}<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**Struct\_0**' : *L\<Struct\>* struct=Struct = \[\]<br>
-**VARIABLE** Player 1086324737:"**Default Template**" '**Struct\_2**' : *L\<Struct\>* struct=Struct = \[struct{'', 0, 0, No}, struct{'', 0, 0, No}\]<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Struct\_2**' : *L\<Struct\>* struct=Struct = \[struct{'', 0, 0.00, false}, struct{'', 0, 0.00, false}\]<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**String\_Dict**' : *Dict\<Str,Str\>* = {'`1`': ''}<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**Integer\_Dict**' : *Dict\<Int,Str\>* = {1: ''}<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**GUID\_Dict**' : *Dict\<Gid,Str\>* = {id:1: ''}<br>
@@ -281,18 +281,18 @@ FOLDER /(default)/ resources=1
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Integer**' : *Int* = 1<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Integer\_0**' : *L\<Int\>* = \[\]<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Integer\_2**' : *L\<Int\>* = \[1, 1\]<br>
-**VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Float**' : *Flt* = 1<br>
+**VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Float**' : *Flt* = 1.00<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Float\_0**' : *L\<Flt\>* = \[\]<br>
-**VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Float\_2**' : *L\<Flt\>* = \[1, 1\]<br>
-**VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Boolean**' : *Bol* = Yes<br>
+**VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Float\_2**' : *L\<Flt\>* = \[1.00, 1.00\]<br>
+**VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Boolean**' : *Bol* = true<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Boolean\_0**' : *L\<Bol\>* = \[\]<br>
-**VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Boolean\_2**' : *L\<Bol\>* = \[Yes, Yes\]<br>
+**VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Boolean\_2**' : *L\<Bol\>* = \[true, true\]<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Vector**' : *Vec* = (1, 1, 1)<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Vector\_0**' : *L\<Vec\>* = \[\]<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Vector\_2**' : *L\<Vec\>* = \[(1, 1, 1), (1, 1, 1)\]<br>
-**VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Entity**' : *Ety* = id:0<br>
+**VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Entity**' : *Ety* = null<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Entity\_0**' : *L\<Ety\>* = \[\]<br>
-**VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Entity\_2**' : *L\<Ety\>* = \[id:0, id:0\]<br>
+**VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Entity\_2**' : *L\<Ety\>* = \[null, null\]<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**GUID**' : *Gid* = id:1<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**GUID\_0**' : *L\<Gid\>* = \[\]<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**GUID\_2**' : *L\<Gid\>* = \[id:1, id:1\]<br>
@@ -305,9 +305,9 @@ FOLDER /(default)/ resources=1
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Faction**' : *Fct* = id:1<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Faction\_0**' : *L\<Fct\>* = \[\]<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Faction\_2**' : *L\<Fct\>* = \[id:1, id:1\]<br>
-**VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Struct**' : *Struct* struct=Struct = struct{'`1`', 1, 1, Yes}<br>
+**VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Struct**' : *Struct* struct=Struct = struct{'`1`', 1, 1.00, true}<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Struct\_0**' : *L\<Struct\>* struct=Struct = \[\]<br>
-**VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Struct\_2**' : *L\<Struct\>* struct=Struct = \[struct{'`1`', 1, 1, Yes}, struct{'`1`', 1, 1, Yes}\]<br>
+**VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Struct\_2**' : *L\<Struct\>* struct=Struct = \[struct{'`1`', 1, 1.00, true}, struct{'`1`', 1, 1.00, true}\]<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**String\_Dict**' : *Dict\<Str,Str\>* = {'`1`': '`1`'}<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Integer\_Dict**' : *Dict\<Int,Str\>* = {1: '`1`'}<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**GUID\_Dict**' : *Dict\<Gid,Str\>* = {id:1: '`1`'}<br>
@@ -343,26 +343,26 @@ MOUNT '*New Node Graph*' -\> OBJECT\_ENTITY "**Entity\_edited**" entity<br>
 **GRAPH\_VARIABLE** '*New Node Graph*' '**String**' : *Str* (public) = '`graph`'<br>
 **GRAPH\_VARIABLE** '*New Node Graph*' '**Integer**' : *Int* (public) = 0<br>
 **GRAPH\_VARIABLE** '*New Node Graph*' '**Faction**' : *Fct* (public) = id:1<br>
-**GRAPH\_VARIABLE** '*New Node Graph*' '**Float**' : *Flt* (public) = 2<br>
-**GRAPH\_VARIABLE** '*New Node Graph*' '**Entity**' : *Ety* (public) = id:0<br>
-**GRAPH\_VARIABLE** '*New Node Graph*' '**Private**' : *Bol* = Yes<br>
-**GRAPH\_VARIABLE** '*Test5*' '**Faction**' : *Fct* (public) = id:0<br>
+**GRAPH\_VARIABLE** '*New Node Graph*' '**Float**' : *Flt* (public) = 2.00<br>
+**GRAPH\_VARIABLE** '*New Node Graph*' '**Entity**' : *Ety* (public) = null<br>
+**GRAPH\_VARIABLE** '*New Node Graph*' '**Private**' : *Bol* = true<br>
+**GRAPH\_VARIABLE** '*Test5*' '**Faction**' : *Fct* (public) = null<br>
 **GRAPH\_VARIABLE** '<u>\<status\></u>*Status*' '**Status**' : *Dict\<Str,Str\>* = {'`Status`': '`Status`'}<br>
 **VARIABLE** Player 1086324737:"**Default Template**" '**String**' {'*New Node Graph*'} : *Str* = '`player`'<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Faction**' {'*New Node Graph*'} : *Fct* = id:5<br>
 **VARIABLE** Character 1090519041:"**Default Template(Edit Character)**" '**Faction**' {'*Test5*'} : *Fct* = id:5<br>
 **VARIABLE** 1077936131:"**Prefab\_edited**" '**String**' {'*New Node Graph*'} : *Str* = '`prefab`'<br>
 **VARIABLE** 1077936131:"**Prefab\_edited**" '**Integer**' {'*New Node Graph*'} : *Int* = 10<br>
-**VARIABLE** 1077936131:"**Prefab\_edited**" '**Faction**' {'*New Node Graph*'} : *Fct* = id:0<br>
-**VARIABLE** 1077936131:"**Prefab\_edited**" '**Float**' {'*New Node Graph*'} : *Flt* = 20<br>
+**VARIABLE** 1077936131:"**Prefab\_edited**" '**Faction**' {'*New Node Graph*'} : *Fct* = null<br>
+**VARIABLE** 1077936131:"**Prefab\_edited**" '**Float**' {'*New Node Graph*'} : *Flt* = 20.00<br>
 **VARIABLE\_CHANGE** 1077936138:"**Prefab\_edited**" (1077936131:"**Prefab\_edited**") '**String**' {'*New Node Graph*'} edit: *Str* = '`graph`'<br>
 **VARIABLE\_CHANGE** 1077936138:"**Prefab\_edited**" (1077936131:"**Prefab\_edited**") '**Integer**' {'*New Node Graph*'} edit: *Int* = 0<br>
 **VARIABLE\_CHANGE** 1077936138:"**Prefab\_edited**" (1077936131:"**Prefab\_edited**") '**Faction**' {'*New Node Graph*'} edit: *Fct* = id:1<br>
-**VARIABLE\_CHANGE** 1077936138:"**Prefab\_edited**" (1077936131:"**Prefab\_edited**") '**Float**' {'*New Node Graph*'} edit: *Flt* = 2<br>
+**VARIABLE\_CHANGE** 1077936138:"**Prefab\_edited**" (1077936131:"**Prefab\_edited**") '**Float**' {'*New Node Graph*'} edit: *Flt* = 2.00<br>
 **VARIABLE\_CHANGE** 1077936139:"**Entity\_edited**" (1077936131:"**Prefab\_edited**") '**String**' {'*New Node Graph*'} edit: *Str* = '`entity`'<br>
 **VARIABLE\_CHANGE** 1077936139:"**Entity\_edited**" (1077936131:"**Prefab\_edited**") '**Integer**' {'*New Node Graph*'} edit: *Int* = 100<br>
 **VARIABLE\_CHANGE** 1077936139:"**Entity\_edited**" (1077936131:"**Prefab\_edited**") '**Faction**' {'*New Node Graph*'} edit: *Fct* = id:200<br>
-**VARIABLE\_CHANGE** 1077936139:"**Entity\_edited**" (1077936131:"**Prefab\_edited**") '**Float**' {'*New Node Graph*'} edit: *Flt* = 0
+**VARIABLE\_CHANGE** 1077936139:"**Entity\_edited**" (1077936131:"**Prefab\_edited**") '**Float**' {'*New Node Graph*'} edit: *Flt* = 0.00
 
 ## FILE `variables_ref.gil`
 
@@ -415,7 +415,7 @@ MOUNT '*New Node Graph*' -\> OBJECT\_ENTITY "**Entity\_edited**" entity<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Config**' : *Cfg* = id:1090519041 {CLASS:"**Custom Class**"}<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Prefab**' : *Pfb* = id:1077936129 {OBJECT:"**Empty Model**"}<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Dict**' : *Dict\<Gid,Pfb\>* = {id:1094713345 {GIL\_LEVEL\_ENTITY:"**Stage Entity**"}: id:1077936129 {OBJECT:"**Empty Model**"}}<br>
-**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Entity**' : *Ety* = id:0
+**VARIABLE** Stage 1094713345:"**Stage Entity**" '**Entity**' : *Ety* = null
 
 ---
 

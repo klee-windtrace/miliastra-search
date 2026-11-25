@@ -1,0 +1,25 @@
+# FILE data_order.gia
+format                 gia
+detected_by            header
+file_size              2445
+container_file_type    gia
+engine_version         7.2.0
+mode                   beyond
+export_name            data_order.gia
+node_db_version        7.2.0
+export_tag             909814789-1795594143-1073741886-\data_order.gia
+uid                    909814789
+time                   1795594143
+file_id                1073741886
+resources              5
+primary                1
+dependencies           4
+graphs                 3
+nodes                  27
+composite_bodies       2
+declarations           2
+structs                0
+mounts                 0
+unresolved_node_types  0
+CLASS ENTITY_NODE_GRAPH class=9 count=3
+CLASS COMPOSITE_NODE_DECL class=12 count=2

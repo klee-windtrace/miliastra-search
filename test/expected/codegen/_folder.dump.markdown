@@ -37,3 +37,13 @@
 | Graph | Variable | Type | Value |
 | --- | --- | --- | --- |
 | '<u>\<status\></u>*Status*' | '**gvar**' | *Int* | 1 |
+
+# File `data_order.gia`
+
+## Graphs (3)
+
+| Name | Class | Guid | Nodes | Role |
+| --- | --- | --- | ---: | --- |
+| '*Graph*' | ENTITY\_NODE\_GRAPH | '`1073741825`' | **23** |   |
+| '<u>\<composite\></u>*Composite\_data*' | ENTITY\_NODE\_GRAPH | '`1610612737`' | **2** | dependency |
+| '<u>\<composite\></u>*Composite\_exec*' | ENTITY\_NODE\_GRAPH | '`1610612738`' | **2** | dependency |

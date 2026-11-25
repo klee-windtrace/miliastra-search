@@ -44,9 +44,9 @@ GRAPH 'Send' ENTITY_NODE_GRAPH (guid 1073741827)
 'Send'/[2] Send Signal (1610612739) meta.rpc#0 "Signal Name" = 'Signal_1'
 'Send'/[4] Send Signal (1610612742) user=SEND_SIGNAL signal='Signal_2' @(-197,-101) sigver=3
 'Send'/[4] Send Signal (1610612742) in#0 "Parameter_1" <- [5] When Timer Is Triggered (83) out#3 "Timer Sequence ID" : Int
-'Send'/[4] Send Signal (1610612742) in#1 "Parameter_2" = 4 : Flt
+'Send'/[4] Send Signal (1610612742) in#1 "Parameter_2" = 4.00 : Flt
 'Send'/[4] Send Signal (1610612742) in#2 "Parameter_3" = (1, 2, 3) : Vec
-'Send'/[4] Send Signal (1610612742) in#3 "Parameter_4" = Yes : Bol
+'Send'/[4] Send Signal (1610612742) in#3 "Parameter_4" = true : Bol
 'Send'/[4] Send Signal (1610612742) in#4 "Parameter_5" <- [5] When Timer Is Triggered (83) out#1 "Event Source GUID" : Gid
 'Send'/[4] Send Signal (1610612742) in#5 "Parameter_6" <- [5] When Timer Is Triggered (83) out#0 "Event Source Entity" : Ety
 'Send'/[4] Send Signal (1610612742) in#6 "Parameter_7" = id:5 : Pfb

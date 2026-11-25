@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>dump test_All_Composite.gia, test_composite.gia, test_composite.gil, var_change.gia</title>
+<title>dump composite_order.gia, test_All_Composite.gia, test_composite.gia, test_composite.gil, var_change.gia</title>
 <style>
 :root{color-scheme:dark;--bg:#0C0C0C;--panel:#161616;--line:#2e2e2e;--fg:#CCCCCC;--muted:#767676;--accent:#61D6D6}
 *{box-sizing:border-box}
@@ -90,6 +90,21 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 </head>
 <body>
 <main>
+<h1><span class="heading">FILE</span> <span class="fileName">composite_order.gia</span></h1>
+<pre class="lines"><span class="heading">GRAPH</span> '<span class="graphName">Flows</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">guid</span>='<span class="guid">1073741825</span>' <span class="metaKey">nodes</span>=<span class="metaValue">8</span>
+<span class="heading">GRAPH</span> '<span class="graphTag">&lt;composite&gt;</span><span class="graphName">C1</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">guid</span>='<span class="guid">1610612737</span>' <span class="metaKey">nodes</span>=<span class="metaValue">1</span> <span class="metaKey">role</span>=<span class="metaValue">dependency</span>
+<span class="heading">GRAPH</span> '<span class="graphTag">&lt;composite&gt;</span><span class="graphName">C2</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">guid</span>='<span class="guid">1610612738</span>' <span class="metaKey">nodes</span>=<span class="metaValue">1</span> <span class="metaKey">role</span>=<span class="metaValue">dependency</span>
+<span class="heading">GRAPH</span> '<span class="graphTag">&lt;composite&gt;</span><span class="graphName">C3</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">guid</span>='<span class="guid">1610612739</span>' <span class="metaKey">nodes</span>=<span class="metaValue">1</span> <span class="metaKey">role</span>=<span class="metaValue">dependency</span>
+<span class="heading">GRAPH</span> '<span class="graphTag">&lt;composite&gt;</span><span class="graphName">C4</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">guid</span>='<span class="guid">1610612740</span>' <span class="metaKey">nodes</span>=<span class="metaValue">1</span> <span class="metaKey">role</span>=<span class="metaValue">dependency</span>
+<span class="heading">GRAPH</span> '<span class="graphTag">&lt;composite&gt;</span><span class="graphName">C5</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">guid</span>='<span class="guid">1610612741</span>' <span class="metaKey">nodes</span>=<span class="metaValue">1</span> <span class="metaKey">role</span>=<span class="metaValue">dependency</span>
+<span class="heading">GRAPH</span> '<span class="graphTag">&lt;composite&gt;</span><span class="graphName">C6</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">guid</span>='<span class="guid">1610612742</span>' <span class="metaKey">nodes</span>=<span class="metaValue">1</span> <span class="metaKey">role</span>=<span class="metaValue">dependency</span>
+<span class="heading">GRAPH</span> '<span class="graphTag">&lt;composite&gt;</span><span class="graphName">C7</span>' <span class="className">ENTITY_NODE_GRAPH</span> <span class="metaKey">guid</span>='<span class="guid">1610612743</span>' <span class="metaKey">nodes</span>=<span class="metaValue">1</span> <span class="metaKey">role</span>=<span class="metaValue">dependency</span>
+<span class="heading">RESOURCE</span> "<span class="declName">Empty Model</span>" <span class="className">OBJECT_ENTITY</span> <span class="metaKey">guid</span>='<span class="guid">1077936129</span>' <span class="metaKey">parent</span>=(<span class="metaValue">10005018</span>)
+<span class="keyword">MOUNT</span> '<span class="graphName">Flows</span>' <span class="arrow">-&gt;</span> <span class="className">OBJECT_ENTITY</span> "<span class="key">Empty Model</span>" <span class="metaValue">entity</span>
+<span class="heading">RESOURCE</span> "<span class="declName">Empty Model</span>" <span class="className">OBJECT_ENTITY</span> <span class="metaKey">guid</span>='<span class="guid">1077936130</span>' <span class="metaKey">parent</span>=(<span class="metaValue">10005018</span>)
+<span class="keyword">MOUNT</span> '<span class="graphName">Flows</span>' <span class="arrow">-&gt;</span> <span class="className">OBJECT_ENTITY</span> "<span class="key">Empty Model</span>" <span class="metaValue">entity</span>
+<span class="heading">RESOURCE</span> "<span class="declName">Empty Model</span>" <span class="className">OBJECT_ENTITY</span> <span class="metaKey">guid</span>='<span class="guid">1077936131</span>' <span class="metaKey">parent</span>=(<span class="metaValue">10005018</span>)
+<span class="keyword">MOUNT</span> '<span class="graphName">Flows</span>' <span class="arrow">-&gt;</span> <span class="className">OBJECT_ENTITY</span> "<span class="key">Empty Model</span>" <span class="metaValue">entity</span></pre>
 <h1><span class="heading">FILE</span> <span class="fileName">test_All_Composite.gia</span></h1>
 <pre class="lines"><span class="heading">DECL</span> "<span class="declName">Static_2</span>" <span class="className">SIGNAL_NODE_DECL</span> <span class="metaKey">guid</span>='<span class="guid">1610612741</span>' <span class="metaKey">role</span>=<span class="metaValue">dependency</span>
 <span class="heading">DECL</span> "<span class="declName">Static_1</span>" <span class="className">SIGNAL_NODE_DECL</span> <span class="metaKey">guid</span>='<span class="guid">1610612737</span>' <span class="metaKey">role</span>=<span class="metaValue">dependency</span>

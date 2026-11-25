@@ -11,7 +11,7 @@
 
 | Graph | Variable | Type | Value |
 | --- | --- | --- | --- |
-| '*Graph*' | '**Graph\_Var**' | *Ety* | id:0 |
+| '*Graph*' | '**Graph\_Var**' | *Ety* | null |
 
 # File `sample_1.gia`
 
@@ -68,7 +68,7 @@
 
 | Graph | Variable | Type | Value |
 | --- | --- | --- | --- |
-| '*Variables*' | '**Variable\_1**' | *Bol* | No |
+| '*Variables*' | '**Variable\_1**' | *Bol* | false |
 
 # File `sample_6.gia`
 
@@ -105,7 +105,7 @@
 
 | Graph | Variable | Type | Value |
 | --- | --- | --- | --- |
-| '*Graph*' | '**Graph\_Var**' | *Ety* | id:0 |
+| '*Graph*' | '**Graph\_Var**' | *Ety* | null |
 
 # File `sample_9.gia`
 
