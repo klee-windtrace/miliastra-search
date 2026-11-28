@@ -1,4 +1,4 @@
-﻿// The `info` mode: facts about the file itself (moved out of dump), class counts, level sections, --show-tag, --format json.
+﻿// The `info` mode: facts about the file itself, class counts, level sections, --show-tag, --format json.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';

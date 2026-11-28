@@ -35,7 +35,7 @@ export const SECTION_DESCRIPTIONS = {
 const countBy = (items, keyOf) => { const m = new Map(); for (const x of items) { const k = keyOf(x); m.set(k, (m.get(k) || 0) + 1); } return m; };
 
 /**
- * What `info` reports about one decoded file. Every key is always there: a fact that does not apply to this kind of file (the level name of a
+ * What `info` reports about one decoded file. Every key is present: a fact that does not apply to this kind of file (the level name of a
  * .gia, the sections of a .gil, ...) is null. The export tag is in the data only with `showTag`; otherwise `export_tag` is null, as for a .gil.
  */
 export function fileInfo(bundle, db, { showTag = false, analysis = null } = {}) {

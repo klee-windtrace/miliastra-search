@@ -24,7 +24,7 @@ function loosely(report) {
 
 /**
  * The report in `text` (JSON, a leading byte order mark is fine). Without `lenient` it has to fit the schema (`schema` = the parsed
- * schema/report.schema.json); with it, whatever can still be read is taken (the structure is not checked).
+ * schema/report.schema.json); with it, whatever can be read is taken (the structure is not checked).
  */
 export function loadReport(text, { schema = null, lenient = false } = {}) {
   let report;

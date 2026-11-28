@@ -54,7 +54,7 @@ test('the same graph on several identical hosts is listed once with a count (ref
   assert.match(refs, /^mount +'Saved to folder \(My\)' +4 entity: OBJECT_ENTITY:"Wireframe Cuboid" \(x3\); OBJECT_ENTITY:"Wireframe Cube"$/m);
 });
 
-test('static vs dynamic: a kind-1-only component list is still static (the Pavilion), real dynamic lists are not', () => {
+test('static vs dynamic: a kind-1-only component list is static (the Pavilion), real dynamic lists are not', () => {
   const cls = (b, name) => b.resources.find((r) => r.name === name && r.section === 'root.5')?.className;
   assert.equal(cls(gil, 'Pavilion 20001488'), 'STATIC_ENTITY');
   assert.equal(cls(gil, 'Wireframe Cuboid'), 'OBJECT_ENTITY');

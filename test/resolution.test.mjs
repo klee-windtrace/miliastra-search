@@ -51,7 +51,7 @@ test('Dynamic: catch-all paths and unresolvable comparisons are kept as dynamic'
   const d = inGraph('Dynamic');
   const catchAll = d.filter((r) => r.key === ANY_NAME_KEY).map((r) => r.kind).sort();
   assert.deepEqual(catchAll, ['custom_variable', 'global_timer', 'graph_variable']);
-  // custom variable / graph variable listeners still keep the names found before the catch-all node
+  // custom variable / graph variable listeners keep the names found before the catch-all node
   assert.deepEqual(keys(d.filter((r) => r.role === 'listen' && r.mode === 'literal')), ['custom_variable:var1', 'custom_variable:var2', 'custom_variable:var3', 'graph_variable:gvar1']);
   // timer: compared against a Get Custom Variable value -> handler with unknown name, but no catch-all
   const t = d.filter((r) => r.kind === 'timer' && r.role === 'listen');

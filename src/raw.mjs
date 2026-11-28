@@ -1,4 +1,4 @@
-﻿// The `raw` mode: the protobuf payload without a schema, the fallback when the container or the schema no longer matches the game.
+﻿// The `raw` mode: the protobuf payload without a schema, the fallback for when the container or the schema does not match the game.
 // rawTree builds the `payload` of the raw report (see JSON.md); src/present/raw.mjs prints it.
 import { walkRaw, toHex } from './decode.mjs';
 const td = new TextDecoder('utf-8', { fatal: true });

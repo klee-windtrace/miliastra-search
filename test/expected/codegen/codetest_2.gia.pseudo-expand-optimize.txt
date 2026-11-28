@@ -202,7 +202,7 @@ ServerGraphs['Status'] = async function Status_1073741830($,node){
         Application_Target_Entity: Ety(null), // (default)
         Unit_Status_Config_ID: Cfg(0), // (default)
         Applied_Stacks: Int(0), // (default)
-        Unit_Status_Parameter_Dictionary: Dict(Str,Int,[]), // (default)
+        Unit_Status_Parameter_Dictionary: Dict(Str,Flt,[]), // (default)
       }).Slot_ID;
       return Exit();
     }
@@ -264,7 +264,7 @@ Composite['Exposed Computed'] = function Composite_1610612748($,Comp,In = {},nod
           Application_Target_Entity: Ety(null), // (default)
           Unit_Status_Config_ID: Cfg(0), // (default)
           Applied_Stacks: Int(0), // (default)
-          Unit_Status_Parameter_Dictionary: Dict(Str,Int,[]), // (default)
+          Unit_Status_Parameter_Dictionary: Dict(Str,Flt,[]), // (default)
         }).Slot_ID;
         return { Next: "0" };
       }

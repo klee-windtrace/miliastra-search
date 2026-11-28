@@ -252,7 +252,6 @@ timer            "* (listener for any name)"        1 listen: ['Send']
 # findings
 INFO  catch-all-listener: [5] When Timer Is Triggered in graph 'Send' also runs code for every name: [4] Send Signal runs for every name (not a name switch)
 INFO  signal-never-used: signal "Signal_3" is declared but never sent or listened to in the scanned graphs
-INFO  struct-never-used: struct "Structure_2" (guid=1077936131 fields=) is defined but never used in the scanned graphs
 INFO  custom-variable-undeclared: custom variable "test" is used in ['<filter>New Filter Node Graph_1'] but no entity, prefab or template declares it
 
 # limits

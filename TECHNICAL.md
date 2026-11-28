@@ -1,7 +1,7 @@
 ﻿
 # miliastra-search – technical notes
 
-How the tool is built, and how to maintain it. For usage see [README.md](README.md); for the binary format itself see
+How the tool is built, and how to maintain it. For using it see [README.md](README.md) and [ADVANCED.md](ADVANCED.md) (every mode and option, the findings, output examples); for the binary format itself see
 [FORMAT.md](FORMAT.md); for conventions to follow when changing code see [CLAUDE.md](CLAUDE.md).
 
 Plain Node.js (≥ 20), ESM, **no npm dependencies**. The engine also runs unchanged in a browser (see "Running outside Node").
@@ -57,6 +57,11 @@ Literal ids: the same number can be the id of a resource in each of the four id 
 ### Custom variables
 
 Entities and templates (root 4 / root 5 of a `.gil`; the entity resources 3 / 4 and the template resources 1 / 2 / 18 / 19 / 25 of a `.gia`) keep their custom variables in a component of the *dynamic* list the schema leaves opaque. `varscan.mjs` (`scanVariables`) reads it, `scanSection` / `scanGiaDefinitions` (`mounts.mjs`) call it and `gil.mjs` / `model.mjs` attach the result as `resource.variables` (`null` for any other resource, `[]` for an entity or template that holds none). A variable is `{ name, typeId, structId, keyType, valueType, value }`; `buildVariable` (`model.mjs`) adds `type` (the datatype word) and `label` (`Dict<Str,Int>`: the type told apart by what a dictionary maps). The value is an AST of the shape `normValue` makes (`kind` `bool` too), so `valueJson` and `valueSpans` handle it like a pin's value. The wire layout is in [FORMAT.md](FORMAT.md) ("Custom variables"). Type ids are the server ones (`SERVER_TYPES`), the same as a graph variable's.
+
+**Save variables.** The in-game saves of a `.gil` (root 31, `GilSaveData.sets`; FORMAT.md, "In-game saves") declare variables the templates do not store. `saveVariables` (`gil.mjs`) turns every slot into a custom variable in the
+shape `scanVariables` makes (type `L<Struct>`, the slot's struct, an empty list as value; a name and struct declared by several saves once) and `withSaves` appends them to the `variables` of every player template
+(class `PLAYER_TEMPLATE`) and every player entity (`GIL_PLAYER_ENTITY`), after their own, unless the owner declares the same name and type itself. Everything downstream (`fileVariables`, the checks of `refs.mjs`) sees them as
+ordinary declarations; entities mirror their template, so the entity table has no rows for them. The saves themselves are resources of class 41 (`class#41`).
 
 `variables.mjs` (`fileVariables`) builds the `variables` key of a `dump` item: the **graph table** (one row per variable of every graph but composite bodies, in resource order; `public` marks the published ones), the **prefab table** (stage, player templates, character templates, then prefabs / creations / projectiles, each kind in resource order: one row per variable) and the **entity table** (an entity against the prefab named by its `parentId`, looked up among the templates of the file; no such template = no variables). Per entity the rows are, in the order of the prefab's variables, `delete` (gone), `newtype` (`variableTypeKey` differs: label and struct id), `edit` (value AST differs), then `add` in the entity's own order; an entity with no row is left out. `present/dump.mjs` prints the three under one `Variables` heading (`GRAPH_VARIABLE` / `VARIABLE` / `VARIABLE_CHANGE` lines).
 
@@ -154,31 +159,13 @@ Fixtures and worked arithmetic: `test/composite-inheritance.test.mjs`, `test/com
 
 ### Findings
 
-| type | level | meaning |
-|---|---|---|
-| `declared-but-unused` | info | graph variable never referenced by literal name |
-| `used-but-undeclared` | warn | graph variable referenced in a graph that does not declare it |
-| `signal-sent-never-listened` | warn | |
-| `signal-listened-never-sent` | info | |
-| `signal-never-used` | info | |
-| `composite-never-called` | info | |
-| `composite-definition-count-anomaly` | warn | a composite name with other than exactly one definition: a structural problem |
-| `composite-circular-call` | warn | |
-| `struct-never-used` | info | |
-| `custom-variable-type-conflict` | info | a custom variable name declared with different types by entities / prefabs / templates (once per name) |
-| `custom-variable-type-mismatch` | info | a node accesses a custom variable as a type that no declaration of that name has |
-| `custom-variable-undeclared` | info | a custom variable name used by a node that no entity, prefab or template declares |
-| `catch-all-listener` | info | listener also runs code for every name |
-| `listener-no-handlers` | info | listener with no name switch and no code after it |
-| `dynamic-reference` | info | a name computed at runtime |
-| `duplicate-branch-value` | warn | `Multiple Branches` lists a value twice: the game then always takes `Default` |
-| `graph-node-count-exceeded` | warn | effective node count over the editor limit |
-| `stale-suppression-comment` | warn | see below |
+The finding types, with their meaning for a user, are listed in [ADVANCED.md](ADVANCED.md) ("Findings"); `findings` of `buildRefs` holds them as `{ level, type, kind, key, file, graph, message }`. `struct-never-used` is
+implemented but not raised (`STRUCT_NEVER_USED_REPORTED` in `refs.mjs`): a struct can be used in places the graphs do not show, which the analysis does not follow, so the absence of a use proves nothing.
 
 **Comment-based suppression.** For `catch-all-listener`, `listener-no-handlers`, `dynamic-reference`, `duplicate-branch-value`,
 `signal-sent-never-listened`, `signal-listened-never-sent`, `used-but-undeclared`, `custom-variable-undeclared` and `custom-variable-type-mismatch`: if the relevant node's comment contains the finding's `type`
 as a substring (`suppressed()`), the finding is silenced. For findings backed by several nodes (the two signal ones, `used-but-undeclared`), a
-match on *any* contributing node suffices. If the condition no longer holds while the comment remains, `stale-suppression-comment` is raised
+match on *any* contributing node suffices. If the condition does not hold while the comment remains, `stale-suppression-comment` is raised
 instead (`staleSuppression()` for the event and named-pin blocks, inline for signals and `used-but-undeclared`; never for `raw`).
 Tests: `test/lint-suppression.test.mjs`, `test/multi-branch.test.mjs`.
 
@@ -304,7 +291,7 @@ Rules:
 * **Search in pseudocode** (`searchedNodes` in `code.mjs`, a render option: the report is the same). The test is made on the lines of the plain `code` listing (`graphBlocks` tags its node and port-mapping blocks with the node they are about), never on the pseudocode. A line that matches finds its node; a found node that is not an execution node finds the nodes that read its outputs, repeatedly, until execution nodes (`in_param` wires of the report), so that a case, which writes its data nodes, exists to show it. The result is one `graph key -> node indexes` map per file (`graph key` = `guid|service`, `call.graph` / `via[].graph` of the report); `shownCases` keeps the cases of found nodes (or expanded from a found call), `shownFace` the data outputs of a composite when one of their nodes is found, and a graph without a found node is not written. `all` uses the same pass for its code part, which is then not grepped again (`keep` of a group).
 * Every case has `callers` (the cases whose flow outputs lead to it, null for an event); the renderer writes them as a comment after the `case`.
 * **Orphaned data nodes** (`orphanChains` in `build`; `orphans` of the graph, `case 'orphaned'` in the renderer, last, with `throw 'unreachable'`). Every data node of every instance that no case or composite output wrote (`printed`, filled where a data call is made) is written in the end, so nothing of the graph is lost: among the nodes left the one that ends the longest chain of data wires (the first in node order on a tie; with a data loop every node is a candidate) is written by itself with what it needs above it (shared `memo`, so a node two chains need is written once), then the search is made again. A composite call needs all of its inputs, whatever its body does with them, which falls out of writing it as a call. The sink of a chain has no output variables. A graph with orphans is not `flat`; a search shows the chains that have a found node.
-* **Types of pins nobody stored.** A node whose kernel is its shell is the generic node or its first variant, which the file does not tell apart, so the variant's constraint (`C<T:Int>`) is applied only when the kernel differs; otherwise the parameters come from the types of the pins the file stores, and what is left is `Any` (`unset` for an input, no default value). A dictionary says what it maps (`dict` of an output, of a literal and of an interface pin: from the value's own binding (`map_binding` of its type definition, `keyType` / `valueType` of `normValue`), the declaration's `map_type`, or the database's `D<R<K>,R<V>>` with the parameters bound); the pins the database types just `Dict` (shop, loot and status parameter pins) take them from `fixedDicts` of `codegen-rules.json`; a generic pin also learns them from the wires (`inferFromWires`: what feeds an input, and what the inputs fed by an output make of their own parameters). The renderer writes `Dict(k,v,expr)`, `Any` for a side nothing tells, and `Dict(expr)` when neither is known.
+* **Types of pins nobody stored.** A node whose kernel is its shell is the generic node or its first variant, which the file does not tell apart, so the variant's constraint (`C<T:Int>`) is applied only when the kernel differs; otherwise the parameters come from the types of the pins the file stores, and what is left is `Any` (`unset` for an input, no default value). A dictionary says what it maps (`dict` of an output, of a literal and of an interface pin: from the value's own binding (`map_binding` of its type definition, `keyType` / `valueType` of `normValue`), the declaration's `map_type`, or the database's `D<R<K>,R<V>>` with the parameters bound); a pin the database types just `Dict` says nothing about them; a generic pin also learns them from the wires (`inferFromWires`: what feeds an input, and what the inputs fed by an output make of their own parameters). The renderer writes `Dict(k,v,expr)`, `Any` for a side nothing tells, and `Dict(expr)` when neither is known.
 * **Pins a style hides** (`hidden` of an argument, data in `codegen-rules.json`): the pins that hold their default (`hiddenInputs`), and the ones that say nothing the node does not (`redundantInputs` by node and pin index, `redundantEnums`: the operator of a math, comparison, logic or type conversion node, found by the enum family of the pin).
 * **Constants** (renderer, `literal` / `bare` in `present/pseudocode.mjs`): a float has at least two decimals (`Flt(0.00)`, more are kept; the parts of a `Vec` are not changed), a boolean is `Bol(false)` / `Bol(true)`, an entity constant of 0 is `Ety(null)`. `dump` and plain `code` write values alike (`values.mjs`: `flt`, `true` / `false`, `null` for an id of 0, in the theme's `bool` style).
 * **The explanation** at the top of a pseudocode document (`PSEUDOCODE_INTRO`, `present/pseudocode-intro.mjs`, one block comment before the first graph, after the file's opening; written only with `--lazy`, the language model's form, and not when a search is on). It is text, so the tests do not compare it (they strip it); edit it there and run `npm run update-expected`.
@@ -317,7 +304,7 @@ Rules:
 * The renderer gives every case, node-local intermediate and graph-global output an anchor id (`p<file>_<graph>-c|l|g-…`, unique across the whole page); in `html` each use of a variable and each `GoTo` target links to it, the other formats print plain text.
 * `expandComposites` only decides which calls are replaced by their body; everything else (the definitions) is the same in both modes.
 
-## Command line (`cli.mjs`)
+## Command-line internals (`cli.mjs`)
 
 `main(argv, io)` is testable in-process (`io = { out, err, isTTY, env }`); `safeMain` adds the last-resort error handler (set `GIA_DEBUG` for a
 stack trace). Modes: `info`, `dump`, `code`, `refs`, `warns`, `check`, `raw`, in that order everywhere (help, README, web tabs), then `all`, the mode made of the others, then `llm` (`all` with fixed options, see below).
@@ -335,7 +322,7 @@ stack trace). Modes: `info`, `dump`, `code`, `refs`, `warns`, `check`, `raw`, in
   title (`recount`); the paragraphs and facts under a heading follow it; a node's head line stays with its pin table. The title of each file is kept when the file has a hit.
 * `info --key KEY` prints one value (`infoValue`: a row of the File / Contents tables, else the count of a resource class by name) as plain lines through `emitLines`; it is the
   only place an `info` option replaces the report. The tag parts need `--show-tag` (without it they are not in the data).
-* `llm` is not a report mode: `main` turns it into `all` with the options of `LLM_OPTIONS` (its only option is `--lang`, which `LLM_OPTIONS` leaves to the caller; any other option, and a saved report, is a usage error), takes `warns` out of the report (`all` and `warns` of the object, but without details for `dump`) and prints it with `--short --dedup --tab --pseudocode --optimize --lazy` plus `# END` line. The web page has an `LLM` tab for it, after `All` (no options of its own, a text area, a `<input files> - llm.txt` download); it passes `llm`, the files and the language chosen on the Input tab (`globalArgs(['lang'])`), not the other global options.
+* `llm` is not a report mode: `main` turns it into `all` with the options of `LLM_OPTIONS` (its only options are `--lang` and `--output`, which `LLM_OPTIONS` leaves to the caller; any other option, and a saved report, is a usage error; the format stays `text` whatever the extension of `--output` says), takes `warns` out of the report (`all` and `warns` of the object, but without details for `dump`) and prints it with `--short --dedup --tab --pseudocode --optimize --lazy` plus `# END` line. The web page has an `LLM` tab for it, after `All` (no options of its own, a text area, a `<input files> - llm.txt` download); it passes `llm`, the files and the language chosen on the Input tab (`globalArgs(['lang'])`), not the other global options.
 * Option scope: `--tab` every mode (rendering, text and color only); `--short` info and the info part of `all` (rendering); `--dedup` dump and the dump part of `all` (rendering: `dedupResources` in `present/dump.mjs`); `--show-tag` info; `--details` dump (rendering; `all` always shows the details); `--sort-desc` refs; `--top-graphs` warns; `--kind` / `--name` refs and warns; `--expand` code (a data option: it decides what the pseudocode in the report holds); `--all-pins` code (rendering; also applied to the code part of `all`); `--pseudocode` / `--optimize` code (rendering; `--optimize` only with `--pseudocode`); `--with-code` all (which takes every other data option too). The data options (see "Reports") are recorded in `header.options` of the report; the rest (`--details`, `--all-pins`, `--pseudocode`, `--optimize`, `--key`, `--search`, `--match`, `--context`, `--no-file-prefix`, `--strict`) only change how a report is shown. A mode ignores options of other modes.
   The `HELP` text groups options by mode: keep it in sync when adding an option (`test/search.test.mjs` and `test/warns.test.mjs` check parts of it).
 * Directories are searched recursively for `.gia` / `.gil` files **and** for any file whose header is a GIA/GIL container.
@@ -393,10 +380,10 @@ stack trace). Modes: `info`, `dump`, `code`, `refs`, `warns`, `check`, `raw`, in
   * `kernel`: the id written into `.gia`/`.gil` files, when it differs from the node id. `services`: the graph types (service ids) the node exists in, when more than one.
   * `pins`: `in_flow|out_flow|in_param|out_param:<index>` → `{ names, type, hidden, default, slot }`. `default` is present for explicit defaults only; a pin without one is unset, i.e. the zero value of its type. `slot` is the pin's own number on client nodes when it differs from its list position; graph files use the list position, so it is informational.
   * `variants`: `[{ c, kernel }]`, one per concrete type combination: the id written into files and the constraint it stands for.
-* `enums`: family id → `{ names, values: { n: { names } } }`. Enum identifiers (the short codes of older databases) are not stored.
+* `enums`: family id → `{ names, values: { n: { names } } }`.
 * `kernels`: concrete id → `{ node, constraint }`. The key is the id alone and ids repeat across nodes (the first node wins); nothing reads the table, `variants` is the reliable source.
 
-Types are written `Int`, `Str`, `Ety`, … (the tables in `model.mjs`), `L<T>` for lists, `E<family id>` for an enum, `Enum` for any enum, `R<T>` / `R<K>` / `R<V>` for a generic pin tied to a type parameter, `D<R<K>,R<V>>` for a generic dictionary. A constraint names the parameters of one variant: `C<T:Int>`, `C<K:Int,V:Str>`, `C<T:D<Ety,Gid>>`, `C<T:E<2>>`. A variant that cannot be told apart from another by its id (several type combinations behind one id, as on the client *Data Type Conversion* and *Assembly Dictionary* nodes) has no constraint.
+Types are written `Int`, `Str`, `Ety`, … (the tables in `model.mjs`), `L<T>` for lists, `E<family id>` for an enum, `Enum` for any enum, `R<T>` / `R<K>` / `R<V>` for a generic pin tied to a type parameter, `D<R<K>,R<V>>` for a generic dictionary and `D<Str,Flt>` for a dictionary pin of fixed kinds (its key and value type codes are in the pin's type block, `4.105.3` and `4.105.4`; a pin without them is just `Dict`). A constraint names the parameters of one variant: `C<T:Int>`, `C<K:Int,V:Str>`, `C<T:D<Ety,Gid>>`, `C<T:E<2>>`. A variant that cannot be told apart from another by its id (several type combinations behind one id, as on the client *Data Type Conversion* and *Assembly Dictionary* nodes) has no constraint.
 
 `NodeDb.version` is `sources[].gameVersion`, or `null`. The "node DB is based on game …" warning of `dump` / `code` is printed only when it is not null and differs from the file's engine version.
 
@@ -437,7 +424,7 @@ With no arguments, `npm run build-db` reads a default install under `%PROGRAMFIL
 
 **Inputs.** `Node/*.mihoyobin` (one node each), `BeyondGlobal/*.mihoyobin` (enums), and one `.mihoyobin` per language folder of `TextMap/`; every language folder found is read.
 
-**Output.** The old database (`--compare`, read before anything is written) is compared with the new one and the result is always printed: per category (nodes only on one side, names per language, system, domain, variant flag, pin keys, pin names, pin types, variant ids and constraints, kernels, enums and their values) how many facts agree, with examples of the ones that do not. Enum codes are ignored in the type comparison. Only the languages both databases have are compared. Then the database is written to `--out`. A missing comparison file is noted, not an error. Notes follow for what the build could not derive: nodes with a variant without a constraint (with the reason), explicit defaults in a layout the script does not read, concrete ids shared by several type combinations, duplicate kernel ids, enum families named by a pin but absent from `BeyondGlobal`.
+**Output.** The reference database (`--compare`, read before anything is written) is compared with the built one and the result is always printed: per category (nodes only on one side, names per language, system, domain, variant flag, pin keys, pin names, pin types, variant ids and constraints, kernels, enums and their values) how many facts agree, with examples of the ones that do not. Enum codes are ignored in the type comparison. Only the languages both databases have are compared. Then the database is written to `--out`. A missing comparison file is noted, not an error. Notes follow for what the build could not derive: nodes with a variant without a constraint (with the reason), explicit defaults in a layout the script does not read, concrete ids shared by several type combinations, duplicate kernel ids, enum families named by a pin but absent from `BeyondGlobal`.
 
 ## Editor resource files
 
@@ -472,7 +459,7 @@ The service in `4.1.2` is the graph type: 20000, 20003, 20004 and 20005 are serv
 | Field | Meaning |
 |---|---|
 | `3` | Slot descriptor; `3.2` the pin's own slot number |
-| `4` | Type block: `1` widget (10000 generic selector, 6 enum/bool picker, 2 number, 4 decimal, 7 vector, 1 id, 5 text, 10002 list, 10003 dictionary), `2` default, `3` connection type (10000 + family for enums), `4` type code, `101.1` enum family, `103.1[]` the allowed types of a generic pin |
+| `4` | Type block: `1` widget (10000 generic selector, 6 enum/bool picker, 2 number, 4 decimal, 7 vector, 1 id, 5 text, 10002 list, 10003 dictionary), `2` default, `3` connection type (10000 + family for enums), `4` type code, `101.1` enum family, `105` key (`3`) and value (`4`) type codes of a dictionary, `103.1[]` the allowed types of a generic pin |
 | `4.103.1[]` | `{ 8: type-selector index, 3: connection type, 4: type code, 101.1: enum family }`; the selector index is what variant bindings refer to |
 | `5[].1` | Roles (a pin can have several): 2 hidden, 3 data-type conversion, 8 dictionary key, 9 dictionary value, 10 dictionary, 11 key list, 12 value list, 13 structure |
 | `7` | Name hash |
@@ -485,19 +472,6 @@ Type code 14 is an enum; its family comes from `4.101.1` or, failing that, from 
 
 **BeyondGlobal.** Root `1.1[]` is the enum table: `{ 1: family id, 2[]: { 1: value (omitted when 0), 3: name hash }, 4: title hash }`. Families 1–49 are server, 200001 and up client. Root `3` is the node palette (folders of node references), which the database does not use.
 
-## Behaviour on newer game versions
-
-| Situation | What happens |
-|---|---|
-| node id not in the DB | `<node#ID>`; pins by `(kind, index)`; literals and wires intact; listed under `UNRESOLVED` |
-| new or renamed pins | resolved by `(kind, index)`; unknown ones print without a name |
-| unknown enum value | `enum:2811` / `<unknown-enum:2811>` |
-| unknown resource class | printed as `class#N`; a graph payload is still decoded |
-| new section in a `.gil` | census entry (`GilFile #N`); known-but-uninterpreted sections are `opaque_N` in the schema and shown by `check` |
-| new protobuf fields | census entry (path, field, wire type, sample); `check --strict` exits 1 |
-| container tag or length changed | clear error; `--lenient` decodes best-effort; `raw` dumps without a schema |
-| structural change (e.g. singular → repeated) | cannot be foreseen: the census and `raw` make it visible, the expected-output tests catch regressions |
-
 ## When the game updates
 
 1. `node miliastra-search.mjs check <your files>`: read the census and the `UNRESOLVED` list. Nothing is lost silently.
@@ -505,8 +479,8 @@ Type code 14 is an enum; its family comes from `4.101.1` or, failing that, from 
    1. Rebuild the database from the updated install: `npm run build-db` (add `--genshin "<folder>"` when the game is not under `%PROGRAMFILES%`). Read the printed comparison: new nodes, variants and enum values are expected; anything else deserves a look. Then `npm run build-web`, `npm run update-expected`, review the diff, `npm test`.
    2. Add entries to `data/overlay.json` (format under "Data files"; pin keys `in_flow|out_flow|in_param|out_param:<shellIndex>`). The overlay wins over the built database and survives rebuilds.
    3. Create the node in the editor, export a `.gia`, and read the id and pin indices with `code`: the id is in the `(id)` column even when the name is missing.
-3. **Unknown fields**: inspect with `raw` or `scripts/dump-json.mjs`, add the field to `schema/gia.merged.proto` (mark it `[MERGED]`), note it in
-   `schema/CHANGELOG.md`, decode it in `model.mjs` if it matters, run `npm run update-expected`, review the diff.
+3. **Unknown fields**: inspect with `raw` or `scripts/dump-json.mjs`, add the field to `schema/gia.merged.proto`, note it in
+   `schema/CHANGELOG.md` (schema notes), decode it in `model.mjs` if it matters, run `npm run update-expected`, review the diff.
 4. Add a new export as a fixture (below) and run `npm run build-web`.
 
 ## Tests
@@ -523,7 +497,7 @@ Type code 14 is an enum; its family comes from `4.101.1` or, failing that, from 
 | `resolution` | static-resolution fixtures (7.1.0) | `test_resolution.gia`, `test_All_Static.gia` |
 | `codegen` | pseudocode fixtures (7.1.0) | `codetest_1.gia` (server graph with data nodes shared and single-use, a loop with `Break Loop`, a creation and a filter graph), `codetest_2.gia` (a status graph and the composites it calls; `--expand` flattens them); `codegen.test.mjs`; the expected outputs also hold the `--pseudocode` option sets (`--optimize`, `--all-pins`, `--expand`) |
 | `codegen72` | pseudocode fixtures (7.2.0) | `codetest_3.gia`, for the order and `unreachable`: "Cycle with no entry" (a loop an event enters, whose `A` is reached, and a loop nothing enters, whose `B` is not), "Dead composite" (calls `1` and `2` reached, `2` by a data read only, `3`..`5` not), "Composite with event" (four calls of a composite that has an event inside, which are entry points whatever wires them: `X` and `Z` run, `Y` is wired from nothing), "Nested event" (an event two composites deep); same option sets as `codegen`. It has one undecoded field (see FORMAT.md) |
-| `variables72` | custom and graph variables (7.2.0) | `variables_graph.gia` (a graph with published and private variables, a second graph, a status graph with a dictionary; a prefab, entities and the templates that mount and edit them: see `variables.test.mjs`), `variables_beyond.gia` (stage-less export: player / character templates (default and custom), a prefab with five entities that keep, edit, retype, add and remove a variable, a native-object entity, two creations with entities adding a variable) and `variables_classic.gil` (classic mode: player and character templates with the 40 variables of every type, the character's edited; stage without variables); `variables.test.mjs` |
+| `variables72` | custom and graph variables (7.2.0) | `variables_graph.gia` (a graph with published and private variables, a second graph, a status graph with a dictionary; a prefab, entities and the templates that mount and edit them: see `variables.test.mjs`), `variables_beyond.gia` (stage-less export: player / character templates (default and custom), a prefab with five entities that keep, edit, retype, add and remove a variable, a native-object entity, two creations with entities adding a variable) and `variables_classic.gil` (classic mode: player and character templates with the 40 variables of every type, the character's edited; stage without variables) and `variables_save.gil` (two in-game saves with slots `1_chip_1` / `1_chip_2`, a player template with the custom variables `Norm1` / `Norm2`, and a graph that reads a custom variable of each kind); `variables.test.mjs` |
 | `mounts` | mounts, folders, static entities (7.1.0) | `test_mount.gil`, `test_folders.gil` / `.gia`, and `graph_folders.gil`: every resource named `... - NN` by its position in the editor, for `ordering.test.mjs`; `composite_folders.gil`: 27 composites in folders A–I plus three in the default tab |
 
 The 7.1.0 categories have dedicated tests rather than loops. They decode with a few unknown fields (run `check` on them): `pins.value.client_inline`

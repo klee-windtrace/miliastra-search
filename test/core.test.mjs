@@ -90,7 +90,7 @@ test('container: wrong head tag / tail tag / length', () => {
   const l = Buffer.from(b); l.writeUInt32BE(5, 16); assert.throws(() => unwrapContainer(l), /payload length/);
   const v = Buffer.from(b); v.writeUInt32BE(2, 4); assert.throws(() => unwrapContainer(v), /schema version/);
 });
-test('container: lenient mode returns problems instead of throwing', () => {
+test('container: lenient mode returns problems and does not throw', () => {
   const t = Buffer.from(readSample('sample_8.gia')); t.writeUInt32BE(0x1234, t.length - 4);
   const r = unwrapContainer(t, { lenient: true });
   assert.equal(r.problems.length, 1);

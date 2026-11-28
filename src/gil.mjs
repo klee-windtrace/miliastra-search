@@ -1,14 +1,13 @@
 ﻿// L1b: .gil (whole-stage save) -> the same "entry" objects a .gia AssetBundle contains.
 //
-// A .gil has the same container as a .gia, but its payload is the entire stage (level). Everything this tool
-// already understands lives in the node-graph section (root field 10) as *bare* messages instead of ResourceEntry
-// wrappers, so this module only has to (1) decode the level with the GilFile schema, (2) re-wrap those messages as
+// A .gil has the same container as a .gia, but its payload is the entire stage (level). The graphs live in the
+// node-graph section (root field 10) as bare messages without ResourceEntry wrappers, so this module only has to (1) decode the level with the GilFile schema, (2) re-wrap those messages as
 // ResourceEntry-shaped objects (graph_data / interface_data / struct_data) and (3) list every other resource the level
 // holds as an "opaque" entry (name / class / GUID, plus the graph mounts and static/dynamic flag read by mounts.mjs).
 // model.mjs then treats both formats identically.
 //
 // GIL carries no resource_class field (GIA does), so the class is *derived*:
-//   * graphs         from the service domain of the graph identity (verified against all GIA samples)
+//   * graphs         from the service domain of the graph identity
 //   * declarations   send-signal -> 14, everything else (composite, listen signal, struct nodes) -> 12
 //   * configs (15)   from the entry's own `config_type` field
 //   * templates/entities from the GUID band (see `band`) and, for projectiles, the base config id
@@ -19,7 +18,7 @@ import { scanLevel, FOLDER_BY_SERVICE, FOLDER_BY_CLASS, folderKey, COMPOSITE_FAM
 
 const GRAPH_CLASS_BY_SERVICE = { 20000: 9, 20001: 10, 20002: 11, 20003: 22, 20004: 23, 20005: 46, 20006: 47, 20007: 51, 20008: 52, 20009: 53, 20010: 64 };
 
-// root.15 entry `config_type` -> ResourceClass (numbers from GIA sample_9, matched entry by entry against stage_9)
+// root.15 entry `config_type` -> ResourceClass
 const CONFIG_CLASS = { 1: 7, 4: 17, 6: 8, 7: 16, 9: 26, 17: 30, 18: 45, 22: 39, 26: 49, 27: 48, 28: 54, 30: 60, 32: 58, 36: 65 };
 const CONFIG_EXTRA = { 5: 'GIL_GROWTH_CURVE', 12: 'GIL_INVENTORY_TEMPLATE' };
 
@@ -46,15 +45,37 @@ function folderOf(raw, key) {
   return place ? { folder: raw.folders.byKey.get(key), folderRank: place.rank, folderPos: place.pos } : {};
 }
 
+const LIST_OF_STRUCT = 26; // server type id of L<Struct>
+
+/**
+ * The variables the level's in-game saves declare (root 31), as custom variables in the shape of varscan.mjs: each save variable is a list of structs with no
+ * initial content. A save is not tied to a template in the file, so every player template and player entity has all of them. A variable that several saves
+ * declare alike is listed once.
+ */
+function saveVariables(g) {
+  const out = [];
+  for (const save of g.save_data?.sets || []) {
+    for (const slot of save.body?.slots || []) {
+      const structId = slot.type?.struct_id ?? null, name = slot.name ?? '';
+      if (out.some((v) => v.name === name && v.structId === structId)) continue;
+      out.push({ name, typeId: LIST_OF_STRUCT, structId, keyType: null, valueType: null, value: { k: 'list', items: [] } });
+    }
+  }
+  return out;
+}
+
 /** Every non-graph resource in root order. Each: { section, classId|null, className|null, guid, name, mounts?, dynamic? }. */
 function listOpaque(g, raw) {
   const out = [];
   const add = (section, classId, className, guid, name, extra) => out.push({ section, classId, className, guid: guid ?? null, name: name ?? '', ...extra });
+  // the variables of a player template or player entity: its own custom variables, then those of the in-game saves it does not declare itself
+  const saves = saveVariables(g);
+  const withSaves = (vars) => (vars ? [...vars, ...saves.filter((s) => !vars.some((v) => v.name === s.name && v.typeId === s.typeId && v.structId === s.structId))] : vars);
   const graphMounts = (info, slotOf) => (info?.graphs || []).map((r) => ({ slot: slotOf(r), graph: r.guid, service: r.service, edits: r.edits }));
   for (const t of g.templates?.entries || []) {
     const cls = t.config_id === PROJECTILE_BASE_CONFIG && band(t.guid) === 1 ? 25 : TEMPLATE_CLASS_BY_BAND[band(t.guid)];
     const slot = TEMPLATE_SLOT_BY_BAND[band(t.guid)] || 'entity';
-    add('root.4', cls ?? 0, cls == null ? 'UNKNOWN_TYPE' : null, t.guid, componentName(t.components), { mounts: graphMounts(raw.templates.get(t.guid), () => slot), variables: raw.templates.get(t.guid)?.variables ?? null });
+    add('root.4', cls ?? 0, cls == null ? 'UNKNOWN_TYPE' : null, t.guid, componentName(t.components), { mounts: graphMounts(raw.templates.get(t.guid), () => slot), variables: (cls === 18 ? withSaves : (x) => x)(raw.templates.get(t.guid)?.variables ?? null) });
   }
   for (const e of g.entities?.entries || []) {
     const b = band(e.guid);
@@ -64,7 +85,7 @@ function listOpaque(g, raw) {
     // An object entity is STATIC unless it carries the dynamic component list (see mounts.mjs). Creation entities are always dynamic.
     if (b === 1) add('root.5', 3, info?.dynamic === false ? 'STATIC_ENTITY' : null, e.guid, componentName(e.components), { mounts, dynamic: info?.dynamic !== false, parent: info?.parent ?? null, variables: info?.variables ?? null });
     else if (ENTITY_CLASS_BY_BAND[b]) add('root.5', ENTITY_CLASS_BY_BAND[b], null, e.guid, componentName(e.components), { mounts, parent: info?.parent ?? null, variables: info?.variables ?? null });
-    else add('root.5', null, ENTITY_EXTRA_BY_BAND[b] || 'UNKNOWN_TYPE', e.guid, componentName(e.components), { mounts, parent: info?.parent ?? null, variables: info?.variables ?? null });
+    else add('root.5', null, ENTITY_EXTRA_BY_BAND[b] || 'UNKNOWN_TYPE', e.guid, componentName(e.components), { mounts, parent: info?.parent ?? null, variables: (ENTITY_EXTRA_BY_BAND[b] === 'GIL_PLAYER_ENTITY' ? withSaves : (x) => x)(info?.variables ?? null) });
   }
   for (const t of g.terrains?.entries || []) add('root.7', 5, null, t.guid, t.info?.name);
   for (const u of g.ui?.entries || []) {
@@ -88,6 +109,7 @@ function listOpaque(g, raw) {
   for (const c of g.cameras?.entries || []) add('root.18', 13, null, c.guid, c.info?.name);
   for (const u of g.unit_tags?.entries || []) add('root.30', 44, null, u.guid, u.name);
   for (const s of g.save_data?.entries || []) add('root.31', 41, null, s.guid, s.info?.name?.text);
+  for (const s of g.save_data?.sets || []) add('root.31', 41, null, s.guid, s.body?.name);
   for (const p of g.paths?.entries || []) add('root.32', 38, null, p.guid, componentName(p.components));
   for (const d of g.deployment_groups?.entries || []) add('root.33', 43, null, d.guid, d.name);
   for (const s of g.scene_templates?.kind_a || []) add('root.44.1', 55, null, s.guid, s.name);

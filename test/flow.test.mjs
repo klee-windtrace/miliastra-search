@@ -156,7 +156,7 @@ test('a composite body is found by its own nodes, and the data outputs by the no
   assert.doesNotMatch(other, /if \(!node\)/, 'no data output of the body was found');
   assert.match(other, /Composite\['Two In One Out'\]/);
 });
-test('--all with --pseudocode searches the same way and is not filtered again', () => {
+test('--all with --pseudocode searches the same way and is not filtered a second time', () => {
   const text = run(['all', TWO, '--with-code', '--pseudocode', '--search', '1474.7142', '--format', 'text']);
   assert.deepEqual(cases(text), ['node_0005']);
   assert.match(text, /# CODE\nServerGraphs\['Status'\]/);

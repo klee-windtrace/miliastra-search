@@ -7,7 +7,7 @@
 //   20 ...payload...
 //   -4 u32 tail tag                (0x0679)
 //
-// The format (GIA vs GIL) is decided from the *content*, never from the file name:
+// The format (GIA vs GIL) is decided from the *content*, not from the file name:
 //   1. the file-type field of the header, cross-checked against
 //   2. a shallow scan of the payload's top-level protobuf fields (GIA uses fields 1..5 only; a GIL level file
 //      uses fields up to 49). When the two disagree clearly, the payload wins and a warning is recorded.
@@ -93,7 +93,7 @@ export function detectFormat(payload, header, forced = null) {
 
 /**
  * What kind of file is this? The one question a front-end asks about raw bytes, answered from the content alone
- * (never the name): { format: 'gia'|'gil', how: 'header'|'payload'|'default', warnings: string[] }, or
+ * (not the name): { format: 'gia'|'gil', how: 'header'|'payload'|'default', warnings: string[] }, or
  * { format: null, reason } when it is not a GIA/GIL container. Never throws.
  */
 export function identifyFile(buf) {

@@ -91,7 +91,7 @@ test('--search in html: a node keeps its head line and its pin table, under its 
   assert.ok(body(ctx).length > body(r.stdout).length);
 });
 
-test('--search in html finds nothing: exit 1, still a page that says so', () => {
+test('--search in html finds nothing: exit 1, a page that says so', () => {
   const r = rich('html', 'refs', '--search', 'no such thing anywhere', f);
   assert.equal(r.status, 1); assert.match(r.stdout, /No line with search/); assert.doesNotMatch(r.stdout, /<table>/);
 });

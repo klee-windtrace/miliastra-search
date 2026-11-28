@@ -3,7 +3,7 @@
 // Both live inside "component" lists that the GilFile schema keeps opaque (only the name component is decoded), so this
 // module walks the raw protobuf of root sections 4 (templates), 5 (entities) and 15 (configs) once and returns facts
 // keyed by section + guid. It also reads the folder index (root 6) and the composite palette (root 10.3), which the schema
-// leaves opaque as well. Derived from test_mount.gil and test_folders.gil (game 7.1.0), see FORMAT.md.
+// leaves opaque as well. See FORMAT.md.
 //
 // A component is `{1: kind, <payload field>: payload}`; the payload field depends on the kind (kind 1 -> 11, kind 3 -> 13,
 // kind 6 -> 21).
@@ -29,7 +29,7 @@ const first = (items, f) => items.find((x) => x.field === f);
 /**
  * Static or dynamic? `f` = the decoded fields of an entity definition, `dynField` = its dynamic component list field.
  * Dynamic = the list holds a component other than kind 1. Kind 1 alone (`{1: 1, 11: {}}`) is on static entities too
- * (test_folders: the Pavilion, a native static object, has exactly that); every real dynamic list has more kinds.
+ * (a native static object such as the Pavilion has exactly that); a dynamic list has more kinds.
  */
 export function isDynamic(f, dynField) {
   return f.filter((x) => x.field === dynField && x.wire === 2).some((c) => first(safe(c.value), 1)?.value !== 1);
@@ -237,7 +237,7 @@ export function scanLevel(payload) {
 /**
  * Every graph mount of a bundle, joined to the graph resource: [{ host, slot, guid, service, graph|null, edits }] (`edits`: see the mount's layout above).
  * GIL GUIDs are unique per kind only, so the graph is looked up by GUID *and* service domain (the mount carries it);
- * composite bodies can never be mounted. `graph` is null when the file has no such graph (mount left dangling).
+ * composite bodies cannot be mounted. `graph` is null when the file has no such graph (mount left dangling).
  */
 export function mountsOf(bundle) {
   const graphs = bundle.resources.filter((r) => r.kind === 'graph' && r.graph && r.graph.kind !== 21002);

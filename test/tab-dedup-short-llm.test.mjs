@@ -2,6 +2,9 @@
 import './helpers.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { mkdtempSync, readFileSync, existsSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { main } from '../src/cli.mjs';
 import { root } from './helpers.mjs';
 
@@ -107,7 +110,7 @@ test('--dedup dump: the MOUNT line of a deduplicated resource carries the same "
   assert.doesNotMatch(plain.join('\n'), / \+\d+ more/);
 });
 
-test('llm: the all report without warns, as short deduplicated tab-separated pseudocode; it takes only --lang', () => {
+test('llm: the all report without warns, as short deduplicated tab-separated pseudocode; it takes only --lang and --output', () => {
   const r = cli(['llm', stage]);
   assert.equal(r.code, 0);
   assert.match(r.out, /^# INFO$/m); assert.match(r.out, /^# DUMP$/m); assert.match(r.out, /^# REFS$/m); assert.match(r.out, /^# CODE$/m); assert.match(r.out, /^# END$/m);
@@ -118,9 +121,9 @@ test('llm: the all report without warns, as short deduplicated tab-separated pse
   assert.match(r.out, /\t\+\d+ more$/m, 'dedup');
   const manual = cli(['all', stage, '--lenient', '--lang', 'EN', '--format', 'text', '--short', '--dedup', '--tab', '--pseudocode', '--optimize', '--lazy', '--with-code']).out;
   assert.equal(r.out, manual.slice(0, manual.indexOf('# REFS')).replace(/(\tclass=(\d+|-))|(\tcategory=\w+)|(\tkind=\d+\tservice=\d+)|(\tentry_slot=\d+)|(\tevaluation_interval=[0-9.]+)|(\tsection=\w+(\.\d+)+)|(\tdecl='\d+')/g,'') + manual.slice(manual.indexOf('# REFS'), manual.indexOf('# WARNS')) + manual.slice(manual.indexOf('# CODE')) + '\n# END\n', 'the all output minus the warns, stripped details');
-  for (const bad of [['--tab'], ['--dedup'], ['--format', 'json'], ['--short'], ['--search', 'x'], ['-o', 'x.txt']]) {
+  for (const bad of [['--tab'], ['--dedup'], ['--format', 'json'], ['--short'], ['--search', 'x']]) {
     const e = cli(['llm', stage, ...bad]);
-    assert.equal(e.code, 2, bad.join(' ')); assert.match(e.err, /llm takes no options but --lang/);
+    assert.equal(e.code, 2, bad.join(' ')); assert.match(e.err, /llm takes no options but --lang and --output/);
   }
   // the language of the names is the one option, like in `all`
   const de = cli(['llm', stage, '--lang', 'DE']);
@@ -128,6 +131,19 @@ test('llm: the all report without warns, as short deduplicated tab-separated pse
   assert.match(de.out, /^# END$/m);
   assert.notEqual(de.out, r.out, 'the names are German');
   assert.equal(cli(['llm', stage, '--lang', 'XX']).code, 2);
+  // --output / -o writes the same text to a file, whatever its extension says about the format
+  const dir = mkdtempSync(join(tmpdir(), 'llm-out-'));
+  try {
+    for (const [flag, name] of [['--output', 'a.txt'], ['-o', 'b.html']]) {
+      const file = join(dir, name);
+      const w = cli(['llm', stage, flag, file]);
+      assert.equal(w.code, 0, flag); assert.equal(w.out, '', 'nothing on stdout');
+      assert.equal(readFileSync(file, 'utf8'), r.out, flag + ': the file holds the text of the plain run');
+    }
+    const lost = join(dir, 'c.txt');
+    assert.equal(cli(['llm', join(dir, 'missing.gil'), '-o', lost]).code, 2);
+    assert.equal(existsSync(lost), false, 'a failed run writes no file');
+  } finally { rmSync(dir, { recursive: true, force: true }); }
   assert.equal(cli(['llm', 'test/cases/gil']).code, 0);
   assert.match(cli(['--help']).out, /miliastra-search llm /);
 });

@@ -151,6 +151,59 @@ FOLDER /(default)/ resources=1
 
 ---
 
+## FILE `variables_save.gil`
+
+format&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gil<br>
+detected\_by&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header<br>
+file\_size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;38920<br>
+container\_file\_type&nbsp;&nbsp;&nbsp;&nbsp;gil<br>
+engine\_version&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.2.0<br>
+mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beyond<br>
+level\_name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;save\_variable<br>
+node\_db\_version&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.2.0<br>
+resources&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;84<br>
+graphs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br>
+nodes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8<br>
+composite\_bodies&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br>
+declarations&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;36<br>
+structs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4<br>
+mounts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br>
+unresolved\_node\_types&nbsp;&nbsp;0<br>
+CLASS TERRAIN\_ENTITY class=5 count=1<br>
+CLASS PRESET\_POINT class=6 count=1<br>
+CLASS ENTITY\_NODE\_GRAPH class=9 count=1<br>
+CLASS COMPOSITE\_NODE\_DECL class=12 count=36<br>
+CLASS CAMERA class=13 count=1<br>
+CLASS UI\_CONTROL class=15 count=14<br>
+CLASS CLASS class=17 count=1<br>
+CLASS PLAYER\_TEMPLATE class=18 count=1<br>
+CLASS CHARACTER\_TEMPLATE class=19 count=1<br>
+CLASS INTERFACE\_LAYOUT class=20 count=6<br>
+CLASS STRUCTURE class=29 count=4<br>
+CLASS class#41 class=41 count=2<br>
+CLASS ENVIRONMENT\_CONFIGURATION class=49 count=1<br>
+CLASS GIL\_CHARACTER\_ENTITY class=- count=1<br>
+CLASS GIL\_GROWTH\_CURVE class=- count=1<br>
+CLASS GIL\_INVENTORY\_TEMPLATE class=- count=1<br>
+CLASS GIL\_LEVEL\_ENTITY class=- count=1<br>
+CLASS GIL\_PLAYER\_ENTITY class=- count=9<br>
+CLASS GIL\_RESPAWN\_POINT class=- count=1<br>
+SECTION root.4 resources=2 description='`templates: prefabs, player and character templates, creation templates`'<br>
+SECTION root.5 resources=11 description='`entities placed in the level, plus the stage, player and character entities`'<br>
+SECTION root.7 resources=1 description='`terrains`'<br>
+SECTION root.9 resources=20 description='`UI: layouts and their controls`'<br>
+SECTION root.10.1 resources=1 description='`node graphs (entity, status, class, item, skill, filter, creation graphs)`'<br>
+SECTION root.10.2 resources=36 description='`node declarations: signals and composite declarations`'<br>
+SECTION root.10.6 resources=4 description='`struct definitions`'<br>
+SECTION root.11.3 resources=1 description='`respawn points`'<br>
+SECTION root.11.5 resources=1 description='`preset points`'<br>
+SECTION root.15 resources=4 description='`configs: unit statuses, classes, skills, items and the like`'<br>
+SECTION root.18 resources=1 description='`cameras`'<br>
+SECTION root.31 resources=2 description='`save data`'<br>
+FOLDER /(default)/ graphs=1
+
+---
+
 # DUMP
 
 ## FILE `variables_beyond.gia`
@@ -417,10 +470,64 @@ MOUNT '*New Node Graph*' -\> OBJECT\_ENTITY "**Entity\_edited**" entity<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Dict**' : *Dict\<Gid,Pfb\>* = {id:1094713345 {GIL\_LEVEL\_ENTITY:"**Stage Entity**"}: id:1077936129 {OBJECT:"**Empty Model**"}}<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Entity**' : *Ety* = null
 
+## FILE `variables_save.gil`
+
+**GRAPH** /(default)/'*Player*' ENTITY\_NODE\_GRAPH class=9 guid='`1073741825`' kind=21001 service=20000 nodes=8<br>
+**RESOURCE** "**Stage Entity**" GIL\_LEVEL\_ENTITY class=- guid='`1094713345`' section=root.5<br>
+**RESOURCE** "**Default Template**" PLAYER\_TEMPLATE class=18 guid='`1086324737`' section=root.4<br>
+MOUNT '*Player*' -\> PLAYER\_TEMPLATE "**Default Template**" player<br>
+**RESOURCE** "**Default Template(Edit Character)**" CHARACTER\_TEMPLATE class=19 guid='`1090519041`' section=root.4<br>
+**RESOURCE** "**Custom Class**" CLASS class=17 guid='`1090519041`' section=root.15<br>
+**RESOURCE** "**Inventory Template**" GIL\_INVENTORY\_TEMPLATE class=- guid='`1119879169`' section=root.15<br>
+**RESOURCE** "**Custom Camera**" CAMERA class=13 guid='`1073741825`' section=root.18<br>
+**RESOURCE** "**Terrain01**" TERRAIN\_ENTITY class=5 guid='`1073741825`' section=root.7<br>
+**RESOURCE** "**Default Layout**" INTERFACE\_LAYOUT class=20 guid='`1073741825`' section=root.9<br>
+**RESOURCE** "**HierarchyRoot**" INTERFACE\_LAYOUT class=20 guid='`1073741840`' section=root.9<br>
+**RESOURCE** "**HierarchyRoot**" INTERFACE\_LAYOUT class=20 guid='`1073741841`' section=root.9<br>
+**RESOURCE** "**ExclusiveEleGroupHierarchyRoot**" INTERFACE\_LAYOUT class=20 guid='`1073741842`' section=root.9<br>
+**RESOURCE** "**ClientUIRootHierarchyRoot**" INTERFACE\_LAYOUT class=20 guid='`1073741843`' section=root.9<br>
+**RESOURCE** "**ClientUIPrototypeHierarchyRoot**" INTERFACE\_LAYOUT class=20 guid='`1073741844`' section=root.9<br>
+**RESOURCE** "**Environment Configuration**" ENVIRONMENT\_CONFIGURATION class=49 guid='`1186988033`' section=root.15<br>
+**RESOURCE** "**Create Preset Point**" PRESET\_POINT class=6 guid='`1073741825`' section=root.11.5<br>
+**RESOURCE** "**Spawn Point1**" GIL\_RESPAWN\_POINT class=- guid='`1073741825`' section=root.11.3<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY class=- guid='`1086324737`' section=root.5<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY class=- guid='`1086324738`' section=root.5<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY class=- guid='`1086324739`' section=root.5<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY class=- guid='`1086324740`' section=root.5<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY class=- guid='`1086324741`' section=root.5<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY class=- guid='`1086324742`' section=root.5<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY class=- guid='`1086324743`' section=root.5<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY class=- guid='`1086324744`' section=root.5<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY class=- guid='`1086324745`' section=root.5<br>
+**RESOURCE** "**Default Template(Edit Character)**" GIL\_CHARACTER\_ENTITY class=- guid='`1090519041`' section=root.5<br>
+**RESOURCE** "**Custom Growth Curve**" GIL\_GROWTH\_CURVE class=- guid='`1094713345`' section=root.15<br>
+**RESOURCE** "**In-game Save**" class#41 class=41 guid='`1073741825`' section=root.31<br>
+**RESOURCE** "**In-game Save\_1**" class#41 class=41 guid='`1073741826`' section=root.31<br>
+**RESOURCE** "**Mini-Map**" UI\_CONTROL class=15 guid='`1073741826`' section=root.9<br>
+**RESOURCE** "**Skill Area**" UI\_CONTROL class=15 guid='`1073741827`' section=root.9<br>
+**RESOURCE** "**Team Information**" UI\_CONTROL class=15 guid='`1073741828`' section=root.9<br>
+**RESOURCE** "**Character HP Bar**" UI\_CONTROL class=15 guid='`1073741829`' section=root.9<br>
+**RESOURCE** "**Joystick**" UI\_CONTROL class=15 guid='`1073741830`' section=root.9<br>
+**RESOURCE** "**Creation HP Bar**" UI\_CONTROL class=15 guid='`1073741831`' section=root.9<br>
+**RESOURCE** "**Exit Button**" UI\_CONTROL class=15 guid='`1073741832`' section=root.9<br>
+**RESOURCE** "**Voice-Over**" UI\_CONTROL class=15 guid='`1073741833`' section=root.9<br>
+**RESOURCE** "**Tab**" UI\_CONTROL class=15 guid='`1073741834`' section=root.9<br>
+**RESOURCE** "**Chat Button**" UI\_CONTROL class=15 guid='`1073741835`' section=root.9<br>
+**RESOURCE** "**Network Status**" UI\_CONTROL class=15 guid='`1073741836`' section=root.9<br>
+**RESOURCE** "**Struggle Button**" UI\_CONTROL class=15 guid='`1073741837`' section=root.9<br>
+**RESOURCE** "**Voice Chat Button**" UI\_CONTROL class=15 guid='`1073741838`' section=root.9<br>
+**RESOURCE** "**Voice Chat Hint Queue**" UI\_CONTROL class=15 guid='`1073741839`' section=root.9<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Norm1**' : *L\<Struct\>* struct=Structure\_Normal\_1 = \[struct{struct{'`test1`'}, \[struct{'`test2`'}, struct{'`test3`'}\]}\]<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Norm2**' : *L\<Struct\>* struct=Structure\_Normal\_2 = \[struct{'`test`'}, struct{'`test`'}\]<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**1\_chip\_1**' : *L\<Struct\>* struct=Structure\_Save\_1 = \[\]<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**1\_chip\_2**' : *L\<Struct\>* struct=Structure\_Save\_2 = \[\]
+
 ---
 
 # REFS
 
+`custom_variable`  "**1\_chip\_1**" (*L\<Struct\>*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** get: \['*Player*'\], **0** set: \[\]<br>
+`custom_variable`  "**Norm1**" (*L\<Struct\>*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** get: \['*Player*'\], **0** set: \[\]<br>
 `graph_variable`&nbsp;&nbsp; "**Entity**" (*Ety*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \['*New Node Graph*'\]: **0** get, **0** set<br>
 `graph_variable`&nbsp;&nbsp; "**Faction**" (*Fct*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \['*New Node Graph*'\]: **0** get, **0** set<br>
 `graph_variable`&nbsp;&nbsp; "**Float**" (*Flt*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \['*New Node Graph*'\]: **0** get, **0** set<br>
@@ -431,7 +538,19 @@ MOUNT '*New Node Graph*' -\> OBJECT\_ENTITY "**Entity\_edited**" entity<br>
 `graph_variable`&nbsp;&nbsp; "**Status**" (*Dict*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \['<u>\<status\></u>*Status*'\]: **0** get, **0** set<br>
 `mount`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '*New Node Graph*'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** player: PLAYER\_TEMPLATE:"**Default Template**", **1** character: CHARACTER\_TEMPLATE:"**Default Template(Edit Character)**", **6** entity: OBJECT:"**Prefab\_no\_edits**"; OBJECT:"**Prefab\_edited**"; OBJECT\_ENTITY:"**Entity\_no\_edits**"; OBJECT\_ENTITY:"**Prefab\_no\_graph**"; OBJECT\_ENTITY:"**Prefab\_edited**"; OBJECT\_ENTITY:"**Entity\_edited**"<br>
 `mount`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '*Test5*'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** character: CHARACTER\_TEMPLATE:"**Default Template(Edit Character)**"<br>
-`struct`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Struct**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; defined guid=1077936129 fields=Add variable 1\|Add variable 2\|Add variable 3\|Add variable 4
+`mount`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '*Player*'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1** player: PLAYER\_TEMPLATE:"**Default Template**"<br>
+`struct`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Struct**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; defined guid=1077936129 fields=Add variable 1\|Add variable 2\|Add variable 3\|Add variable 4<br>
+`struct`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**\<struct#142\>**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (no definition found in the scanned files)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2** using-declaration: \['*Player*'\]<br>
+`struct`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**\<struct#50\>**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (no definition found in the scanned files)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2** using-declaration: \['*Player*'\]<br>
+`struct`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Structure\_Normal\_1**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; defined guid=1077936129 fields=Add variable 1\|Add variable 2<br>
+`struct`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Structure\_Normal\_2**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; defined guid=1077936132 fields=test<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2** field-type: Structure\_Normal\_1.Add variable 1; Structure\_Normal\_1.Add variable 2<br>
+`struct`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Structure\_Save\_1**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; defined guid=1077936130 fields=Add variable 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2** graph-affiliation: \['*Player*'\]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**4** pin-value: \['*Player*'\]<br>
+`struct`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "**Structure\_Save\_2**"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; defined guid=1077936131 fields=Add variable 1\|Add variable 2
 
 ---
 
@@ -447,7 +566,6 @@ MOUNT '*New Node Graph*' -\> OBJECT\_ENTITY "**Entity\_edited**" entity<br>
 *INFO*  declared-but-unused: graph variable "**Private**" in graph '*New Node Graph*' is declared but no node references it by literal name \[`variables_graph.gia`\]<br>
 *INFO*  declared-but-unused: graph variable "**Faction**" in graph '*Test5*' is declared but no node references it by literal name \[`variables_graph.gia`\]<br>
 *INFO*  declared-but-unused: graph variable "**Status**" in graph '<u>\<status\></u>*Status*' is declared but no node references it by literal name \[`variables_graph.gia`\]<br>
-*INFO*  struct-never-used: struct "**Struct**" (guid=1077936129 fields=Add variable 1\|Add variable 2\|Add variable 3\|Add variable 4) is defined but never used in the scanned graphs \[`variables_classic.gil`\]<br>
 *INFO*  custom-variable-type-conflict: custom variable "**On\_Prefab**" is declared with **2** different types: *Str* on "**Empty Model**", "**Same**", "**Value**", +1 more; *Int* on "**Type**" \[`variables_beyond.gia`\]<br>
 *INFO*  custom-variable-type-conflict: custom variable "**String**" is declared with **2** different types: *Dict\<Str,Str\>* on "**Stage Entity**"; *Str* on "**Default Template**", "**Default Template(Edit Character)**" \[`variables_classic.gil`\]<br>
 *INFO*  custom-variable-type-conflict: custom variable "**Struct**" is declared with **2** different types: *Dict\<Str,Struct\>* on "**Stage Entity**"; *Struct* struct=Struct on "**Default Template**", "**Default Template(Edit Character)**" \[`variables_classic.gil`\]
@@ -458,15 +576,16 @@ MOUNT '*New Node Graph*' -\> OBJECT\_ENTITY "**Entity\_edited**" entity<br>
 
 prefabs (OBJECT): 5/1000<br>
 dynamic entities (OBJECT\_ENTITY): 11/3000<br>
-PRESET\_POINT: 2/2000<br>
-ENVIRONMENT\_CONFIGURATION: 2/50<br>
-CLASS: 2/100<br>
-TERRAIN\_ENTITY: 2/1200
+PRESET\_POINT: 3/2000<br>
+ENVIRONMENT\_CONFIGURATION: 3/50<br>
+CLASS: 3/100<br>
+TERRAIN\_ENTITY: 3/1200
 
 ---
 
 ## top graphs by node count:
 
+'*Player*': 8/3000 nodes \[`variables_save.gil`\]<br>
 '*New Node Graph*': 0/3000 nodes \[`variables_graph.gia`\]<br>
 '*Test5*': 0/3000 nodes \[`variables_graph.gia`\]<br>
 '<u>\<status\></u>*Status*': 0/3000 nodes \[`variables_graph.gia`\]

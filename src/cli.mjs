@@ -20,8 +20,8 @@ modes:
   miliastra-search raw   <file>          [options]   schema-less protobuf dump (works even if the schema is outdated)
   miliastra-search all   <files|dirs...> [options]   info, dump (always with --details), refs and warns one after the other (code too with --with-code)
   miliastra-search llm   <files|dirs...>             everything for a language model to read: the all report without warns, in plain text, as short
-                       pseudocode. It takes only --lang (it sets --lenient --format text --short --dedup --tab --pseudocode --optimize
-                       --lazy --with-code itself) and no saved report
+                       pseudocode. It takes only --lang and --output (it sets --lenient --format text --short --dedup --tab --pseudocode
+                       --optimize --lazy --with-code itself) and no saved report
 
 Files are shown by their name only (no directory). A file that cannot be read or decoded stops the run: nothing is printed or written, and
 the exit code is 1. Files with the same name (case-sensitive) are refused even from different directories.
@@ -125,10 +125,10 @@ all modes:
 
 class UsageError extends Error {}
 
-// Modes are always listed in this order; `all` is the mode made of the others.
+// Modes are listed in this order; `all` is the mode made of the others.
 const MODES = ['info', 'dump', 'code', 'refs', 'warns', 'check', 'raw'];
 const COMMANDS = [...MODES, 'all', 'llm'];
-// `llm` is `all` with these options and without the warns part; the language is its only option of its own
+// `llm` is `all` with these options and without the warns part; the language and the output file are its only options of its own
 const LLM_OPTIONS = { lenient: true, format: 'text', short: true, dedup: true, tab: true, pseudocode: true, optimize: true, lazy: true, 'with-code': true };
 
 const FLAG_OPTIONS = new Set(['strict', 'all-pins', 'show-tag', 'lenient', 'help', 'no-file-prefix', 'sort-desc', 'details', 'with-code', 'pseudocode', 'optimize', 'lazy', 'expand', 'dedup', 'short', 'tab']);
@@ -223,9 +223,9 @@ export function main(argv, io) {
   if (!COMMANDS.includes(cmd)) { err(`unknown command "${cmd}"\n`); io.err(HELP); return 2; }
   const llm = cmd === 'llm';
   if (llm) {
-    const other = Object.keys(o).filter((k) => k !== '_' && k !== 'lang');
-    if (other.length) { err(`error: llm takes no options but --lang, got ${other.map((k) => '--' + k).join(', ')}`); return 2; }
-    o = { _: o._, ...(o.lang != null ? { lang: o.lang } : {}), ...LLM_OPTIONS };
+    const other = Object.keys(o).filter((k) => k !== '_' && k !== 'lang' && k !== 'output');
+    if (other.length) { err(`error: llm takes no options but --lang and --output, got ${other.map((k) => '--' + k).join(', ')}`); return 2; }
+    o = { _: o._, ...(o.lang != null ? { lang: o.lang } : {}), ...(o.output != null ? { output: o.output } : {}), ...LLM_OPTIONS };
     cmd = 'all';
   }
   if (o.input != null && !/^(gia|gil)$/.test(o.input)) { err(`error: --input must be gia or gil, got "${o.input}"`); return 2; }

@@ -9,14 +9,14 @@ A read-only, zero-dependency Node.js CLI (also runnable in a browser page) that 
 text (`dump` / `code`), a file summary (`info`), a reference index (`refs`), lint and limits (`warns`), a decoder-health report (`check`) and a
 schema-less dump (`raw`). Users are content authors auditing their own node graphs.
 
-| Document | Holds |
-|---|---|
-| `README.md` | User guide. Keep it free of internals. |
-| `TECHNICAL.md` | Architecture, layers, refs model, output layer, host/web design, data files, scripts, tests, update procedure. |
-| `FORMAT.md` | The binary format: the source of truth for every format fact the code relies on. |
-| `schema/gia.merged.proto` + `schema/CHANGELOG.md` | Field and enum reference; check it before guessing what a number means. |
-
-| `JSON.md` + `schema/report.schema.json` | The JSON report every mode prints (`--format json`): the contract for third-party software. |
+| Document | Audience | Holds |
+|---|---|---|
+| `README.md` | A person with no prior knowledge | What the program is for and how to run it. No internals, no option-by-option reference. |
+| `ADVANCED.md` | A user who wants the details | Every mode and option, the full list of findings, output examples, saved reports, behaviour on newer game versions. |
+| `TECHNICAL.md` | Someone (or an AI) asking how the project works | Architecture, layers, refs model, output layer, host/web design, option internals, data files, scripts, tests, update procedure. |
+| `FORMAT.md` | Someone (or an AI) building another tool for `.gia` / `.gil` | The file format: what is stored, how it is interpreted. The source of truth for every format fact the code relies on. |
+| `JSON.md` + `schema/report.schema.json` | Authors of third-party software | The JSON report every mode prints (`--format json`). |
+| `schema/gia.merged.proto` + `schema/CHANGELOG.md` | Anyone checking a field number | Field and enum reference, and notes on it (not a change log). |
 
 A behaviour change to `refs`, `dump`, `code` or `check` comes with a test and a matching update to whichever document owns that fact.
 
@@ -63,11 +63,16 @@ Fixtures are in `test/cases/<category>/`, one folder per category. A new fixture
 categories must keep an empty unknown-field census (`core.test.mjs`) and engine 7.0.0 (`gil.test.mjs`); newer-engine files get their own category.
 A genuinely new unknown field shows up in `check` / `check --strict`: decide whether to decode it (proto + `normValue` in `model.mjs`) or record it in `FORMAT.md` as seen but not decoded.
 
-## Comment style
+## Comments and documentation
 
-Comments explain *why* something is the way it is, especially magic numbers, service-domain tags and pin indices.
-Do not name other projects or where a fact came from. Describe the code as it is now: no history ("now", "no longer", "used to"), no bug stories, no reference to who asked for something, and neutral wording
-(no "never"/"always" unless it is literally an invariant). Do not restate what the line does.
+Applies to code comments, test titles, and every `.md` file. Write as if the project had no development history.
+
+* Describe only the present state: what something is, why it is that way (magic numbers, service-domain tags, pin indices, invariants, format facts). Do not restate what a line does.
+* No history or prompt leakage: no "before", "as before", "same as earlier", "now", "no longer", "used to", "still", "again", "instead of <old way>", "new", "fixed", "bug", "regression", no "it is printed here, not there". Nothing refers to a previous version of the code, to a request, or to who asked. A task phrased as "keep X working" yields no comment about X; delete rather than paraphrase a history sentence.
+* No "never" / "always" unless it is literally an invariant; otherwise use neutral present-tense wording.
+* Do not name other projects, sample or fixture files, or where a fact came from. Format facts are stated as facts ("observed in games 7.0.0 to 7.2.0" is fine).
+* Each document keeps to its audience (table above). A fact belongs in one document; the others link to it. `README.md` has no technical details. `FORMAT.md` describes the format, not this project's code. `TECHNICAL.md` describes how the project works, not how it got there.
+* `schema/CHANGELOG.md` holds schema notes, not a log of edits.
 
 ## Working notes
 

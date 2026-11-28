@@ -1,0 +1,13 @@
+== variables_save.gil  gil  engine 7.2.0  mode beyond  resources 84 (43 not interpreted)
+   UNKNOWN FIELD GilFile.node_graphs.graphs.graph.affiliations #3 wire 2 ×2 e.g. 93 bytes 0xb2060c10011a020803220418012001b2061010011a040803…
+   UNKNOWN FIELD GilFile.node_graphs.graphs.graph.nodes.using_structs #2 wire 0 ×4 e.g. 175
+   UNKNOWN FIELD GilFile.node_graphs.graphs.graph.nodes.using_structs #3 wire 0 ×4 e.g. 1
+   UNKNOWN FIELD GilFile.node_graphs.graphs.graph.nodes.using_structs #100 wire 2 ×4 e.g. 6 bytes 0x088280808204
+   UNKNOWN FIELD GilFile.node_graphs.structs.concreteField.vars.typedef3 #18 wire 2 ×2 e.g. 3 bytes 0x0a0100
+   UNKNOWN FIELD GilFile.node_graphs.structs.genericField.vars.typedef3 #18 wire 2 ×2 e.g. 3 bytes 0x0a0100
+   UNKNOWN FIELD GilFile #1 wire 0 ×1 e.g. 1073741951
+   UNKNOWN FIELD GilFile #50 wire 2 ×1 e.g. 2 bytes 0x1001
+   UNKNOWN FIELD GilFile #52 wire 0 ×1 e.g. 1073741951
+   UNKNOWN FIELD GilFile #53 wire 0 ×1 e.g. 1795772964
+   uninterpreted level sections: root.3, root.6, root.8, root.14, root.16, root.17, root.19, root.20, root.21, root.22, root.23, root.25, root.27, root.29, root.35, root.36, root.37, root.38, root.39, root.40, root.41, root.45, root.46, root.48, root.49
+   uninterpreted fields inside listed resources: 63 kinds (875 occurrences; see --format json)

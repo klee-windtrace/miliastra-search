@@ -19,7 +19,7 @@ import { here, lenField, varField, varint } from './helpers.mjs';
 const db = new NodeDb();
 const dir = path.join(here, 'cases', 'variables72');
 const load = (name) => parseBundle(fs.readFileSync(path.join(dir, name)), { file: name });
-const beyond = load('variables_beyond.gia'), classic = load('variables_classic.gil'), refs = load('variables_ref.gil');
+const beyond = load('variables_beyond.gia'), classic = load('variables_classic.gil'), refs = load('variables_ref.gil'), saves = load('variables_save.gil');
 const resource = (b, className, name) => b.resources.find((r) => r.className === className && (name == null || r.name === name));
 const summary = (r) => Object.fromEntries(r.variables.map((v) => [v.name, v.value.v ?? null]));
 const dump = (b) => fileDump(b, db, { analysis: analyzeBundle(b, db) });
@@ -148,6 +148,36 @@ test('.gil: the players mirror their template, so only the prefab table has rows
   assert.deepEqual([...new Set(v.prefabs.map((x) => x.owner.kind))], ['stage', 'player', 'character']);
   assert.equal(v.entities.length, 0);
   assert.equal(v.prefabs.find((x) => x.name === 'Struct' && x.owner.kind === 'player').struct.name, 'Struct');
+});
+
+test('.gil: the variables of the in-game saves are declared by every player template and player entity, after their own', () => {
+  // two saves ("In-game Save", "In-game Save_1") that both declare 1_chip_1 and 1_chip_2 as lists of the same structs; the template's own variables are Norm1 and Norm2
+  assert.deepEqual(saves.resources.filter((r) => r.className === 'class#41').map((r) => r.name), ['In-game Save', 'In-game Save_1']);
+  const shape = (r) => r.variables.map((v) => [v.name, v.label, v.structId]);
+  const template = resource(saves, 'PLAYER_TEMPLATE');
+  assert.deepEqual(shape(template).map((x) => x.slice(0, 2)), [['Norm1', 'L<Struct>'], ['Norm2', 'L<Struct>'], ['1_chip_1', 'L<Struct>'], ['1_chip_2', 'L<Struct>']], 'once each');
+  assert.deepEqual(template.variables.slice(2).map((v) => [v.typeId, v.value]), [[26, { k: 'list', items: [] }], [26, { k: 'list', items: [] }]], 'no content');
+  for (const e of saves.resources.filter((r) => r.className === 'GIL_PLAYER_ENTITY')) assert.deepEqual(shape(e), shape(template));
+  assert.equal(resource(saves, 'CHARACTER_TEMPLATE').variables.length, 0, 'only players have save variables');
+  const v = dump(saves).variables;
+  assert.deepEqual(v.prefabs.map((x) => [x.owner.kind, x.name, x.type, x.struct.name]), [
+    ['player', 'Norm1', 'L<Struct>', 'Structure_Normal_1'], ['player', 'Norm2', 'L<Struct>', 'Structure_Normal_2'],
+    ['player', '1_chip_1', 'L<Struct>', 'Structure_Save_1'], ['player', '1_chip_2', 'L<Struct>', 'Structure_Save_2'],
+  ]);
+  assert.equal(v.entities.length, 0, 'the players mirror their template');
+});
+
+test('.gil: a graph that uses a save variable by name does not raise custom-variable-undeclared', () => {
+  const { findings } = buildRefs([saves], db);
+  assert.deepEqual(findings.filter((f) => f.type.startsWith('custom-variable-')), []);
+  const withoutSaves = load('variables_save.gil');
+  for (const r of withoutSaves.resources) if (r.variables) r.variables = r.variables.filter((v) => !v.name.startsWith('1_chip'));
+  assert.deepEqual(buildRefs([withoutSaves], db).findings.filter((f) => f.type === 'custom-variable-undeclared').map((f) => f.key), ['1_chip_1'], 'it is the saves that declare the name');
+});
+
+test('.gil: the dump text lists a save variable like a custom variable', () => {
+  const lines = textLines(dumpBlocks(dump(saves))).map(plain);
+  assert.ok(lines.includes('VARIABLE Player 1086324737:"Default Template" \'1_chip_1\' : L<Struct> struct=Structure_Save_1 = []'));
 });
 
 test('varscan: negative integers, packed lists and a struct list, read from hand-made bytes', () => {

@@ -1,3 +1,5 @@
+custom_variable  "1_chip_1" (L<Struct>)             1 get: ['Player'], 0 set: []
+custom_variable  "Norm1" (L<Struct>)                1 get: ['Player'], 0 set: []
 graph_variable   "Entity" (Ety)                     ['New Node Graph']: 0 get, 0 set
 graph_variable   "Faction" (Fct)                    ['New Node Graph']: 0 get, 0 set
 graph_variable   "Float" (Flt)                      ['New Node Graph']: 0 get, 0 set

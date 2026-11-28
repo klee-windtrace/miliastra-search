@@ -12,8 +12,8 @@
 //   struct   { 1: typed value }*, 501: struct id  a field is a typed value of its own, named by its 501
 //   list of structs { 1: typed value (a struct) }*, 501: struct id
 //   dict     { 501: key, 502: value, 503: key type id, 504: value type id }   key and value are typed values
-// Field 6 repeats the declared type; 5 is 1 in every file seen. The edit of a published graph variable on a host (mounts.mjs) is the same message without field 3. The meaning of a type's `2` (type info) is not fully known: for a struct it is
-// `{ 1: 1, 2: struct id }`, for a dictionary a selector that is not read. Derived from variables_classic.gil and variables_beyond.gia (game 7.2.0), see FORMAT.md.
+// Field 6 repeats the declared type; 5 is 1. The edit of a published graph variable on a host (mounts.mjs) is the same message without field 3. The meaning of a type's `2` (type info) is not fully known: for a struct it is
+// `{ 1: 1, 2: struct id }`, for a dictionary a selector that is not read. See FORMAT.md.
 import { walkRaw } from './decode.mjs';
 
 const safe = (b) => { try { return walkRaw(b); } catch { return []; } };
@@ -127,7 +127,7 @@ export function readVariable(bytes) {
 
 /**
  * The custom variables of an entity or template definition `f` (its decoded top-level fields), `dynField` = its dynamic component list.
- * An empty array when the component holds none; the definition always carries the component, so a definition without it is also `[]`.
+ * An empty array when the component holds none; a definition without the component also gives `[]`.
  */
 export function scanVariables(f, dynField) {
   for (const c of f.filter((x) => x.field === dynField && x.wire === 2)) {

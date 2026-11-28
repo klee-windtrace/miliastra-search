@@ -234,7 +234,7 @@ test('the validator rejects reports that do not fit', () => {
   assert.notDeepEqual(bad((c) => { c.refs.references[0].note = 'plain string'; }), []);
 });
 
-test('raw: NaN and infinite floats survive JSON, and the tree prints like the old dump', () => {
+test('raw: NaN and infinite floats survive JSON, and the tree prints them as text', () => {
   const { report } = reportOf(['raw', G + 'sample_2.gia']);
   assert.deepEqual(validate(report, schema), []);
   assert.equal(report.header.mode, 'raw');

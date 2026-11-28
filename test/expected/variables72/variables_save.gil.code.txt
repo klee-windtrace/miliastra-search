@@ -1,0 +1,39 @@
+STRUCT "Structure_Normal_1" guid='1077936129' id=1077936129 version=10
+STRUCT/Structure_Normal_1 FIELD#1 "Add variable 1" : Struct struct=Structure_Normal_2
+STRUCT/Structure_Normal_1 FIELD#2 "Add variable 2" : L<Struct> struct=Structure_Normal_2
+STRUCT "Structure_Save_1" guid='1077936130' id=1077936130 version=8
+STRUCT/Structure_Save_1 FIELD#1 "Add variable 1" : Str
+STRUCT "Structure_Save_2" guid='1077936131' id=1077936131 version=8
+STRUCT/Structure_Save_2 FIELD#1 "Add variable 1" : L<Int>
+STRUCT/Structure_Save_2 FIELD#2 "Add variable 2" : L<Int>
+STRUCT "Structure_Normal_2" guid='1077936132' id=1077936132 version=8
+STRUCT/Structure_Normal_2 FIELD#1 "test" : Str
+GRAPH 'Player' ENTITY_NODE_GRAPH (guid 1073741825)
+'Player'/AFFIL struct=1077936130 source_guid=50
+'Player'/AFFIL struct=1077936130 source_guid=142
+'Player'/[1] Get Custom Variable (50) @(-183.5,-84)
+'Player'/[1] Get Custom Variable (50) in#0 "Target Entity" <- [2] Get Self Entity (73) out#0 "Self Entity" : Ety
+'Player'/[1] Get Custom Variable (50) in#1 "Variable Name" = '1_chip_1' : Str
+'Player'/[1] Get Custom Variable (50) out#0 "Variable Value" = [] : L<Struct>
+'Player'/[2] Get Self Entity (73) @(-71.5,-242)
+'Player'/[3] Get List Length (142) @(-173.5,207)
+'Player'/[3] Get List Length (142) in#0 "List" <- [1] Get Custom Variable (50) out#0 "Variable Value" : L<Struct>
+'Player'/[3] Get List Length (142) in#0 "List" = [] : L<Struct> (also wired)
+'Player'/[4] Multiple Branches (3) @(-125.5,419)
+'Player'/[4] Multiple Branches (3) in#0 "Control Expression" <- [6] Addition (200) out#0 "Result" : Int
+'Player'/[4] Multiple Branches (3) in#0 "Control Expression" = 0 : Int (also wired)
+'Player'/[5] When Entity Is Created (71) @(-508.5,418)
+'Player'/[5] When Entity Is Created (71) out.flow#0 -> [4] Multiple Branches (3) in.flow#0
+'Player'/[6] Addition (200) @(295.35715,450.92856)
+'Player'/[6] Addition (200) in#0 <- [3] Get List Length (142) out#0 "Length" : Int
+'Player'/[6] Addition (200) in#0 = 0 : Int (also wired)
+'Player'/[6] Addition (200) in#1 <- [7] Get List Length (142) out#0 "Length" : Int
+'Player'/[6] Addition (200) in#1 = 0 : Int (also wired)
+'Player'/[6] Addition (200) out#0 "Result" = 0 : Int
+'Player'/[7] Get List Length (142) @(355.35715,193.09525)
+'Player'/[7] Get List Length (142) in#0 "List" <- [8] Get Custom Variable (50) out#0 "Variable Value" : L<Struct>
+'Player'/[7] Get List Length (142) in#0 "List" = [] : L<Struct> (also wired)
+'Player'/[8] Get Custom Variable (50) @(345.35715,-97.90476)
+'Player'/[8] Get Custom Variable (50) in#0 "Target Entity" <- [2] Get Self Entity (73) out#0 "Self Entity" : Ety
+'Player'/[8] Get Custom Variable (50) in#1 "Variable Name" = 'Norm1' : Str
+'Player'/[8] Get Custom Variable (50) out#0 "Variable Value" = [] : L<Struct>

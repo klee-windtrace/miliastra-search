@@ -1,6 +1,6 @@
 ﻿// Schema-driven protobuf decoder with a built-in unknown-field census.
-// It never throws on unknown fields or wire-type mismatches: it records them and keeps going.
-// (It does throw RangeError on structurally broken bytes: truncated data, bad varints.)
+// Unknown fields and wire-type mismatches are recorded and decoding goes on.
+// (RangeError is thrown on structurally broken bytes: truncated data, bad varints.)
 
 const td = new TextDecoder('utf-8', { fatal: false });
 

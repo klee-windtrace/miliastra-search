@@ -222,6 +222,83 @@
 
 ---
 
+## File `variables_save.gil`
+
+## File
+
+| Property | Value |
+| --- | --- |
+| format | gil |
+| detected\_by | header |
+| file\_size | 38920 |
+| container\_file\_type | gil |
+| engine\_version | 7.2.0 |
+| mode | beyond |
+| level\_name | save\_variable |
+| node\_db\_version | 7.2.0 |
+
+## Contents
+
+| Property | Value |
+| --- | --- |
+| resources | 84 |
+| graphs | 1 |
+| nodes | 8 |
+| composite\_bodies | 0 |
+| declarations | 36 |
+| structs | 4 |
+| mounts | 1 |
+| unresolved\_node\_types | 0 |
+
+### Resources by class
+
+| Class | Class id | Count |
+| --- | ---: | ---: |
+| TERRAIN\_ENTITY | 5 | **1** |
+| PRESET\_POINT | 6 | **1** |
+| ENTITY\_NODE\_GRAPH | 9 | **1** |
+| COMPOSITE\_NODE\_DECL | 12 | **36** |
+| CAMERA | 13 | **1** |
+| UI\_CONTROL | 15 | **14** |
+| CLASS | 17 | **1** |
+| PLAYER\_TEMPLATE | 18 | **1** |
+| CHARACTER\_TEMPLATE | 19 | **1** |
+| INTERFACE\_LAYOUT | 20 | **6** |
+| STRUCTURE | 29 | **4** |
+| class#41 | 41 | **2** |
+| ENVIRONMENT\_CONFIGURATION | 49 | **1** |
+| GIL\_CHARACTER\_ENTITY | - | **1** |
+| GIL\_GROWTH\_CURVE | - | **1** |
+| GIL\_INVENTORY\_TEMPLATE | - | **1** |
+| GIL\_LEVEL\_ENTITY | - | **1** |
+| GIL\_PLAYER\_ENTITY | - | **9** |
+| GIL\_RESPAWN\_POINT | - | **1** |
+
+### Level sections
+
+| Section | Resources | Description |
+| --- | ---: | --- |
+| root.4 | **2** | templates: prefabs, player and character templates, creation templates |
+| root.5 | **11** | entities placed in the level, plus the stage, player and character entities |
+| root.7 | **1** | terrains |
+| root.9 | **20** | UI: layouts and their controls |
+| root.10.1 | **1** | node graphs (entity, status, class, item, skill, filter, creation graphs) |
+| root.10.2 | **36** | node declarations: signals and composite declarations |
+| root.10.6 | **4** | struct definitions |
+| root.11.3 | **1** | respawn points |
+| root.11.5 | **1** | preset points |
+| root.15 | **4** | configs: unit statuses, classes, skills, items and the like |
+| root.18 | **1** | cameras |
+| root.31 | **2** | save data |
+
+### Resource folders
+
+| Folder | Graphs | Resources |
+| --- | ---: | ---: |
+| /(default)/ | **1** |   |
+
+---
+
 # Dump
 
 ## File `variables_beyond.gia`
@@ -529,20 +606,93 @@
 | Stage 1094713345:"**Stage Entity**" | '**Dict**' | *Dict\<Gid,Pfb\>* | {id:1094713345 {GIL\_LEVEL\_ENTITY:"**Stage Entity**"}: id:1077936129 {OBJECT:"**Empty Model**"}} |
 | Stage 1094713345:"**Stage Entity**" | '**Entity**' | *Ety* | null |
 
+## File `variables_save.gil`
+
+## Graphs (1)
+
+| Name | Class | Class id | Guid | Kind | Service | Nodes | Folder |
+| --- | --- | ---: | --- | ---: | ---: | ---: | --- |
+| '*Player*' | ENTITY\_NODE\_GRAPH | 9 | '`1073741825`' | 21001 | 20000 | **8** | /(default)/ |
+
+## Resources (43)
+
+| Name | Class | Class id | Guid | Section | Mounted graphs |
+| --- | --- | ---: | --- | --- | --- |
+| "**Stage Entity**" | GIL\_LEVEL\_ENTITY | - | '`1094713345`' | root.5 |   |
+| "**Default Template**" | PLAYER\_TEMPLATE | 18 | '`1086324737`' | root.4 | player: '*Player*' |
+| "**Default Template(Edit Character)**" | CHARACTER\_TEMPLATE | 19 | '`1090519041`' | root.4 |   |
+| "**Custom Class**" | CLASS | 17 | '`1090519041`' | root.15 |   |
+| "**Inventory Template**" | GIL\_INVENTORY\_TEMPLATE | - | '`1119879169`' | root.15 |   |
+| "**Custom Camera**" | CAMERA | 13 | '`1073741825`' | root.18 |   |
+| "**Terrain01**" | TERRAIN\_ENTITY | 5 | '`1073741825`' | root.7 |   |
+| "**Default Layout**" | INTERFACE\_LAYOUT | 20 | '`1073741825`' | root.9 |   |
+| "**HierarchyRoot**" | INTERFACE\_LAYOUT | 20 | '`1073741840`' | root.9 |   |
+| "**HierarchyRoot**" | INTERFACE\_LAYOUT | 20 | '`1073741841`' | root.9 |   |
+| "**ExclusiveEleGroupHierarchyRoot**" | INTERFACE\_LAYOUT | 20 | '`1073741842`' | root.9 |   |
+| "**ClientUIRootHierarchyRoot**" | INTERFACE\_LAYOUT | 20 | '`1073741843`' | root.9 |   |
+| "**ClientUIPrototypeHierarchyRoot**" | INTERFACE\_LAYOUT | 20 | '`1073741844`' | root.9 |   |
+| "**Environment Configuration**" | ENVIRONMENT\_CONFIGURATION | 49 | '`1186988033`' | root.15 |   |
+| "**Create Preset Point**" | PRESET\_POINT | 6 | '`1073741825`' | root.11.5 |   |
+| "**Spawn Point1**" | GIL\_RESPAWN\_POINT | - | '`1073741825`' | root.11.3 |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | - | '`1086324737`' | root.5 |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | - | '`1086324738`' | root.5 |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | - | '`1086324739`' | root.5 |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | - | '`1086324740`' | root.5 |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | - | '`1086324741`' | root.5 |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | - | '`1086324742`' | root.5 |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | - | '`1086324743`' | root.5 |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | - | '`1086324744`' | root.5 |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | - | '`1086324745`' | root.5 |   |
+| "**Default Template(Edit Character)**" | GIL\_CHARACTER\_ENTITY | - | '`1090519041`' | root.5 |   |
+| "**Custom Growth Curve**" | GIL\_GROWTH\_CURVE | - | '`1094713345`' | root.15 |   |
+| "**In-game Save**" | class#41 | 41 | '`1073741825`' | root.31 |   |
+| "**In-game Save\_1**" | class#41 | 41 | '`1073741826`' | root.31 |   |
+| "**Mini-Map**" | UI\_CONTROL | 15 | '`1073741826`' | root.9 |   |
+| "**Skill Area**" | UI\_CONTROL | 15 | '`1073741827`' | root.9 |   |
+| "**Team Information**" | UI\_CONTROL | 15 | '`1073741828`' | root.9 |   |
+| "**Character HP Bar**" | UI\_CONTROL | 15 | '`1073741829`' | root.9 |   |
+| "**Joystick**" | UI\_CONTROL | 15 | '`1073741830`' | root.9 |   |
+| "**Creation HP Bar**" | UI\_CONTROL | 15 | '`1073741831`' | root.9 |   |
+| "**Exit Button**" | UI\_CONTROL | 15 | '`1073741832`' | root.9 |   |
+| "**Voice-Over**" | UI\_CONTROL | 15 | '`1073741833`' | root.9 |   |
+| "**Tab**" | UI\_CONTROL | 15 | '`1073741834`' | root.9 |   |
+| "**Chat Button**" | UI\_CONTROL | 15 | '`1073741835`' | root.9 |   |
+| "**Network Status**" | UI\_CONTROL | 15 | '`1073741836`' | root.9 |   |
+| "**Struggle Button**" | UI\_CONTROL | 15 | '`1073741837`' | root.9 |   |
+| "**Voice Chat Button**" | UI\_CONTROL | 15 | '`1073741838`' | root.9 |   |
+| "**Voice Chat Hint Queue**" | UI\_CONTROL | 15 | '`1073741839`' | root.9 |   |
+
+## Variables
+
+| Prefab | Variable | Type | Value |
+| --- | --- | --- | --- |
+| Player 1086324737:"**Default Template**" | '**Norm1**' | *L\<Struct\>* struct=Structure\_Normal\_1 | \[struct{struct{'`test1`'}, \[struct{'`test2`'}, struct{'`test3`'}\]}\] |
+| Player 1086324737:"**Default Template**" | '**Norm2**' | *L\<Struct\>* struct=Structure\_Normal\_2 | \[struct{'`test`'}, struct{'`test`'}\] |
+| Player 1086324737:"**Default Template**" | '**1\_chip\_1**' | *L\<Struct\>* struct=Structure\_Save\_1 | \[\] |
+| Player 1086324737:"**Default Template**" | '**1\_chip\_2**' | *L\<Struct\>* struct=Structure\_Save\_2 | \[\] |
+
 ---
 
 # Refs
 
 ## Reference index
 
-Scanned 4 files:
+Scanned 5 files:
 
 - `variables_beyond.gia`
 - `variables_classic.gil`
 - `variables_graph.gia`
 - `variables_ref.gil`
+- `variables_save.gil`
 
 ## References
+
+### `custom_variable` (2)
+
+| custom\_variable | Type | get | set |
+| --- | --- | --- | --- |
+| "**1\_chip\_1**" | *L\<Struct\>* | **1**<br>'*Player*' | **0** |
+| "**Norm1**" | *L\<Struct\>* | **1**<br>'*Player*' | **0** |
 
 ### `graph_variable` (8)
 
@@ -557,18 +707,25 @@ Scanned 4 files:
 | "**Faction**" | *Fct* | '*Test5*' | **0** | **0** |
 | "**Status**" | *Dict* | '<u>\<status\></u>*Status*' | **0** | **0** |
 
-### `mount` (2)
+### `mount` (3)
 
 | mount | player | character | entity |
 | --- | --- | --- | --- |
 | '*New Node Graph*' | **1**<br>PLAYER\_TEMPLATE:"**Default Template**" | **1**<br>CHARACTER\_TEMPLATE:"**Default Template(Edit Character)**" | **6**<br>OBJECT:"**Prefab\_no\_edits**"; OBJECT:"**Prefab\_edited**"; OBJECT\_ENTITY:"**Entity\_no\_edits**"; OBJECT\_ENTITY:"**Prefab\_no\_graph**"; OBJECT\_ENTITY:"**Prefab\_edited**"; OBJECT\_ENTITY:"**Entity\_edited**" |
 | '*Test5*' |   | **1**<br>CHARACTER\_TEMPLATE:"**Default Template(Edit Character)**" |   |
+| '*Player*' | **1**<br>PLAYER\_TEMPLATE:"**Default Template**" |   |   |
 
-### `struct` (1)
+### `struct` (7)
 
-| struct | Definition |
-| --- | --- |
-| "**Struct**" | guid=1077936129 fields=Add variable 1\|Add variable 2\|Add variable 3\|Add variable 4 |
+| struct | Definition | using-declaration | field-type | graph-affiliation | pin-value |
+| --- | --- | --- | --- | --- | --- |
+| "**Struct**" | guid=1077936129 fields=Add variable 1\|Add variable 2\|Add variable 3\|Add variable 4 |   |   |   |   |
+| "**\<struct#142\>**" | (no definition found in the scanned files) | **2**<br>'*Player*' |   |   |   |
+| "**\<struct#50\>**" | (no definition found in the scanned files) | **2**<br>'*Player*' |   |   |   |
+| "**Structure\_Normal\_1**" | guid=1077936129 fields=Add variable 1\|Add variable 2 |   |   |   |   |
+| "**Structure\_Normal\_2**" | guid=1077936132 fields=test |   | **2**<br>Structure\_Normal\_1.Add variable 1; Structure\_Normal\_1.Add variable 2 |   |   |
+| "**Structure\_Save\_1**" | guid=1077936130 fields=Add variable 1 |   |   | **2**<br>'*Player*' | **4**<br>'*Player*' |
+| "**Structure\_Save\_2**" | guid=1077936131 fields=Add variable 1\|Add variable 2 |   |   |   |   |
 
 ---
 
@@ -576,12 +733,13 @@ Scanned 4 files:
 
 ## Warnings and limits
 
-Scanned 4 files:
+Scanned 5 files:
 
 - `variables_beyond.gia`
 - `variables_classic.gil`
 - `variables_graph.gia`
 - `variables_ref.gil`
+- `variables_save.gil`
 
 ## Findings
 
@@ -595,7 +753,6 @@ Scanned 4 files:
 | *INFO* | declared-but-unused | graph variable "**Private**" in graph '*New Node Graph*' is declared but no node references it by literal name | `variables_graph.gia` |
 | *INFO* | declared-but-unused | graph variable "**Faction**" in graph '*Test5*' is declared but no node references it by literal name | `variables_graph.gia` |
 | *INFO* | declared-but-unused | graph variable "**Status**" in graph '<u>\<status\></u>*Status*' is declared but no node references it by literal name | `variables_graph.gia` |
-| *INFO* | struct-never-used | struct "**Struct**" (guid=1077936129 fields=Add variable 1\|Add variable 2\|Add variable 3\|Add variable 4) is defined but never used in the scanned graphs | `variables_classic.gil` |
 | *INFO* | custom-variable-type-conflict | custom variable "**On\_Prefab**" is declared with **2** different types: *Str* on "**Empty Model**", "**Same**", "**Value**", +1 more; *Int* on "**Type**" | `variables_beyond.gia` |
 | *INFO* | custom-variable-type-conflict | custom variable "**String**" is declared with **2** different types: *Dict\<Str,Str\>* on "**Stage Entity**"; *Str* on "**Default Template**", "**Default Template(Edit Character)**" | `variables_classic.gil` |
 | *INFO* | custom-variable-type-conflict | custom variable "**Struct**" is declared with **2** different types: *Dict\<Str,Struct\>* on "**Stage Entity**"; *Struct* struct=Struct on "**Default Template**", "**Default Template(Edit Character)**" | `variables_classic.gil` |
@@ -608,10 +765,10 @@ Scanned 4 files:
 | --- | ---: |
 | prefabs (OBJECT) | 5/1000 |
 | dynamic entities (OBJECT\_ENTITY) | 11/3000 |
-| PRESET\_POINT | 2/2000 |
-| ENVIRONMENT\_CONFIGURATION | 2/50 |
-| CLASS | 2/100 |
-| TERRAIN\_ENTITY | 2/1200 |
+| PRESET\_POINT | 3/2000 |
+| ENVIRONMENT\_CONFIGURATION | 3/50 |
+| CLASS | 3/100 |
+| TERRAIN\_ENTITY | 3/1200 |
 
 ---
 
@@ -619,6 +776,7 @@ Scanned 4 files:
 
 | Graph | Effective nodes | File |
 | --- | ---: | --- |
+| '*Player*' | 8/3000 | `variables_save.gil` |
 | '*New Node Graph*' | 0/3000 | `variables_graph.gia` |
 | '*Test5*' | 0/3000 | `variables_graph.gia` |
 | '<u>\<status\></u>*Status*' | 0/3000 | `variables_graph.gia` |

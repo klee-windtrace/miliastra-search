@@ -1,6 +1,6 @@
 ﻿// Builds web/miliastra-search.bundle.js: the whole engine (src/web.mjs and everything it imports) plus the data files
 // as ONE classic script, so miliastra-search.htm works when opened straight from disk. Browsers refuse ES modules and
-// fetch() on file:// pages, which is why the modules are folded into a single file here instead of being loaded as is.
+// fetch() on file:// pages, which is why the modules are folded into a single file.
 //
 // This is a deliberately tiny bundler that understands only the import/export forms the engine uses (named imports,
 // `export function|const|class|let`); anything else makes it fail loudly rather than produce a broken bundle.

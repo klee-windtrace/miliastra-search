@@ -70,13 +70,13 @@ test('refs: mount kind, --name works on the plain graph name', () => {
   assert.deepEqual([...new Set(m.map((r) => r.role))].sort(), ['character', 'entity', 'player']);
 });
 
-test('stripped dynamic entity (fewer dynamic components, but still some) stays dynamic', () => {
+test('stripped dynamic entity (fewer dynamic components, but some left) stays dynamic', () => {
   assert.equal(cls('Native_Dymanic_Stripped'), 'OBJECT_ENTITY');
   assert.equal(cls('Converted_Dynamic2Static'), 'STATIC_ENTITY');
   assert.equal(buildRefs([b], db).limits.staticEntities, 3);
 });
 
-test('prefab editing area (root 8: unsaved drafts and their copies) is never listed', () => {
+test('prefab editing area (root 8: unsaved drafts and their copies) is not listed', () => {
   // Prefab_Copied exists only as a draft instance in the editing area; Prefab_Placed/Prefab_NotPlaced are saved prefabs.
   assert.equal(b.resources.filter((r) => r.name === 'Prefab_Copied').length, 0);
   assert.equal(b.resources.filter((r) => r.name === 'Prefab_Placed').length, 1);
@@ -114,7 +114,7 @@ test('the prefab of an entity is found in a .gia too, by the entity definition',
   assert.ok(run(['dump', gia, '--format', 'text']).split('\n').filter((l) => /^RESOURCE .* (OBJECT_ENTITY|STATIC_ENTITY) /.test(l)).every((l) => /parent=\(\d+[:)]/.test(l)));
 });
 
-test('dump lists graphs as a table (no STRUCT entries); code still lists structs', () => {
+test('dump lists graphs as a table (no STRUCT entries); code lists structs', () => {
   const s3 = path.join(casesDir, 'gia', 'sample_3.gia');
   const dumpText = run(['dump', s3, '--format', 'text']);
   assert.doesNotMatch(dumpText, /^STRUCT /m);

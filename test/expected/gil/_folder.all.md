@@ -1065,8 +1065,6 @@ FOLDER /(default)/ graphs=11 resources=7
 *INFO*  signal-never-used: signal "**Signal\_1**" is declared but never sent or listened to in the scanned graphs \[`stage_9.gil`\]<br>
 **WARN**  composite-definition-count-anomaly: composite "**Create Composite Node**" has **2** definition(s) in the scanned files (expected exactly 1) – guid=1073741825; guid=1073741825; this points to a structural bug in the GIL/GIA or in how this tool parsed it \[`stage_012379.gil`\]<br>
 **WARN**  composite-definition-count-anomaly: composite "**Create Composite Node(1)**" has **2** definition(s) in the scanned files (expected exactly 1) – guid=1073741826; guid=1073741826; this points to a structural bug in the GIL/GIA or in how this tool parsed it \[`stage_012379.gil`\]<br>
-*INFO*  struct-never-used: struct "**Structure\_2**" (guid=1077936131 fields=) is defined but never used in the scanned graphs \[`stage_012379.gil`\]<br>
-*INFO*  struct-never-used: struct "**Structure**" (guid=1077936129 fields=) is defined but never used in the scanned graphs \[`stage_9.gil`\]<br>
 *INFO*  custom-variable-undeclared: custom variable "**test**" is used in \['<u>\<filter\></u>*New Filter Node Graph\_1*'\] but no entity, prefab or template declares it \[`stage_012379.gil`\]<br>
 *INFO*  custom-variable-undeclared: custom variable "**test**" is used in \['<u>\<filter\></u>*New Filter Node Graph\_1*'\] but no entity, prefab or template declares it \[`stage_7.gil`\]
 

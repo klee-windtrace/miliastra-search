@@ -41,8 +41,7 @@ function codegenRules() {
   const choice = new Map(r.choice.flatMap((c) => c.nodes.map((id) => [id, { form: c.form, defaultFirst: c.default === 'first' }])));
   const hidden = new Map(r.hiddenInputs.flatMap((h) => h.nodes.map((id) => [id, new Set(h.pins)])));
   const redundant = new Map(r.redundantInputs.flatMap((h) => h.nodes.map((id) => [id, new Set(h.pins)])));
-  const fixedDicts = new Map(r.fixedDicts.map((f) => [`${f.node}:${f.pin}`, { key: f.key, value: f.value }]));
-  return { choice, hidden, redundant, fixedDicts, redundantEnums: new Set(r.redundantEnums), graphEnd: new Set(r.graphEnd), localVariable: new Set(r.localVariable) };
+  return { choice, hidden, redundant, redundantEnums: new Set(r.redundantEnums), graphEnd: new Set(r.graphEnd), localVariable: new Set(r.localVariable) };
 }
 // the interval of a filter graph when the file does not store one (seconds)
 const DEFAULT_EVALUATION_INTERVAL = 0.3;
@@ -204,7 +203,7 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
   // ---- what a node is: its pins (also the ones the file does not store), and whether it runs ------------------------------------------------------
   /**
    * Binds the generic parameters (and what a dictionary maps) nobody stored from the pins this node is wired to: the type of what feeds an input, and what the
-   * inputs of the nodes an output feeds make of their own parameters. A node that is still being described (a loop of wires) says nothing.
+   * inputs of the nodes an output feeds make of their own parameters. A node that is being described (a loop of wires) says nothing.
    */
   function inferFromWires(gi, n, d, params) {
     const def = db.node(d.info.shellId)?.pins ?? {};
@@ -278,7 +277,7 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
     d.redundant = rules.redundant.get(rule) ?? null;
     d.end = rules.graphEnd.has(rule);
     d.localVar = rules.localVariable.has(rule);
-    d.exec = d.inFlow.length > 0 || d.outFlow.length > 0 || d.end; // a graph's end node has no flow pins, it is still what the graph runs
+    d.exec = d.inFlow.length > 0 || d.outFlow.length > 0 || d.end; // a graph's end node has no flow pins, it is what the graph runs
     d.event = !d.callee && d.inFlow.length === 0 && d.outFlow.length > 0;
 
     // generic pins take their type from the node's variant, or from what the file says about the pins it stores
@@ -314,7 +313,7 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
       const p = stored(OUT_PARAM).find((q) => q.index === index);
       if (p?.value?.keyType) return dictOfNames(p.value.keyType, p.value.valueType);
       if (info.user) { const t = info.user.iface.outputs.find((q) => q.index === index)?.type; return t?.mapKey != null ? dictOfNames(typeName(backend, t.mapKey), typeName(backend, t.mapValue)) : null; }
-      return rules.fixedDicts.get(`${info.shellId}:out_param:${index}`) ?? dictOfDb(db.pinDef(info.shellId, 'out_param', index)?.type, params);
+      return dictOfDb(db.pinDef(info.shellId, 'out_param', index)?.type, params);
     };
     d.outData = keyed(indexes(OUT_PARAM, gi.outRefs.get(n.index) ?? []).map((index) => ({ index, name: pinName(OUT_PARAM, index), key: null, type: typeWord(outType(index)), dict: outDict(index) })));
     // what the node is given: every input it has (the file stores a pin only for the ones that were wired or edited), and the meta pins (a signal node's
@@ -393,7 +392,7 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
     } else if (d.choice) b = { type: 'choice', pins, terminal: false, sequence: false, start: null };
     else if (pins.length <= 1) b = { type: 'single', pins, terminal: pins.length === 0, sequence: false, start: null };
     else b = generic;
-    // a flow into any input but the first of a node with several (a loop's "Break Loop") ends it instead of starting it
+    // a flow into any input but the first of a node with several (a loop's "Break Loop") ends it; it does not start it
     if (!d.callee && d.inFlow.length > 1) b = { ...b, start: d.inFlow[0].index };
     behaviors.set(n, b);
     return b;
@@ -512,7 +511,7 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
     function inputDict(d, index, raw) {
       if (raw?.keyType) return dictOfNames(raw.keyType, raw.valueType);
       if (d.info.user) { const t = d.info.user.iface.inputs.find((q) => q.index === index)?.type; const backend = d.info.user.iface.id?.shell && SERVER_SERVICES.includes(d.info.user.iface.id.shell.service) ? 1 : 2; return t?.mapKey != null ? dictOfNames(typeName(backend, t.mapKey), typeName(backend, t.mapValue)) : null; }
-      return rules.fixedDicts.get(`${d.info.shellId}:in_param:${index}`) ?? dictOfDb(db.pinDef(d.info.shellId, 'in_param', index)?.type, d.params);
+      return dictOfDb(db.pinDef(d.info.shellId, 'in_param', index)?.type, d.params);
     }
     const literalOf = (inst, n, pin) => {
       const value = valueJson(pin?.value, db);
@@ -561,7 +560,7 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
         const ci = childOf(inst, sn, d), at = ci.gi.outDataPorts.get(outIdx);
         return at ? outputExpr(ci, at.node, at.pin, st) : { kind: 'missing', ...blank, node: nodeRef(inst.gi, srcIdx) };
       }
-      if (d.exec && !d.callee) { // a composite keeps no output: whoever reads one runs the data chain behind it again
+      if (d.exec && !d.callee) { // a composite keeps no output: reading one runs the data chain behind it
         const ex = exByKey.get(`${inst.key}/${sn.index}`), name = ex?.globals.get(outIdx);
         for (let i = inst; i.parent; i = i.parent) st.bodies.add(i.gi.res.gkey); // reading what an expanded body's node gives out makes use of the body
         if (!name) return { kind: 'missing', ...blank, node: nodeRef(inst.gi, srcIdx) };
@@ -638,7 +637,7 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
       for (const a of pins) {
         const expr = inputExpr(inst, n, a.index, st, a.kind);
         // an input the game hides in its editor is only worth a line when it holds something other than its default; one that says what the node's title or
-        // its other pins already say (the operator of a math node, the Count of an assembly) is never
+        // its other pins already say (the operator of a math node, the Count of an assembly) is not
         const hidden = a.kind === IN_PARAM && expr?.kind === 'literal' && !!(
           (d.hidden?.has(a.index) && !expr.value.set) || d.redundant?.has(a.index)
           || (!d.info.user && expr.value.kind === 'enum' && rules.redundantEnums.has(enumFamily(d, { kind: IN_PARAM, index: a.index }, expr.value))));
@@ -660,7 +659,7 @@ export function pseudocodeBuilder(bundle, db, analysis, { valueJson, resourceOf,
       nameLocals(st);
 
       const behavior = behaviorOf(inst.gi, n);
-      // a flow output the node never leaves through (a composite's output its body never reaches) is wired to nothing that runs
+      // a flow output the node does not leave through (a composite's output its body never reaches) is wired to nothing that runs
       const next = d.outFlow.filter((p) => behavior.pins.includes(p.index)).map((p) => ({ pin: pinRef(OUT_FLOW, p.index, p.name), label: p.key, targets: flowTargets(inst, n.index, p.index) }));
       const terminal = !next.some((b) => b.targets.length);
       const ports = inst.parent ? [] : [...inst.gi.inFlowPorts].filter(([, list]) => list.some((m) => m.node === n.index)).map(([ext]) => {

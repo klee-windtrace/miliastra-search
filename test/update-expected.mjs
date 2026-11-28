@@ -1,4 +1,4 @@
-﻿// Rewrites every file under test/expected from the current CLI output (and removes files no longer produced).
+﻿// Rewrites every file under test/expected from the current CLI output (and removes files not produced).
 // Run it after an intended output change, then review the diff:   npm run update-expected
 import fs from 'node:fs';
 import path from 'node:path';

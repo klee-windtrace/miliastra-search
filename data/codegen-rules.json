@@ -1,5 +1,5 @@
 {
-  "description": "fixedDicts: pins that are dictionaries of one fixed kind (the database types them just Dict): what they map. Nodes that the pseudocode treats in a way their pins do not say, by the node id of the node database (the shell id; a variant keeps it). choice: the flow leaves through exactly one flow output and never through none; `form` is how the call is written ('if' for two outputs, 'switch' for any number), `default` 'first' writes the first output as the `default:` of the switch. A native node with a single flow output always leaves through it, and every other native node with several flow outputs (the loops, Execute only by sequence) runs them in turn. graphEnd: the node that ends a filter graph, which has no flow pins and no execution at all. localVariable: a node that creates a variable of its own each time it is placed in a graph. hiddenInputs: input pins (by index) that only matter when they hold something other than the game's default; a renderer leaves them out unless every pin is asked for. redundantInputs: input pins (by index) that say nothing the node does not say already, whatever they hold (the timer's context GUID, the Count of an assembly, which the listed items give), left out the same way. redundantEnums: the enum families (database ids) whose value a node's title already says (the operator of a math, comparison, logic or type conversion node).",
+  "description": "Nodes that the pseudocode treats in a way their pins do not say, by the node id of the node database (the shell id; a variant keeps it). choice: the flow leaves through exactly one flow output and never through none; `form` is how the call is written ('if' for two outputs, 'switch' for any number), `default` 'first' writes the first output as the `default:` of the switch. A native node with a single flow output always leaves through it, and every other native node with several flow outputs (the loops, Execute only by sequence) runs them in turn. graphEnd: the node that ends a filter graph, which has no flow pins and no execution at all. localVariable: a node that creates a variable of its own each time it is placed in a graph. hiddenInputs: input pins (by index) that only matter when they hold something other than the game's default; a renderer leaves them out unless every pin is asked for. redundantInputs: input pins (by index) that say nothing the node does not say already, whatever they hold (the timer's context GUID, the Count of an assembly, which the listed items give), left out the same way. redundantEnums: the enum families (database ids) whose value a node's title already says (the operator of a math, comparison, logic or type conversion node).",
   "choice": [
     { "nodes": [2, 200056, 200125], "form": "if" },
     { "nodes": [3, 200127, 200264], "form": "switch", "default": "first" }
@@ -13,25 +13,6 @@
   "redundantInputs": [
     { "nodes": [79], "pins": [4] },
     { "nodes": [169, 200049, 200191, 1788, 200152, 200228], "pins": [0] }
-  ],
-  "fixedDicts": [
-    { "node": 297, "pin": "in_param:4", "key": "Str", "value": "Int" },
-    { "node": 704, "pin": "in_param:4", "key": "Cfg", "value": "Int" },
-    { "node": 706, "pin": "in_param:3", "key": "Cfg", "value": "Int" },
-    { "node": 707, "pin": "in_param:3", "key": "Cfg", "value": "Int" },
-    { "node": 708, "pin": "in_param:3", "key": "Cfg", "value": "Int" },
-    { "node": 709, "pin": "in_param:3", "key": "Cfg", "value": "Int" },
-    { "node": 710, "pin": "in_param:3", "key": "Cfg", "value": "Int" },
-    { "node": 705, "pin": "out_param:4", "key": "Cfg", "value": "Int" },
-    { "node": 717, "pin": "out_param:1", "key": "Cfg", "value": "Int" },
-    { "node": 718, "pin": "out_param:0", "key": "Cfg", "value": "Int" },
-    { "node": 719, "pin": "out_param:0", "key": "Cfg", "value": "Int" },
-    { "node": 721, "pin": "out_param:0", "key": "Cfg", "value": "Int" },
-    { "node": 722, "pin": "out_param:0", "key": "Cfg", "value": "Int" },
-    { "node": 730, "pin": "out_param:0", "key": "Cfg", "value": "Int" },
-    { "node": 731, "pin": "out_param:0", "key": "Cfg", "value": "Int" },
-    { "node": 720, "pin": "in_param:1", "key": "Cfg", "value": "Int" },
-    { "node": 725, "pin": "in_param:1", "key": "Cfg", "value": "Int" }
   ],
   "redundantEnums": [2, 3, 4, 9, 200002, 200003, 200004, 200009, 200036]
 }

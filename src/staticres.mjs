@@ -3,7 +3,7 @@
 //
 //  1. resolvePin():  "what string does this input pin hold?" – following wires through proxy nodes that merely
 //     hold a name (Get Local Variable, Get Node Graph Variable, composites), so a wired name is
-//     still reported as a *static* reference instead of `dynamic`.
+//     reported as a *static* reference, not as `dynamic`.
 //  2. analyzeListener(): "which names does this When-…-Changes/Triggered event really handle?" – walks the
 //     execution chain after the event while it is a pure compare-and-branch name switch (Multiple Branches /
 //     Double Branch+Equal) and reports the handled names; anything else in the chain is a catch-all path.
@@ -157,8 +157,8 @@ export class StaticResolver {
   // Listener analysis
   // ---------------------------------------------------------------------------------------------------------------
   // Execution-flow successors of node `nodeIdx`'s out-flow pin `outFlowIdx`, crossing composite boundaries in
-  // *either* direction so a listener whose nodes were each individually wrapped in their own composite (Miliastra's
-  // "wrap in composite" applied node-by-node) still analyses exactly as if none of them had been: entering a
+  // *either* direction so a listener whose nodes were each individually wrapped in their own composite
+  // (Miliastra's "wrap in composite" applied node-by-node) analyses exactly like the unwrapped one: entering a
   // composite call mid-chain (its body has exactly one relevant entry node, found via its in-flow PORTMAP) is the
   // mirror of resolvePin's composite-output handling; leaving a body via its own out-flow PORTMAP (only possible
   // with a caller on `frames`) is the mirror of resolvePin's composite-input handling. Returns continuation points

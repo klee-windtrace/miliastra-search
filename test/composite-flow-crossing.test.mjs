@@ -54,9 +54,9 @@ test('signal send/listen nodes wrapped in their own composite are attributed to 
   for (const r of real) assert.equal(r.graph, 'All_Composite');
 });
 
-test('a get/set/start/stop pin fed by a wire with no local pin entry (fully delegated to a composite port) still resolves', () => {
+test('a get/set/start/stop pin fed by a wire with no local pin entry (fully delegated to a composite port) resolves', () => {
   // A named pin that has NO entry at all in the physical node's own `pins` array (because it is exposed purely as a
-  // composite input port) must still be looked up by the rule's pin index, not treated as absent.
+  // composite input port) is looked up by the rule's pin index, not treated as absent.
   const { refs } = refsAndOverview('test_All_Composite.gia');
   // graphKindNum !== 21002 (COMPOSITE_BODY_KIND): the `raw` physical/introspection copy inside the composite body
   // is *expected* to stay dynamic (its input port really does depend on the caller) – only the real-graph-attributed

@@ -32,7 +32,7 @@ export function fileDump(bundle, db, { analysis = null } = {}) {
   const entitiesOf = (r) => {
     if (!TEMPLATE_CLASSES.has(r.classId)) return null;
     const n = entityCount.get(r.guid) || 0;
-    return r.classId === 1 || n ? n : null; // a prefab always says how many entities it has, the other templates only when some do
+    return r.classId === 1 || n ? n : null; // a prefab says how many entities it has, the other templates only when some do
   };
 
   const items = [];

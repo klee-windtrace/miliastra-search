@@ -636,7 +636,7 @@
           }
         },
         "prefabs": {
-          "description": "One row per variable of a prefab, in the order stage, player templates, character templates, other prefabs; after the custom variables of each prefab the published graph variables it sets to a value other than the graph's.",
+          "description": "One row per variable of a prefab, in the order stage, player templates, character templates, other prefabs; after the custom variables of each prefab (a player template's include the variables of the level's in-game saves) the published graph variables it sets to a value other than the graph's.",
           "type": "array",
           "items": {
             "type": "object",

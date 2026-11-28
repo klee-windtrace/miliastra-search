@@ -32,6 +32,14 @@ test('warns prints findings, limits and top graphs, and no reference tables', ()
   assert.match(run(['warns', s2, '--format', 'html']), /<h2 id="limits">Limits<\/h2>/);
 });
 
+test('a struct nothing in the graphs uses is not reported: uses of a struct outside the graphs are not followed', () => {
+  // the file defines a struct that no graph mentions
+  const structs = run(['refs', 'test/cases/gia/sample_9.gia', '--kind', 'struct', '--format', 'text']);
+  assert.match(structs, /"Structure"\s+defined/);
+  assert.doesNotMatch(run(['warns', 'test/cases/gia/sample_9.gia', '--format', 'text']), /struct-never-used|never used/);
+  assert.equal(JSON.parse(run(['warns', 'test/cases/gia', '--format', 'json'])).warns.findings.filter((f) => f.type === 'struct-never-used').length, 0);
+});
+
 test('warns: a file without findings says so; the limits stay', () => {
   const out = cli('warns', clean).stdout;
   assert.match(out, /^# findings\n\(no findings\)$/m);

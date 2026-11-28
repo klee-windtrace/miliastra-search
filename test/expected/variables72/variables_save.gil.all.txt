@@ -1,0 +1,130 @@
+# INFO
+# FILE variables_save.gil
+format                 gil
+detected_by            header
+file_size              38920
+container_file_type    gil
+engine_version         7.2.0
+mode                   beyond
+level_name             save_variable
+node_db_version        7.2.0
+resources              84
+graphs                 1
+nodes                  8
+composite_bodies       0
+declarations           36
+structs                4
+mounts                 1
+unresolved_node_types  0
+CLASS TERRAIN_ENTITY class=5 count=1
+CLASS PRESET_POINT class=6 count=1
+CLASS ENTITY_NODE_GRAPH class=9 count=1
+CLASS COMPOSITE_NODE_DECL class=12 count=36
+CLASS CAMERA class=13 count=1
+CLASS UI_CONTROL class=15 count=14
+CLASS CLASS class=17 count=1
+CLASS PLAYER_TEMPLATE class=18 count=1
+CLASS CHARACTER_TEMPLATE class=19 count=1
+CLASS INTERFACE_LAYOUT class=20 count=6
+CLASS STRUCTURE class=29 count=4
+CLASS class#41 class=41 count=2
+CLASS ENVIRONMENT_CONFIGURATION class=49 count=1
+CLASS GIL_CHARACTER_ENTITY class=- count=1
+CLASS GIL_GROWTH_CURVE class=- count=1
+CLASS GIL_INVENTORY_TEMPLATE class=- count=1
+CLASS GIL_LEVEL_ENTITY class=- count=1
+CLASS GIL_PLAYER_ENTITY class=- count=9
+CLASS GIL_RESPAWN_POINT class=- count=1
+SECTION root.4 resources=2 description='templates: prefabs, player and character templates, creation templates'
+SECTION root.5 resources=11 description='entities placed in the level, plus the stage, player and character entities'
+SECTION root.7 resources=1 description='terrains'
+SECTION root.9 resources=20 description='UI: layouts and their controls'
+SECTION root.10.1 resources=1 description='node graphs (entity, status, class, item, skill, filter, creation graphs)'
+SECTION root.10.2 resources=36 description='node declarations: signals and composite declarations'
+SECTION root.10.6 resources=4 description='struct definitions'
+SECTION root.11.3 resources=1 description='respawn points'
+SECTION root.11.5 resources=1 description='preset points'
+SECTION root.15 resources=4 description='configs: unit statuses, classes, skills, items and the like'
+SECTION root.18 resources=1 description='cameras'
+SECTION root.31 resources=2 description='save data'
+FOLDER /(default)/ graphs=1
+
+# DUMP
+GRAPH /(default)/'Player' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=8
+RESOURCE "Stage Entity" GIL_LEVEL_ENTITY class=- guid='1094713345' section=root.5
+RESOURCE "Default Template" PLAYER_TEMPLATE class=18 guid='1086324737' section=root.4
+MOUNT 'Player' -> PLAYER_TEMPLATE "Default Template" player
+RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519041' section=root.4
+RESOURCE "Custom Class" CLASS class=17 guid='1090519041' section=root.15
+RESOURCE "Inventory Template" GIL_INVENTORY_TEMPLATE class=- guid='1119879169' section=root.15
+RESOURCE "Custom Camera" CAMERA class=13 guid='1073741825' section=root.18
+RESOURCE "Terrain01" TERRAIN_ENTITY class=5 guid='1073741825' section=root.7
+RESOURCE "Default Layout" INTERFACE_LAYOUT class=20 guid='1073741825' section=root.9
+RESOURCE "HierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741840' section=root.9
+RESOURCE "HierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741841' section=root.9
+RESOURCE "ExclusiveEleGroupHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741842' section=root.9
+RESOURCE "ClientUIRootHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741843' section=root.9
+RESOURCE "ClientUIPrototypeHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741844' section=root.9
+RESOURCE "Environment Configuration" ENVIRONMENT_CONFIGURATION class=49 guid='1186988033' section=root.15
+RESOURCE "Create Preset Point" PRESET_POINT class=6 guid='1073741825' section=root.11.5
+RESOURCE "Spawn Point1" GIL_RESPAWN_POINT class=- guid='1073741825' section=root.11.3
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324737' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324738' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324739' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324740' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324741' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324742' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324743' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324744' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324745' section=root.5
+RESOURCE "Default Template(Edit Character)" GIL_CHARACTER_ENTITY class=- guid='1090519041' section=root.5
+RESOURCE "Custom Growth Curve" GIL_GROWTH_CURVE class=- guid='1094713345' section=root.15
+RESOURCE "In-game Save" class#41 class=41 guid='1073741825' section=root.31
+RESOURCE "In-game Save_1" class#41 class=41 guid='1073741826' section=root.31
+RESOURCE "Mini-Map" UI_CONTROL class=15 guid='1073741826' section=root.9
+RESOURCE "Skill Area" UI_CONTROL class=15 guid='1073741827' section=root.9
+RESOURCE "Team Information" UI_CONTROL class=15 guid='1073741828' section=root.9
+RESOURCE "Character HP Bar" UI_CONTROL class=15 guid='1073741829' section=root.9
+RESOURCE "Joystick" UI_CONTROL class=15 guid='1073741830' section=root.9
+RESOURCE "Creation HP Bar" UI_CONTROL class=15 guid='1073741831' section=root.9
+RESOURCE "Exit Button" UI_CONTROL class=15 guid='1073741832' section=root.9
+RESOURCE "Voice-Over" UI_CONTROL class=15 guid='1073741833' section=root.9
+RESOURCE "Tab" UI_CONTROL class=15 guid='1073741834' section=root.9
+RESOURCE "Chat Button" UI_CONTROL class=15 guid='1073741835' section=root.9
+RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741836' section=root.9
+RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741837' section=root.9
+RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741838' section=root.9
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741839' section=root.9
+VARIABLE Player 1086324737:"Default Template" 'Norm1' : L<Struct> struct=Structure_Normal_1 = [struct{struct{'test1'}, [struct{'test2'}, struct{'test3'}]}]
+VARIABLE Player 1086324737:"Default Template" 'Norm2' : L<Struct> struct=Structure_Normal_2 = [struct{'test'}, struct{'test'}]
+VARIABLE Player 1086324737:"Default Template" '1_chip_1' : L<Struct> struct=Structure_Save_1 = []
+VARIABLE Player 1086324737:"Default Template" '1_chip_2' : L<Struct> struct=Structure_Save_2 = []
+
+# REFS
+custom_variable  "1_chip_1" (L<Struct>)             1 get: ['Player'], 0 set: []
+custom_variable  "Norm1" (L<Struct>)                1 get: ['Player'], 0 set: []
+mount            'Player'                           1 player: PLAYER_TEMPLATE:"Default Template"
+struct           "<struct#142>"                     (no definition found in the scanned files)
+                                                    2 using-declaration: ['Player']
+struct           "<struct#50>"                      (no definition found in the scanned files)
+                                                    2 using-declaration: ['Player']
+struct           "Structure_Normal_1"               defined guid=1077936129 fields=Add variable 1|Add variable 2
+struct           "Structure_Normal_2"               defined guid=1077936132 fields=test
+                                                    2 field-type: Structure_Normal_1.Add variable 1; Structure_Normal_1.Add variable 2
+struct           "Structure_Save_1"                 defined guid=1077936130 fields=Add variable 1
+                                                    2 graph-affiliation: ['Player']
+                                                    4 pin-value: ['Player']
+struct           "Structure_Save_2"                 defined guid=1077936131 fields=Add variable 1|Add variable 2
+
+# WARNS
+# findings
+(no findings)
+
+# limits
+PRESET_POINT: 1/2000
+ENVIRONMENT_CONFIGURATION: 1/50
+CLASS: 1/100
+TERRAIN_ENTITY: 1/1200
+
+top graphs by node count:
+'Player': 8/3000 nodes

@@ -3,7 +3,7 @@
 //   miliastra-search.mjs -> imports ./host-node.mjs   (real file system)
 //   web/ bundle          -> imports ./host-web.mjs    (files held in memory, data files embedded in the bundle)
 // The engine itself never asks "where am I running": it calls these functions and whoever started the process has
-// installed the implementation first. A new need for the outside world = a new function here + one line in each host.
+// installed the implementation first. Each capability of the outside world is one function here plus one line in each host.
 //
 // A host is { fs, data }:
 //   fs.readFile(path) -> Uint8Array        fs.head(path, n) -> Uint8Array (first n bytes)

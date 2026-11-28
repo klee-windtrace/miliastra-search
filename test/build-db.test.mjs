@@ -19,10 +19,10 @@ const maps = { EN: new Map([[100, 'Target'], [101, 'Value'], [200, 'Node']]), CH
 // ---- builders
 const idBlock = (service, id) => cat(vf(1, 10001), vf(2, service), vf(3, 22000), vf(5, id));
 const entry = ({ sel, conn, cvt, enumId } = {}) => cat(sel !== undefined && vf(8, sel), conn !== undefined && vf(3, conn), cvt !== undefined && vf(4, cvt), enumId !== undefined && ld(101, vf(1, enumId)));
-const pinMsg = ({ name, slot, emptySlot, widget, conn, cvt, family, def, roles = [], list = [] } = {}) => cat(
+const pinMsg = ({ name, slot, emptySlot, widget, conn, cvt, family, def, dict, roles = [], list = [] } = {}) => cat(
   name !== undefined && vf(7, name), slot !== undefined && ld(3, vf(2, slot)), emptySlot && ld(3, Buffer.alloc(0)),
-  (widget !== undefined || conn !== undefined || cvt !== undefined || family !== undefined || def || list.length) && ld(4, cat(
-    widget !== undefined && vf(1, widget), def && ld(2, def), conn !== undefined && vf(3, conn), cvt !== undefined && vf(4, cvt), family !== undefined && ld(101, vf(1, family)),
+  (widget !== undefined || conn !== undefined || cvt !== undefined || family !== undefined || def || dict || list.length) && ld(4, cat(
+    widget !== undefined && vf(1, widget), def && ld(2, def), conn !== undefined && vf(3, conn), cvt !== undefined && vf(4, cvt), family !== undefined && ld(101, vf(1, family)), dict && ld(105, cat(vf(3, dict[0]), vf(4, dict[1]))),
     list.length && ld(103, cat(...list.map((e) => ld(1, entry(e))))))),
   ...roles.map((r) => ld(5, vf(1, r))),
 );
@@ -82,6 +82,24 @@ test('readNode: ids, domain, names, pin types, roles, hidden, defaults, slots, k
   assert.equal(readNode(parseStrict(new Uint8Array(nodeFile({ id: 5, pins: { 102: [pinMsg({ widget: 2, conn: 3, cvt: 3 })] } }))), maps).variant, undefined);
 });
 
+test('readNode: a dictionary pin of fixed kinds names its key and value types from the type block; without them it is just Dict', () => {
+  const server = readNode(parseStrict(new Uint8Array(nodeFile({ id: 7, pins: { 102: [
+    pinMsg({ widget: 10003, conn: 27, cvt: 27, dict: [6, 5] }), pinMsg({ widget: 10003, conn: 27, cvt: 27 }), pinMsg({ widget: 10003, conn: 27, cvt: 27, dict: [6, 99] }),
+  ], 103: [pinMsg({ widget: 10003, conn: 27, cvt: 27, dict: [20, 3] })] } }))), maps);
+  assert.deepEqual([0, 1, 2].map((i) => server.pins[`in_param:${i}`].type), ['D<Str,Flt>', 'Dict', 'Dict']);
+  assert.equal(server.pins['out_param:0'].type, 'D<Cfg,Int>');
+  const client = readNode(parseStrict(new Uint8Array(nodeFile({ id: 200017, service: 20001, pins: { 102: [pinMsg({ widget: 10003, conn: 24, cvt: 24, dict: [9, 7] })] } }))), maps);
+  assert.equal(client.pins['in_param:0'].type, 'D<Str,Flt>');
+});
+
+test('the shipped database types the dictionary pins of fixed kinds', () => {
+  const db = JSON.parse(fs.readFileSync(new URL('../data/nodes.json', import.meta.url), 'utf8')).nodes;
+  assert.equal(db[297].pins['in_param:4'].type, 'D<Str,Flt>');        // Add Unit Status
+  assert.equal(db[704].pins['in_param:4'].type, 'D<Cfg,Int>');        // Set Custom Shop Item Sales Info
+  assert.equal(db[730].pins['out_param:0'].type, 'D<Cfg,Int>');       // Get All Items from Loot Component
+  assert.equal(db[828].pins['in_param:2'].type, 'D<Int,L<Int>>');     // Show Floating Interaction Page
+});
+
 test('readNode: client nodes use the client type table; two id blocks are listed; disagreeing ids are an error', () => {
   const client = readNode(parseStrict(new Uint8Array(nodeFile({ id: 200016, service: 20001, pins: { 102: [pinMsg({ widget: 6, conn: 5, cvt: 5 }), pinMsg({ widget: 2, conn: 14, cvt: 14 })] } }))), maps);
   assert.equal(client.sys, 'Client'); assert.deepEqual([client.pins['in_param:0'].type, client.pins['in_param:1'].type], ['Bol', 'Gid']);
@@ -108,7 +126,7 @@ test('variants: selector by position, selector by .8, dictionary, key/value role
   const why = [];
   assert.equal(constraintOf(parseStrict(new Uint8Array(variant(1, binding(3, 1, 50)))).filter((f) => f.field === 2).map((f) => parseStrict(f.value)), { in_param: [{ roles: [], variantTypes: [] }, { roles: [], variantTypes: types.map((x) => ({ conn: x.conn, cvt: x.cvt })) }] }, 1, why), null);
   assert.deepEqual(why, ['no variant entry 50 on in_param:1 (its list has 3)']);
-  assert.equal(single.noConstraintWhy.length, 2);   // the two variants above that stay without a constraint; only diagnostics, never in the output
+  assert.equal(single.noConstraintWhy.length, 2);   // the two variants above that stay without a constraint; only diagnostics, not part of the output
   assert.ok(!('noConstraintWhy' in JSON.parse(JSON.stringify(single))));
 
   const kv = readNode(parseStrict(new Uint8Array(nodeFile({
@@ -208,7 +226,7 @@ test('buildDb: nodes, enums, kernels, names in every language found, source hash
   assert.equal(doc.nodes[22].variants[0].c, 'C<T:Int>');
   assert.deepEqual(doc.kernels, { 22: { node: 22, constraint: 'C<T:Int>' }, 1005: { node: 22 } });
   assert.deepEqual(doc.enums[2], { names: { CHS: '比较', EN: 'Compare' }, values: { 100: { names: { EN: 'Equal' } }, 101: { names: { EN: 'Less' } } } });
-  assert.deepEqual(doc.enums[1].values, { 0: { names: { EN: 'Equal' } } });          // value 0 is omitted on the wire and still read
+  assert.deepEqual(doc.enums[1].values, { 0: { names: { EN: 'Equal' } } });          // value 0 is omitted on the wire and read as 0
   assert.deepEqual(notes.noConstraint, []); assert.deepEqual(notes.noConstraintWhy, {});
   assert.equal(buildDb(nodeRoot).doc.sources[0].gameVersion, undefined);
 
@@ -279,7 +297,7 @@ test('compareDb: agreement and differences in every shared language, ignoring th
   assert.match(compareDb(built, wider).join('\n'), /built CHS, EN; reference CHS, DE, EN; compared CHS, EN/);
 });
 
-test('cli: the comparison is always printed and --out always written; defaults; --help; bad usage and bad paths fail cleanly', () => {
+test('cli: the comparison is printed and --out is written; defaults; --help; bad usage and bad paths fail cleanly', () => {
   const drive = tmp();
   const nodeDir = fakeInstall(path.join(drive, ...JSON_ROOT), { texts: { EN: [[200, 'N']], CHS: [[200, 'n']] }, nodes: [nodeFile({ id: 5, name: 200, pins: { 103: [pinMsg({ conn: 3, cvt: 3 })] } })] });
   fs.writeFileSync(path.join(drive, ...GAME, 'config.ini'), '[General]\ngame_version=7.1.0\n');
@@ -297,7 +315,7 @@ test('cli: the comparison is always printed and --out always written; defaults; 
   assert.equal(run(['--compare', target, '--out', target, '--version', '1.2.3'], w, e, { PROGRAMFILES: path.join(drive, 'Program Files') }), 0);
   assert.match(out, /game version: 1\.2\.3/); assert.doesNotMatch(out, /^DIFF/m);
   assert.equal(JSON.parse(fs.readFileSync(target, 'utf8')).sources[0].gameVersion, '1.2.3');
-  out = '';   // no reference at all: noted, still written
+  out = '';   // no reference at all: noted, and the file is written
   const fresh = path.join(drive, 'fresh.json');
   assert.equal(run(['--genshin', drive, '--compare', path.join(drive, 'none.json'), '--out', fresh], w, e), 0);
   assert.match(out, /nothing to compare with/); assert.ok(fs.existsSync(fresh));

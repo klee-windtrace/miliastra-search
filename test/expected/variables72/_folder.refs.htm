@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>refs variables_beyond.gia, variables_classic.gil, variables_graph.gia, variables_ref.gil</title>
+<title>refs variables_beyond.gia, variables_classic.gil, variables_graph.gia, variables_ref.gil, variables_save.gil</title>
 <style>
 :root{color-scheme:dark;--bg:#0C0C0C;--panel:#161616;--line:#2e2e2e;--fg:#CCCCCC;--muted:#767676;--accent:#61D6D6}
 *{box-sizing:border-box}
@@ -91,7 +91,9 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <body>
 <main>
 <h1>Reference index</h1>
-<pre class="lines"><span class="kind">graph_variable</span>   "<span class="key">Entity</span>" (<span class="typeName">Ety</span>)                     ['<span class="graphName">New Node Graph</span>']: <span class="count">0</span> <span class="role">get</span>, <span class="count">0</span> <span class="role">set</span>
+<pre class="lines"><span class="kind">custom_variable</span>  "<span class="key">1_chip_1</span>" (<span class="typeName">L&lt;Struct&gt;</span>)             <span class="count">1</span> <span class="role">get</span>: ['<span class="graphName">Player</span>'], <span class="count">0</span> <span class="role">set</span>: []
+<span class="kind">custom_variable</span>  "<span class="key">Norm1</span>" (<span class="typeName">L&lt;Struct&gt;</span>)                <span class="count">1</span> <span class="role">get</span>: ['<span class="graphName">Player</span>'], <span class="count">0</span> <span class="role">set</span>: []
+<span class="kind">graph_variable</span>   "<span class="key">Entity</span>" (<span class="typeName">Ety</span>)                     ['<span class="graphName">New Node Graph</span>']: <span class="count">0</span> <span class="role">get</span>, <span class="count">0</span> <span class="role">set</span>
 <span class="kind">graph_variable</span>   "<span class="key">Faction</span>" (<span class="typeName">Fct</span>)                    ['<span class="graphName">New Node Graph</span>']: <span class="count">0</span> <span class="role">get</span>, <span class="count">0</span> <span class="role">set</span>
 <span class="kind">graph_variable</span>   "<span class="key">Float</span>" (<span class="typeName">Flt</span>)                      ['<span class="graphName">New Node Graph</span>']: <span class="count">0</span> <span class="role">get</span>, <span class="count">0</span> <span class="role">set</span>
 <span class="kind">graph_variable</span>   "<span class="key">Integer</span>" (<span class="typeName">Int</span>)                    ['<span class="graphName">New Node Graph</span>']: <span class="count">0</span> <span class="role">get</span>, <span class="count">0</span> <span class="role">set</span>
@@ -101,7 +103,19 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="kind">graph_variable</span>   "<span class="key">Status</span>" (<span class="typeName">Dict</span>)                    ['<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>']: <span class="count">0</span> <span class="role">get</span>, <span class="count">0</span> <span class="role">set</span>
 <span class="kind">mount</span>            '<span class="graphName">New Node Graph</span>'                   <span class="count">1</span> <span class="role">player</span>: <span class="className">PLAYER_TEMPLATE</span>:"<span class="key">Default Template</span>", <span class="count">1</span> <span class="role">character</span>: <span class="className">CHARACTER_TEMPLATE</span>:"<span class="key">Default Template(Edit Character)</span>", <span class="count">6</span> <span class="role">entity</span>: <span class="className">OBJECT</span>:"<span class="key">Prefab_no_edits</span>"; <span class="className">OBJECT</span>:"<span class="key">Prefab_edited</span>"; <span class="className">OBJECT_ENTITY</span>:"<span class="key">Entity_no_edits</span>"; <span class="className">OBJECT_ENTITY</span>:"<span class="key">Prefab_no_graph</span>"; <span class="className">OBJECT_ENTITY</span>:"<span class="key">Prefab_edited</span>"; <span class="className">OBJECT_ENTITY</span>:"<span class="key">Entity_edited</span>"
 <span class="kind">mount</span>            '<span class="graphName">Test5</span>'                            <span class="count">1</span> <span class="role">character</span>: <span class="className">CHARACTER_TEMPLATE</span>:"<span class="key">Default Template(Edit Character)</span>"
-<span class="kind">struct</span>           "<span class="key">Struct</span>"                           defined guid=1077936129 fields=Add variable 1|Add variable 2|Add variable 3|Add variable 4</pre>
+<span class="kind">mount</span>            '<span class="graphName">Player</span>'                           <span class="count">1</span> <span class="role">player</span>: <span class="className">PLAYER_TEMPLATE</span>:"<span class="key">Default Template</span>"
+<span class="kind">struct</span>           "<span class="key">Struct</span>"                           defined guid=1077936129 fields=Add variable 1|Add variable 2|Add variable 3|Add variable 4
+<span class="kind">struct</span>           "<span class="key">&lt;struct#142&gt;</span>"                     (no definition found in the scanned files)
+                                                    <span class="count">2</span> <span class="role">using-declaration</span>: ['<span class="graphName">Player</span>']
+<span class="kind">struct</span>           "<span class="key">&lt;struct#50&gt;</span>"                      (no definition found in the scanned files)
+                                                    <span class="count">2</span> <span class="role">using-declaration</span>: ['<span class="graphName">Player</span>']
+<span class="kind">struct</span>           "<span class="key">Structure_Normal_1</span>"               defined guid=1077936129 fields=Add variable 1|Add variable 2
+<span class="kind">struct</span>           "<span class="key">Structure_Normal_2</span>"               defined guid=1077936132 fields=test
+                                                    <span class="count">2</span> <span class="role">field-type</span>: Structure_Normal_1.Add variable 1; Structure_Normal_1.Add variable 2
+<span class="kind">struct</span>           "<span class="key">Structure_Save_1</span>"                 defined guid=1077936130 fields=Add variable 1
+                                                    <span class="count">2</span> <span class="role">graph-affiliation</span>: ['<span class="graphName">Player</span>']
+                                                    <span class="count">4</span> <span class="role">pin-value</span>: ['<span class="graphName">Player</span>']
+<span class="kind">struct</span>           "<span class="key">Structure_Save_2</span>"                 defined guid=1077936131 fields=Add variable 1|Add variable 2</pre>
 </main>
 </body>
 </html>

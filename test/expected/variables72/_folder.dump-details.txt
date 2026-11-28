@@ -254,3 +254,53 @@ VARIABLE Stage 1094713345:"Stage Entity" 'Config' : Cfg = id:1090519041 {CLASS:"
 VARIABLE Stage 1094713345:"Stage Entity" 'Prefab' : Pfb = id:1077936129 {OBJECT:"Empty Model"}
 VARIABLE Stage 1094713345:"Stage Entity" 'Dict' : Dict<Gid,Pfb> = {id:1094713345 {GIL_LEVEL_ENTITY:"Stage Entity"}: id:1077936129 {OBJECT:"Empty Model"}}
 VARIABLE Stage 1094713345:"Stage Entity" 'Entity' : Ety = null
+# FILE variables_save.gil
+GRAPH /(default)/'Player' ENTITY_NODE_GRAPH class=9 guid='1073741825' kind=21001 service=20000 nodes=8
+RESOURCE "Stage Entity" GIL_LEVEL_ENTITY class=- guid='1094713345' section=root.5
+RESOURCE "Default Template" PLAYER_TEMPLATE class=18 guid='1086324737' section=root.4
+MOUNT 'Player' -> PLAYER_TEMPLATE "Default Template" player
+RESOURCE "Default Template(Edit Character)" CHARACTER_TEMPLATE class=19 guid='1090519041' section=root.4
+RESOURCE "Custom Class" CLASS class=17 guid='1090519041' section=root.15
+RESOURCE "Inventory Template" GIL_INVENTORY_TEMPLATE class=- guid='1119879169' section=root.15
+RESOURCE "Custom Camera" CAMERA class=13 guid='1073741825' section=root.18
+RESOURCE "Terrain01" TERRAIN_ENTITY class=5 guid='1073741825' section=root.7
+RESOURCE "Default Layout" INTERFACE_LAYOUT class=20 guid='1073741825' section=root.9
+RESOURCE "HierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741840' section=root.9
+RESOURCE "HierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741841' section=root.9
+RESOURCE "ExclusiveEleGroupHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741842' section=root.9
+RESOURCE "ClientUIRootHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741843' section=root.9
+RESOURCE "ClientUIPrototypeHierarchyRoot" INTERFACE_LAYOUT class=20 guid='1073741844' section=root.9
+RESOURCE "Environment Configuration" ENVIRONMENT_CONFIGURATION class=49 guid='1186988033' section=root.15
+RESOURCE "Create Preset Point" PRESET_POINT class=6 guid='1073741825' section=root.11.5
+RESOURCE "Spawn Point1" GIL_RESPAWN_POINT class=- guid='1073741825' section=root.11.3
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324737' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324738' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324739' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324740' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324741' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324742' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324743' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324744' section=root.5
+RESOURCE "Default Template" GIL_PLAYER_ENTITY class=- guid='1086324745' section=root.5
+RESOURCE "Default Template(Edit Character)" GIL_CHARACTER_ENTITY class=- guid='1090519041' section=root.5
+RESOURCE "Custom Growth Curve" GIL_GROWTH_CURVE class=- guid='1094713345' section=root.15
+RESOURCE "In-game Save" class#41 class=41 guid='1073741825' section=root.31
+RESOURCE "In-game Save_1" class#41 class=41 guid='1073741826' section=root.31
+RESOURCE "Mini-Map" UI_CONTROL class=15 guid='1073741826' section=root.9
+RESOURCE "Skill Area" UI_CONTROL class=15 guid='1073741827' section=root.9
+RESOURCE "Team Information" UI_CONTROL class=15 guid='1073741828' section=root.9
+RESOURCE "Character HP Bar" UI_CONTROL class=15 guid='1073741829' section=root.9
+RESOURCE "Joystick" UI_CONTROL class=15 guid='1073741830' section=root.9
+RESOURCE "Creation HP Bar" UI_CONTROL class=15 guid='1073741831' section=root.9
+RESOURCE "Exit Button" UI_CONTROL class=15 guid='1073741832' section=root.9
+RESOURCE "Voice-Over" UI_CONTROL class=15 guid='1073741833' section=root.9
+RESOURCE "Tab" UI_CONTROL class=15 guid='1073741834' section=root.9
+RESOURCE "Chat Button" UI_CONTROL class=15 guid='1073741835' section=root.9
+RESOURCE "Network Status" UI_CONTROL class=15 guid='1073741836' section=root.9
+RESOURCE "Struggle Button" UI_CONTROL class=15 guid='1073741837' section=root.9
+RESOURCE "Voice Chat Button" UI_CONTROL class=15 guid='1073741838' section=root.9
+RESOURCE "Voice Chat Hint Queue" UI_CONTROL class=15 guid='1073741839' section=root.9
+VARIABLE Player 1086324737:"Default Template" 'Norm1' : L<Struct> struct=Structure_Normal_1 = [struct{struct{'test1'}, [struct{'test2'}, struct{'test3'}]}]
+VARIABLE Player 1086324737:"Default Template" 'Norm2' : L<Struct> struct=Structure_Normal_2 = [struct{'test'}, struct{'test'}]
+VARIABLE Player 1086324737:"Default Template" '1_chip_1' : L<Struct> struct=Structure_Save_1 = []
+VARIABLE Player 1086324737:"Default Template" '1_chip_2' : L<Struct> struct=Structure_Save_2 = []

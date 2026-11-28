@@ -113,7 +113,7 @@ test('composite is grouped by name, not guid: exactly 3 unique calling graphs co
   assert.match(lines.find((l) => l.includes('Create Composite Node"')), /composite\s+"Create Composite Node"\s+2 call: \['New Node Graph'\]/);
 });
 
-test('composite-definition-count-anomaly: a duplicated declaration name is flagged, and the call listing still shows only the call count', () => {
+test('composite-definition-count-anomaly: a duplicated declaration name is flagged, and the call listing shows only the call count', () => {
   const b = bundle('sample_1.gia');
   const decl = b.resources.find((r) => r.kind === 'interface' && r.iface?.category === 1000);
   const dup = { ...decl, guid: decl.guid + 1000, iface: { ...decl.iface } }; // same name, different guid: a structural bug
@@ -184,7 +184,7 @@ test('signal overview: listen/send always shown (even 0), decl: roles excluded',
   assert.match(line, /2 listen: \[.*\], 2 send: \[.*\]/);
 });
 
-test('a "When ... Changes/Triggered" any-name listener stays visible as its own line instead of falling into the kind-specific zero-filled format', () => {
+test('a "When ... Changes/Triggered" any-name listener stays visible as its own line, apart from the kind-specific zero-filled format', () => {
   const { refs } = buildRefs([bundle('sample_5.gia')], db);
   const line = overviewLines(refs.filter((r) => r.kind === 'custom_variable' && r.key === ANY_NAME_KEY))[0];
   assert.match(line, /custom_variable\s+"\* \(listener for any name\)"\s+1 listen: \['Variables'\]/);
@@ -259,7 +259,7 @@ test('overviewLines sortDesc: groups ordered by total ref count, descending, tie
   const lines = overviewLines(synthetic, { sortDesc: true });
   assert.deepEqual(lines.map((l) => l.match(/"(\w)"/)[1]), ['B', 'C', 'A']);
 });
-test('overviewLines sortDesc never interleaves two kinds: each kind\'s lines stay together, only their internal order changes', () => {
+test('overviewLines sortDesc does not interleave two kinds: each kind\'s lines stay together, only their internal order changes', () => {
   const synthetic = [
     { kind: 'composite', key: 'Z', role: 'call', graph: 'G' }, // 1 ref
     { kind: 'graph_variable', key: 'A', role: 'get', graph: 'G', scope: 's1' }, // 1 ref
@@ -336,7 +336,7 @@ test('literal_id: one role "Ref" whatever the id type, so the document formats g
   assert.doesNotMatch(html, /<th>(Cfg|Pfb|Gid|Int)<\/th>/);
 });
 
-test('literal ids are matched inside their own id space only (ID_SPACES), never by the guid alone', async () => {
+test('literal ids are matched inside their own id space only (ID_SPACES), not by the guid alone', async () => {
   const { ID_SPACES } = await import('../src/refs.mjs');
   const all = Object.values(ID_SPACES).flatMap((sp) => sp.classes);
   assert.equal(new Set(all).size, all.length, 'a class belongs to one id space');

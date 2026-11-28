@@ -1,6 +1,6 @@
 ﻿// L3a: node database (data/nodes.json, built by scripts/build-db.mjs) + overlay (data/overlay.json: hand-written
 // additions that win over the built database). Every lookup can miss; callers must degrade gracefully
-// (see TECHNICAL.md, "Behaviour on newer game versions").
+// (see ADVANCED.md, "Newer game versions").
 import { host } from './host.mjs';
 
 // A bundled data file, or (when the caller names a path, e.g. --db) a file read through the host's file system.

@@ -42,7 +42,7 @@ const union = (sets) => new Set(sets.flatMap((s) => [...s]));
 
 /**
  * The execution type of a composite body: how the flow leaves it. `pins` are the flow outputs of the composite it may leave through (sorted),
- * `terminal` whether it may end without leaving through any. Always `generic` when the body has events of its own or no flow input.
+ * `terminal` whether it may end without leaving through any. `generic` when the body has events of its own or no flow input.
  */
 export function analyzeFlow(model) {
   if (model.events || !model.entries.length) return { ...GENERIC };

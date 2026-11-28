@@ -6,10 +6,10 @@ syntax = "proto3";
 
 // .gia file payload root
 message AssetBundle {
-  repeated ResourceEntry resources        = 1; // [MERGED] repeated: the game writes one entry per exported graph/asset
+  repeated ResourceEntry resources        = 1; // repeated: one entry per exported graph/asset
   repeated ResourceEntry dependencies     = 2; // All generated stubs, structs, signals etc. (composite graphs, struct definitions, ...)
   string                 export_tag       = 3; // Export metadata ({UID}-{TIME}-{FILE_ID}-\{EXPORT_FILE_NAME}.gia)
-  optional uint32        mode_flag        = 4; // [MERGED] 1 = classic mode, absent = Beyond mode
+  optional uint32        mode_flag        = 4; // 1 = classic mode, absent = Beyond mode
   string                 engine_version   = 5; // Engine version (6.2.0)
 }
 
@@ -58,17 +58,17 @@ message ResourceEntry {
     INTEGER_FILTER_GRAPH      = 47; // Integer filter node graph
     LIGHT_SOURCE              = 48; // Light source
     ENVIRONMENT_CONFIGURATION = 49; // Environment configuration
-    // [MERGED] values observed in 7.0 samples
+    // 7.0 values
     CREATION_STATUS_DECISION_GRAPH = 51;
     CREATION_SKILL_GRAPH      = 52;
     CREATION_STATUS_GRAPH     = 53;
-    CUSTOM_CREATION_SKILL     = 54;   // [observed sample_9, name only]
-    SCENE_GENERATION_TEMPLATE_A = 55; // [observed sample_9, name only]
-    SCENE_GENERATION_TEMPLATE_B = 56; // [observed sample_9, name only]
-    VFX_TOOL                  = 58;   // [observed sample_9, name only]
-    SKILL_VARIABLE            = 60;   // [observed sample_9, name only]
+    CUSTOM_CREATION_SKILL     = 54;   // name only
+    SCENE_GENERATION_TEMPLATE_A = 55; // name only
+    SCENE_GENERATION_TEMPLATE_B = 56; // name only
+    VFX_TOOL                  = 58;   // name only
+    SKILL_VARIABLE            = 60;   // name only
     CHARACTER_CONTROL_SKILL_GRAPH = 64;
-    CONTROL_SKILL             = 65;   // [observed sample_9, name only]
+    CONTROL_SKILL             = 65;   // name only
     // 27, 31-34, 36 and 40-42 are not assigned
   };
 
@@ -83,7 +83,7 @@ message ResourceEntry {
     NodeInterfaceContainer       interface_data = 14; // Which is Interface Definition
     StructureDefinitionContainer struct_data    = 22; // Which is Structure Definition
 
-    // [MERGED] Payloads of resources that are not node graphs (11 prefab, 12 entity, 15 config, 16 terrain, 17 camera,
+    // Payloads of resources that are not node graphs (11 prefab, 12 entity, 15 config, 16 terrain, 17 camera,
     // 18 preset point, 19 UI, 20 global timer, 23 path, 26 unit tag, 27 deployment group, ...). Kept as opaque bytes on
     // purpose: they are *known* (so they do not flood the unknown-field census) but not interpreted.
     bytes opaque_11 = 11; bytes opaque_12 = 12; bytes opaque_15 = 15; bytes opaque_16 = 16;
@@ -97,7 +97,7 @@ message ResourceEntry {
 // 2. Identifier System
 // ========================================================================
 
-// General resource identifier (formerly ResourceLocator, NodeProperty, ...)
+// General resource identifier
 // This is the "identity card" of a resource throughout the system
 message ResourceLocator {
 
@@ -134,7 +134,6 @@ message ResourceLocator {
     CLIENT_FILTER     = 20001; // Filter type (Bool by default)
     CLIENT_SKILL      = 20002; // Skill node graph flow (client)
     CLIENT_INT_FILTER = 20006; // Integer filter type
-    // [MERGED]
     CLIENT_CREATION_STATUS_DECISION = 20007;
     CLIENT_CREATION_SKILL           = 20008;
     CLIENT_CREATION_STATUS          = 20009;
@@ -200,15 +199,9 @@ message ResourceLocator {
 // 3. Type & Value System
 // ========================================================================
 
-// ### Why are there two sets of type numbers?
-// This is a typical result of "technical debt" and "architectural isolation" working together.
-// Server side (ServerTypeId): judging by how irregular the numbering is (Int=3, IntList=8), the server code was probably written early and iterated continuously.
-//   - At first it probably supported only atomic types.
-//   - Later EntityList was needed, so it was appended at 13.
-//   - Later Struct and Dictionary were added, appended at 25, 27.
-//   - To keep old data compatible (a core principle of Protocol Buffers), old IDs cannot change, which left the ID distribution scattered.
-// Client side (ClientTypeId): judging by how regular the numbering is (Int=3, IntList=4), it is most likely the product of a later refactoring or independent development.
-//   - The client developers already knew which types had to be supported when defining them, so they used the more elegant Type / TypeList pairing.
+// ### Two sets of type numbers
+// Server side (ServerTypeId): the numbering is irregular (Int=3, IntList=8, EntityList=13, Struct=25, Dictionary=27).
+// Client side (ClientTypeId): the numbering is regular, with Type / TypeList pairs (Int=3, IntList=4).
 
 // Server-side logic type ID
 // Used for: data storage, backend logic computation, struct definitions, blackboard variables
@@ -319,8 +312,8 @@ message TypeDefinition {
     ServerTypeId   key_type        = 1;
     ServerTypeId   value_type      = 2;
     optional int64 value_struct_id = 3;
-    optional int32 client_key_type   = 4; // [MERGED] ClientVarType
-    optional int32 client_value_type = 5; // [MERGED] ClientVarType
+    optional int32 client_key_type   = 4; // ClientVarType
+    optional int32 client_value_type = 5; // ClientVarType
   }
 
   message ServerType {
@@ -370,12 +363,12 @@ message TypedValue {
 
   WidgetType              widget       = 1; // Style class
   int32                   is_value_set = 2; // 0 = empty, 1 = modified by the user
-  message ClientInlineBinding {          // [MERGED]
+  message ClientInlineBinding {
     int32          type_tag     = 1;
     optional Int   binding_int  = 102;
     optional Enum  binding_enum = 106;
   }
-  optional ClientInlineBinding client_inline = 3; // [MERGED] observed in client graphs
+  optional ClientInlineBinding client_inline = 3; // values of client graphs
   optional TypeDefinition type_def     = 4; // Type metadata
 
   // Struct instance tracking (used to generate unique index names in the graph)
@@ -450,7 +443,7 @@ message PolymorphicValue {
   optional DynamicTypeMetadata extra_meta = 5; // The type configuration of the polymorphic type system.
 }
 
-// It exists so that the system still has complete type knowledge before any data has been generated.
+// It exists so that complete type knowledge is available before any data is present.
 message DynamicTypeMetadata {
   message Config {
     message Inner {
@@ -472,11 +465,11 @@ message DynamicTypeMetadata {
 // 4. Physical Resource Wrappers (Graph & Interface Container)
 // ========================================================================
 
-// ### Wrapper structure analysis: why is a Wrapper needed?
-// NodeGraphWrapper and CompositeDefWrapper appear in the code, each with a nested InnerWrapper. This design is very common in large engines (such as Unity or custom engines), for three reasons:
-//   - Type erasure and heterogeneous containers: if the raw message were put directly into the oneof, adding "common metadata" (an encryption flag, a compression algorithm, a version number) to all resource types later would require changing every concrete message.
-//   - Smooth version migration (forward compatibility): InnerWrapper provides a buffer. If the structure of NodeGraph changes in a breaking way, the engine can first parse the version number in the Wrapper layer and then decide which version of the parser to call.
-//   - Memory layout optimization: in some serialization frameworks this nesting allows the engine to read the "shell" information of a resource (such as ID and name) first, without fully deserializing the inner logic.
+// ### Wrapper structure
+// NodeGraphWrapper and CompositeDefWrapper each carry a nested InnerWrapper:
+//   - The oneof holds the wrapper, not the raw message, so metadata common to all resource types lives in one place.
+//   - A version number in the wrapper layer can select the parser of the inner NodeGraph.
+//   - The "shell" information of a resource (such as ID and name) is readable without deserializing the inner logic.
 
 message NodeGraphContainer {
   message InnerWrapper { NodeGraph graph = 1; }
@@ -519,7 +512,7 @@ message NodeGraph {
   // Local variable pool / blackboard variables: data shared inside the graph
   repeated GraphVariable blackboard = 6;
 
-  // [MERGED] affiliations (struct/related-graph declarations)
+  // Affiliations (struct/related-graph declarations)
   repeated GraphAffiliation affiliations = 7;
 
   // --- Subsystem-specific parameters ---
@@ -576,7 +569,7 @@ message NodeInterface {
   repeated PinInterface outflows  = 101;
   repeated PinInterface inputs    = 102;
   repeated PinInterface outputs   = 103;
-  repeated PinInterface meta_pins = 106; // Formerly signals, holds Type 5 pins
+  repeated PinInterface meta_pins = 106; // Holds Type 5 pins
 
   Implementation impl = 107;
 
@@ -597,14 +590,14 @@ message NodeInterface {
 
   string       name          = 200;
   string       description   = 201;
-  TemplateRoot template_root = 203; // Formerly which
-  TemplateSub  template_sub  = 204; // Formerly subWhich
+  TemplateRoot template_root = 203; 
+  TemplateSub  template_sub  = 204; 
 }
 
 // Composite node parameter/data pin interface definition (external signature)
 message PinInterface {
   string       name            = 1;
-  int32        visibility_mask = 2; // Formerly xxxx_always_1 (bit mask)
+  int32        visibility_mask = 2; // Bit mask
   PinSignature sig             = 3; // Contains Kind (IN_PARAM/OUT_PARAM) and Index
 
   // Pin type definition
@@ -613,8 +606,8 @@ message PinInterface {
     optional TypedValue.WidgetType ui_class        = 1; // UI presentation form (IntBase, VecBase, etc.)
     optional ServerTypeId          var_type_shell  = 3; // ServerTypeId enum; for an Enum it is [100id] (EnumCategoryId)
     optional ServerTypeId          var_type_kernel = 4; // ServerTypeId enum; for an Enum it is 14 (EnumType)
-    optional TypedValue            default_value   = 2; // [MERGED, observed sample_2] default value of meta pin (e.g. signal name text)
-    optional int32                 flag_6          = 6; // [MERGED, observed sample_2] unknown, value 1
+    optional TypedValue            default_value   = 2; // Default value of meta pin (e.g. signal name text)
+    optional int32                 flag_6          = 6; // Unknown, value 1
 
     // Hint text of the parameter box
     message Placeholder {
@@ -663,7 +656,7 @@ message StructureDefinition {
   int32 structVersion = 3; // Version Updated as structure is modified and as
                            // other structures modified
   int32 itemCount = 4; // item count
-  int32 field_5 = 5;   // [MERGED, observed 7.0 sample_3] value 1, unknown
+  int32 field_5 = 5;   // Value 1, unknown
 
   message Field {
     int64           id   = 1;
@@ -697,7 +690,7 @@ message StructureDefinition {
     message TypeDef3 {
       message SubType {
         ServerTypeId type = 1;
-        message Any { optional int32 f1 = 1; optional int64 f2 = 2; } // [MERGED] observed varints in 7.0
+        message Any { optional int32 f1 = 1; optional int64 f2 = 2; } // 7.0 writes varints here
         Any          xxxx_id = 2; // Why diff from TypeDef3
         ServerTypeId key     = 502;
         ServerTypeId value   = 503;
@@ -711,7 +704,7 @@ message StructureDefinition {
         Enum   boolVal = 14;
         String strVal  = 16;
         // TODO: default values of map / struct typed variables are not understood
-        bytes opaque_21 = 21; bytes opaque_35 = 35; bytes opaque_36 = 36; // [MERGED] observed in advanced struct (default/list/dict values, not interpreted)
+        bytes opaque_21 = 21; bytes opaque_35 = 35; bytes opaque_36 = 36; // Default values of struct variables (int/list/dict...); not interpreted
       }
     }
     TypeDef  typedef1 = 1;
@@ -756,7 +749,7 @@ message NodeInstance {
   // User note attached to the node
   optional Annotation attached_comment = 7;
 
-  // Special context marker (Legacy / Context Provider)
+  // Special context marker (Context Provider)
 
   // Only appears on entry nodes (NodeGraphStarts, Kernel 2001)
   // Identifies the context type in which the graph is triggered (e.g. Signal).
@@ -772,7 +765,7 @@ message NodeInstance {
   // Struct dependency declarations
   repeated DependencyDeclaration using_structs = 10;
 
-  // [MERGED] observed in creation_status / creation_status_decision graphs
+  // Used by creation_status / creation_status_decision graphs
   optional StatusNodeExtension status_node_extension = 11;
 }
 
@@ -786,8 +779,8 @@ message PinSignature {
     OUT_PARAM = 4;
 
     // Special purposes
-    META_RPC_OPCODE = 5; // Formerly SignalClient. Carries the RPC ID
-    META_TOPIC_NAME = 6; // Formerly Signal (Entry Context). Carries the signal name / context declaration
+    META_RPC_OPCODE = 5; // Carries the RPC ID
+    META_TOPIC_NAME = 6; // Carries the signal name / context declaration
 
     // Struct operations
     STRUCT_REF        = 13;
@@ -827,13 +820,12 @@ message PinInstance {
 
   // Metadata binding
   // Used by nodes such as SendSignal, stores the binding of an RPC ID or Topic Name
-  // Formerly signalPin
   optional PinSignature binding_meta = 6;
 
   // Persistent pin ID
   // Only for dynamic types (Struct/Signal/Composite)
   // When the Shell definition changes (pins inserted or reordered), this ID is used to recover the connections
-  optional int32 persistent_pin_uid = 7; // Formerly compositePinUid
+  optional int32 persistent_pin_uid = 7; 
 }
 
 // Connection
@@ -887,7 +879,7 @@ message Annotation {
 
 
 // ========================================================================
-// 7. [MERGED] additions: graph affiliations, status node extension
+// 7. Graph affiliations, status node extension
 // ========================================================================
 
 message StatusNodeExtension {
@@ -911,7 +903,7 @@ message GraphAffiliation {
 
 
 // ========================================================================
-// 9. .gil stage / level file payload  [MERGED]
+// 9. .gil stage / level file payload
 // ========================================================================
 // Same container as .gia (file type 2 instead of 3), but the payload is the whole stage, not an AssetBundle.
 // Sections known from stage files of games 7.0.0 and 7.1.0 (LevelName, Components, Entities, Categories, Terrains, NodeGraph, ...).
@@ -927,7 +919,7 @@ message GilFile {
   GilEntities  entities   = 5;  // placed entities (+ player, character and level entities)
   bytes  opaque_6         = 6;  // folder index (which resource lives in which folder or tab); read raw by src/mounts.mjs
   GilTerrains  terrains   = 7;
-  bytes  opaque_8         = 8;  // prefab editing area (open prefab drafts and their instances); never read
+  bytes  opaque_8         = 8;  // prefab editing area (open prefab drafts and their instances); not read
   GilUi        ui         = 9;  // interface layouts and controls
   GilNodeGraphs node_graphs = 10; // server/client graphs, composite decls + bodies, signals, struct definitions
   GilLevelSettings level_settings = 11; // factions, respawn / preset points, ...
@@ -946,7 +938,7 @@ message GilFile {
   bytes  opaque_27        = 27;
   bytes  opaque_29        = 29; // editor info ("OSRELWin7.0.0" + build numbers)
   GilNamedList unit_tags  = 30;
-  GilSaveData  save_data  = 31; // resource class 41 (temporary in-game save data)
+  GilSaveData  save_data  = 31; // resource class 41 (in-game saves, temporary in-game save data)
   GilPaths     paths      = 32;
   GilNamedList deployment_groups = 33;
   bytes  opaque_35        = 35;
@@ -973,7 +965,7 @@ message GilComponent {
 }
 message GilNameHolder { option opaque_rest = true; string text = 1; }
 
-// [MERGED] Custom variables of an entity or template (games 7.2.0; files variables_classic.gil / variables_beyond.gia). They sit in the component of
+// Custom variables of an entity or template (games 7.2.0; files variables_classic.gil / variables_beyond.gia). They sit in the component of
 // kind 1 of the *dynamic* component list (entity field 7, template field 8). The lists are opaque in GilEntity / GilTemplate, so these messages only
 // document the layout; src/varscan.mjs reads it. FORMAT.md, "Custom variables".
 message GilVariableComponent {
@@ -988,7 +980,7 @@ message GilCustomVariable {
   int32 type = 3;                    // server type id (see section 5): 6 Str, 8 L<Int>, 25 Struct, 27 Dict, ...
   GilVariableValue value = 4;        // the initial value
   uint32 flag_5 = 5;                 // 1 in every file seen
-  GilVariableDeclared declared = 6;  // the declared type again; a default key / value type of a dictionary (Str) is left out
+  GilVariableDeclared declared = 6;  // repeats the declared type; a default key / value type of a dictionary (Str) is left out
 }
 message GilVariableDeclared { int32 type = 1; GilVariableTypeInfo info = 2; }
 message GilVariableTypeInfo {
@@ -1103,9 +1095,17 @@ message GilPaths { repeated GilPath entries = 1; }
 message GilPath { option opaque_rest = true; uint32 guid = 1; repeated GilComponent components = 4; }
 message GilGlobalTimers { repeated GilTimer entries = 1; }
 message GilTimer { option opaque_rest = true; string name = 1; }
-message GilSaveData { repeated GilSaveEntry entries = 3; }
+message GilSaveData {
+  repeated GilSaveEntry entries = 3;   // temporary in-game save data: `{1 guid, 100 {1 {501 name}}}`
+  repeated GilSaveSet sets = 1;        // in-game saves: a name and the save variables they declare
+}
 message GilSaveEntry { option opaque_rest = true; uint32 guid = 1; GilSaveInfo info = 100; }
 message GilSaveInfo { option opaque_rest = true; GilUiName name = 1; }
+message GilSaveSet { option opaque_rest = true; uint32 guid = 1; GilSaveBody body = 2; }
+message GilSaveBody { option opaque_rest = true; uint32 kind = 1; repeated GilSaveSlot slots = 2; string name = 501; }
+// A save variable: always a list of structs; its number is `index`, the struct is `type.struct_id`. Field 3 (1 or 2 observed) is not interpreted.
+message GilSaveSlot { option opaque_rest = true; uint32 index = 1; GilSaveSlotType type = 2; string name = 4; }
+message GilSaveSlotType { option opaque_rest = true; uint32 kind = 1; uint32 struct_id = 2; }
 message GilSceneTemplates {
   repeated GilSceneTemplate kind_a = 1;   // -> ResourceClass 55
   repeated GilSceneTemplate kind_b = 2;   // -> ResourceClass 56

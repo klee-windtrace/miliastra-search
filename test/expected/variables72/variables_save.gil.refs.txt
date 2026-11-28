@@ -1,0 +1,14 @@
+custom_variable  "1_chip_1" (L<Struct>)             1 get: ['Player'], 0 set: []
+custom_variable  "Norm1" (L<Struct>)                1 get: ['Player'], 0 set: []
+mount            'Player'                           1 player: PLAYER_TEMPLATE:"Default Template"
+struct           "<struct#142>"                     (no definition found in the scanned files)
+                                                    2 using-declaration: ['Player']
+struct           "<struct#50>"                      (no definition found in the scanned files)
+                                                    2 using-declaration: ['Player']
+struct           "Structure_Normal_1"               defined guid=1077936129 fields=Add variable 1|Add variable 2
+struct           "Structure_Normal_2"               defined guid=1077936132 fields=test
+                                                    2 field-type: Structure_Normal_1.Add variable 1; Structure_Normal_1.Add variable 2
+struct           "Structure_Save_1"                 defined guid=1077936130 fields=Add variable 1
+                                                    2 graph-affiliation: ['Player']
+                                                    4 pin-value: ['Player']
+struct           "Structure_Save_2"                 defined guid=1077936131 fields=Add variable 1|Add variable 2

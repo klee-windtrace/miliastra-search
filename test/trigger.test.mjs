@@ -31,7 +31,7 @@ test('the detail view shows the same role as the overview', () => {
   for (const r of sets) assert.match(plain(referenceLine(referenceJson(r))), / literal trigger @ /);
 });
 
-test('an explicit false (a stored pin) makes it a plain set again', () => {
+test('an explicit false (a stored pin) makes it a plain set', () => {
   const b = bundle();
   for (const r of b.resources) if (r.graph) for (const n of r.graph.nodes) if (n.shell.id === 22) {
     n.pins.push({ kind: 3, index: 4, conns: [], value: { k: 'enum', v: 0 } });

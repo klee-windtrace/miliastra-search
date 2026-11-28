@@ -42,6 +42,8 @@ export const ID_SPACES = {
 };
 const ID_SPACE_BY_PIN_TYPE = new Map(Object.values(ID_SPACES).map((sp) => [sp.pinType, new Set(sp.classes)]));
 const COMPOSITE_BODY_KIND = 21002;
+// whether `struct-never-used` is raised (see the check in buildRefs)
+const STRUCT_NEVER_USED_REPORTED = false;
 /** Key of the entry that stands for a "When … Changes/Triggered" listener reacting to every name. */
 export const ANY_NAME_KEY = '* (listener for any name)';
 
@@ -106,7 +108,7 @@ export function buildRefs(bundles, db, { rules = loadRules() } = {}) {
   const graphSizes = []; // { file, graph, nodes } effective node count (own + expanded composite calls) per real graph
   const ruleByNode = new Map();
   for (const r of rules.namedPins) { if (!ruleByNode.has(r.node)) ruleByNode.set(r.node, []); ruleByNode.get(r.node).push(r); }
-  // Comment-based lint suppression (see TECHNICAL.md): a node whose comment contains the finding's `type` silences it.
+  // Comment-based lint suppression (see ADVANCED.md, "Silencing a finding you accept"): a node whose comment contains the finding's `type` silences it.
   const suppressed = (comment, type) => !!comment && comment.includes(type);
 
   for (const b of bundles) {
@@ -123,8 +125,7 @@ export function buildRefs(bundles, db, { rules = loadRules() } = {}) {
     // ---- composite call graph (built before any pin is resolved) ----
     // A composite body behaves as if it were expanded into each graph that calls it, so a named-pin or listener check
     // made inside a body only has a meaning from one caller's point of view: callSitesOf lets attributionsFor() below
-    // re-resolve each such check once per real call site, "as if the composite was expanded" there, instead of
-    // reporting a single (and often falsely dynamic) result for the body itself.
+    // re-resolve each such check once per real call site, as if the composite were expanded there.
     // callersOf/calleesOf are the same graph without node indices, for effectiveNodeCount.
     let circularComposite = false;
     const bodyResByDeclGuid = new Map();
@@ -170,7 +171,7 @@ export function buildRefs(bundles, db, { rules = loadRules() } = {}) {
       atts.push({ frames: [], owner: r, raw: true });
       return atts;
     }
-    // Raises stale-suppression-comment when `comment` mentions `type` but the finding's condition no longer holds
+    // Raises stale-suppression-comment when `comment` mentions `type` but the finding's condition does not hold
     // (isViolation false): the annotation is stale. Callers skip the `raw` composite-body perspective.
     const staleSuppression = (comment, type, isViolation, node, nodeName, graphLabel, kind, key, messageWhenNot) => {
       if (isViolation || !suppressed(comment, type)) return;
@@ -236,7 +237,7 @@ export function buildRefs(bundles, db, { rules = loadRules() } = {}) {
             const role = f.sendSignal ? 'send' : 'listen';
             const key = (f.sendSignal || f.listenSignal).name;
             // Attributed per real caller too (see attributionsFor above) – wrapping a send/listen node in a
-            // composite must not make it look like it belongs to the composite instead of the real graph.
+            // composite does not make it look like it belongs to the composite instead of the real graph.
             for (const att of attributionsFor(r)) {
               const aGl = att.raw ? gl : taggedGraphLabel(att.owner, dup, R);
               add({ ...nctx, graph: aGl, graphGuid: att.owner.guid, graphKindNum: att.owner.graph.kind, graphClass: att.owner.className, ...(att.raw ? { rawCopy: true } : { viaComposite: [gl] }), kind: 'signal', key, scope: b.file, mode: 'literal', role });
@@ -293,7 +294,7 @@ export function buildRefs(bundles, db, { rules = loadRules() } = {}) {
         for (const rule of ruleByNode.get(info.shellId) || []) {
           const [pk, pi] = rule.pin.split(':'); const kindNum = { in_param: 3 }[pk]; const pinIdx = Number(pi);
           // A pin fully delegated to a composite port (no local wire *or* default left on the physical node once
-          // it's exposed externally) has no entry in `n.pins` at all – resolvePin must still run on its index.
+          // it's exposed externally) has no entry in `n.pins` at all – resolvePin runs on its index regardless.
           const pin = n.pins.find((p) => p.kind === kindNum && p.index === pinIdx);
           const pl = pinLbl(kindNum, pinIdx);
           const nm = R.pinName(info, pin || { kind: kindNum, index: pinIdx, uid: null }).name;
@@ -432,7 +433,9 @@ export function buildRefs(bundles, db, { rules = loadRules() } = {}) {
     if (defs.length !== 1) findings.push({ level: 'warn', type: 'composite-definition-count-anomaly', kind: 'composite', key: name, file: defs[0].file, message: T`composite ${S('key', name)} has ${S('count', defs.length)} definition(s) in the scanned files (expected exactly 1) – ${defs.map((d) => d.note).join('; ')}; this points to a structural bug in the GIL/GIA or in how this tool parsed it` });
     if (!refs.some((r) => r.kind === 'composite' && r.key === name && r.mode === 'usage')) findings.push({ level: 'info', type: 'composite-never-called', kind: 'composite', key: name, file: defs[0].file, message: T`composite ${S('key', name)} is defined but never called in the scanned graphs` });
   }
-  for (const r of refs.filter((x) => x.kind === 'struct' && x.mode === 'definition')) {
+  // `struct-never-used` is not reported (STRUCT_NEVER_USED_REPORTED): a struct can be used in places the graphs do not show, which this analysis does not
+  // follow, so "no use found" is no evidence. The check stays for a more complete use analysis.
+  for (const r of STRUCT_NEVER_USED_REPORTED ? refs.filter((x) => x.kind === 'struct' && x.mode === 'definition') : []) {
     if (!refs.some((x) => x.kind === 'struct' && x.file === r.file && x.key === r.key && x.mode === 'usage')) findings.push({ level: 'info', type: 'struct-never-used', kind: 'struct', key: r.key, file: r.file, message: T`struct ${S('key', r.key)} (${r.note}) is defined but never used in the scanned graphs` });
   }
   // dynamic-reference, catch-all-listener and listener-no-handlers are raised inline where they are discovered (the
@@ -601,8 +604,8 @@ export function buildOverviewRows(sel, { sortDesc = false } = {}) {
     groups.delete(gk);
   }
   const entries = [...groups];
-  // Always keep one kind's entries together (graph_variable with graph_variable, timer with timer, …);
-  // sortDesc only changes the order *within* a kind, from the base order to refcount-descending.
+  // One kind's entries stay together (graph_variable with graph_variable, timer with timer, …);
+  // sortDesc changes only the order *within* a kind, from the base order to refcount-descending.
   // The base order is alphabetical by key, except for mounted graphs: those follow the order of the graphs themselves.
   // The group key is compared part by part (kind, scope, key, type): as one string, a key that is a prefix of another would sort by the type that follows it.
   const byParts = (x, y) => { const p = x.split('\u0000'), q = y.split('\u0000'); for (let i = 0; i < p.length; i++) { const c = p[i].localeCompare(q[i] ?? ''); if (c) return c; } return 0; };
@@ -616,8 +619,8 @@ function groupEntry({ kind, key, varType, rs }) {
   // part: "N role: [graphs]" (graphs = unique graph names) or "N role" (graphs null) or "N role: note text"
   const P = (list, role, withGraphs = true) => ({ role, count: list.length, graphs: withGraphs ? uniqGraphs(list).map(graphRef) : null, note: null });
   const by = (role) => rs.filter((r) => r.role === role);
-  // A "When ... Changes/Triggered" node listens for ANY name; keep it visible instead of falling through
-  // to a kind-specific format that would silently print zeros for every real role.
+  // A "When ... Changes/Triggered" node listens for ANY name; it gets its own line, since a
+  // kind-specific format would print zeros for every real role.
   if (key === ANY_NAME_KEY) { row.parts = [P(rs, 'listen')]; return row; }
   switch (kind) {
     case 'composite': row.parts = [P(by('call'), 'call')]; break;

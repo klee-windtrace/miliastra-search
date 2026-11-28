@@ -34,7 +34,7 @@ test('formats: text color md htm markdown html auto – md/htm are their own for
   assert.throws(() => resolveFormat({ format: 'pdf' }), /unknown output format/);
 });
 
-test('auto: by the extension of --output; otherwise color on a terminal (no NO_COLOR), else text; a file never gets color', () => {
+test('auto: by the extension of --output; otherwise color on a terminal (no NO_COLOR), else text; a file gets no color', () => {
   const r = (output) => resolveFormat({ output, toTerminal: true, env: {} });
   assert.equal(r('a.md'), 'md'); assert.equal(r('a.MARKDOWN'), 'markdown'); assert.equal(r('a.htm'), 'htm'); assert.equal(r('dir/a.html'), 'html');
   assert.equal(r('a.json'), 'json'); assert.equal(r('a.txt'), 'text'); assert.equal(r('noext'), 'text');
@@ -177,7 +177,7 @@ test('CLI: text output is stable and free of escape codes; color has them; auto 
   assert.equal(strip(cli('refs', sample, '--format', 'color')), text);
 });
 
-test('CLI: --output writes the file, picks the format from its extension under auto, and never colors', () => {
+test('CLI: --output writes the file, picks the format from its extension under auto, and does not color', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ms-out-'));
   const root = process.cwd();
   const at = (name, ...args) => { const f = path.join(dir, name); const r = cliFull([...args, '--output', f]); return { r, text: fs.readFileSync(f, 'utf8') }; };
@@ -191,7 +191,7 @@ test('CLI: --output writes the file, picks the format from its extension under a
   assert.ok(root);
 });
 
-test('CLI: --input forces gia/gil; --format takes only output formats; old spellings are gone', () => {
+test('CLI: --input forces gia/gil; --format takes only output formats; the removed option spellings are rejected', () => {
   const ok = cliFull(['dump', sample, '--input', 'gia']);
   assert.equal(ok.code, 0); assert.equal(ok.out, cli('dump', sample));
   assert.equal(cliFull(['dump', sample, '--input', 'xml']).code, 2);
@@ -214,7 +214,7 @@ test('CLI: code --search/check/raw work in every format', () => {
 });
 
 // ---------- UTF-8 BOM for Markdown ----------
-test('md and markdown output start with a UTF-8 BOM (stdout and --output file), other formats and json never do', () => {
+test('md and markdown output start with a UTF-8 BOM (stdout and --output file), other formats and json do not', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ms-bom-'));
   for (const fmt of ['md', 'markdown']) for (const mode of ['info', 'dump', 'code', 'refs', 'warns']) {
     const out = cliFull([mode, sample, '--format', fmt]).out;

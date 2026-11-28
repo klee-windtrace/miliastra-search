@@ -8,7 +8,7 @@ import { buildRefs } from '../src/refs.mjs';
 import { here } from './helpers.mjs';
 
 // Fixture: test_resolution.gia has no comments of its own, so these tests mutate the parsed in-memory graph
-// (setting Node.comment) before calling buildRefs, using nodes whose current behaviour is already established
+// (setting Node.comment) before calling buildRefs, using nodes whose behaviour is established
 // by test/resolution.test.mjs: node [1]/[2]/[4] in 'Dynamic' have a catch-all path, [3] in 'Dynamic' has an
 // unresolvable comparison, [4] in 'Static' has no handlers at all, and [2] in 'Static' is a fully strict switch.
 const db = new NodeDb();
@@ -23,7 +23,7 @@ function setComment(bundle, graphName, nodeIndex, comment) {
   gr.graph.nodes.find((n) => n.index === nodeIndex).comment = comment;
 }
 
-test('catch-all-listener: suppressed by a matching comment, and flagged stale when the comment no longer applies', () => {
+test('catch-all-listener: suppressed by a matching comment, and flagged stale when the comment does not apply', () => {
   const { findings: base } = build(() => {});
   assert.ok(base.some((f) => f.type === 'catch-all-listener' && f.graph === 'Dynamic' && f.message.includes('[1]')));
 
@@ -31,7 +31,7 @@ test('catch-all-listener: suppressed by a matching comment, and flagged stale wh
   assert.ok(!suppressedOut.some((f) => f.type === 'catch-all-listener' && f.message.includes('[1]')));
   assert.ok(!suppressedOut.some((f) => f.type === 'stale-suppression-comment' && f.message.includes('[1]')));
 
-  // node [2] in 'Static' is a fully strict switch (no catch-all) – the same comment there is now wrong.
+  // node [2] in 'Static' is a fully strict switch (no catch-all) – a comment there is wrong.
   const { findings: staleOut } = build((b) => setComment(b, 'Static', 2, 'catch-all-listener'));
   assert.ok(!staleOut.some((f) => f.type === 'catch-all-listener' && f.graph === 'Static'));
   const stale = staleOut.find((f) => f.type === 'stale-suppression-comment' && f.message.includes('[2]') && f.graph === 'Static');
@@ -72,7 +72,7 @@ test('used-but-undeclared: suppressed by a comment on the referencing node, stay
   assert.equal(suppressedOut.filter((f) => f.type === 'used-but-undeclared' && f.graph === 'Static').length, 0);
   assert.equal(suppressedOut.filter((f) => f.type === 'stale-suppression-comment' && f.graph === 'Static').length, 0);
 
-  // now actually declare gvar1 in 'Static' – the comment covering it is now stale, but gvar3/gvar4 stay quiet.
+  // declare gvar1 in 'Static' – the comment covering it is stale, but gvar3/gvar4 stay quiet.
   const { findings: mixedOut } = build((b) => {
     setComment(b, 'Static', 2, 'used-but-undeclared');
     const gr = b.resources.find((r) => r.graph?.name === 'Static');

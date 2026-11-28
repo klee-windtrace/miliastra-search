@@ -17,7 +17,7 @@ const SERVER_SERVICES = [20000, 20003, 20004, 20005];
 const num = (v) => (typeof v === 'number' && !Number.isFinite(v) ? String(v) : v);
 
 /**
- * A value as the `value` object of the report: `{ kind, set, ... }`. `set` is false for a value the person never edited (the game's default).
+ * A value as the `value` object of the report: `{ kind, set, ... }`. `set` is false for a value the person has not edited (the game's default).
  * A polymorphic wrapper is replaced by the value inside it; a value that holds nothing is null.
  */
 export function valueJson(val, db) {

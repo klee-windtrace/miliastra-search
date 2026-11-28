@@ -148,7 +148,6 @@ struct           "Structure"                        defined guid=1077936129 fiel
 # WARNS
 # findings
 INFO  signal-never-used: signal "Signal_1" is declared but never sent or listened to in the scanned graphs
-INFO  struct-never-used: struct "Structure" (guid=1077936129 fields=) is defined but never used in the scanned graphs
 
 # limits
 signals: 1/99 declared

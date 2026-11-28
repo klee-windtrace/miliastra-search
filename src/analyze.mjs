@@ -60,7 +60,7 @@ export function taggedGraphLabel(res, dupNames, R) {
 /**
  * Phase 1 of the dump: everything that needs the whole file before anything is printed. Resolves every node name
  * (which also collects the unresolved node types), numbers duplicate graph names, and joins graph mounts with their hosts.
- * The reports (`dump`, `code`, `info`, `check`) all read this and never change it.
+ * The reports (`dump`, `code`, `info`, `check`) all read this and do not change it.
  */
 export function analyzeBundle(bundle, db) {
   const R = new Resolver(bundle, db);

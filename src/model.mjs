@@ -239,11 +239,11 @@ const maskTag = (tag) => {
 
 /**
  * Decode a whole .gia or .gil buffer into a Bundle. The format is detected from the content (header file type,
- * cross-checked against the payload structure), never from the file name; `format` ('gia'|'gil') forces it.
+ * cross-checked against the payload structure), not from the file name; `format` ('gia'|'gil') forces it.
  */
 // ---- order of the resources ----
 // The resources are listed the way the editor lists them. Each group below is re-sorted *within its own positions* in the
-// list, so other resources stay where they are. `idx` (the position within the primary or dependency list of the file) is unchanged.
+// list, so other resources stay where they are. `idx` (the position within the primary or dependency list of the file) does not depend on this order.
 //   graphs        by domain (GRAPH_ORDER), then folder (the default tab first, then the custom folders as stored), then name
 //   composite declarations   like their bodies (folder, then name)
 //   prefabs, statuses, skills ...   by folder (custom folders as stored, the default tab last), then position in the folder

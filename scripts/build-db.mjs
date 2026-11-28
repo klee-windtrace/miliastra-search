@@ -12,7 +12,7 @@
 //   --limit <N>         examples shown per difference in the comparison (default 5)
 //   --help              this text
 //
-// The comparison reads the old file before the new one is written, so the defaults show what a game update changed.
+// The reference file is read before the output is written; with the defaults both are data/nodes.json, so the differences are those a game update brings.
 // Run `npm run build-web` afterwards (the web bundle embeds the database).
 //
 // Inputs, all below `Resource/Json` (XOR 0xe5 protobuf; the layout is described in TECHNICAL.md, "Editor resource files"):
@@ -110,6 +110,13 @@ export function typeStr(backend, cvt, conn, enumId) {
   return base ?? `type#${code}`;
 }
 
+/** `D<K,V>` from the key (3) and value (4) type codes of a dictionary pin's type block (4.105), or null when either is missing or unknown. */
+function dictPinType(backend, d) {
+  const table = backend === 1 ? SERVER_TYPES : CLIENT_TYPES;
+  const key = table[num(d ?? [], 3)], value = table[num(d ?? [], 4)];
+  return key && value ? `D<${key},${value}>` : null;
+}
+
 // Generic pins have no concrete type; their role says which type parameter they are tied to.
 const genericType = (roles, outgoing) => {
   if (roles.includes(ROLE_DICT)) return 'D<R<K>,R<V>>';
@@ -148,6 +155,7 @@ function readPin(d, kind, index, backend, maps) {
   const listOfT = generic && plain && family === undefined && variantTypes.length > 0 && variantTypes.every((e) => typeStr(backend, e.cvt, e.conn, e.enumId).startsWith('L<'));
   if (generic) pin.type = family !== undefined ? `E<${family}>` : oneFamily ? `E<${[...families][0]}>` : listOfT ? 'L<R<T>>' : genericType(roles, kind === 'out_param');
   else pin.type = typeStr(backend, cvt, conn, family);
+  if (pin.type === 'Dict') pin.type = dictPinType(backend, sub(tb, 105)) ?? 'Dict'; // a dictionary of fixed kinds names its key and value types
   if (roles.includes(ROLE_HIDDEN)) pin.hidden = true;
   const def = sub(tb, 2);
   if (def !== null) { const v = readDefault(def, pin.type); if (v !== undefined) pin.default = v; else pin.defaultUnreadable = true; }
@@ -382,7 +390,7 @@ function languagesOf(db) {
   return [...found].sort();
 }
 
-/** Lines describing how `built` differs from `ref` (an earlier database). Type and constraint comparisons ignore the enum code. */
+/** Lines describing how `built` differs from `ref` (a reference database). Type and constraint comparisons ignore the enum code. */
 export function compareDb(built, ref, { limit = 5 } = {}) {
   const lines = [];
   const section = (title) => lines.push('', `== ${title}`);

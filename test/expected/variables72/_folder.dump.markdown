@@ -302,3 +302,68 @@
 | Stage 1094713345:"**Stage Entity**" | '**Prefab**' | *Pfb* | id:1077936129 {OBJECT:"**Empty Model**"} |
 | Stage 1094713345:"**Stage Entity**" | '**Dict**' | *Dict\<Gid,Pfb\>* | {id:1094713345 {GIL\_LEVEL\_ENTITY:"**Stage Entity**"}: id:1077936129 {OBJECT:"**Empty Model**"}} |
 | Stage 1094713345:"**Stage Entity**" | '**Entity**' | *Ety* | null |
+
+# File `variables_save.gil`
+
+## Graphs (1)
+
+| Name | Class | Guid | Nodes | Folder |
+| --- | --- | --- | ---: | --- |
+| '*Player*' | ENTITY\_NODE\_GRAPH | '`1073741825`' | **8** | /(default)/ |
+
+## Resources (43)
+
+| Name | Class | Guid | Mounted graphs |
+| --- | --- | --- | --- |
+| "**Stage Entity**" | GIL\_LEVEL\_ENTITY | '`1094713345`' |   |
+| "**Default Template**" | PLAYER\_TEMPLATE | '`1086324737`' | player: '*Player*' |
+| "**Default Template(Edit Character)**" | CHARACTER\_TEMPLATE | '`1090519041`' |   |
+| "**Custom Class**" | CLASS | '`1090519041`' |   |
+| "**Inventory Template**" | GIL\_INVENTORY\_TEMPLATE | '`1119879169`' |   |
+| "**Custom Camera**" | CAMERA | '`1073741825`' |   |
+| "**Terrain01**" | TERRAIN\_ENTITY | '`1073741825`' |   |
+| "**Default Layout**" | INTERFACE\_LAYOUT | '`1073741825`' |   |
+| "**HierarchyRoot**" | INTERFACE\_LAYOUT | '`1073741840`' |   |
+| "**HierarchyRoot**" | INTERFACE\_LAYOUT | '`1073741841`' |   |
+| "**ExclusiveEleGroupHierarchyRoot**" | INTERFACE\_LAYOUT | '`1073741842`' |   |
+| "**ClientUIRootHierarchyRoot**" | INTERFACE\_LAYOUT | '`1073741843`' |   |
+| "**ClientUIPrototypeHierarchyRoot**" | INTERFACE\_LAYOUT | '`1073741844`' |   |
+| "**Environment Configuration**" | ENVIRONMENT\_CONFIGURATION | '`1186988033`' |   |
+| "**Create Preset Point**" | PRESET\_POINT | '`1073741825`' |   |
+| "**Spawn Point1**" | GIL\_RESPAWN\_POINT | '`1073741825`' |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | '`1086324737`' |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | '`1086324738`' |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | '`1086324739`' |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | '`1086324740`' |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | '`1086324741`' |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | '`1086324742`' |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | '`1086324743`' |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | '`1086324744`' |   |
+| "**Default Template**" | GIL\_PLAYER\_ENTITY | '`1086324745`' |   |
+| "**Default Template(Edit Character)**" | GIL\_CHARACTER\_ENTITY | '`1090519041`' |   |
+| "**Custom Growth Curve**" | GIL\_GROWTH\_CURVE | '`1094713345`' |   |
+| "**In-game Save**" | class#41 | '`1073741825`' |   |
+| "**In-game Save\_1**" | class#41 | '`1073741826`' |   |
+| "**Mini-Map**" | UI\_CONTROL | '`1073741826`' |   |
+| "**Skill Area**" | UI\_CONTROL | '`1073741827`' |   |
+| "**Team Information**" | UI\_CONTROL | '`1073741828`' |   |
+| "**Character HP Bar**" | UI\_CONTROL | '`1073741829`' |   |
+| "**Joystick**" | UI\_CONTROL | '`1073741830`' |   |
+| "**Creation HP Bar**" | UI\_CONTROL | '`1073741831`' |   |
+| "**Exit Button**" | UI\_CONTROL | '`1073741832`' |   |
+| "**Voice-Over**" | UI\_CONTROL | '`1073741833`' |   |
+| "**Tab**" | UI\_CONTROL | '`1073741834`' |   |
+| "**Chat Button**" | UI\_CONTROL | '`1073741835`' |   |
+| "**Network Status**" | UI\_CONTROL | '`1073741836`' |   |
+| "**Struggle Button**" | UI\_CONTROL | '`1073741837`' |   |
+| "**Voice Chat Button**" | UI\_CONTROL | '`1073741838`' |   |
+| "**Voice Chat Hint Queue**" | UI\_CONTROL | '`1073741839`' |   |
+
+## Variables
+
+| Prefab | Variable | Type | Value |
+| --- | --- | --- | --- |
+| Player 1086324737:"**Default Template**" | '**Norm1**' | *L\<Struct\>* struct=Structure\_Normal\_1 | \[struct{struct{'`test1`'}, \[struct{'`test2`'}, struct{'`test3`'}\]}\] |
+| Player 1086324737:"**Default Template**" | '**Norm2**' | *L\<Struct\>* struct=Structure\_Normal\_2 | \[struct{'`test`'}, struct{'`test`'}\] |
+| Player 1086324737:"**Default Template**" | '**1\_chip\_1**' | *L\<Struct\>* struct=Structure\_Save\_1 | \[\] |
+| Player 1086324737:"**Default Template**" | '**1\_chip\_2**' | *L\<Struct\>* struct=Structure\_Save\_2 | \[\] |

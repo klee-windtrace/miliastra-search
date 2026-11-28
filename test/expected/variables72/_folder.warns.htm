@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>warns variables_beyond.gia, variables_classic.gil, variables_graph.gia, variables_ref.gil</title>
+<title>warns variables_beyond.gia, variables_classic.gil, variables_graph.gia, variables_ref.gil, variables_save.gil</title>
 <style>
 :root{color-scheme:dark;--bg:#0C0C0C;--panel:#161616;--line:#2e2e2e;--fg:#CCCCCC;--muted:#767676;--accent:#61D6D6}
 *{box-sizing:border-box}
@@ -100,7 +100,6 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <span class="info">INFO</span>  <span class="findingType">declared-but-unused</span>: graph variable "<span class="key">Private</span>" in graph '<span class="graphName">New Node Graph</span>' is declared but no node references it by literal name [<span class="fileName">variables_graph.gia</span>]
 <span class="info">INFO</span>  <span class="findingType">declared-but-unused</span>: graph variable "<span class="key">Faction</span>" in graph '<span class="graphName">Test5</span>' is declared but no node references it by literal name [<span class="fileName">variables_graph.gia</span>]
 <span class="info">INFO</span>  <span class="findingType">declared-but-unused</span>: graph variable "<span class="key">Status</span>" in graph '<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>' is declared but no node references it by literal name [<span class="fileName">variables_graph.gia</span>]
-<span class="info">INFO</span>  <span class="findingType">struct-never-used</span>: struct "<span class="key">Struct</span>" (guid=1077936129 fields=Add variable 1|Add variable 2|Add variable 3|Add variable 4) is defined but never used in the scanned graphs [<span class="fileName">variables_classic.gil</span>]
 <span class="info">INFO</span>  <span class="findingType">custom-variable-type-conflict</span>: custom variable "<span class="key">On_Prefab</span>" is declared with <span class="count">2</span> different types: <span class="typeName">Str</span> on "<span class="declName">Empty Model</span>", "<span class="declName">Same</span>", "<span class="declName">Value</span>", +1 more; <span class="typeName">Int</span> on "<span class="declName">Type</span>" [<span class="fileName">variables_beyond.gia</span>]
 <span class="info">INFO</span>  <span class="findingType">custom-variable-type-conflict</span>: custom variable "<span class="key">String</span>" is declared with <span class="count">2</span> different types: <span class="typeName">Dict&lt;Str,Str&gt;</span> on "<span class="declName">Stage Entity</span>"; <span class="typeName">Str</span> on "<span class="declName">Default Template</span>", "<span class="declName">Default Template(Edit Character)</span>" [<span class="fileName">variables_classic.gil</span>]
 <span class="info">INFO</span>  <span class="findingType">custom-variable-type-conflict</span>: custom variable "<span class="key">Struct</span>" is declared with <span class="count">2</span> different types: <span class="typeName">Dict&lt;Str,Struct&gt;</span> on "<span class="declName">Stage Entity</span>"; <span class="typeName">Struct</span> struct=<span class="structName">Struct</span> on "<span class="declName">Default Template</span>", "<span class="declName">Default Template(Edit Character)</span>" [<span class="fileName">variables_classic.gil</span>]</pre>
@@ -108,13 +107,14 @@ pre.lines{background:none;border:0;padding:0;margin:.3rem 0 .8rem;white-space:pr
 <h2><span class="section">limits</span></h2>
 <pre class="lines">prefabs (OBJECT): <span class="limitOk">5/1000</span>
 dynamic entities (OBJECT_ENTITY): <span class="limitOk">11/3000</span>
-PRESET_POINT: <span class="limitOk">2/2000</span>
-ENVIRONMENT_CONFIGURATION: <span class="limitOk">2/50</span>
-CLASS: <span class="limitOk">2/100</span>
-TERRAIN_ENTITY: <span class="limitOk">2/1200</span></pre>
+PRESET_POINT: <span class="limitOk">3/2000</span>
+ENVIRONMENT_CONFIGURATION: <span class="limitOk">3/50</span>
+CLASS: <span class="limitOk">3/100</span>
+TERRAIN_ENTITY: <span class="limitOk">3/1200</span></pre>
 <hr>
 <h2><span class="section">top graphs by node count</span>:</h2>
-<pre class="lines">'<span class="graphName">New Node Graph</span>': <span class="limitOk">0/3000</span> nodes [<span class="fileName">variables_graph.gia</span>]
+<pre class="lines">'<span class="graphName">Player</span>': <span class="limitOk">8/3000</span> nodes [<span class="fileName">variables_save.gil</span>]
+'<span class="graphName">New Node Graph</span>': <span class="limitOk">0/3000</span> nodes [<span class="fileName">variables_graph.gia</span>]
 '<span class="graphName">Test5</span>': <span class="limitOk">0/3000</span> nodes [<span class="fileName">variables_graph.gia</span>]
 '<span class="graphTag">&lt;status&gt;</span><span class="graphName">Status</span>': <span class="limitOk">0/3000</span> nodes [<span class="fileName">variables_graph.gia</span>]</pre>
 </main>

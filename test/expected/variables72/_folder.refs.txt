@@ -1,3 +1,5 @@
+custom_variable  "1_chip_1" (L<Struct>)             1 get: ['Player'], 0 set: []
+custom_variable  "Norm1" (L<Struct>)                1 get: ['Player'], 0 set: []
 graph_variable   "Entity" (Ety)                     ['New Node Graph']: 0 get, 0 set
 graph_variable   "Faction" (Fct)                    ['New Node Graph']: 0 get, 0 set
 graph_variable   "Float" (Flt)                      ['New Node Graph']: 0 get, 0 set
@@ -8,4 +10,16 @@ graph_variable   "Faction" (Fct)                    ['Test5']: 0 get, 0 set
 graph_variable   "Status" (Dict)                    ['<status>Status']: 0 get, 0 set
 mount            'New Node Graph'                   1 player: PLAYER_TEMPLATE:"Default Template", 1 character: CHARACTER_TEMPLATE:"Default Template(Edit Character)", 6 entity: OBJECT:"Prefab_no_edits"; OBJECT:"Prefab_edited"; OBJECT_ENTITY:"Entity_no_edits"; OBJECT_ENTITY:"Prefab_no_graph"; OBJECT_ENTITY:"Prefab_edited"; OBJECT_ENTITY:"Entity_edited"
 mount            'Test5'                            1 character: CHARACTER_TEMPLATE:"Default Template(Edit Character)"
+mount            'Player'                           1 player: PLAYER_TEMPLATE:"Default Template"
 struct           "Struct"                           defined guid=1077936129 fields=Add variable 1|Add variable 2|Add variable 3|Add variable 4
+struct           "<struct#142>"                     (no definition found in the scanned files)
+                                                    2 using-declaration: ['Player']
+struct           "<struct#50>"                      (no definition found in the scanned files)
+                                                    2 using-declaration: ['Player']
+struct           "Structure_Normal_1"               defined guid=1077936129 fields=Add variable 1|Add variable 2
+struct           "Structure_Normal_2"               defined guid=1077936132 fields=test
+                                                    2 field-type: Structure_Normal_1.Add variable 1; Structure_Normal_1.Add variable 2
+struct           "Structure_Save_1"                 defined guid=1077936130 fields=Add variable 1
+                                                    2 graph-affiliation: ['Player']
+                                                    4 pin-value: ['Player']
+struct           "Structure_Save_2"                 defined guid=1077936131 fields=Add variable 1|Add variable 2

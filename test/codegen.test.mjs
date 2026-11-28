@@ -22,7 +22,7 @@ const graphs = (file) => report(file).code[0].items.filter((x) => x.type === 'gr
 const exprsOf = (c) => [...c.data, c.call].flatMap((call) => call.args.map((a) => a.expr).filter(Boolean));
 
 // ---- 1. execution pins are strings ---------------------------------------------------------------------------------------------------------------------
-test('flow pins are plain strings: a numeric pin is not prefixed, a data pin is still an identifier', () => {
+test('flow pins are plain strings: a numeric pin is not prefixed, a data pin is an identifier', () => {
   const two = pseudo(TWO);
   assert.match(two, /case "0":/, 'a branch of Multiple Branches named by its number');
   const one = pseudo(ONE);
@@ -106,7 +106,7 @@ test('--optimize: a value read twice is declared, and so is one whose node has t
   assert.match(caseOf(one, 'node_0024'), /Target_Entity: Ety_02, \/\/ Get_Local_Variable\.Value/);
   assert.match(caseOf(one, 'node_0024'), /Owner_Entity: Ety_02, \/\/ Get_Local_Variable\.Value/);
 });
-test('--optimize never inlines a `$.` variable and does not change the report', () => {
+test('--optimize does not inline a `$.` variable and does not change the report', () => {
   const opt = pseudo(ONE, '--optimize');
   assert.match(opt, /ID: \$\.Int_003, \/\/ Finite_Loop\.Current_Loop_Value/);
   assert.doesNotMatch(opt, /Int\(Finite_Loop/);
@@ -417,7 +417,7 @@ test('every input a node has is given: a pin the file does not store has its def
   for (const re of [/\bCount:/, /\bop: Enum\("(Mathematical|Comparison) Operators"/, /context_GUID:/]) assert.doesNotMatch(shown, re);
   assert.match(all, /\bCount:/);
   // the zero value of a list, a dictionary and an id, and an enum's default
-  assert.match(pseudo(TWO), /Applied_Stacks: Int\(0\), \/\/ \(default\)\n\s+Unit_Status_Parameter_Dictionary: Dict\(Str,Int,\[\]\), \/\/ \(default\)/);
+  assert.match(pseudo(TWO), /Applied_Stacks: Int\(0\), \/\/ \(default\)\n\s+Unit_Status_Parameter_Dictionary: Dict\(Str,Flt,\[\]\), \/\/ \(default\)/);
   assert.match(pseudo(TWO), /Removal_Reason: Enum\("Unit Status Removal Reason", "Dispelled"\), \/\/ \(default\)/);
   // only a generic pin whose type nobody chose has no value to show
   const unset = (JSON.stringify(report(TWO)).match(/"kind":"unset"/g) || []).length;
@@ -463,7 +463,7 @@ test('--lazy: lazy values only where composites are involved, with or without --
     const text = pseudo(file, '--lazy');
     assert.doesNotMatch(text, /\blazy\b|\bunlz\b|Lazy values/, file);
   }
-  // with --expand no call is left, but the bodies are still written as functions that take and hand out lazy values
+  // with --expand no call is left, but the bodies are written as functions that take and hand out lazy values
   const expanded = pseudo(TWO, '--lazy', '--expand', '--optimize');
   assert.match(definition(expanded, 'Exposed Computed'), /Result: lazy\(\(\)=> Bol\(/);
   assert.doesNotMatch(expanded.slice(0, expanded.indexOf('/*')), /\blazy\(|\bunlz\(/);
@@ -810,9 +810,10 @@ test('the operator enums of math, comparison, logic and type conversion nodes ar
   assert.doesNotMatch(all, /\bop: Enum\("(Mathematical|Comparison|Logical) Operators"|\bop: Enum\("Type Conversions"/);
   assert.match(pseudo(ORDER), /case 'orphaned':\{\n\s+throw 'unreachable';\n\n/);
 });
-test('a dictionary learns what it maps from the pins it is wired to, and fixed-kind dictionary pins from the rules', () => {
+test('a dictionary learns what it maps from the pins it is wired to; a pin the database types just Dict says nothing about its types', () => {
   const one = pseudo('test/cases/codegen/codetest_1.gia', '--optimize');
   assert.match(one, /Dict\(Ety,Ety,Assembly_Dictionary\(/); // from what feeds Key_0 / Value_0
   assert.match(one, /Dict\(Any,Int,Get_Custom_Variable\(/); // the value from the list the next node makes of it, the key is not told
-  assert.match(pseudo('test/cases/codegen/codetest_2.gia'), /Dict\(Str,Int,\[\]\), \/\/ \(default\)/);
+  // Add Unit Status's parameter dictionary: the database names what it maps (string to float)
+  assert.match(pseudo('test/cases/codegen/codetest_2.gia'), /Dict\(Str,Flt,\[\]\), \/\/ \(default\)/);
 });

@@ -261,3 +261,55 @@ MOUNT '*New Node Graph*' -\> OBJECT\_ENTITY "**Entity\_edited**" entity<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Prefab**' : *Pfb* = id:1077936129 {OBJECT:"**Empty Model**"}<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Dict**' : *Dict\<Gid,Pfb\>* = {id:1094713345 {GIL\_LEVEL\_ENTITY:"**Stage Entity**"}: id:1077936129 {OBJECT:"**Empty Model**"}}<br>
 **VARIABLE** Stage 1094713345:"**Stage Entity**" '**Entity**' : *Ety* = null
+
+# FILE `variables_save.gil`
+
+**GRAPH** /(default)/'*Player*' ENTITY\_NODE\_GRAPH guid='`1073741825`' nodes=8<br>
+**RESOURCE** "**Stage Entity**" GIL\_LEVEL\_ENTITY guid='`1094713345`'<br>
+**RESOURCE** "**Default Template**" PLAYER\_TEMPLATE guid='`1086324737`'<br>
+MOUNT '*Player*' -\> PLAYER\_TEMPLATE "**Default Template**" player<br>
+**RESOURCE** "**Default Template(Edit Character)**" CHARACTER\_TEMPLATE guid='`1090519041`'<br>
+**RESOURCE** "**Custom Class**" CLASS guid='`1090519041`'<br>
+**RESOURCE** "**Inventory Template**" GIL\_INVENTORY\_TEMPLATE guid='`1119879169`'<br>
+**RESOURCE** "**Custom Camera**" CAMERA guid='`1073741825`'<br>
+**RESOURCE** "**Terrain01**" TERRAIN\_ENTITY guid='`1073741825`'<br>
+**RESOURCE** "**Default Layout**" INTERFACE\_LAYOUT guid='`1073741825`'<br>
+**RESOURCE** "**HierarchyRoot**" INTERFACE\_LAYOUT guid='`1073741840`'<br>
+**RESOURCE** "**HierarchyRoot**" INTERFACE\_LAYOUT guid='`1073741841`'<br>
+**RESOURCE** "**ExclusiveEleGroupHierarchyRoot**" INTERFACE\_LAYOUT guid='`1073741842`'<br>
+**RESOURCE** "**ClientUIRootHierarchyRoot**" INTERFACE\_LAYOUT guid='`1073741843`'<br>
+**RESOURCE** "**ClientUIPrototypeHierarchyRoot**" INTERFACE\_LAYOUT guid='`1073741844`'<br>
+**RESOURCE** "**Environment Configuration**" ENVIRONMENT\_CONFIGURATION guid='`1186988033`'<br>
+**RESOURCE** "**Create Preset Point**" PRESET\_POINT guid='`1073741825`'<br>
+**RESOURCE** "**Spawn Point1**" GIL\_RESPAWN\_POINT guid='`1073741825`'<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY guid='`1086324737`'<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY guid='`1086324738`'<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY guid='`1086324739`'<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY guid='`1086324740`'<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY guid='`1086324741`'<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY guid='`1086324742`'<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY guid='`1086324743`'<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY guid='`1086324744`'<br>
+**RESOURCE** "**Default Template**" GIL\_PLAYER\_ENTITY guid='`1086324745`'<br>
+**RESOURCE** "**Default Template(Edit Character)**" GIL\_CHARACTER\_ENTITY guid='`1090519041`'<br>
+**RESOURCE** "**Custom Growth Curve**" GIL\_GROWTH\_CURVE guid='`1094713345`'<br>
+**RESOURCE** "**In-game Save**" class#41 guid='`1073741825`'<br>
+**RESOURCE** "**In-game Save\_1**" class#41 guid='`1073741826`'<br>
+**RESOURCE** "**Mini-Map**" UI\_CONTROL guid='`1073741826`'<br>
+**RESOURCE** "**Skill Area**" UI\_CONTROL guid='`1073741827`'<br>
+**RESOURCE** "**Team Information**" UI\_CONTROL guid='`1073741828`'<br>
+**RESOURCE** "**Character HP Bar**" UI\_CONTROL guid='`1073741829`'<br>
+**RESOURCE** "**Joystick**" UI\_CONTROL guid='`1073741830`'<br>
+**RESOURCE** "**Creation HP Bar**" UI\_CONTROL guid='`1073741831`'<br>
+**RESOURCE** "**Exit Button**" UI\_CONTROL guid='`1073741832`'<br>
+**RESOURCE** "**Voice-Over**" UI\_CONTROL guid='`1073741833`'<br>
+**RESOURCE** "**Tab**" UI\_CONTROL guid='`1073741834`'<br>
+**RESOURCE** "**Chat Button**" UI\_CONTROL guid='`1073741835`'<br>
+**RESOURCE** "**Network Status**" UI\_CONTROL guid='`1073741836`'<br>
+**RESOURCE** "**Struggle Button**" UI\_CONTROL guid='`1073741837`'<br>
+**RESOURCE** "**Voice Chat Button**" UI\_CONTROL guid='`1073741838`'<br>
+**RESOURCE** "**Voice Chat Hint Queue**" UI\_CONTROL guid='`1073741839`'<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Norm1**' : *L\<Struct\>* struct=Structure\_Normal\_1 = \[struct{struct{'`test1`'}, \[struct{'`test2`'}, struct{'`test3`'}\]}\]<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**Norm2**' : *L\<Struct\>* struct=Structure\_Normal\_2 = \[struct{'`test`'}, struct{'`test`'}\]<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**1\_chip\_1**' : *L\<Struct\>* struct=Structure\_Save\_1 = \[\]<br>
+**VARIABLE** Player 1086324737:"**Default Template**" '**1\_chip\_2**' : *L\<Struct\>* struct=Structure\_Save\_2 = \[\]

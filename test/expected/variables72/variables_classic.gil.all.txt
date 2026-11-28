@@ -176,7 +176,6 @@ struct           "Struct"                           defined guid=1077936129 fiel
 
 # WARNS
 # findings
-INFO  struct-never-used: struct "Struct" (guid=1077936129 fields=Add variable 1|Add variable 2|Add variable 3|Add variable 4) is defined but never used in the scanned graphs
 INFO  custom-variable-type-conflict: custom variable "String" is declared with 2 different types: Dict<Str,Str> on "Stage Entity"; Str on "Default Template", "Default Template(Edit Character)"
 INFO  custom-variable-type-conflict: custom variable "Struct" is declared with 2 different types: Dict<Str,Struct> on "Stage Entity"; Struct struct=Struct on "Default Template", "Default Template(Edit Character)"
 

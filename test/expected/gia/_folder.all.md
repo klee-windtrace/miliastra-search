@@ -468,8 +468,7 @@ CLASS CONTROL\_SKILL class=65 count=1
 *INFO*  catch-all-listener: \[5\] **When Timer Is Triggered** in graph '*Send*' also runs code for every name: \[4\] **Send Signal** runs for every name (not a name switch) \[`sample_2.gia`\]<br>
 *INFO*  catch-all-listener: \[1\] **When Custom Variable Changes** in graph '*Variables*' also runs code for every name: \[6\] **Double Branch**: condition is not an Equal comparison \[`sample_5.gia`\]<br>
 *INFO*  catch-all-listener: \[3\] **When Node Graph Variable Changes** in graph '*Variables*' also runs code for every name: \[5\] **Set Node Graph Variable** runs for every name (not a name switch) \[`sample_5.gia`\]<br>
-*INFO*  signal-never-used: signal "**Signal\_1**" is declared but never sent or listened to in the scanned graphs \[`sample_9.gia`\]<br>
-*INFO*  struct-never-used: struct "**Structure**" (guid=1077936129 fields=) is defined but never used in the scanned graphs \[`sample_9.gia`\]
+*INFO*  signal-never-used: signal "**Signal\_1**" is declared but never sent or listened to in the scanned graphs \[`sample_9.gia`\]
 
 ---
 
